@@ -84,6 +84,19 @@ test('a preview is its title and bars: the value label and credit stay on the fu
   assert.doesNotMatch(html, /sv-chart__credit/);
 });
 
+test('a row subtitle is drawn under its label, in the full chart and the preview alike', () => {
+  const withSubtitle = { ...chart, items: chart.items.map((item, i) => i === 0 ? { ...item, subtitle: 'Iraq, 2003–2010' } : item) };
+  for (const html of [render(withSubtitle), renderPreview(withSubtitle)]) {
+    assert.match(html, new RegExp(`<span class="sv-comparison__name">${chart.items[0].label}</span><span class="sv-comparison__subtitle">Iraq, 2003–2010</span>`));
+  }
+});
+
+test('a chart subtitle is drawn under the title, in the full chart and the preview alike', () => {
+  for (const html of [render({ ...chart, subtitle: 'Since 2001' }), renderPreview({ ...chart, subtitle: 'Since 2001' })]) {
+    assert.match(html, /<\/h[23]><p class="sv-chart__subtitle">Since 2001<\/p>/);
+  }
+});
+
 test('a dense preview keeps every item and states the highlighted one\'s rank', () => {
   const items = Array.from({ length: 32 }, (_, i) => ({ label: i === 16 ? 'United Kingdom' : `Country ${i}`, value: 40 - i, highlight: i === 16 || undefined }));
   const html = renderPreview({ id: 'per-person', title: 'Per person', description: 'd', unit: 'count', valueLabel: 'Per 10,000', sources: [1], items });
@@ -114,4 +127,14 @@ test('About this data names the table the values come from, with or without a no
   const about = (c: Comparison) => render(c).match(/<details class="sv-chart__methodology">[\s\S]*?<\/details>/)?.[0] ?? '';
   assert.match(about({ ...chart, valuesFrom: 'FBI table 4' }), /<p>Values from FBI table 4\.<\/p>/);
   assert.match(about({ ...chart, note: 'Counts to 2024.', valuesFrom: 'FBI table 4' }), /<p>Counts to 2024\. Values from FBI table 4\.<\/p>/);
+});
+
+test('a figure of a million or more is written as prose writes it beside its bar, and in full in the breakdown table', () => {
+  const html = render({ ...chart, unit: 'pounds', items: [
+    { label: 'Payments', value: 290_000_000, values: [290_000_000, 0] },
+    { label: 'Flights', value: 950_000, values: [0, 950_000] },
+  ] });
+  assert.match(html, />£290m</);
+  assert.match(html, />£950,000</);
+  assert.match(html, /<td>£290,000,000<\/td>/);
 });

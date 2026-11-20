@@ -1,9 +1,11 @@
 import Link from 'next/link';
-import { resolvePreviews, type PreviewSlide } from '@/lib/content/preview';
+import { chartAddress, reportChartPath, resolvePreviews, type PreviewSlide } from '@/lib/content/preview';
+import { previewPanel } from '@/lib/content/preview-panel';
 import { topicPath, type Topic } from '@/lib/content/types';
 import { ChartThumb } from '@/components/topic/chart-thumb';
 import { SlideChart } from '@/components/topic/slide-chart';
 import { PreviewCarousel } from './preview-carousel';
+import { PreviewChart, PreviewSheets } from './preview-sheet';
 import { TopicAccordion, TopicRow } from './topic-accordion';
 
 /** How many chart silhouettes a closed row shows. */
@@ -12,7 +14,7 @@ const THUMBS = 3;
 const updated = (date: string) =>
   new Date(`${date}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
 
-const plural = (n: number, word: string) => `${n} ${word}${n === 1 ? '' : 's'}`;
+const plural = (n: number, word: string, words = `${word}s`) => `${n} ${n === 1 ? word : words}`;
 
 /** An open row's body: the topic's chart carousel beside its viewpoints and the report link. */
 function RowPreview({ topic, slides }: { topic: Topic; slides: PreviewSlide[] }) {
@@ -20,9 +22,9 @@ function RowPreview({ topic, slides }: { topic: Topic; slides: PreviewSlide[] })
     <div className="sv-row__columns">
       <PreviewCarousel name={topic.title} labels={slides.map(s => s.label)}>
         {slides.map(slide => (
-          <div className="sv-slide" key={slide.href}>
-            <SlideChart slide={slide} titleHref={topicPath(topic.slug)} page={{ slug: topic.slug, asOf: topic.lastUpdated, facts: topic.facts }} />
-          </div>
+          <PreviewChart key={slide.href} slug={topic.slug} fact={slide.fact.id} title={slide.label} observation={chartAddress(slide)}>
+            <SlideChart slide={slide} titleHref={reportChartPath(topic.slug, slide)} page={{ slug: topic.slug, asOf: topic.lastUpdated }} />
+          </PreviewChart>
         ))}
       </PreviewCarousel>
       <div className="sv-row__side">
@@ -31,13 +33,13 @@ function RowPreview({ topic, slides }: { topic: Topic; slides: PreviewSlide[] })
           {topic.viewpoints.map((v, i) => (
             <li key={v.id}>
               <i className="sv-row__marker" style={{ background: `var(--sv-series-${(i % 8) + 1})` }} />
-              <span>{v.name}</span>
+              <span>{v.shortName}</span>
             </li>
           ))}
         </ul>
         <Link className="sv-row__cta" href={topicPath(topic.slug)}>Read the full report <span aria-hidden="true">→</span></Link>
         <p className="sv-row__counts">
-          {plural(topic.viewpoints.length, 'viewpoint')} · {plural(topic.cruxes.length, 'disagreement')} · {plural(topic.facts.length, 'fact')}
+          {plural(topic.viewpoints.length, 'viewpoint')} · {plural(topic.cruxes.length, 'crux', 'cruxes')}
         </p>
       </div>
     </div>
@@ -48,37 +50,39 @@ function RowPreview({ topic, slides }: { topic: Topic; slides: PreviewSlide[] })
 export function TopicRows({ topics }: { topics: Topic[] }) {
   if (topics.length === 0) return null;
   return (
-    <TopicAccordion initial={topics[0].slug}>
-      {topics.map(topic => {
-        const slides = resolvePreviews(topic);
-        return (
-          <TopicRow
-            key={topic.slug}
-            slug={topic.slug}
-            title={topic.title}
-            href={topicPath(topic.slug)}
-            subtitle={topic.subtitle}
-            meta={
-              <p className="sv-row__meta">
-                {(topic.tags ?? []).map(tag => <span className="sv-tag" key={tag}>{tag}</span>)}
-                <span>Updated {updated(topic.lastUpdated)}</span>
-              </p>
-            }
-            thumbs={
-              <ul className="sv-row__thumbs" aria-hidden="true">
-                {slides.slice(0, THUMBS).map(slide => (
-                  <li key={slide.href}>
-                    <div className="sv-row__thumb"><ChartThumb fact={slide.fact} chart={slide.chart} reading={slide.reading} /></div>
-                    <span>{slide.label}</span>
-                  </li>
-                ))}
-              </ul>
-            }
-          >
-            <RowPreview topic={topic} slides={slides} />
-          </TopicRow>
-        );
-      })}
-    </TopicAccordion>
+    <PreviewSheets load={previewPanel}>
+      <TopicAccordion initial={topics[0].slug}>
+        {topics.map(topic => {
+          const slides = resolvePreviews(topic);
+          return (
+            <TopicRow
+              key={topic.slug}
+              slug={topic.slug}
+              title={topic.title}
+              href={topicPath(topic.slug)}
+              subtitle={topic.subtitle}
+              meta={
+                <p className="sv-row__meta">
+                  {(topic.tags ?? []).map(tag => <span className="sv-tag" key={tag}>{tag}</span>)}
+                  <span>Updated {updated(topic.lastUpdated)}</span>
+                </p>
+              }
+              thumbs={
+                <ul className="sv-row__thumbs" aria-hidden="true">
+                  {slides.slice(0, THUMBS).map(slide => (
+                    <li key={slide.href}>
+                      <div className="sv-row__thumb"><ChartThumb fact={slide.fact} chart={slide.chart} reading={slide.reading} preview /></div>
+                      <span>{slide.label}</span>
+                    </li>
+                  ))}
+                </ul>
+              }
+            >
+              <RowPreview topic={topic} slides={slides} />
+            </TopicRow>
+          );
+        })}
+      </TopicAccordion>
+    </PreviewSheets>
   );
 }

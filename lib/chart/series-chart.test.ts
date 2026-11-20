@@ -2,7 +2,11 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import type { Series, SeriesPoint } from '@/lib/content/types';
 import {
+  alignedTicks,
+  drawnLines,
   plotMark,
+  plotReadingId,
+  plottedReadings,
   CHART_GEOMETRY,
   formatTick,
   formatValue,
@@ -17,11 +21,14 @@ import {
   seriesTable,
   splitRuns,
   yearTicks,
+  yearTickStep,
   dropCrowdedTicks,
   tickLabelWidth,
   zoneLabelPlacement,
   decimate,
   layoutContext,
+  bandPath,
+  stackFloors,
 } from './series-chart';
 
 const source = {
@@ -107,19 +114,31 @@ test('niceTicks does not degenerate on a flat series', () => {
   assert.deepEqual(niceTicks(0, 0), [-1, 0, 1]);
 });
 
+test('yearTickStep labels as finely as the plot has room for, up to eight labels', () => {
+  // Thirteen financial years on a phone: every other year, so 2014 has a label, not just 2010 and 2020.
+  assert.equal(yearTickStep(2008, 2020, CHART_GEOMETRY['preview-portrait']), 2);
+  assert.equal(yearTickStep(2008, 2020, CHART_GEOMETRY.narrow), 2);
+  // A long series keeps its decades.
+  assert.equal(yearTickStep(1964, 2025, CHART_GEOMETRY.wide), 10);
+  // A short one labels every year.
+  assert.equal(yearTickStep(2019, 2025, CHART_GEOMETRY.narrow), 1);
+});
+
 test('yearTicks labels every year for short series and names both ends of longer ones', () => {
   assert.deepEqual(yearTicks(2021, 2025, 20), [2021, 2022, 2023, 2024, 2025]);
   assert.deepEqual(yearTicks(1964, 2025, 10), [1964, 1970, 1980, 1990, 2000, 2010, 2020, 2025]);
   assert.deepEqual(yearTicks(1964, 2025, 20), [1964, 1980, 2000, 2020, 2025]);
 });
 
-test('formatValue is the exact number, formatTick the compact one', () => {
+test('formatValue is the exact number, formatTick the compact one above 100,000', () => {
   assert.equal(formatValue(1441000, 'count'), '1,441,000');
   assert.equal(formatValue(-60000, 'count'), '−60,000');
   assert.equal(formatValue(2.1, 'percent'), '2.10%');
   assert.equal(formatValue(-0.11, 'percent'), '−0.11%');
   assert.equal(formatTick(1500000, 'count'), '1.5m');
   assert.equal(formatTick(-250000, 'count'), '−250k');
+  assert.equal(formatTick(10000, 'count'), '10,000');
+  assert.equal(formatTick(1600, 'count'), '1,600');
   assert.equal(formatTick(0, 'count'), '0');
   assert.equal(formatTick(0, 'percent'), '0%');
   assert.equal(formatTick(2.5, 'percent'), '2.5%');
@@ -230,6 +249,29 @@ test('the narrow variant drops tick labels but never the zero one', () => {
   assert.ok(narrow.valueTicks.some((t) => t.label === null));
 });
 
+test('a tick unit is written on every labelled value, and the plot moves right only as far as it needs to fit', () => {
+  const s = series();
+  const plain = layoutReading(s, s.readings[0], 'narrow');
+  const withUnit = { ...s.readings[0], tickUnit: 'kg' };
+  const narrow = layoutReading(s, withUnit, 'narrow');
+  assert.ok(narrow.valueTicks.every(t => t.label === null || t.label.endsWith(' kg')));
+  assert.ok(narrow.geometry.left > plain.geometry.left);
+  // The canvas keeps its width: the plot narrows by what the inset grew.
+  assert.equal(narrow.geometry.left + narrow.geometry.plotWidth, plain.geometry.left + plain.geometry.plotWidth);
+  // Labels that already fit leave the plot where it was.
+  assert.equal(layoutReading(s, s.readings[0], 'wide').geometry.left, CHART_GEOMETRY.wide.left);
+});
+
+test('crowded year ticks are thinned between themselves, not only beside the ends', () => {
+  const ticks = Array.from({ length: 10 }, (_, i) => ({ x: i * 25, label: String(2017 + i) }));
+  const kept = dropCrowdedTicks(ticks, 11);
+  assert.equal(kept[0].label, '2017');
+  assert.equal(kept[kept.length - 1].label, '2026');
+  const gaps = kept.slice(1).map((tick, i) => tick.x - kept[i].x);
+  assert.ok(gaps.every(gap => gap >= tickLabelWidth('2017', 11)), JSON.stringify(kept));
+  assert.ok(kept.length > 2);
+});
+
 test('pathFor emits plain segments, never a smoothing curve', () => {
   const d = pathFor([
     { x: 0, y: 1, point: { period: '1990', value: 1 } },
@@ -287,9 +329,9 @@ test('dropCrowdedTicks drops interior ticks that would print over an end tick, n
   assert.deepEqual(dropCrowdedTicks(ticks.slice(2), 11).map((t) => t.label), ['2020', '2026']);
 });
 
-test('a 1950–2026 axis drops 2020 at narrow width and keeps it at wide width', () => {
+test('a 1950–2026 axis labels its decades, dropping 2020 beside 2026 at narrow width and keeping it at wide width', () => {
   const s = span(1950, 2026);
-  assert.deepEqual(layoutReading(s, s.readings[0], 'narrow').timeTicks.map((t) => t.label), ['1950', '1960', '1980', '2000', '2026']);
+  assert.deepEqual(layoutReading(s, s.readings[0], 'narrow').timeTicks.map((t) => t.label), ['1950', '1960', '1970', '1980', '1990', '2000', '2010', '2026']);
   assert.deepEqual(
     layoutReading(s, s.readings[0], 'wide').timeTicks.map((t) => t.label),
     ['1950', '1960', '1970', '1980', '1990', '2000', '2010', '2020', '2026']
@@ -406,6 +448,18 @@ test('a window layout puts the window ends at the plot edges and fits its y doma
   assert.ok(layoutReading(s, s.readings[0], 'wide').valueTicks.at(-1)!.value >= 1000);
 });
 
+test('the value axis starts at zero unless the reading opts out', () => {
+  const s = series();
+  const high = { ...s.readings[0], lines: [{ name: 'Immigration', points: [{ period: '1990', value: 52 }, { period: '1993', value: 58 }] }] };
+  assert.equal(layoutReading(s, high, 'wide').valueTicks[0].value, 0);
+  assert.equal(layoutReading(s, high, 'wide', { from: '1991', to: '1993' }).valueTicks[0].value, 0);
+  // The context strip has no value labels, so check its lowest point sits well clear of the floor.
+  const context = layoutContext(s, high, 'wide', { from: '1991', to: '1993' });
+  const floor = context.geometry.top + context.geometry.plotHeight;
+  assert.ok(context.lines[0].points[0].y < floor - context.geometry.plotHeight / 2);
+  assert.ok(layoutReading(s, { ...high, zeroBased: false }, 'wide').valueTicks[0].value >= 50);
+});
+
 test('a one-year window has month ticks: every month wide, every third narrow, the year on the first and on January', () => {
   const s = monthly();
   const window = { from: '2025-10-20', to: '2026-10-20' };
@@ -457,14 +511,118 @@ test('a region veils the plot either side of it, and a point carries its value',
   const data = series();
   const reading = data.readings[0];
   const layout = layoutReading(data, reading, 'wide');
+  const drawn = drawnLines(data, reading);
   const { left, plotWidth } = layout.geometry;
-  const region = plotMark(layout, reading, { from: '1991', to: '1992' });
+  const region = plotMark(layout, drawn, { from: '1991', to: '1992' });
   assert.deepEqual(region.veils, [{ x0: left, x1: layout.x('1991') }, { x0: layout.x('1992'), x1: left + plotWidth }]);
   assert.deepEqual(region.points, []);
-  assert.deepEqual(plotMark(layout, reading, { from: '1991' }).veils, [{ x0: left, x1: layout.x('1991') }]);
-  const point = plotMark(layout, reading, { lines: ['Net migration'], at: '1992' });
+  assert.deepEqual(plotMark(layout, drawn, { from: '1991' }).veils, [{ x0: left, x1: layout.x('1991') }]);
+  const point = plotMark(layout, drawn, { lines: ['Net migration'], at: '1992' });
   assert.deepEqual(point.veils, []);
   assert.deepEqual(point.points.map(p => p.label), ['50']);
-  assert.deepEqual(plotMark(layout, reading, { at: '1992' }).points.map(p => p.label), ['300', '50']);
-  assert.deepEqual(plotMark(layout, reading, { lines: ['Immigration'] }), { veils: [], points: [] });
+  assert.deepEqual(plotMark(layout, drawn, { at: '1992' }).points.map(p => p.label), ['300', '50']);
+  assert.deepEqual(plotMark(layout, drawn, { lines: ['Immigration'] }), { veils: [], points: [] });
+});
+
+/** The fixture with its share reading drawn alongside its people reading. */
+function together(): Series {
+  const data = series();
+  const share = data.readings[1];
+  return { ...data, readings: [{ ...data.readings[0], alongside: 'share' }, { ...share, lines: [{ ...share.lines[0], name: 'Immigration share' }] }] };
+}
+
+test('ticks for a second axis sit on the first axis\'s gridlines, on round numbers', () => {
+  const ticks = alignedTicks(0.3, 1.2, 4);
+  assert.equal(ticks.length, 5);
+  assert.ok(ticks[0] <= 0.3 && ticks[4] >= 1.2);
+  // Evenly spaced, on a step from the 1-2-2.5-5 ladder.
+  assert.deepEqual(ticks, [0.25, 0.5, 0.75, 1, 1.25]);
+  assert.deepEqual(alignedTicks(10, 90, 4), [0, 25, 50, 75, 100]);
+});
+
+test('a reading drawn alongside another is on its plot, against a right-hand axis on the same gridlines', () => {
+  const data = together();
+  const [people, share] = data.readings;
+  assert.deepEqual(plottedReadings(data).map(r => r.id), ['people']);
+  assert.equal(plotReadingId(data, 'share'), 'people');
+  assert.equal(plotReadingId(data, 'people'), 'people');
+
+  const layout = layoutReading(data, people, 'wide');
+  const alone = layoutReading(series(), series().readings[0], 'wide');
+  // Room is made on the right for the second axis's labels.
+  assert.ok(layout.geometry.plotWidth < alone.geometry.plotWidth);
+  assert.deepEqual(layout.lines.map(l => [l.name, l.axis]), [['Immigration', 'left'], ['Net migration', 'left'], ['Immigration share', 'right']]);
+  assert.equal(layout.secondTicks.length, layout.valueTicks.length);
+  layout.secondTicks.forEach((tick, i) => assert.ok(Math.abs(tick.y - layout.valueTicks[i].y) < 1e-9));
+  assert.ok(layout.secondTicks.some(tick => tick.label?.endsWith('%')));
+  // Both axes start at zero when nothing goes below it, so their slopes compare.
+  assert.equal(layoutReading({ ...data, readings: [{ ...people, lines: [people.lines[0]] }, share] }, { ...people, lines: [people.lines[0]] }, 'wide').valueTicks[0].value, 0);
+  assert.equal(layout.secondTicks[0].value, 0);
+  // A right-axis point is placed on the right-axis scale.
+  const top = share.lines[0].points.at(-1)!;
+  assert.ok(Math.abs(layout.lines[2].last.y - layout.y2(top.value)) < 1e-9);
+
+  // An observation about the reading drawn alongside marks its line, in its unit.
+  const mark = plotMark(layout, drawnLines(data, people), { lines: ['Immigration', 'Immigration share'], at: '1993' });
+  assert.deepEqual(mark.points.map(p => p.label), ['400', formatValue(top.value, 'percent')]);
+});
+
+test('a second axis can stand left of the first, further out, keeping the plot\'s right edge', () => {
+  const data = together();
+  const people = { ...data.readings[0], alongsideAxis: 'left' as const };
+  const stacked = layoutReading({ ...data, readings: [people, data.readings[1]] }, people, 'wide');
+  const right = layoutReading(data, data.readings[0], 'wide');
+  const alone = layoutReading(series(), series().readings[0], 'wide');
+  assert.equal(right.secondAxis?.side, 'right');
+  assert.equal(stacked.secondAxis?.side, 'left');
+  // The plot moves right to fit both columns of numbers, and its right edge stays where a one-axis plot's is.
+  assert.ok(stacked.geometry.left > alone.geometry.left);
+  assert.equal(stacked.geometry.left + stacked.geometry.plotWidth, alone.geometry.left + alone.geometry.plotWidth);
+  // The outer column ends clear of the inner one, which ends 8 short of the plot.
+  const inner = Math.max(...stacked.valueTicks.flatMap(t => (t.label ? [tickLabelWidth(t.label, stacked.geometry.fontSize)] : [])));
+  assert.ok(stacked.secondAxis!.x <= stacked.geometry.left - 8 - inner);
+  // The scales are the same wherever the axis is drawn.
+  assert.deepEqual(stacked.secondTicks.map(t => t.value), right.secondTicks.map(t => t.value));
+});
+
+test('a plot with a reading alongside tables both readings\' lines', () => {
+  const data = together();
+  const rows = readingRows(data, data.readings[0]);
+  assert.equal(rows[0].cells.length, 3);
+  assert.deepEqual(drawnLines(data, data.readings[0]).map(d => [d.line.name, d.unit, d.axis]), [
+    ['Immigration', 'count', 'left'], ['Net migration', 'count', 'left'], ['Immigration share', 'percent', 'right'],
+  ]);
+});
+
+test('a stacked reading draws each line on the total of the lines before it; marks keep the line\'s own value', () => {
+  const s = series();
+  const people = s.readings[0];
+  const lines = [
+    { name: 'Granted', points: [{ period: '1990', value: 10 }, { period: '1991', value: 20 }, { period: '1992', value: 30 }, { period: '1993', value: 40 }] },
+    { name: 'Refused', points: [{ period: '1990', value: 5 }, { period: '1991', value: 5 }, { period: '1992', value: 10 }, { period: '1993', value: 60 }] },
+  ];
+  s.breaks = [];
+  s.readings = [{ ...people, stacked: true, lines }];
+  const layout = layoutReading(s, s.readings[0], 'wide');
+  const [granted, refused] = layout.lines;
+  // The first band sits on zero, the second on the first; the top edge is the total.
+  assert.deepEqual(granted.band!.floor.map(p => p.y), lines[0].points.map(() => layout.y(0)));
+  assert.deepEqual(refused.band!.floor.map(p => p.y), granted.band!.top.map(p => p.y));
+  assert.deepEqual(refused.band!.top.map(p => p.y), [15, 25, 40, 100].map(layout.y));
+  // The axis reaches the largest total, not the largest single value.
+  assert.ok(layout.valueTicks[layout.valueTicks.length - 1].value >= 100);
+  assert.match(bandPath(refused.band!), /^M.* Z$/);
+  const mark = plotMark(layout, drawnLines(s, s.readings[0]), { lines: ['Refused'], at: '1993' });
+  assert.deepEqual(mark.points.map(p => [p.y, p.label]), [[layout.y(100), formatValue(60, 'count')]]);
+});
+
+test('stack floors are the running totals of the lines before each', () => {
+  const at = (values: number[]) => values.map((value, i) => ({ period: String(2000 + i), value }));
+  assert.deepEqual(stackFloors([at([1, 2]), at([3, 4]), at([5, 6])]), [[0, 0], [1, 2], [4, 6]]);
+  assert.deepEqual(stackFloors([]), []);
+});
+
+test('an unstacked reading has no bands', () => {
+  const s = series();
+  assert.ok(layoutReading(s, s.readings[0], 'wide').lines.every(line => line.band === undefined));
 });

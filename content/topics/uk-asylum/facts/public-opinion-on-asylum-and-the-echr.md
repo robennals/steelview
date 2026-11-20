@@ -10,10 +10,10 @@ claim: >-
 status: well-supported
 sources:
   - stance: supports
-    quote: >-
-      Do you think Britain should remain a member of the European Convention on
-      Human Rights or should we withdraw from it? Published on 6 June 2025 →
-      Survey conducted on 6 June 2025 on 5531 GB adults
+    quote: |-
+      Do you think Britain should remain a member of the European Convention on Human Rights or should we withdraw from it?
+
+      Published on 6 June 2025 → Survey conducted on 6 June 2025 on 5531 GB adults
     title: >-
       Do you think Britain should remain a member of the European Convention on
       Human Rights or should we withdraw from it?
@@ -21,8 +21,10 @@ sources:
     publisher: YouGov
     date: '2025-06-06'
   - stance: supports
-    quote: >-
-      Should remain a member 51 % Should withdraw from it 27 % Not sure 22 %
+    quote: |-
+      - Should remain a member 51 %
+      - Should withdraw from it 27 %
+      - Not sure 22 %
     title: >-
       Do you think Britain should remain a member of the European Convention on
       Human Rights or should we withdraw from it?
@@ -64,7 +66,7 @@ sources:
   - stance: complicates
     quote: >-
       Conversely, when respondents were given more nuanced options, support
-      for withdrawal fell. In a 2024 survey , outright support for leaving was
+      for withdrawal fell. In a 2024 survey, outright support for leaving was
       just 16% when respondents were offered alternatives such as “always abide
       by the ECHR even if that frustrates Parliament” or “remain committed to
       the ECHR but give Parliament the final word”. With such options, 66%
@@ -163,7 +165,8 @@ sources:
     publisher: The Conversation
     date: '2025-10-09'
 series:
-  title: British adults on remaining in or withdrawing from the ECHR, 2013-2025
+  title: 'Polls on ECHR membership'
+  subtitle: 'British adults saying remain or withdraw, 2013–2025'
   description: >-
     Share of British adults saying Britain should remain a member of the
     European Convention on Human Rights, and share saying it should withdraw,
@@ -185,14 +188,14 @@ series:
       We examined more than a dozen opinion polls conducted by polling
       agencies, such as YouGov, since 2013. The first, that year, found 48% in
       favour of withdrawal and 35% in favour of remaining in the ECHR. A year
-      later, the public was evenly split (41% leave, 38% stay), and by 2016 ,
+      later, the public was evenly split (41% leave, 38% stay), and by 2016,
       following the Brexit referendum, 42% said Britain should stay in the ECHR
       while 35% wanted to leave. Since then, the balance has shifted steadily
-      towards remain. By 2023 , half of respondents said the UK should remain a
+      towards remain. By 2023, half of respondents said the UK should remain a
       member, while only around a quarter favoured leaving the ECHR. A poll
       from June 2025 produced similar results: 51% in favour of staying, 27%
       for leaving and 22% unsure. The most recent YouGov data, published
-      October 8 , found that 46% of the public are opposed to leaving the
+      October 8, found that 46% of the public are opposed to leaving the
       ECHR, and 29% say the UK should withdraw.
     title: "Do British people want to leave the ECHR? What a decade of polls reveals"
     url: >-
@@ -244,9 +247,8 @@ figures:
   - kind: series
   - kind: dataTable
     id: removals
-    title: >-
-      Polls on the ECHR and removals from Britain: how the question changes the
-      answer, 2023–2025
+    title: 'Polls on the ECHR and removals'
+    subtitle: 'Each result with the question asked, Britain, 2023–2025'
     description: Polls on the ECHR and on removals, each result shown with the question asked.
     caption: One card per poll
     layout: cards
@@ -271,6 +273,13 @@ figures:
       - poll: YouGov, August 2025
         question: 'Support "admitting no more new migrants, and requiring large numbers of migrants who came to the UK in recent years to leave"'
         result: { value: Support 45%, sources: [11] }
+observationMarks:
+  remain-has-led-since-2016: {lines: ["Should remain a member", "Should withdraw"], from: "2016", to: "2025-10"}
+  wording-moves-the-answer: {rows: ["Whitestone Insights for the New Conservatives, 2023", "Survey reviewed by The Conversation, 2024"]}
+  conservative-and-reform-voters-lean-to-leaving: {lines: ["Should withdraw"], from: "2025-06", to: "2025-10"}
+  small-boat-removal-splits-the-public: {rows: ["YouGov, September 2023"]}
+  removal-support-targets-small-boat-arrivals: {rows: ["YouGov, August 2025"]}
+  whitestone-54-percent: {rows: ["Whitestone Insights for the New Conservatives, 2023"]}
 ---
 ## Observations {#public-opinion-on-asylum-and-the-echr--observations-echr-membership}
 
@@ -299,6 +308,10 @@ A question that does not name the ECHR but promises to "promptly deport
 illegal migrants" drew 54% support, while offering middle options cut
 outright support for leaving to 16%.
 [7](#source-public-opinion-on-asylum-and-the-echr-7) [6](#source-public-opinion-on-asylum-and-the-echr-6)
+
+### 54% in one 2023 poll backed new British laws enabling prompt deportation of illegal migrants {#public-opinion-on-asylum-and-the-echr--whitestone-54-percent}
+
+Whitestone Insights asked about replacing the European system of human rights laws with British laws that "enable the Government to promptly deport illegal migrants". 54% supported this. The question did not name the ECHR. [7](#source-public-opinion-on-asylum-and-the-echr-7)
 
 ### Removal of small-boat arrivals splits the public {#public-opinion-on-asylum-and-the-echr--small-boat-removal-splits-the-public}
 

@@ -45,11 +45,6 @@
   --accent: #b3350a;
   --accent-wash: #fdf2ec;
 
-  /* Principle citations are underlined in a second hue so a reader can tell,
-     at the point of use, a value the argument rests on from a fact it cites.
-     6.8:1 on paper, 5.3:1 on the dark paper. */
-  --principle: #1f5c9e;
-
   /* Chart series, in fixed slot order. Charts can carry several meaningful
      groups, so the shared palette provides eight durable hues rather than
      silently falling back to the page ink after the third line. */
@@ -89,8 +84,6 @@
 
     --accent: #ff8a4c;
     --accent-wash: #241812;
-
-    --principle: #3987e5;
 
     /* The shared series palette, re-stepped for the dark paper. */
     --sv-series-1: #3987e5;
@@ -358,6 +351,7 @@
 
   .sv-section__head {
     display: flex;
+    flex-wrap: wrap;
     align-items: baseline;
     gap: 0.85rem;
     border-bottom: 1px solid var(--ink);
@@ -365,6 +359,8 @@
     margin-bottom: 0.25rem;
   }
 
+  /* The topic page's sections, Viewpoints and Cruxes, headed alike and small,
+     so they label the rows under them without competing with their titles. */
   .sv-section__title {
     font-family: var(--font-sans);
     font-size: 0.75rem;
@@ -375,78 +371,8 @@
     color: var(--ink);
   }
 
-  /* ----------------------------------------------------------- topic tabs */
-
-  /* Stays on screen, so the other tabs are one click away from anywhere in a
-     long viewpoint. A panel's link targets stop clear of it. */
-  .sv-topic-tabs {
-    position: sticky;
-    top: 0;
-    z-index: 5;
-    margin-top: 1.5rem;
-    background: var(--paper);
-    border-bottom: 1px solid var(--ink);
-  }
-
-  .sv-topic-panel [id] { scroll-margin-top: 4rem; }
-
-  .sv-topic-tabs ul {
-    display: flex;
-    gap: 2rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .sv-topic-tabs a {
-    display: flex;
-    align-items: center;
-    min-height: 3rem;
-    /* Sits on the bar's rule, so the chosen tab reads as joined to its panel. */
-    margin-bottom: -1px;
-    border-bottom: 3px solid transparent;
-    color: var(--ink-3);
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: color 0.15s, border-color 0.15s;
-  }
-
-  .sv-topic-tabs a:hover { color: var(--ink); border-bottom-color: var(--rule-strong); }
-  .sv-topic-tabs a[aria-current] { color: var(--ink); border-bottom-color: var(--ink); }
-
-  .sv-topic-panel > .sv-section:first-child { padding-top: 1.25rem; }
-
-  @media (scripting: enabled) {
-    .sv-topic-panel:not([data-active]) { display: none; }
-
-    /* The tab says what a panel is, so its heading is left for screen readers. */
-    .sv-section__head--tab {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-      clip-path: inset(50%);
-      white-space: nowrap;
-    }
-  }
-
-  /* Without JavaScript the panels follow each other, with their own headings. */
-  @media (scripting: none) {
-    .sv-topic-tabs { display: none; }
-  }
-
-  /* Always on the page, under the tabs, and it has to look like it matters. */
+  /* Under the viewpoints, set apart from them. */
   .sv-section--cruxes { padding-top: 4rem; }
-  .sv-section--cruxes .sv-section__head { flex-wrap: wrap; }
-
-  .sv-section--cruxes .sv-section__title {
-    font-family: var(--font-display);
-    font-size: 1.75rem;
-    letter-spacing: -0.02em;
-    text-transform: none;
-  }
 
   /* Says what the section is, so it must not read as one of its items. */
   .sv-section__blurb {
@@ -509,60 +435,6 @@
     overflow: visible;
   }
 
-  /* -------------------------------------------------- supporting facts */
-
-  /* A headline fact is a claim the argument is about; the facts under it are
-     evidence for it and say little standing alone. They are nested inside the
-     open headline rather than listed beside it, so the Facts list stays a set
-     of claims a reader can hold in their head. Each keeps its own anchor —
-     these are permanent addresses. */
-
-  .sv-supporting {
-    margin-top: 1.75rem;
-  }
-
-  .sv-supporting__head {
-    font-family: var(--font-sans);
-    font-size: 0.8125rem;
-    font-weight: 600;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-    margin: 0 0 0.75rem;
-    padding-bottom: 0.4rem;
-    border-bottom: 1px solid var(--rule);
-  }
-
-  .sv-related { margin: 0; padding-left: 1.2rem; font-family: var(--font-sans); }
-  .sv-related li { margin-block: 0.25rem; }
-
-  .sv-data-needed__list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .sv-data-needed__list li {
-    display: grid;
-    gap: 0.2rem;
-    padding: 0.7rem 0;
-    border-top: 1px solid var(--rule-light);
-    font-size: 0.9375rem;
-    line-height: 1.55;
-  }
-
-  .sv-data-needed__list li:last-child {
-    border-bottom: 1px solid var(--rule-light);
-  }
-
-  .sv-data-needed__list strong {
-    color: var(--ink-1);
-  }
-
-  .sv-data-needed__list span {
-    color: var(--ink-2);
-  }
-
   /* ---------------------------------------------------------- fact bodies */
 
   .sv-source {
@@ -579,13 +451,31 @@
     text-wrap: pretty;
   }
 
-  .sv-source blockquote::before {
-    content: "\201C";
+  /* A quote with its key passages picked out: the rest stays readable, but
+     steps back, so the passages a claim rests on are what the eye lands on. */
+  .sv-source blockquote[data-highlighted] { color: var(--ink-3); }
+  .sv-source blockquote mark {
+    padding: 0.05em 0.1em;
+    border-radius: 2px;
+    background: var(--accent-wash);
+    color: var(--ink);
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
   }
 
-  .sv-source blockquote::after {
-    content: "\201D";
-  }
+  /* A quote is laid out as its source sets it (quote-text.tsx): paragraphs,
+     bullets and tables. Its quotation marks open its first paragraph and close
+     its last. */
+  .sv-source blockquote > p:first-child::before { content: "\201C"; }
+  .sv-source blockquote > p:last-child::after { content: "\201D"; }
+  .sv-source blockquote > :is(p, ul, .sv-quote-table) { margin: 0; }
+  .sv-source blockquote > * + * { margin-top: 0.6em; }
+  .sv-source blockquote ul { padding-left: 1.2em; list-style: disc; }
+  .sv-source blockquote li + li { margin-top: 0.25em; }
+  .sv-quote-table { overflow-x: auto; }
+  .sv-quote-table table { border-collapse: collapse; font-family: var(--font-sans); font-size: 0.8em; font-variant-numeric: tabular-nums; }
+  .sv-quote-table :is(th, td) { padding: 0.25em 0.7em 0.25em 0; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: top; }
+  .sv-quote-table th { font-weight: 600; color: var(--ink-2); }
 
   .sv-source figcaption {
     margin-top: 0.4rem;
@@ -728,6 +618,15 @@
     stroke-width: 3.25;
   }
 
+  /* An axis read by one line is in that line's colour, and lights up with it. */
+  .sv-chart__axis-ticks[data-series] .sv-chart__tick {
+    fill: currentColor;
+  }
+
+  .sv-chart__axis-ticks[data-highlighted="true"] .sv-chart__tick {
+    font-weight: 700;
+  }
+
   .sv-chart__key[data-highlighted="true"] {
     background: color-mix(in srgb, currentColor 10%, transparent);
   }
@@ -809,6 +708,14 @@
     transition: stroke-width 140ms ease;
   }
 
+  /* A stacked line's band: its colour, light enough that the gridlines and
+     the line along its top still read through it. */
+  .sv-chart__band {
+    fill: currentColor;
+    fill-opacity: 0.35;
+    stroke: none;
+  }
+
   /* Wider transparent stroke makes a thin data line practical to target. */
   .sv-chart__line-hit {
     fill: none;
@@ -877,6 +784,13 @@
 
   .sv-chart__focus > .sv-control {
     margin-bottom: 0.5rem;
+  }
+
+  /* The Graph/Table switch stands apart from the legend or graph under it,
+     so a reader does not take it for one of the legend's keys. A switch
+     inside a control bar has the bar's own margin. */
+  .sv-chart__view > .sv-chart__view-controls {
+    margin-bottom: 0.75rem;
   }
 
   .sv-chart__zone-label {
@@ -1280,10 +1194,9 @@
     font-size: 0.9rem;
     font-weight: 500;
     color: var(--accent);
-    text-decoration: none;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
   }
-
-  .sv-home__about:hover { text-decoration: underline; text-underline-offset: 0.2em; }
 
   /* Opening a row holds the clicked head still by scrolling in step with the
      row above closing (topic-accordion.tsx); the browser's own scroll
@@ -1294,7 +1207,14 @@
     background: var(--paper);
     border: 1px solid var(--rule);
     border-radius: 16px;
-    transition: box-shadow 0.4s, border-color 0.3s;
+    /* A row that runs to the screen's edges when open (a phone, below) widens
+       in step with its body opening, rather than jumping. */
+    transition:
+      box-shadow 0.4s,
+      border-color 0.3s,
+      margin 0.55s cubic-bezier(0.2, 0.8, 0.2, 1),
+      border-width 0.55s cubic-bezier(0.2, 0.8, 0.2, 1),
+      border-radius 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
 
   .sv-row:not([data-open]):hover {
@@ -1361,8 +1281,8 @@
   .sv-row__toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
 
   .sv-row__heading, .sv-row__thumbs, .sv-row__chevron { pointer-events: none; }
-  .sv-row__link { position: relative; color: inherit; text-decoration: none; pointer-events: auto; transition: color 0.2s; }
-  .sv-row__link:hover { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.15em; }
+  .sv-row__link { position: relative; color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.15em; pointer-events: auto; transition: color 0.2s; }
+  .sv-row__link:hover { color: var(--accent); }
 
   .sv-row__subtitle {
     margin: 0.3rem 0 0;
@@ -1540,9 +1460,13 @@
 
   .sv-slide { display: flex; flex: 1; flex-direction: column; min-width: 0; }
 
-  /* On a phone titles and legends wrap onto more lines, so slides are taller. */
-  @media (max-width: 40rem) {
-    .sv-carousel__slide { height: 25rem; }
+  /* On a phone a fixed height would leave a short chart floating in empty
+     space, so each slide is as tall as its chart, and the strip as tall as the
+     slide showing (use-carousel.ts). Without script the strip takes the
+     tallest slide's height. */
+  @media (max-width: 47.5rem) {
+    .sv-carousel__strip { align-items: flex-start; height: var(--sv-strip-height, auto); overflow-y: hidden; transition: height 0.25s; }
+    .sv-carousel__slide { height: auto; }
   }
   .sv-slide .sv-chart { flex: 1; }
 
@@ -1594,17 +1518,31 @@
 
   @media (max-width: 47.5rem) {
     .sv-row__thumbs { display: none; }
-    .sv-row__columns, .sv-positions { padding-inline: 1rem; }
+    .sv-positions { padding-inline: 1rem; }
     .sv-row__head { padding-inline: 1rem; }
+    /* Where a row has a tags line, the arrow sits smaller at its end, so the
+       title and overview get the head's whole width rather than wrapping
+       beside it. */
+    .sv-row__head:has(.sv-row__meta) .sv-row__chevron { position: absolute; top: 1.2rem; right: 1rem; width: 1.4rem; height: 1.4rem; }
+    .sv-row__head:has(.sv-row__meta) .sv-row__chevron::after { left: 50%; top: 50%; width: 0.4rem; height: 0.4rem; transform: translate(-50%, -70%) rotate(45deg); }
+    .sv-row__meta { padding-right: 2rem; }
+    /* Width is scarce on a phone: the charts run to the card's edges, lined up
+       with the title, and the viewpoint list, which would only fit truncated,
+       is left to the report. */
+    .sv-row__columns { padding-inline: 0; gap: 1rem; }
+    .sv-carousel { padding: 1rem 1rem 0.75rem; border-inline: 0; border-radius: 0; }
+    .sv-row__side { padding-inline: 1rem; }
+    .sv-row__side-head, .sv-row__viewpoints { display: none; }
+    .sv-row__cta { margin-top: 0; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .sv-row, .sv-row__title, .sv-row__body, .sv-row__columns, .sv-row__chevron, .sv-carousel__dot { transition: none; }
+    .sv-row, .sv-row__title, .sv-row__body, .sv-row__columns, .sv-row__chevron, .sv-carousel__dot, .sv-carousel__strip { transition: none; }
   }
 
   /* ------------------------------------------------ viewpoint walkthroughs */
 
-  /* A viewpoint or data row's closed state is its sequence of charts: one
+  /* A viewpoint row's closed state is its sequence of charts: one
      thumbnail per step, on a line of their own under the heading. */
   .sv-row--walk .sv-row__head { flex-wrap: wrap; row-gap: 1rem; }
   .sv-row--walk .sv-row__heading { flex-basis: calc(100% - 4rem); }
@@ -1647,17 +1585,6 @@
 
   .sv-walk__thumbs .sv-walk__thumb-label { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 
-  .sv-walk__tab .sv-walk__no-chart { display: grid; place-items: center; height: 100%; font-family: var(--font-sans); font-size: 1.4rem; color: var(--ink-3); }
-
-  .sv-walk__thumbs .sv-walk__no-chart {
-    display: grid;
-    place-items: center;
-    height: 100%;
-    font-family: var(--font-sans);
-    font-size: 0.7rem;
-    color: var(--ink-4);
-  }
-
   .sv-walk__thumbs .sv-walk__more {
     display: grid;
     place-items: center;
@@ -1676,6 +1603,9 @@
     background: var(--paper);
     transition: box-shadow 0.15s;
   }
+
+  /* Stays in view above a long chart, which a picked row can scroll. */
+  .sv-walk__chart .sv-observe { position: sticky; top: 0; z-index: 2; }
 
   .sv-observe[data-toggles] { cursor: pointer; }
 
@@ -1746,7 +1676,7 @@
   }
 
   /* Opened, the whole claim shows. */
-  .sv-observe__item[data-open] .sv-observe__claim { white-space: normal; }
+  .sv-observe__item[data-open] .sv-observe__claim { white-space: normal; font-weight: 600; color: var(--ink); }
 
   /* A long Subtlety scrolls in place, so the graph keeps its room. */
   .sv-observe__body { margin-top: 0.4rem; }
@@ -1764,6 +1694,9 @@
   /* A row a reader has opened stays readable, whatever the observation is about. */
   [data-row][data-mark-dimmed]:has(details[open]) { opacity: 1; }
   [data-row][data-mark-picked] { font-weight: 600; }
+  /* A timeline's cards stay readable: the picked ones are outlined instead (timelines.css). */
+  .sv-timeline__item[data-row][data-mark-dimmed] { opacity: 1; }
+  .sv-timeline__item[data-row][data-mark-picked] { font-weight: inherit; }
 
   /* Without JavaScript every observation shows, one after another. */
   .sv-observe__item:not([hidden]) ~ .sv-observe__item:not([hidden]) { margin-top: 1rem; }
@@ -1781,44 +1714,6 @@
   }
 
   .sv-row[data-open] .sv-walk { opacity: 1; transform: none; transition-delay: 0.12s; }
-
-  .sv-walk__outline { margin: 0; padding: 0; list-style: none; }
-
-  .sv-walk__outline-step {
-    display: flex;
-    gap: 0.6rem;
-    width: 100%;
-    padding: 0.55rem 0.4rem;
-    border: 0;
-    border-top: 1px solid var(--rule);
-    background: none;
-    color: var(--ink-3);
-    font-family: var(--font-sans);
-    font-size: 0.82rem;
-    line-height: 1.35;
-    text-align: left;
-    cursor: pointer;
-    transition: color 0.2s, background-color 0.2s;
-  }
-
-  .sv-walk__outline li:last-child .sv-walk__outline-step { border-bottom: 1px solid var(--rule); }
-  .sv-walk__outline-step:hover { color: var(--ink); }
-  .sv-walk__outline-step:disabled { cursor: default; }
-  .sv-walk__outline-step[aria-current] { color: var(--ink); background: var(--accent-wash); }
-
-  .sv-walk__number {
-    flex: none;
-    display: grid;
-    place-items: center;
-    width: 1.35rem;
-    height: 1.35rem;
-    border: 1px solid var(--rule-strong);
-    border-radius: 50%;
-    font-size: 0.7rem;
-    font-weight: 600;
-  }
-
-  .sv-walk__outline-step[aria-current] .sv-walk__number { border-color: var(--accent); background: var(--accent); color: var(--paper); }
 
   .sv-walk__stage {
     min-width: 0;
@@ -1888,7 +1783,6 @@
   /* A full chart can run longer than the space, with its table or notes open,
      and a long comparison's rows keep their size. */
   .sv-walk__chart .sv-slide { flex: 1; min-height: 0; overflow-y: auto; }
-  .sv-slide--explorable { cursor: pointer; }
   /* A slide is only a figure's title and its content, as for a chart: the rest is a click away. */
   .sv-slide__figure { flex: 1; min-height: 0; overflow-y: auto; }
   .sv-slide__figure figure { margin: 0; }
@@ -1897,9 +1791,8 @@
   .sv-slide__figure .sv-chart__methodology,
   .sv-slide__figure .sv-item-credit,
   .sv-slide__figure .sv-footnote,
-  .sv-slide__figure .sv-timeline__controls,
   .sv-slide__figure .sv-timeline__key,
-  .sv-slide__figure .sv-quote-browser__controls,
+  .sv-slide__figure :is(.sv-timeline, .sv-quote-browser) .sv-bar,
   .sv-slide__figure .sv-control__status { display: none; }
   /* Where a step's chart will be while its row's charts load (lazy-charts.tsx). */
   .sv-walk__chart-loading { flex: 1; border-radius: 8px; background: var(--paper-sunk); }
@@ -1928,85 +1821,8 @@
   .sv-walk__explore p { margin: 0; }
   .sv-walk__explore p::after { content: " →"; color: var(--accent); }
 
-  .sv-walk__controls { display: flex; align-items: center; gap: 0.65rem; margin-top: 0.9rem; }
-  .sv-walk__controls .sv-carousel__step:disabled { opacity: 0.35; cursor: default; }
-
-  .sv-walk__next {
-    min-width: 0;
-    max-width: 60%;
-    padding: 0.55rem 0.9rem;
-    overflow: hidden;
-    border: 0;
-    border-radius: 10px;
-    background: var(--ink);
-    color: var(--paper);
-    font-family: var(--font-sans);
-    font-size: 0.82rem;
-    font-weight: 600;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-
-  .sv-walk__next:hover:not(:disabled) { background: var(--accent); }
-  .sv-walk__next:disabled { background: var(--paper-sunk); color: var(--ink-4); cursor: default; }
-
-  /* A data row: its charts in miniature across the top, then the chosen one
-     large, with room to breathe. */
+  /* A chart opened alone over the page, with room to breathe. */
   .sv-walk[data-layout="strip"] { grid-template-columns: minmax(0, 1fr); gap: 0.75rem; }
-  .sv-walk[data-layout="strip"] .sv-walk__controls { display: none; }
-
-  /* The arrows sit level with the miniatures, above their labels. */
-  .sv-walk__tabbar { display: flex; align-items: flex-start; gap: 0.6rem; min-width: 0; }
-  .sv-walk__tab-arrow { flex: none; margin-top: 0.9rem; }
-  .sv-walk__tab-arrow:disabled { opacity: 0.35; cursor: default; }
-
-  .sv-walk__tabs {
-    display: flex;
-    flex: 1;
-    gap: 0.6rem;
-    min-width: 0;
-    margin: 0;
-    padding: 0;
-    overflow-x: auto;
-    scrollbar-width: none;
-    list-style: none;
-  }
-
-  .sv-walk__tabs::-webkit-scrollbar { display: none; }
-
-  .sv-walk__tabs li { flex: 0 0 8.5rem; min-width: 0; }
-
-  .sv-walk__tab {
-    display: block;
-    width: 100%;
-    padding: 0;
-    border: 0;
-    background: none;
-    color: var(--ink-4);
-    text-align: left;
-    cursor: pointer;
-    transition: color 0.2s;
-  }
-
-  .sv-walk__tab .sv-row__thumb { display: block; transition: border-color 0.2s; }
-  .sv-walk__tab:hover { color: var(--ink); }
-  .sv-walk__tab:hover .sv-row__thumb { border-color: var(--rule-strong); }
-  .sv-walk__tab:disabled { cursor: default; }
-  .sv-walk__tab[aria-current] { color: var(--ink); }
-  .sv-walk__tab[aria-current] .sv-row__thumb { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); background: var(--paper); }
-
-  .sv-walk__tab-label {
-    display: -webkit-box;
-    margin-top: 0.3rem;
-    overflow: hidden;
-    font-family: var(--font-sans);
-    font-size: 0.7rem;
-    line-height: 1.3;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-  }
 
   /* The chart fills the space, its graph shrinking to make room for an opened
      observation. */
@@ -2030,25 +1846,25 @@
   .sv-factpanel .sv-walk__strip { flex: 1; min-height: 0; }
 
   .sv-factpanel .sv-walk[data-layout="strip"] .sv-walk__step[data-chart] { height: auto; }
-
-  /* Beside the outline, previous/next buttons and a step count would only
-     repeat it, so they appear only where it is hidden. */
-  @media (width > 64rem) {
-    .sv-walk__controls { display: none; }
-  }
+  /* One chart alone, with no miniatures above it, takes all of the height. */
+  .sv-factpanel .sv-walk[data-alone] { grid-template-rows: minmax(0, 1fr); }
+  /* Its title is the sheet's, so it is not said twice, and the sheet is its
+     frame: no box of its own inside it, and its edges line up with the title. */
+  .sv-factpanel .sv-walk[data-alone] .sv-graph-heading { display: none; }
+  .sv-factpanel .sv-walk[data-alone] .sv-walk__stage { padding: 0; border: none; border-radius: 0; background: none; }
+  .sv-factpanel .sv-walk[data-alone] .sv-walk__chart .sv-slide { padding-inline: 0; }
 
   /* Narrower, the outline gives way to the step, and the chart goes under its prose. */
   @media (max-width: 64rem) {
     .sv-walk { grid-template-columns: minmax(0, 1fr); }
-    .sv-walk__outline { display: none; }
   }
 
   @media (max-width: 47.5rem) {
     .sv-row--walk .sv-walk__thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr)); }
     .sv-walk { padding-inline: 1rem; }
-    /* In a row the strip fits the step showing (walkthrough.tsx), not the longest
+    /* In a row the strip fits the step showing (use-carousel.ts), not the longest
        step. In a sheet it keeps its height, and scrolls what does not fit. */
-    .sv-row .sv-walk__strip { align-items: flex-start; height: var(--sv-walk-step-height, auto); overflow-y: hidden; transition: height 0.25s; }
+    .sv-row .sv-walk__strip { align-items: flex-start; height: var(--sv-strip-height, auto); overflow-y: hidden; transition: height 0.25s; }
     /* A step's explanation comes first, as the chart means little without it. The
        chart's row grows past 18rem for a figure too long to fit, rather than running out of it. */
     .sv-walk__step, .sv-walk__step[data-chart] { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(18rem, auto); align-content: start; height: auto; gap: 1rem; }
@@ -2066,21 +1882,216 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .sv-walk, .sv-walk__outline-step, .sv-row .sv-walk__strip { transition: none; }
+    .sv-walk, .sv-row .sv-walk__strip { transition: none; }
+  }
+
+  /* ------------------------------------------------ viewpoint slideshows */
+
+  /* A trial layout (components/viewpoints/slideshow.tsx): a viewpoint is a
+     slideshow of cards, one per point of its argument, each made with a graph
+     where it can be. Closed, a row is just its short name and its stance. */
+  .sv-row--deck .sv-row__subtitle { max-width: 48rem; }
+
+  .sv-deck {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    padding: 0.75rem 1.5rem 1.5rem;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.35s, transform 0.45s;
+  }
+
+  .sv-row[data-open] .sv-deck { opacity: 1; transform: none; transition-delay: 0.12s; }
+
+  /* Only on a wide screen are the slides listed down the left; the numbered
+     circles stand in for the list on narrower screens. */
+  .sv-deck__outline { display: none; margin: 0; padding: 0; list-style: none; }
+
+  @media (width > 64rem) {
+    .sv-deck { grid-template-columns: minmax(14rem, 1fr) minmax(0, 2.6fr); gap: 2rem; align-items: start; }
+    .sv-deck__outline { display: block; position: sticky; top: 1rem; }
+  }
+
+  .sv-deck__outline-item {
+    display: flex;
+    gap: 0.6rem;
+    width: 100%;
+    padding: 0.5rem 0.4rem;
+    border: 0;
+    border-radius: 8px;
+    background: none;
+    color: var(--ink-3);
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    line-height: 1.35;
+    text-align: left;
+    cursor: pointer;
+    transition: color 0.2s, background-color 0.2s;
+  }
+
+  .sv-deck__outline-item:hover { color: var(--ink); }
+  .sv-deck__outline-item:disabled { cursor: default; }
+  .sv-deck__outline-item[aria-current] { color: var(--ink); background: var(--accent-wash); }
+
+  .sv-deck__number {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 1.35rem;
+    height: 1.35rem;
+    border: 1px solid var(--rule-strong);
+    border-radius: 50%;
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+
+  .sv-deck__outline-item[aria-current] .sv-deck__number { border-color: var(--accent); background: var(--accent); color: var(--paper); }
+
+  /* Clear of the sticky section tabs when a step brings it back on screen. */
+  .sv-deck__stage { min-width: 0; scroll-margin-top: 4.5rem; }
+
+  /* A numbered circle per point: the one showing is filled, the ones read are
+     ringed in the accent, and each is a button to its point. Circles, like
+     the outline's, so they read as places to go, not a gauge. */
+  .sv-deck__points { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0 1rem; padding: 0; list-style: none; }
+  /* Where the outline shows, it already marks the point showing and goes to any point. */
+  @media (width > 64rem) { .sv-deck__points { display: none; } }
+
+  .sv-deck__points button {
+    display: grid;
+    place-items: center;
+    width: 2.1rem;
+    height: 2.1rem;
+    padding: 0;
+    border: 1px solid var(--rule-strong);
+    border-radius: 50%;
+    background: var(--paper);
+    color: var(--ink-3);
+    font: 600 0.85rem/1 var(--font-sans);
+    font-variant-numeric: tabular-nums;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+  }
+
+  .sv-deck__points button[data-seen] { border-color: var(--accent); color: var(--accent); }
+  .sv-deck__points button[aria-current] { border-color: var(--accent); background: var(--accent); color: var(--paper); }
+  .sv-deck__points button:hover:not([aria-current]) { border-color: var(--ink); color: var(--ink); }
+  .sv-deck__points button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* A card is as tall as its point, its line and its graph. The strip follows
+     the card showing (use-carousel.ts), so a short card leaves no gap above the
+     controls. */
+  .sv-deck__strip {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    height: var(--sv-strip-height, auto);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    outline: none;
+    transition: height 0.25s;
+  }
+
+  .sv-deck__strip::-webkit-scrollbar { display: none; }
+  .sv-deck__strip:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+
+  .sv-deck__slide { position: relative; display: flex; flex: 0 0 100%; min-width: 0; overflow: hidden; scroll-snap-align: start; }
+
+  .sv-deck__card { display: flex; flex: 1; flex-direction: column; min-width: 0; }
+
+  /* The point the card makes: a sentence of the argument, well under the
+     viewpoint's name in size, so a whole point fits with room for the line under it. */
+  .sv-deck__heading {
+    flex: none;
+    margin: 0 0 0.4rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 1rem + 0.4vw, 1.3rem);
+    font-weight: 600;
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  .sv-deck__prose { max-width: var(--measure); font-size: 1.05rem; line-height: 1.6; }
+  .sv-deck__prose p { margin: 0 0 0.9rem; }
+
+  /* The step of reasoning that completes the card's point: read card after
+     card, heading and line make the argument. On a card with a graph, the
+     line and the graph are all there is. */
+  .sv-deck__details { flex: none; margin: 0 0 0.75rem; max-width: var(--measure); font-family: var(--font-serif); font-size: 1.05rem; line-height: 1.5; color: var(--ink-2); }
+
+  /* The graph fills the rest of the card, under its own title, set small: it
+     names what is drawn, while the card's heading says what it shows. */
+  .sv-deck__card .sv-walk__chart { min-width: 0; }
+  /* The graph is drawn whole, at its own height, rather than scrolling in a box. */
+  .sv-deck__card .sv-walk__chart > .sv-slide { overflow: visible; mask-image: none; animation: none; }
+
+  /* The expand mark says the graph opens; the link is for a keyboard, and shows when it has focus. */
+  .sv-deck__card .sv-walk__explore:not(:focus-within) { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+  .sv-deck__controls { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; margin-top: 1.25rem; }
+  .sv-deck__count { margin: 0; font-family: var(--font-sans); font-size: 0.8rem; font-variant-numeric: tabular-nums; color: var(--ink-4); }
+
+  .sv-deck__back, .sv-deck__next {
+    min-width: 6.5rem;
+    padding: 0.7rem 1.1rem;
+    border-radius: 999px;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, opacity 0.2s;
+  }
+
+  .sv-deck__back { border: 1px solid var(--rule-strong); background: var(--paper); color: var(--ink); }
+  .sv-deck__next { border: 1px solid var(--ink); background: var(--ink); color: var(--paper); }
+  .sv-deck__next:hover:not(:disabled) { background: var(--accent); border-color: var(--accent); }
+  .sv-deck__back:disabled { opacity: 0; pointer-events: none; }
+  .sv-deck__next:disabled { background: var(--paper-sunk); border-color: var(--paper-sunk); color: var(--ink-4); cursor: default; }
+
+  @media (max-width: 47.5rem) {
+    .sv-deck { padding-inline: 1rem; }
+    .sv-row--deck .sv-row__title, .sv-row--deck[data-open] .sv-row__title { font-size: 1.35rem; }
+    /* Width is scarce on a phone: open, a viewpoint, a crux, or
+       a topic on the home page, runs to the screen's edges, growing out of its card as it opens
+       (the transition is with .sv-row's). */
+    .sv-row--deck[data-open], .sv-row--crux[data-open], .sv-home .sv-row[data-open] { margin-inline: -1.25rem; border-left-width: 0; border-right-width: 0; border-radius: 0; }
+    /* The arrow sits small at the end of the title's line, as on the home page,
+       so the overview and the graphs below get the whole width. */
+    .sv-row--deck .sv-row__chevron { position: absolute; top: 1.35rem; right: 1rem; width: 1.4rem; height: 1.4rem; }
+    .sv-row--deck .sv-row__chevron::after { left: 50%; top: 50%; width: 0.4rem; height: 0.4rem; transform: translate(-50%, -70%) rotate(45deg); }
+    .sv-row--deck .sv-row__heading { flex-basis: 100%; }
+    .sv-row--deck .sv-row__title { padding-right: 2rem; }
+  }
+
+  /* Between a phone and a tablet the page has wider margins to reach. */
+  @media (min-width: 40rem) and (max-width: 47.5rem) {
+    .sv-row--deck[data-open], .sv-row--crux[data-open], .sv-home .sv-row[data-open] { margin-inline: -2rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sv-deck, .sv-deck__strip, .sv-deck__points button { transition: none; }
+  }
+
+  /* Nothing can open a slideshow row without script. */
+  @media (scripting: none) {
+    .sv-row--deck .sv-row__body { grid-template-rows: 1fr; }
+    .sv-row--deck .sv-row__toggle, .sv-row--deck .sv-row__chevron { display: none; }
+    .sv-deck { opacity: 1; transform: none; }
   }
 
   /* ------------------------------------------------------ fact citations */
 
-  /* An inline fact citation reads as ordinary prose: the evidence it stands
-     on is drawn beside the text, so the clause needs no mark of its own. It
-     is still a link into the data, and shows that on hover and focus.
-
-     A principle citation keeps a dotted rule in the principle hue, since the
-     principle's text is not on screen beside the argument. The dots are a
-     repeating background rather than a dotted text-decoration, because
-     browsers pack decoration dots so tightly they read as a smudged solid
-     line, and give no control over the spacing. */
+  /* An inline citation keeps the prose's colour and has a dotted rule, in the
+     accent hue, so the claim
+     reads as prose but can be seen to be clickable. The dots are a repeating
+     background rather than a dotted text-decoration,
+     because browsers pack decoration dots so tightly they read as a smudged
+     solid line, and give no control over the spacing. */
   .prose-body a.sv-cite {
+    --sv-cite-hue: var(--accent);
     color: inherit;
     text-decoration: none;
     transition: color 0.15s;
@@ -2091,13 +2102,11 @@
     color: var(--accent);
   }
 
-  .prose-body a.sv-principle-cite {
+  .prose-body a.sv-cite {
     --sv-cite-strength: 65%;
-    color: var(--ink);
-    text-decoration: none;
     background-image: radial-gradient(
       circle,
-      color-mix(in srgb, var(--principle) var(--sv-cite-strength), transparent) 0.8px,
+      color-mix(in srgb, var(--sv-cite-hue) var(--sv-cite-strength), transparent) 0.8px,
       transparent 1.2px
     );
     background-size: 5px 2.4px;
@@ -2108,109 +2117,20 @@
 
   /* On dark paper a part-transparent dot all but disappears. */
   @media (prefers-color-scheme: dark) {
-    .prose-body a.sv-principle-cite {
+    .prose-body a.sv-cite {
       --sv-cite-strength: 100%;
     }
   }
 
-  .prose-body a.sv-principle-cite:hover,
-  .prose-body a.sv-principle-cite:focus-visible {
+  .prose-body a.sv-cite:hover,
+  .prose-body a.sv-cite:focus-visible {
     --sv-cite-strength: 100%;
     background-size: 4px 2.4px;
   }
 
-  /* --------------------------------------------------- a fact's own page */
-
-  .sv-factmain {
-    padding-bottom: 3rem;
-  }
-
-  .sv-backlink {
-    padding-top: 1.5rem;
-    font-family: var(--font-sans);
-    font-size: 0.875rem;
-    font-weight: 500;
-  }
-
-  @media (min-width: 40rem) {
-    .sv-backlink {
-      padding-top: 2.25rem;
-    }
-  }
-
-  .sv-backlink a {
-    color: var(--ink-2);
-    text-decoration: none;
-  }
-
-  .sv-backlink a:hover {
-    color: var(--accent);
-    text-decoration: underline;
-  }
-
-  /* A supporting fact says little standing alone — a grant-rate movement or a
-     contract overrun is the out-of-context number this whole site exists to
-     defuse. So the claim it is evidence for is stated above it, in the one
-     accent the page has, before the reader has read a word of the detail. */
-  .sv-parentnote {
-    margin: 0 0 1.4rem;
-    padding-left: 0.9rem;
-    border-left: 3px solid var(--accent);
-  }
-
-  .sv-parentnote__label {
-    font-family: var(--font-sans);
-    font-size: 0.625rem;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-    margin: 0 0 0.15rem;
-  }
-
-  .sv-parentnote__claim {
-    display: inline-block;
-    font-size: 1.0625rem;
-    line-height: 1.35;
-    text-wrap: pretty;
-    color: var(--ink);
-  }
-
-  .sv-factpage {
+  .sv-factpanel {
     padding-top: 0.1rem;
     padding-bottom: 0.1rem;
-  }
-
-  .sv-factpage[data-variant="page"] {
-    margin-top: 1rem;
-  }
-
-  /* The data panel, full-page: already open, on the page's own margins. */
-  .sv-factpage[data-variant="page"] .sv-walk { margin-top: 1.25rem; padding: 0; opacity: 1; transform: none; scroll-margin-top: 1rem; }
-
-  /* Without script nothing steps through the charts, and paper cannot:
-     they run down the page, each with all its observations. */
-  @media (scripting: none), print {
-    .sv-factpage[data-variant="page"] .sv-walk__tabbar { display: none; }
-    .sv-factpage[data-variant="page"] .sv-walk__strip { flex-direction: column; gap: 2.5rem; overflow: visible; }
-    .sv-factpage[data-variant="page"] .sv-walk__slide { flex: none; }
-    .sv-factpage[data-variant="page"] .sv-walk__step[data-chart] { height: auto; grid-template-rows: minmax(36rem, auto) auto; }
-    .sv-factpage[data-variant="page"] .sv-walk__text { overflow: visible; }
-  }
-
-  .sv-factpage__claim {
-    font-family: var(--font-serif);
-    font-weight: 500;
-    font-size: clamp(1.875rem, 1.4rem + 1.4vw, 2.5rem);
-    line-height: 1.3;
-    letter-spacing: -0.02em;
-    text-wrap: balance;
-    margin: 0;
-  }
-
-  .sv-factpage__body {
-    margin-top: 1.5rem;
-    max-width: var(--measure);
   }
 
   /* --------------------------------------------------------- fact panel */
@@ -2244,27 +2164,25 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.75rem;
   }
 
   .sv-modal::backdrop {
     background: transparent;
   }
 
-  /* Keep the topic visible around the sheet, even on a phone. Long facts
-     scroll inside it while the controls remain within reach. The sheet is
-     always its full height, not sized to its content, so it opens at the size
-     it will have rather than growing when the article arrives. */
+  /* On a phone the sheet is the whole screen: a chart needs all the room
+     there is, and the page around it would only be a sliver. Wider, the page
+     shows around it. Long facts scroll inside it while the controls remain
+     within reach. The sheet is always its full height, not sized to its
+     content, so it opens at the size it will have rather than growing when
+     the article arrives. */
   .sv-modal__panel {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: min(78dvh, 48rem);
+    height: 100%;
     background: var(--paper);
-    border: 1px solid var(--rule);
-    border-radius: 1rem;
     overflow: hidden;
-    box-shadow: 0 24px 64px rgb(0 0 0 / 0.3), 0 6px 18px rgb(0 0 0 / 0.2);
   }
 
   @media (min-width: 40rem) {
@@ -2274,6 +2192,10 @@
 
     .sv-modal__panel {
       width: min(42rem, 100%);
+      height: min(78dvh, 48rem);
+      border: 1px solid var(--rule);
+      border-radius: 1rem;
+      box-shadow: 0 24px 64px rgb(0 0 0 / 0.3), 0 6px 18px rgb(0 0 0 / 0.2);
     }
   }
 
@@ -2346,13 +2268,43 @@
     color: var(--accent);
   }
 
-  /* A data panel lifted into a sheet by a viewpoint's "Explore this data". */
+  /* A compact sheet is sized to what it holds. On a phone it rises from the
+     bottom over the dimmed page, so the reader keeps their place. */
+  .sv-modal:has(> .sv-modal__panel[data-compact]) { background: rgb(0 0 0 / 0.35); }
+  .sv-modal__panel[data-compact] { height: auto; max-height: 85dvh; }
+
+  @media (max-width: 40rem) {
+    .sv-modal[open]:has(> .sv-modal__panel[data-compact]) { align-items: flex-end; }
+    .sv-modal__panel[data-compact] { border-radius: 1rem 1rem 0 0; padding-bottom: env(safe-area-inset-bottom); }
+    .sv-modal__panel[data-compact] .sv-modal__bar { padding-top: 0.35rem; }
+  }
+
+  /* A card's chart, opened in full in a sheet. */
   .sv-factpanel .sv-walk { padding: 0; opacity: 1; transform: none; }
   /* A data panel gets nearly the whole screen. */
   @media (min-width: 40rem) {
     .sv-modal__panel[data-wide] {
       width: min(76rem, 100%);
       height: min(92dvh, 64rem);
+    }
+    /* One chart alone: the sheet closes around it rather than leave space
+       empty under it. A graph is as tall as its shape at the sheet's width
+       (below), and rows of bars, cards of text or a table read best at
+       their own height. A map grows into the whole sheet. Until the chart
+       is in it the sheet keeps its full height. */
+    .sv-modal__panel[data-wide]:has(.sv-walk[data-alone]):not(:has(:is(.sv-map__interactive, .sv-multiples__grid))) {
+      height: auto;
+      max-height: min(92dvh, 64rem, 100dvh - 5rem);
+    }
+    /* Its size comes from its chart, so until the chart has arrived it is not
+       shown, rather than appear at one size and jump to another. It is only
+       transparent, not hidden, so its close button can still take focus. */
+    .sv-modal__panel[data-wide]:has(.sv-walk__chart-loading) {
+      opacity: 0;
+    }
+    /* Its foot, now that the chart is what ends it, is as wide as its sides. */
+    .sv-modal__panel[data-wide]:has(.sv-walk[data-alone]):not(:has(:is(.sv-map__interactive, .sv-multiples__grid))) > .sv-modal__scroll {
+      padding-bottom: 1.4rem;
     }
   }
 
@@ -2378,18 +2330,18 @@
     scroll-behavior: auto !important;
   }
 }
-
-/* Evidence remains addressable in both a sheet and the full article. */
-.sv-finding { font-size: 1.15rem; line-height: 1.65; margin-block: 1rem 1.5rem; }
 .sv-footnote { vertical-align: super; font-size: .72em; white-space: nowrap; margin-inline: .15em; }
+/* A claim's footnote marker on a viewpoint card, which opens its sources' own words. */
+.sv-source-marker { vertical-align: super; margin-left: .1em; padding-inline: .15em; font-family: var(--font-sans); font-size: .68em; font-weight: 600; line-height: 1; color: var(--accent); text-decoration: none; white-space: nowrap; }
+.sv-source-marker:hover, .sv-source-marker:focus-visible { text-decoration: underline; }
 .sv-chart__credit{ font-size: .8rem; color: var(--ink-3); margin-block: .5rem; }
-.sv-target, .sv-factpage :target { background: var(--accent-wash); outline: 2px solid var(--accent); outline-offset: 5px; border-radius: 4px; }
-.sv-factpage [id] { scroll-margin-top: 1.5rem; }
+.sv-target, .sv-factpanel :target { background: var(--accent-wash); outline: 2px solid var(--accent); outline-offset: 5px; border-radius: 4px; }
+.sv-factpanel [id] { scroll-margin-top: 1.5rem; }
 h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 
 /* In a data panel the selected thumbnail and the open observation already say
    where a link landed; the wash is for finding a line in a long list. */
-.sv-factpage .sv-walk .sv-target, .sv-factpage .sv-walk :target, .sv-walk .sv-target, .sv-walk h3.sv-target + p, .sv-walk h3:target + p{ background: none; outline: none; }
+.sv-factpanel .sv-walk .sv-target, .sv-factpanel .sv-walk :target, .sv-walk .sv-target, .sv-walk h3.sv-target + p, .sv-walk h3:target + p{ background: none; outline: none; }
 
 .sv-chart__methodology { margin-top: 1rem; font-size: .875rem; color: var(--ink-3); overflow-wrap: anywhere; }
 .sv-chart__methodology > summary { cursor: pointer; }
@@ -2431,22 +2383,33 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 
 .sv-comparison__rows { --sv-row-room: 3.75rem; list-style: none; padding: 0; margin: 1rem 0 .4rem; }
 .sv-row-detail__hint + .sv-comparison__rows { margin-top: 0; }
-.sv-comparison__row { display: block; margin-bottom: .75rem; }
-.sv-comparison__label { display: flex; justify-content: space-between; gap: 1rem; font-family: var(--font-sans); font-size: .8125rem; line-height: 1.4; margin-bottom: .3rem; }
-.sv-comparison__label > :last-child { flex: none; font-variant-numeric: tabular-nums; }
+/* Each row's label sits left of its bar and its value right, as in a preview;
+   the scale under the rows lines up with the bars' column. */
+.sv-comparison { --sv-label-col: 35%; --sv-value-col: 4.5rem; --sv-row-gap: .75rem; }
+.sv-comparison__row { display: grid; grid-template-columns: var(--sv-label-col) minmax(0, 1fr) var(--sv-value-col); align-items: center; gap: var(--sv-row-gap); margin-bottom: .75rem; }
+.sv-comparison__label { display: contents; font-family: var(--font-sans); font-size: .8125rem; line-height: 1.4; }
+.sv-comparison__label > span { font-family: var(--font-sans); font-size: .8125rem; line-height: 1.35; }
+.sv-comparison__label > :last-child { grid-column: 3; text-align: right; font-variant-numeric: tabular-nums; }
+.sv-comparison__track { grid-column: 2; grid-row: 1; }
+@media (max-width: 40rem) {
+  .sv-comparison { --sv-label-col: 40%; --sv-value-col: 3.5rem; --sv-row-gap: .5rem; }
+}
+.sv-comparison__name { display: block; font-weight: 600; }
+.sv-chart__subtitle { margin: .2rem 0 0; font-family: var(--font-sans); font-size: .875rem; line-height: 1.35; color: var(--ink-3); }
+.sv-comparison__subtitle { display: block; color: var(--ink-3); }
+/* A preview has a fixed height, so a row's subtitle keeps to one line there; the full chart shows it whole. */
+.sv-chart[data-preview] .sv-comparison__subtitle { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .sv-comparison__track { position: relative; display: block; height: .9rem; background: var(--paper-sunk); }
 .sv-comparison__bar { position: absolute; height: 100%; background: var(--sv-series-1); }
 .sv-comparison__bar[data-highlight] { background: var(--accent); }
 .sv-comparison__zero { position: absolute; top: -.15rem; bottom: -.15rem; width: 1px; background: var(--ink-3); z-index: 1; }
-.sv-comparison__scale { display: flex; justify-content: space-between; font-family: var(--font-sans); font-size: .7rem; color: var(--ink-3); }
+.sv-comparison__scale { display: flex; justify-content: space-between; margin-left: calc(var(--sv-label-col) + var(--sv-row-gap)); margin-right: calc(var(--sv-value-col) + var(--sv-row-gap)); font-family: var(--font-sans); font-size: .7rem; color: var(--ink-3); }
 .sv-comparison__rows[data-dense] { --sv-row-room: 2.5rem; }
-.sv-comparison__rows[data-dense] .sv-comparison__row { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr) 4rem; align-items: center; gap: .5rem; margin-bottom: .45rem; }
-.sv-comparison__rows[data-dense] .sv-comparison__label { display: contents; }
-.sv-comparison__rows[data-dense] .sv-comparison__label > span { font-family: var(--font-sans); font-size: .75rem; line-height: 1.3; }
-.sv-comparison__rows[data-dense] .sv-comparison__label > :last-child { grid-column: 3; text-align: right; }
-.sv-comparison__rows[data-dense] .sv-comparison__track { grid-column: 2; grid-row: 1; }
+.sv-comparison:has(.sv-comparison__rows[data-dense]) { --sv-label-col: 7.5rem; --sv-value-col: 4rem; --sv-row-gap: .5rem; }
+.sv-comparison__rows[data-dense] .sv-comparison__row { margin-bottom: .45rem; }
+.sv-comparison__rows[data-dense] .sv-comparison__label > span { font-size: .75rem; line-height: 1.3; }
 @media (max-width: 40rem) {
-  .sv-comparison__rows[data-dense] .sv-comparison__row { grid-template-columns: 5.5rem minmax(0, 1fr) 3.5rem; gap: .4rem; }
+  .sv-comparison:has(.sv-comparison__rows[data-dense]) { --sv-label-col: 5.5rem; --sv-value-col: 3.5rem; --sv-row-gap: .4rem; }
 }
 
 /* Definitions are a small second layer above the fact sheet. */
@@ -2560,21 +2523,32 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 /* A data panel's full chart: the graph takes whatever its controls and notes
    leave, at the nearest shape, as a preview does. Its ratios are 4.0, 3.16 and 2.5. */
 .sv-chart[data-panel-chart] { display: flex; flex: 1 1 auto; flex-direction: column; margin: 0; }
-.sv-chart[data-panel-chart] :is(.sv-chart__highlight, .sv-chart__reading, .sv-chart__view, .sv-chart__focus, [data-focus-view]:not([hidden])) { display: flex; flex: 1 1 auto; flex-direction: column; }
+.sv-chart[data-panel-chart] :is(.sv-chart__highlight, .sv-show-as__view:not([hidden]), .sv-chart__reading, .sv-chart__view, .sv-chart__focus, [data-focus-view]:not([hidden])) { display: flex; flex: 1 1 auto; flex-direction: column; }
 .sv-chart[data-panel-chart] .sv-graph-heading { margin: 0 0 0.2rem; font-size: 1.1rem; }
 .sv-chart[data-panel-chart] .sv-chart__view-controls { align-self: flex-start; }
 /* The notes under the graph stay small, so the graph has the room. */
 .sv-chart[data-panel-chart] :is(.sv-chart__axis-label, .sv-chart__annotation-key, .sv-chart__credit) { margin-block: 0 0.3rem; }
 /* The description on one line, opening to the rest (chart-about.tsx). */
-.sv-chart__about { margin: 0 0 0.3rem; font: .875rem/1.5 var(--font-sans); color: var(--ink-3); }
+.sv-chart__about { position: relative; margin: 0 0 0.3rem; font: .875rem/1.5 var(--font-sans); color: var(--ink-3); }
 .sv-chart__about > summary { display: flex; align-items: baseline; gap: 0.75rem; list-style: none; cursor: pointer; }
 .sv-chart__about > summary::-webkit-details-marker { display: none; }
 .sv-chart__about-text { flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-.sv-chart__about-toggle { flex: none; font-weight: 600; color: var(--accent); }
+.sv-chart__about-toggle { flex: none; font-weight: 600; color: var(--accent); text-decoration: underline; text-underline-offset: 0.2em; }
 .sv-chart__about-toggle::after { content: "More ▾"; }
-.sv-chart__about > summary:hover .sv-chart__about-toggle { text-decoration: underline; text-underline-offset: 0.2em; }
-.sv-chart__about[open] > summary { margin-bottom: 0.4rem; }
-.sv-chart__about[open] .sv-chart__about-text { white-space: normal; }
+/* More opens a panel floating over the chart, so the graph below does not move. */
+.sv-chart__about-pop {
+  position: absolute; top: calc(100% + 0.35rem); left: 0; right: 0; z-index: 30;
+  max-height: min(28rem, 60vh); overflow-y: auto;
+  padding: 0.75rem 1rem; border: 1px solid var(--rule); border-radius: 6px;
+  background: var(--paper); box-shadow: 0 6px 24px rgb(20 25 40 / 0.18);
+  color: var(--ink-2);
+}
+.sv-chart__about-desc { color: var(--ink-2); }
+/* The line and More are one control: hovering either underlines both. */
+.sv-chart__about > summary:hover .sv-chart__about-text { text-decoration: underline; text-underline-offset: 0.2em; }
+/* A viewpoint step's chart opens its data panel from anywhere, its title included. */
+.sv-slide--explorable:hover .sv-graph-heading { text-decoration: underline; text-underline-offset: 0.15em; }
+.sv-chart__about-pop .sv-chart__sources { margin-top: 0.6rem; padding-top: 0.5rem; border-top: 1px solid var(--rule); }
 .sv-chart__about[open] .sv-chart__about-toggle::after { content: "Less ▴"; }
 .sv-chart__about p { margin: 0 0 0.4rem; }
 /* One line closed, whatever the width: the names give way before the count. */
@@ -2621,6 +2595,8 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
    can need more than that, so the rows are never held under their own height. */
 .sv-chart:is([data-preview], [data-panel-chart]) .sv-comparison__rows { flex: 1 1 auto; display: flex; flex-direction: column; min-height: min-content; max-height: calc(var(--sv-row-count) * var(--sv-row-room)); }
 .sv-chart:is([data-preview], [data-panel-chart]) .sv-comparison__rows > li { flex: 1 1 auto; }
+/* A pop-up closes around its chart, so it has no spare height: the rows keep
+   their own spacing and the pop-up is only as tall as they need. */
 @container (aspect-ratio < 3.55) {
   .sv-chart[data-panel-chart] .sv-chart__variant[data-variant="preview-wide"] { display: none; }
   .sv-chart[data-panel-chart] .sv-chart__variant[data-variant="preview"] { display: block; }
@@ -2633,7 +2609,7 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
   .sv-chart[data-panel-chart] .sv-chart__plot .sv-chart__variant { display: none; }
   .sv-chart[data-panel-chart] .sv-chart__plot .sv-chart__variant[data-variant="narrow"] { display: block; }
   /* A long title takes its height from the graph, not from the panel's edge. */
-  .sv-chart[data-panel-chart], .sv-chart[data-panel-chart] :is(.sv-chart__highlight, .sv-chart__reading, .sv-chart__view) { min-height: 0; }
+  .sv-chart[data-panel-chart], .sv-chart[data-panel-chart] :is(.sv-chart__highlight, .sv-show-as__view, .sv-chart__reading, .sv-chart__view) { min-height: 0; }
   .sv-chart[data-panel-chart] .sv-chart__plot { flex: 1 1 16rem; min-height: 12rem; }
 }
 
@@ -2647,6 +2623,8 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-report[data-panel-chart] :is(.sv-bars__rows, .sv-composition__rows, .sv-estimates__rows, .sv-periods__rows) { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: space-evenly; margin-block: 0; }
 .sv-report[data-panel-chart] :is(.sv-bars__row, .sv-estimates__row) { margin: 0; }
 .sv-report[data-panel-chart] .sv-composition__row + .sv-composition__row { margin-top: 0; }
+/* Rows spread to fill the step, but never closer than this: a row's name must sit nearer its own bar than the bar above it. */
+.sv-report[data-panel-chart] .sv-composition__rows { row-gap: .85rem; }
 /* The right padding holds an open period's arrowhead, and a small multiple's last dot, inside the step. */
 .sv-report[data-panel-chart] .sv-periods__line { padding-right: .45rem; }
 .sv-report[data-panel-chart] .sv-multiples__grid { padding-right: .3rem; }
@@ -2671,12 +2649,70 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
   .sv-report[data-panel-chart] .sv-multiples__plot { flex: 1 1 auto; min-height: 4.75rem; height: auto; }
 }
 
+/* A graph alone in a pop-up is drawn at its tallest panel shape, 2.5 times as
+   wide as it is tall, with room for any event numbers under it: steeper
+   lines read worse, so it grows no taller, and the sheet closes around it. */
+@media (min-width: 40rem) {
+  .sv-walk[data-alone] .sv-chart[data-panel-chart] { container-type: inline-size; }
+  .sv-walk[data-alone] .sv-chart[data-panel-chart] .sv-chart__plot { flex: 0 1 auto; height: calc(100cqw / 2.5 + var(--sv-lane-levels, 0) * 1.6rem); }
+  /* On a short screen that is more than the sheet has, so the graph gives way,
+     and is drawn at a wider shape, rather than run off the sheet's foot. */
+  .sv-walk[data-alone] .sv-chart[data-panel-chart],
+  .sv-walk[data-alone] .sv-chart[data-panel-chart] :is(.sv-chart__highlight, .sv-show-as__view, .sv-chart__reading, .sv-chart__view, .sv-chart__focus, [data-focus-view]) { min-height: 0; }
+  /* Only the graph gives way: its controls keep their size. */
+  .sv-walk[data-alone] .sv-chart[data-panel-chart] :is(.sv-chart__view-controls, .sv-bar, .sv-control) { flex-shrink: 0; }
+}
+
 /* On a phone every shape's type would shrink too far, so the narrow plot,
    drawn for that width, is used whatever the space. */
 @media (max-width: 40rem) {
   .sv-chart[data-preview] .sv-chart__plot .sv-chart__variant { display: none; }
   .sv-chart[data-preview] .sv-chart__plot .sv-chart__variant[data-variant="narrow"] { display: block; }
 }
+
+/* A slideshow card's graph (components/viewpoints/viewpoint-slides.tsx) has
+   most of the card, and on a phone most of the screen, which is taller than
+   it is wide. It shows the shape nearest its space as other previews do, with
+   a portrait shape for that. On a phone the wider shapes' type would shrink
+   too far, so there it is the narrow plot or the portrait one. Breakpoints sit
+   between the shapes' width-to-height ratios: 1.78, 1.33 and 0.67. */
+.sv-deck__card .sv-chart[data-preview] .sv-chart__plot .sv-chart__variant { display: none; }
+.sv-deck__card .sv-chart[data-preview] .sv-chart__plot .sv-chart__variant[data-variant="preview-medium"] { display: block; }
+@container (aspect-ratio < 1.54) {
+  .sv-deck__card .sv-chart[data-preview] .sv-chart__plot .sv-chart__variant[data-variant="preview-medium"] { display: none; }
+  .sv-deck__card .sv-chart[data-preview] .sv-chart__plot .sv-chart__variant[data-variant="preview-tall"] { display: block; }
+}
+@container (aspect-ratio < 0.95) {
+  .sv-deck__card .sv-chart[data-preview] .sv-chart__plot .sv-chart__variant[data-variant="preview-tall"] { display: none; }
+  .sv-deck__card .sv-chart[data-preview] .sv-chart__plot .sv-chart__variant[data-variant="preview-portrait"] { display: block; }
+}
+@media (max-width: 40rem) {
+  .sv-deck__card .sv-chart[data-preview] .sv-chart__plot .sv-chart__variant:not([data-variant="narrow"]) { display: none; }
+  .sv-deck__card .sv-chart[data-preview] .sv-chart__plot .sv-chart__variant[data-variant="narrow"] { display: block; }
+  @container (aspect-ratio < 0.95) {
+    .sv-deck__card .sv-chart[data-preview] .sv-chart__plot .sv-chart__variant[data-variant="narrow"] { display: none; }
+    .sv-deck__card .sv-chart[data-preview] .sv-chart__plot .sv-chart__variant[data-variant="preview-portrait"] { display: block; }
+  }
+}
+/* Rows of bars keep their size and sit together in the middle of a card,
+   rather than spreading apart to fill it. */
+.sv-deck__card .sv-chart__preview :is(.sv-bars__rows, .sv-composition__rows, .sv-estimates__rows, .sv-periods__rows) { flex: none; margin-block: auto; justify-content: flex-start; gap: 1rem; }
+.sv-deck__card .sv-chart__preview .sv-bars__row { font-size: .9rem; }
+/* A card's graph is drawn at its own height: a line graph's plot gets a set
+   one, tall on a phone, which the portrait shape fills; a map keeps its shape. */
+.sv-deck__card .sv-chart[data-preview] .sv-chart__plot { flex: none; height: clamp(15rem, 46svh, 24rem); }
+.sv-deck__card .sv-chart__preview .sv-geo-map__svg { flex: none; height: auto; max-height: 60svh; }
+/* A card's grouped graph switches between its groups with a row of small
+   buttons; the card says what is being compared, so their legend is for a screen reader. */
+.sv-deck__card .sv-comparison-controls { margin: .2rem 0 .5rem; gap: 4px; }
+.sv-deck__card .sv-comparison-controls legend { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.sv-deck__card .sv-comparison-controls button { padding: 4px 8px; font-size: 12px; }
+/* A card's graph keeps its title, small, for what is drawn: the card's heading makes the point. */
+.sv-deck__card .sv-chart[data-preview] .sv-chart__caption { margin-bottom: .35rem; }
+.sv-deck__card .sv-chart[data-preview] .sv-chart__caption .sv-graph-heading { min-height: 0; font: 600 .85rem/1.3 var(--font-sans); letter-spacing: 0; color: var(--ink-2); }
+.sv-deck__card .sv-chart[data-preview] .sv-chart__subtitle { margin: .1rem 0 0; font: .8rem/1.35 var(--font-sans); color: var(--ink-3); }
+/* The chart's title sits beside the expand mark, so its first line makes room for it. */
+.sv-deck__card .sv-walk__chart--explorable .sv-chart__caption { padding-right: 1.75rem; }
 .sv-chart[data-preview] .sv-chart__legend { margin-bottom: .25rem; font-size: .7rem; gap: .1rem .9rem; }
 .sv-chart[data-preview] .sv-comparison__columns { flex: 1; min-height: 6rem; height: auto; }
 .sv-chart[data-preview] .sv-comparison__rows { margin: .4rem 0; }
@@ -2685,8 +2721,44 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-chart[data-preview] .sv-chart__caption { margin-bottom: .5rem; }
 .sv-chart[data-preview] .sv-chart__caption .sv-graph-heading { margin: 0; font: 600 1.05rem/1.25 var(--font-display); letter-spacing: -0.015em; color: var(--ink); min-height: 2.5em; }
 .sv-slide__figure .sv-chart__caption .sv-graph-heading { margin: 0; font: 600 1.05rem/1.25 var(--font-display); letter-spacing: -0.015em; color: var(--ink); }
-.sv-chart[data-preview] .sv-chart__caption a { color: inherit; text-decoration: none; }
-.sv-chart[data-preview] .sv-chart__caption a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: .15em; }
+
+/* A viewpoint's chart column opens its data panel, larger, from anywhere on it.
+   It says so the way an image that enlarges does: a zoom-in pointer, and an
+   expand mark in its corner, faint until the column is pointed at. Pointed
+   at, the chart's title is underlined, and so is "Explore this data" under
+   it, solid and link-coloured. */
+.sv-walk__chart--explorable { position: relative; cursor: zoom-in; }
+/* A home-page slide opens its chart's data in a sheet the same way. */
+.sv-slide--explorable { cursor: zoom-in; }
+.sv-walk__chart--explorable .sv-chart__caption .sv-graph-heading { padding-right: 1.75rem; }
+.sv-walk__expand {
+  position: absolute;
+  top: 0.1rem;
+  right: 0;
+  display: flex;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--ink-4);
+  opacity: 0.6;
+  pointer-events: none;
+  transition: color 150ms ease, opacity 150ms ease;
+}
+.sv-walk__expand svg { width: 100%; height: 100%; }
+@media (hover: hover) {
+  .sv-walk__chart--explorable:hover .sv-walk__expand { color: var(--accent); opacity: 1; }
+  .sv-walk__chart--explorable:hover .sv-chart .sv-graph-heading { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+  .sv-walk__chart--explorable:hover .sv-walk__explore a {
+    color: var(--accent);
+    background-image: none;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+}
+.sv-chart[data-preview] .sv-chart__caption a { color: inherit; text-underline-offset: .15em; }
+.sv-chart[data-preview] .sv-chart__caption .sv-graph-heading:has(+ .sv-chart__subtitle) { min-height: 0; }
+.sv-chart[data-preview] .sv-chart__subtitle { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-size: .8rem; }
+.sv-chart[data-preview] .sv-chart__caption a:hover { color: var(--accent); }
 .sv-chart[data-preview] .sv-chart__axis-label { margin: 0; font-size: .75rem; }
 .sv-chart[data-preview] .sv-comparison__rows[data-dense] .sv-comparison__label > span { font-size: .72rem; line-height: 1.2; }
 .sv-chart[data-preview] .sv-comparison__rows[data-dense] .sv-comparison__row { grid-template-columns: minmax(7rem, 38%) minmax(0, 1fr) 3.5rem; }
@@ -2738,11 +2810,12 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-chart__preview .sv-bars__rows,
 .sv-chart__preview .sv-composition__rows,
 .sv-chart__preview .sv-estimates__rows,
-.sv-chart__preview .sv-periods__rows,
-.sv-chart__preview .sv-timeline__lines { flex: 1; display: flex; flex-direction: column; justify-content: space-evenly; margin: 0; }
+.sv-chart__preview .sv-periods__rows { flex: 1; display: flex; flex-direction: column; justify-content: space-evenly; margin: 0; }
 .sv-chart__preview .sv-bars__row,
 .sv-chart__preview .sv-estimates__row { margin: 0; }
 .sv-chart__preview .sv-composition__row + .sv-composition__row { margin-top: 0; }
+/* As in a panel: a name sits nearer its own bar than the one above. Compact rows set name and bar on one line. */
+.sv-chart__preview .sv-composition__rows:not([data-compact]) { row-gap: .55rem; }
 .sv-chart__preview .sv-bars__row { font-size: .8rem; }
 .sv-bars[data-compact] .sv-bars__row { grid-template-columns: minmax(6rem, 34%) minmax(0, 1fr) var(--sv-bars-value, 6ch); grid-template-areas: "label track value"; align-items: center; column-gap: .4rem; font-size: .66rem; line-height: 1.15; }
 .sv-bars[data-compact] .sv-bars__label { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: left; }
@@ -2811,18 +2884,6 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 /* A compact track is too thin to hold a label; the row label and the key still name every bar. */
 .sv-periods[data-compact] .sv-periods__bar-label,
 .sv-periods[data-compact] .sv-periods__side-label { display: none; }
-/* Timelines: one line per event, or past twelve one marker each on an axis. */
-.sv-timeline__lines { list-style: none; padding: 0; font: .78rem/1.3 var(--font-sans); }
-.sv-timeline__line { display: flex; align-items: baseline; gap: .45rem; min-width: 0; color: var(--sv-timeline-color); }
-.sv-timeline__line-icon { flex: none; align-self: center; }
-.sv-timeline__line time { flex: none; color: var(--ink-3); font-variant-numeric: tabular-nums; }
-.sv-timeline__line-title { overflow: hidden; color: var(--ink); white-space: nowrap; text-overflow: ellipsis; }
-.sv-timeline__lines[data-compact] { font-size: .66rem; line-height: 1.15; }
-.sv-timeline__lane { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-inline: .45rem; font-family: var(--font-sans); }
-.sv-timeline__lane-track { position: relative; list-style: none; margin: 0; padding: 0; height: calc(var(--sv-strip-levels, 1) * .9rem + .6rem); border-bottom: 1px solid var(--rule-strong); }
-.sv-timeline__lane-mark { position: absolute; bottom: calc(var(--sv-strip-level, 0) * .9rem + .2rem); transform: translateX(-50%); line-height: 0; }
-.sv-timeline__lane-icon { width: .7rem; height: .7rem; fill: currentColor; }
-.sv-timeline__lane-axis { position: relative; height: 1.3rem; }
 /* Maps: the whole map scaled to the space left. A tile grid is sized by its
    container's height as well as its width, so every tile fits. */
 .sv-chart__preview .sv-geo-map__svg { flex: 1 1 0; min-height: 0; width: 100%; height: 100%; max-height: none; }
@@ -2879,3 +2940,5 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-thumb__area { opacity: .8; }
 .sv-thumb__area[data-missing] { fill: var(--rule); }
 .sv-thumb__rule { stroke: var(--ink-4); stroke-width: 1; }
+.sv-thumb__card { fill: var(--paper); stroke: var(--rule-strong); stroke-width: 1; }
+.sv-thumb__text, .sv-thumb__label { fill: var(--ink-4); opacity: .6; }

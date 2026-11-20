@@ -414,9 +414,9 @@ sources:
     publisher: Home Office
     date: '2026-08-27'
   - stance: supports
-    quote: >-
-      Refugee Family Reunion visa grants 4886 4304 3668 4121 4450 4849 6039 5199
-      5712 7456 4797 5645 4113 9320 19258 18577 4928 20643 12888
+    quote: |-
+      Year | 2010 | 2011 | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 (Q1 - Q2 only) | Year ending June 2025 | Year ending June 2026
+      Refugee Family Reunion visa grants | 4,886 | 4,304 | 3,668 | 4,121 | 4,450 | 4,849 | 6,039 | 5,199 | 5,712 | 7,456 | 4,797 | 5,645 | 4,113 | 9,320 | 19,258 | 18,577 | 4,928 | 20,643 | 12,888
     title: >-
       Safe and legal (humanitarian) routes summary tables, year ending June
       2026: Hum_01 (row cells, 2010 to year ending June 2026)
@@ -426,9 +426,9 @@ sources:
     publisher: Home Office
     date: '2026-08-27'
   - stance: supports
-    quote: >-
-      Of which out of country grants 5603 4765 4721 5088 5236 6714 11251 11411
-      11518 13068 5620 99256 273413 82102 64156 48814 15714 54139 38267
+    quote: |-
+      Year | 2010 | 2011 | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 (Q1 - Q2 only) | Year ending June 2025 | Year ending June 2026
+      Of which out of country grants | 5,603 | 4,765 | 4,721 | 5,088 | 5,236 | 6,714 | 11,251 | 11,411 | 11,518 | 13,068 | 5,620 | 99,256 | 273,413 | 82,102 | 64,156 | 48,814 | 15,714 | 54,139 | 38,267
     title: >-
       Safe and legal (humanitarian) routes summary tables, year ending June
       2026: Hum_01 (row cells, 2010 to year ending June 2026)
@@ -438,9 +438,9 @@ sources:
     publisher: Home Office
     date: '2026-08-27'
   - stance: supports
-    quote: >-
-      UK Resettlement Scheme z z z z z z z z z z z 1269 1159 617 711 537 296 869
-      477
+    quote: |-
+      Year | 2010 | 2011 | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 (Q1 - Q2 only) | Year ending June 2025 | Year ending June 2026
+      UK Resettlement Scheme | z | z | z | z | z | z | z | z | z | z | z | 1,269 | 1,159 | 617 | 711 | 537 | 296 | 869 | 477
     title: >-
       Safe and legal (humanitarian) routes summary tables, year ending June
       2026: Res_01 (row cells, 2010 to year ending June 2026)
@@ -489,7 +489,8 @@ sources:
     publisher: Home Office
     date: '2026-08-27'
 series:
-  title: 'People offered a safe and legal route from outside the UK, 2010-2025'
+  title: 'People offered a safe and legal route'
+  subtitle: 'Granted from outside the UK, by route, 2010–2025'
   description: >-
     Out-of-country grants on each UK safe and legal (humanitarian) route in
     each calendar year: Ukraine and BN(O) visas granted, refugee family reunion
@@ -845,7 +846,8 @@ series:
               value: 6
 additionalSeries:
   - id: boats-and-routes
-    title: UK small-boat arrivals and safe-route grants, 2018-2025
+    title: 'Small-boat arrivals and safe-route grants'
+    subtitle: 'People each year, all nationalities, UK, 2018–2025'
     description: >-
       People detected arriving by small boat each calendar year, against
       people offered a safe and legal route from outside the UK in the same
@@ -936,13 +938,14 @@ figures:
     id: boats-and-routes
   - kind: compositionBar
     id: routes-by-nationality
-    title: How each nationality came to the UK, January 2018 to June 2026
+    title: 'How each nationality came to the UK'
+    subtitle: 'By small boat or a safe route, January 2018 to June 2026'
     description: >-
       People of each nationality who arrived by small boat or were offered a
       safe and legal route from outside the UK, 2018 Q1 to 2026 Q2, the whole
       period the small-boat data cover.
-      Each bar is one nationality's own total, printed beside it, so compare
-      shares across bars, not sizes. Ordered by the share who came by boat, with
+      Each bar is one nationality's own total, drawn to one scale and printed
+      beside it. Ordered by the share who came by boat, with
       the residual last.
     rowLabel: Nationality
     showCounts: true
@@ -984,12 +987,14 @@ figures:
       since each scheme opened.
   - kind: compositionBar
     id: routes-by-nationality-latest
-    title: How each nationality came to the UK, year to June 2026
+    title: 'How each nationality came, latest year'
+    subtitle: 'By small boat or a safe route, UK, year to June 2026'
     description: >-
-      The same nationalities and routes for the year ending June 2026, the
-      first full year after family reunion was paused on 4 September 2025.
-      Each bar is one nationality's own total, printed beside it, so compare
-      shares across bars, not sizes. Ordered by the share who came by boat, with
+      People of each nationality who arrived by small boat or were offered a
+      safe and legal route from outside the UK, in the year ending June 2026,
+      the year in which family reunion was paused, on 4 September 2025.
+      Each bar is one nationality's own total, drawn to one scale and printed
+      beside it. Ordered by the share who came by boat, with
       the residual last.
     rowLabel: Nationality
     showCounts: true
@@ -1027,7 +1032,8 @@ figures:
       family reunion visas.
   - kind: timeline
     id: reopening
-    title: UK safe and legal route openings, closures and pauses, 2021–2027
+    title: 'Safe route openings and closures'
+    subtitle: 'UK routes opened, closed or paused, 2021–2027, with plans'
     description: When each safe and legal route opened, closed or was paused, and what is planned next.
     sources: [6, 21, 26]
     categories:
@@ -1042,8 +1048,27 @@ figures:
       - { date: '2025-07', title: Afghan schemes close to new applicants and referrals, category: closed, source: 12 }
       - { date: '2025-09-04', title: Refugee family reunion paused, category: closed, significance: major, source: 14 }
       - { date: '2025-09', title: No 2025/26 quota for new UK Resettlement Scheme referrals, category: closed, source: 22 }
+      - { date: '2026-09-28', title: 'Arrivals expected "to number in the hundreds at first", then "into the low thousands"', category: planned, source: 26 }
       - { date: '2026-09-28', title: 'UK Resettlement Scheme reopens for new referrals, with a yearly cap', category: opened, significance: major, source: 24 }
       - { date: '2027', title: First arrivals expected in autumn on new community and student sponsorship routes, category: planned, source: 28 }
+observationMarks:
+  nationalities-with-safe-routes-rarely-came-by-boat: {rows: ["Ukraine", "Hong Kong"]}
+  family-reunion-was-the-main-route-for-boat-nationalities: {rows: ["Eritrea", "Sudan", "Iran"]}
+  after-the-pause: {rows: ["Eritrea", "Sudan", "Iran"]}
+  afghans-and-syrians-had-both: {rows: ["Afghanistan", "Syria"]}
+  planned-scale: {rows: ["Arrivals expected \"to number in the hundreds at first\", then \"into the low thousands\"", "UK Resettlement Scheme reopens for new referrals, with a yearly cap"]}
+  two-country-schemes-dominate: {lines: ["Ukraine schemes", "BN(O) route"], from: "2021", to: "2025"}
+  grants-are-not-arrivals: {lines: ["Ukraine schemes"], at: "2022"}
+  resettlement-peaked-with-afghanistan: {lines: ["Afghan Resettlement Programme", "UK Resettlement Scheme", "Other resettlement schemes"], at: "2021"}
+  family-reunion-paused: {lines: ["Refugee family reunion"], from: "2022", to: "2025"}
+  ukrs-no-new-referrals: {lines: ["UK Resettlement Scheme"], at: "2025"}
+  routes-against-boats-over-time: {lines: ["Small-boat arrivals", "Out-of-country safe-route grants"], from: "2021", to: "2025"}
+  some-boat-nationalities-had-no-route: {rows: ["Albania", "Iraq", "Vietnam", "Turkey"]}
+  resettlement-is-reopening: {rows: ["UK Resettlement Scheme reopens for new referrals, with a yearly cap", "First arrivals expected in autumn on new community and student sponsorship routes"]}
+  not-a-test-of-cause: {rows: ["Ukraine", "Hong Kong", "Afghanistan"]}
+  small-boat-counts-miss-some-people: {rows: ["All other nationalities, stateless and not recorded"]}
+  afghans-large-route-still-crossed: {rows: ["Afghanistan"]}
+  eritreans-and-sudanese-largest-boat-groups: {rows: ["Eritrea", "Sudan"]}
 ---
 ## Observations {#safe-and-legal-routes--observations-all-routes}
 
@@ -1130,7 +1155,7 @@ that were not crossing by boat (see the next chart).
 
 ## Observations {#safe-and-legal-routes--observations-routes-by-nationality}
 
-### Nationalities with a large safe route almost never came by boat {#safe-and-legal-routes--nationalities-with-safe-routes-rarely-came-by-boat}
+### Ukrainians and Hong Kongers got hundreds of thousands of visas, and almost none came by boat {#safe-and-legal-routes--nationalities-with-safe-routes-rarely-came-by-boat}
 
 From 2018 to June 2026, 12 Ukrainians and no Hong Kong nationals were
 recorded arriving by small boat, against 290,044 Ukraine visas and 187,552
@@ -1141,7 +1166,7 @@ place: the Ukraine Sponsorship Scheme for Ukrainians and their families with
 a UK sponsor, and BN(O) for BN(O) passport holders resident in Hong Kong
 [6](#source-safe-and-legal-routes-6) [8](#source-safe-and-legal-routes-8).
 
-### For most boat nationalities, family reunion was the largest route {#safe-and-legal-routes--family-reunion-was-the-main-route-for-boat-nationalities}
+### For most boat nationalities, family reunion was the largest safe route {#safe-and-legal-routes--family-reunion-was-the-main-route-for-boat-nationalities}
 
 For Eritreans, Sudanese, Iranians, Ethiopians and Yemenis, more than nine in
 ten safe-route grants from 2018 to June 2026 were family reunion visas, and
@@ -1180,6 +1205,10 @@ Albanians received almost none
 [43](#source-safe-and-legal-routes-43). The data do not say whether they would
 have qualified for a route.
 
+### Afghans had the largest resettlement route and still crossed {#safe-and-legal-routes--afghans-large-route-still-crossed}
+
+Afghans had the largest resettlement route from 2018 to June 2026, and were still among the largest small-boat nationalities. [11](#source-safe-and-legal-routes-11) [40](#source-safe-and-legal-routes-40)
+
 ## Subtleties {#safe-and-legal-routes--subtleties-routes-by-nationality}
 
 ### A side-by-side count is not a test of cause {#safe-and-legal-routes--not-a-test-of-cause}
@@ -1202,7 +1231,7 @@ part of the Home Office's safe and legal routes tables
 
 ## Observations {#safe-and-legal-routes--observations-routes-by-nationality-latest}
 
-### After the pause, boat arrivals far exceeded safe-route grants for Eritreans, Sudanese, Somalis and Iranians {#safe-and-legal-routes--after-the-pause}
+### In the year to June 2026, boat arrivals far exceeded safe-route grants for Eritreans, Sudanese and Iranians {#safe-and-legal-routes--after-the-pause}
 
 In the year to June 2026 small-boat arrivals were 33,374, 23% fewer than the
 year before [29](#source-safe-and-legal-routes-29). Eritreans were the largest
@@ -1218,6 +1247,10 @@ more safe-route grants than they had boat arrivals, through resettlement
 (Afghans) and family reunion. Afghanistan, Yemen, Sudan, Iran and Syria were
 the top family reunion nationalities, at 17%, 13%, 11%, 11% and 9% of grants
 [17](#source-safe-and-legal-routes-17).
+
+### Eritreans and Sudanese were the largest small-boat nationalities in the year to June 2026 {#safe-and-legal-routes--eritreans-and-sudanese-largest-boat-groups}
+
+Eritreans were the largest group at 5,875 arrivals and Sudanese the next at 4,191. [31](#source-safe-and-legal-routes-31) [32](#source-safe-and-legal-routes-32)
 
 ## Observations {#safe-and-legal-routes--observations-reopening}
 

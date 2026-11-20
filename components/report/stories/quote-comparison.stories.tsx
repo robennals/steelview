@@ -81,3 +81,52 @@ export const Translated: Story = {
     sources: [{ label: 'Bundesverfassungsgericht' }, { label: 'UK Cabinet Office' }],
   },
 };
+
+const crs = { label: 'Congressional Research Service', number: 3, href: 'https://www.everycrsreport.com/files/2026-10-13_IF12106_ff4611e8ad95fe2ddcc2266816c7d28beec63b35.pdf' };
+const briefing = { label: 'Rev (transcript of a US Department of Defense briefing)', number: 11 };
+
+/**
+ * Real quotes of a few words each, from content/topics/us-iran-war/facts/iran-nuclear-programme.md,
+ * each shown with the sentences of its source it was copied from (the adapter
+ * finds them in the source's quoted passage), the quoted words marked.
+ */
+export const ShortQuotesInContext: Story = {
+  args: {
+    question: 'What did the strikes do to Iran’s enriched uranium and nuclear industry?',
+    description: 'Two claims of a few words each, shown in the passages they were copied from.',
+    sources: [crs, briefing],
+    quotes: [
+      {
+        text: 'under the rubble',
+        speaker: 'Abbas Araghchi',
+        role: 'Iran’s foreign minister',
+        date: '2026-03-15',
+        context: 'As quoted by CRS',
+        sources: [crs],
+        passages: [{
+          source: crs,
+          parts: [
+            { text: 'Iran’s Foreign Minister Seyed Abbas Araghchi stated on March 15, 2026, that the country’s enriched uranium is “' },
+            { text: 'under the rubble', quoted: true },
+            { text: '” created by the June 2025 attacks on Iran’s enrichment facilities. Iran has “no plan” to recover this material, he added.' },
+          ],
+        }],
+      },
+      {
+        text: "nearly 80% of Iran's nuclear industrial base was hit",
+        speaker: 'Gen. Dan Caine',
+        role: 'Chairman of the Joint Chiefs of Staff',
+        date: '2026-04-08',
+        sources: [briefing],
+        passages: [{
+          source: briefing,
+          parts: [
+            { text: '…' },
+            { text: "nearly 80% of Iran's nuclear industrial base was hit", quoted: true },
+            { text: ', further degrading their attempts to attain a nuclear weapon.' },
+          ],
+        }],
+      },
+    ],
+  },
+};

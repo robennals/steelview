@@ -77,17 +77,10 @@ sources:
     date: '2013-06-17'
   # 6
   - stance: supports
-    quote: >-
-      That “Federal Form,” developed by the federal Election Assistance
-      Commission (EAC), requires only that an applicant aver, under penalty of
-      perjury, that he is a citizen. Arizona law, however, requires
-      voter-registration officials to “reject” any application for
-      registration, including a Federal Form, that is not accompanied by
-      documentary evidence of citizenship. … Scalia, J., delivered the opinion
-      of the Court, in which Roberts, C. J., and Ginsburg, Breyer, Sotomayor,
-      and Kagan, JJ., joined, and in which Kennedy, J., joined in part.
-      Kennedy, J., filed an opinion concurring in part and concurring in the
-      judgment. Thomas, J., and Alito, J., filed dissenting opinions.
+    quote: |-
+      That “Federal Form,” developed by the federal Election Assistance Commission (EAC), requires only that an applicant aver, under penalty of perjury, that he is a citizen. Arizona law, however, requires voter-registration officials to “reject” any application for registration, including a Federal Form, that is not accompanied by documentary evidence of citizenship.
+
+      … Scalia, J., delivered the opinion of the Court, in which Roberts, C. J., and Ginsburg, Breyer, Sotomayor, and Kagan, JJ., joined, and in which Kennedy, J., joined in part. Kennedy, J., filed an opinion concurring in part and concurring in the judgment. Thomas, J., and Alito, J., filed dissenting opinions.
     title: 'Arizona v. Inter Tribal Council of Arizona, Inc., 570 U.S. 1 (2013), syllabus'
     url: https://www.law.cornell.edu/supremecourt/text/12-71
     publisher: Supreme Court of the United States (via Cornell LII)
@@ -106,15 +99,12 @@ sources:
     date: '2008-04-28'
   # 8
   - stance: complicates
-    quote: >-
-      The requirement does not apply to absentee ballots submitted by mail …
-      the State offers free photo identification to qualified voters able to
-      establish their residence and identity. … The only kind of voter fraud that SEA 483 addresses is in-person voter
-      impersonation at polling places. The record contains no evidence of any
-      such fraud actually occurring in Indiana at any time in its history. …
-      It remains true, however, that flagrant examples of such fraud in other
-      parts of the country have been documented throughout this Nation’s
-      history by respected historians and journalists
+    quote: |-
+      The requirement does not apply to absentee ballots submitted by mail
+
+      … the State offers free photo identification to qualified voters able to establish their residence and identity.
+
+      … The only kind of voter fraud that SEA 483 addresses is in-person voter impersonation at polling places. The record contains no evidence of any such fraud actually occurring in Indiana at any time in its history. Moreover, petitioners argue that provisions of the Indiana Criminal Code punishing such conduct as a felony provide adequate protection against the risk that such conduct will occur in the future. It remains true, however, that flagrant examples of such fraud in other parts of the country have been documented throughout this Nation’s history by respected historians and journalists
     title: 'Crawford v. Marion County Election Board, 553 U.S. 181 (2008), opinion of Stevens, J.'
     url: https://www.law.cornell.edu/supct/html/07-21.ZO.html
     publisher: Supreme Court of the United States (via Cornell LII)
@@ -133,12 +123,14 @@ sources:
   # 10
   - stance: supports
     quote: >-
-      In sum, on the basis of the record that has been made in this
-      litigation, we cannot conclude that the statute imposes “excessively
-      burdensome requirements” on any class of voters. … The state interests
-      identified as justifications for SEA 483 are both neutral and
-      sufficiently strong to require us to reject petitioners’ facial attack on
-      the statute.
+      In sum, on the basis of the record that has been made in this litigation,
+      we cannot conclude that the statute imposes “excessively burdensome
+      requirements” on any class of voters. … But if a nondiscriminatory law is
+      supported by valid neutral justifications, those justifications should not
+      be disregarded simply because partisan interests may have provided one
+      motivation for the votes of individual legislators. The state interests
+      identified as justifications for SEA 483 are both neutral and sufficiently
+      strong to require us to reject petitioners’ facial attack on the statute.
     title: 'Crawford v. Marion County Election Board, 553 U.S. 181 (2008), opinion of Stevens, J.'
     url: https://www.law.cornell.edu/supct/html/07-21.ZO.html
     publisher: Supreme Court of the United States (via Cornell LII)
@@ -201,11 +193,13 @@ sources:
       Section 2 of the VRA is a nationwide prohibition against voting practices
       and procedures (including redistricting plans and at-large election
       systems and voter registration procedures) that discriminate on the basis
-      of race, color or membership in a language minority group. … On June 25,
-      2013, the Supreme Court held that it is unconstitutional to use the
-      coverage formula in Section 4(b) of the VRA to determine which
-      jurisdictions are subject to the preclearance requirement of Section 5 of
-      the VRA.
+      of race, color or membership in a language minority group. Section 2
+      prohibits not only election-related practices that are intended to be
+      racially discriminatory, but also those that are shown to have a racially
+      discriminatory result. … On June 25, 2013, the Supreme Court held that it
+      is unconstitutional to use the coverage formula in Section 4(b) of the VRA
+      to determine which jurisdictions are subject to the preclearance
+      requirement of Section 5 of the VRA.
     title: Statutes Enforced By The Voting Section
     url: https://www.justice.gov/crt/statutes-enforced-voting-section
     publisher: U.S. Department of Justice, Civil Rights Division
@@ -239,31 +233,22 @@ sources:
     date: '2024-08-15'
   # 19
   - stance: supports
-    quote: >-
-      An individual meets the requirements of this paragraph if the
-      individual— (i) in the case of an individual who votes in person— (I)
-      presents to the appropriate State or local election official a current
-      and valid photo identification; or (II) presents to the appropriate State
-      or local election official a copy of a current utility bill, bank
-      statement, government check, paycheck, or other government document that
-      shows the name and address of the voter … An individual who desires to
-      vote in person, but who does not meet the requirements of subparagraph
-      (A)(i), may cast a provisional ballot under section 21082(a) of this
-      title.
+    quote: |-
+      An individual meets the requirements of this paragraph if the individual— (i) in the case of an individual who votes in person—
+      - (I) presents to the appropriate State or local election official a current and valid photo identification; or
+      - (II) presents to the appropriate State or local election official a copy of a current utility bill, bank statement, government check, paycheck, or other government document that shows the name and address of the voter
+
+      … An individual who desires to vote in person, but who does not meet the requirements of subparagraph (A)(i), may cast a provisional ballot under section 21082(a) of this title.
     title: '52 U.S.C. §21083(b), Requirements for voters who register by mail (HAVA §303(b))'
     url: https://www.law.cornell.edu/uscode/text/52/21083
     publisher: Legal Information Institute, Cornell Law School
     date: '2002'
   # 20
   - stance: supports
-    quote: >-
-      an application for voter registration for an election for Federal office
-      may not be accepted or processed by a State unless the application
-      includes— (I) in the case of an applicant who has been issued a current
-      and valid driver’s license, the applicant’s driver’s license number; or
-      (II) in the case of any other applicant (other than an applicant to whom
-      clause (ii) applies), the last 4 digits of the applicant’s social
-      security number.
+    quote: |-
+      an application for voter registration for an election for Federal office may not be accepted or processed by a State unless the application includes—
+      - (I) in the case of an applicant who has been issued a current and valid driver’s license, the applicant’s driver’s license number; or
+      - (II) in the case of any other applicant (other than an applicant to whom clause (ii) applies), the last 4 digits of the applicant’s social security number.
     title: '52 U.S.C. §21083(a)(5), Verification of voter registration information (HAVA §303(a))'
     url: https://www.law.cornell.edu/uscode/text/52/21083
     publisher: Legal Information Institute, Cornell Law School
@@ -281,15 +266,11 @@ sources:
     date: '1993'
   # 22
   - stance: supports
-    quote: >-
-      On September 14, 2021, Senator Klobuchar introduced S. 2747, the Freedom
-      to Vote Act. On October 20, 2021, the Senate failed to invoke cloture on
-      the motion to proceed to the bill. … require states to offer
-      preregistration for 16- and 17-year-olds, online registration, and
-      same-day registration; … require states to offer early voting
-      and no-excuse absentee voting; … require jurisdictions with voter
-      identification requirements to accept specified information or
-      documentation to satisfy ID requirements;
+    quote: |-
+      On September 14, 2021, Senator Klobuchar introduced S. 2747, the Freedom to Vote Act. On October 20, 2021, the Senate failed to invoke cloture on the motion to proceed to the bill.
+      - … require states to offer preregistration for 16- and 17-year-olds, online registration, and same-day registration;
+      - … require states to offer early voting and no-excuse absentee voting;
+      - … require jurisdictions with voter identification requirements to accept specified information or documentation to satisfy ID requirements;
     title: 'The Freedom to Vote Act (S. 2747): Overview of Major Provisions (IN11781)'
     url: https://www.everycrsreport.com/reports/IN11781.html
     publisher: Congressional Research Service
@@ -345,12 +326,14 @@ sources:
     date: '2026-07-23'
   # 27
   - stance: supports
-    quote: >-
-      Vote Number: 231 Vote Date: August 8, 2026, 04:36 AM Required For
-      Majority: 3/5 Vote Result: Cloture on the Motion to Proceed Rejected
-      Measure Number: S. 5271 Measure Title: A bill to amend the Help America
-      Vote Act of 2002 to require voters to provide photo identification. Vote
-      Counts: YEAs 52 NAYs 46 Not Voting 2
+    quote: |-
+      Vote Number: 231
+      Vote Date: August 8, 2026, 04:36 AM
+      Required For Majority: 3/5
+      Vote Result: Cloture on the Motion to Proceed Rejected
+      Measure Number: S. 5271
+      Measure Title: A bill to amend the Help America Vote Act of 2002 to require voters to provide photo identification.
+      Vote Counts: YEAs 52 NAYs 46 Not Voting 2
     title: 'Roll Call Vote 119th Congress - 2nd Session, Vote Number 231'
     url: https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00231.htm
     publisher: United States Senate
@@ -487,9 +470,12 @@ sources:
     quote: >-
       In his appeal, Sauer wrote that since May 2025, the updated version of
       SAVE has verified more than 65 million voters across 26 states, and has
-      flagged 28,635 as potential noncitizens. … They wrote that even though 65
-      million voters had been verified by the revamped SAVE, the government had
-      not yet released the system’s error rate
+      flagged 28,635 as potential noncitizens. “The district court’s order,
+      however, makes it harder to detect ineligible voters, undermining the
+      integrity of federal elections and public confidence in the results of
+      those elections,” he wrote. … They wrote that even though 65 million
+      voters had been verified by the revamped SAVE, the government had not yet
+      released the system’s error rate
     title: The Supreme Court revives a controversial data system for citizenship checks
     url: https://www.opb.org/article/2026/09/25/the-supreme-court-revives-the-controversial-save-data-system/
     publisher: OPB (NPR)
@@ -555,20 +541,21 @@ sources:
     date: '2026-10-23'
 comparisons:
   - id: senate-votes
-    title: US Senate votes on national voting-rules bills, against the 60 needed
+    title: Senate votes on national voting rules
+    subtitle: 'Yes votes in 2022 and 2026, against the 60 needed to end debate'
     description: >-
       Senators voting yes on the two recorded cloture-type votes on national
-      voting-rules bills, 2022 and 2026, against the 60 needed to end debate.
+      voting-rules bills.
     unit: count
     valueLabel: Senators voting yes
     domainMax: 100
     sources: [23, 27]
     items:
       - label: "Freedom to Vote: John R. Lewis Act"
-        detail: "Democratic, 19 Jan 2022"
+        subtitle: "Democratic bill, 19 Jan 2022"
         value: 49
-      - label: "S. 5271, photo ID only"
-        detail: "Republican, 8 Aug 2026"
+      - label: "S. 5271"
+        subtitle: "Republican photo-ID-only bill, 8 Aug 2026"
         value: 52
       - label: Needed to end debate
         value: 60
@@ -617,9 +604,8 @@ figures:
       source: 1
   - kind: dataTable
     id: holdings
-    title: >-
-      Key US court holdings on who sets voting rules and what they may require,
-      2008–2026
+    title: Court rulings on who sets voting rules
+    subtitle: 'Key US holdings, and what the rules may require, 2008–2026'
     description: 'The main court rulings on who sets voter ID and registration rules.'
     note: 'The ITCA vote of 7–2 is from the opinion''s own line-up: Justice Scalia wrote for six justices, Justice Kennedy joined in part, and Justices Thomas and Alito dissented.'
     caption: 'One card per ruling'
@@ -633,7 +619,7 @@ figures:
     rows:
       - case: 'Crawford v. Marion County Election Board'
         date: { value: '28 Apr 2008; 6–3, no majority opinion', sources: [7] }
-        holding: { value: 'Upheld Indiana''s photo-ID law for in-person voting against a facial challenge, on the record in that case', sources: [10] }
+        holding: { value: 'Upheld Indiana''s photo-ID law for in-person voting against a facial challenge, on the record in that case. The state''s interests in preventing fraud and in public confidence were "both neutral and sufficiently strong". The record held "no evidence of any such fraud actually occurring in Indiana at any time in its history"', sources: [8, 9, 10] }
       - case: 'Arizona v. Inter Tribal Council of Arizona'
         date: { value: '17 Jun 2013; 7–2', sources: [6] }
         holding: { value: 'The NVRA bars Arizona from requiring documentary proof of citizenship from federal-form applicants; Congress''s Elections Clause power is "paramount" but covers how elections are held, not who may vote', sources: [3, 4, 5] }
@@ -648,16 +634,17 @@ figures:
         holding: { value: 'Permanently enjoined the EAC from implementing the 2025 order''s proof-of-citizenship section', sources: [30] }
       - case: 'California v. Trump (D. Mass.)'
         date: '24 Jun 2026, judgment 13 Jul 2026'
-        holding: { value: 'The challenged sections of the 2025 order exceed the President''s constitutional authority and conflict with the NVRA, UOCAVA and HAVA; under appeal', sources: [31, 32] }
+        holding: { value: 'The challenged sections of the 2025 order exceed the President''s constitutional authority and conflict with the NVRA, UOCAVA and HAVA; proof-of-citizenship provisions permanently enjoined; under appeal', sources: [31, 32] }
       - case: 'Trump v. California'
         date: { value: '24 Aug 2026; stay granted, 3 justices dissenting', sources: [34, 36] }
-        holding: { value: 'The 2026 order is "an internal directive"; the states'' challenge is likely not justiciable; no ruling on lawfulness', sources: [34, 35, 36] }
+        holding: { value: 'The 2026 order is "an internal directive" that "neither requires nor forbids anything of anyone outside the Executive Branch"; the states'' challenge is likely not justiciable; no ruling on lawfulness', sources: [34, 35, 36] }
       - case: 'SAVE database stay'
         date: '25 Sep 2026'
         holding: { value: 'Stayed the June order blocking the revamped SAVE system, so DHS can use it again', sources: [37] }
   - kind: dataTable
     id: federal-laws
-    title: 'Federal voting laws and bills on registration and ID, 1965–2026'
+    title: 'Federal voting laws and bills'
+    subtitle: 'On registration and ID, 1965–2026'
     description: 'The federal laws in force on registration and ID, and the main bills since 2021.'
     caption: 'One card per law or bill'
     layout: timeline
@@ -676,7 +663,7 @@ figures:
         status: { value: 'In force; the preclearance formula was struck down in Shelby County (2013)', sources: [16] }
       - year: '1993'
         measure: 'National Voter Registration Act (NVRA)'
-        does: { value: 'Registration by mail and at licence and benefits offices; a federal mail form that asks only for a sworn statement of citizenship; list-maintenance rules, including no systematic removals within 90 days of a federal election', sources: [17, 6, 21] }
+        does: { value: 'Registration by mail and at licence and benefits offices; a federal mail form that asks only for a sworn statement of citizenship, under penalty of perjury; list-maintenance rules, including no systematic removals within 90 days of a federal election', sources: [17, 6, 21] }
         status: 'In force'
       - year: '2002'
         measure: 'Help America Vote Act (HAVA)'
@@ -698,8 +685,8 @@ figures:
     id: senate-votes
   - kind: dataTable
     id: live-measures
-    title: >-
-      Live US federal measures on proof of citizenship and ID, 23 October 2026
+    title: Live federal measures on ID
+    subtitle: 'Proof of citizenship and photo ID, as of 23 October 2026'
     description: 'Where each federal measure on proof of citizenship and ID stood ten days before the midterms.'
     caption: 'One card per measure'
     layout: cards
@@ -719,8 +706,36 @@ figures:
         does: { value: 'Directs DHS to compile "State Citizenship Lists" from federal records, including SAVE data', sources: [33] }
         status: { value: 'District-court injunction stayed by the Supreme Court, 24 Aug 2026', sources: [34] }
       - measure: 'Revamped SAVE database'
-        does: { value: 'DHS citizenship checks of whole voter rolls against linked Social Security records. The government reports more than 65 million voters verified in 26 states and 28,635 flagged as potential non-citizens', sources: [39, 38] }
+        does: { value: 'DHS citizenship checks of whole voter rolls against linked Social Security records. The government reports more than 65 million voters verified in 26 states and 28,635 flagged as potential non-citizens; its challengers say it "had not yet released the system’s error rate"', sources: [39, 38] }
         status: { value: 'Blocked by a district judge in June 2026; that order stayed by the Supreme Court, 25 Sep 2026', sources: [37, 39] }
+observationMarks:
+  federal-form-sworn-citizenship: {rows: ["National Voter Registration Act (NVRA)"]}
+  freedom-to-vote-act-provisions: {rows: ["Freedom to Vote Act (Democratic)"]}
+  congress-has-set-national-floors: {rows: ["Voting Rights Act", "National Voter Registration Act (NVRA)", "Help America Vote Act (HAVA)"]}
+  hava-id-rule: {rows: ["Help America Vote Act (HAVA)"]}
+  crawford-upheld-photo-id: {rows: ["Crawford v. Marion County Election Board"]}
+  crawford-record: {rows: ["Crawford v. Marion County Election Board"]}
+  not-who-may-vote: {rows: ["Arizona v. Inter Tribal Council of Arizona"]}
+  moore-state-courts: {rows: ["Moore v. Harper"]}
+  congress-power-paramount: {rows: ["Arizona v. Inter Tribal Council of Arizona"]}
+  national-bills-stalled: {rows: ["Freedom to Vote: John R. Lewis Act", "S. 5271", "Needed to end debate"]}
+  eo-14248-blocked: {rows: ["Executive Order 14248 (25 Mar 2025)"]}
+  eo-14399-allowed: {rows: ["Executive Order 14399 (31 Mar 2026)"]}
+  no-merits-ruling: {rows: ["Trump v. California"]}
+  save-database-revived: {rows: ["Revamped SAVE database"]}
+  state-rules-vary: {whole: true}
+  house-passed-save-america-act: {rows: ["S. 5271"]}
+  save-america-act-status: {rows: ["S. 5271", "Needed to end debate"]}
+
+  save-america-act-provisions: {rows: ["SAVE America Act (Republican)"]}
+  laws-require-no-id-for-all: {rows: ["Voting Rights Act", "National Voter Registration Act (NVRA)", "Help America Vote Act (HAVA)"]}
+  order-binds-no-state: {rows: ["Trump v. California"]}
+  two-courts-blocked-2025-order: {rows: ["LULAC v. Executive Office of the President (D.D.C.)", "California v. Trump (D. Mass.)"]}
+  save-whole-rolls: {rows: ["Revamped SAVE database"]}
+  no-time-series: {whole: true}
+  two-orders-two-outcomes: {rows: ["LULAC v. Executive Office of the President (D.D.C.)", "Trump v. California"]}
+  crawford-was-facial: {rows: ["Crawford v. Marion County Election Board"]}
+  itca-left-open: {rows: ["Arizona v. Inter Tribal Council of Arizona"]}
 ---
 ## Observations {#federal-and-state-power-over-voting-rules--observations-elections-clause}
 
@@ -738,7 +753,7 @@ Both bills in the chart failed to end debate: the Democrats' in January 2022 and
 
 ### The House has passed the SAVE Act or SAVE America Act three times {#federal-and-state-power-over-voting-rules--house-passed-save-america-act}
 
-- **10 April 2025:** the SAVE Act (proof of citizenship to register) passed 220–208, with four Democrats in favour. [24](#source-federal-and-state-power-over-voting-rules-24)
+- **10 April 2025:** the SAVE Act ([proof of citizenship](#glossary-documentary-proof-of-citizenship) to register) passed 220–208, with four Democrats in favour. [24](#source-federal-and-state-power-over-voting-rules-24)
 - **11 February 2026:** the SAVE America Act, which combined it with a photo-ID requirement, passed 218–213. [25](#source-federal-and-state-power-over-voting-rules-25)
 - **22 July 2026:** the House passed it again, packaged with the National Defense Authorization Act to make it harder to vote down in the Senate. [26](#source-federal-and-state-power-over-voting-rules-26)
 
@@ -771,9 +786,17 @@ The NVRA's federal form, written by the Election Assistance Commission, "require
 
 ### The Freedom to Vote Act would have set national access rules and required ID states to accept alternatives {#federal-and-state-power-over-voting-rules--freedom-to-vote-act-provisions}
 
-The bill would have required early voting, no-excuse absentee voting and same-day registration, and required states with ID laws "to accept specified information or documentation to satisfy ID requirements". [22](#source-federal-and-state-power-over-voting-rules-22)
+The bill would have required early voting, [no-excuse](#glossary-no-excuse-absentee) absentee voting and same-day registration, and required states with ID laws "to accept specified information or documentation to satisfy ID requirements". [22](#source-federal-and-state-power-over-voting-rules-22)
 
 The two parties' main bills of the past five years therefore both sought national standards, in opposite directions: one mandating ID and proof of citizenship, the other limiting what ID states could demand.
+
+### The SAVE America Act would require proof of citizenship to register and photo ID to vote {#federal-and-state-power-over-voting-rules--save-america-act-provisions}
+
+The bill would replace the sworn statement on the federal form with documents proving citizenship, and add a photo-ID requirement at the polls. [25](#source-federal-and-state-power-over-voting-rules-25)
+
+### None of the three federal laws in force requires ID or proof of citizenship of every voter {#federal-and-state-power-over-voting-rules--laws-require-no-id-for-all}
+
+The Voting Rights Act, the NVRA and HAVA set rules on discrimination, registration and list cleaning. Their one ID rule covers first-time voters who registered by mail, and it accepts non-photo documents. [16](#source-federal-and-state-power-over-voting-rules-16) [17](#source-federal-and-state-power-over-voting-rules-17) [18](#source-federal-and-state-power-over-voting-rules-18) [19](#source-federal-and-state-power-over-voting-rules-19)
 
 ## Observations {#federal-and-state-power-over-voting-rules--observations-holdings}
 
@@ -783,19 +806,19 @@ In *Arizona v. Inter Tribal Council* (2013) the Court quoted its 1880 ruling: Co
 
 On that basis it held that the NVRA overrode Arizona's demand for documentary proof of citizenship from people using the federal form. [5](#source-federal-and-state-power-over-voting-rules-5) A national ID or proof-of-citizenship law for federal elections would rest on this power.
 
-### The same ruling held that who may vote is for the states {#federal-and-state-power-over-voting-rules--not-who-may-vote}
+### The same ruling held that Congress's power covers how elections are held, not who may vote {#federal-and-state-power-over-voting-rules--not-who-may-vote}
 
 The Court said the Elections Clause "empowers Congress to regulate how federal elections are held, but not who may vote in them". [4](#source-federal-and-state-power-over-voting-rules-4) It added that Arizona could ask the Election Assistance Commission to add its requirement to the form's state-specific instructions, and go to court if refused. [5](#source-federal-and-state-power-over-voting-rules-5)
 
 Voter qualifications such as citizenship are set by the states; checking them at registration sits where the two powers meet.
 
-### *Crawford* (2008) upheld Indiana's photo-ID law without proof of impersonation in Indiana {#federal-and-state-power-over-voting-rules--crawford-upheld-photo-id}
+### *Crawford* (2008) upheld Indiana's photo-ID law, accepting its interests in preventing fraud and in public confidence {#federal-and-state-power-over-voting-rules--crawford-upheld-photo-id}
 
 Justice Stevens's lead opinion accepted Indiana's interests in deterring fraud and in public confidence, which "has independent significance, because it encourages citizen participation in the democratic process". [9](#source-federal-and-state-power-over-voting-rules-9) It held those interests "both neutral and sufficiently strong" to defeat the facial challenge. [10](#source-federal-and-state-power-over-voting-rules-10)
 
 Three more justices concurred, finding the burden of a free photo ID "simply not severe". [7](#source-federal-and-state-power-over-voting-rules-7) [13](#source-federal-and-state-power-over-voting-rules-13) The vote was 6–3, with no opinion joined by a majority. [7](#source-federal-and-state-power-over-voting-rules-7)
 
-### The *Crawford* record contained no in-person impersonation in Indiana, and an estimated 43,000 residents without ID {#federal-and-state-power-over-voting-rules--crawford-record}
+### The *Crawford* record contained no evidence of in-person impersonation in Indiana {#federal-and-state-power-over-voting-rules--crawford-record}
 
 The lead opinion said the only fraud the law addresses is in-person impersonation, and "the record contains no evidence of any such fraud actually occurring in Indiana at any time in its history". It relied instead on documented cases elsewhere. [8](#source-federal-and-state-power-over-voting-rules-8)
 
@@ -804,6 +827,20 @@ It also recorded the trial court's estimate that around 43,000 Indiana residents
 ### State courts can review state legislatures' election rules {#federal-and-state-power-over-voting-rules--moore-state-courts}
 
 *Moore v. Harper* (2023) held that the Elections Clause "does not insulate state legislatures from the ordinary exercise of state judicial review". [14](#source-federal-and-state-power-over-voting-rules-14) "The states" in this argument means each state's whole constitutional system, including its courts and constitution, not only its legislature.
+
+### That stay was not a ruling on whether the order is lawful {#federal-and-state-power-over-voting-rules--no-merits-ruling}
+
+The majority wrote that its ruling "does not mean that any measure taken by the Government to implement the Order will necessarily be lawful. On that score, time will tell." [35](#source-federal-and-state-power-over-voting-rules-35) The dissent said the decision "merely postpones adjudication" of whether the President's actions are lawful. [36](#source-federal-and-state-power-over-voting-rules-36)
+
+The only merits rulings on presidential power so far are the two district-court rulings on the 2025 order. [31](#source-federal-and-state-power-over-voting-rules-31)
+
+### Two district courts blocked the 2025 order's proof-of-citizenship section, one holding it beyond the President's authority {#federal-and-state-power-over-voting-rules--two-courts-blocked-2025-order}
+
+The federal court in Washington, D.C. permanently barred the commission from implementing that section. [30](#source-federal-and-state-power-over-voting-rules-30) The federal court in Massachusetts held that the challenged sections "exceeded the President's constitutional authority". [31](#source-federal-and-state-power-over-voting-rules-31) The government has appealed. [32](#source-federal-and-state-power-over-voting-rules-32)
+
+### The Supreme Court said the 2026 order requires nothing of anyone outside the executive branch {#federal-and-state-power-over-voting-rules--order-binds-no-state}
+
+It called the order "an internal directive" that "neither requires nor forbids anything of anyone outside the Executive Branch", and held that the states were unlikely to have standing. [34](#source-federal-and-state-power-over-voting-rules-34)
 
 ## Observations {#federal-and-state-power-over-voting-rules--observations-live-measures}
 
@@ -819,13 +856,7 @@ Executive Order 14399 directs DHS to send each state a list of adult citizens bu
 
 On 24 August 2026 the Supreme Court stayed the injunction against it, calling the order "an internal directive" that "neither requires nor forbids anything of anyone outside the Executive Branch". It held the states were unlikely to have standing, since they need not use the lists. [34](#source-federal-and-state-power-over-voting-rules-34)
 
-### That stay was not a ruling on whether the order is lawful {#federal-and-state-power-over-voting-rules--no-merits-ruling}
-
-The majority wrote that its ruling "does not mean that any measure taken by the Government to implement the Order will necessarily be lawful. On that score, time will tell." [35](#source-federal-and-state-power-over-voting-rules-35) The dissent said the decision "merely postpones adjudication" of whether the President's actions are lawful. [36](#source-federal-and-state-power-over-voting-rules-36)
-
-The only merits rulings on presidential power so far are the two district-court rulings on the 2025 order. [31](#source-federal-and-state-power-over-voting-rules-31)
-
-### The revamped SAVE database is back in use, with no published error rate {#federal-and-state-power-over-voting-rules--save-database-revived}
+### The revamped SAVE database is back in use; challengers say no error rate has been released {#federal-and-state-power-over-voting-rules--save-database-revived}
 
 A district judge blocked the revamped SAVE system in June 2026 under the Social Security Act, the Privacy Act and the Administrative Procedure Act. [39](#source-federal-and-state-power-over-voting-rules-39) In September the Supreme Court stayed that order, saying it stopped "individualized inquiries, which are permitted under federal law" during the 90 days before an election. [37](#source-federal-and-state-power-over-voting-rules-37)
 
@@ -836,6 +867,10 @@ The government's own counts of voters checked and flagged, and what those flags 
 The number of states asking for ID at the polls has nearly tripled since 2000, reaching 36 in September 2026. Thirteen states had passed proof-of-citizenship laws by July 2026; not all are in effect because of court rulings. [40](#source-federal-and-state-power-over-voting-rules-40) [41](#source-federal-and-state-power-over-voting-rules-41) [42](#source-federal-and-state-power-over-voting-rules-42)
 
 The Supreme Court let New Hampshire enforce a new law dropping student IDs on 22 October 2026, saying lower federal courts "should ordinarily not alter the election rules on the eve of an election". [43](#source-federal-and-state-power-over-voting-rules-43) The state-by-state detail and its trend are in [the report on voter ID rules](#fact-voter-id-rules-in-the-us-and-abroad).
+
+### The government says the revamped SAVE database has checked more than 65 million voters in 26 states {#federal-and-state-power-over-voting-rules--save-whole-rolls}
+
+The government says the system has run whole voter rolls against linked Social Security records since May 2025, and has flagged 28,635 people as potential non-citizens. [38](#source-federal-and-state-power-over-voting-rules-38) [39](#source-federal-and-state-power-over-voting-rules-39)
 
 ## More {#federal-and-state-power-over-voting-rules--more-elections-clause}
 

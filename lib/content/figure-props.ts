@@ -2,8 +2,9 @@ import type * as R from '@/components/report';
 import { eventMarkers } from '@/components/topic/series-chart';
 import { aboutThisDataNote } from './figure-text';
 import { mapAreas } from './map-presets';
+import { quotedPhrases, sourcePassages } from './source-passage';
 import { factSources, figureCitations } from './sources';
-import { factPath } from './types';
+import { topicPath } from './types';
 import type { Fact, Figure, FigureOf, FigureValueFormat, Source } from './types';
 
 /**
@@ -67,6 +68,7 @@ function frame(f: Extract<Figure, { title: string }>, c: FigureContext) {
   return {
     id: figureDomId(c.fact, f.id),
     title: f.title,
+    subtitle: f.subtitle,
     description: f.description,
     sources: figureCredits(f, c),
     note: aboutThisDataNote(f),
@@ -148,6 +150,7 @@ export function timelineProps(f: FigureOf<'timeline'>, c: FigureContext): R.Time
       category: event.category,
       significance: event.significance,
       sources: event.sources.map(c.credit),
+      passages: sourcePassages(quotedPhrases(event.title, event.description), event.sources, c.sources, c.credit),
     })),
   };
 }
@@ -200,14 +203,32 @@ function mapEncoding(f: FigureOf<'map'>): R.MapEncoding {
 }
 
 /** A `map` figure (or its older spellings `tileMap` and `geoMap`) as an AreaMap: the preset's tiles and shapes, opening on its `default` view. */
+/**
+ * A map's arrows. One from an area is as thick as the area's value on a
+ * numeric map: a point's value, or a range's midpoint. One from a place, or on
+ * a categorical map, takes the shared width.
+ */
+function mapFlows(f: FigureOf<'map'>): R.AreaMapProps['flows'] {
+  if (!f.flows) return undefined;
+  const weight = (area: string) => {
+    const datum = f.categories ? undefined : f.data?.[area];
+    if (datum === undefined || typeof datum === 'number') return datum;
+    return 'value' in datum ? datum.value : (datum.low + datum.high) / 2;
+  };
+  return { ...f.flows, from: f.flows.from.map(start => (typeof start === 'string' ? { regionId: start, weight: weight(start) } : { place: start })) };
+}
+
 export function areaMapProps(f: FigureOf<'map'>, c: FigureContext): R.AreaMapProps {
+  const areas = mapAreas(f);
   return {
     ...frame(f, c),
-    ...mapAreas(f),
+    ...areas,
+    extent: f.crop ?? areas.extent,
     defaultView: f.default,
     areaLabel: f.areaLabel,
     highlight: f.highlight,
     insets: f.insets,
+    flows: mapFlows(f),
     ...mapEncoding(f),
   };
 }
@@ -346,6 +367,7 @@ function quote(q: FigureQuote, n: number, f: { id: string }, c: FigureContext): 
     date: q.date,
     context: q.context,
     sources: q.sources.map(c.credit),
+    passages: sourcePassages([q.text], q.sources, c.sources, c.credit),
   };
 }
 
@@ -361,6 +383,18 @@ function quotesOf(f: FigureOf<'quotes'>, c: FigureContext): R.Quote[] {
     lang: q.lang,
     translation: q.translation,
   }));
+}
+
+/**
+ * Every quote a topic has collected, for the one list its panels show: each
+ * tagged with the question its collection answers, so a reader can narrow the
+ * list to one question, and credited to its own report's sources.
+ */
+export function topicQuotes(facts: Fact[], asOf?: string): R.Quote[] {
+  return facts.flatMap(fact => {
+    const context = figureContext(fact, asOf, { panel: true });
+    return (fact.figures ?? []).flatMap(figure => (figure.kind === 'quotes' ? quotesOf(figure, context).map(q => ({ ...q, tags: [figure.question] })) : []));
+  });
 }
 
 /** A `quotes` figure of up to four, side by side in the order written. */
@@ -399,12 +433,8 @@ export function pullQuoteProps(f: FigureOf<'pullQuote'>, c: FigureContext): R.Pu
   return { quote: { ...quote(f.quote, 1, f, c), position: f.quote.position }, variant: f.variant };
 }
 
-/**
- * The claim alone; the renderer frames it. `facts` are the topic's, so an
- * evidence link to a supporting fact lands on its parent's page, the same
- * target rule as an inline citation (remarkMarkFactCitations).
- */
-export function claimCheckProps(f: FigureOf<'claimCheck'>, c: FigureContext & { slug: string; facts: Pick<Fact, 'id' | 'supports'>[] }): R.ClaimCheckProps {
+/** The claim alone; the renderer frames it. Its evidence link is an inline citation's (remarkMarkFactCitations). */
+export function claimCheckProps(f: FigureOf<'claimCheck'>, c: FigureContext & { slug: string }): R.ClaimCheckProps {
   return {
     claim: f.claim,
     claimant: f.claimant,
@@ -413,14 +443,8 @@ export function claimCheckProps(f: FigureOf<'claimCheck'>, c: FigureContext & { 
     status: f.status,
     finding: f.finding,
     sources: f.sources.map(c.credit),
-    evidence: f.evidence && { href: evidenceHref(f.evidence, c.slug, c.facts), label: f.evidence.label },
+    evidence: f.evidence && { href: topicPath(c.slug) + (f.evidence.section ? `#${f.evidence.fact}--${f.evidence.section}` : ''), label: f.evidence.label },
   };
-}
-
-function evidenceHref({ fact: id, section }: { fact: string; section?: string }, slug: string, facts: Pick<Fact, 'id' | 'supports'>[]): string {
-  const parent = facts.find(fact => fact.id === id)?.supports;
-  const anchor = section ? `${id}--${section}` : parent ? `evidence-${id}` : '';
-  return factPath(slug, parent ?? id) + (anchor ? `#${anchor}` : '');
 }
 
 /** The list alone; the renderer frames it. */

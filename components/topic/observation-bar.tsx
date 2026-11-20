@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useMemo, useRef, useState, useSyncExternalStore, type MouseEvent, type ReactNode } from 'react';
 import type { DataStep } from '@/lib/content/walkthrough';
-import { ShownObservation } from './explore-panels';
+import { ChartAlone, ShownObservation } from './explore-panels';
 import { Prose } from './prose';
 
 const noSubscription = () => () => {};
@@ -12,8 +12,6 @@ type Observation = DataStep['observations'][number];
 /** Which of a step's observations is shown, shared with the bar inside its chart. */
 const Step = createContext<{
   observations: Observation[];
-  /** Give each observation its id, for a page where a link to one works without script. */
-  addressed: boolean;
   /** The chart's further text for its More, rendered. */
   more: string;
   index: number;
@@ -31,7 +29,18 @@ export function useChartStep() {
   return useContext(Step);
 }
 
-type ObservationStepProps = { observations: Observation[]; more?: string; addressed?: boolean; children?: ReactNode };
+/**
+ * Where a link to `shown` starts a chart's observations: at that observation, or
+ * at the first observation of the view it names; -1 if it names neither.
+ */
+function startAt(observations: Observation[], views: DataStep['views'], shown: string | null): number {
+  const at = observations.findIndex(o => o.id === shown);
+  if (at >= 0 || !shown) return at;
+  const view = views?.find(v => v.anchors.includes(shown));
+  return view ? observations.findIndex(o => o.view === view.id) : -1;
+}
+
+type ObservationStepProps = { observations: Observation[]; views?: DataStep['views']; more?: string; children?: ReactNode };
 
 /**
  * The observations made about one chart, one at a time: the same data can
@@ -39,40 +48,39 @@ type ObservationStepProps = { observations: Observation[]; more?: string; addres
  * arrives after its step, so this holds the reader's place while `ObservationBar`
  * is drawn first in the step and then inside the chart.
  */
-export function ObservationStep({ observations, more = '', addressed = false, children }: ObservationStepProps) {
-  // Opened at one of these observations, start there. A report's own page can
-  // be sent to one by a link, which is asking to read it, so it opens too.
+export function ObservationStep({ observations, views, more = '', children }: ObservationStepProps) {
+  // Opened at one of these observations, start there, open: a link to it is asking to read it.
   const shown = useContext(ShownObservation);
-  const [index, setIndex] = useState(() => Math.max(0, observations.findIndex(o => o.id === shown)));
-  const [open, setOpen] = useState(false);
+  const [index, setIndex] = useState(() => Math.max(0, startAt(observations, views, shown)));
+  const [open, setOpen] = useState(() => observations.some(o => o.id === shown));
   const [jumps, setJumps] = useState(0);
   const [followed, setFollowed] = useState(shown);
   if (followed !== shown) {
     setFollowed(shown);
-    const at = observations.findIndex(o => o.id === shown);
+    const at = startAt(observations, views, shown);
     if (at >= 0) {
       setIndex(at);
-      setOpen(true);
+      // A link to a view is to its chart, not to its first finding's reasoning.
+      setOpen(observations[at].id === shown);
     }
   }
   const step = useMemo(() => ({
     observations,
-    addressed,
     more,
     index,
     open,
     jumps,
-    go: (to: number) => {
-      setIndex((to + observations.length) % observations.length);
-      setOpen(false);
-    },
+    // Stepping keeps the reader's choice: from an open observation the next
+    // opens too, with its part of the chart picked out; from a closed one it
+    // stays a heading.
+    go: (to: number) => setIndex((to + observations.length) % observations.length),
     show: (to: number) => {
       setIndex(to);
       setOpen(true);
       setJumps(count => count + 1);
     },
     toggle: () => setOpen(was => !was),
-  }), [observations, addressed, more, index, open, jumps]);
+  }), [observations, more, index, open, jumps]);
   return <Step.Provider value={step}>{children}</Step.Provider>;
 }
 
@@ -92,36 +100,53 @@ function markChart(root: Element, observation?: Observation) {
   }
 }
 
+/** Brings the first picked row into view in its slide, leaving the page and the panel's strip where they are. */
+function revealPicked(root: Element) {
+  const row = [...root.querySelectorAll('[data-mark-picked]')].find(element => element.checkVisibility());
+  for (let scroller = row?.parentElement; row && scroller && scroller !== root; scroller = scroller.parentElement) {
+    if (scroller.scrollHeight <= scroller.clientHeight || getComputedStyle(scroller).overflowY === 'visible') continue;
+    const box = scroller.getBoundingClientRect();
+    const { top, height } = row.getBoundingClientRect();
+    scroller.scrollTop += top - box.top - (box.height - height) / 2;
+    return;
+  }
+}
+
 /**
  * The shown observation as one line, between a chart's title and its graph:
  * its claim, which opens to its reasoning when clicked. A chart's Subtleties come
  * after its observations and say so in the count. Without JavaScript every
- * observation is shown in full, one after another. Outside a step, nothing.
+ * observation is shown in full, one after another. Outside a step, or on a
+ * chart shown alone in a sheet, nothing: there the chart speaks for itself.
  */
 export function ObservationBar() {
   const step = useContext(Step);
+  const alone = useContext(ChartAlone);
   const ref = useRef<HTMLDivElement>(null);
   const enhanced = useSyncExternalStore(noSubscription, () => true, () => false);
-  const shown = enhanced ? step?.observations[step.index] : undefined;
+  // Only an opened observation marks the chart: a closed one is a heading the
+  // reader has not chosen yet, and the whole chart stays in view under it.
+  const marked = enhanced && step?.open ? step.observations[step.index] : undefined;
 
   // The chart can redraw under the mark, as when a table is sorted, so it is reapplied.
   useEffect(() => {
     const root = ref.current?.closest('.sv-walk__step');
     if (!root) return;
-    const apply = () => markChart(root, shown);
+    const apply = () => markChart(root, marked);
     apply();
+    revealPicked(root);
     const redraws = new MutationObserver(apply);
     redraws.observe(root, { subtree: true, childList: true, attributes: true, attributeFilter: ['data-row'] });
     return () => redraws.disconnect();
-  }, [shown]);
+  }, [marked]);
 
   const jumps = step?.jumps ?? 0;
   useEffect(() => {
     if (jumps > 0) ref.current?.querySelector<HTMLElement>('.sv-observe__toggle')?.focus();
   }, [jumps]);
 
-  if (!step || step.observations.length === 0) return null;
-  const { observations, addressed, index, open, go, toggle } = step;
+  if (!step || alone || step.observations.length === 0) return null;
+  const { observations, index, open, go, toggle } = step;
   const many = observations.length > 1;
 
   // Anywhere in the bubble toggles it, apart from its own controls and links, or
@@ -145,7 +170,7 @@ export function ObservationBar() {
       {observations.map((observation, i) => {
         const current = i === index;
         return (
-          <div key={observation.id} className="sv-observe__item" id={addressed ? observation.id : undefined} data-observation={observation.id} data-open={(current && open) || !enhanced || undefined} hidden={enhanced && !current}>
+          <div key={observation.id} className="sv-observe__item" data-observation={observation.id} data-open={(current && open) || !enhanced || undefined} hidden={enhanced && !current}>
             <div className="sv-observe__head">
               {current && controls}
               <h4 className="sv-observe__heading">

@@ -35,9 +35,9 @@ type Story = StoryObj<typeof meta>;
 /** Real quotes from institutions. They have no `position`, so only the topic filter appears. */
 export const InstitutionalSources: Story = {};
 
-/** Newest first, and a lower clamp so more long quotes fold behind "Read full quote". */
+/** Newest first. */
 export const NewestFirstClamped: Story = {
-  args: { defaultSort: 'newest', clampAt: 200 },
+  args: { defaultSort: 'newest' },
 };
 
 /** Illustrative data: fictional speakers and parties, showing the position filter. One quote is undated and sorts last. */

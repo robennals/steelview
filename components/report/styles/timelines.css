@@ -3,10 +3,6 @@
 @layer components {
   /* ----------------------------------------------------------- Timeline */
 
-  .sv-timeline__controls {
-    margin-bottom: 0.25rem;
-  }
-
   .sv-timeline__chip-label {
     display: inline-flex;
     align-items: center;
@@ -56,95 +52,211 @@
     stroke-width: 2;
   }
 
-  .sv-timeline__body {
-    margin-top: 0.25rem;
-  }
-
-  /* The year is a margin note, set in the apparatus voice; the rule beneath
-     the events is the spine of the timeline. */
-  .sv-timeline__year-head {
-    margin: 1.1rem 0 0.35rem;
+  /* The time axis: markers above a baseline that is broken where a long
+     empty stretch is cut out, with year or month labels beneath. */
+  .sv-timeline__axis {
+    --sv-axis-step: 1rem;
+    margin: 0.35rem 0 0.9rem;
+    padding-inline: 0.35rem;
     font-family: var(--font-sans);
-    font-size: 0.8125rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
+  }
+
+  .sv-timeline__axis[data-named] {
+    --sv-axis-step: 1.6rem;
+    padding-inline: 1.25rem;
+  }
+
+  .sv-timeline__track {
+    position: relative;
+    height: calc(var(--sv-axis-levels, 1) * var(--sv-axis-step) + 0.1rem);
+  }
+
+  .sv-timeline__axis[data-named] .sv-timeline__track {
+    height: calc(var(--sv-axis-levels, 1) * var(--sv-axis-step) + 0.6rem);
+  }
+
+  .sv-timeline__baseline {
+    position: absolute;
+    bottom: 0;
+    border-bottom: 1px solid var(--rule-strong);
+  }
+
+  /* Two short slanted strokes across the gap: the axis skips time here. */
+  .sv-timeline__break {
+    position: absolute;
+    bottom: -6px;
+    width: 7px;
+    height: 12px;
+    transform: translateX(-50%) skewX(-22deg);
+    border-inline: 1.5px solid var(--ink-3);
+  }
+
+  .sv-timeline__pin {
+    position: absolute;
+    bottom: calc(var(--sv-level, 0) * var(--sv-axis-step) - 9px);
+    transform: translateX(-50%);
+    padding: 3px;
+    line-height: 0;
+    border-radius: 50%;
+  }
+
+  .sv-timeline__pin[data-clickable] {
+    cursor: pointer;
+  }
+
+  .sv-timeline__pin[data-on] {
+    background: var(--paper);
+    box-shadow: 0 0 0 2px var(--ink);
+  }
+
+  .sv-timeline__pin-icon {
+    display: block;
+  }
+
+  /* An event that lasted: a bar from its start to its end. */
+  .sv-timeline__span {
+    position: absolute;
+    bottom: calc(var(--sv-level, 0) * var(--sv-axis-step) - 2px);
+    height: 4px;
+    border-radius: 2px;
+    background: currentColor;
+    opacity: 0.45;
+  }
+
+  .sv-timeline__name {
+    position: absolute;
+    bottom: calc(100% + 2px);
+    left: 50%;
+    transform: translateX(-50%);
+    font: 600 0.875rem/1.2 var(--font-serif);
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  .sv-timeline__ticks {
+    position: relative;
+    height: 1.35rem;
+  }
+
+  .sv-timeline__tick {
+    position: absolute;
+    top: 0.45rem;
+    transform: translateX(-50%);
+    font-size: 0.72rem;
+    color: var(--ink-3);
+    white-space: nowrap;
     font-variant-numeric: tabular-nums;
-    color: var(--ink-2);
   }
 
-  .sv-timeline__year:first-child .sv-timeline__year-head {
-    margin-top: 0.25rem;
-  }
+  .sv-timeline__tick[data-edge="start"] { transform: translateX(-0.35rem); }
+  .sv-timeline__tick[data-edge="end"] { transform: translateX(calc(-100% + 0.35rem)); }
 
-  .sv-timeline__events {
+  /* One white card per event: what happened and when. One with more to say
+     opens to its detail and source. */
+  .sv-timeline__cards {
+    container-type: inline-size;
     list-style: none;
     margin: 0;
-    padding: 0 0 0 1.4rem;
-    border-left: 1px solid var(--rule-strong);
-    margin-left: 0.45rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
   }
 
-  .sv-timeline__event {
-    position: relative;
-    padding: 0.15rem 0 0.95rem;
+  .sv-timeline__card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
+    transition: box-shadow 0.15s, border-color 0.15s;
+  }
+
+  details.sv-timeline__card > summary {
+    display: block;
+    list-style: none;
+    cursor: pointer;
+  }
+
+  details.sv-timeline__card > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details.sv-timeline__card:hover {
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.08);
+  }
+
+  details.sv-timeline__card > summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 10px;
+  }
+
+  .sv-timeline__card-head {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    align-items: baseline;
+    column-gap: 0.6rem;
+    padding: 0.55rem 0.75rem;
+  }
+
+  /* An opening card's arrow; a card with nothing more has none. */
+  details.sv-timeline__card .sv-timeline__card-head::after {
+    content: "";
+    align-self: center;
+    width: 0.4rem;
+    height: 0.4rem;
+    border-right: 1.5px solid var(--ink-3);
+    border-bottom: 1.5px solid var(--ink-3);
+    transform: rotate(-45deg);
+    transition: transform 0.15s;
+  }
+
+  details.sv-timeline__card[open] .sv-timeline__card-head::after {
+    transform: rotate(45deg);
+  }
+
+  .sv-timeline__card-marker {
+    align-self: center;
     color: var(--sv-timeline-color);
   }
 
-  .sv-timeline__event:last-child {
-    padding-bottom: 0.4rem;
-  }
-
-  /* Centred on the spine: the list is padded 1.4rem and the 12px icon's
-     centre sits half its width left of the rule. */
-  .sv-timeline__marker {
-    position: absolute;
-    left: calc(-1.4rem - 6px);
-    top: 0.35rem;
-    background: var(--paper);
-    box-shadow: 0 0 0 2px var(--paper);
-  }
-
-  .sv-timeline__event[data-significance="major"] .sv-timeline__marker {
-    width: 14px;
-    height: 14px;
-    left: calc(-1.4rem - 7px);
-    top: 0.3rem;
-  }
-
-  .sv-timeline__date {
-    margin: 0;
-    font-family: var(--font-sans);
-    font-size: 0.75rem;
-    font-variant-numeric: tabular-nums;
-    color: var(--ink-3);
-  }
-
-  .sv-timeline__category {
-    color: var(--ink-3);
-  }
-
   .sv-timeline__title {
-    margin: 0.1rem 0 0;
-    font-family: var(--font-serif);
-    font-size: 1rem;
-    line-height: 1.4;
+    font: 500 1rem/1.35 var(--font-serif);
     color: var(--ink);
     text-wrap: pretty;
   }
 
-  .sv-timeline__event[data-significance="major"] .sv-timeline__title {
-    font-weight: 600;
-    font-size: 1.0625rem;
+  .sv-timeline__item[data-significance="major"] .sv-timeline__title {
+    font-weight: 650;
   }
 
-  .sv-timeline__title a {
-    color: inherit;
-    text-decoration-color: var(--accent);
-    text-underline-offset: 0.18em;
+  .sv-timeline__date {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-3);
+    white-space: nowrap;
+  }
+
+  /* On a phone the date goes above the title, so the title has the width. */
+  @container (max-width: 30rem) {
+    .sv-timeline__card-head {
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      grid-template-areas: ". date arrow" "marker title arrow";
+      row-gap: 0.1rem;
+    }
+    .sv-timeline__card-marker { grid-area: marker; }
+    .sv-timeline__title { grid-area: title; }
+    .sv-timeline__date { grid-area: date; }
+    details.sv-timeline__card .sv-timeline__card-head::after { grid-area: arrow; }
+  }
+
+  .sv-timeline__more {
+    padding: 0 0.75rem 0.7rem calc(0.75rem + 12px + 0.6rem);
   }
 
   .sv-timeline__desc {
-    margin: 0.2rem 0 0;
+    margin: 0;
     font-family: var(--font-sans);
     font-size: 0.8125rem;
     line-height: 1.55;
@@ -153,9 +265,58 @@
     text-wrap: pretty;
   }
 
-  .sv-timeline__event .sv-chart__credit {
+  .sv-timeline__category {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--sv-timeline-color);
+  }
+
+  .sv-timeline__link {
     margin: 0.2rem 0 0;
+    font-size: 0.8125rem;
+  }
+
+  .sv-timeline__more .sv-chart__credit {
+    margin: 0.25rem 0 0;
     font-size: 0.75rem;
+  }
+
+  /* The cards an observation is about are outlined; the rest stay readable. */
+  .sv-timeline__item[data-mark-picked] .sv-timeline__card {
+    border-color: var(--ink);
+    box-shadow: 0 0 0 1px var(--ink);
+  }
+
+  /* A preview's few cards: a title of up to three lines and its date. */
+  .sv-timeline__cards[data-preview] .sv-timeline__card-head {
+    padding: 0.45rem 0.65rem;
+  }
+
+  .sv-timeline__cards[data-preview] .sv-timeline__title {
+    font-size: 0.9375rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .sv-timeline__rest {
+    margin: 0.45rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--ink-3);
+  }
+
+  .sv-timeline__notes {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--ink-2);
   }
 
   /* ----------------------------------------------------- PeriodTimeline */
@@ -730,5 +891,13 @@
 
   .sv-marker-key__swatch[data-kind="method"] {
     border-radius: 0.1rem;
+  }
+}
+
+@layer components {
+  /* In a dropdown a ticked category stays on paper (control-bar.tsx), so its
+     name keeps the ink colour rather than the inverted chip's paper. */
+  .sv-bar__pop .sv-control__chip[aria-pressed="true"] .sv-timeline__chip-text {
+    color: var(--ink);
   }
 }

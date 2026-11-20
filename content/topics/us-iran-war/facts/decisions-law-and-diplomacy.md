@@ -9,18 +9,24 @@ status: well-supported
 sources:
   # 1
   - stance: supports
-    quote: >-
-      <legis-num>H CON RES 38</legis-num> ... <vote-question>On Agreeing to the
-      Resolution</vote-question> ... <vote-result>Failed</vote-result> ...
-      <action-date>5-Mar-2026</action-date> ... <vote-desc>Directing the
-      President pursuant to section 5(c) of the War Powers Resolution to remove
-      United States Armed Forces from unauthorized hostilities in the Islamic
-      Republic of Iran</vote-desc> ...
-      <party>Republican</party><yea-total>2</yea-total><nay-total>215</nay-total><present-total>0</present-total><not-voting-total>1</not-voting-total>
-      ...
-      <party>Democratic</party><yea-total>210</yea-total><nay-total>4</nay-total><present-total>0</present-total><not-voting-total>0</not-voting-total>
-      ...
-      <total-stub>Totals</total-stub><yea-total>212</yea-total><nay-total>219</nay-total><present-total>0</present-total><not-voting-total>1</not-voting-total>
+    quote: |-
+      Roll Call 85
+      Bill Number: H. Con. Res. 38
+      Mar 05, 2026, 04:37 PM
+      119th Congress, 2nd Session
+
+      Vote Question: On Agreeing to the Resolution
+
+      Directing the President pursuant to section 5(c) of the War Powers Resolution to remove United States Armed Forces from unauthorized hostilities in the Islamic Republic of Iran
+
+      Vote Type: Yea-And-Nay
+      Status: Failed …
+
+      Party | Yeas | Nays | Present | Not Voting
+      Republican | 2 | 215 | 0 | 1
+      Democratic | 210 | 4 | 0 | 0
+      Independent | 0 | 0 | 0 | 0
+      Total | 212 | 219 | 0 | 1
     title: 'Roll Call 85, H.Con.Res.38, 5 March 2026'
     url: https://clerk.house.gov/Votes/202685
     fileUrl: https://clerk.house.gov/evs/2026/roll085.xml
@@ -29,16 +35,24 @@ sources:
     date: '2026-03-05'
   # 2
   - stance: supports
-    quote: >-
-      <legis-num>H CON RES 40</legis-num> ... <vote-result>Failed</vote-result>
-      ... <action-date>16-Apr-2026</action-date> ...
-      <party>Republican</party><yea-total>1</yea-total><nay-total>212</nay-total><present-total>1</present-total><not-voting-total>3</not-voting-total>
-      ...
-      <party>Democratic</party><yea-total>212</yea-total><nay-total>1</nay-total><present-total>0</present-total><not-voting-total>0</not-voting-total>
-      ...
-      <party>Independent</party><yea-total>0</yea-total><nay-total>1</nay-total>
-      ...
-      <total-stub>Totals</total-stub><yea-total>213</yea-total><nay-total>214</nay-total><present-total>1</present-total><not-voting-total>3</not-voting-total>
+    quote: |-
+      Roll Call 114
+      Bill Number: H. Con. Res. 40
+      Apr 16, 2026, 12:06 PM
+      119th Congress, 2nd Session
+
+      Vote Question: On Agreeing to the Resolution
+
+      Directing the President, pursuant to section 5(c) of the War Powers Resolution, to remove United States Armed Forces from hostilities with Iran
+
+      Vote Type: Yea-And-Nay
+      Status: Failed …
+
+      Party | Yeas | Nays | Present | Not Voting
+      Republican | 1 | 212 | 1 | 3
+      Democratic | 212 | 1 | 0 | 0
+      Independent | 0 | 1 | 0 | 0
+      Total | 213 | 214 | 1 | 3
     title: 'Roll Call 114, H.Con.Res.40, 16 April 2026'
     url: https://clerk.house.gov/Votes/2026114
     fileUrl: https://clerk.house.gov/evs/2026/roll114.xml
@@ -47,14 +61,24 @@ sources:
     date: '2026-04-16'
   # 3
   - stance: supports
-    quote: >-
-      <legis-num>H CON RES 75</legis-num> ... <vote-result>Failed</vote-result>
-      ... <action-date>14-May-2026</action-date> ...
-      <party>Republican</party><yea-total>3</yea-total><nay-total>210</nay-total><present-total>0</present-total><not-voting-total>4</not-voting-total>
-      ...
-      <party>Democratic</party><yea-total>209</yea-total><nay-total>1</nay-total><present-total>0</present-total><not-voting-total>2</not-voting-total>
-      ...
-      <total-stub>Totals</total-stub><yea-total>212</yea-total><nay-total>212</nay-total><present-total>0</present-total><not-voting-total>6</not-voting-total>
+    quote: |-
+      Roll Call 170
+      Bill Number: H. Con. Res. 75
+      May 14, 2026, 04:52 PM
+      119th Congress, 2nd Session
+
+      Vote Question: On Agreeing to the Resolution
+
+      Directing the President, pursuant to section 5(c) of the War Powers Resolution, to remove the United States Armed Forces from hostilities against the Islamic Republic of Iran
+
+      Vote Type: Yea-And-Nay
+      Status: Failed …
+
+      Party | Yeas | Nays | Present | Not Voting
+      Republican | 3 | 210 | 0 | 4
+      Democratic | 209 | 1 | 0 | 2
+      Independent | 0 | 1 | 0 | 0
+      Total | 212 | 212 | 0 | 6
     title: 'Roll Call 170, H.Con.Res.75, 14 May 2026'
     url: https://clerk.house.gov/Votes/2026170
     fileUrl: https://clerk.house.gov/evs/2026/roll170.xml
@@ -63,17 +87,24 @@ sources:
     date: '2026-05-14'
   # 4
   - stance: supports
-    quote: >-
-      <legis-num>H CON RES 86</legis-num> ... <vote-result>Passed</vote-result>
-      ... <action-date>3-Jun-2026</action-date> ... <vote-desc>Directing the
-      President, pursuant to section 5(c) of the War Powers Resolution, to
-      remove United States Armed Forces from hostilities with Iran</vote-desc>
-      ...
-      <party>Republican</party><yea-total>4</yea-total><nay-total>207</nay-total><present-total>0</present-total><not-voting-total>6</not-voting-total>
-      ...
-      <party>Democratic</party><yea-total>211</yea-total><nay-total>0</nay-total><present-total>0</present-total><not-voting-total>1</not-voting-total>
-      ...
-      <total-stub>Totals</total-stub><yea-total>215</yea-total><nay-total>208</nay-total><present-total>0</present-total><not-voting-total>7</not-voting-total>
+    quote: |-
+      Roll Call 199
+      Bill Number: H. Con. Res. 86
+      Jun 03, 2026, 05:16 PM
+      119th Congress, 2nd Session
+
+      Vote Question: On Agreeing to the Resolution
+
+      Directing the President, pursuant to section 5(c) of the War Powers Resolution, to remove United States Armed Forces from hostilities with Iran
+
+      Vote Type: Yea-And-Nay
+      Status: Passed …
+
+      Party | Yeas | Nays | Present | Not Voting
+      Republican | 4 | 207 | 0 | 6
+      Democratic | 211 | 0 | 0 | 1
+      Independent | 0 | 1 | 0 | 0
+      Total | 215 | 208 | 0 | 7
     title: 'Roll Call 199, H.Con.Res.86, 3 June 2026'
     url: https://clerk.house.gov/Votes/2026199
     fileUrl: https://clerk.house.gov/evs/2026/roll199.xml
@@ -82,14 +113,24 @@ sources:
     date: '2026-06-03'
   # 5
   - stance: supports
-    quote: >-
-      <legis-num>H CON RES 89</legis-num> ... <vote-result>Passed</vote-result>
-      ... <action-date>23-Jul-2026</action-date> ...
-      <party>Republican</party><yea-total>4</yea-total><nay-total>207</nay-total><present-total>0</present-total><not-voting-total>7</not-voting-total>
-      ...
-      <party>Democratic</party><yea-total>210</yea-total><nay-total>0</nay-total><present-total>0</present-total><not-voting-total>2</not-voting-total>
-      ...
-      <total-stub>Totals</total-stub><yea-total>214</yea-total><nay-total>208</nay-total><present-total>0</present-total><not-voting-total>9</not-voting-total>
+    quote: |-
+      Roll Call 282
+      Bill Number: H. Con. Res. 89
+      Jul 23, 2026, 10:24 AM
+      119th Congress, 2nd Session
+
+      Vote Question: On Agreeing to the Resolution
+
+      Directing the President, pursuant to section 5(c) of the War Powers Resolution, to remove United States Armed Forces from hostilities with Iran
+
+      Vote Type: Yea-And-Nay
+      Status: Passed …
+
+      Party | Yeas | Nays | Present | Not Voting
+      Republican | 4 | 207 | 0 | 7
+      Democratic | 210 | 0 | 0 | 2
+      Independent | 0 | 1 | 0 | 0
+      Total | 214 | 208 | 0 | 9
     title: 'Roll Call 282, H.Con.Res.89, 23 July 2026'
     url: https://clerk.house.gov/Votes/2026282
     fileUrl: https://clerk.house.gov/evs/2026/roll282.xml
@@ -98,14 +139,24 @@ sources:
     date: '2026-07-23'
   # 6
   - stance: supports
-    quote: >-
-      <legis-num>H CON RES 93</legis-num> ... <vote-result>Passed</vote-result>
-      ... <action-date>15-Sep-2026</action-date> ...
-      <party>Republican</party><yea-total>7</yea-total><nay-total>203</nay-total><present-total>0</present-total><not-voting-total>8</not-voting-total>
-      ...
-      <party>Democratic</party><yea-total>213</yea-total><nay-total>0</nay-total><present-total>0</present-total><not-voting-total>1</not-voting-total>
-      ...
-      <total-stub>Totals</total-stub><yea-total>220</yea-total><nay-total>204</nay-total><present-total>0</present-total><not-voting-total>9</not-voting-total>
+    quote: |-
+      Roll Call 307
+      Bill Number: H. Con. Res. 93
+      Sep 15, 2026, 10:32 PM
+      119th Congress, 2nd Session
+
+      Vote Question: On Agreeing to the Resolution
+
+      Directing the President, pursuant to section 5(c) of the War Powers Resolution, to remove United States Armed Forces from hostilities with Iran
+
+      Vote Type: Yea-And-Nay
+      Status: Passed …
+
+      Party | Yeas | Nays | Present | Not Voting
+      Republican | 7 | 203 | 0 | 8
+      Democratic | 213 | 0 | 0 | 1
+      Independent | 0 | 1 | 0 | 0
+      Total | 220 | 204 | 0 | 9
     title: 'Roll Call 307, H.Con.Res.93, 15 September 2026'
     url: https://clerk.house.gov/Votes/2026307
     fileUrl: https://clerk.house.gov/evs/2026/roll307.xml
@@ -114,27 +165,22 @@ sources:
     date: '2026-09-15'
   # 7
   - stance: supports
-    quote: >-
-      00244 24-Sep H.Con.Res. 89 On the Concurrent Resolution Rejected 49 50 H.
-      Con. Res. 89; A concurrent resolution directing the President, pursuant to
-      section 5(c) of the War Powers Resolution, to remove United States Armed
-      Forces from hostilities with Iran. ... 00216 30-Jul S.J.Res. 181 On the
-      Motion to Discharge Rejected 49 50 ... 00207 23-Jul S.J.Res. 180 On the
-      Motion to Discharge Rejected 47 49 ... 00192 24-Jun S.J.Res. 185 On the
-      Motion to Proceed Rejected 47 50 ... 00184 23-Jun H.Con.Res. 86 On the
-      Concurrent Resolution Agreed to 50 48 ... 00174 16-Jun S.J.Res. 172 On the
-      Motion to Discharge Rejected 47 48 ... 00129 19-May S.J.Res. 185 On the
-      Motion to Discharge Agreed to 50 47 ... 00118 13-May S.J.Res. 163 On the
-      Motion to Discharge Rejected 49 50 ... 00113 30-Apr S.J.Res. 184 On the
-      Motion to Discharge Rejected 47 50 ... 00088 22-Apr S.J.Res. 114 On the
-      Motion to Discharge Rejected 46 51 ... 00079 15-Apr S.J.Res. 123 On the
-      Motion to Discharge Rejected 47 52 ... 00069 24-Mar S.J.Res. 116 On the
-      Motion to Discharge Rejected 47 53 ... 00058 18-Mar S.J.Res. 118 On the
-      Motion to Discharge Rejected 47 53 ... 00046 04-Mar S.J.Res. 104 On the
-      Motion to Discharge Rejected 47 53 Motion to Discharge S.J. Res. 104; A
-      joint resolution to direct the removal of United States Armed Forces from
-      hostilities within or against the Islamic Republic of Iran that have not
-      been authorized by Congress.
+    quote: |-
+      Vote (Tally) | Result | Question: Description | Issue | Date
+      244 (49-50) | Rejected | On the Concurrent Resolution: H. Con. Res. 89; A concurrent resolution directing the President, pursuant to section 5(c) of the War Powers Resolution, to remove United States Armed Forces from hostilities with Iran. | H.Con.Res. 89 | Sep 24
+      216 (49-50) | Rejected | On the Motion to Discharge: Motion to Discharge S.J. Res. 181; A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress. | S.J.Res. 181 | Jul 30
+      207 (47-49) | Rejected | On the Motion to Discharge: Motion to Discharge S.J.Res. 180 from the Committee on Foreign Relations; A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress. | S.J.Res. 180 | Jul 23
+      192 (47-50) | Rejected | On the Motion to Proceed: Motion to Proceed to S. J. Res. 185; A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress. | S.J.Res. 185 | Jun 24
+      184 (50-48) | Agreed to | On the Concurrent Resolution: H. Con. Res. 86; A concurrent resolution directing the President, pursuant to section 5(c) of the War Powers Resolution, to remove United States Armed Forces from hostilities with Iran. | H.Con.Res. 86 | Jun 23
+      174 (47-48) | Rejected | On the Motion to Discharge: Motion to Discharge S.J.Res. 172; A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress. | S.J.Res. 172 | Jun 16
+      129 (50-47) | Agreed to | On the Motion to Discharge: Motion to Discharge S.J.Res. 185; A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress. | S.J.Res. 185 | May 19
+      118 (49-50) | Rejected | On the Motion to Discharge: Motion to Discharge S. J. Res. 163; A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress. | S.J.Res. 163 | May 13
+      113 (47-50) | Rejected | On the Motion to Discharge: Motion to Discharge: S J. Res. 184 from the Committee on Foreign Relations; A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress. | S.J.Res. 184 | Apr 30
+      88 (46-51) | Rejected | On the Motion to Discharge: Motion to Discharge S.J.Res. 114; A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress. | S.J.Res. 114 | Apr 22
+      79 (47-52) | Rejected | On the Motion to Discharge: Motion to Discharge: S. J. Res. 123; A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress. | S.J.Res. 123 | Apr 15
+      69 (47-53) | Rejected | On the Motion to Discharge: Motion to Discharge: S.J. Res. 116 from the Committee on Foreign Relations; A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress. | S.J.Res. 116 | Mar 24
+      58 (47-53) | Rejected | On the Motion to Discharge: Motion to Discharge S.J.Res. 118; A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress. | S.J.Res. 118 | Mar 18
+      46 (47-53) | Rejected | On the Motion to Discharge: Motion to Discharge S.J. Res. 104; A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress. | S.J.Res. 104 | Mar 04
     title: 'Senate Roll Call Votes, 119th Congress, 2nd Session (vote menu, as of 10 October 2026)'
     url: https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_2.htm
     fileUrl: https://web.archive.org/web/20261010195728id_/https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_2.xml
@@ -143,9 +189,25 @@ sources:
     date: '2026-10-10'
   # 8
   - stance: supports
-    quote: >-
-      Concurrent Resolution Agreed to (50-48) ... Collins (R-ME) Collins Susan R
-      ME Yea
+    quote: |-
+      Question: On the Concurrent Resolution (H. Con. Res. 86)
+      Vote Number: 184
+      Vote Date: June 23, 2026, 03:01 PM
+      Required For Majority: 1/2
+      Vote Result: Concurrent Resolution Agreed to
+
+      YEAs | NAYs | Not Voting
+      50 | 48 | 2
+
+      Alphabetical by Senator Name …
+      - Cassidy (R-LA), Yea
+      - Collins (R-ME), Yea
+      - …
+      - Fetterman (D-PA), Nay
+      - …
+      - Murkowski (R-AK), Yea
+      - …
+      - Paul (R-KY), Yea
     title: 'Roll Call Vote 184, 119th Congress, 2nd Session: H.Con.Res.86'
     url: https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00184.htm
     fileUrl: https://web.archive.org/web/2026id_/https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00184.xml
@@ -154,54 +216,39 @@ sources:
     date: '2026-06-23'
   # 9
   - stance: supports
-    quote: >-
-      Analysis and Commentary Oct. 26, 2026: What Comes After the Election? ...
-      On the Nomination PN1129: Keith Sonderling, of Florida, to be Secretary of
-      Labor Senate Vote Nomination #256 Confirmed 47/41 Sept. 30, 2026 ...
-      H.Con.Res. 89: Directing the President, pursuant to section 5(c) of the
-      War Powers Resolution, to remove United States Armed Forces from
-      hostilities with Iran. Senate Vote Concurrent #244 Resolution Sept. 24,
-      Rejected 49/50
+    quote: |-
+      On the Nomination PN1129: Keith Sonderling, of Florida, to be Secretary of Labor Senate Vote Nomination #256 Confirmed 47/41 Sept. 30, 2026 ...
+      H.Con.Res. 89: Directing the President, pursuant to section 5(c) of the War Powers Resolution, to remove United States Armed Forces from hostilities with Iran. Senate Vote Concurrent #244 Resolution Sept. 24, Rejected 49/50
     title: 'Congressional Votes Database'
     url: https://www.govtrack.us/congress/votes
     publisher: GovTrack.us
     date: '2026-10'
   # 10
   - stance: supports
-    quote: >-
-      this past Friday, May 1, President Trump argued that the administration had
-      already complied with the War Powers Resolution’s 60-day cut-off. “There
-      has been no exchange of fire between United States Forces and Iran since
-      April 7, 2026,” the letter asserted ... Hence, in the Trump
-      administration’s view, “[t]he hostilities that began on February 28,
-      2026”—the day when Operation Epic Fury against Iran began—”have
-      terminated[,]” ... the May 1 letter also notes that “the threat posed by
-      Iran to the United States and our Armed Forces remains significant[.]” ...
-      If the administration viewed the blockade that began on April 13 ... While
-      Section 5(c) of the War Powers Resolution initially gave Congress the
-      power to compel the president to remove U.S. armed forces from ongoing
-      hostilities through a concurrent resolution, the Supreme Court’s
-      subsequent decision in INS v. Chadha brought such arrangements into
-      serious constitutional doubt. And while joint resolutions avoid Chadha
-      concerns, they only do so because they are subject to a presidential
-      veto. ... voiced frustration with the Trump administration’s refusal to
-      seek congressional authorization before the 60-day mark
+    quote: |-
+      this past Friday, May 1, President Trump argued that the administration had already complied with the War Powers Resolution’s 60-day cut-off. “There has been no exchange of fire between United States Forces and Iran since April 7, 2026,” the letter asserted ...
+
+      Hence, in the Trump administration’s view, “[t]he hostilities that began on February 28, 2026”—the day when Operation Epic Fury against Iran began—”have terminated[,]” ...
+
+      the May 1 letter also notes that “the threat posed by Iran to the United States and our Armed Forces remains significant[.]” ...
+
+      If the administration viewed the blockade that began on April 13 ...
+
+      While Section 5(c) of the War Powers Resolution initially gave Congress the power to compel the president to remove U.S. armed forces from ongoing hostilities through a concurrent resolution, the Supreme Court’s subsequent decision in INS v. Chadha brought such arrangements into serious constitutional doubt. And while joint resolutions avoid Chadha concerns, they only do so because they are subject to a presidential veto. ...
+
+      Already, Sen. Susan Collins (R-Maine) has switched positions to become the second Republican (alongside Sen. Rand Paul (R-Kentucky) to support S.J. Res. 184 on its most recent vote, on the explicit grounds that the Trump administration’s violation of the 60-day cut-off made the ongoing use of military force unlawful. Several other Republican senators have voiced frustration with the Trump administration’s refusal to seek congressional authorization before the 60-day mark
     title: 'Law and the Iran War: After the First 60 Days'
     url: https://www.lawfaremedia.org/article/law-and-the-iran-war--after-the-first-60-days
     publisher: Lawfare
     date: '2026-05-08'
   # 11
   - stance: supports
-    quote: >-
-      From 1975 through March 2017, Presidents have submitted 168 reports as the
-      result of the War Powers Resolution, but only one, the 1975 Mayaguez
-      seizure, cited Section 4(a)(1), which triggers the 60-day withdrawal
-      requirement ... Section 5(c) requires the President to remove the forces
-      at any time if Congress so directs by concurrent resolution; the
-      effectiveness of this subsection is uncertain because of the 1983 Supreme
-      Court decision on the legislative veto. ... A concurrent resolution is
-      adopted by both chambers, but it does not require presentment to the
-      President for signature or veto.
+    quote: |-
+      From 1975 through March 2017, Presidents have submitted 168 reports as the result of the War Powers Resolution, but only one, the 1975 Mayaguez seizure, cited Section 4(a)(1), which triggers the 60-day withdrawal requirement, and in this case the military action was completed and U.S. Armed Forces had disengaged from the area of conflict when the report was made. The reports submitted by the President since enactment of the War Powers Resolution cover a range of military activities, from embassy evacuations to full-scale combat military operations, such as the Persian Gulf conflict, and the 2003 war with Iraq, the intervention in Kosovo, and the anti-terrorism actions in Afghanistan. ...
+
+      Section 5(c) requires the President to remove the forces at any time if Congress so directs by concurrent resolution; the effectiveness of this subsection is uncertain because of the 1983 Supreme Court decision on the legislative veto. ...
+
+      A concurrent resolution is adopted by both chambers, but it does not require presentment to the President for signature or veto.
     title: 'The War Powers Resolution: Concepts and Practice (R42699)'
     url: https://www.everycrsreport.com/reports/R42699.html
     publisher: Congressional Research Service
@@ -229,38 +276,28 @@ sources:
     date: '2026-05-04'
   # 14
   - stance: supports
-    quote: >-
-      I write today to apprise you of military action commenced on June 9, 2026,
-      at my direction against the Government of the Islamic Republic of Iran.
-      ... As previously communicated to the Congress, I ordered a 2-week
-      ceasefire on April 7, 2026. The ceasefire was then extended. ... On June
-      8, 2026, despite these good-faith diplomatic efforts and the ongoing
-      ceasefire, Iran engaged a United States Army AH-64 Apache helicopter,
-      forcing its crash landing. In response, at my direction, on June 9, 2026,
-      United States Armed Forces commenced precision strikes against numerous
-      targets within Iran ... I acted pursuant to my constitutional authority as
-      Commander in Chief and as Chief Executive to conduct United States foreign
-      relations.
+    quote: |-
+      I write today to apprise you of military action commenced on June 9, 2026, at my direction against the Government of the Islamic Republic of Iran.
+
+      I separately notified you of changes in the posture of United States Armed Forces in the Middle East in response to threats from Iran, including most recently in the bi-annual periodic update signed on June 11, 2026, consistent with the War Powers Resolution (Public Law 93-148).
+
+      As previously communicated to the Congress, I ordered a 2-week ceasefire on April 7, 2026. The ceasefire was then extended. ...
+
+      On June 8, 2026, despite these good-faith diplomatic efforts and the ongoing ceasefire, Iran engaged a United States Army AH-64 Apache helicopter, forcing its crash landing. In response, at my direction, on June 9, 2026, United States Armed Forces commenced precision strikes against numerous targets within Iran ...
+
+      I acted pursuant to my constitutional authority as Commander in Chief and as Chief Executive to conduct United States foreign relations.
     title: 'Letter Informing Congress of Military Action Commenced on June 9, 2026 (House Document 119-162)'
     url: https://www.govinfo.gov/content/pkg/CDOC-119hdoc162/html/CDOC-119hdoc162.htm
     publisher: The White House (US Government Publishing Office)
     date: '2026-06-12'
   # 15
   - stance: supports
-    quote: >-
-      I write today to apprise you of military actions taken at my direction
-      against the Government of the Islamic Republic of Iran on June 26 and June
-      28, 2026. ... These efforts led to my signing a Memorandum of
-      Understanding (MOU) with the Government of the Islamic Republic of Iran on
-      June 17, 2026. The MOU requires the Government of the Islamic Republic of
-      Iran to make arrangements using its best efforts for the safe passage of
-      commercial vessels . . . from the Persian Gulf to the Sea of Oman. Despite
-      this commitment, Iran attacked a neutral-flagged commercial vessel
-      transiting the Strait of Hormuz on June 25, 2026. At my direction, United
-      States Armed Forces responded on June 26, 2026, with defensive strikes
-      ... Following another Iranian attack against a neutral-flagged commercial
-      vessel on June 27, 2026, United States Armed Forces responded at my
-      direction on June 28, 2026, with precision strikes
+    quote: |-
+      I write today to apprise you of military actions taken at my direction against the Government of the Islamic Republic of Iran on June 26 and June 28, 2026. ...
+
+      These efforts led to my signing a Memorandum of Understanding (MOU) with the Government of the Islamic Republic of Iran on June 17, 2026. The MOU requires the Government of the Islamic Republic of Iran to make arrangements using its best efforts for the safe passage of commercial vessels . . . from the Persian Gulf to the Sea of Oman. Despite this commitment, Iran attacked a neutral-flagged commercial vessel transiting the Strait of Hormuz on June 25, 2026. At my direction, United States Armed Forces responded on June 26, 2026, with defensive strikes against targets within Iran including unmanned aerial vehicle launch sites, missile storage facilities, and command and control capabilities.
+
+      Following another Iranian attack against a neutral-flagged commercial vessel on June 27, 2026, United States Armed Forces responded at my direction on June 28, 2026, with precision strikes
     title: 'Letter Informing Congress of Military Actions Taken on June 26 and June 28, 2026 (House Document 119-167)'
     url: https://www.govinfo.gov/content/pkg/CDOC-119hdoc167/html/CDOC-119hdoc167.htm
     publisher: The White House (US Government Publishing Office)
@@ -269,7 +306,7 @@ sources:
   - stance: supports
     quote: >-
       I write to apprise you of military action commenced on July 7, 2026,
-      against the Government of the Islamic Republic of Iran. ... Despite this
+      against the Government of the Islamic Republic of Iran. I previously notified you of changes in the global posture of United States Armed Forces in the Middle East in response to threats from Iran, including most recently in the biannual periodic update signed on June 11, 2026, as well as in both the June 12, 2026 and June 29, 2026 updates on military action commenced on June 9, 2026; June 26, 2026; and June 28, 2026, all consistent with the War Powers Resolution (Public Law 93-148). ... Despite this
       commitment, Iran again attacked several neutral-flagged commercial vessels
       transiting the Strait of Hormuz between July 6-7, 2026. At my direction,
       United States Armed Forces responded, commencing on July 7, 2026, with
@@ -290,17 +327,10 @@ sources:
     date: '2026-08-03'
   # 18
   - stance: supports
-    quote: >-
-      I write today to apprise you of military action commenced on September 1,
-      2026, against the Islamic Republic of Iran. At my direction, United States
-      Armed Forces responded to Iran's late August 2026 attacks against United
-      States Armed Forces with defensive strikes against targets within Iran and
-      Iranian territorial waters including ... oil tankers belonging to the
-      National Iranian Oil Company ... I acted pursuant to my constitutional
-      authority as Commander in Chief and as Chief Executive to conduct United
-      States foreign relations. I am providing this report as part of my efforts
-      to keep the Congress fully informed, consistent with the War Powers
-      Resolution (Public Law 93-148).
+    quote: |-
+      I write today to apprise you of military action commenced on September 1, 2026, against the Islamic Republic of Iran. At my direction, United States Armed Forces responded to Iran's late August 2026 attacks against United States Armed Forces with defensive strikes against targets within Iran and Iranian territorial waters including ... oil tankers belonging to the National Iranian Oil Company ...
+
+      I acted pursuant to my constitutional authority as Commander in Chief and as Chief Executive to conduct United States foreign relations. I am providing this report as part of my efforts to keep the Congress fully informed, consistent with the War Powers Resolution (Public Law 93-148).
     title: 'Letter Informing Congress of Military Action Commenced on September 1, 2026 (House Document 119-193)'
     url: https://www.govinfo.gov/content/pkg/CDOC-119hdoc193/html/CDOC-119hdoc193.htm
     publisher: The White House (US Government Publishing Office)
@@ -321,12 +351,24 @@ sources:
     date: '2023-06-07'
   # 20
   - stance: complicates
-    quote: >-
-      <legis-num>H J RES 68</legis-num> <vote-question>On Passage</vote-question>
-      <vote-result>Failed</vote-result> <action-date>24-Jun-2011</action-date>
-      <vote-desc>Authorizing the limited use of the United States Armed Forces
-      in support of the NATO mission in Libya</vote-desc> ...
-      <total-stub>Totals</total-stub><yea-total>123</yea-total><nay-total>295</nay-total>
+    quote: |-
+      Roll Call 493
+      Bill Number: H. J. Res. 68
+      Jun 24, 2011, 12:16 PM
+      112th Congress, 1st Session
+
+      Vote Question: On Passage
+
+      Authorizing the limited use of the United States Armed Forces in support of the NATO mission in Libya
+
+      Vote Type: Recorded Vote
+      Status: Failed …
+
+      Party | Ayes | Noes | Present | Not Voting
+      Republican | 8 | 225 | 0 | 6
+      Democratic | 115 | 70 | 0 | 7
+      Independent | 0 | 0 | 0 | 0
+      Total | 123 | 295 | 0 | 13
     title: 'Roll Call 493, H.J.Res.68, 24 June 2011'
     url: https://clerk.house.gov/Votes/2011493
     fileUrl: https://clerk.house.gov/evs/2011/roll493.xml
@@ -335,14 +377,24 @@ sources:
     date: '2011-06-24'
   # 21
   - stance: complicates
-    quote: >-
-      <legis-num>H R 2278</legis-num> <vote-question>On Passage</vote-question>
-      <vote-result>Failed</vote-result> <action-date>24-Jun-2011</action-date>
-      <vote-desc>To limit the use of funds appropriated to the Department of
-      Defense for United States Armed Forces in support of North Atlantic Treaty
-      Organization Operation Unified Protector with respect to Libya, unless
-      otherwise specifically authorized by law</vote-desc> ...
-      <total-stub>Totals</total-stub><yea-total>180</yea-total><nay-total>238</nay-total>
+    quote: |-
+      Roll Call 494
+      Bill Number: H. R. 2278
+      Jun 24, 2011, 02:00 PM
+      112th Congress, 1st Session
+
+      Vote Question: On Passage
+
+      To limit the use of funds appropriated to the Department of Defense for United States Armed Forces in support of North Atlantic Treaty Organization Operation Unified Protector with respect to Libya, unless otherwise specifically authorized by law
+
+      Vote Type: Recorded Vote
+      Status: Failed …
+
+      Party | Ayes | Noes | Present | Not Voting
+      Republican | 144 | 89 | 0 | 6
+      Democratic | 36 | 149 | 0 | 7
+      Independent | 0 | 0 | 0 | 0
+      Total | 180 | 238 | 0 | 13
     title: 'Roll Call 494, H.R.2278, 24 June 2011'
     url: https://clerk.house.gov/Votes/2011494
     fileUrl: https://clerk.house.gov/evs/2011/roll494.xml
@@ -351,13 +403,24 @@ sources:
     date: '2011-06-24'
   # 22
   - stance: complicates
-    quote: >-
-      <legis-num>S J RES 7</legis-num> <vote-question>On Passage</vote-question>
-      <vote-result>Passed</vote-result> <action-date>4-Apr-2019</action-date>
-      <vote-desc>To direct the removal of the United States Armed Forces from
-      hostilities in the Republic of Yemen that have not been authorized by
-      Congress</vote-desc> ...
-      <total-stub>Totals</total-stub><yea-total>247</yea-total><nay-total>175</nay-total><present-total>1</present-total>
+    quote: |-
+      Roll Call 153
+      Bill Number: S. J. Res. 7
+      Apr 04, 2019, 11:45 AM
+      116th Congress, 1st Session
+
+      Vote Question: On Passage
+
+      To direct the removal of the United States Armed Forces from hostilities in the Republic of Yemen that have not been authorized by Congress
+
+      Vote Type: Recorded Vote
+      Status: Passed …
+
+      Party | Ayes | Noes | Present | Not Voting
+      Democratic | 231 | 0 | 0 | 4
+      Republican | 16 | 175 | 1 | 5
+      Independent | 0 | 0 | 0 | 0
+      Total | 247 | 175 | 1 | 9
     title: 'Roll Call 153, S.J.Res.7, 4 April 2019'
     url: https://clerk.house.gov/Votes/2019153
     fileUrl: https://clerk.house.gov/evs/2019/roll153.xml
@@ -366,13 +429,10 @@ sources:
     date: '2019-04-04'
   # 23
   - stance: complicates
-    quote: >-
-      00094 02-May S.J.Res. 7 On Overriding the Veto Veto Sustained 53 45 Shall
-      the Joint Resolution S.J. Res. 7 Pass, the Objections of the President of
-      the United States Notwithstanding; A joint resolution to direct the
-      removal of United States Armed Forces from hostilities in the Republic of
-      Yemen that have not been authorized by Congress. ... 00048 13-Mar S.J.Res.
-      7 On the Joint Resolution Passed 54 46
+    quote: |-
+      Vote (Tally) | Result | Question: Description | Issue | Date
+      94 (53-45) | Veto Sustained | On Overriding the Veto: Shall the Joint Resolution S.J. Res. 7 Pass, the Objections of the President of the United States Notwithstanding; A joint resolution to direct the removal of United States Armed Forces from hostilities in the Republic of Yemen that have not been authorized by Congress. | S.J.Res. 7 | May 02
+      48 (54-46) | Passed | On the Joint Resolution: S.J.Res. 7 As Amended; A joint resolution to direct the removal of United States Armed Forces from hostilities in the Republic of Yemen that have not been authorized by Congress. | S.J.Res. 7 | Mar 13
     title: 'Senate Roll Call Votes, 116th Congress, 1st Session (vote menu)'
     url: https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_116_1.htm
     fileUrl: https://web.archive.org/web/2026id_/https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_116_1.xml
@@ -381,13 +441,24 @@ sources:
     date: '2019'
   # 24
   - stance: complicates
-    quote: >-
-      <legis-num>S J RES 68</legis-num> <vote-question>On Passage</vote-question>
-      <vote-result>Passed</vote-result> <action-date>11-Mar-2020</action-date>
-      <vote-desc>To direct the removal of United States Armed Forces from
-      hostilities against the Islamic Republic of Iran that have not been
-      authorized by Congress</vote-desc> ...
-      <total-stub>Totals</total-stub><yea-total>227</yea-total><nay-total>186</nay-total>
+    quote: |-
+      Roll Call 101
+      Bill Number: S. J. Res. 68
+      Mar 11, 2020, 05:42 PM
+      116th Congress, 2nd Session
+
+      Vote Question: On Passage
+
+      To direct the removal of United States Armed Forces from hostilities against the Islamic Republic of Iran that have not been authorized by Congress
+
+      Vote Type: Recorded Vote
+      Status: Passed …
+
+      Party | Ayes | Noes | Present | Not Voting
+      Democratic | 220 | 6 | 0 | 5
+      Republican | 6 | 180 | 0 | 11
+      Independent | 1 | 0 | 0 | 0
+      Total | 227 | 186 | 0 | 16
     title: 'Roll Call 101, S.J.Res.68, 11 March 2020'
     url: https://clerk.house.gov/Votes/2020101
     fileUrl: https://clerk.house.gov/evs/2020/roll101.xml
@@ -396,13 +467,10 @@ sources:
     date: '2020-03-11'
   # 25
   - stance: complicates
-    quote: >-
-      00084 07-May S.J.Res. 68 On Overriding the Veto Veto Sustained 49 44 Shall
-      the Joint Resolution S.J. Res. 68 Pass, the Objections of the President of
-      the United States to the Contrary Notwithstanding?; A joint resolution to
-      direct the removal of United States Armed Forces from hostilities against
-      the Islamic Republic of Iran that have not been authorized by Congress.
-      ... 00052 13-Feb S.J.Res. 68 On the Joint Resolution Passed 55 45
+    quote: |-
+      Vote (Tally) | Result | Question: Description | Issue | Date
+      84 (49-44) | Veto Sustained | On Overriding the Veto: Shall the Joint Resolution S.J. Res. 68 Pass, the Objections of the President of the United States to the Contrary Notwithstanding?; A joint resolution to direct the removal of United States Armed Forces from hostilities against the Islamic Republic of Iran that have not been authorized by Congress. | S.J.Res. 68 | May 07
+      52 (55-45) | Passed | On the Joint Resolution: S.J. Res. 68 As Amended; A joint resolution to direct the removal of United States Armed Forces from hostilities against the Islamic Republic of Iran that have not been authorized by Congress. | S.J.Res. 68 | Feb 13
     title: 'Senate Roll Call Votes, 116th Congress, 2nd Session (vote menu)'
     url: https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_116_2.htm
     fileUrl: https://web.archive.org/web/2026id_/https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_116_2.xml
@@ -423,7 +491,7 @@ sources:
   - stance: supports
     quote: >-
       Kriner expertly demonstrates the full extent to which Congress materially
-      shapes the initiation, scope, and duration of major military actions ...
+      shapes the initiation, scope, and duration of major military actions and sheds new light on the timely issue of interbranch relations. ...
       He shows how the balance of party power in the legislature trumps
       conventional strategic variables in explaining the duration of U.S.
       military conflicts.
@@ -433,17 +501,20 @@ sources:
     date: '2010'
   # 28
   - stance: supports
-    quote: >-
-      Around two-thirds of Americans (65%) disapprove of the way President
-      Donald Trump is handling the U.S. military action in Iran, while a third
-      (33%) approve ... Evaluations of the initial decision to use force are
-      similar: 34% now view this as the right decision – down 4 percentage
-      points from March. ... Today, 33% of adults say they approve of how Trump
-      is handling the U.S. military action against Iran – down from 37% in
-      March. This decline has come entirely from Republicans: At the start of
-      the conflict, 69% approved of his handling of the conflict. Today, 63% do.
-      Democrats’ views are unchanged. ... Today, 65% of Republicans say the
-      decision to use force in Iran was the right one – down from 71% in March.
+    quote: |-
+      Around two-thirds of Americans (65%) disapprove of the way President Donald Trump is handling the U.S. military action in Iran, while a third (33%) approve, according to a new Pew Research Center survey. ...
+
+      The conflict has been unpopular with the American public from the start. But it has grown more so over time: In March, shortly after it began, 61% disapproved of Trump’s handling of the conflict while 37% approved.
+
+      Evaluations of the initial decision to use force are similar: 34% now view this as the right decision – down 4 percentage points from March.
+
+      On both measures, Republicans and Republican-leaning independents have grown more negative about the conflict. ...
+
+      Today, 33% of adults say they approve of how Trump is handling the U.S. military action against Iran – down from 37% in March. This decline has come entirely from Republicans: At the start of the conflict, 69% approved of his handling of the conflict. Today, 63% do. Democrats’ views are unchanged.
+
+      There is a similar pattern in views of the initial decision to use for in Iran.
+
+      Today, 65% of Republicans say the decision to use force in Iran was the right one – down from 71% in March.
     title: 'Iran conflict remains deeply unpopular, as many Americans expect it to go on for months'
     url: https://www.pewresearch.org/short-reads/2026/10/08/iran-conflict-remains-deeply-unpopular-as-many-americans-expect-it-to-go-on-for-months/
     publisher: Pew Research Center
@@ -464,30 +535,43 @@ sources:
     date: '2026-03-25'
   # 30
   - stance: supports
-    quote: >-
-      Results are based on telephone interviews conducted June 1-15, 2026, with
-      a random sample of –1,001—adults ... QN24: Do you approve or disapprove of
-      this U.S. military action against Iran? ... Total ... Republican
-      Independent Democrat ... Approve 34% ... 79% 26% 8% ... Disapprove 63% ...
-      19% 68% 90% ... (DK)/(Refused) 4% ... 2% 6% 2%
+    quote: |-
+      Results are based on telephone interviews conducted June 1-15, 2026, with a random sample of –1,001—adults, ages 18+, living in all 50 U.S. states and the District of Columbia. …
+
+      QN24: Do you approve or disapprove of this U.S. military action against Iran? BY Total + Gender + Race I + Age + Education + Party I.D. + Household Income …
+
+      | Total | Republican | Independent | Democrat
+      Approve | 34% | 79% | 26% | 8%
+      Disapprove | 63% | 19% | 68% | 90%
+      (DK)/(Refused) | 4% | 2% | 6% | 2%
     title: 'Gallup News Service, June Wave 1, Final Topline (June 1–15, 2026)'
     url: https://news.gallup.com/file/poll/711863/2026_Iran_PDF.pdf
     publisher: Gallup
     date: '2026-06'
   # 31
   - stance: supports
-    quote: >-
-      Fifty-three percent of voters oppose the U.S. military action against
-      Iran, while 40 percent support it. Democrats (89 – 7 percent) and
-      independents (60 – 31 percent) oppose the U.S. military action against
-      Iran, while Republicans (85 – 11 percent) support it. ... 10. Do you
-      support or oppose the U.S. military action against Iran? ... Tot Rep Dem
-      Ind ... Support 40% 85% 7% 31% ... Oppose 53 11 89 60 ... DK/NA 7 5 4 9
-      ... 15. Do you think President Trump should have received approval from
-      Congress before taking military action against Iran, or not? ... Tot Rep
-      Dem Ind ... Yes/Should have 59% 22% 92% 64% ... No 38 76 5 33 ... DK/NA 3
-      2 3 3 ... 1,002 self-identified registered voters nationwide were surveyed
-      from March 6th – 8th
+    quote: |-
+      Fifty-three percent of voters oppose the U.S. military action against Iran, while 40 percent support it. Democrats (89 – 7 percent) and independents (60 – 31 percent) oppose the U.S. military action against Iran, while Republicans (85 – 11 percent) support it. …
+
+      1,002 self-identified registered voters nationwide were surveyed from March 6th – 8th with a margin of error of +/- 3.8 percentage points, including the design effect. …
+
+      10. Do you support or oppose the U.S. military action against Iran?
+
+      REGISTERED VOTERS
+
+      | Tot | Rep | Dem | Ind | Men | Wom
+      Support | 40% | 85% | 7% | 31% | 52% | 30%
+      Oppose | 53 | 11 | 89 | 60 | 43 | 63
+      DK/NA | 7 | 5 | 4 | 9 | 6 | 8
+
+      15. Do you think President Trump should have received approval from Congress before taking military action against Iran, or not?
+
+      REGISTERED VOTERS
+
+      | Tot | Rep | Dem | Ind | Men | Wom
+      Yes/Should have | 59% | 22% | 92% | 64% | 50% | 68%
+      No | 38 | 76 | 5 | 33 | 47 | 29
+      DK/NA | 3 | 2 | 3 | 3 | 3 | 3
     title: 'Quinnipiac University National Poll, released March 9, 2026'
     url: https://poll.qu.edu/images/polling/us/us03092026_upip88.pdf
     publisher: Quinnipiac University Poll
@@ -507,25 +591,22 @@ sources:
   # 33
   - stance: supports
     quote: >-
-      They said: 'He will start a war.' I'm not going to start a war. I'm going
-      to stop wars.
+      You know, we had no war — four years, we had no wars, except we defeated
+      ISIS. We defeated ISIS in record time, but we had no wars. They said: 'He
+      will start a war.' I'm not going to start a war. I'm going to stop wars.
+      But this is also a massive victory for democracy and for freedom.
     title: 'Remarks Accepting Election as the 47th President of the United States in Palm Beach, Florida'
     url: https://www.presidency.ucsb.edu/documents/remarks-accepting-election-the-47th-president-the-united-states-palm-beach-florida
     publisher: The American Presidency Project (UC Santa Barbara)
     date: '2024-11-06'
   # 34
   - stance: supports
-    quote: >-
-      The US-Iran ceasefire has effectively ended with relatively more intense
-      and consistent exchanges of fire in the Persian Gulf. The Islamic
-      Revolutionary Guards Corps (IRGC) Navy announced on July 11 that it closed
-      the strait, struck a Cyprus-flagged vessel, and then struck a second
-      unspecified vessel on July 12. The United States struck dozens of Iranian
-      military targets on July 12 to degrade Iran’s ability to threaten
-      shipping. ... Iran has continuously made efforts to reconstitute its
-      ballistic missile and drone programs since the ceasefire on April 8. ...
-      The United States will resume its blockade of Iranian ports beginning on
-      July 14 at 4:00 PM ET.
+    quote: |-
+      The US-Iran ceasefire has effectively ended with relatively more intense and consistent exchanges of fire in the Persian Gulf. The Islamic Revolutionary Guards Corps (IRGC) Navy announced on July 11 that it closed the strait, struck a Cyprus-flagged vessel, and then struck a second unspecified vessel on July 12. The United States struck dozens of Iranian military targets on July 12 to degrade Iran’s ability to threaten shipping. ...
+
+      This is a new phase in the war, and both sides have had time to internalize lessons and reconstitute after the initial round of conflict. Iran has continuously made efforts to reconstitute its ballistic missile and drone programs since the ceasefire on April 8. The United States has presumably also had time to undertake reconstitution tasks and apply lessons learned. ...
+
+      The United States will resume its blockade of Iranian ports beginning on July 14 at 4:00 PM ET.
     title: 'Iran Update Special Report, July 13, 2026'
     url: https://www.criticalthreats.org/analysis/iran-update-special-report-july-13-2026
     publisher: Institute for the Study of War and AEI's Critical Threats Project
@@ -548,8 +629,8 @@ sources:
     quote: >-
       We did not participate in these strikes, but are in close contact with our
       international partners, including the United States, Israel, and partners
-      in the region. ... We condemn Iranian attacks on countries in the region
-      in the strongest terms. … Ultimately, the Iranian people must be allowed
+      in the region. We reiterate our commitment to regional stability and to the protection of civilian life. We condemn Iranian attacks on countries in the region
+      in the strongest terms. Iran must refrain from indiscriminate military strikes. … Ultimately, the Iranian people must be allowed
       to determine their future.
     title: 'Joint E3 leaders’ statement on Iran: 28 February 2026'
     url: https://www.gov.uk/government/news/joint-e3-leaders-statement-on-iran-28-february-2026
@@ -570,7 +651,7 @@ sources:
     quote: >-
       The Director General was in attendance at the indirect negotiations
       between the United States of America and Iran that took place on 17 and
-      26 February 2026 in Geneva ... On 28 February 2026, the United States of
+      26 February 2026 in Geneva, in which he provided advice on issues relevant to the verification of Iran’s nuclear programme. On 28 February 2026, the United States of
       America and Israel launched further military attacks on Iran, including on
       the sites of some nuclear facilities. Consequently, the Agency stopped
       conducting verification activities in Iran.
@@ -590,23 +671,23 @@ sources:
     date: '2026-10-13'
   # 40
   - stance: supports
-    quote: >-
-      For 10 years operating centrifuges reduced to 5,060 IR-1 machines … For
-      15 years level of uranium enrichment capped at 3.67 percent uranium-235 …
-      For 15 years the stockpile is kept under 300 kilograms of 3.67 percent
-      enriched uranium in total (all forms) ... January 16, 2016, Implementation
-      Day
+    quote: |-
+      - For 10 years operating centrifuges reduced to 5,060 IR-1 machines …
+      - For 15 years level of uranium enrichment capped at 3.67 percent uranium-235 …
+      - For 15 years the stockpile is kept under 300 kilograms of 3.67 percent enriched uranium in total (all forms) ...
+
+      January 16, 2016, Implementation Day
     title: 'The Joint Comprehensive Plan of Action (JCPOA) at a Glance'
     url: https://www.armscontrol.org/factsheets/JCPOA-at-a-glance
     publisher: Arms Control Association
     date: '2025-02'
   # 41
   - stance: supports
-    quote: >-
-      The third round of high-level negotiations took place on April 26, 2025
-      ... The fourth round of talks were held on May 11 in Oman ... The fifth
-      round of talks, held on May 23 in Rome ... the sixth round of US-Iran
-      talks, scheduled in Oman on June 15, were indefinitely suspended
+    quote: |-
+      The third round of high-level negotiations took place on April 26, 2025 ...
+      The fourth round of talks were held on May 11 in Oman ...
+      The fifth round of talks, held on May 23 in Rome ...
+      Among those injured was Khamenei's political advisor Ali Shamkhani, who oversaw negotiations between the United States and Iran. Following the attack, the sixth round of US-Iran talks, scheduled in Oman on June 15, were indefinitely suspended
     title: '2025 Iran–United States negotiations'
     url: https://en.wikipedia.org/wiki/2025_Iran%E2%80%93United_States_negotiations
     publisher: Wikipedia
@@ -668,18 +749,10 @@ sources:
     date: '2026-10-25'
   # 47
   - stance: supports
-    quote: >-
-      Senior officials from the Mecca Pact’s three signatories met with senior
-      Iranian officials in Tehran on October 26 to discuss a new US-Iran
-      ceasefire amid reported US and Israeli preparations for another round of
-      strikes in Iran. ... Two diplomats briefed on the ongoing talks told the
-      New York Times on October 26 that Qatari mediators are trying to secure an
-      agreement in which the United States and Iran would make "a series of
-      concessions over a five-day period." The diplomats added that those
-      concessions include Iran reopening the Strait of Hormuz in exchange for
-      the United States lifting its naval blockade on Iranian ports. ... The
-      United States and Iran reportedly continue to disagree on the sequencing
-      of the agreement.
+    quote: |-
+      Senior officials from the Mecca Pact’s three signatories met with senior Iranian officials in Tehran on October 26 to discuss a new US-Iran ceasefire amid reported US and Israeli preparations for another round of strikes in Iran. ...
+
+      Two diplomats briefed on the ongoing talks told the New York Times on October 26 that Qatari mediators are trying to secure an agreement in which the United States and Iran would make "a series of concessions over a five-day period." The diplomats added that those concessions include Iran reopening the Strait of Hormuz in exchange for the United States lifting its naval blockade on Iranian ports. An unspecified Gulf official told the New York Times that the Mecca Pact signatories’ talks with Iran intended to ”urge Iran to show flexibility.” The United States and Iran reportedly continue to disagree on the sequencing of the agreement.
     title: 'Iran Update, October 26, 2026'
     url: https://www.criticalthreats.org/analysis/iran-update-october-26-2026
     publisher: Institute for the Study of War and AEI's Critical Threats Project
@@ -700,20 +773,16 @@ sources:
     date: '2026-10-27'
   # 49
   - stance: supports
-    quote: >-
-      U.S. officials have told several Middle East countries and regional
-      allies to be prepared for potential renewed military action against Iran
-      after next week’s midterm elections in the United States — as well as the
-      possibility that Iran will attempt to retaliate against them, according to
-      two diplomats briefed on the matter. ... President Donald Trump has not
-      made a final decision on whether to carry out new strikes against Iran,
-      the diplomats stressed. ... Iranian Foreign Minister Abbas Araghchi said
-      Wednesday in a post on X that Tehran “continues to give diplomacy a chance
-      to succeed” ... the United Arab Emirates foreign ministry issued a
-      statement urging the sides to “exercise wisdom and pursue political
-      solutions to help contain tensions” ... While the U.S. has not carried out
-      a strike against Iran since early September, the situation in the Middle
-      East has become more complicated.
+    quote: |-
+      U.S. officials have told several Middle East countries and regional allies to be prepared for potential renewed military action against Iran after next week’s midterm elections in the United States — as well as the possibility that Iran will attempt to retaliate against them, according to two diplomats briefed on the matter. ...
+
+      President Donald Trump has not made a final decision on whether to carry out new strikes against Iran, the diplomats stressed. ...
+
+      Iranian Foreign Minister Abbas Araghchi said Wednesday in a post on X that Tehran “continues to give diplomacy a chance to succeed” ...
+
+      the United Arab Emirates foreign ministry issued a statement urging the sides to “exercise wisdom and pursue political solutions to help contain tensions” ...
+
+      While the U.S. has not carried out a strike against Iran since early September, the situation in the Middle East has become more complicated.
     title: 'US warns allies to prepare for possible Iran strikes, retaliation after elections, AP sources say'
     url: https://www.wcax.com/2026/10/29/us-warns-allies-prepare-possible-iran-strikes-retaliation-after-elections-ap-sources-say/
     publisher: Associated Press (via WCAX)
@@ -731,17 +800,17 @@ sources:
     date: '2026-10-10'
   # 51
   - stance: supports
-    quote: >-
-      Section. 8. The Congress shall have Power … To declare War, grant
-      Letters of Marque and Reprisal, and make Rules concerning Captures on
-      Land and Water; To raise and support Armies … Section. 2. The President
-      shall be Commander in Chief of the Army and Navy of the United States
+    quote: |-
+      Section. 8. The Congress shall have Power … To declare War, grant Letters of Marque and Reprisal, and make Rules concerning Captures on Land and Water; To raise and support Armies …
+
+      Section. 2. The President shall be Commander in Chief of the Army and Navy of the United States
     title: 'The Constitution of the United States: A Transcription (Article I, Section 8; Article II, Section 2)'
     url: https://www.archives.gov/founding-docs/constitution-transcript
     publisher: U.S. National Archives
     date: '1787-09-17'
 series:
-  title: 'House votes on resolutions to end the Iran war, by party, March–September 2026'
+  title: 'House votes to end the war'
+  subtitle: 'Each House vote on withdrawing US forces, March–September 2026'
   description: >-
     Every House roll call on a concurrent resolution directing the President to
     remove US forces from hostilities with Iran, 5 March to 15 September 2026.
@@ -756,16 +825,36 @@ series:
       315 and above returned no file when checked on 29 October 2026, so there
       has been no House vote of any kind since then. Six of the 314 are Iran
       war-powers resolutions.
+  events:
+    - period: '2026-06-03'
+      label: 'House passes H.Con.Res.86'
+      source: 4
+    - period: '2026-07-23'
+      label: 'House passes H.Con.Res.89'
+      source: 5
+    - period: '2026-09-15'
+      label: 'House passes H.Con.Res.93'
+      source: 6
   source:
     stance: supports
-    quote: >-
-      <legis-num>H CON RES 93</legis-num> ... <vote-result>Passed</vote-result>
-      ... <action-date>15-Sep-2026</action-date> ...
-      <party>Republican</party><yea-total>7</yea-total><nay-total>203</nay-total>
-      ...
-      <party>Democratic</party><yea-total>213</yea-total><nay-total>0</nay-total>
-      ...
-      <total-stub>Totals</total-stub><yea-total>220</yea-total><nay-total>204</nay-total>
+    quote: |-
+      Roll Call 307
+      Bill Number: H. Con. Res. 93
+      Sep 15, 2026, 10:32 PM
+      119th Congress, 2nd Session
+
+      Vote Question: On Agreeing to the Resolution
+
+      Directing the President, pursuant to section 5(c) of the War Powers Resolution, to remove United States Armed Forces from hostilities with Iran
+
+      Vote Type: Yea-And-Nay
+      Status: Passed …
+
+      Party | Yeas | Nays | Present | Not Voting
+      Republican | 7 | 203 | 0 | 8
+      Democratic | 213 | 0 | 0 | 1
+      Independent | 0 | 1 | 0 | 0
+      Total | 220 | 204 | 0 | 9
     title: 'House roll calls 85, 114, 170, 199, 282 and 307 (2026); latest shown'
     url: https://clerk.house.gov/Votes/2026307
     fileUrl: https://clerk.house.gov/evs/2026/roll307.xml
@@ -795,7 +884,8 @@ series:
           points: [{period: '2026-03-05', value: 4}, {period: '2026-04-16', value: 1}, {period: '2026-05-14', value: 1}, {period: '2026-06-03', value: 0}, {period: '2026-07-23', value: 0}, {period: '2026-09-15', value: 0}]
 additionalSeries:
   - id: senate-votes-series
-    title: 'Senate votes on measures to end the Iran war, by party, March–September 2026'
+    title: 'Senate votes to end the war'
+    subtitle: 'Each war-powers roll call, by party, March–September 2026'
     description: >-
       All 14 Senate roll calls on Iran war-powers measures, 4 March to 24
       September 2026: motions to discharge or proceed to joint resolutions, and
@@ -811,14 +901,18 @@ additionalSeries:
         war-powers vote after 24 September. Party counts are tallied from the
         member records in each roll-call file; the file for 23 July (vote 207)
         has no archived copy, so that date has totals only.
+    events:
+      - period: '2026-06-23'
+        label: 'Senate agrees to the House''s H.Con.Res.86, 50–48'
+        source: 7
     source:
       stance: supports
-      quote: >-
-        00244 24-Sep H.Con.Res. 89 On the Concurrent Resolution Rejected 49 50
-        ... 00184 23-Jun H.Con.Res. 86 On the Concurrent Resolution Agreed to 50
-        48 ... 00129 19-May S.J.Res. 185 On the Motion to Discharge Agreed to 50
-        47 ... 00046 04-Mar S.J.Res. 104 On the Motion to Discharge Rejected 47
-        53
+      quote: |-
+        Vote (Tally) | Result | Question: Description | Issue | Date
+        244 (49-50) | Rejected | On the Concurrent Resolution: H. Con. Res. 89; A concurrent resolution directing the President, pursuant to section 5(c) of the War Powers Resolution, to remove United States Armed Forces from hostilities with Iran. | H.Con.Res. 89 | Sep 24
+        184 (50-48) | Agreed to | On the Concurrent Resolution: H. Con. Res. 86; A concurrent resolution directing the President, pursuant to section 5(c) of the War Powers Resolution, to remove United States Armed Forces from hostilities with Iran. | H.Con.Res. 86 | Jun 23
+        129 (50-47) | Agreed to | On the Motion to Discharge: Motion to Discharge S.J.Res. 185; A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress. | S.J.Res. 185 | May 19
+        46 (47-53) | Rejected | On the Motion to Discharge: Motion to Discharge S.J. Res. 104; A joint resolution to direct the removal of United States Armed Forces from hostilities within or against the Islamic Republic of Iran that have not been authorized by Congress. | S.J.Res. 104 | Mar 04
       title: 'Senate Roll Call Votes, 119th Congress, 2nd Session (vote menu, as of 10 October 2026)'
       url: https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_2.htm
       fileUrl: https://web.archive.org/web/20261010195728id_/https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_2.xml
@@ -852,9 +946,8 @@ additionalSeries:
           - name: Democrats voting no
             points: [{period: '2026-03-04', value: 1}, {period: '2026-03-18', value: 1}, {period: '2026-03-24', value: 1}, {period: '2026-04-15', value: 1}, {period: '2026-04-22', value: 1}, {period: '2026-04-30', value: 1}, {period: '2026-05-13', value: 1}, {period: '2026-05-19', value: 1}, {period: '2026-06-16', value: 1}, {period: '2026-06-23', value: 1}, {period: '2026-06-24', value: 1}, {period: '2026-07-30', value: 1}, {period: '2026-09-24', value: 1}]
   - id: pew-approval-series
-    title: >-
-      US approval of the Iran war in Pew's surveys, with the war's main events,
-      March–October 2026
+    title: 'US approval of the Iran war'
+    subtitle: "Pew's surveys, March and October 2026, with the war's main events"
     description: >-
       Share of US adults who approve of President Trump's handling of the
       military action against Iran, and who say using force was the right
@@ -933,11 +1026,15 @@ additionalSeries:
         source: 49
     source:
       stance: supports
-      quote: >-
-        % who say they approve of how Donald Trump is handling the U.S. military
-        action against Iran Date March October Total 37 33 Rep/Lean Rep 69 63
-        Dem/Lean Dem 9 9 ... Source: Survey of U.S. adults conducted Sept.
-        28-Oct. 4, 2026.
+      quote: |-
+        % who say they approve of how Donald Trump is handling the U.S. military action against Iran
+
+        Date | March | October
+        Total | 37 | 33
+        Rep/Lean Rep | 69 | 63
+        Dem/Lean Dem | 9 | 9
+
+        ... Source: Survey of U.S. adults conducted Sept. 28-Oct. 4, 2026.
       title: 'Iran conflict remains deeply unpopular (chart data: approval of Trump''s handling, by party)'
       url: https://www.pewresearch.org/short-reads/2026/10/08/iran-conflict-remains-deeply-unpopular-as-many-americans-expect-it-to-go-on-for-months/
       publisher: Pew Research Center
@@ -966,8 +1063,9 @@ additionalSeries:
             points: [{period: '2026-03', value: 71}, {period: '2026-10', value: 65}]
 comparisons:
   - id: war-powers-reports-1975-2017
-    title: 'War Powers reports by presidents, and those that started the 60-day clock, 1975–March 2017'
-    description: 'Reports submitted to Congress under the War Powers Resolution from 1975 to March 2017, and the number that cited section 4(a)(1), which starts the 60-day withdrawal requirement (CRS).'
+    title: 'War Powers reports to Congress'
+    subtitle: 'All reports, and those that started the 60-day clock, 1975–March 2017'
+    description: 'Reports presidents submitted to Congress under the War Powers Resolution, and the number that cited section 4(a)(1), which starts the 60-day withdrawal requirement (CRS).'
     unit: count
     valueLabel: 'Reports'
     sources: [11]
@@ -976,6 +1074,7 @@ comparisons:
       - label: 'All War Powers reports'
         value: 168
       - label: 'Reports citing section 4(a)(1)'
+        detail: 'The section that triggers the 60-day withdrawal requirement'
         value: 1
         highlight: true
 relatedFacts:
@@ -1004,12 +1103,45 @@ figures:
   - kind: "series"
   - kind: "series"
     id: "senate-votes-series"
+  - kind: "dataTable"
+    id: "war-votes"
+    title: Every vote Congress held on the war
+    subtitle: House and Senate floor votes the report found, March–September 2026
+    description: "Floor votes in the House and Senate on measures about the war, from the House Clerk's roll calls and the Senate's vote list to 10 October 2026. Each would have ended the war or brought a measure to end it to the floor; none would have approved it."
+    caption: "One row per vote"
+    columns:
+      - { key: "date", label: "Date", format: "date" }
+      - { key: "measure", label: "Measure", rowHeader: true, sortable: false }
+      - { key: "would", label: "What a yes would have done", sortable: false }
+      - { key: "result", label: "Result", sortable: false }
+    rows:
+      - { date: "2026-03-04", measure: "Senate: S.J.Res. 104", would: "Bring to the floor a resolution to remove US forces", result: { value: "Rejected, 47–53", sources: [7] } }
+      - { date: "2026-03-05", measure: "House: H.Con.Res. 38", would: "Remove US forces from hostilities with Iran", result: { value: "Failed, 212–219", sources: [1] } }
+      - { date: "2026-03-18", measure: "Senate: S.J.Res. 118", would: "Bring to the floor a resolution to remove US forces", result: { value: "Rejected, 47–53", sources: [7] } }
+      - { date: "2026-03-24", measure: "Senate: S.J.Res. 116", would: "Bring to the floor a resolution to remove US forces", result: { value: "Rejected, 47–53", sources: [7] } }
+      - { date: "2026-04-15", measure: "Senate: S.J.Res. 123", would: "Bring to the floor a resolution to remove US forces", result: { value: "Rejected, 47–52", sources: [7] } }
+      - { date: "2026-04-16", measure: "House: H.Con.Res. 40", would: "Remove US forces from hostilities with Iran", result: { value: "Failed, 213–214", sources: [2] } }
+      - { date: "2026-04-22", measure: "Senate: S.J.Res. 114", would: "Bring to the floor a resolution to remove US forces", result: { value: "Rejected, 46–51", sources: [7] } }
+      - { date: "2026-04-30", measure: "Senate: S.J.Res. 184", would: "Bring to the floor a resolution to remove US forces", result: { value: "Rejected, 47–50", sources: [7] } }
+      - { date: "2026-05-13", measure: "Senate: S.J.Res. 163", would: "Bring to the floor a resolution to remove US forces", result: { value: "Rejected, 49–50", sources: [7] } }
+      - { date: "2026-05-14", measure: "House: H.Con.Res. 75", would: "Remove US forces from hostilities with Iran", result: { value: "Failed, 212–212", sources: [3] } }
+      - { date: "2026-05-19", measure: "Senate: S.J.Res. 185 (discharge)", would: "Bring to the floor a resolution to remove US forces", result: { value: "Agreed to, 50–47", sources: [7] } }
+      - { date: "2026-06-03", measure: "House: H.Con.Res. 86", would: "Remove US forces from hostilities with Iran", result: { value: "Passed, 215–208", sources: [4] } }
+      - { date: "2026-06-16", measure: "Senate: S.J.Res. 172", would: "Bring to the floor a resolution to remove US forces", result: { value: "Rejected, 47–48", sources: [7] } }
+      - { date: "2026-06-23", measure: "Senate: H.Con.Res. 86", would: "Remove US forces from hostilities with Iran", result: { value: "Agreed to, 50–48", sources: [7] } }
+      - { date: "2026-06-24", measure: "Senate: S.J.Res. 185 (proceed)", would: "Take up a resolution to remove US forces", result: { value: "Rejected, 47–50", sources: [7] } }
+      - { date: "2026-07-23", measure: "House: H.Con.Res. 89", would: "Remove US forces from hostilities with Iran", result: { value: "Passed, 214–208", sources: [5] } }
+      - { date: "2026-07-23", measure: "Senate: S.J.Res. 180", would: "Bring to the floor a resolution to remove US forces", result: { value: "Rejected, 47–49", sources: [7] } }
+      - { date: "2026-07-30", measure: "Senate: S.J.Res. 181", would: "Bring to the floor a resolution to remove US forces", result: { value: "Rejected, 49–50", sources: [7] } }
+      - { date: "2026-09-15", measure: "House: H.Con.Res. 93", would: "Remove US forces from hostilities with Iran", result: { value: "Passed, 220–204", sources: [6] } }
+      - { date: "2026-09-24", measure: "Senate: H.Con.Res. 89", would: "Remove US forces from hostilities with Iran", result: { value: "Rejected, 49–50", sources: [7] } }
   - kind: "series"
     id: "pew-approval-series"
   - kind: compositionBar
     id: gallup-june-by-party
     valuesFrom: "Gallup's final topline, question 24, party table"
-    title: Approval of the US military action against Iran, by party (Gallup), June 2026
+    title: Approval of the war, by party
+    subtitle: Gallup poll of US adults, 1–15 June 2026
     description: Share of US adults who approve or disapprove of "this U.S. military action against Iran"
       (Gallup, telephone, 1–15 June 2026, 1,001 adults).
     rowLabel: Group
@@ -1034,7 +1166,8 @@ figures:
   - kind: compositionBar
     id: quinnipiac-march-by-party
     valuesFrom: "Quinnipiac's release of 9 March 2026, question 10"
-    title: Support for the US military action against Iran, by party (Quinnipiac), March 2026
+    title: Support for the war, by party
+    subtitle: Quinnipiac poll of registered voters, 6–8 March 2026
     description: Share of registered voters who support or oppose "the U.S. military action against Iran"
       (Quinnipiac, 6–8 March 2026, 1,002 registered voters).
     rowLabel: Group
@@ -1058,9 +1191,8 @@ figures:
   - kind: compositionBar
     id: quinnipiac-congress-approval
     valuesFrom: "Quinnipiac's release of 9 March 2026, question 15"
-    title: >-
-      Should the President have received Congress's approval before acting
-      against Iran? By party (Quinnipiac), March 2026
+    title: Should the President have asked Congress?
+    subtitle: Registered voters by party, Quinnipiac poll, 6–8 March 2026
     description: Answers of registered voters to "Do you think President Trump should have received approval
       from Congress before taking military action against Iran, or not?" (Quinnipiac, 6–8 March 2026).
     rowLabel: Group
@@ -1088,13 +1220,14 @@ figures:
     question: "What has the President said about war and about Iran?"
     description: "Four statements, from the 2024 campaign to October 2026."
     quotes:
-      - { text: "I was the first president in modern times to start no new wars. … Iran is very close to having a nuclear weapon, which would have never happened.", speaker: "Donald Trump", role: "Candidate", context: "Convention acceptance speech", date: "2024-07-18", source: 32 }
-      - { text: "They said: 'He will start a war.' I'm not going to start a war. I'm going to stop wars.", speaker: "Donald Trump", role: "President-elect", context: "Election-night remarks", date: "2024-11-06", source: 33 }
-      - { text: "I acted pursuant to my constitutional authority as Commander in Chief … in collective self-defense of our regional allies, including Israel.", speaker: "Donald Trump", role: "President", context: "48-hour War Powers report", date: "2026-03-02", source: 12 }
-      - { text: "will not be attacking Iran at any time prior to the Midterm Elections … having productive discussions with the Islamic Republic of Iran", speaker: "Donald Trump", role: "President", context: "Social media post", date: "2026-10-08", source: 42 }
+      - { text: "I was the first president in modern times to start no new wars. … Iran is very close to having a nuclear weapon, which would have never happened.", speaker: "Donald Trump, candidate", context: "Convention acceptance speech", date: "2024-07-18", source: 32 }
+      - { text: "They said: 'He will start a war.' I'm not going to start a war. I'm going to stop wars.", speaker: "Donald Trump, President-elect", context: "Election-night remarks", date: "2024-11-06", source: 33 }
+      - { text: "I acted pursuant to my constitutional authority as Commander in Chief … in collective self-defense of our regional allies, including Israel.", speaker: "Donald Trump, President", context: "48-hour War Powers report", date: "2026-03-02", source: 12 }
+      - { text: "will not be attacking Iran at any time prior to the Midterm Elections … having productive discussions with the Islamic Republic of Iran", speaker: "Donald Trump, President", context: "Social media post", date: "2026-10-08", source: 42 }
   - kind: periodTimeline
     id: war-powers-letters
-    title: The President's War Powers letters on the Iran war, 2026
+    title: The President's War Powers letters
+    subtitle: 2026, against the ceasefire, memorandum, blockade and pledge
     description: Each letter the President sent Congress under the War Powers Resolution in 2026, numbered
       on the line under the bars, against when the ceasefire, the memorandum, the blockade and the pledge
       not to strike were in force. Letters from June on report new military action. Bars without an end
@@ -1153,16 +1286,35 @@ figures:
       President reported US strikes "commenced" again after Iranian attacks on shipping; ISW/CTP wrote on
       13 July that the ceasefire "has effectively ended". The President's letter dates the memorandum 17
       June; ISW/CTP calls it "the June 18 MoU". The pledge bar starts with the President's post of 8 October.
-  - kind: "pullQuote"
+  - kind: "timeline"
+    id: "war-powers-letters-said"
+    title: What the War Powers letters said
+    subtitle: The President's letters to Congress on the war, 2026
+    description: "Each letter's own words where it could be read; the 1 May letter is known only through quotation."
+    categories:
+      - { id: "report", label: "Report of military action" }
+      - { id: "over", label: "Hostilities declared over" }
+    events:
+      - { date: "2026-03-02", title: "Letter: strikes on Iran from 28 Feb", category: "report", source: 12 }
+      - { date: "2026-05-01", title: "Letter: hostilities that began 28 Feb \"have terminated\"", description: "It argues the administration has complied with the \"60-day cut-off\".", category: "over", sources: [10, 13] }
+      - { date: "2026-06-12", title: "Letter: \"military action commenced on June 9, 2026\"", description: "After Iran engaged a US Apache on 8 June.", category: "report", source: 14 }
+      - { date: "2026-06-29", title: "Letter: \"military actions taken\" on 26 and 28 June", description: "After Iranian attacks on vessels on 25 and 27 June.", category: "report", source: 15 }
+      - { date: "2026-07-10", title: "Letter: \"military action commenced on July 7, 2026\"", category: "report", source: 16 }
+      - { date: "2026-08-03", title: "Letter: \"military action commenced on July 27, 2026\"", description: "In Iraq, after attacks by Iranian-aligned militias.", category: "report", source: 17 }
+      - { date: "2026-09-03", title: "Letter: \"military action commenced on September 1, 2026\"", description: "Including oil tankers of the National Iranian Oil Company.", category: "report", source: 18 }
+  - kind: "quotes"
     id: "constitution"
-    description: "The same text makes the President \"Commander in Chief\"."
-    quote: { text: "The Congress shall have Power … To declare War", speaker: "The Constitution of the United States", context: "Article I, Section 8", source: 51 }
+    question: "Who decides on war, and did the administration ask?"
+    description: "What the Constitution says, and Lawfare's account of the administration at the 60-day mark."
+    quotes:
+      - { text: "The Congress shall have Power … To declare War", speaker: "The Constitution, Article I", context: "Article I, Section 8", source: 51 }
+      - { text: "The President shall be Commander in Chief of the Army and Navy of the United States", speaker: "The Constitution, Article II", context: "Article II, Section 2", source: 51 }
+      - { text: "refusal to seek congressional authorization before the 60-day mark", speaker: "Lawfare", context: "On the Trump administration", date: "2026-05-08", source: 10 }
   - kind: "dataTable"
     id: "earlier-votes"
-    title: >-
-      Earlier US uses of force without authorisation, and Congress's votes,
-      2011–2025
-    description: "The main roll calls found on earlier operations, and the count of all uses of force since 1798."
+    title: Congress and unauthorised uses of force
+    subtitle: Votes on US operations, 2011–2026, and research on Congress's effect
+    description: "The main roll calls found on these operations, the count of all uses of force since 1798, and one study of Congress's effect."
     caption: "One row per vote or count"
     columns:
       - { key: "operation", label: "Operation", rowHeader: true, sortable: false }
@@ -1174,10 +1326,13 @@ figures:
       - { operation: "Yemen (Saudi-led war), 2019", vote: "S.J.Res.7: Senate 54–46, House 247–175", result: { value: "Vetoed; override failed 53–45 (2 May 2019)", sources: [22, 23] } }
       - { operation: "Iran, 2020", vote: "S.J.Res.68: Senate 55–45, House 227–186", result: { value: "Vetoed; override failed 49–44 (7 May 2020)", sources: [24, 25] } }
       - { operation: "Iran, 2025", vote: "S.J.Res.59: Senate (27 Jun 2025)", result: { value: "Failed, 47–53", sources: [26] } }
+      - { operation: "Iran, 2026", vote: "H.Con.Res.86: House 215–208, Senate 50–48", result: { value: "Concurrent resolution, with no \"presentment to the President for signature or veto\"; its effect is \"uncertain\"", sources: [4, 7, 11] } }
+      - { operation: "Kriner, After the Rubicon (2010)", vote: "Research", result: { value: "Congress \"materially shapes the initiation, scope, and duration of major military actions\"", sources: [27] } }
       - { operation: "All uses of force, 1798–2023", result: { value: "\"Hundreds of instances\"; 11 declarations of war covering five wars", sources: [19] } }
   - kind: "timeline"
     id: "ceasefire-incidents"
-    title: The US–Iran ceasefire record, April–July 2026
+    title: The US–Iran ceasefire record
+    subtitle: April–July 2026
     description: "Attacks, strikes and agreements during the ceasefire, from the President's letters and ISW/CTP. No Iranian or neutral record was found."
     categories:
       - { id: "iran", label: "Iran acted" }
@@ -1198,7 +1353,8 @@ figures:
       - { date: "2026-07-14", title: "Blockade reimposed", category: "us", sources: [34, 50] }
   - kind: "timeline"
     id: "negotiations"
-    title: US–Iran negotiations and agreements, 2016–2026
+    title: US–Iran negotiations and agreements
+    subtitle: 2016–2026
     description: "The talks and agreements between the US and Iran, from the 2015 deal to the latest proposals."
     categories:
       - { id: "talks", label: "Talks and proposals" }
@@ -1225,7 +1381,8 @@ figures:
       - { text: "exercise wisdom and pursue political solutions", speaker: "UAE foreign ministry", date: "2026-10-28", source: 49 }
   - kind: "timeline"
     id: "latest"
-    title: The latest events in the Iran war, July–October 2026
+    title: The latest events in the war
+    subtitle: July–October 2026
     description: "Assessments and reports since the ceasefire ended. Most come from one source, named on each entry, and are not official findings."
     categories:
       - { id: "rearming", label: "Iran's forces, as assessed" }
@@ -1240,20 +1397,54 @@ figures:
       - { date: "2026-10-23", title: "Intelligence chief warns of Iran's \"advanced stages\" of planning attacks on US targets", description: "As reported by ISW/CTP; the memo itself could not be fetched.", category: "rearming", source: 45 }
       - { date: "2026-10-24", title: "Houthis fire missiles and drones at Saudi Arabia", description: "ISW/CTP.", category: "attacks", source: 46 }
       - { date: "2026-10-28", title: "AP: allies told to prepare for renewed action and Iranian retaliation", description: "AP's diplomats say the President has made no final decision.", category: "us", source: 49 }
+observationMarks:
+  votes-all-to-end-the-war: {rows: ["Senate: S.J.Res. 104", "House: H.Con.Res. 38", "Senate: S.J.Res. 118", "Senate: S.J.Res. 116", "Senate: S.J.Res. 123", "House: H.Con.Res. 40", "Senate: S.J.Res. 114", "Senate: S.J.Res. 184", "Senate: S.J.Res. 163", "House: H.Con.Res. 75", "Senate: S.J.Res. 185 (discharge)", "House: H.Con.Res. 86", "Senate: S.J.Res. 172", "Senate: H.Con.Res. 86", "Senate: S.J.Res. 185 (proceed)", "House: H.Con.Res. 89", "Senate: S.J.Res. 180", "Senate: S.J.Res. 181", "House: H.Con.Res. 93", "Senate: H.Con.Res. 89"]}
+  house-passed-three-resolutions: {lines: ["Yes (end the war)", "No"], from: "2026-03-05", to: "2026-09-15"}
+  concurrent-resolutions-not-binding: {rows: ["Iran, 2026"]}
+  senate-adopted-one-resolution: {lines: ["Yes (end the war)", "No"], at: "2026-06-23"}
+  majority-disapproves: {lines: ["All adults"], from: "2026-03", to: "2026-10", at: "2026-10"}
+  republicans-support-but-falling: {lines: ["Rep/lean Rep"], from: "2026-03", to: "2026-10", at: "2026-10"}
+  congress-as-constraint: {rows: ["Kriner, After the Rubicon (2010)"]}
+  no-un-authorisation-per-oman: {rows: ["Badr al Busaidi"]}
+  key-allies-did-not-join: {rows: ["UK, France and Germany"]}
+  both-sides-fired: {rows: ["Engaged a US Army Apache, \"forcing its crash landing\"", "Strikes on missile sites, mining, air defences, command", "Attacks on neutral-flagged vessels in Hormuz, on 25 and 27 Jun", "Strikes on drone, missile and command sites, on 26 and 28 Jun"]}
+  mou-broke-down: {rows: ["Memorandum of understanding signed", "Attacks on neutral-flagged vessels in Hormuz, on 25 and 27 Jun", "Strikes on drone, missile and command sites, on 26 and 28 Jun", "Strikes resume", "Blockade reimposed"]}
+  declarations-and-instances: {rows: ["All uses of force, 1798–2023"]}
+  binding-attempts-failed: {rows: ["Libya, 2011", "Yemen (Saudi-led war), 2019", "Iran, 2020", "Iran, 2025"]}
+  independents-opposed: {rows: ["Independents"]}
+  iran-reconstituting-missiles: {rows: ["ISW/CTP: Iran \"continuously made efforts to reconstitute its ballistic missile and drone programs\""]}
+  dni-warning-as-reported: {rows: ["Intelligence chief warns of Iran's \"advanced stages\" of planning attacks on US targets"]}
+  october-escalation: {rows: ["23 attacks on vessels near Hormuz"]}
+  talks-continue-in-october: {rows: ["Qatari plan reported: Hormuz reopened for blockade lifted, over five days"]}
+  most-wanted-congress-asked: {rows: ["All voters"]}
+  terminated-letter-then-new-strikes: {rows: ["Letter: hostilities that began 28 Feb \"have terminated\"", "Letter: \"military action commenced on June 9, 2026\"", "Letter: \"military actions taken\" on 26 and 28 June", "Letter: \"military action commenced on July 7, 2026\"", "Letter: \"military action commenced on July 27, 2026\"", "Letter: \"military action commenced on September 1, 2026\""]}
+  separate-actions: {rows: ["Letter: \"military action commenced on June 9, 2026\"", "Letter: \"military actions taken\" on 26 and 28 June", "Letter: \"military action commenced on July 7, 2026\"", "Letter: \"military action commenced on July 27, 2026\"", "Letter: \"military action commenced on September 1, 2026\""]}
+  only-one-report-started-the-clock: {rows: ["All War Powers reports", "Reports citing section 4(a)(1)"]}
+  republican-defections-small-but-growing: {lines: ["Republicans voting yes"], from: "2026-03-05", to: "2026-09-15", at: "2026-09-15"}
+  senate-defections: {lines: ["Republicans voting yes"], from: "2026-05-13", to: "2026-09-24"}
+  strikes-planned-after-midterms: {rows: ["NYT reports plans for \"a short and intensive operation\" after 3 November", "AP: allies told to prepare for renewed action and Iranian retaliation"]}
+  talks-under-way-when-strikes-came: {rows: ["Indirect US–Iran talks in Geneva on 17 and 26 Feb", "US and Israeli strikes; IAEA stops verification in Iran"]}
+  mou-no-weapons-pledge: {rows: ["Memorandum: \"Iran reaffirms that it shall not procure or develop nuclear weapons\""]}
+  party-split: {rows: ["Republicans", "Independents", "Democrats"]}
+  campaign-said-stop-wars: {rows: ["Donald Trump, President-elect"]}
+  campaign-called-iran-very-close: {rows: ["Donald Trump, candidate"]}
+  sixty-day-requirement: {rows: ["Reports citing section 4(a)(1)"]}
+  most-disapprove-gallup: {rows: ["All adults"]}
+  qatari-plan: {rows: ["Qatari plan reported: Hormuz reopened for blockade lifted, over five days"]}
+  congress-declares-war: {rows: ["The Constitution, Article I"]}
+  no-authorisation-sought: {rows: ["Lawfare"]}
+  procedural-votes: {lines: ["Yes (end the war)", "No"]}
+  poll-wording: {lines: ["All adults"]}
+  single-party-claims: {rows: ["ISW/CTP: Iran \"continuously made efforts to reconstitute its ballistic missile and drone programs\"", "23 attacks on vessels near Hormuz", "Houthis fire missiles and drones at Saudi Arabia"]}
+  houthi-fire-on-saudi-arabia: {rows: ["Houthis fire missiles and drones at Saudi Arabia"]}
 ---
 ## Observations {#decisions-law-and-diplomacy--observations-house-votes}
 
-### A House majority voted to end the war three times {#decisions-law-and-diplomacy--house-passed-three-resolutions}
+### The House narrowly rejected the first three resolutions to end the war, then passed the next three {#decisions-law-and-diplomacy--house-passed-three-resolutions}
 
 The House rejected the first three resolutions by margins of seven votes or fewer, including a tie, then adopted the next three, from June to September (chart). [1](#source-decisions-law-and-diplomacy-1) [3](#source-decisions-law-and-diplomacy-3) [6](#source-decisions-law-and-diplomacy-6)
 
 Every vote was on a concurrent resolution under section 5(c) of the War Powers Resolution. The House has held no roll call of any kind since mid-September, as of 29 October (see the chart note).
-
-### The resolutions do not bind the President in practice {#decisions-law-and-diplomacy--concurrent-resolutions-not-binding}
-
-A concurrent resolution is not sent to the President to sign or veto. CRS calls its effect "uncertain" since the Supreme Court's 1983 *Chadha* ruling, and Lawfare says it was brought into "serious constitutional doubt". [11](#source-decisions-law-and-diplomacy-11) [10](#source-decisions-law-and-diplomacy-10)
-
-A joint resolution would be binding but faces a veto, which two-thirds of each chamber would have to override. [10](#source-decisions-law-and-diplomacy-10)
 
 ## Observations {#decisions-law-and-diplomacy--observations-house-crossovers}
 
@@ -1265,11 +1456,20 @@ In the Senate, Republican yes votes rose from one to four (chart below). With th
 
 ## Observations {#decisions-law-and-diplomacy--observations-senate-votes}
 
-### The Senate voted 14 times and succeeded twice {#decisions-law-and-diplomacy--senate-adopted-one-resolution}
+### The Senate adopted one of the House's resolutions, 50–48 {#decisions-law-and-diplomacy--senate-adopted-one-resolution}
 
 Twelve of the Senate's votes failed. A motion to discharge succeeded in May, but the resolution then failed a motion to proceed. In June the Senate adopted H.Con.Res.86, which the House had passed, so both chambers adopted one resolution (chart). [7](#source-decisions-law-and-diplomacy-7) [8](#source-decisions-law-and-diplomacy-8)
 
 The Senate rejected the next House resolution, H.Con.Res.89, by one vote in September. GovTrack's list shows no Iran war-powers vote after that, as of late October. [9](#source-decisions-law-and-diplomacy-9)
+
+## Observations {#decisions-law-and-diplomacy--observations-war-votes}
+
+### All 20 votes found on the war were on ending it, and none on approving it {#decisions-law-and-diplomacy--votes-all-to-end-the-war}
+
+Of the 20 floor votes on the war found, March to September 2026, six were in the
+House and 14 in the Senate. Every one was on a measure "to remove United States
+Armed Forces from hostilities" with Iran, or on bringing one to the floor. None
+was on a measure to approve the war. [1](#source-decisions-law-and-diplomacy-1) [4](#source-decisions-law-and-diplomacy-4) [7](#source-decisions-law-and-diplomacy-7)
 
 ## Observations {#decisions-law-and-diplomacy--observations-senate-crossovers}
 
@@ -1281,7 +1481,7 @@ The same pattern, one Republican yes and one Democratic no, appeared in the fail
 
 ## Observations {#decisions-law-and-diplomacy--observations-pew-handling}
 
-### Most Americans disapprove, and approval has slipped {#decisions-law-and-diplomacy--majority-disapproves}
+### Approval of the President's handling has slipped {#decisions-law-and-diplomacy--majority-disapproves}
 
 In Pew's surveys about a third of adults approve of the President's handling of the war, down slightly since March; Pew's separate question on whether force was the right decision moved the same way (chart). [28](#source-decisions-law-and-diplomacy-28) [29](#source-decisions-law-and-diplomacy-29)
 
@@ -1293,7 +1493,11 @@ Pew finds the whole decline in approval came from Republicans; Democrats' views 
 
 ## Observations {#decisions-law-and-diplomacy--observations-gallup-june-by-party}
 
-### Independents opposed the war by about two to one or more {#decisions-law-and-diplomacy--independents-opposed}
+### Most Americans disapprove of the war {#decisions-law-and-diplomacy--most-disapprove-gallup}
+
+In Gallup's June poll, 63% of adults disapproved of "this U.S. military action against Iran" and 34% approved (chart). [30](#source-decisions-law-and-diplomacy-30) In October Pew found 65% disapproving of the President's handling of it. [28](#source-decisions-law-and-diplomacy-28)
+
+### Independents opposed the war by more than two to one {#decisions-law-and-diplomacy--independents-opposed}
 
 Gallup's June poll found independents opposed by more than two to one, and Quinnipiac's March poll by nearly two to one (charts). [30](#source-decisions-law-and-diplomacy-30) [31](#source-decisions-law-and-diplomacy-31) Pew does not report independents separately.
 
@@ -1311,6 +1515,10 @@ In March, 59% of registered voters said the President should have received appro
 
 ## Observations {#decisions-law-and-diplomacy--observations-war-powers-reports-1975-2017}
 
+### The War Powers Resolution sets a 60-day withdrawal requirement {#decisions-law-and-diplomacy--sixty-day-requirement}
+
+CRS says section 4(a)(1) of the Resolution "triggers the 60-day withdrawal requirement". [11](#source-decisions-law-and-diplomacy-11)
+
 ### Presidents have almost never started the 60-day clock themselves {#decisions-law-and-diplomacy--only-one-report-started-the-clock}
 
 Of the War Powers reports filed from 1975 to March 2017, CRS finds only one cited the section that starts the 60-day withdrawal requirement (chart). [11](#source-decisions-law-and-diplomacy-11)
@@ -1327,7 +1535,7 @@ On election night 2024 the President said "I'm not going to start a war. I'm goi
 
 In his 2024 convention speech he said Iran was "very close to having a nuclear weapon" and blamed his predecessor. [32](#source-decisions-law-and-diplomacy-32) Both lines were said by the same candidate in the same year.
 
-## Observations {#decisions-law-and-diplomacy--observations-war-powers-letters}
+## Observations {#decisions-law-and-diplomacy--observations-war-powers-letters-said}
 
 ### Hostilities were declared over, then new strikes were reported {#decisions-law-and-diplomacy--terminated-letter-then-new-strikes}
 
@@ -1335,13 +1543,13 @@ The 1 May letter said hostilities "have terminated" because there had been no ex
 
 Goldsmith calls the "no exchange of fire" claim "highly misleading". [13](#source-decisions-law-and-diplomacy-13) The 1 May letter is known only through these quotations.
 
-### Each new letter treats the strikes as a separate action {#decisions-law-and-diplomacy--separate-actions}
+### Each new letter reports the strikes as a new action {#decisions-law-and-diplomacy--separate-actions}
 
 Each later letter reports military action "commenced" on a new date, in response to a named Iranian or militia attack. [14](#source-decisions-law-and-diplomacy-14) [16](#source-decisions-law-and-diplomacy-16) Lawfare notes the tension between this and treating the blockade as anything but a continuation of the March operation. [10](#source-decisions-law-and-diplomacy-10)
 
 ## Observations {#decisions-law-and-diplomacy--observations-earlier-votes}
 
-### Congress has declared war eleven times, in five wars {#decisions-law-and-diplomacy--declarations-and-instances}
+### Presidents have used force hundreds of times, against eleven declarations of war {#decisions-law-and-diplomacy--declarations-and-instances}
 
 The Constitution gives Congress the power "To declare War" and makes the President "Commander in Chief". [51](#source-decisions-law-and-diplomacy-51)
 
@@ -1349,11 +1557,17 @@ CRS counts eleven declarations of war covering five wars, and "hundreds of insta
 
 CRS does not code the instances by authorisation, length or scale (see What we don't know yet).
 
-### Every binding attempt since 2011 to end an operation failed {#decisions-law-and-diplomacy--binding-attempts-failed}
+### The main binding attempts since 2011 to end an operation all failed {#decisions-law-and-diplomacy--binding-attempts-failed}
 
 Joint resolutions on Yemen in 2019 and Iran in 2020 passed both chambers and were vetoed; neither override reached two-thirds. In 2011 the House rejected both authorising the Libya operation and limiting its funding; the 2025 Iran resolution failed in the Senate (table). [20](#source-decisions-law-and-diplomacy-20) [21](#source-decisions-law-and-diplomacy-21) [23](#source-decisions-law-and-diplomacy-23) [25](#source-decisions-law-and-diplomacy-25) [26](#source-decisions-law-and-diplomacy-26)
 
-### Research finds Congress shapes wars without binding votes {#decisions-law-and-diplomacy--congress-as-constraint}
+### The resolutions may not bind the President {#decisions-law-and-diplomacy--concurrent-resolutions-not-binding}
+
+A concurrent resolution is not sent to the President to sign or veto. CRS calls its effect "uncertain" since the Supreme Court's 1983 *Chadha* ruling, and Lawfare says it was brought into "serious constitutional doubt". [11](#source-decisions-law-and-diplomacy-11) [10](#source-decisions-law-and-diplomacy-10)
+
+A joint resolution would be binding but faces a veto, which two-thirds of each chamber would have to override. [10](#source-decisions-law-and-diplomacy-10)
+
+### Research finds Congress shapes the scope and length of wars {#decisions-law-and-diplomacy--congress-as-constraint}
 
 Kriner's study, as described on its publisher's page, finds that Congress "materially shapes the initiation, scope, and duration of major military actions", and that the party balance in Congress helps explain how long conflicts last. [27](#source-decisions-law-and-diplomacy-27) The publisher's page gives no effect sizes.
 
@@ -1379,9 +1593,23 @@ The IAEA records indirect US–Iran talks in Geneva on two dates in February 202
 
 The June memorandum states that "Iran reaffirms that it shall not procure or develop nuclear weapons". [39](#source-decisions-law-and-diplomacy-39) Its other terms, including any on inspections, have not been published in any source found, so it cannot be compared clause by clause with the 2015 deal.
 
+### Qatar is pushing a plan: Iran reopens Hormuz and the US lifts its blockade {#decisions-law-and-diplomacy--qatari-plan}
+
+Qatari mediators are trying to secure an agreement in which Iran reopens the strait in exchange for the US lifting its blockade, with concessions "over a five-day period". The two sides disagree on the sequence. [47](#source-decisions-law-and-diplomacy-47)
+
 ### Talks continued alongside strike planning in October {#decisions-law-and-diplomacy--talks-continue-in-october}
 
 The President's pledge spoke of "productive discussions", and in late October Qatar, Pakistan, Saudi Arabia and Turkey were pressing a deal. [42](#source-decisions-law-and-diplomacy-42) [47](#source-decisions-law-and-diplomacy-47) Regional sources told ISW/CTP the Tehran meeting "made no progress on any issue". [48](#source-decisions-law-and-diplomacy-48)
+
+## Observations {#decisions-law-and-diplomacy--observations-constitution}
+
+### The Constitution gives Congress the power to declare war {#decisions-law-and-diplomacy--congress-declares-war}
+
+Article I gives Congress the power "To declare War"; Article II makes the President "Commander in Chief". [51](#source-decisions-law-and-diplomacy-51)
+
+### The administration did not seek Congress's approval before the 60-day mark {#decisions-law-and-diplomacy--no-authorisation-sought}
+
+Lawfare records frustration in Congress at the administration's "refusal to seek congressional authorization before the 60-day mark". [10](#source-decisions-law-and-diplomacy-10)
 
 ## Observations {#decisions-law-and-diplomacy--observations-allies}
 
@@ -1411,9 +1639,13 @@ AP reports no US strike on Iran since early September (as of 28 October). [49](#
 
 ISW/CTP reports that the Director of National Intelligence warned on 23 October that Iran is in the "advanced stages" of planning attacks on US targets in the region. [45](#source-decisions-law-and-diplomacy-45) The memo itself could not be fetched, so this rests on ISW/CTP's account.
 
-### Fighting spread to shipping and Saudi Arabia in October {#decisions-law-and-diplomacy--october-escalation}
+### The Houthis fired missiles and drones at Saudi Arabia in October {#decisions-law-and-diplomacy--houthi-fire-on-saudi-arabia}
 
-Officials told Bloomberg of 23 attacks on vessels near Hormuz in the first two weeks of October, and the Houthis fired missiles and drones at Saudi Arabia from 24 October (ISW/CTP). [43](#source-decisions-law-and-diplomacy-43) [46](#source-decisions-law-and-diplomacy-46) The US blockade of Iranian ports was still in force in late October. [50](#source-decisions-law-and-diplomacy-50) [47](#source-decisions-law-and-diplomacy-47)
+ISW/CTP reports Houthi missile and drone fire at Saudi Arabia from 24 October. [46](#source-decisions-law-and-diplomacy-46)
+
+### Attacks on ships went on in October {#decisions-law-and-diplomacy--october-escalation}
+
+Officials told Bloomberg of 23 attacks on vessels near Hormuz in the first two weeks of October. [43](#source-decisions-law-and-diplomacy-43) The US blockade of Iranian ports was still in force in late October. [50](#source-decisions-law-and-diplomacy-50) [47](#source-decisions-law-and-diplomacy-47)
 
 ## Subtleties {#decisions-law-and-diplomacy--subtleties-senate-votes}
 

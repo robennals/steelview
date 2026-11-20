@@ -8,16 +8,6 @@ import { validateTopic } from '@/lib/content/validate';
 import { BRENT_FOCUS_WINDOW } from '@/components/report/stories/fixtures/series-capabilities';
 import { SeriesChart } from './series-chart';
 
-// Depends on authored us-voter-id content: the fact
-// `voter-id-rules-in-the-us-and-abroad` carries the NCSL ID-law series whose
-// period label is "Year of NCSL count".
-test('the axis caption keeps an acronym in the period label', async () => {
-  const topic = await loadTopic('us-voter-id');
-  const fact = topic.facts.find(f => f.id === 'voter-id-rules-in-the-us-and-abroad');
-  assert.ok(fact?.series, 'expected the ID-law series');
-  const html = renderToStaticMarkup(createElement(SeriesChart, { factId: fact.id, series: fact.series }));
-  assert.match(html, /<p class="sv-chart__axis-label">[^<]*, by year of NCSL count<\/p>/);
-});
 
 const source = {
   stance: 'supports' as const,
@@ -119,7 +109,7 @@ test('a focus window renders the strip, both plots with the full range hidden, a
 test('the Brent fixture passes the series rules', () => {
   const fact = { id: 'brent', claim: 'Claim.', status: 'well-supported' as const, sources: [source], body: 'Body.', series: BRENT_FOCUS_WINDOW };
   const viewpoint = (id: string) => ({ id, name: id, shortName: id, summary: 's', order: 1, body: 'b' });
-  const errors = validateTopic({ slug: 't', title: 'T', subtitle: 'S', lastUpdated: '2026-10-29', firstPublished: '2026-08-18', intro: '', facts: [fact], viewpoints: [viewpoint('a'), viewpoint('b')], principles: [], cruxes: [] });
+  const errors = validateTopic({ slug: 't', title: 'T', subtitle: 'S', lastUpdated: '2026-10-29', firstPublished: '2026-08-18', intro: '', facts: [fact], viewpoints: [viewpoint('a'), viewpoint('b')], cruxes: [] });
   assert.deepEqual(errors, []);
 });
 
@@ -136,6 +126,21 @@ test('a preview draws one reading, without the Graph/Table switch, and links out
   assert.match(html, new RegExp(`<figcaption class="sv-chart__caption"><h3 class="sv-graph-heading"><a href="/topics/uk-immigration/facts/immigration-against-the-long-run">${fact.series!.title}</a></h3>`));
   assert.doesNotMatch(html, /aria-pressed/);
   assert.doesNotMatch(html, /href="#/);
+});
+
+test('a series subtitle is drawn under the title, in the full chart and the preview alike', () => {
+  const series = { ...oilSeries(), subtitle: 'Daily prices, 2026' };
+  for (const preview of [undefined, { href: '/x' }]) {
+    const html = renderToStaticMarkup(createElement(SeriesChart, { factId: 'oil', series, preview }));
+    assert.match(html, /<\/h[23]><p class="sv-chart__subtitle">Daily prices, 2026<\/p>/);
+  }
+});
+
+test('a chart draws no unit line; a data panel says what is measured in its More panel', () => {
+  const series = oilSeries();
+  const draw = (props: { preview?: { href: string }; panel?: boolean }) => renderToStaticMarkup(createElement(SeriesChart, { factId: 'oil', series, ...props }));
+  for (const html of [draw({}), draw({ preview: { href: '/x' } }), draw({ panel: true })]) assert.doesNotMatch(html, /sv-chart__axis-label/);
+  assert.match(draw({ panel: true }), new RegExp(`Measured: </span>${series.readings[0].valueLabel}`));
 });
 
 test('a preview\'s screen-reader description mentions no event strip or method-change section it does not draw', async () => {
@@ -191,7 +196,7 @@ test('a measurement change credits the series source, and has no Method Changes 
   const { PanelChart } = await import('./fact-figures');
   const fact = { id: 'oil', claim: 'Claim.', status: 'well-supported' as const, sources: [source], body: 'Body.', series: twoPanelSeries() };
   const slide = { fact, chart: 'series', reading: fact.series.readings[0].id, label: fact.series.title, href: '' };
-  const html = renderToStaticMarkup(createElement(PanelChart, { slide, page: { slug: 'topic', facts: [fact] } }));
+  const html = renderToStaticMarkup(createElement(PanelChart, { slide, page: { slug: 'topic' } }));
   assert.doesNotMatch(html, /<summary>Method Changes<\/summary>/);
   const card = html.match(/data-kind="method" data-marker="2">[\s\S]*?<\/button><\/div>/)?.[0] ?? '';
   assert.match(card, /The benchmark changed\./);

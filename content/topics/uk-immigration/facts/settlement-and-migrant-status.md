@@ -19,7 +19,7 @@ sources:
     publisher: "Home Office"
     date: '2026-08-27'
   - stance: supports
-    quote: "Since the scheme was launched in 2018, just under 4.6 million settled status grants have been issued. … The total for grants of settled status includes 115,770 automated EUSS settled status grants"
+    quote: "Since the scheme was launched in 2018, just under 4.6 million settled status grants have been issued. Nearly two-thirds (62%) of settled status grants were issued before the 30 June 2021 application deadline. … The total for grants of settled status includes 115,770 automated EUSS settled status grants"
     title: "How many Indefinite Leave (Settlement and EUSS settled status) grants have been issued in the UK?"
     url: "https://www.gov.uk/government/statistics/immigration-system-statistics-year-ending-june-2026/how-many-indefinite-leave-settlement-and-euss-settled-status-grants-have-been-issued-in-the-uk"
     publisher: "Home Office"
@@ -73,19 +73,21 @@ sources:
     publisher: "Home Office"
     date: '2025-11-20'
   - stance: complicates
-    quote: "The spike in settlement in 2010 was due to a large number of grants on a discretionary basis (82,295 grants in 2010), mainly under measures aimed at clearing the backlog of outstanding unresolved cases. 4 The fall in settlement grants from 2010 to 2016 was in part due to a 2012 policy change that increased the residence requirement for Family visas from 2 to 5 years, delaying some grants that would otherwise have been made earlier."
+    quote: "The spike in settlement in 2010 was due to a large number of grants on a discretionary basis (82,295 grants in 2010), mainly under measures aimed at clearing the backlog of outstanding unresolved cases. The fall in settlement grants from 2010 to 2016 was in part due to a 2012 policy change that increased the residence requirement for Family visas from 2 to 5 years, delaying some grants that would otherwise have been made earlier."
     title: "A Fairer Pathway to Settlement: a statement and accompanying consultation on earned settlement (CP 1448)"
     url: "https://assets.publishing.service.gov.uk/media/691edda450b16caf978153d8/Command_Paper_final_-_reviewed7.pdf"
     publisher: "Home Office"
     date: '2025-11-20'
   - stance: supports
-    quote: "First, the 154,000 people granted a Hong Kong BN(O) LTE or LTR visa in 2021 and 2022 will become eligible to settle in 2026 and 2027 18. The Home Office forecasts 92,000 additional settlement applications from this cohort in 2026 and 54,000 in 2027. 19 • Second, the significant increase in people granted a Health and Care entry clearance visa, including a significant cohort working in the care sector, totalling 616,000 between 2022 and 2024 will become eligible for settlement between 2027 and 2029. 20 The Home Office estimates that the UK will see 384,000 additional settlement applications from this cohort over this period, with a peak at 210,000 in 2028."
+    quote: |-
+      - First, the 154,000 people granted a Hong Kong BN(O) LTE or LTR visa in 2021 and 2022 will become eligible to settle in 2026 and 2027. The Home Office forecasts 92,000 additional settlement applications from this cohort in 2026 and 54,000 in 2027.
+      - Second, the significant increase in people granted a Health and Care entry clearance visa, including a significant cohort working in the care sector, totalling 616,000 between 2022 and 2024 will become eligible for settlement between 2027 and 2029. The Home Office estimates that the UK will see 384,000 additional settlement applications from this cohort over this period, with a peak at 210,000 in 2028.
     title: "A Fairer Pathway to Settlement: a statement and accompanying consultation on earned settlement (CP 1448)"
     url: "https://assets.publishing.service.gov.uk/media/691edda450b16caf978153d8/Command_Paper_final_-_reviewed7.pdf"
     publisher: "Home Office"
     date: '2025-11-20'
   - stance: supports
-    quote: "Finally, the number of granted Skilled Worker entry clearance visas also spiked between 2022 and 2024, totalling 344,000. 21 These visas will also become eligible for settlement between 2027 and 2029, and the Home Office estimates that this cohort will account for around 222,000 settlement applications over this period."
+    quote: "Finally, the number of granted Skilled Worker entry clearance visas also spiked between 2022 and 2024, totalling 344,000. These visas will also become eligible for settlement between 2027 and 2029, and the Home Office estimates that this cohort will account for around 222,000 settlement applications over this period."
     title: "A Fairer Pathway to Settlement: a statement and accompanying consultation on earned settlement (CP 1448)"
     url: "https://assets.publishing.service.gov.uk/media/691edda450b16caf978153d8/Command_Paper_final_-_reviewed7.pdf"
     publisher: "Home Office"
@@ -121,7 +123,13 @@ sources:
     publisher: "The Migration Observatory, University of Oxford"
     date: '2025-11-10'
   - stance: supports
-    quote: "Dependants of people holding worker visas (645,000, of which 328,000 adults). HMRC data from 2023/24 show that around half of adult Skilled Worker dependants were not working, and a third of dependants on Health & Care visas. Family visa holders (352,000, of which 318,000 adults). The Migration Advisory Committee (MAC) found in 2025 that around a third of adults on family visas were not working by their fifth year in the UK. Many more are likely to earn below £12,570 or not have the required period of continued employment. Refugees and other holders of humanitarian protection (230,000, of which 165,000 adults). A Home Office analysis showed that around 45% of refugees granted protection or resettled between 2015 and 2023 were not working by their fifth year in the UK. BN(O)s from Hong Kong (189,000, of which 145,000 adults). Survey data from 2025 indicated that 30% of adult BN(O)s were not in employment. Hundreds of thousands of migrants would therefore currently not be eligible for settlement under the proposed mandatory employment rule."
+    quote: |-
+      - Dependants of people holding worker visas (645,000, of which 328,000 adults). HMRC data from 2023/24 show that around half of adult Skilled Worker dependants were not working, and a third of dependants on Health & Care visas.
+      - Family visa holders (352,000, of which 318,000 adults). The Migration Advisory Committee (MAC) found in 2025 that around a third of adults on family visas were not working by their fifth year in the UK. Many more are likely to earn below £12,570 or not have the required period of continued employment.
+      - Refugees and other holders of humanitarian protection (230,000, of which 165,000 adults). A Home Office analysis showed that around 45% of refugees granted protection or resettled between 2015 and 2023 were not working by their fifth year in the UK.
+      - BN(O)s from Hong Kong (189,000, of which 145,000 adults). Survey data from 2025 indicated that 30% of adult BN(O)s were not in employment.
+
+      Hundreds of thousands of migrants would therefore currently not be eligible for settlement under the proposed mandatory employment rule.
     title: "Changes to settlement: what do they mean?"
     url: "https://migrationobservatory.ox.ac.uk/resources/commentaries/changes-to-settlement-what-do-they-mean/"
     publisher: "The Migration Observatory, University of Oxford"
@@ -187,7 +195,9 @@ sources:
     publisher: "Home Office"
     date: '2026-05-21'
   - stance: supports
-    quote: "Initial leave type | Expired | Indefinite leave to remain | Valid leave to remain | Total || All leave types | 156084 | 49100 | 138874 | 344058"
+    quote: |-
+      Initial leave type | Expired | Indefinite leave to remain | Valid leave to remain | Total
+      All leave types | 156084 | 49100 | 138874 | 344058
     title: "Migrant journey: 2025 report, summary tables (MJ_03)"
     url: https://www.gov.uk/government/statistics/migrant-journey-2025-report
     fileUrl: https://assets.publishing.service.gov.uk/media/6a0b04a9f7c2e79c33db90e1/migrant-journey-summary-tables-2025.ods
@@ -279,7 +289,13 @@ sources:
     publisher: "Home Office"
     date: '2020-07-22'
   - stance: supports
-    quote: "(1)The Secretary of State may revoke a person’s indefinite leave to enter or remain in the United Kingdom if the person— (a)is liable to deportation, but (b)cannot be deported for legal reasons. (2)The Secretary of State may revoke a person’s indefinite leave to enter or remain in the United Kingdom if— (a)the leave was obtained by deception,"
+    quote: |-
+      (1)The Secretary of State may revoke a person’s indefinite leave to enter or remain in the United Kingdom if the person—
+      - (a)is liable to deportation, but
+      - (b)cannot be deported for legal reasons.
+
+      (2)The Secretary of State may revoke a person’s indefinite leave to enter or remain in the United Kingdom if—
+      - (a)the leave was obtained by deception,
     title: "Nationality, Immigration and Asylum Act 2002, section 76: Revocation of leave to enter or remain"
     url: "https://www.legislation.gov.uk/ukpga/2002/41/section/76"
     publisher: "legislation.gov.uk"
@@ -309,7 +325,7 @@ sources:
     publisher: "High Court of Justice (The National Archives, Find Case Law)"
     date: '2008-04-08'
   - stance: complicates
-    quote: "It is common for the Home Office to apply transitional protections when making changes to the Immigration Rules—so that immigrants are covered by the rules that were in place at the time they received their visa, with regards to both settlement and other aspects of immigration policy189—but there is also precedent for changes to Immigration Rules being applied to people already in the UK."
+    quote: "It is common for the Home Office to apply transitional protections when making changes to the Immigration Rules—so that immigrants are covered by the rules that were in place at the time they received their visa, with regards to both settlement and other aspects of immigration policy—but there is also precedent for changes to Immigration Rules being applied to people already in the UK."
     title: "Earned Settlement: Examining the Government's proposed reforms (Sixth Report of Session 2024–26)"
     url: "https://publications.parliament.uk/pa/cm5901/cmselect/cmhaff/1409/report.html"
     publisher: "House of Commons Home Affairs Committee"
@@ -357,7 +373,16 @@ sources:
     publisher: "The Migration Observatory, University of Oxford"
     date: '2026-02-10'
   - stance: supports
-    quote: "5 years less for migrants with taxable income of at least £50,270 a year 7 years less for migrants with taxable income of at least £125,140 a year 5 years less for migrants in specified public service occupations (such as those working in education or the NHS, though a list is to be confirmed) 3 to 5 years less for migrants working in their community, such as through volunteering (details remain unclear) The following factors would result in longer waiting periods would also apply (only the largest): 5 years longer if the applicant has received public funds for less than 12 months 10 years longer if the applicant has received public funds for more than 12 months Up to 20 years longer for people who entered the UK illegally, first arrived on a visitor visa, or overstayed a visa for more than 6 months (up to a maximum total of 30 years)"
+    quote: |-
+      - 5 years less for migrants with taxable income of at least £50,270 a year
+      - 7 years less for migrants with taxable income of at least £125,140 a year
+      - 5 years less for migrants in specified public service occupations (such as those working in education or the NHS, though a list is to be confirmed)
+      - 3 to 5 years less for migrants working in their community, such as through volunteering (details remain unclear)
+
+      The following factors would result in longer waiting periods would also apply (only the largest):
+      - 5 years longer if the applicant has received public funds for less than 12 months
+      - 10 years longer if the applicant has received public funds for more than 12 months
+      - Up to 20 years longer for people who entered the UK illegally, first arrived on a visitor visa, or overstayed a visa for more than 6 months (up to a maximum total of 30 years)
     title: "Changes to settlement: what do they mean?"
     url: "https://migrationobservatory.ox.ac.uk/resources/commentaries/changes-to-settlement-what-do-they-mean/"
     publisher: "The Migration Observatory, University of Oxford"
@@ -381,7 +406,7 @@ sources:
     publisher: "House of Commons Home Affairs Committee"
     date: '2026-03-13'
   - stance: supports
-    quote: "understand that extending routes to settlement for at least some people already in the UK is essential for the Government to be able to meet its objective of reducing the impact of the large number of immigrants who arrived to the UK in recent years."
+    quote: "We agree that the Government needs to weigh and consider the broader impacts of settlement policy on the UK—including what is fair to British people and people already settled here—and understand that extending routes to settlement for at least some people already in the UK is essential for the Government to be able to meet its objective of reducing the impact of the large number of immigrants who arrived to the UK in recent years."
     title: "Earned Settlement: Examining the Government's proposed reforms (Sixth Report of Session 2024–26)"
     url: "https://publications.parliament.uk/pa/cm5901/cmselect/cmhaff/1409/report.html"
     publisher: "House of Commons Home Affairs Committee"
@@ -455,7 +480,9 @@ sources:
     publisher: "Home Office"
     date: '2026-10-20'
   - stance: supports
-    quote: "In-Country | Indefinite leave to remain - main applicant and dependants | £3,226 | £3,226 | 0% | £310 | £3,635"
+    quote: |-
+      In-Country/Overseas | Fee Category | Current Fee | Fee from 08 October 2026 | % Change | Estimated Unit Cost | Maxima
+      In-Country | Indefinite leave to remain - main applicant and dependants | £3,226 | £3,226 | 0% | £310 | £3,635
     title: "Fees and Unit Cost Table 08 October 2026 (visa fees transparency data)"
     url: https://www.gov.uk/government/publications/visa-fees-transparency-data
     fileUrl: https://assets.publishing.service.gov.uk/media/6ad7266be5db84746b479894/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods
@@ -463,7 +490,9 @@ sources:
     publisher: "Home Office"
     date: '2026-10-20'
   - stance: supports
-    quote: "Overseas | Skilled Worker, where a certificate of sponsorship has been issued or approval to sponsor under Sponsor a Worker has been given for over three years [Footnote 2] - main applicant and dependants | £1,618 | £1,618 | 0% | £153 | £2,000"
+    quote: |-
+      In-Country/Overseas | Fee Category | Current Fee | Fee from 08 October 2026 | % Change | Estimated Unit Cost | Maxima
+      Overseas | Skilled Worker, where a certificate of sponsorship has been issued or approval to sponsor under Sponsor a Worker has been given for over three years [Footnote 2] - main applicant and dependants | £1,618 | £1,618 | 0% | £153 | £2,000
     title: "Fees and Unit Cost Table 08 October 2026 (visa fees transparency data)"
     url: https://www.gov.uk/government/publications/visa-fees-transparency-data
     fileUrl: https://assets.publishing.service.gov.uk/media/6ad7266be5db84746b479894/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods
@@ -471,7 +500,9 @@ sources:
     publisher: "Home Office"
     date: '2026-10-20'
   - stance: supports
-    quote: "Overseas | Skilled Worker - Health and Care Visa - where a certificate of sponsorship has been issued or approval to sponsor under Sponor a Worker has been given for three years or less  [Footnotes 2 and 3] - main applicant and dependants | £324 | £324 | 0% | £153 | £2,000"
+    quote: |-
+      In-Country/Overseas | Fee Category | Current Fee | Fee from 08 October 2026 | % Change | Estimated Unit Cost | Maxima
+      Overseas | Skilled Worker - Health and Care Visa - where a certificate of sponsorship has been issued or approval to sponsor under Sponor a Worker has been given for three years or less  [Footnotes 2 and 3] - main applicant and dependants | £324 | £324 | 0% | £153 | £2,000
     title: "Fees and Unit Cost Table 08 October 2026 (visa fees transparency data)"
     url: https://www.gov.uk/government/publications/visa-fees-transparency-data
     fileUrl: https://assets.publishing.service.gov.uk/media/6ad7266be5db84746b479894/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods
@@ -479,7 +510,9 @@ sources:
     publisher: "Home Office"
     date: '2026-10-20'
   - stance: supports
-    quote: "Overseas | Student - main applicant and dependants | £558 | £558 | 0% | £176 | £600"
+    quote: |-
+      In-Country/Overseas | Fee Category | Current Fee | Fee from 08 October 2026 | % Change | Estimated Unit Cost | Maxima
+      Overseas | Student - main applicant and dependants | £558 | £558 | 0% | £176 | £600
     title: "Fees and Unit Cost Table 08 October 2026 (visa fees transparency data)"
     url: https://www.gov.uk/government/publications/visa-fees-transparency-data
     fileUrl: https://assets.publishing.service.gov.uk/media/6ad7266be5db84746b479894/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods
@@ -487,7 +520,9 @@ sources:
     publisher: "Home Office"
     date: '2026-10-20'
   - stance: supports
-    quote: "In-Country | Graduate Route – main applicant and dependants | £937 | £937 | 0% | £110 | £2,000"
+    quote: |-
+      In-Country/Overseas | Fee Category | Current Fee | Fee from 08 October 2026 | % Change | Estimated Unit Cost | Maxima
+      In-Country | Graduate Route – main applicant and dependants | £937 | £937 | 0% | £110 | £2,000
     title: "Fees and Unit Cost Table 08 October 2026 (visa fees transparency data)"
     url: https://www.gov.uk/government/publications/visa-fees-transparency-data
     fileUrl: https://assets.publishing.service.gov.uk/media/6ad7266be5db84746b479894/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods
@@ -495,7 +530,9 @@ sources:
     publisher: "Home Office"
     date: '2026-10-20'
   - stance: supports
-    quote: "Entry clearance or limited leave to remain for any purpose (excluding visits) not referred to in the preceding provisions of this table | Fixed Amount | Overseas | Route to Settlement | £2,064 | £2,064 | 0% | £639 | £3,600"
+    quote: |-
+      Enabling Provision (Fees Order) | Method of Calculation | In-Country/Overseas | Fee Category | Current Fee | Fee from 08 October 2026 | % Change | Estimated Unit Cost | Maxima
+      Entry clearance or limited leave to remain for any purpose (excluding visits) not referred to in the preceding provisions of this table | Fixed Amount | Overseas | Route to Settlement | £2,064 | £2,064 | 0% | £639 | £3,600
     title: "Fees and Unit Cost Table 08 October 2026 (visa fees transparency data)"
     url: https://www.gov.uk/government/publications/visa-fees-transparency-data
     fileUrl: https://assets.publishing.service.gov.uk/media/6ad7266be5db84746b479894/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods
@@ -503,7 +540,9 @@ sources:
     publisher: "Home Office"
     date: '2026-10-20'
   - stance: supports
-    quote: "Entry clearance as a Visitor for a period of six months or less. | Fixed Amount | Overseas | Visit visa – short up to 6 months | £135 | £135 | 0% | £159 | £140"
+    quote: |-
+      Enabling Provision (Fees Order) | Method of Calculation | In-Country/Overseas | Fee Category | Current Fee | Fee from 08 October 2026 | % Change | Estimated Unit Cost | Maxima
+      Entry clearance as a Visitor for a period of six months or less. | Fixed Amount | Overseas | Visit visa – short up to 6 months | £135 | £135 | 0% | £159 | £140
     title: "Fees and Unit Cost Table 08 October 2026 (visa fees transparency data)"
     url: https://www.gov.uk/government/publications/visa-fees-transparency-data
     fileUrl: https://assets.publishing.service.gov.uk/media/6ad7266be5db84746b479894/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods
@@ -511,7 +550,9 @@ sources:
     publisher: "Home Office"
     date: '2026-10-20'
   - stance: supports
-    quote: "Overseas | Global Talent - main applicant - where Approval Letter is required | £205 | £205 | 0% | £488 | £2,000"
+    quote: |-
+      In-Country/Overseas | Fee Category | Current Fee | Fee from 08 October 2026 | % Change | Estimated Unit Cost | Maxima
+      Overseas | Global Talent - main applicant - where Approval Letter is required | £205 | £205 | 0% | £488 | £2,000
     title: "Fees and Unit Cost Table 08 October 2026 (visa fees transparency data)"
     url: https://www.gov.uk/government/publications/visa-fees-transparency-data
     fileUrl: https://assets.publishing.service.gov.uk/media/6ad7266be5db84746b479894/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods
@@ -519,7 +560,9 @@ sources:
     publisher: "Home Office"
     date: '2026-10-20'
   - stance: complicates
-    quote: "Naturalisation as a British citizen or a British overseas territories citizen. | Fixed Amount | In-Country | Naturalisation (British citizenship) [Footnote 5] | £1,709 | £1,709 | 0% | £1.23 | £1,709"
+    quote: |-
+      Enabling Provision (Fees Order) | Method of Calculation | In-Country/Overseas | Fee Category | Current Fee | Fee from 08 October 2026 | % Change | Estimated Unit Cost | Maxima
+      Naturalisation as a British citizen or a British overseas territories citizen. | Fixed Amount | In-Country | Naturalisation (British citizenship) [Footnote 5] | £1,709 | £1,709 | 0% | £1.23 | £1,709
     title: "Fees and Unit Cost Table 08 October 2026 (visa fees transparency data)"
     url: https://www.gov.uk/government/publications/visa-fees-transparency-data
     fileUrl: https://assets.publishing.service.gov.uk/media/6ad7266be5db84746b479894/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods
@@ -557,19 +600,31 @@ sources:
     publisher: "The Migration Observatory, University of Oxford"
     date: '2026-02-10'
   - stance: supports
-    quote: "The UK required the highest settlement fees skilled worker visas in other leading science nations. compared to other European nations in 2025 when controlling for PPP – without PPP adjustment, it ranked second to Switzerland, which topped the list at £3,871."
+    quote: "In 2025, visa holders incur 336% (404% when adjusting for PPP) higher costs to apply for settlement in the UK as compared to the average costs for permanent residence in other European countries, and 217% (248% when adjusting for PPP) higher if the UK are included in the international average. The UK required the highest settlement fees compared to other European nations in 2025 when controlling for PPP – without PPP adjustment, it ranked second to Switzerland, which topped the list at £3,871."
     title: "UK immigration costs: an international comparison of skilled worker, researcher and student visas in 2025"
     url: "https://royalsociety.org/-/media/policy/publications/2025/summary-of-visa-costs-analysis-2025.pdf"
     publisher: "The Royal Society"
     date: '2025-10'
   - stance: supports
-    quote: "In 2025, visa holders incur 336% (404% when adjusting to rise in the UK increasing to £3,029 by 5% in 2024 – for PPP) higher costs to apply for settlement in the UK as 2025 and by 27% in 2021 – 2025, equivalent to 2% in compared to the average costs for permanent residence in real terms after adjusting for inflation. Figure 6 shows a other European countries, and 217% (248% when adjusting comparison of 2025 settlement costs between the UK for PPP) higher if the UK are included in the international"
+    quote: "Settlement fees payable by the applicant continued to rise in the UK increasing to £3,029 by 5% in 2024 – 2025 and by 27% in 2021 – 2025, equivalent to 2% in real terms after adjusting for inflation. Figure 6 shows a comparison of 2025 settlement costs between the UK and those for applicants holding dedicated researcher or skilled worker visas in other leading science nations. In 2025, visa holders incur 336% (404% when adjusting for PPP) higher costs to apply for settlement in the UK as compared to the average costs for permanent residence in other European countries, and 217% (248% when adjusting for PPP) higher if the UK are included in the international average."
     title: "UK immigration costs: an international comparison of skilled worker, researcher and student visas in 2025"
     url: "https://royalsociety.org/-/media/policy/publications/2025/summary-of-visa-costs-analysis-2025.pdf"
     publisher: "The Royal Society"
     date: '2025-10'
   - stance: supports
-    quote: "Costs of settlement across leading European science nations, 2024 and 2025"
+    quote: |-
+      Costs of settlement across leading European science nations, 2024 and 2025
+
+      Visa category | 2024 Applicant cost (£) | 2024 Applicant cost (local) | 2025 Applicant cost (£) | 2025 Applicant cost (local)
+      Denmark – Residence permit for researchers | 858 | 7,475 | 812 | 7,110
+      France – Settlement for dedicated researchers | 194 | 225 | 192 | 225
+      Germany – Settlement for dedicated researchers | 172 | 200 | 170 | 200
+      Italy – EU Blue Card | 153 | 178 | 152 | 178
+      Netherlands – Settlement for dedicated researchers | 196 | 228 | 207 | 243
+      Spain – Settlement for dedicated researchers | 38 | 44 | 37 | 44
+      Sweden – Settlement for dedicated researchers | 112 | 1,500 | 117 | 1,500
+      Switzerland – Settlement for skilled workers | 3,711 | 4,250 | 3,871 | 4,250
+      UK – Global Talent Visa Settlement | 2,885 | 2,885 | 3,029 | 3,029
     title: "UK immigration costs: an international comparison of skilled worker, researcher and student visas in 2025"
     url: "https://royalsociety.org/-/media/policy/publications/2025/summary-of-visa-costs-analysis-2025.pdf"
     publisher: "The Royal Society"
@@ -605,7 +660,11 @@ sources:
     publisher: "Home Office (independent review by Wendy Williams)"
     date: '2020-03-19'
   - stance: supports
-    quote: "Quarter/Month | Total intake | Total WIP | Total Final Decisions* | Of which | Value offers | No. of zero entitlement claims | Eligibility refused / withdrawn | Suspended | Total Cases Fully Closed** | Of which | Value offers (includes zero entitlement claims that have had a payment on review) | No. of zero entitlement claims | Eligibility refused / withdrawn || Total | 12,414 | 591 | 11,690 | 4,009 | 6,741 | 940 | 133 | 10,068 | 3,438 | 5,690 | 940"
+    quote: |-
+      WCS_01: Windrush Overview
+
+      Quarter/Month | Total intake | Total WIP | Total Final Decisions* | Of which | Value offers | No. of zero entitlement claims | Eligibility refused / withdrawn | Suspended | Total Cases Fully Closed** | Of which | Value offers (includes zero entitlement claims that have had a payment on review) | No. of zero entitlement claims | Eligibility refused / withdrawn
+      Total | 12,414 | 591 | 11,690 |  | 4,009 | 6,741 | 940 | 133 | 10,068 |  | 3,438 | 5,690 | 940
     title: "Windrush Compensation Scheme data: August 2026 (data tables)"
     url: https://www.gov.uk/government/statistics/windrush-compensation-scheme-data-august-2026
     fileUrl: https://assets.publishing.service.gov.uk/media/6ae1e5317fe45a08a4036e7b/windrush-compensation-scheme-data-tables-aug-2026.ods
@@ -613,7 +672,11 @@ sources:
     publisher: "Home Office"
     date: '2026-10-29'
   - stance: supports
-    quote: "Quarter/Month | Cumulative amount paid | Cumulative Number of Preliminary claims paid8 | Cumulative number of claims receiving payment* | Cumulative Number of Primary claims receiving payment | Cumulative Number of Estate claims receiving payment | Cumulative Number of Close Family claims receiving payment | Cumulative amount Offered | Cumulative Number of Preliminary offers made | Cumulative number claims receiving value offer | Cumulative No. of Primary claims receiving value offer | Cumulative No. of Estate claims receiving value offer | Cumulative No. of Close Family claims receiving value offer | Cumulative number claims receiving value offer or a zero entitlement | Cumulative No. of Primary claims receiving value offer or a zero entitlement | Cumulative No. of Estate claims receiving value offer or a zero entitlement | Cumulative No. of Close Family claims receiving value offer or a zero entitlement || Aug-2026 | £133,475,539.07 | 2,048 | 4,221 | 2,289 | 238 | 1,694 | £138,849,799.48 | 1,947 | 4,294 | 2,316 | 246 | 1,732 | 10,756 | 6,044 | 1,145 | 3,567"
+    quote: |-
+      WCS_03: Value of Windrush Compensation Scheme payments made
+
+      Quarter/Month | Cumulative amount paid | Cumulative Number of Preliminary claims paid | Cumulative number of claims receiving payment* | Cumulative Number of Primary claims receiving payment | Cumulative Number of Estate claims receiving payment | Cumulative Number of Close Family claims receiving payment | Cumulative amount Offered | Cumulative Number of Preliminary offers made | Cumulative number claims receiving value offer | Cumulative No. of Primary claims receiving value offer | Cumulative No. of Estate claims receiving value offer | Cumulative No. of Close Family claims receiving value offer | Cumulative number claims receiving value offer or a zero entitlement | Cumulative No. of Primary claims receiving value offer or a zero entitlement | Cumulative No. of Estate claims receiving value offer or a zero entitlement | Cumulative No. of Close Family claims receiving value offer or a zero entitlement
+      Aug-2026 | £133,475,539.07 | 2,048 | 4,221 | 2,289 | 238 | 1,694 | £138,849,799.48 | 1,947 | 4,294 | 2,316 | 246 | 1,732 | 10,756 | 6,044 | 1,145 | 3,567
     title: "Windrush Compensation Scheme data: August 2026 (data tables)"
     url: https://www.gov.uk/government/statistics/windrush-compensation-scheme-data-august-2026
     fileUrl: https://assets.publishing.service.gov.uk/media/6ae1e5317fe45a08a4036e7b/windrush-compensation-scheme-data-tables-aug-2026.ods
@@ -651,7 +714,13 @@ sources:
     publisher: "YouGov"
     date: '2025-09-27'
   - stance: complicates
-    quote: "In a three-way choice on whether certain groups of current ILR recipients should a) continue to be allowed to stay permanently, b) have to apply for a temporary visa or c) be made to leave the UK, the majority of the public want to continue allowing permanent residency for: those who have lived in Britain for over 10 years; those in full time work and paying taxes; NHS workers; those married to a British citizen, or those with children who are citizens; and those who have set up businesses in the UK."
+    quote: |-
+      In a three-way choice on whether certain groups of current ILR recipients should a) continue to be allowed to stay permanently, b) have to apply for a temporary visa or c) be made to leave the UK, the majority of the public want to continue allowing permanent residency for:
+      - those who have lived in Britain for over 10 years;
+      - those in full time work and paying taxes;
+      - NHS workers;
+      - those married to a British citizen, or those with children who are citizens;
+      - and those who have set up businesses in the UK.
     title: "What do Britons really think about scrapping indefinite leave to remain?"
     url: "https://yougov.com/en-gb/articles/53070-what-do-britons-really-think-about-scrapping-indefinite-leave-to-remain"
     publisher: "YouGov"
@@ -669,13 +738,24 @@ sources:
     publisher: "Home Office (independent review by Wendy Williams)"
     date: '2020-03-19'
   - stance: supports
-    quote: "You can apply if: you came to the UK from a Commonwealth country before 1973; your parents or grandparents came to the UK from a Commonwealth country before 1973; you came to the UK from any country before 31 December 1988 and are now settled here"
+    quote: |-
+      You can apply if:
+      - you came to the UK from a Commonwealth country before 1973;
+      - your parents or grandparents came to the UK from a Commonwealth country before 1973;
+      - you came to the UK from any country before 31 December 1988 and are now settled here
     title: "Apply to the Windrush Compensation Scheme"
     url: "https://www.gov.uk/guidance/windrush-compensation-scheme"
     publisher: "GOV.UK"
     date: '2026'
   - stance: supports
-    quote: "EUSS_QTR: Quarterly applications received and concluded to the EU settlement scheme, by outcome and nationality, 28 August 2018 to 30 June 2026 … Table 2 EUSS_QTR: Quarterly applications concluded … Settled 4,476,552"
+    quote: |-
+      EUSS_QTR: Quarterly applications received and concluded to the EU settlement scheme, by outcome and nationality, 28 August 2018 to 30 June 2026
+
+      Table 2 EUSS_QTR: Quarterly applications concluded
+
+      Conclusions | Total
+      Applications concluded | 8,837,667
+      Settled | 4,476,552
     title: "EU Settlement Scheme quarterly statistics, June 2026: table EUSS_QTR"
     url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
     fileUrl: https://assets.publishing.service.gov.uk/media/6a8c11b7042872d923842818/eu-settlement-scheme-quarterly-statistics-tables-jun-2026.ods
@@ -683,7 +763,8 @@ sources:
     publisher: "Home Office"
     date: '2026-08-27'
 series:
-  title: 'Grants of settlement in the UK, 2010–2025'
+  title: 'People granted settlement in the UK'
+  subtitle: '2010–2025'
   description: >-
     Settlement, or indefinite leave to remain, lets a person live in the UK permanently;
     this counts grants made each calendar year. It leaves out the EU Settlement Scheme and
@@ -906,7 +987,8 @@ series:
               value: 20199
 additionalSeries:
   - id: windrush-compensation
-    title: 'Windrush Compensation Scheme: cumulative amount paid, 2019–2026'
+    title: 'Windrush compensation paid'
+    subtitle: 'Cumulative total since the scheme opened, 2019–2026'
     description: >-
       Compensation for the Windrush generation: Commonwealth migrants up to 1973 with a
       right to stay but no papers to prove it. They are named after HMT Windrush,
@@ -1102,8 +1184,8 @@ additionalSeries:
                   value: 133475539
 comparisons:
   - id: path-by-group
-    title: >-
-      People on a five-year path to UK settlement, by visa group, end of 2024
+    title: 'People on a five-year path to settlement'
+    subtitle: 'By visa group, end of 2024, Migration Observatory'
     description: "People on temporary visas that can lead to settlement, the right to live in the UK permanently, after five years, by type of visa. This is the breakdown by the Migration Observatory at the University of Oxford of the roughly 2.2 million holders of those visas, by the visa they held at the end of 2024."
     unit: count
     valueLabel: "People holding the visa"
@@ -1123,9 +1205,8 @@ comparisons:
         value: 189000
     note: "These five groups are the ones the Migration Observatory names; together they come to 2,172,000 against its rounded total of \"around 2.2 million\". The worker figure includes some people on visas that do not lead to settlement, such as intra-company transfers."
   - id: cohort-2020
-    title: >-
-      Where people who arrived in the UK in 2020 were five years on, by route of
-      entry
+    title: 'Status of 2020 arrivals five years on'
+    subtitle: 'At the end of 2025, by route of entry'
     description: "People who began what the Home Office calls a \"migrant journey\" in 2020, by route of entry and by their status at the end of 2025. Status means indefinite leave (the right to stay permanently), still on temporary leave, or leave expired (expected to have left). Ranked by size of route."
     unit: count
     valueLabel: "People"
@@ -1178,8 +1259,8 @@ comparisons:
           - 237
     note: "From Home Office table MJ_03. The six routes are the table's complete set and add up to its total of 344,058. Asylum covers claims made in 2020 that ended in a grant of protection or other leave; refused claims are not in the data. Visitors are excluded."
   - id: universal-credit-by-status
-    title: >-
-      People on Universal Credit by immigration status, Great Britain, July 2025
+    title: 'Universal Credit by immigration status'
+    subtitle: 'People receiving it, Great Britain, July 2025'
     description: "Universal Credit is a benefit; this splits the people receiving it in Great Britain by their recorded immigration status. The figures are for July 2025 and show the share of the 8.0 million people on Universal Credit in each status group the Department for Work and Pensions records."
     unit: percent
     valueLabel: "Share of people on Universal Credit"
@@ -1210,7 +1291,8 @@ comparisons:
         value: 0.4
     note: "Every group the Department for Work and Pensions publishes; they sum to 100.0%. These are \"statistics in development\". Status is recorded when someone claims or their circumstances change, and the department is not usually told when someone with indefinite leave becomes a British citizen, so the indefinite-leave group includes some citizens."
   - id: settlement-fees-europe
-    title: "Cost of applying for permanent residence, UK and European science nations, 2025"
+    title: 'Cost of permanent residence'
+    subtitle: 'Applicant fees, UK and European science nations, 2025'
     description: "What an applicant pays for the right to stay permanently in the UK and other European countries in a Royal Society comparison. Each bar is the applicant fee for permanent residence (or the nearest equivalent for researchers) in every European country in the comparison, 2025, in pounds at nominal exchange rates."
     unit: pounds
     valueLabel: "Applicant cost (£)"
@@ -1218,37 +1300,45 @@ comparisons:
       - 90
       - 88
     items:
-      - label: "Switzerland – skilled workers"
+      - label: "Switzerland"
+        subtitle: "Skilled workers"
         detail: "Settlement for skilled workers"
         value: 3871
-      - label: "UK – Global Talent visa settlement"
+      - label: "UK"
+        subtitle: "Global Talent visa settlement"
         value: 3029
         highlight: true
-      - label: "Denmark – researchers"
+      - label: "Denmark"
+        subtitle: "Researchers"
         detail: "Residence permit for researchers"
         value: 812
-      - label: "Netherlands – researchers"
+      - label: "Netherlands"
+        subtitle: "Researchers"
         detail: "Settlement for dedicated researchers"
         value: 207
-      - label: "France – researchers"
+      - label: "France"
+        subtitle: "Researchers"
         detail: "Settlement for dedicated researchers"
         value: 192
-      - label: "Germany – researchers"
+      - label: "Germany"
+        subtitle: "Researchers"
         detail: "Settlement for dedicated researchers"
         value: 170
-      - label: "Italy – EU Blue Card"
+      - label: "Italy"
+        subtitle: "EU Blue Card"
         value: 152
-      - label: "Sweden – researchers"
+      - label: "Sweden"
+        subtitle: "Researchers"
         detail: "Settlement for dedicated researchers"
         value: 117
-      - label: "Spain – researchers"
+      - label: "Spain"
+        subtitle: "Researchers"
         detail: "Settlement for dedicated researchers"
         value: 37
     note: "All nine countries in the Royal Society's Table 12, which compares European countries with dedicated researcher or skilled-worker settlement routes; non-European countries in the study are not in this table. The UK figure is the 2025 fee; the Home Office fee table from 8 October 2026 puts it at £3,226. Adjusted for purchasing power the UK ranks first."
   - id: ilr-polling
-    title: >-
-      Support in Great Britain for ending and for removing indefinite leave,
-      September 2025
+    title: 'Polling on indefinite leave'
+    subtitle: 'Ending new grants and removing it, Great Britain, September 2025'
     description: "A poll on ending new grants of indefinite leave, the right to live in the UK permanently, and removing it from those who hold it. YouGov asked adults in Great Britain in September 2025, and the bars show support and opposition on each question."
     unit: percent
     valueLabel: "Share of respondents"
@@ -1271,7 +1361,8 @@ figures:
 - kind: series
 - kind: estimateRange
   id: settlement-forecast
-  title: "People the Home Office expects to settle, 2026–2030 and in the peak year"
+  title: 'People expected to settle'
+  subtitle: 'Home Office forecast, 2026–2030 and the peak year'
   description: "People the Home Office expects to gain settlement, the right to live in the UK permanently, in 2026–2030 and in the peak year. The forecast is under current rules, shown as a central estimate with a range."
   valueLabel: People settling
   itemLabel: Forecast
@@ -1283,11 +1374,38 @@ figures:
   estimates:
   - { label: "All five years", year: 2026–2030, estimate: 1600000, low: 1300000, high: 2200000, source: 3 }
   - { label: "Peak year", year: 2028, estimate: 450000, low: 359000, high: 620000, source: 3 }
+- kind: dataTable
+  id: forecast-drivers
+  title: 'What drives the forecast rise in settlement'
+  subtitle: 'The visa groups the Home Office names'
+  description: "The three groups of visas the Home Office names as behind the rise in people settling, with the extra settlement applications it expects from each."
+  caption: "One row per group of visas"
+  columns:
+    - {"key": "cohort", "label": "Visas", "rowHeader": true}
+    - {"key": "granted", "label": "Granted"}
+    - {"key": "expected", "label": "Settlement applications expected"}
+  rows:
+    - {"cohort": "Hong Kong BN(O) visas", "granted": {"value": "154,000 people in 2021 and 2022", "sources": [12]}, "expected": {"value": "92,000 additional in 2026 and 54,000 in 2027", "sources": [12]}}
+    - {"cohort": "Health and Care entry visas", "granted": {"value": "616,000 between 2022 and 2024, \"including a significant cohort working in the care sector\"", "sources": [12]}, "expected": {"value": "384,000 additional between 2027 and 2029", "sources": [12]}}
+    - {"cohort": "Skilled Worker entry visas", "granted": {"value": "344,000 between 2022 and 2024", "sources": [13]}, "expected": {"value": "around 222,000 between 2027 and 2029", "sources": [13]}}
 - kind: series
   id: windrush-compensation
+- kind: dataTable
+  id: windrush-findings
+  title: 'What the Windrush review found'
+  subtitle: 'The independent Windrush Lessons Learned Review, by Wendy Williams'
+  description: "What the independent review of the Windrush scandal, by Wendy Williams, found the state did to people who were here lawfully."
+  caption: "One row per finding"
+  columns:
+    - {"key": "finding", "label": "Finding", "rowHeader": true}
+    - {"key": "says", "label": "The review's words"}
+  rows:
+    - {"finding": "What the state did", "says": {"value": "\"It removed and detained others. And through policies designed to combat illegal migration, it denied people access to work, housing and services, even though they were here lawfully and therefore lawfully entitled to access them.\"", "sources": [94]}}
+    - {"finding": "How many were detained or removed", "says": {"value": "\"It identified 164 people in the country before 1973 who'd either been detained or removed – or both – since 2002\"", "sources": [95]}}
 - kind: barChart
   id: settled-and-on-a-path
-  title: Who holds UK settlement, and who is on a path to it
+  title: 'Settled, and on a path to settlement'
+  subtitle: 'Three separate measures, not to be added together'
   description: "Three separate measures of people with, or on a route to, settlement, which is the right to live in the UK permanently. Each is the best available: EU Settlement Scheme settled-status grants since 2018, the estimated stock of non-EU citizens with indefinite leave at the end of 2024 (lower and upper estimates), and people on temporary visas with a five-year path to settlement at the end of 2024."
   valueLabel: "People"
   categoryLabel: "Measure"
@@ -1308,13 +1426,29 @@ figures:
     value: { low: 621000, high: 820000 }
 - kind: comparison
   id: path-by-group
+- kind: dataTable
+  id: not-working-by-group
+  title: 'Not working, on a path to settlement'
+  subtitle: 'Adults on a five-year path, Migration Observatory summary'
+  description: "How many adults in each group on a five-year path to settlement were not working, in the Migration Observatory's summary, and what that means for the proposed employment rule."
+  caption: "One row per group"
+  columns:
+    - {"key": "group", "label": "Group", "rowHeader": true}
+    - {"key": "says", "label": "The Migration Observatory's words"}
+  rows:
+    - {"group": "Adult Skilled Worker dependants", "says": {"value": "\"around half of adult Skilled Worker dependants were not working\" (HMRC data, 2023/24)", "sources": [19]}}
+    - {"group": "Dependants on Health & Care visas", "says": {"value": "\"a third of dependants on Health & Care visas\" were not working (HMRC data, 2023/24)", "sources": [19]}}
+    - {"group": "Adults on family visas", "says": {"value": "\"around a third of adults on family visas were not working by their fifth year in the UK\"", "sources": [19]}}
+    - {"group": "Refugees", "says": {"value": "\"around 45% of refugees granted protection or resettled between 2015 and 2023 were not working by their fifth year in the UK\"", "sources": [19]}}
+    - {"group": "Everyone on the path", "says": {"value": "\"Hundreds of thousands of migrants would therefore currently not be eligible for settlement under the proposed mandatory employment rule.\"", "sources": [19]}}
 - kind: comparison
   id: cohort-2020
 - kind: comparison
   id: universal-credit-by-status
 - kind: barChart
   id: fees-and-costs
-  title: "Home Office fees for main applications, against its own estimated unit cost"
+  title: 'Home Office fees against unit cost'
+  subtitle: 'Main application on each route, fees from 8 October 2026'
   description: "What the Home Office charges for the main application on each major route, beside its estimated processing cost. Fees are those from 8 October 2026. Two fees are below their unit cost."
   valueLabel: "Per applicant (£)"
   categoryLabel: "Application"
@@ -1349,14 +1483,53 @@ figures:
     values: { fee: 205, cost: 488 }
   - label: "Visit visa, up to six months"
     values: { fee: 135, cost: 159 }
+- kind: dataTable
+  id: route-costs
+  title: 'What a Skilled Worker pays to settle'
+  subtitle: 'Health charge and fees for a single applicant'
+  description: "The yearly health charge, how it is set, and what a single Skilled Worker pays in fees before settling."
+  caption: "One row per cost"
+  columns:
+    - {"key": "cost", "label": "Cost", "rowHeader": true}
+    - {"key": "says", "label": "What the source says"}
+  rows:
+    - {"cost": "Yearly health charge", "says": {"value": "\"£1,035 per year for all other visa and immigration applications, for example £3,105 for a 3-year visa\"", "sources": [84]}}
+    - {"cost": "How the health charge is set", "says": {"value": "\"The charge is based on how much healthcare an 'average' Health Charge payer is expected to use and not directly linked to the healthcare usage of each individual payee.\"", "sources": [85]}}
+    - {"cost": "Fees before settlement, single Skilled Worker", "says": {"value": "\"a total of around £9,900 in fees before obtaining settlement in five years\"; if the same person waited ten years, \"a total of £16,900, mostly because the Immigration Health Surcharge is paid for every year of residence\"", "sources": [87]}}
+- kind: dataTable
+  id: no-recourse
+  title: 'No recourse to public funds'
+  subtitle: 'What the condition means and what councils spend'
+  description: "How the bar on most benefits applies to people on temporary visas, and what the councils that report spend supporting them, from the Home Affairs Committee."
+  caption: "One row per finding"
+  columns:
+    - {"key": "finding", "label": "Finding", "rowHeader": true}
+    - {"key": "says", "label": "The committee's words"}
+  rows:
+    - {"finding": "On a temporary visa", "says": {"value": "\"Immigrants with temporary permission to be in the UK are usually subject to the No Recourse to Public Funds (NRPF) condition, which means they are not eligible for most benefits.\"", "sources": [41]}}
+    - {"finding": "After settlement", "says": {"value": "\"Once an immigrant is granted Indefinite Leave to Remain, they become eligible for accessing benefits on the same terms as British citizens.\"", "sources": [41]}}
+    - {"finding": "What councils spend", "says": {"value": "\"In 2024/25, the 91 local authorities that provided data to the NRPF Network spent £94 million on support to NRPF households.\"", "sources": [91]}}
 - kind: comparison
   id: settlement-fees-europe
 - kind: comparison
   id: ilr-polling
 - kind: dataTable
+  id: ilr-poll-detail
+  title: 'Indefinite leave poll by group'
+  subtitle: 'Reform UK voters and who most would let stay, September 2025'
+  description: "Detail from the YouGov poll of adults in Great Britain: where Reform UK voters stand, and which groups most people would let stay permanently."
+  caption: "One row per finding"
+  columns:
+    - {"key": "finding", "label": "Finding", "rowHeader": true}
+    - {"key": "says", "label": "YouGov's words"}
+  rows:
+    - {"finding": "Reform UK voters", "says": {"value": "\"Two thirds (64%) support ending the granting of ILR, while 54% back removing it from those who already have it.\"", "sources": [101]}}
+    - {"finding": "Who should keep it", "says": {"value": "\"the majority of the public want to continue allowing permanent residency for: those who have lived in Britain for over 10 years; those in full time work and paying taxes; NHS workers; those married to a British citizen, or those with children who are citizens; and those who have set up businesses in the UK\"", "sources": [103]}}
+- kind: dataTable
   id: rules
   replaces: ["rules"]
-  title: "The rules on settlement: a record"
+  title: 'The rules on settlement'
+  subtitle: 'A record of texts and rulings, in date order'
   description: "A record of texts and rulings, not a measurement, so it has no chart."
   caption: "One row per text or ruling, in date order"
   layout: timeline
@@ -1373,12 +1546,13 @@ figures:
     - { date: "2020", text: "Hong Kong BN(O) policy statement", says: { value: "After five years, holders who have \"stayed free of criminality\" and \"supported themselves financially\" can apply for settled status; the route reflects \"the UK's historic and moral commitment to BN(O) citizens\".", sources: [43, 44] } }
     - { date: "current", text: "Skilled Worker visa guidance", says: { value: "\"After 5 years, you may be able to apply to settle permanently in the UK\".", sources: [42] } }
     - { date: "Nov 2025", text: "A Fairer Pathway to Settlement (CP 1448)", says: { value: "Proposes applying the changes \"to everyone in the country today who has not already received indefinite leave to remain\", and says the government \"would never\" take away settled status already granted.", sources: [53, 54] } }
-    - { date: "Mar 2026", text: "Home Affairs Committee report", says: { value: "Calls applying the changes to people already here \"not unprecedented\", but sees no justification for applying them to pre-2021 arrivals.", sources: [51, 61] } }
+    - { date: "Mar 2026", text: "Home Affairs Committee report", says: { value: "Finds it \"common\" for the Home Office to apply transitional protections, \"but there is also precedent\" for applying rule changes to people already in the UK. Calls applying these changes to people already here \"not unprecedented\", but sees no justification for applying them to pre-2021 arrivals.", sources: [50, 51, 61] } }
     - { date: "Sep 2026", text: "Home Secretary to the Home Affairs Committee", says: { value: "The new policy, including any transitional arrangements, will be set out \"later this year\"; a large group who arrived in 2022 would otherwise qualify in February 2027.", sources: [64] } }
 - kind: dataTable
   id: proposal
   replaces: ["proposal"]
-  title: "The earned-settlement proposal and its status"
+  title: 'The earned-settlement proposal'
+  subtitle: 'Proposed in November 2025 (CP 1448), and its status'
   description: "What the government proposed in November 2025 (CP 1448), element by element."
   caption: "One row per element of the proposal"
   layout: cards
@@ -1392,19 +1566,21 @@ figures:
     - { element: "Reductions and additions", proposal: { value: "Five years off for taxable income of at least £50,270 and seven off for £125,140; five or ten years added for receiving public funds; up to 20 added for illegal entry, to a maximum of 30 years.", sources: [58] } }
     - { element: "New minimum conditions", proposal: { value: "B2 English, and national insurance contributions for at least three years, in effect earnings of at least £12,570 a year.", sources: [59] } }
     - { element: "Benefits after settlement", proposal: { value: "Asks whether benefits should be reserved for British citizens.", sources: [56] } }
-    - { element: "Who is out of scope", proposal: { value: "EU Settlement Scheme status, Windrush Scheme grants, and anyone already settled.", sources: [55] } }
+    - { element: "Who is out of scope", proposal: { value: "EU Settlement Scheme status, \"in line with the UK’s obligations under the Withdrawal Agreement\"; Windrush Scheme grants; and anyone already settled.", sources: [55] } }
 - kind: dataTable
   id: comparators
   replaces: ["comparators"]
-  title: "Waits for permanent residence elsewhere"
+  title: 'Waits for permanent residence abroad'
+  subtitle: 'Other countries, from what the sources say'
   description: "No source found sets out standard waits for every high-income country from official rules, so there is no chart. This is what the sources say."
-  caption: "One row per country or group"
+  caption: "One row per country, group or finding"
   columns:
     - { key: place, label: "Country or group", rowHeader: true }
     - { key: rule, label: "Rule" }
     - { key: source, label: "Source" }
   rows:
-    - { place: "Most high-income countries", rule: "Standard settlement period \"usually five years\"", source: { value: "Home Affairs Committee", sources: [68] } }
+    - { place: "Most high-income countries", rule: "A ten-year standard would make the UK \"an outlier among most high-income countries, where the standard settlement period is usually five years\"", source: { value: "Home Affairs Committee", sources: [68] } }
+    - { place: "Evidence on longer waits", rule: "\"There is limited evidence on how more stringent requirements and a longer path to ILR may affect immigration and emigration.\"", source: { value: "Migration Observatory", sources: [71] } }
     - { place: "Switzerland and Japan", rule: "Ten-year routes to settlement", source: { value: "Home Affairs Committee; Migration Observatory", sources: [68, 69] } }
     - { place: "Denmark, Sweden, Italy", rule: "Minimum employment requirements for permanent residence", source: { value: "Migration Observatory", sources: [69] } }
     - { place: "Singapore (Work Permit holders)", rule: "No route described here; holders may not marry a citizen or permanent resident without approval, or give birth in Singapore", source: { value: "Ministry of Manpower", sources: [70] } }
@@ -1421,6 +1597,65 @@ dataStillNeeded:
     why: "The statement that a ten-year baseline would make the UK an outlier comes from a parliamentary committee and a research group; a country-by-country table from each government's rules would let a reader check it."
   - measure: "Evidence on whether longer waits for settlement change where skilled workers choose to go, or prompt people already in the UK to leave"
     why: "The available studies are of refugees and family migrants once in a country; the Migration Observatory says the effect on migration decisions is \"impossible to predict\"."
+observationMarks:
+  forecast-1-6-million: {rows: ["All five years"]}
+  nrpf-costs: {rows: ["On a temporary visa"]}
+  non-working-groups: {rows: ["Adult Skilled Worker dependants", "Adults on family visas"]}
+  2012-family-change: {lines: ["Family"], from: "2012", to: "2016"}
+  no-official-data-on-ilr-holders-work-or-benefits: {rows: ["Indefinite leave to remain"]}
+  euss-outnumber-non-eu-ilr: {rows: ["EU Settlement Scheme grants", "Non-EU citizens holding indefinite leave"]}
+  revoking-opposed-58-29: {rows: ["Remove it from current holders: support", "Remove it from current holders: oppose"]}
+  ending-for-new-arrivals-splits: {rows: ["End new grants of indefinite leave: support", "End new grants of indefinite leave: oppose"]}
+  path-2-2-million: {rows: ["On a five-year path to settlement"]}
+  surcharge-matches-average-use: {rows: ["How the health charge is set"]}
+  ilr-fee-ten-times-cost: {rows: ["Indefinite leave to remain"]}
+  windrush-record: {rows: ["What the state did"]}
+  2010-peak: {lines: ["All settlement grants", "Other (including BN(O))"], at: "2010"}
+  rise-since-2017: {lines: ["All settlement grants", "Work", "Other (including BN(O))"], from: "2017", to: "2025"}
+  cps-projection: {whole: true}
+  no-official-count-of-holders: {rows: ["Non-EU citizens holding indefinite leave"]}
+  settlement-varies-by-route: {rows: ["Family", "Study", "Work"]}
+  work-cohorts-settle-more: {rows: ["Work"]}
+  uc-overstates-ilr: {rows: ["Indefinite leave to remain"]}
+  social-lettings-nationality: {rows: ["Indefinite leave to remain"]}
+  uk-settlement-fee-high-in-europe: {rows: ["UK", "Switzerland"]}
+  bno-route-opened: {lines: ["Other (including BN(O))"], from: "2021", to: "2025"}
+  forecast-peak-and-assumption: {rows: ["Peak year"]}
+  forecast-drivers-in-detail: {rows: ["Hong Kong BN(O) visas", "Health and Care entry visas", "Skilled Worker entry visas"]}
+  cps-alternative-and-what-it-stands-by: {whole: true}
+  what-the-234-billion-was: {whole: true}
+  non-eu-ilr-lower-figure: {rows: ["Non-EU citizens holding indefinite leave"]}
+  children-on-a-path: {rows: ["On a five-year path to settlement"]}
+  bno-adults-not-working: {rows: ["Hong Kong BN(O) visa holders"]}
+  protection-cohort-settles: {rows: ["Asylum"]}
+  command-paper-213000: {rows: ["Indefinite leave to remain"]}
+  no-reliable-claim-rate: {rows: ["Indefinite leave to remain"]}
+  global-talent-fee-below-cost: {rows: ["Global Talent with an approval letter"]}
+  lords-on-the-surcharge: {whole: true}
+  why-fees-grow-over-ten-years: {rows: ["Skilled Worker, over three years"]}
+  longer-routes-and-child-poverty: {whole: true}
+  windrush-generation: {whole: true}
+  windrush-detained-or-removed: {whole: true}
+  windrush-compensation-decisions: {lines: ["Cumulative amount paid (£)"], at: "2026-08"}
+  windrush-and-the-current-proposal: {whole: true}
+  settlement-unlocks-benefits: {rows: ["On a temporary visa", "After settlement"]}
+  nrpf-council-costs: {rows: ["What councils spend"]}
+  skilled-dependants-half-not-working: {rows: ["Adult Skilled Worker dependants"]}
+  hundreds-of-thousands-would-fail: {rows: ["Everyone on the path"]}
+  skilled-worker-route-costs: {rows: ["Fees before settlement, single Skilled Worker", "Yearly health charge"]}
+  guidance-said-may-be-able-to-apply: {rows: ["Skilled Worker visa guidance"]}
+  high-court-struck-down-mid-route-change-2008: {rows: ["R (HSMP Forum Ltd) v Secretary of State (High Court)"]}
+  transitional-protection-precedent: {rows: ["Home Affairs Committee report"]}
+  revocation-needs-new-law: {rows: ["Nationality, Immigration and Asylum Act 2002, s.76"]}
+  bno-historic-and-moral-commitment: {rows: ["Hong Kong BN(O) policy statement"]}
+  family-route-two-to-five-2012: {rows: ["Family route change"]}
+  eu-status-out-of-scope: {rows: ["Who is out of scope"]}
+  status-of-earned-settlement: {whole: true}
+  dependants-ten-year-route: {rows: ["Standard wait"]}
+  ten-year-baseline-outlier: {rows: ["Most high-income countries"]}
+  behaviour-evidence-limited: {rows: ["Evidence on longer waits"]}
+  reform-voters-back-removal: {rows: ["Reform UK voters"]}
+  majorities-keep-for-workers: {rows: ["Who should keep it"]}
 ---
 ## Observations {#settlement-and-migrant-status--observations-grants}
 
@@ -1455,7 +1690,7 @@ The Hong Kong BN(O) route opened in January 2021.
 
 ## Observations {#settlement-and-migrant-status--observations-settlement-forecast}
 
-### About 1.6 million are expected to qualify in 2026–30 {#settlement-and-migrant-status--forecast-1-6-million}
+### About 1.6 million are expected to settle in 2026–30 {#settlement-and-migrant-status--forecast-1-6-million}
 
 The Home Office forecasts 1.3 million to 2.2 million people settling in 2026–2030 (central
 estimate 1.6m). [3](#source-settlement-and-migrant-status-3) It names three drivers: Hong
@@ -1481,15 +1716,6 @@ The forecast peaks at 359,000 to 620,000 in 2028 (central estimate 450,000).
 [3](#source-settlement-and-migrant-status-3) It assumes people settle at historical rates;
 the range reflects uncertainty about that. [14](#source-settlement-and-migrant-status-14)
 
-### The three drivers in detail {#settlement-and-migrant-status--forecast-drivers-in-detail}
-
-The Home Office names three drivers: 154,000 visas granted to Hong Kong BN(O) holders in
-2021–22 (an extra 92,000 applications in 2026 and 54,000 in 2027); 616,000 Health and Care
-entry visas in 2022–24 (384,000 extra applications in 2027–29, peaking at 210,000 in
-2028); and 344,000 Skilled Worker entry visas in 2022–24 (around 222,000 applications).
-[12](#source-settlement-and-migrant-status-12)
-[13](#source-settlement-and-migrant-status-13)
-
 ### The alternative case, and what the CPS stands by {#settlement-and-migrant-status--cps-alternative-and-what-it-stands-by}
 
 The Centre for Policy Studies projection found as many as 1.24 million recent migrants
@@ -1504,7 +1730,7 @@ saving from removing existing settlement.
 
 ## Observations {#settlement-and-migrant-status--observations-settled-and-on-a-path}
 
-### EU Settlement Scheme holders far outnumber non-EU holders of indefinite leave {#settlement-and-migrant-status--euss-outnumber-non-eu-ilr}
+### EU Settlement Scheme grants far outnumber non-EU holders of indefinite leave {#settlement-and-migrant-status--euss-outnumber-non-eu-ilr}
 
 Just under 4.6 million settled-status grants have been made under the EU Settlement Scheme
 since 2018. [2](#source-settlement-and-migrant-status-2) The Migration Observatory
@@ -1543,14 +1769,6 @@ The Migration Observatory puts the number of children on a path at 430,000 to 52
 
 ## Observations {#settlement-and-migrant-status--observations-path-by-group}
 
-### Dependants and family visa holders are the groups least often in work {#settlement-and-migrant-status--non-working-groups}
-
-HMRC data for 2023/24 show around half of adult Skilled Worker dependants were not
-working, and a third of Health and Care dependants. About a third of adults on family
-visas were not working by their fifth year, and around 45% of refugees. On current
-circumstances, hundreds of thousands would fail the proposed employment requirement.
-[19](#source-settlement-and-migrant-status-19)
-
 ## Subtleties {#settlement-and-migrant-status--subtleties-path-by-group}
 
 ### Adult BN(O) visa holders {#settlement-and-migrant-status--bno-adults-not-working}
@@ -1587,7 +1805,7 @@ had indefinite leave within ten years. [28](#source-settlement-and-migrant-statu
 
 ## Observations {#settlement-and-migrant-status--observations-universal-credit-by-status}
 
-### No official data on what indefinite-leave holders earn or claim {#settlement-and-migrant-status--no-official-data-on-ilr-holders-work-or-benefits}
+### The closest official measure: 2.7% of people on Universal Credit hold indefinite leave {#settlement-and-migrant-status--no-official-data-on-ilr-holders-work-or-benefits}
 
 No published series reports the employment, earnings or benefit receipt of people with
 indefinite leave by route. The closest measure is Universal Credit by recorded status:
@@ -1629,14 +1847,14 @@ cannot be compared with those estimates.
 
 ## Observations {#settlement-and-migrant-status--observations-rules}
 
-### Guidance said "may be able to apply" {#settlement-and-migrant-status--guidance-said-may-be-able-to-apply}
+### Skilled Worker guidance says "you may be able to apply" {#settlement-and-migrant-status--guidance-said-may-be-able-to-apply}
 
 The Skilled Worker guidance says "After 5 years, you may be able to apply to settle
 permanently", subject to the other requirements. [42](#source-settlement-and-migrant-status-42) The BN(O) policy
 statement is the most explicit, framing the route as a "historic and moral commitment".
 [43](#source-settlement-and-migrant-status-43) [44](#source-settlement-and-migrant-status-44)
 
-### The High Court struck down a mid-route change in 2008 {#settlement-and-migrant-status--high-court-struck-down-mid-route-change-2008}
+### In 2008 the High Court ruled a mid-route change "conspicuous unfairness and an abuse of power" {#settlement-and-migrant-status--high-court-struck-down-mid-route-change-2008}
 
 In *HSMP Forum*, the minister had argued that migrants could not expect the rules at their
 first grant to apply for the rest of their stay. [49](#source-settlement-and-migrant-status-49) The court held that the
@@ -1645,19 +1863,27 @@ in force when they joined, and found no public interest outweighing the unfairne
 [47](#source-settlement-and-migrant-status-47) [48](#source-settlement-and-migrant-status-48) The ruling turned on what that scheme's documents said; whether
 a court would read today's "may be able to apply" the same way has not been tested.
 
-### Applying changes to people already here has precedent both ways {#settlement-and-migrant-status--transitional-protection-precedent}
+### MPs found it "common" to protect people already on a route, "but there is also precedent" for changing the rules for them {#settlement-and-migrant-status--transitional-protection-precedent}
 
 The Home Affairs Committee found it "common" for the Home Office to give transitional
 protection, "but there is also precedent" for applying rule changes to people already in
 the UK. [50](#source-settlement-and-migrant-status-50) It accepted that extending routes for at least some people
 already here is "essential" to the government's aim. [62](#source-settlement-and-migrant-status-62)
 
-### Removing settlement already granted would need new law {#settlement-and-migrant-status--revocation-needs-new-law}
+### The law lets indefinite leave be revoked only on individual grounds {#settlement-and-migrant-status--revocation-needs-new-law}
 
 Section 76 allows revocation only on the individual grounds in the record of rules.
 [45](#source-settlement-and-migrant-status-45) [46](#source-settlement-and-migrant-status-46) No court has ruled on a general removal of settled status, because
 none has been attempted; how courts would treat a new Act, including claims to private and
 family life, is a prediction.
+
+### The government called the Hong Kong BN(O) route a "historic and moral commitment" {#settlement-and-migrant-status--bno-historic-and-moral-commitment}
+
+The BN(O) policy statement says the route reflects "the UK's historic and moral commitment to BN(O) citizens". It is the most explicit of the texts on this route.
+
+### The family route went from two years to five in 2012 {#settlement-and-migrant-status--family-route-two-to-five-2012}
+
+The qualifying period for family settlement rose from two to five years in 2012. [11](#source-settlement-and-migrant-status-11) [52](#source-settlement-and-migrant-status-52)
 
 ## Observations {#settlement-and-migrant-status--observations-proposal}
 
@@ -1677,6 +1903,10 @@ Employed Skilled Worker dependants had median earnings of £30,200 in 2023/24 an
 Care dependants £22,100, well below the £50,270 needed for a five-year route, so most would
 face ten years. [67](#source-settlement-and-migrant-status-67)
 
+### EU settled status is outside the reforms, under the Withdrawal Agreement {#settlement-and-migrant-status--eu-status-out-of-scope}
+
+EU Settlement Scheme status is outside the government's proposed reforms, in line with its obligations under the Withdrawal Agreement. [55](#source-settlement-and-migrant-status-55)
+
 ## Observations {#settlement-and-migrant-status--observations-comparators}
 
 ### A ten-year baseline would make the UK an outlier {#settlement-and-migrant-status--ten-year-baseline-outlier}
@@ -1687,7 +1917,7 @@ although Switzerland and Japan have ten-year routes. [68](#source-settlement-and
 Observatory says waits of 15 to 30 years "would be unusual among high-income countries".
 [69](#source-settlement-and-migrant-status-69)
 
-### Whether waits change behaviour is not established {#settlement-and-migrant-status--behaviour-evidence-limited}
+### The evidence on whether longer waits change behaviour is limited {#settlement-and-migrant-status--behaviour-evidence-limited}
 
 The Migration Observatory finds "limited evidence" on how longer paths affect migration,
 citing one survey-based study that found no significant effect on prospective migrants'
@@ -1706,24 +1936,6 @@ Across UK Visas and Immigration, fees recovered 256% of cost in 2024/25.
 [83](#source-settlement-and-migrant-status-83) Not every fee is above cost: a short visit
 visa is £135 against £159. [80](#source-settlement-and-migrant-status-80)
 [81](#source-settlement-and-migrant-status-81)
-
-### The health surcharge is set at expected average use {#settlement-and-migrant-status--surcharge-matches-average-use}
-
-Most adults pay a £1,035 surcharge per year of their visa.
-[84](#source-settlement-and-migrant-status-84) The Home Office sets it on "how much
-healthcare an 'average' Health Charge payer is expected to use", not each person's use.
-[85](#source-settlement-and-migrant-status-85) It comes on top of tax and national
-insurance. A single Skilled Worker's fees before settlement come to around £9,900 over
-five years and would be £16,900 over ten. [87](#source-settlement-and-migrant-status-87)
-
-### No recourse to public funds: council costs are measured, numbers are not {#settlement-and-migrant-status--nrpf-costs}
-
-People on temporary visas are usually barred from most benefits until they settle.
-[41](#source-settlement-and-migrant-status-41) The 91 councils that reported to the NRPF
-Network spent £94 million supporting households with no recourse in 2024/25.
-[91](#source-settlement-and-migrant-status-91) No official count exists of how many
-people, or how many children, are subject to the condition.
-[92](#source-settlement-and-migrant-status-92)
 
 ## Subtleties {#settlement-and-migrant-status--subtleties-fees-and-costs}
 
@@ -1759,15 +1971,6 @@ settlement costs were 336% higher than the average of the other European countri
 [89](#source-settlement-and-migrant-status-89)
 
 ## Observations {#settlement-and-migrant-status--observations-windrush-paid}
-
-### Windrush: people with a lawful right to stay were treated as if they had none {#settlement-and-migrant-status--windrush-record}
-
-The Windrush Lessons Learned Review found the scandal "foreseeable and avoidable": the
-government removed and detained people, and denied others work, housing and services, even
-though they were lawfully entitled to them. [93](#source-settlement-and-migrant-status-93)
-[94](#source-settlement-and-migrant-status-94) By August 2026 the compensation scheme had
-paid £133,475,539.07 on 4,221 claims. [97](#source-settlement-and-migrant-status-97)
-[96](#source-settlement-and-migrant-status-96)
 
 ## Subtleties {#settlement-and-migrant-status--subtleties-windrush-paid}
 
@@ -1824,3 +2027,83 @@ Indefinite leave to remain, also called settlement, lets a person live in the UK
 ## More {#settlement-and-migrant-status--more-settled-and-on-a-path}
 
 Two things are often run together. Grants are a flow: 199,628 people were granted settlement in the year to June 2026, the most since 2011. [1](#source-settlement-and-migrant-status-1) Holders are a stock, and no official count of them exists; the best estimate for non-EU citizens is 621,000 to 820,000 at the end of 2024, against just under 4.6 million settled-status grants under the separate EU Settlement Scheme. [4](#source-settlement-and-migrant-status-4) [5](#source-settlement-and-migrant-status-5) [2](#source-settlement-and-migrant-status-2)
+
+## Observations {#settlement-and-migrant-status--observations-forecast-drivers}
+
+### The rise comes from Hong Kong BN(O), Health and Care and Skilled Worker visas issued since 2021 {#settlement-and-migrant-status--forecast-drivers-in-detail}
+
+The Home Office names three drivers: 154,000 visas granted to Hong Kong BN(O) holders in
+2021–22 (an extra 92,000 applications in 2026 and 54,000 in 2027); 616,000 Health and Care
+entry visas in 2022–24 (384,000 extra applications in 2027–29, peaking at 210,000 in
+2028); and 344,000 Skilled Worker entry visas in 2022–24 (around 222,000 applications).
+[12](#source-settlement-and-migrant-status-12)
+[13](#source-settlement-and-migrant-status-13)
+
+
+## Observations {#settlement-and-migrant-status--observations-no-recourse}
+
+### People on temporary visas are usually barred from most benefits {#settlement-and-migrant-status--nrpf-costs}
+
+Immigrants with temporary permission are usually subject to the No Recourse to Public Funds condition, which means they are not eligible for most benefits. [41](#source-settlement-and-migrant-status-41) No official count exists of how many people, or how many children, are subject to the condition.
+
+### Settlement opens up the benefits that people on temporary visas cannot claim {#settlement-and-migrant-status--settlement-unlocks-benefits}
+
+Once granted indefinite leave, a person becomes eligible for benefits on the same terms as British citizens. People on temporary visas are usually not eligible for most benefits. [41](#source-settlement-and-migrant-status-41)
+
+### Councils that report spent £94 million on households with no recourse in 2024/25 {#settlement-and-migrant-status--nrpf-council-costs}
+
+The 91 councils that reported to the NRPF Network spent £94 million supporting households with no recourse in 2024/25. [91](#source-settlement-and-migrant-status-91)
+
+
+## Observations {#settlement-and-migrant-status--observations-not-working-by-group}
+
+### About half of adult Skilled Worker dependants, and a third of adults on family visas by their fifth year, were not working {#settlement-and-migrant-status--non-working-groups}
+
+HMRC data for 2023/24 show around half of adult Skilled Worker dependants were not
+working, and a third of Health and Care dependants. About a third of adults on family
+visas were not working by their fifth year, and around 45% of refugees. On current
+circumstances, hundreds of thousands would fail the proposed employment requirement.
+[19](#source-settlement-and-migrant-status-19)
+
+### Around half of adult Skilled Worker dependants were not working {#settlement-and-migrant-status--skilled-dependants-half-not-working}
+
+HMRC data for 2023/24 show around half of adult Skilled Worker dependants were not working. [19](#source-settlement-and-migrant-status-19)
+
+### Hundreds of thousands would not yet meet the proposed employment rule {#settlement-and-migrant-status--hundreds-of-thousands-would-fail}
+
+On current circumstances, the Migration Observatory finds, hundreds of thousands of migrants would not be eligible for settlement under the proposed mandatory employment rule. [19](#source-settlement-and-migrant-status-19)
+
+
+## Observations {#settlement-and-migrant-status--observations-route-costs}
+
+### The yearly health charge is set at what an average payer is expected to use {#settlement-and-migrant-status--surcharge-matches-average-use}
+
+Most adults pay a £1,035 surcharge per year of their visa. [84](#source-settlement-and-migrant-status-84) The Home Office sets it on "how much healthcare an 'average' Health Charge payer is expected to use", not each person's use. [85](#source-settlement-and-migrant-status-85)
+
+### A single Skilled Worker pays around £9,900 in fees before settling after five years {#settlement-and-migrant-status--skilled-worker-route-costs}
+
+A single Skilled Worker's fees before settlement come to around £9,900 over five years and would be £16,900 over ten, mostly because the health charge is paid every year. [84](#source-settlement-and-migrant-status-84) [87](#source-settlement-and-migrant-status-87)
+
+
+## Observations {#settlement-and-migrant-status--observations-windrush-findings}
+
+### Windrush: people lawfully entitled to be here were removed, detained and denied work and housing {#settlement-and-migrant-status--windrush-record}
+
+The Windrush Lessons Learned Review found the scandal "foreseeable and avoidable": the
+government removed and detained people, and denied others work, housing and services, even
+though they were lawfully entitled to them. [93](#source-settlement-and-migrant-status-93)
+[94](#source-settlement-and-migrant-status-94) By August 2026 the compensation scheme had
+paid £133,475,539.07 on 4,221 claims. [97](#source-settlement-and-migrant-status-97)
+[96](#source-settlement-and-migrant-status-96)
+
+
+## Observations {#settlement-and-migrant-status--observations-ilr-poll-detail}
+
+### Reform UK voters back removing indefinite leave from those who hold it {#settlement-and-migrant-status--reform-voters-back-removal}
+
+54% of Reform UK voters backed removing it from those who already have it. [101](#source-settlement-and-migrant-status-101)
+
+### Majorities want to keep permanent residence for full-time workers and NHS staff {#settlement-and-migrant-status--majorities-keep-for-workers}
+
+Majorities wanted to keep permanent residence for people in the UK over ten years, those in full-time work, NHS workers, spouses of British citizens and business founders. [103](#source-settlement-and-migrant-status-103)
+

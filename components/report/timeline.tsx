@@ -1,15 +1,17 @@
 'use client';
 
-import { useState, type ReactNode } from 'react';
-import { ChoiceGroup, FilterChips } from './controls';
+import { Fragment, useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
+import { ChoiceGroup, FilterChips, type Choice } from './controls';
+import { ControlBar, chipsSummary, type BarItem } from './control-bar';
 import { ReportFigure, SourceLine } from './figure';
-import { datePlacement, isApproximateDate } from '@/lib/content/period';
-import { compareDates, formatDate } from './format';
+import { isApproximateDate } from '@/lib/content/period';
+import { formatDate } from './format';
 import { MarkerIcon, shapeForSlot } from './marker-shape';
-import { COMPACT_PREVIEW_ITEMS, DENSE_PREVIEW_ITEMS } from './ranked-columns';
 import { seriesColor } from './scale';
-import { edgeOf, percentAlong, spanOf, stackLevels, timeTicks, toYear } from './time-axis';
-import type { FigurePreview, PartialDate, SourceCredit } from './types';
+import { tickEdge } from './time-axis';
+import { baselinePieces, eventAxis, namesOnAxis, previewEvents, sortEvents, type EventAxis } from './timeline-layout';
+import { SourcePassages } from './source-passage';
+import type { FigurePreview, PartialDate, SourceCredit, SourcePassage } from './types';
 
 export type TimelineEvent = {
   /**
@@ -29,6 +31,8 @@ export type TimelineEvent = {
   sources?: SourceCredit[];
   /** Where to read more, e.g. the fact this event is evidence in. */
   href?: string;
+  /** The sentences the words its title and description quote came from, shown when its card is opened. */
+  passages?: SourcePassage[];
 };
 
 export type TimelineCategory = { id: string; label: string };
@@ -46,6 +50,8 @@ export type TimelineProps = {
   initialMajorOnly?: boolean;
   id?: string;
   title?: string;
+  /** A short line under the title: the period, cases or source (see ReportFigure). */
+  subtitle?: string;
   description?: string;
   sources?: SourceCredit[];
   note?: string;
@@ -56,43 +62,46 @@ export type TimelineProps = {
   panel?: boolean;
   /**
    * Draw the compact preview: the linked title, a key when there are several
-   * categories, and every event — one line each (date and title), or past
-   * twelve events one marker each on a time axis. Filters, descriptions and
-   * sources stay on the full figure.
+   * categories, the time axis with every event, and cards for the few events
+   * the preview is about (`previewEvents`). Filters, descriptions and sources
+   * stay on the full figure.
    */
   preview?: FigurePreview;
+  /** In a preview, the events (by title) the claim it illustrates is about: they get its cards. */
+  picked?: string[];
 };
-
-/**
- * The heading an event is listed under: its year, or an approximate date as
- * written — a "c. 1888" event is not filed under a confident "1888".
- */
-function headingOf(date: PartialDate) {
-  return isApproximateDate(date) ? date : date.slice(0, 4);
-}
-
-/**
- * Date order, by where each date is placed; at the same place an
- * approximate date comes first, so "1850s" heads the 1850s.
- */
-function compareEventDates(a: PartialDate, b: PartialDate) {
-  return compareDates(datePlacement(a), datePlacement(b)) || Number(isApproximateDate(b)) - Number(isApproximateDate(a));
-}
 
 /** A date as written; only an exact one is a machine-readable `<time>`. */
 function EventDate({ date }: { date: PartialDate }) {
   return isApproximateDate(date) ? <span>{date}</span> : <time dateTime={date}>{formatDate(date)}</time>;
 }
 
+function EventDates({ event }: { event: TimelineEvent }) {
+  return (
+    <>
+      <EventDate date={event.date} />
+      {event.endDate && <>{' – '}<EventDate date={event.endDate} /></>}
+    </>
+  );
+}
+
+function spokenDate(date: PartialDate) {
+  return isApproximateDate(date) ? date : formatDate(date);
+}
+
 /**
- * Dated events in order, grouped under year headings, each with what happened,
- * its category and its source.
+ * Dated events in order: a time axis showing when, and a card per event
+ * saying what, which opens to its detail and source.
  *
  * Use it for the sequence of decisions behind a trend — routes opened and
  * closed, acts passed, schemes announced and dropped — so a reader can see
- * what came before what. Category is shown by shape and colour together and
- * named in words on every event; filters always say how many events they are
- * hiding. The full list renders on the server; filtering is progressive.
+ * what came before what. The axis cuts out long empty stretches (marked with
+ * a break) so a burst of recent events is not squeezed into a sliver, and
+ * stacks markers that would overlap. When every event is a short name, the
+ * names go on the axis and there are no cards. Category is shown by shape and
+ * colour together and named in words on every event; filters always say how
+ * many events they are hiding. An observation picks out its events' cards,
+ * opened, and rings their markers; the rest stay readable.
  */
 export function Timeline({
   events,
@@ -103,6 +112,7 @@ export function Timeline({
   initialMajorOnly = false,
   id,
   title,
+  subtitle,
   description,
   sources,
   note,
@@ -110,9 +120,14 @@ export function Timeline({
   panel,
   headingLevel = 2,
   preview,
+  picked,
 }: TimelineProps) {
   const [selected, setSelected] = useState<Set<string>>(() => new Set(initialCategories));
   const [majorOnly, setMajorOnly] = useState(initialMajorOnly);
+  const [open, setOpen] = useState<Set<number>>(() => new Set());
+  const [marked, setMarked] = useState<Set<number>>(() => new Set());
+  const cardsRef = useRef<HTMLOListElement>(null);
+  const openedByMark = useRef(new Set<number>());
 
   const resolvedCategories = categories ?? [...new Set(events.map(e => e.category))].map(c => ({ id: c, label: c }));
   const slotOf = new Map(resolvedCategories.map((c, i) => [c.id, i + 1]));
@@ -122,81 +137,130 @@ export function Timeline({
   const hasMinor = events.some(e => e.significance !== 'major');
   const showMajorToggle = majorToggle ?? (hasMajor && hasMinor);
 
-  const sorted = [...events].sort((a, b) => compareEventDates(a.date, b.date));
-  const visible = sorted.filter(
-    e => (selected.size === 0 || selected.has(e.category)) && (!majorOnly || e.significance === 'major'),
+  const sorted = sortEvents(events);
+  const axis = eventAxis(sorted);
+  const named = namesOnAxis(sorted);
+  const shows = (e: TimelineEvent) => (selected.size === 0 || selected.has(e.category)) && (!majorOnly || e.significance === 'major');
+  const visible = sorted.map((e, i) => ({ e, i })).filter(({ e }) => shows(e));
+
+  // An observation marks its events' cards (observation-bar.tsx sets
+  // `data-mark-picked` on their rows). A picked card opens, and closes again
+  // when the observation moves on unless the reader opened it.
+  useEffect(() => {
+    const list = cardsRef.current;
+    if (!list) return;
+    const follow = () => {
+      const now = new Set([...list.querySelectorAll<HTMLElement>('[data-index][data-mark-picked]')].map(el => Number(el.dataset.index)));
+      setMarked(now);
+      setOpen(was => {
+        const next = new Set(was);
+        for (const i of now) if (!next.has(i)) { next.add(i); openedByMark.current.add(i); }
+        for (const i of openedByMark.current) if (!now.has(i)) { next.delete(i); openedByMark.current.delete(i); }
+        return next;
+      });
+    };
+    // The observation may have marked the cards before this runs.
+    follow();
+    const watch = new MutationObserver(follow);
+    watch.observe(list, { subtree: true, attributes: true, attributeFilter: ['data-mark-picked'] });
+    return () => watch.disconnect();
+  }, []);
+
+  const setCardOpen = (i: number, isOpen: boolean) => {
+    if (open.has(i) === isOpen) return;
+    openedByMark.current.delete(i);
+    setOpen(was => {
+      const next = new Set(was);
+      if (isOpen) next.add(i); else next.delete(i);
+      return next;
+    });
+  };
+
+  const legend = resolvedCategories.length > 1 && (
+    <ul className="sv-chart__legend sv-timeline__legend">
+      {resolvedCategories.map(c => (
+        <li key={c.id} className="sv-chart__key" style={{ color: seriesColor(slotOf.get(c.id) ?? 1) }}>
+          <MarkerIcon shape={shapeForSlot(slotOf.get(c.id) ?? 1)} className="sv-timeline__legend-icon" />
+          <span className="sv-chart__key-name">{c.label}</span>
+        </li>
+      ))}
+    </ul>
   );
-  const years = [...new Set(visible.map(e => headingOf(e.date)))];
-  const YearHeading = headingLevel === 2 ? 'h3' : 'h4';
+  const marker = (e: TimelineEvent, className: string) => {
+    const slot = slotOf.get(e.category) ?? 1;
+    return <MarkerIcon shape={shapeForSlot(slot)} filled={e.significance === 'major' || !hasMajor || !hasMinor} className={className} />;
+  };
+  const colorOf = (e: TimelineEvent) => seriesColor(slotOf.get(e.category) ?? 1);
 
   if (preview) {
+    const carded = previewEvents(sorted, picked);
+    const cardedAt = new Set(carded.map(e => sorted.indexOf(e)));
+    const rest = sorted.length - carded.length;
     return (
-      <ReportFigure id={id} title={title} preview={preview} className="sv-timeline">
-        {resolvedCategories.length > 1 && (
-          <ul className="sv-chart__legend sv-timeline__legend">
-            {resolvedCategories.map(c => (
-              <li key={c.id} className="sv-chart__key" style={{ color: seriesColor(slotOf.get(c.id) ?? 1) }}>
-                <MarkerIcon shape={shapeForSlot(slotOf.get(c.id) ?? 1)} className="sv-timeline__legend-icon" />
-                <span className="sv-chart__key-name">{c.label}</span>
-              </li>
-            ))}
-          </ul>
-        )}
-        {sorted.length > DENSE_PREVIEW_ITEMS
-          ? <TimelineLane events={sorted} slotOf={slotOf} labelOf={labelOf} />
-          : (
-            <ol className="sv-timeline__lines" data-compact={sorted.length > COMPACT_PREVIEW_ITEMS || undefined}>
-              {sorted.map((e, i) => {
-                const slot = slotOf.get(e.category) ?? 1;
-                return (
-                  <li key={`${e.date}-${i}-${e.title}`} className="sv-timeline__line" style={{ '--sv-timeline-color': seriesColor(slot) }}>
-                    <MarkerIcon shape={shapeForSlot(slot)} className="sv-timeline__line-icon" />
-                    <EventDate date={e.date} />
-                    <span className="sv-timeline__line-title">{e.title}</span>
-                    <span className="sv-visually-hidden"> · {labelOf.get(e.category) ?? e.category}</span>
-                  </li>
-                );
-              })}
+      <ReportFigure id={id} title={title} subtitle={subtitle} preview={preview} className="sv-timeline">
+        {legend}
+        <Axis axis={axis} events={sorted} shown={sorted.map((_, i) => i)} named={named} on={named ? new Set() : cardedAt} colorOf={colorOf} marker={marker} />
+        {!named && (
+          <>
+            {/* The list below reads every event aloud; these cards repeat a few of them. */}
+            <ol className="sv-timeline__cards" data-preview="" aria-hidden="true">
+              {carded.map(e => (
+                <li key={`${e.date}-${e.title}`} className="sv-timeline__item" style={{ '--sv-timeline-color': colorOf(e)}}>
+                  <div className="sv-timeline__card">
+                    <CardHead event={e} marker={marker(e, 'sv-timeline__card-marker')} category={labelOf.get(e.category) ?? e.category} />
+                  </div>
+                </li>
+              ))}
             </ol>
-          )}
+            {rest > 0 && <p className="sv-timeline__rest" aria-hidden="true">and {rest} more {rest === 1 ? 'event' : 'events'} on the time line</p>}
+          </>
+        )}
+        <EventList events={sorted} labelOf={labelOf} />
       </ReportFigure>
     );
   }
 
   const counts = new Map<string, number>();
   for (const e of sorted) if (!majorOnly || e.significance === 'major') counts.set(e.category, (counts.get(e.category) ?? 0) + 1);
+  const ringed = new Set([...open, ...marked]);
+  const categoryChoices = resolvedCategories.map(c => ({
+    value: c.id,
+    label: (
+      <span className="sv-timeline__chip-label" style={{ color: seriesColor(slotOf.get(c.id) ?? 1) }}>
+        <MarkerIcon shape={shapeForSlot(slotOf.get(c.id) ?? 1)} className="sv-timeline__chip-icon" />
+        <span className="sv-timeline__chip-text">{c.label}</span>
+      </span>
+    ),
+    count: counts.get(c.id) ?? 0,
+  }));
+  const majorChoices: Choice<'all' | 'major'>[] = [{ value: 'all', label: 'All events' }, { value: 'major', label: 'Major only' }];
+  const controlItems: BarItem[] = [
+    ...(showChips
+      ? [{
+          key: 'category',
+          label: 'Category',
+          summary: chipsSummary(selected, v => resolvedCategories.find(c => c.id === v)?.label ?? v),
+          active: selected.size > 0,
+          panel: <FilterChips label="Category" hideLabel selected={selected} onChange={setSelected} choices={categoryChoices} />,
+        }]
+      : []),
+    ...(showMajorToggle
+      ? [{
+          key: 'major',
+          label: 'Show',
+          summary: majorOnly ? 'Major only' : 'All events',
+          active: majorOnly,
+          hideLabel: true,
+          single: true,
+          panel: <ChoiceGroup label="Show" hideLabel value={majorOnly ? 'major' : 'all'} onChange={value => setMajorOnly(value === 'major')} choices={majorChoices} />,
+        }]
+      : []),
+  ];
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} headingLevel={headingLevel} className="sv-timeline">
-      {(showChips || showMajorToggle) && (
-        <div className="sv-timeline__controls">
-          {showChips && (
-            <FilterChips
-              label="Category"
-              selected={selected}
-              onChange={setSelected}
-              choices={resolvedCategories.map(c => ({
-                value: c.id,
-                label: (
-                  <span className="sv-timeline__chip-label" style={{ color: seriesColor(slotOf.get(c.id) ?? 1) }}>
-                    <MarkerIcon shape={shapeForSlot(slotOf.get(c.id) ?? 1)} className="sv-timeline__chip-icon" />
-                    <span className="sv-timeline__chip-text">{c.label}</span>
-                  </span>
-                ),
-                count: counts.get(c.id) ?? 0,
-              }))}
-            />
-          )}
-          {showMajorToggle && (
-            <ChoiceGroup
-              label="Show"
-              value={majorOnly ? 'major' : 'all'}
-              onChange={value => setMajorOnly(value === 'major')}
-              choices={[{ value: 'all', label: 'All events' }, { value: 'major', label: 'Major only' }]}
-            />
-          )}
-        </div>
-      )}
+    <ReportFigure id={id} title={title} subtitle={subtitle} description={description} sources={sources} note={note} footer={footer} panel={panel} headingLevel={headingLevel} className="sv-timeline">
+      {(showChips || showMajorToggle) && <ControlBar label="Filter events" items={controlItems} />}
+      {!showChips && legend}
       {hasMajor && hasMinor && !majorOnly && (
         <p className="sv-timeline__key">
           <MarkerIcon shape="circle" className="sv-timeline__key-icon" /> Filled marker: major event
@@ -211,82 +275,155 @@ export function Timeline({
       {visible.length === 0 ? (
         <p className="sv-report__empty">No events match these filters.</p>
       ) : (
-        <div className="sv-timeline__body">
-          {years.map(year => (
-            <section key={year} className="sv-timeline__year">
-              <YearHeading className="sv-timeline__year-head">{year}</YearHeading>
-              <ol className="sv-timeline__events">
-                {visible.filter(e => headingOf(e.date) === year).map((e, i) => {
-                  const slot = slotOf.get(e.category) ?? 1;
-                  const major = e.significance === 'major';
-                  return (
-                    <li
-                      key={`${e.date}-${i}-${e.title}`}
-                      className="sv-timeline__event"
-                      data-row={e.title}
-                      data-significance={major ? 'major' : 'minor'}
-                      style={{ '--sv-timeline-color': seriesColor(slot) }}
-                    >
-                      <MarkerIcon shape={shapeForSlot(slot)} filled={major || !hasMajor} className="sv-timeline__marker" />
-                      <p className="sv-timeline__date">
-                        <EventDate date={e.date} />
-                        {e.endDate && (
-                          <>
-                            {' – '}
-                            <time dateTime={e.endDate}>{formatDate(e.endDate)}</time>
-                          </>
-                        )}
-                        <span className="sv-timeline__category"> · {labelOf.get(e.category) ?? e.category}</span>
-                        {major && hasMinor && <span className="sv-visually-hidden"> · major event</span>}
-                      </p>
-                      <p className="sv-timeline__title">{e.href ? <a href={e.href}>{e.title}</a> : e.title}</p>
-                      {e.description && <p className="sv-timeline__desc">{e.description}</p>}
-                      {e.sources && e.sources.length > 0 && <SourceLine sources={e.sources} />}
-                    </li>
-                  );
-                })}
-              </ol>
-            </section>
-          ))}
-        </div>
+        <>
+          <Axis
+            axis={axis}
+            events={sorted}
+            shown={visible.map(v => v.i)}
+            named={named}
+            on={ringed}
+            colorOf={colorOf}
+            marker={marker}
+            onPick={i => {
+              setCardOpen(i, !open.has(i));
+              cardsRef.current?.querySelector(`[data-index="${i}"]`)?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            }}
+          />
+          {named ? (
+            <>
+              <ul className="sv-timeline__notes">
+                {visible.filter(({ e }) => e.description).map(({ e }) => (
+                  <li key={`${e.date}-${e.title}`}><strong>{e.title}:</strong> {e.description}</li>
+                ))}
+              </ul>
+              <EventList events={visible.map(v => v.e)} labelOf={labelOf} />
+            </>
+          ) : (
+            <ol className="sv-timeline__cards" ref={cardsRef}>
+              {visible.map(({ e, i }) => {
+                const category = labelOf.get(e.category) ?? e.category;
+                const head = <CardHead event={e} marker={marker(e, 'sv-timeline__card-marker')} category={category} major={e.significance === 'major' && hasMinor} />;
+                const detail = e.description || (e.sources && e.sources.length > 0) || e.href || (e.passages && e.passages.length > 0);
+                return (
+                  <li
+                    key={`${e.date}-${i}-${e.title}`}
+                    className="sv-timeline__item"
+                    data-index={i}
+                    data-row={e.title}
+                    data-significance={e.significance === 'major' ? 'major' : 'minor'}
+                    style={{ '--sv-timeline-color': colorOf(e)}}
+                  >
+                    {detail ? (
+                      <details className="sv-timeline__card" open={open.has(i)} onToggle={event => setCardOpen(i, event.currentTarget.open)}>
+                        <summary>{head}</summary>
+                        <div className="sv-timeline__more">
+                          <p className="sv-timeline__desc">
+                            <span className="sv-timeline__category">{category}</span>
+                            {e.description && <> · {e.description}</>}
+                          </p>
+                          {e.href && <p className="sv-timeline__link"><a href={e.href}>Read more</a></p>}
+                          <SourcePassages passages={e.passages} />
+                          {e.sources && e.sources.length > 0 && <SourceLine sources={e.sources} />}
+                        </div>
+                      </details>
+                    ) : (
+                      <div className="sv-timeline__card">{head}</div>
+                    )}
+                  </li>
+                );
+              })}
+            </ol>
+          )}
+        </>
       )}
     </ReportFigure>
   );
 }
 
-/**
- * A long timeline in a compact preview: every event a category marker on one
- * time axis, from the first event's year to the year after the last (month
- * ticks when that is a single year), stacked
- * where markers would overlap. Each marker's date, title and category are in
- * visually hidden text, in order.
- */
-function TimelineLane({ events, slotOf, labelOf }: { events: TimelineEvent[]; slotOf: Map<string, number>; labelOf: Map<string, string> }) {
-  // An approximate date ("1850s", "c. 1888") sits where the full timeline places it.
-  const span = spanOf(events.map(e => datePlacement(e.date)));
-  const positions = events.map(e => percentAlong(toYear(datePlacement(e.date)), span));
-  // A marker is ~0.8rem; at a ~500px lane that is ~2.5% of the span.
-  const levels = stackLevels(positions, 2.5, 4);
+/** A card's one line: marker, title, and date, with the category in words for a screen reader. */
+function CardHead({ event, marker, category, major }: { event: TimelineEvent; marker: ReactNode; category: string; major?: boolean }) {
   return (
-    <div className="sv-timeline__lane" style={{ '--sv-strip-levels': Math.max(0, ...levels) + 1 }}>
-      <ol className="sv-timeline__lane-track">
-        {events.map((e, i) => {
-          const slot = slotOf.get(e.category) ?? 1;
+    <span className="sv-timeline__card-head">
+      {marker}
+      <span className="sv-timeline__title">{event.title}</span>
+      <span className="sv-timeline__date"><EventDates event={event} /></span>
+      <span className="sv-visually-hidden"> · {category}{major && ' · major event'}</span>
+    </span>
+  );
+}
+
+/** Half the gap left in the baseline at a break, in percent of the axis. */
+const BREAK_GAP = 1.2;
+
+/**
+ * The time axis: every event a marker, stacked where markers would overlap,
+ * one that lasted drawn as a bar, and a break wherever a long empty stretch
+ * is cut out. With cards, it is a picture of their dates (the cards say the
+ * same in words) and clicking a marker opens its card; with names on the axis,
+ * the names are the content.
+ */
+function Axis({ axis, events, shown, named, on, colorOf, marker, onPick }: {
+  axis: EventAxis;
+  events: TimelineEvent[];
+  shown: number[];
+  named: boolean;
+  /** Markers ringed: the cards open or shown. */
+  on: Set<number>;
+  colorOf: (e: TimelineEvent) => string;
+  marker: (e: TimelineEvent, className: string) => ReactNode;
+  onPick?: (i: number) => void;
+}) {
+  const levels = Math.max(0, ...shown.map(i => axis.levels[i])) + 1;
+  return (
+    <div className="sv-timeline__axis" aria-hidden="true" data-named={named || undefined} style={{ '--sv-axis-levels': levels}}>
+      <div className="sv-timeline__track">
+        {/* The baseline, in pieces with a gap and a break mark wherever a stretch is cut out. */}
+        {baselinePieces(axis.scale.breaks, BREAK_GAP).map(({ from, to }) => (
+          <span key={from} className="sv-timeline__baseline" style={{ left: `${from}%`, width: `${to - from}%` }} />
+        ))}
+        {axis.scale.breaks.map(x => <span key={x} className="sv-timeline__break" style={{ left: `${x}%` }} />)}
+        {shown.map(i => {
+          const e = events[i];
+          const { x, end } = axis.places[i];
+          const style = { left: `${x}%`, '--sv-level': axis.levels[i], color: colorOf(e) } satisfies CSSProperties;
           return (
-            <li key={`${e.date}-${i}`} className="sv-timeline__lane-mark" style={{ left: `${positions[i]}%`, '--sv-strip-level': levels[i], color: seriesColor(slot) }}>
-              <MarkerIcon shape={shapeForSlot(slot)} className="sv-timeline__lane-icon" />
-              <span className="sv-visually-hidden">{isApproximateDate(e.date) ? e.date : formatDate(e.date)}: {e.title} ({labelOf.get(e.category) ?? e.category})</span>
-            </li>
+            <Fragment key={`${e.date}-${i}`}>
+              {end !== undefined && end - x > 0.5 && <span className="sv-timeline__span" style={{ ...style, width: `${end - x}%` }} />}
+              <span
+                className="sv-timeline__pin"
+                data-row={named ? e.title : undefined}
+                data-on={on.has(i) || undefined}
+                data-clickable={onPick && !named ? true : undefined}
+                onClick={onPick && !named ? () => onPick(i) : undefined}
+                style={style}
+              >
+                {marker(e, 'sv-timeline__pin-icon')}
+                {named && <span className="sv-timeline__name">{e.title}</span>}
+              </span>
+            </Fragment>
           );
         })}
-      </ol>
-      <div className="sv-timeline__lane-axis" aria-hidden="true">
-        {timeTicks(span).map(tick => (
-          <span key={tick.at} className="sv-periods__tick" data-minor={tick.minor || undefined} data-edge={edgeOf(percentAlong(tick.at, span))} style={{ left: `${percentAlong(tick.at, span)}%` }}>
+      </div>
+      <div className="sv-timeline__ticks">
+        {axis.ticks.map(tick => (
+          <span key={`${tick.x}-${tick.label}`} className="sv-timeline__tick" data-edge={tickEdge(tick.x)} style={{ left: `${tick.x}%` }}>
             {tick.label}
           </span>
         ))}
       </div>
     </div>
+  );
+}
+
+/** Every event in words, for a screen reader, where the axis alone shows them. */
+function EventList({ events, labelOf }: { events: TimelineEvent[]; labelOf: Map<string, string> }) {
+  return (
+    <ol className="sv-visually-hidden">
+      {events.map((e, i) => (
+        <li key={`${e.date}-${i}`}>
+          {spokenDate(e.date)}{e.endDate && ` to ${spokenDate(e.endDate)}`}: {e.title} ({labelOf.get(e.category) ?? e.category})
+        </li>
+      ))}
+    </ol>
   );
 }

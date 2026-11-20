@@ -9,27 +9,22 @@ status: well-supported
 sources:
   # 1
   - stance: supports
-    quote: >-
-      Marshaling a new dataset of 120 cases of FIRC (1816–2008) … One-third of
-      all FIRCs descend into civil war in the first post-intervention decade
-      (94), especially in low-income countries, where FIRCs increase the risk
-      of civil war by eight percentage points (100). … Foreign-imposed regime
-      change more than doubles the likelihood of civil war in the decade that
-      follows (94-96). … Civil war is four and a half times more likely to
-      follow a leadership regime change than in other cases (98). And, whereas
-      47 percent of installed leaders have been forcibly removed from power,
-      two-third of leaders installed through leadership regime change have
-      lost power through irregular means (168). … Regime change also appears
-      to have no significant effect on the probability of a future militarized
-      dispute between the target and intervener (251-2). And indeed,
-      leadership regime changes more than double the risk of a dispute
-      occurring (252). … These states are no more likely to vote together in
-      the United Nations General Assembly or to share alliance portfolios than
-      other types of states (254-5). … Regime changes that seek to restore
-      previously ousted rulers to power tend to have best outcomes … the base
-      rate is quite low, and so even if FIRC doubles the risk of civil war
-      onset, would-be interveners might view this as acceptable compared to
-      maintaining the status quo.
+    quote: |-
+      Marshaling a new dataset of 120 cases of FIRC (1816–2008) …
+
+      One-third of all FIRCs descend into civil war in the first post-intervention decade (94), especially in low-income countries, where FIRCs increase the risk of civil war by eight percentage points (100). …
+
+      Foreign-imposed regime change more than doubles the likelihood of civil war in the decade that follows (94-96). …
+
+      He finds, for example, that while installed leaders are more likely to become embroiled in civil wars or lose power through violent means, this is especially true following leadership regime change. Civil war is four and a half times more likely to follow a leadership regime change than in other cases (98). And, whereas 47 percent of installed leaders have been forcibly removed from power, two-third of leaders installed through leadership regime change have lost power through irregular means (168). …
+
+      Regime change also appears to have no significant effect on the probability of a future militarized dispute between the target and intervener (251-2). And indeed, leadership regime changes more than double the risk of a dispute occurring (252). …
+
+      These states are no more likely to vote together in the United Nations General Assembly or to share alliance portfolios than other types of states (254-5). …
+
+      Regime changes that seek to restore previously ousted rulers to power tend to have best outcomes …
+
+      the base rate is quite low, and so even if FIRC doubles the risk of civil war onset, would-be interveners might view this as acceptable compared to maintaining the status quo.
     title: 'Jervis Forum Roundtable 17-6 on Downes, Catastrophic Success: Why Foreign-Imposed Regime Change Goes Wrong (Cornell University Press, 2021)'
     url: https://issforum.org/roundtables/jervis-forum-roundtable-17-6-on-downes-catastrophic-success
     publisher: H-Diplo/RJISSF (reviewers' summaries, with page numbers in Downes's book)
@@ -109,19 +104,10 @@ sources:
     date: '2024-08'
   # 8
   - stance: supports
-    quote: >-
-      This article addresses these questions by conducting an analysis of 16
-      attacks against nuclear facilities from 1942 to 2007. … There is
-      evidence that the peacetime attacks delayed the target's nuclear
-      program, although the size of this effect is rather modest. The wartime
-      cases were less successful, as attacks often missed their targets either
-      due to operational failure or limited intelligence on the location of
-      critical targets. In our concluding section we show that many of the
-      conditions that were conducive to past success are not present in the
-      contemporary Iran case. Overall, our findings reveal an interesting
-      paradox. The historical cases that have successfully delayed
-      proliferation are those when the attacking state struck well before a
-      nuclear threat was imminent.
+    quote: |-
+      This article addresses these questions by conducting an analysis of 16 attacks against nuclear facilities from 1942 to 2007. …
+
+      The findings indicate that strikes are neither as uniformly fruitless as the skeptics would suggest, nor as productive as advocates have claimed. There is evidence that the peacetime attacks delayed the target's nuclear program, although the size of this effect is rather modest. The wartime cases were less successful, as attacks often missed their targets either due to operational failure or limited intelligence on the location of critical targets. In our concluding section we show that many of the conditions that were conducive to past success are not present in the contemporary Iran case. Overall, our findings reveal an interesting paradox. The historical cases that have successfully delayed proliferation are those when the attacking state struck well before a nuclear threat was imminent.
     title: 'Attacking the Atom: Does Bombing Nuclear Facilities Affect Proliferation? (Kreps and Fuhrmann, Journal of Strategic Studies), abstract'
     url: https://www.belfercenter.org/publication/attacking-atom-does-bombing-nuclear-facilities-affect-proliferation
     publisher: Belfer Center for Science and International Affairs, Harvard Kennedy School
@@ -141,62 +127,72 @@ sources:
     date: '2011'
   # 10
   - stance: supports
-    quote: >-
-      Thirty-one countries at least opened the door to potential nuclear
-      weapons programs, seventeen of those launched weapons programs, and ten
-      acquired deliverable nuclear weapons. But proliferation has also been
-      complemented by de-proliferation: one state that developed nuclear
-      weapons subsequently gave them up, seven of those who launched programs
-      never or have not yet acquired, and fourteen countries halted their
-      exploration of nuclear weapons without launching programs. … Libya
-      returned to no activity in 2003, when Libya announced that it was
-      abandoning its weapons of mass destruction programs and allowing
-      international inspections. … Iraqi exploration is coded as 1975, though
-      the evidence is somewhat circumstantial, and pursuit is coded as 1981,
-      returning to no activity in 1991. … Jo and Gartzke code pursuit as 1973.
-      … Iraq’s activities prior to 1981, including as described by
-      Braut-Hegghammer, are sufficiently robust that one might reasonably code
-      them as pursuit rather than merely exploration … Iraq’s pursuit ended in
-      1991, when in the aftermath of the first Gulf War it was forced to give
-      up its mass destruction capabilities and submit to an intensive
-      verification regime. … one could reasonably code Iran as dropping from
-      pursuit down to exploration either after 2003, based on the 2007
-      National Intelligence Assessment, or in 2015, when Iran agreed to
-      significantly constrain its nuclear program under the Joint
-      Comprehensive Plan of Action. … Syria returned to exploring in 2007
-      following the destruction of the Al-Kibar facility by Israel on
-      September 6, 2007. There is no publicly available evidence of political
-      decisions to either continue or cease activity on which to base a coding
-      of continued exploration.
-      … Table 1: Proliferation Behavior Over Time Country Explore Pursue
-      Acquire United States 1939- 1942- 1945- Russia 1942- 1943- 1949-
-      United Kingdom 1940- 1941- 1952- France 1945- 1954- 1960- China
-      1952- 1955- 1964- Israel 1949- 1955- 1967- South Africa 1969-91
-      1974-91 1979-91 Pakistan 1972- 1972- 1987- India 1948- 1964-66,
-      72-75, 80- 1987- Korea, North 1962- 1980- 2006- Yugoslavia 1949-62,
-      74-87 1953-62, 82-87 South Korea 1969-81 1970-81 Libya 1970-2003
-      1970-2003 Brazil 1966-90 1975-90 Iraq 1975-91 1981-91 Iran 1974-79,
-      84- 1989- Syria 2000- 2002-07 Germany 1939-45 Japan 1941-45, 67-72
-      Switzerland 1945-69 Sweden 1945-70 Norway 1947-62 Egypt 1955-80
-      Italy 1955-58 Australia 1956-73 Germany, West 1957-58 Indonesia
-      1964-67 Taiwan 1967-76, 87-88 Romania 1978-89 Argentina 1978-90
-      Algeria 1983-91
+    quote: |-
+      Thirty-one countries at least opened the door to potential nuclear weapons programs, seventeen of those launched weapons programs, and ten acquired deliverable nuclear weapons. But proliferation has also been complemented by de-proliferation: one state that developed nuclear weapons subsequently gave them up, seven of those who launched programs never or have not yet acquired, and fourteen countries halted their exploration of nuclear weapons without launching programs. This paper succinctly summarizes all of this nuclear weapons proliferation activity. …
+
+      Libya returned to no activity in 2003, when Libya announced that it was abandoning its weapons of mass destruction programs and allowing international inspections. …
+
+      Iraqi exploration is coded as 1975, though the evidence is somewhat circumstantial, and pursuit is coded as 1981, returning to no activity in 1991. …
+
+      Jo and Gartzke code pursuit as 1973. …
+
+      Iraq’s activities prior to 1981, including as described by Braut-Hegghammer, are sufficiently robust that one might reasonably code them as pursuit rather than merely exploration …
+
+      Iraq’s pursuit ended in 1991, when in the aftermath of the first Gulf War it was forced to give up its mass destruction capabilities and submit to an intensive verification regime. …
+
+      one could reasonably code Iran as dropping from pursuit down to exploration either after 2003, based on the 2007 National Intelligence Assessment, or in 2015, when Iran agreed to significantly constrain its nuclear program under the Joint Comprehensive Plan of Action. …
+
+      Syria returned to exploring in 2007 following the destruction of the Al-Kibar facility by Israel on September 6, 2007. There is no publicly available evidence of political decisions to either continue or cease activity on which to base a coding of continued exploration. …
+
+      Table 1: Proliferation Behavior Over Time
+      Country | Explore | Pursue | Acquire
+      United States | 1939- | 1942- | 1945-
+      Russia | 1942- | 1943- | 1949-
+      United Kingdom | 1940- | 1941- | 1952-
+      France | 1945- | 1954- | 1960-
+      China | 1952- | 1955- | 1964-
+      Israel | 1949- | 1955- | 1967-
+      South Africa | 1969-91 | 1974-91 | 1979-91
+      Pakistan | 1972- | 1972- | 1987-
+      India | 1948- | 1964-66, 72-75, 80- | 1987-
+      Korea, North | 1962- | 1980- | 2006-
+      Yugoslavia | 1949-62, 74-87 | 1953-62, 82-87 |
+      South Korea | 1969-81 | 1970-81 |
+      Libya | 1970-2003 | 1970-2003 |
+      Brazil | 1966-90 | 1975-90 |
+      Iraq | 1975-91 | 1981-91 |
+      Iran | 1974-79, 84- | 1989- |
+      Syria | 2000- | 2002-07 |
+      Germany | 1939-45 |  |
+      Japan | 1941-45, 67-72 |  |
+      Switzerland | 1945-69 |  |
+      Sweden | 1945-70 |  |
+      Norway | 1947-62 |  |
+      Egypt | 1955-80 |  |
+      Italy | 1955-58 |  |
+      Australia | 1956-73 |  |
+      Germany, West | 1957-58 |  |
+      Indonesia | 1964-67 |  |
+      Taiwan | 1967-76, 87-88 |  |
+      Romania | 1978-89 |  |
+      Argentina | 1978-90 |  |
+      Algeria | 1983-91 |  |
     title: 'When Did (and Didn’t) States Proliferate? Chronicling the Spread of Nuclear Weapons (Philipp C. Bleek), text and Table 1'
     url: https://www.belfercenter.org/publication/when-did-and-didnt-states-proliferate
     publisher: Belfer Center for Science and International Affairs, Harvard Kennedy School
     date: '2017-06'
   # 11
   - stance: supports
-    quote: >-
-      204 observations from World War I to 2000 … Sanctions “succeed” in about
-      one-third of the cases overall, but the success rate depends importantly
-      on the type of objectives sought … Success means sanctions contributed
-      significantly to the partial or full achievement of the foreign policy
-      goal … Targets are friendly or democratic countries, rather than
-      enemies, autocrats … Libya – Success at Last? … But only after 20+ years
-      … Destabilization of either existing regime unlikely … Carrots plus
-      sticks strategy more effective than sticks alone … Do not expect quick
-      success against autocratic regimes
+    quote: |-
+      204 observations from World War I to 2000 …
+      Sanctions “succeed” in about one-third of the cases overall, but the success rate depends importantly on the type of objectives sought …
+      Success means sanctions contributed significantly to the partial or full achievement of the foreign policy goal …
+      Targets are friendly or democratic countries, rather than enemies, autocrats …
+      Libya – Success at Last? …
+      But only after 20+ years …
+      Destabilization of either existing regime unlikely …
+      Carrots plus sticks strategy more effective than sticks alone …
+      Do not expect quick success against autocratic regimes
     title: 'Economic Sanctions: New Directions for the 21st Century (presentation of Economic Sanctions Reconsidered, 3rd edition)'
     url: https://www.piie.com/sites/default/files/publications/papers/hufbauer0708ppt.pdf
     publisher: Peterson Institute for International Economics (Hufbauer, Schott, Elliott and Oegg)
@@ -217,23 +213,18 @@ sources:
     date: '1998'
   # 13
   - stance: supports
-    quote: >-
-      The new version of the Threat and Imposition of Economic Sanctions
-      (TIES) data set includes 1,412 cases in which one or more states
-      threatened and/or imposed economic sanctions on a single target during
-      the 1945-2005 period. … Sanctions were imposed in 845 of these cases
-      (60%) leaving 567 cases that involved only threats (40%). … The U.S. is
-      the primary sender in a bit over 48% of the cases … we see 384 cases
-      identified as successful if we employ the strict definition of sanctions
-      that requires total or partial acquiescence on the part of the target.
-      Under this definition of ‘success’ sanctions may be considered
-      successful in 27.2% of the cases, if we consider all cases, or in 37.5%
-      of the cases for which we have data for the final outcome. … We see a
-      40.8% success rate in the pool of all cases and a remarkable 56% success
-      rate when cases with missing final outcomes are removed. … The third
-      definition based on the settlement nature scores identifies 454
-      successes, which translates to a 32.2% success rate in the full sample
-      and a 44% success rate in the restricted sample.
+    quote: |-
+      The new version of the Threat and Imposition of Economic Sanctions (TIES) data set includes 1,412 cases in which one or more states threatened and/or imposed economic sanctions on a single target during the 1945-2005 period. …
+
+      Sanctions were imposed in 845 of these cases (60%) leaving 567 cases that involved only threats (40%). …
+
+      The U.S. is the primary sender in a bit over 48% of the cases …
+
+      we see 384 cases identified as successful if we employ the strict definition of sanctions that requires total or partial acquiescence on the part of the target. Under this definition of ‘success’ sanctions may be considered successful in 27.2% of the cases, if we consider all cases, or in 37.5% of the cases for which we have data for the final outcome. …
+
+      We see a 40.8% success rate in the pool of all cases and a remarkable 56% success rate when cases with missing final outcomes are removed. …
+
+      The third definition based on the settlement nature scores identifies 454 successes, which translates to a 32.2% success rate in the full sample and a 44% success rate in the restricted sample.
     title: 'Threat and Imposition of Economic Sanctions 1945–2005: Updating the TIES Dataset (Morgan, Bapat and Kobayashi, Conflict Management and Peace Science 31:5), accepted manuscript'
     url: https://eprints.whiterose.ac.uk/126201/
     publisher: White Rose Research Online (University of Leeds)
@@ -267,7 +258,7 @@ sources:
   - stance: supports
     quote: >-
       Multivariate probit analysis is used to test three hypotheses on all
-      instances of air power coercion from 1917 to 1999 … Results show that
+      instances of air power coercion from 1917 to 1999: (1) air power coercion attempts are more likely to work if they exploit military rather than civilian vulnerabilities, (2) the regime type of the target affects the chances of success, and (3) success is less likely if the attacker demands that the target change its leadership. Results show that
       coercion is more likely to work if the target's military vulnerability
       is higher, but higher levels of civilian vulnerability have no effect on
       the chances of coercion success; that target regime type has no effect;
@@ -290,36 +281,22 @@ sources:
     date: '2013-09-06'
   # 18
   - stance: complicates
-    quote: >-
-      As Miller’s analysis shows, once a program had started, sanctions
-      succeeded in only three of 22 cases (135). Thus, based on this analysis,
-      sanctions appear to work about 14 percent of the time—a pretty dismal
-      success rate. … Miller correctly points out, however, that we cannot
-      infer much about the value of sanctions as an instrument of
-      nonproliferation by limiting our analysis to these episodes. We must
-      also look at the cases where the prospect of sanctions deterred a
-      country from starting a bomb program in the first place. Once we do
-      that, a much more sanguine picture emerges. … Sanctions threats can work
-      if they are credible and if the potential proliferator is highly
-      dependent on the United States.
+    quote: |-
+      As Miller’s analysis shows, once a program had started, sanctions succeeded in only three of 22 cases (135). Thus, based on this analysis, sanctions appear to work about 14 percent of the time—a pretty dismal success rate. …
+
+      Miller correctly points out, however, that we cannot infer much about the value of sanctions as an instrument of nonproliferation by limiting our analysis to these episodes. We must also look at the cases where the prospect of sanctions deterred a country from starting a bomb program in the first place. Once we do that, a much more sanguine picture emerges. …
+
+      Sanctions threats can work if they are credible and if the potential proliferator is highly dependent on the United States.
     title: 'H-Diplo/ISSF Roundtable XI-9 on Nicholas L. Miller, Stopping the Bomb (Cornell University Press, 2018), review by Matthew Fuhrmann'
     url: https://issforum.org/ISSF/PDF/ISSF-Roundtable-11-9.pdf
     publisher: H-Diplo/ISSF
     date: '2019-01-27'
   # 19
   - stance: supports
-    quote: >-
-      the important role that external incentives—sanctions and rewards can
-      play in nuclear negotiations, especially when the threat to use force
-      remains 'on the table'. Specifically, this book argues that nuclear
-      reversal is most likely when states are threatened with sanctions and
-      offered face-saving rewards that help them withstand domestic political
-      opposition. … the study employs a unified, multi-method observational
-      research design to identify patterns of behavior over time among all
-      proliferators. In addition to quantitative analyses that systematically
-      explores nuclear reversal historically, the book incorporates three
-      in-depth case studies comparing the Indian, Iranian, and North Korean
-      nuclear programs
+    quote: |-
+      the important role that external incentives—sanctions and rewards can play in nuclear negotiations, especially when the threat to use force remains 'on the table'. Specifically, this book argues that nuclear reversal is most likely when states are threatened with sanctions and offered face-saving rewards that help them withstand domestic political opposition. Underlying these negotiations is the shadow of military force. …
+
+      the study employs a unified, multi-method observational research design to identify patterns of behavior over time among all proliferators. In addition to quantitative analyses that systematically explores nuclear reversal historically, the book incorporates three in-depth case studies comparing the Indian, Iranian, and North Korean nuclear programs
     title: 'Rupal Mehta, Delaying Doomsday: The Politics of Nuclear Reversal (event summary)'
     url: https://cgsr.llnl.gov/event-calendar/2020/2020-02-25
     publisher: Lawrence Livermore National Laboratory, Center for Global Security Research
@@ -385,7 +362,8 @@ sources:
     date: '2004'
 comparisons:
   - id: air-power
-    title: Air-power coercion attempts, 1917–1999, by outcome
+    title: Air-power coercion attempts
+    subtitle: By outcome, 1917–1999, as counted by Horowitz and Reiter
     description: >-
       All 53 attempts Horowitz and Reiter identify to coerce a state with air
       power, counted as a success when the target changed its behaviour as
@@ -446,7 +424,8 @@ dataStillNeeded:
 figures:
   - kind: periodTimeline
     id: nuclear-programmes
-    title: The 31 states that explored nuclear weapons, and when, 1939–2017
+    title: States that explored nuclear weapons
+    subtitle: All 31, and when each explored, pursued or acquired them, 1939–2017
     description: When each state Bleek codes explored, pursued and acquired nuclear weapons. Of the 31,
       fourteen stopped exploring without launching a programme, seven launched programmes without acquiring
       weapons, and ten acquired them; Iran is the one state coded as still pursuing.
@@ -587,7 +566,7 @@ figures:
       periods:
       - {from: '1983', to: '1991', category: explore, label: Explore}
     events:
-    - {period: '1991', label: Iraq forced to give up its programme after the Gulf War, source: 10}
+    - {period: '1991', label: 'Iraq forced to give up its programme after the Gulf War and "submit to an intensive verification regime"', source: 10}
     - {period: '2003', label: Libya abandons its programmes and allows inspections, source: 10}
     - {period: '2007-09-06', label: Israel destroys Syria's Al-Kibar facility, source: 10}
     - {period: '2015', label: Iran accepts the nuclear deal's limits, source: 10}
@@ -598,7 +577,8 @@ figures:
       could "reasonably" be coded as dropping back to exploration after 2003 or in 2015.'
   - kind: barChart
     id: sanctions-ties
-    title: How often sanctions succeed under three definitions (TIES dataset, 1945–2005)
+    title: How often sanctions succeed
+    subtitle: Under three definitions of success, TIES dataset, 1945–2005
     description: Share of the 1,412 threatened or imposed sanctions cases counted as successes in the TIES
       dataset, under each of its three definitions of success, for all cases and for the cases with a known
       outcome.
@@ -626,7 +606,8 @@ figures:
     id: "air-power"
   - kind: "dataTable"
     id: "regime-change"
-    title: "Studies of outside attempts to change governments, with how each defines success"
+    title: "Studies of outside regime change"
+    subtitle: "Three studies, with how each defines success"
     description: "Three studies of regime change imposed from outside, openly or covertly."
     caption: "One card per study"
     layout: cards
@@ -640,13 +621,26 @@ figures:
       - { study: "Downes, Catastrophic Success (2021)", cases: "120 imposed regime changes, 1816–2008", success: "No success score; outcomes are civil war within ten years, violent removal of the installed leader, later disputes, UN voting", finding: { value: "Civil war risk \"more than doubles\"; four and a half times for leadership change", sources: [1] } }
       - { study: "Downes & Monten (2013)", cases: "70 twentieth-century cases (107 in the dataset, 1816–2003)", success: "The target becomes a democracy", finding: { value: "Only where development, homogeneity and representative experience were favourable", sources: [3, 4] } }
       - { study: "O'Rourke, Covert Regime Change", cases: "64 covert US attempts, 1947–89", success: "The US-backed side takes power", finding: { value: "\"Unsuccessful more than 60 percent of the time\"", sources: [5, 6] } }
-  - kind: "pullQuote"
+  - kind: "dataTable"
     id: "strikes"
-    description: "Kreps and Fuhrmann studied 16 attacks on nuclear facilities, 1942–2007, measuring delay to the target's programme."
-    quote: { text: "There is evidence that the peacetime attacks delayed the target's nuclear program, although the size of this effect is rather modest.", speaker: "Kreps and Fuhrmann", context: "Attacking the Atom", date: "2011", source: 8 }
+    title: "Strikes on nuclear sites"
+    subtitle: "Kreps and Fuhrmann's 2011 study of 16 attacks, 1942–2007"
+    description: "What the study found, measuring how far each attack delayed the target's programme."
+    caption: "One card per finding"
+    layout: cards
+    leadColumn: finding
+    columns:
+      - { key: "topic", label: "Question", rowHeader: true, sortable: false }
+      - { key: "finding", label: "Finding", sortable: false }
+    rows:
+      - { topic: "Size of the delay", finding: { value: "Peacetime attacks delayed programmes, \"although the size of this effect is rather modest\"", sources: [8] } }
+      - { topic: "When strikes worked", finding: { value: "When the attacker \"struck well before a nuclear threat was imminent\"", sources: [8] } }
+      - { topic: "Wartime strikes", finding: { value: "\"less successful\"", sources: [8] } }
+      - { topic: "Iran, as of 2011", finding: { value: "\"many of the conditions that were conducive to past success are not present in the contemporary Iran case\"", sources: [8] } }
   - kind: "dataTable"
     id: "nonproliferation-pressure"
-    title: "Studies of pressure on nuclear programmes and of ceasefires"
+    title: "Studies of nuclear pressure and ceasefires"
+    subtitle: "Three studies, with how each defines success"
     description: "What sanctions, rewards and ceasefire terms have achieved, with how each study defines success."
     caption: "One card per study"
     layout: cards
@@ -658,7 +652,7 @@ figures:
       - { key: "finding", label: "Main finding", sortable: false }
     rows:
       - { study: "Miller, Stopping the Bomb (2018)", cases: "22 US sanctions episodes after a programme had started", success: "The programme stopped", finding: { value: "Three of 22; the threat of sanctions deterred others from starting", sources: [18] } }
-      - { study: "Mehta, Delaying Doomsday", cases: "All proliferators, plus case studies of India, Iran and North Korea", success: "Nuclear reversal", finding: { value: "Threats plus face-saving rewards, with force \"on the table\"", sources: [19] } }
+      - { study: "Mehta, Delaying Doomsday", cases: "All proliferators, plus case studies of India, Iran and North Korea", success: "Nuclear reversal", finding: { value: "Reversal \"most likely when states are threatened with sanctions and offered face-saving rewards\", with force \"on the table\"", sources: [19] } }
       - { study: "Fortna, Peace Time (2004)", cases: "Ceasefires between states (number not on the page read)", success: "Peace lasts", finding: { value: "\"Strong agreements markedly lessen the risk of further war\"", sources: [24] } }
   - kind: "quoteComparison"
     id: "credibility"
@@ -677,9 +671,8 @@ figures:
       - { text: "Thirty-one countries at least opened the door to potential nuclear weapons programs, seventeen of those launched weapons programs, and ten acquired deliverable nuclear weapons.", speaker: "Bleek", date: "2017", source: 10 }
   - kind: "dataTable"
     id: "studies"
-    title: >-
-      Studies of nuclear programmes, sanctions and air power, with how each
-      defines success
+    title: "Nuclear, sanctions and air-power studies"
+    subtitle: "Five studies, with how each defines success"
     description: "A success rate under one definition is not comparable with another."
     caption: "One card per study"
     layout: cards
@@ -694,7 +687,36 @@ figures:
       - { study: "Hufbauer, Schott, Elliott & Oegg, Economic Sanctions Reconsidered, 3rd edition", cases: "204 sanctions episodes, WWI–2000", success: "Sanctions \"contributed significantly\" to partial or full success", finding: { value: "\"About one-third\"", sources: [11] } }
       - { study: "TIES (Morgan, Bapat & Kobayashi, 2014)", cases: "1,412 threatened or imposed sanctions, 1945–2005", success: "Three definitions (see chart)", finding: { value: "27.2% to 56%", sources: [13] } }
       - { study: "Global Sanctions Data Base (2024)", cases: "1,547 imposed sanctions, 1950–2023", success: "Per objective: total, partial, negotiated, failure, ongoing", finding: { value: "\"30 to 50 percent\" (2021 announcement, definition not stated)", sources: [14, 15] } }
-      - { study: "Horowitz & Reiter (2001)", cases: "53 air-power coercion attempts, 1917–1999", success: "Target complies as demanded", finding: { value: "19 of 53", sources: [16, 17] } }
+      - { study: "Horowitz & Reiter (2001)", cases: "53 air-power coercion attempts, 1917–1999", success: "Target complies as demanded", finding: { value: "19 of 53; \"more likely to work if the target's military vulnerability is higher\"; \"success is less likely when the attacker demands the target change its leadership\"", sources: [16, 17] } }
+observationMarks:
+  air-coercion-about-a-third: {rows: ["Succeeded", "Failed"]}
+  leadership-demands-lower-success: {rows: ["Horowitz & Reiter (2001)"]}
+  predicted-cascades-did-not-happen: {rows: ["Potter & Mukhatzhanova"]}
+  saudi-2018-pledge: {rows: ["Mohammed bin Salman"]}
+  credibility-split: {rows: ["Press", "Weisiger & Yarhi-Milo"]}
+  nonproliferation-sanctions-three-of-22: {rows: ["Miller, Stopping the Bomb (2018)"]}
+  threats-plus-rewards: {rows: ["Mehta, Delaying Doomsday"]}
+  iraq-ended-after-war-and-inspection: {rows: ["Iraq"]}
+  libya-2003-with-inspections: {rows: ["Libya"]}
+  imposed-regime-change-and-civil-war: {rows: ["Downes, Catastrophic Success (2021)"]}
+  democracy-only-in-favourable-conditions: {rows: ["Downes & Monten (2013)"]}
+  sanctions-weak-against-adversaries: {whole: true}
+  strong-ceasefire-agreements-hold: {rows: ["Fortna, Peace Time (2004)"]}
+  acquisition-base-rate: {rows: ["United States", "Russia", "United Kingdom", "France", "China", "Israel", "South Africa", "Pakistan", "India", "North Korea"]}
+  syria-returned-to-exploring: {rows: ["Syria"]}
+  osirak-coding-dispute: {rows: ["Iraq"]}
+  iran-coding: {rows: ["Iran"]}
+  restoration-does-best: {rows: ["Downes, Catastrophic Success (2021)"]}
+  regime-change-and-relations: {rows: ["Downes, Catastrophic Success (2021)"]}
+  covert-attempts-failed: {rows: ["O'Rourke, Covert Regime Change"]}
+  sanctions-success-depends-on-definition: {rows: ["Strict: target gives in fully or partly", "Relaxed: adds negotiated settlements"]}
+  gsdb-range: {rows: ["Strict: target gives in fully or partly", "Relaxed: adds negotiated settlements"]}
+  military-vulnerability: {rows: ["Horowitz & Reiter (2001)"]}
+  strikes-delay-modestly: {rows: ["Size of the delay", "Wartime strikes"]}
+  strikes-worked-early: {rows: ["When strikes worked"]}
+  past-success-conditions-absent-for-iran: {rows: ["Iran, as of 2011"]}
+  fit-to-iran: {rows: ["Downes & Monten (2013)"]}
+  no-study-of-containment: {whole: true}
 ---
 ## Observations {#outside-attempts-to-change-hostile-regimes--observations-nuclear-programmes}
 
@@ -746,10 +768,6 @@ The Global Sanctions Data Base, the largest set here, scores each imposed sancti
 
 Horowitz and Reiter count 19 successes in 53 attempts from 1917 to 1999. [17](#source-outside-attempts-to-change-hostile-regimes-17) Success was likelier when the target's military was vulnerable; how exposed its civilians were made no difference. [16](#source-outside-attempts-to-change-hostile-regimes-16)
 
-### Demanding a change of leader made bombing less likely to work {#outside-attempts-to-change-hostile-regimes--leadership-demands-lower-success}
-
-"Success is less likely when the attacker demands the target change its leadership." The target's regime type made no difference. [16](#source-outside-attempts-to-change-hostile-regimes-16)
-
 ## Observations {#outside-attempts-to-change-hostile-regimes--observations-regime-change}
 
 ### Imposed regime change more than doubles the risk of civil war {#outside-attempts-to-change-hostile-regimes--imposed-regime-change-and-civil-war}
@@ -778,7 +796,11 @@ O'Rourke finds Cold War covert operations "unsuccessful more than 60 percent of 
 
 ### Strikes on nuclear sites have delayed programmes modestly {#outside-attempts-to-change-hostile-regimes--strikes-delay-modestly}
 
-Kreps and Fuhrmann find that peacetime strikes delayed programmes, "although the size of this effect is rather modest", and wartime strikes did less well. [8](#source-outside-attempts-to-change-hostile-regimes-8) Their successes came when the attacker struck "well before a nuclear threat was imminent". [8](#source-outside-attempts-to-change-hostile-regimes-8)
+Kreps and Fuhrmann find that peacetime strikes delayed programmes, "although the size of this effect is rather modest", and wartime strikes did less well. [8](#source-outside-attempts-to-change-hostile-regimes-8)
+
+### Strikes worked best well before a country neared a bomb {#outside-attempts-to-change-hostile-regimes--strikes-worked-early}
+
+Their successes came when the attacker struck "well before a nuclear threat was imminent". [8](#source-outside-attempts-to-change-hostile-regimes-8)
 
 ### The same authors say past-success conditions are absent for Iran {#outside-attempts-to-change-hostile-regimes--past-success-conditions-absent-for-iran}
 
@@ -792,7 +814,7 @@ In Miller's data, once a programme had started, US sanctions succeeded "in only 
 
 Threats worked when "credible" and when the state was "highly dependent on the United States". [18](#source-outside-attempts-to-change-hostile-regimes-18)
 
-### Threats plus face-saving rewards make reversal most likely {#outside-attempts-to-change-hostile-regimes--threats-plus-rewards}
+### Sanctions threats plus face-saving rewards make reversal most likely {#outside-attempts-to-change-hostile-regimes--threats-plus-rewards}
 
 Mehta finds reversal "most likely" when states face sanctions and are offered "face-saving rewards", especially with force "on the table". The summary read gives no figures. [19](#source-outside-attempts-to-change-hostile-regimes-19)
 
@@ -815,6 +837,16 @@ In 2018 Mohammed bin Salman said Saudi Arabia did not want a bomb, "but without 
 ### Past predictions of rapid spread did not come true {#outside-attempts-to-change-hostile-regimes--predicted-cascades-did-not-happen}
 
 Potter and Mukhatzhanova, reviewing the research, describe "past predictions of rapid proliferation" that "failed to materialize". [23](#source-outside-attempts-to-change-hostile-regimes-23) Bleek's record shows ten states with weapons after some 70 years of exploration by 31. [10](#source-outside-attempts-to-change-hostile-regimes-10)
+
+## Observations {#outside-attempts-to-change-hostile-regimes--observations-studies}
+
+### Bombing is more likely to work when the target's military is vulnerable {#outside-attempts-to-change-hostile-regimes--military-vulnerability}
+
+Horowitz and Reiter find coercion "more likely to work if the target's military vulnerability is higher", while civilian vulnerability has "no effect". [16](#source-outside-attempts-to-change-hostile-regimes-16)
+
+### Demanding a change of leader made bombing less likely to work {#outside-attempts-to-change-hostile-regimes--leadership-demands-lower-success}
+
+"Success is less likely when the attacker demands the target change its leadership." The target's regime type made no difference. [16](#source-outside-attempts-to-change-hostile-regimes-16)
 
 ## Subtleties {#outside-attempts-to-change-hostile-regimes--subtleties-studies}
 

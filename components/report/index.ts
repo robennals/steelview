@@ -13,6 +13,7 @@ export { formatValue, formatDate, dateToYear, compareDates } from './format';
 export * from './qualified';
 export { ChartAbout } from './chart-about';
 export { ReportFigure, SourceCredits, SourceLine } from './figure';
+export { SourcePassages } from './source-passage';
 export { ChoiceGroup, FilterChips, type Choice } from './controls';
 
 // Data
@@ -49,7 +50,9 @@ export * from './event-markers';
 
 // Quotes
 export type { Quote } from './quote-attribution';
+export * from './quote-card';
 export * from './quote-browser';
+export * from './card-quotes';
 export * from './pull-quote';
 export * from './quote-comparison';
 

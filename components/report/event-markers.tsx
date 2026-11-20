@@ -2,7 +2,8 @@ import { MarkerCardPlacement } from './marker-card-placement';
 import { SourceLine } from './figure';
 import { formatDate } from './format';
 import { toYear } from './time-axis';
-import type { PartialDate, SourceCredit } from './types';
+import { SourcePassages } from './source-passage';
+import type { PartialDate, SourceCredit, SourcePassage } from './types';
 
 /**
  * `event` is something that happened in the world; `method` is a change in how
@@ -17,6 +18,8 @@ export type MarkerEvent = {
   description?: string;
   /** The citations that date it, listed in its card. */
   sources?: SourceCredit[];
+  /** The sentences the words its label and description quote came from, shown in its card. */
+  passages?: SourcePassage[];
   href?: string;
   kind?: MarkerKind;
 };
@@ -161,6 +164,7 @@ function MarkerHead({ marker }: { marker: NumberedMarker }) {
 function MarkerBody({ event }: { event: MarkerEvent }) {
   return <>
     {event.description && <p className="sv-marker-card__desc">{event.description}</p>}
+    <SourcePassages passages={event.passages} />
     {event.sources && event.sources.length > 0 && <SourceLine sources={event.sources} />}
     {event.href && <p className="sv-marker-card__link"><a href={event.href}>See the evidence</a></p>}
   </>;

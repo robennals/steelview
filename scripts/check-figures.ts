@@ -20,9 +20,7 @@
  *   series sources and verified derived figures;
  * - a **viewpoint or the topic intro** is matched against the union of
  *   the corpora of the facts it cites (inline `#fact-…` links, plus the legacy
- *   `citesFacts` list), so it cannot state a figure no cited fact supports;
- * - a **principle** is matched topic-wide: principles are shared across
- *   topics and should carry no figures at all.
+ *   `citesFacts` list), so it cannot state a figure no cited fact supports.
  *
  * It deliberately does *not* look at frontmatter. `claim` and `holds` are
  * already covered: a fact's claim is backed by that fact's own sources (rule
@@ -58,13 +56,12 @@
 import { readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
 import matter from 'gray-matter';
-import { loadPrinciples, ContentError } from '../lib/content/load';
 import { citedFactIds } from '../lib/content/markdown';
-import { factFrontmatterSchema, topicFrontmatterSchema } from '../lib/content/schema';
+import { factFrontmatterSchema } from '../lib/content/schema';
 import { chartProse, figureProse } from '../lib/content/figure-text';
 import { isComponentFigure } from '../lib/content/types';
 import { auditValue, chartValues, isWeakMatch, type ValueVerdict } from './chart-values';
-import { canonical, collectQuotes, figuresIn, quoteCorpus, quotedSomewhere, type QuoteCorpus } from './figures';
+import { canonical, collectQuotes, figuresIn, quoteCorpus, quotedSomewhere, type QuoteCorpus } from '@/lib/content/quoted-figures';
 
 import { checkDerivedFigures, verifiedDerivedFigures } from './derived-figures';
 
@@ -77,7 +74,7 @@ const KINDS = [
 
 /** One content item as the audit sees it: raw frontmatter plus markdown body. */
 export type AuditItem = {
-  kind: 'topic' | 'fact' | 'viewpoint' | 'principle';
+  kind: 'topic' | 'fact' | 'viewpoint';
   id: string;
   data: Record<string, unknown>;
   body: string;
@@ -139,14 +136,10 @@ function citedFacts(item: AuditItem): string[] {
 /** The corpus an item's figures are matched against, and the words a report line uses to name it. */
 function corpusFor(
   item: AuditItem,
-  factQuotes: ReadonlyMap<string, string[]>,
-  topicWide: QuoteCorpus
+  factQuotes: ReadonlyMap<string, string[]>
 ): { corpus: QuoteCorpus; missing: string } {
   if (item.kind === 'fact') {
     return { corpus: quoteCorpus(factQuotes.get(item.id) ?? []), missing: "not in this fact's sources" };
-  }
-  if (item.kind === 'principle') {
-    return { corpus: topicWide, missing: 'not quoted anywhere on the topic' };
   }
   // An unknown fact id is the integrity check's to report; here it contributes no quotes.
   const cited = citedFacts(item).filter((id) => factQuotes.has(id));
@@ -162,8 +155,7 @@ function corpusFor(
 /**
  * The prose audit for one topic, pure so it can be tested: every figure in
  * every body must appear in the corpus that item is entitled to (see the file
- * comment). `items` is the topic intro, its facts and viewpoints, and the
- * shared principles it references.
+ * comment). `items` is the topic intro, its facts and its viewpoints.
  */
 export function auditTopic(items: readonly AuditItem[]): {
   unmatched: Finding[];
@@ -175,9 +167,6 @@ export function auditTopic(items: readonly AuditItem[]): {
   const factQuotes = new Map(
     items.filter((item) => item.kind === 'fact').map((item) => [item.id, ownQuotes(item.data)])
   );
-  const topicWide = quoteCorpus(
-    items.flatMap((item) => (item.kind === 'fact' ? factQuotes.get(item.id) ?? [] : ownQuotes(item.data)))
-  );
 
   const unmatched: Finding[] = [];
   const advisories: Finding[] = [];
@@ -186,7 +175,7 @@ export function auditTopic(items: readonly AuditItem[]): {
 
   for (const item of items) {
     const label = `${item.kind}/${item.id}`;
-    const { corpus, missing } = corpusFor(item, factQuotes, topicWide);
+    const { corpus, missing } = corpusFor(item, factQuotes);
     for (const { figure, inputs } of checkDerivedFigures(item.data).unquoted) {
       unmatched.push({
         item: `${label} derivedFigures`,
@@ -317,7 +306,7 @@ function printValues(values: readonly AuditedValue[], strict: boolean): number {
   return untraced.length;
 }
 
-/** A topic's intro, facts, viewpoints and referenced principles, read from disk. */
+/** A topic's intro, facts and viewpoints, read from disk. */
 async function readTopic(slug: string): Promise<AuditItem[]> {
   const dir = path.join(CONTENT_ROOT, slug);
   const topicFile = matter(await readFile(path.join(dir, 'topic.md'), 'utf8'));
@@ -327,13 +316,6 @@ async function readTopic(slug: string): Promise<AuditItem[]> {
     for (const item of await readMarkdown(path.join(dir, kindDir))) items.push({ kind, ...item });
   }
 
-  const references = topicFrontmatterSchema.parse(topicFile.data).principles;
-  const catalog = new Map((await loadPrinciples()).map((p) => [p.id, p]));
-  for (const id of references) {
-    const principle = catalog.get(id);
-    if (!principle) throw new ContentError(`topic ${slug}: references unknown shared principle "${id}"`);
-    items.push({ kind: 'principle', id, data: { name: principle.name }, body: principle.body });
-  }
   return items;
 }
 

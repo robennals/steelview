@@ -1,27 +1,25 @@
 import { test, expect } from './hydrated-test';
 
-// Addressing each fact individually is only worth anything if a machine can
-// find and use them, so the sitemap, the canonicals and the structured data
-// are part of the feature rather than decoration on top of it.
+// A topic is only worth publishing if a machine can find it, so the sitemap,
+// robots.txt and each topic's canonical and card are part of the site rather
+// than decoration on top of it.
 
 const TOPIC = '/topics/uk-immigration';
-const FACT = `${TOPIC}/facts/immigration-against-the-long-run`;
 
-test('the sitemap lists the site’s own pages, every topic and every fact', async ({ request }) => {
+test('the sitemap lists the site’s own pages and every topic, and no data collections', async ({ request }) => {
   const xml = await (await request.get('/sitemap.xml')).text();
-  const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+  const paths = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
 
-  expect(locs.map((l) => new URL(l).pathname)).toEqual(
-    expect.arrayContaining(['/', '/about', '/how-its-made', '/privacy'])
-  );
-  expect(locs.some((l) => new URL(l).pathname === TOPIC)).toBe(true);
-
-  const factPaths = locs
-    .map((l) => new URL(l).pathname)
-    .filter((p) => p.startsWith(`${TOPIC}/facts/`));
-  expect(factPaths.length).toBeGreaterThanOrEqual(7);
-  expect(factPaths).toContain(FACT);
-  expect(new Set(locs).size).toBe(locs.length);
+  expect(paths).toContain('/');
+  expect(paths).toContain('/about');
+  expect(paths).toContain('/how-its-made');
+  expect(paths).toContain('/privacy');
+  for (const slug of ['uk-asylum', 'uk-immigration', 'us-iran-war', 'us-vote-by-mail', 'us-voter-id']) {
+    expect(paths).toContain(`/topics/${slug}`);
+  }
+  // A data collection has no page of its own, so nothing to list.
+  expect(paths.filter((p) => p.includes('/facts/'))).toEqual([]);
+  expect(new Set(paths).size).toBe(paths.length);
 });
 
 test('robots.txt allows crawling and points at the sitemap', async ({ request }) => {
@@ -29,36 +27,6 @@ test('robots.txt allows crawling and points at the sitemap', async ({ request })
   expect(body).toMatch(/User-Agent: \*/i);
   expect(body).toMatch(/Allow: \//);
   expect(body).toMatch(/Sitemap: https?:\/\/\S+\/sitemap\.xml/);
-});
-
-test('a fact page carries its own title, description, canonical and card', async ({ page }) => {
-  await page.goto(FACT);
-  const canonical = await page.locator('link[rel=canonical]').getAttribute('href');
-  expect(new URL(canonical ?? '').pathname).toBe(FACT);
-
-  const claim = await page.locator('h1.sv-factpage__claim').textContent();
-  await expect(page).toHaveTitle(`${claim} — Steelview`);
-  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', claim ?? '');
-  await expect(page.locator('meta[property="og:type"]')).toHaveAttribute('content', 'article');
-  const ogUrl = await page.locator('meta[property="og:url"]').getAttribute('content');
-  expect(new URL(ogUrl ?? '').pathname).toBe(FACT);
-  const description = await page.locator('meta[name=description]').getAttribute('content');
-  expect((description ?? '').length).toBeGreaterThan(20);
-});
-
-test('a fact page\'s HTML holds all its charts and sources, before any script runs', async ({ request }) => {
-  const html = await (await request.get(FACT)).text();
-  const id = 'immigration-against-the-long-run';
-  const steps = html.match(/class="sv-walk__slide"/g) ?? [];
-  expect(steps.length).toBeGreaterThan(5);
-  // Every step is a chart but the last, what is not known yet.
-  expect(html.match(/<figure class="sv-chart/g)?.length).toBeGreaterThanOrEqual(steps.length - 1);
-  for (const anchor of [`${id}--chart-people`, `${id}--chart-share-of-population`, `source-${id}-1`, `source-${id}-13`, `${id}--finding`, `${id}--nationality-shift`]) {
-    expect(html).toContain(`id="${anchor}"`);
-  }
-  // One thing, one address, however many steps a series is drawn across.
-  const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map(m => m[1]);
-  expect(ids.filter((value, i) => ids.indexOf(value) !== i)).toEqual([]);
 });
 
 test('the topic page carries a canonical and Open Graph metadata', async ({ page }) => {
@@ -69,18 +37,4 @@ test('the topic page carries a canonical and Open Graph metadata', async ({ page
     'content',
     'UK immigration'
   );
-});
-
-test('a fact page states in machine-readable form what it is', async ({ page }) => {
-  await page.goto(FACT);
-  const raw = await page.locator('script[type="application/ld+json"]').textContent();
-  const data = JSON.parse(raw ?? '{}');
-  expect(data['@type']).toBe('CollectionPage');
-  expect(new URL(data.url).pathname).toBe(FACT);
-  expect(data.name).toBe(await page.locator('h1.sv-factpage__claim').textContent());
-  expect(new URL(data.isPartOf['@id']).pathname).toBe(TOPIC);
-  // Every quoted source is a citation, with its publisher and date.
-  expect(Array.isArray(data.citation)).toBe(true);
-  expect(data.citation.length).toBeGreaterThan(0);
-  expect(data.citation[0].publisher['@type']).toBe('Organization');
 });

@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { auditValue, chartValues, figureRenderings, fromFigureValues, isWeakMatch, type ChartedFact, type ChartValue } from './chart-values';
 import { auditTopic, type AuditItem } from './check-figures';
-import { quoteCorpus } from './figures';
+import { quoteCorpus } from '@/lib/content/quoted-figures';
 import { verifiedDerivedFigures } from './derived-figures';
 import type { Series, Source } from '../lib/content/types';
 

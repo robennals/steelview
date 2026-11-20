@@ -7,19 +7,14 @@ status: well-supported
 sources:
   # 1
   - stance: supports
-    quote: >-
-      After the 2018 General Election, districtwide, the apparent results of
-      CD-9 were as follows: Harris 139,246, McCready 138,341, and Scott 5,130.
-      Accordingly, Harris led by a margin of 905 votes, or 0.3% of the total
-      number of votes tallied. … Dowless hired workers he paid in cash to
-      collect absentee request forms, to collect absentee ballots, and to
-      falsify absentee ballot witness certifications. … such as falsely
-      witnessing ballots, filling out ballots, and tracing over signatures of
-      witnesses to match the ink color of the voter. … the 2018 General
-      Election for North Carolina’s 9th Congressional District was corrupted by
-      fraud, improprieties, and irregularities so pervasive that its results are
-      tainted as the fruit of an operation manifestly unfair to the voters and
-      corrosive to our system of representative government.
+    quote: |-
+      After the 2018 General Election, districtwide, the apparent results of CD-9 were as follows: Harris 139,246, McCready 138,341, and Scott 5,130. Accordingly, Harris led by a margin of 905 votes, or 0.3% of the total number of votes tallied. …
+
+      Dowless hired workers he paid in cash to collect absentee request forms, to collect absentee ballots, and to falsify absentee ballot witness certifications. …
+
+      Dowless was careful to keep an arms’ length distance from certain actions he directed his workers to do, such as falsely witnessing ballots, filling out ballots, and tracing over signatures of witnesses to match the ink color of the voter. …
+
+      And yet, the substantial record before the State Board of Elections in this case lead this Board to unanimously conclude that the 2018 General Election for North Carolina’s 9th Congressional District was corrupted by fraud, improprieties, and irregularities so pervasive that its results are tainted as the fruit of an operation manifestly unfair to the voters and corrosive to our system of representative government.
     title: Order in the Matter of Investigation of Election Irregularities Affecting Counties Within the 9th Congressional District
     url: https://www.democracydocket.com/wp-content/uploads/2020/08/North-Carolina-Election-Contest-Order_03132019-1.pdf
     publisher: North Carolina State Board of Elections
@@ -37,22 +32,18 @@ sources:
     date: '2025-03-21'
   # 3
   - stance: supports
-    quote: >-
-      Of the 8,227 votes personally cast on election day, Pabey received 199
-      more votes than Pastrick. But of the 1,950 absentee ballots, Pastrick
-      defeated Pabey by 477 votes, producing a 278-vote final vieto-ry for
-      Pastrick. The trial court concluded that Pabey had proven "that a
-      deliberate series of actions occurred" that "perverted the absentee
-      voting process and compromised the integrity and results of that
-      election." … The trial court declared 155 votes to be invalid … The
-      extensive evidence presented established that, at the least thirty-nine
-      separate individuals ... fell within the ambit of those activities that
-      engaged cash incentives to encourage absentee voting … Our conclusion is
-      not altered whether the number of invalidated absentee ballots is 155 as
-      found by the trial court, or 100, as urged by the Lake County Election
-      Board. Conclusion We reverse the trial court's determination denying a
-      special election and remand to the trial court with directions to
-      promptly order a special election
+    quote: |-
+      Of the 8,227 votes personally cast on election day, Pabey received 199 more votes than Pastrick. But of the 1,950 absentee ballots, Pastrick defeated Pabey by 477 votes, producing a 278-vote final vieto-ry for Pastrick. The trial court concluded that Pabey had proven "that a deliberate series of actions occurred" that "perverted the absentee voting process and compromised the integrity and results of that election." …
+
+      The trial court declared 155 votes to be invalid …
+
+      The extensive evidence presented established that, at the least thirty-nine separate individuals ... fell within the ambit of those activities that engaged cash incentives to encourage absentee voting …
+
+      Our conclusion is not altered whether the number of invalidated absentee ballots is 155 as found by the trial court, or 100, as urged by the Lake County Election Board.
+
+      Conclusion
+
+      We reverse the trial court's determination denying a special election and remand to the trial court with directions to promptly order a special election by issuing a writ of election pursuant to Indiana Code § 8-10-8-8, and for all further proceedings consistent with this opinion.
     title: Pabey v. Pastrick, 816 N.E.2d 1138 (Ind. 2004)
     url: https://static.case.law/ne2d/816/html/1138-01.html
     publisher: Supreme Court of Indiana (via Caselaw Access Project)
@@ -68,18 +59,10 @@ sources:
     date: '2008-10-16'
   # 5
   - stance: supports
-    quote: >-
-      The only kind of voter fraud that SEA 483 addresses is in-person voter
-      impersonation at polling places. The record contains no evidence of any
-      such fraud actually occurring in Indiana at any time in its history. … It
-      remains true, however, that flagrant examples of such fraud in other parts
-      of the country have been documented throughout this Nation’s history by
-      respected historians and journalists, that occasional examples have
-      surfaced in recent years, and that Indiana’s own experience with
-      fraudulent voting in the 2003 Democratic primary for East Chicago Mayor —
-      though perpetrated using absentee ballots and not in-person fraud —
-      demonstrate that not only is the risk of voter fraud real but that it
-      could affect the outcome of a close election.
+    quote: |-
+      The only kind of voter fraud that SEA 483 addresses is in-person voter impersonation at polling places. The record contains no evidence of any such fraud actually occurring in Indiana at any time in its history. …
+
+      It remains true, however, that flagrant examples of such fraud in other parts of the country have been documented throughout this Nation’s history by respected historians and journalists, that occasional examples have surfaced in recent years, and that Indiana’s own experience with fraudulent voting in the 2003 Democratic primary for East Chicago Mayor — though perpetrated using absentee ballots and not in-person fraud — demonstrate that not only is the risk of voter fraud real but that it could affect the outcome of a close election.
     title: Crawford v. Marion County Election Board, 553 U.S. 181 (2008), lead opinion
     url: https://static.case.law/us/553/html/0181-01.html
     publisher: Supreme Court of the United States (via Caselaw Access Project)
@@ -120,80 +103,54 @@ sources:
     date: '2026-05-15'
   # 9
   - stance: supports
-    quote: >-
-      "Given the volume of votes at issue, the miscounting of those statutorily
-      invalid votes leaves this court unable to determine the result of the
-      primary." ... Bloss based his argument that a new primary is needed on
-      numbers — arguing that as many as 1,253 were submitted through drop
-      boxes, while 2,100 hours of surveillance videos of the city's four drop
-      boxes show only about 420 people placing ballots in them. … Ganim
-      defeated Gomes by 251 votes in the Sept.
+    quote: |-
+      Ganim defeated Gomes by 251 votes in the Sept. 12 Democratic primary, but Gomes filed the lawsuit seeking to overturn those results after a video surfaced of Democratic Town Committee vice chairwoman Wanda Geter-Pataky apparently placing multiple absentee ballots into one of the four absentee ballot drop boxes in the city. …
+
+      "The counting of any ballots that were mishandled in violation of state law and placed into drop boxes by Ms. Geter-Pataky, Ms. Martinez, and others, was a mistake in the vote count," Clark wrote. "Given the volume of votes at issue, the miscounting of those statutorily invalid votes leaves this court unable to determine the result of the primary." …
+
+      Bloss based his argument that a new primary is needed on numbers — arguing that as many as 1,253 were submitted through drop boxes, while 2,100 hours of surveillance videos of the city's four drop boxes show only about 420 people placing ballots in them.
     title: Judge orders new Bridgeport primary
     url: https://ctmirror.org/2023/11/01/bridgeport-primary-election-ruling-ganim-gomes/
     publisher: CT Mirror
     date: '2023-11-01'
   # 10
   - stance: supports
-    quote: >-
-      A 1993 special Pennsylvania state senate election was overturned by a
-      federal district court judge due to absentee ballot fraud. … After a
-      surprising and extraordinary surge in absentee ballots seemed to result
-      in a victory for Stinson, an investigation was undertaken. Stinson was
-      indicted for his role in the scheme but was not convicted. Two campaign
-      workers, Ramon Pratt and Barbara Landers, were convicted of misdemeanor
-      offenses. … Two
-      Democratic city commissioners, Margaret Tartaglione and Alexander
-      Talmadge, Jr., and an elections supervisor, Dennis Kelly, were also found
-      to have been complicit in allowing the fraud to occur. … County Clerk
-      Donald Whitten pleaded guilty to stuffing ballot boxes with fraudulent
-      ballots and falsifying absentee ballots in an effort to rig the 2010
-      Democratic primary. He won the election, but a judge overturned the
-      election after throwing out 300 fraudulent ballots. Whitten was
-      sentenced to 18 months in prison and three years of supervised release,
-      with a $5,000 fine. … Sheriff Jerry Bowman pleaded guilty to stuffing
-      ballot boxes with fraudulent ballots and falsifying absentee ballots in
-      an effort to rig the 2010 Democratic primary. … Officials became suspicious when 61% of the
-      vote-by-mail ballots were cast for the Republican candidate, despite the
-      fact that only 16% of the mail-by-ballot were registered Republicans. …
-      Nicholas Holliday was declared the winner of the June primary by a margin
-      of 37 votes over Robert Devaull. After Devaull filed a lawsuit
-      challenging the results of the race, the Monroe County District court
-      found that 66 of the 84 absentee ballots cast should not have been
-      counted because they were not valid. A notary, Dallas Jones, was
-      arrested for election fraud for notarizing ballots without watching
-      voters sign ballots or checking their identification. … The results of the 2023 Caddo
-      Parish Sheriff Runoff Election, which was decided by one vote, were
-      overturned by a judge due to at least 11 illegal votes that were cast. …
-      The court found that 2 individuals voted twice in the election, by mail
-      and again in person. Four individuals voted who were under court
-      interdiction (declared mentally incompetent) and thus ineligible to vote.
-      Five individuals submitted absentee ballots that did not have proper
-      signatures or comply with witness requirements under Louisiana law. … The
-      fraud took place during Rivera's 2013 re-election bid, which he won by a
-      scant 16 votes. His challenger sued alleging fraud, and a judge
-      determined that 30 ballots had been illegally cast, enough to alter the
-      outcome of the election. … Fernando Gonzalez won a seat on the Perth
-      Amboy City Council by 10 votes in an election where at least 13 illegal
-      absentee ballots were cast. … had won by three votes. … the judge threw
-      out eight absentee ballots that had case for Gill … The margin of victory
-      was only 449 votes in an election in which over one million votes were
-      cast. … In total, the court ruled that 1,482 illegal votes were cast in
-      the election … A City Council election (originally decided by four votes)
-      in Vernon, California is overturned when it is determined that five
-      people who voted for the winner were not residents of the city, and two
-      others had not properly mailed in their ballots. … The 2018 election for
-      Georgia's 28th House district was overturned twice by Senior Superior
-      Court Judge David Sweat because some out-of-district voters submitted
-      ballots, some voters moved out of the district between the first and
-      second runoff elections, and there was at least one instance of
-      duplicate voting. … Superior Court Judge Judith Chirlin overturned the
-      election, returning Bradley to power based on the fact that the city
-      clerk had improperly placed Perrodin's name at the top of the ballot
-      rather than select the order randomly. … Donald L. Woodward was charged
-      by Asotin County with one felony count of perjury after he filled out
-      and signed his deceased wife's mail-in ballot for the 2016 general
-      election. Election officials detected the forgery because the signature
-      did not match the signature for her that was on file
+    quote: |-
+      A 1993 special Pennsylvania state senate election was overturned by a federal district court judge due to absentee ballot fraud. This election was important as the senate was evenly divided and the winner would determine which party controlled the senate. …
+
+      After a surprising and extraordinary surge in absentee ballots seemed to result in a victory for Stinson, an investigation was undertaken. Stinson was indicted for his role in the scheme but was not convicted. Two campaign workers, Ramon Pratt and Barbara Landers, were convicted of misdemeanor offenses. …
+
+      Two Democratic city commissioners, Margaret Tartaglione and Alexander Talmadge, Jr., and an elections supervisor, Dennis Kelly, were also found to have been complicit in allowing the fraud to occur. …
+
+      County Clerk Donald Whitten pleaded guilty to stuffing ballot boxes with fraudulent ballots and falsifying absentee ballots in an effort to rig the 2010 Democratic primary. He won the election, but a judge overturned the election after throwing out 300 fraudulent ballots. Whitten was sentenced to 18 months in prison and three years of supervised release, with a $5,000 fine. …
+
+      Sheriff Jerry Bowman pleaded guilty to stuffing ballot boxes with fraudulent ballots and falsifying absentee ballots in an effort to rig the 2010 Democratic primary. …
+
+      Officials became suspicious when 61% of the vote-by-mail ballots were cast for the Republican candidate, despite the fact that only 16% of the mail-by-ballot were registered Republicans. …
+
+      Nicholas Holliday was declared the winner of the June primary by a margin of 37 votes over Robert Devaull. After Devaull filed a lawsuit challenging the results of the race, the Monroe County District court found that 66 of the 84 absentee ballots cast should not have been counted because they were not valid. A notary, Dallas Jones, was arrested for election fraud for notarizing ballots without watching voters sign ballots or checking their identification. …
+
+      The results of the 2023 Caddo Parish Sheriff Runoff Election, which was decided by one vote, were overturned by a judge due to at least 11 illegal votes that were cast. …
+
+      The court found that 2 individuals voted twice in the election, by mail and again in person. Four individuals voted who were under court interdiction (declared mentally incompetent) and thus ineligible to vote. Five individuals submitted absentee ballots that did not have proper signatures or comply with witness requirements under Louisiana law. …
+
+      The fraud took place during Rivera's 2013 re-election bid, which he won by a scant 16 votes. His challenger sued alleging fraud, and a judge determined that 30 ballots had been illegally cast, enough to alter the outcome of the election. …
+
+      Fernando Gonzalez won a seat on the Perth Amboy City Council by 10 votes in an election where at least 13 illegal absentee ballots were cast. …
+
+      A judge overturned the preliminary election results and declared Lewis Washington as the winner in a contested Wetumpka City Council District 2 election. On election night, it appeared that Washington's opponent, Percy Gill, who was the incumbent, had won by three votes. Washington challenged the result, and following a trial in which live witnesses and forensics experts testified, the judge threw out eight absentee ballots that had case for Gill either because the signatures had been forged or they had not been notarized or signed in front of the requisite number of witnesses, and declared Washington to be the winner. …
+
+      The result of the 180th district court judicial election was overturned in Harris County, Texas, after a state judge concluded that over 1,400 illegal votes had been counted. The margin of victory was only 449 votes in an election in which over one million votes were cast. …
+
+      In total, the court ruled that 1,482 illegal votes were cast in the election, far outweighing the 449-vote margin between the two candidates. The court ordered a new election. …
+
+      A City Council election (originally decided by four votes) in Vernon, California is overturned when it is determined that five people who voted for the winner were not residents of the city, and two others had not properly mailed in their ballots. …
+
+      The 2018 election for Georgia's 28th House district was overturned twice by Senior Superior Court Judge David Sweat because some out-of-district voters submitted ballots, some voters moved out of the district between the first and second runoff elections, and there was at least one instance of duplicate voting. …
+
+      Superior Court Judge Judith Chirlin overturned the election, returning Bradley to power based on the fact that the city clerk had improperly placed Perrodin's name at the top of the ballot rather than select the order randomly. …
+
+      Donald L. Woodward was charged by Asotin County with one felony count of perjury after he filled out and signed his deceased wife's mail-in ballot for the 2016 general election. Election officials detected the forgery because the signature did not match the signature for her that was on file, and they had received notice of the wife’s death.
     title: Election Fraud Map cases (data file vfdb.csv, archived 27 July 2026)
     url: https://electionfraud.heritage.org/
     fileUrl: https://web.archive.org/web/20260727163153/https://electionfraud.heritage.org/static/data/vfdb.csv
@@ -215,45 +172,30 @@ sources:
     date: '2025-12-12'
   # 12
   - stance: supports
-    quote: >-
-      A News21 analysis of 2,068 alleged election-fraud cases since 2000 shows
-      that while fraud has occurred, the rate is infinitesimal, and in-person
-      voter impersonation on Election Day, which prompted 37 state legislatures
-      to enact or consider tough voter ID laws, is virtually non-existent. …
-      Analysis of the resulting comprehensive News21 election fraud database
-      turned up 10 cases of voter impersonation. … There is more fraud in
-      absentee ballots and voter registration than any other categories. The
-      analysis shows 491 cases of absentee ballot fraud and 400 cases of
-      registration fraud. A required photo ID at the polls would not have
-      prevented these cases. … Of reported election-fraud allegations in the
-      database whose resolution could be determined, 46 percent resulted in
-      acquittals, dropped charges or decisions not to bring charges.
+    quote: |-
+      A News21 analysis of 2,068 alleged election-fraud cases since 2000 shows that while fraud has occurred, the rate is infinitesimal, and in-person voter impersonation on Election Day, which prompted 37 state legislatures to enact or consider tough voter ID laws, is virtually non-existent. …
+
+      Analysis of the resulting comprehensive News21 election fraud database turned up 10 cases of voter impersonation. …
+
+      There is more fraud in absentee ballots and voter registration than any other categories. The analysis shows 491 cases of absentee ballot fraud and 400 cases of registration fraud. A required photo ID at the polls would not have prevented these cases. …
+
+      Of reported election-fraud allegations in the database whose resolution could be determined, 46 percent resulted in acquittals, dropped charges or decisions not to bring charges.
     title: Comprehensive Database of U.S. Voter Fraud Uncovers No Evidence That Photo ID Is Needed
     url: https://votingrights.news21.com/article/election-fraud/
     publisher: News21
     date: '2012-08-12'
   # 13
   - stance: supports
-    quote: >-
-      There is no evidence of extensive fraud in U.S. elections or of multiple
-      voting, but both occur, and it could affect the outcome of a close
-      election. … While there is little evidence of fraud in Oregon, where the
-      entire state votes by mail, absentee balloting in other states has been
-      one of the major sources of fraud. Even in Oregon, better precautions are
-      needed to ensure that the return of ballots is not intercepted. … Fraud
-      occurs in several ways. Absentee ballots remain the largest source of
-      potential voter fraud. A notorious recent case of absentee ballot fraud
-      was Miami’s mayoral election of 1998, and in that case, the judge
-      declared the election fraudulent and called for a new election. …
-      Citizens who vote at home, at nursing homes, at the workplace, or in
-      church are more susceptible to pressure, overt and subtle, or to
-      intimidation. Vote buying schemes are far more difficult to detect when
-      citizens vote by mail. … 5.2.1 State and local jurisdictions should
-      prohibit a person from handling absentee ballots other than the voter, an
-      acknowledged family member, the U.S. Postal Service or other legitimate
-      shipper, or election officials. The practice in some states of allowing
-      candidates or party workers to pick up and deliver absentee ballots
-      should be eliminated.
+    quote: |-
+      There is no evidence of extensive fraud in U.S. elections or of multiple voting, but both occur, and it could affect the outcome of a close election. …
+
+      Vote by mail is popular but not a panacea for declining participation. While there is little evidence of fraud in Oregon, where the entire state votes by mail, absentee balloting in other states has been one of the major sources of fraud. Even in Oregon, better precautions are needed to ensure that the return of ballots is not intercepted. …
+
+      Fraud occurs in several ways. Absentee ballots remain the largest source of potential voter fraud. A notorious recent case of absentee ballot fraud was Miami’s mayoral election of 1998, and in that case, the judge declared the election fraudulent and called for a new election. …
+
+      Citizens who vote at home, at nursing homes, at the workplace, or in church are more susceptible to pressure, overt and subtle, or to intimidation. Vote buying schemes are far more difficult to detect when citizens vote by mail. …
+
+      5.2.1 State and local jurisdictions should prohibit a person from handling absentee ballots other than the voter, an acknowledged family member, the U.S. Postal Service or other legitimate shipper, or election officials. The practice in some states of allowing candidates or party workers to pick up and deliver absentee ballots should be eliminated.
     title: Building Confidence in U.S. Elections
     url: https://eac.gov/sites/default/files/eac_assets/1/6/Exhibit%20M.PDF
     publisher: Commission on Federal Election Reform (Carter–Baker)
@@ -271,16 +213,10 @@ sources:
     date: '2025-06-30'
   # 15
   - stance: complicates
-    quote: >-
-      A signature match audit in Cobb County found "no fraudulent absentee
-      ballots" and found that the Cobb County Elections Department had "a
-      99.99% accuracy rate in performing correct signature verification
-      procedures." ... The audit found that only two ballots should have been
-      identified by Cobb County Elections Officials for cure notification that
-      weren't. In one case, the ballot was "mistakenly signed by the elector's
-      spouse," and in the other, the voter "reported signing the front of the
-      envelope only." In both cases, the identified voters filled out the
-      ballots themselves.
+    quote: |-
+      A signature match audit in Cobb County found "no fraudulent absentee ballots" and found that the Cobb County Elections Department had "a 99.99% accuracy rate in performing correct signature verification procedures." ...
+
+      The audit found that only two ballots should have been identified by Cobb County Elections Officials for cure notification that weren't. In one case, the ballot was "mistakenly signed by the elector's spouse," and in the other, the voter "reported signing the front of the envelope only." In both cases, the identified voters filled out the ballots themselves.
     title: 3rd Strike Against Voter Fraud Claims Means They're Out After Signature Audit Finds No Fraud
     url: https://web.archive.org/web/2024id_/https://sos.ga.gov/news/3rd-strike-against-voter-fraud-claims-means-theyre-out-after-signature-audit-finds-no-fraud
     publisher: Georgia Secretary of State
@@ -310,15 +246,10 @@ sources:
     date: '2000-12-11'
   # 18
   - stance: supports
-    quote: >-
-      Illinois, N.D. - In an investigation in the City of Chicago, fifty-eight
-      individuals, including city employees and election judges, thus far have
-      been convicted of vote fraud in the November 1982, general election. The
-      investigation continues. … Texas, S.D. - A total of twenty-nine persons
-      were indicted, and twenty-one persons convicted, of buying votes with food
-      stamps and welfare benefits in Duval County, Texas. This series of cases
-      focused on the 1982 Texas primary election, and was investigated jointly
-      by the Federal Bureau of Investigation and the Texas Rangers.
+    quote: |-
+      Illinois, N.D. - In an investigation in the City of Chicago, fifty-eight individuals, including city employees and election judges, thus far have been convicted of vote fraud in the November 1982, general election. The investigation continues. …
+
+      Texas, S.D. - A total of twenty-nine persons were indicted, and twenty-one persons convicted, of buying votes with food stamps and welfare benefits in Duval County, Texas. This series of cases focused on the 1982 Texas primary election, and was investigated jointly by the Federal Bureau of Investigation and the Texas Rangers.
     title: Report to Congress on the Activities and Operations of the Public Integrity Section for 1984
     url: https://www.justice.gov/media/1106966/dl?inline
     publisher: US Department of Justice, Public Integrity Section
@@ -337,21 +268,12 @@ sources:
     date: '2016-12'
   # 20
   - stance: supports
-    quote: >-
-      On the day of the general election, Hicks distributed ballot
-      applications, along with the names of registered voters who had moved
-      away or died, to the election judges, including the appellant. The
-      election judges completed the ballot applications with the names of the
-      phantom voters. Then, using the fraudulent ballot applications, the
-      election judges cast votes according to Hicks’ instructions. … Appellant
-      watched as Hicks solicited voters and paid them $2.00 per vote. As a
-      result of these activities, more than one-third of the 330 votes cast in
-      the 17th precinct that election day were fraudulent. … In over two hours
-      of voting, approximately 52 residents voted. Appellant and the other
-      election judges cast nearly all of those votes for the straight
-      Democratic Party ticket by punching 10. During the voting, a Democratic
-      Party election judge paid residents small amounts of money for their
-      votes as appellant watched.
+    quote: |-
+      On the day of the general election, Hicks distributed ballot applications, along with the names of registered voters who had moved away or died, to the election judges, including the appellant. The election judges completed the ballot applications with the names of the phantom voters. Then, using the fraudulent ballot applications, the election judges cast votes according to Hicks’ instructions. …
+
+      Appellant watched as Hicks solicited voters and paid them $2.00 per vote. As a result of these activities, more than one-third of the 330 votes cast in the 17th precinct that election day were fraudulent. …
+
+      In over two hours of voting, approximately 52 residents voted. Appellant and the other election judges cast nearly all of those votes for the straight Democratic Party ticket by punching 10. During the voting, a Democratic Party election judge paid residents small amounts of money for their votes as appellant watched.
     title: United States v. Olinger, 759 F.2d 1293 (7th Cir. 1985)
     url: https://static.case.law/f2d/759/html/1293-01.html
     publisher: US Court of Appeals for the Seventh Circuit (via Caselaw Access Project)
@@ -369,20 +291,16 @@ sources:
     date: '2015-02-26'
   # 22
   - stance: supports
-    quote: >-
-      Hayde succeeded in getting upon the list about 150 “ghosts and sleepers”;
-      that late in October, 1936, Hayde asked Frances Ryan and Devoe how they
-      were going to handle the precinct with respect to the “ghosts and
-      sleepers” and whether they were going to send people to cast the “ghost
-      and sleeper” vote; that they told him that they were not sending
-      repeaters to the precinct, and that it would be easier to write in the
-      votes for the “ghosts and sleepers” … that he prepared the ballots for
-      the “ghosts and sleepers”, and, with some considerable difficulty,
-      succeeded in stuffing the ballot box with these votes; that the stuffing
-      was completed before the polls were closed; that the votes which had been
-      cast were not counted … The Republican candidate for Congress received in
-      fact 120 votes … His Democratic opponent was given 605 votes, when in fact
-      he received 515 votes. … The judgment is affirmed.
+    quote: |-
+      Hayde succeeded in getting upon the list about 150 “ghosts and sleepers”; that late in October, 1936, Hayde asked Frances Ryan and Devoe how they were going to handle the precinct with respect to the “ghosts and sleepers” and whether they were going to send people to cast the “ghost and sleeper” vote; that they told him that they were not sending repeaters to the precinct, and that it would be easier to write in the votes for the “ghosts and sleepers” …
+
+      that he prepared the ballots for the “ghosts and sleepers”, and, with some considerable difficulty, succeeded in stuffing the ballot box with these votes; that the stuffing was completed before the polls were closed; that the votes which had been cast were not counted …
+
+      The Republican candidate for Congress received in fact 120 votes …
+
+      His Democratic opponent was given 605 votes, when in fact he received 515 votes. …
+
+      The judgment is affirmed.
     title: Devoe v. United States, 103 F.2d 584 (8th Cir. 1939)
     url: https://static.case.law/f2d/103/html/0584-01.html
     publisher: US Court of Appeals for the Eighth Circuit (via Caselaw Access Project)
@@ -406,7 +324,9 @@ sources:
       Mexico gave in to the state and voted to certify their June 7 primary
       election results, after they had been refusing to do so. … The New Mexico
       Supreme Court unanimously ordered them to certify the votes by Friday’s
-      deadline
+      deadline, the state Attorney General’s Office said there would be “legal
+      action” if they failed to do so and the New Mexico Secretary of State said
+      many of their arguments were based on misinformation.
     title: New Mexico election standoff and ‘attack on democracy’ ends
     url: https://www.kob.com/new-mexico/new-mexico-election-standoff-and-attack-on-democracy-ends/
     publisher: KOB 4
@@ -414,10 +334,12 @@ sources:
   # 25
   - stance: supports
     quote: >-
-      two Republican Cochise supervisors in November 2022 to vote to delay the
-      certification of the county’s midterm election results past the legal
-      deadline. A judge later ordered the supervisors to certify the election.
-      A year after their vote to delay the certification, a state grand jury
+      They’re part of what led two Republican Cochise supervisors in November
+      2022 to vote to delay the certification of the county’s midterm election
+      results past the legal deadline. A judge later ordered the supervisors to
+      certify the election. Officials with the U.S. Election Assistance
+      Commission told state officials at the time, and reiterated in an August
+      statement to Votebeat, that the labs were properly accredited. A year after their vote to delay the certification, a state grand jury
       indicted the two supervisors, Tom Crosby and Peggy Judd, on charges of
       conspiracy and interference with an elections officer. Judd has since
       pleaded guilty to a misdemeanor. But Crosby pleaded not guilty, and is
@@ -453,67 +375,52 @@ sources:
     date: '2023-12-12'
   # 28
   - stance: contests
-    quote: >-
-      "[T]he vast majority of Rasmussen data come from an ordinary opt-in
-      online panel" in which participants actively seek to join rather than
-      being randomly selected, "which AAPOR tells you cannot have a margin of
-      error, because there is no systematic sampling involved," Krosnick said.
-      … "[T]he results are wildly out of line with literally all other
-      incoming information, including the rate of ballots flagged in any
-      jurisdiction anywhere in the country for signature mismatches," Levitt
-      told us via email.
+    quote: |-
+      "[T]he vast majority of Rasmussen data come from an ordinary opt-in online panel" in which participants actively seek to join rather than being randomly selected, "which AAPOR tells you cannot have a margin of error, because there is no systematic sampling involved," Krosnick said. …
+
+      "[T]he results are wildly out of line with literally all other incoming information, including the rate of ballots flagged in any jurisdiction anywhere in the country for signature mismatches," Levitt told us via email.
     title: Trump's Latest Bogus Claim About Mail-In Vote Fraud in Pennsylvania
     url: https://www.factcheck.org/2024/09/trumps-latest-bogus-claim-about-mail-in-vote-fraud-in-pennsylvania/
     publisher: FactCheck.org
     date: '2024-09-20'
   # 29
   - stance: supports
-    quote: >-
-      Alice Mae Yarborough and her daughter Vernie Mae Yarborough pled guilty to
-      one count of multiple voting in the June 8, 1982 primary election in
-      Darlington County, South Carolina … In Statesville, North Carolina, five
-      defendants were convicted and sentenced for their roles in subverting the
-      1982 general election in Alexander County, North Carolina. … The Yarboroughs were poil officials
-      who utilized their access to the poll list an voting machine to forge
-      voter's names and vote numerous ballots for "no show" voters during the
-      election. … The indictment alleged that the defendants defrauded the
-      voters of Luzerne County of their right to fair and non-corrupt elections
-      by submitting false and fraudulent absentee ballot materials. … A federal
-      jury had convicted four of the defendants of mail fraud, conspiracy, and
-      multiple-voting for their fraudulent voting of absentee ballots of nursing
-      home residents. … The lead defendants, Deputy Sheriff Mark Douglas Odom
-      and Deputy Clerk of Court Joyce Geraldine Beach … In Bryson City, North
-      Carolina, eight defendants were convicted and sentenced for their roles in
-      subverting the November 1982 election in Clay County, North Carolina. The
-      trial evidence showed a massive vote-buying scheme, with the detendants
-      purchasing votes for the Democratic Party slate at prices ranging between
-      $50 and $125 per voter. … Former Republican Sheriff Hartsell Moore, who
-      was defeated by Barnard in his 1982 reelection effort, received a prison
-      term of 15 months and a $2,000 fine on his guilty plea to two counts of
-      vote-buying. … a successful scheme to fraudulently affect the outcome of a
-      close legislative contest for Missouri State Representative in 1980.
+    quote: |-
+      Alice Mae Yarborough and her daughter Vernie Mae Yarborough pled guilty to one count of multiple voting in the June 8, 1982 primary election in Darlington County, South Carolina …
+
+      In Statesville, North Carolina, five defendants were convicted and sentenced for their roles in subverting the 1982 general election in Alexander County, North Carolina. …
+
+      The Yarboroughs were poil officials who utilized their access to the poll list an voting machine to forge voter's names and vote numerous ballots for "no show" voters during the election. …
+
+      The indictment alleged that the defendants defrauded the voters of Luzerne County of their right to fair and non-corrupt elections by submitting false and fraudulent absentee ballot materials. …
+
+      A federal jury had convicted four of the defendants of mail fraud, conspiracy, and multiple-voting for their fraudulent voting of absentee ballots of nursing home residents. …
+
+      The lead defendants, Deputy Sheriff Mark Douglas Odom and Deputy Clerk of Court Joyce Geraldine Beach, each received a sentence of five years' imprisonment for their convictions on twenty-eight counts of mail fraud, and a concurrent five-year term on their convictions for conspiracy and multiple-voting. …
+
+      In Bryson City, North Carolina, eight defendants were convicted and sentenced for their roles in subverting the November 1982 election in Clay County, North Carolina. The trial evidence showed a massive vote-buying scheme, with the detendants purchasing votes for the Democratic Party slate at prices ranging between $50 and $125 per voter. …
+
+      Former Republican Sheriff Hartsell Moore, who was defeated by Barnard in his 1982 reelection effort, received a prison term of 15 months and a $2,000 fine on his guilty plea to two counts of vote-buying. …
+
+      Sorkis Webbe, Sr., his son Sorkis Webbe, Jr. and four other individuals were indicted for vote fraud and obstruction offenses arising out of a successful scheme to fraudulently affect the outcome of a close legislative contest for Missouri State Representative in 1980.
     title: Report to Congress on the Activities and Operations of the Public Integrity Section for 1983
     url: https://www.justice.gov/media/1106971/dl?inline
     publisher: US Department of Justice, Public Integrity Section
     date: '1984-04'
   # 30
   - stance: supports
-    quote: >-
-      On one occasion Wellington Hamilton Lemmer (a campaign worker for the
-      Seventh Ward Organization and a confidential government informant)
-      entered Webbe’s office at the Seventh Ward Organization. Lemmer saw Webbe,
-      Townsley (a close associate of Webbe, Jr. and an integral member of the
-      Seventh Ward Organization) and two others with opened absentee ballots and
-      observed that they were punching holes in the ballots. … For reasons to be
-      stated, we affirm in part, reverse in part, and remand for further
-      proceedings consistent with this opinion.
+    quote: |-
+      On one occasion Wellington Hamilton Lemmer (a campaign worker for the Seventh Ward Organization and a confidential government informant) entered Webbe’s office at the Seventh Ward Organization. Lemmer saw Webbe, Townsley (a close associate of Webbe, Jr. and an integral member of the Seventh Ward Organization) and two others with opened absentee ballots and observed that they were punching holes in the ballots. …
+
+      For reasons to be stated, we affirm in part, reverse in part, and remand for further proceedings consistent with this opinion.
     title: United States v. Townsley, 843 F.2d 1070 (8th Cir. 1988)
     url: https://static.case.law/f2d/843/html/1070-01.html
     publisher: US Court of Appeals for the Eighth Circuit (via Caselaw Access Project)
     date: '1988-03-25'
 comparisons:
   - id: voided-elections
-    title: Elections voided or overturned in Heritage's fraud list, by what was found
+    title: Voided elections, by what was found
+    subtitle: In the Heritage Foundation's fraud list, 1992–2023
     description: >-
       Every election-level voiding, overturning or court-ordered rerun in the
       Heritage Foundation's Election Fraud Map data file (archived July 2026),
@@ -566,7 +473,8 @@ comparisons:
       Heritage gives the record, used where the text does not date the
       election. Heritage's list is a sample, not a complete record.
   - id: absentee-and-impersonation-cases
-    title: Absentee fraud and in-person impersonation in two case compilations
+    title: Absentee fraud and impersonation cases
+    subtitle: As counted in two compilations, Heritage and News21
     description: >-
       Entries in Heritage's Election Fraud Map data file (outcomes 1982–2025)
       and alleged cases in News21's 2012 database (since 2000), for the two
@@ -634,9 +542,45 @@ dataStillNeeded:
 figures:
   - kind: comparison
     id: voided-elections
+  - kind: dataTable
+    id: voided-by-state
+    title: Voided elections, by state
+    subtitle: The 32 voided or overturned in Heritage's fraud list
+    description: 'Listed by state, with the long-standing all-mail states last.'
+    sources: [10]
+    note: >-
+      The list under the chart above, set out by state. An "entry" year is the
+      year Heritage gives the record, used where the text does not date the
+      election.
+    caption: One row per state
+    columns:
+      - key: state
+        label: State
+        rowHeader: true
+      - key: elections
+        label: Elections voided or overturned
+        sortable: false
+    rows:
+      - { state: Alabama, elections: 'Guntersville (entry 2004); Brighton, 2016; Wetumpka (entry 2017)' }
+      - { state: California, elections: 'Fresno County school boards (entry 1993); Compton, 2001; Vernon (entry 2012); Compton, 2021' }
+      - { state: Connecticut, elections: 'Bridgeport, 2023' }
+      - { state: Florida, elections: 'Hardee County sheriff, 1992; Hialeah mayor, 1993; Eatonville, 2020' }
+      - { state: Georgia, elections: 'House District 28, 2018' }
+      - { state: Indiana, elections: 'East Chicago, 2003' }
+      - { state: Louisiana, elections: 'Turkey Creek, 2014; Caddo Parish, 2023' }
+      - { state: Mississippi, elections: 'Aberdeen, 2020' }
+      - { state: Missouri, elections: 'House District 78 primary, 2016' }
+      - { state: New Jersey, elections: 'Perth Amboy (entry 2015); Paterson, 2020' }
+      - { state: North Carolina, elections: 'Pembroke, 2013 and 2015; Lumberton (entry 2016); 9th District, 2018' }
+      - { state: Ohio, elections: 'Lorain (entry 2015)' }
+      - { state: Pennsylvania, elections: 'Philadelphia state senate special, 1993' }
+      - { state: Texas, elections: 'Woodlands Road Utility District (entries 2012–2014); Weslaco, 2013; Kaufman County primary (entry 2018); Kleberg County (entry 2018); Mission (entry 2018); Harris County 180th District Court (entry 2024)' }
+      - { state: West Virginia, elections: 'Lincoln County, 2010' }
+      - { state: 'Colorado, Oregon, Utah, Washington', elections: None of the 32 }
   - kind: barChart
     id: margin-and-invalid-ballots
-    title: Winning margin against ballots ruled invalid, voided elections involving absentee ballots
+    title: Winning margins and invalid ballots
+    subtitle: Voided elections involving absentee or mail ballots
     description: >-
       For each voided election involving absentee or mail ballots whose record
       gives a winning margin: the margin as first counted, and the number of
@@ -677,8 +621,32 @@ figures:
   - kind: comparison
     id: absentee-and-impersonation-cases
   - kind: dataTable
+    id: cases-against-ballots
+    title: Absentee fraud cases against ballots cast
+    subtitle: Two compilations, against one election's mail ballots
+    description: 'Heritage''s and News21''s absentee counts, beside the mail ballots counted in the 2024 general election alone.'
+    sources: [10, 11, 12, 14]
+    note: >-
+      Neither compilation has a denominator of ballots cast, so no source turns
+      these counts into a rate per ballot. The ballot count is one election;
+      the case counts cover decades.
+    caption: One row per count
+    columns:
+      - key: measure
+        label: What is counted
+        rowHeader: true
+      - key: count
+        label: Number
+        format: text
+        sortable: false
+    rows:
+      - { measure: 'Heritage: tagged absentee-ballot fraud, outcomes 1982–2025', count: '387' }
+      - { measure: 'News21: alleged absentee ballot fraud, since 2000', count: '491' }
+      - { measure: Returned mail ballots counted in the 2024 general election alone, count: '47,629,437' }
+  - kind: dataTable
     id: absentee-cases
-    title: Organised US absentee and mail-ballot cases, 1980–2026
+    title: Organised absentee and mail-ballot cases
+    subtitle: US schemes, 1980–2026
     description: 'How each scheme worked, how it came to light and how it ended. A dash means the source read does not say.'
     caption: One card per case
     layout: timeline
@@ -805,9 +773,29 @@ figures:
         remedy: 'New primary ordered, November 2023'
         criminal: Not covered by the sources read
   - kind: dataTable
+    id: carter-baker
+    title: 'The Carter–Baker commission on mail fraud'
+    subtitle: 'What the bipartisan commission said, 2005'
+    description: 'The commission''s words on absentee ballots, on all-mail Oregon and on US elections overall.'
+    sources: [13]
+    caption: One card per subject
+    layout: cards
+    leadColumn: said
+    columns:
+      - key: subject
+        label: Subject
+        rowHeader: true
+      - key: said
+        label: What it said
+        sortable: false
+    rows:
+      - { subject: Absentee ballots, said: '"Absentee ballots remain the largest source of potential voter fraud"' }
+      - { subject: Oregon, said: '"little evidence of fraud in Oregon, where the entire state votes by mail"' }
+      - { subject: US elections overall, said: '"no evidence of extensive fraud in U.S. elections"' }
+  - kind: dataTable
     id: officials
-    title: >-
-      US officials and the count: tampering, and refused or challenged results
+    title: Officials and the count
+    subtitle: Tampering, and refused or challenged results, US cases
     description: 'Cases where officials tampered with a count, or refused or challenged a result.'
     caption: One card per case
     layout: timeline
@@ -867,8 +855,9 @@ figures:
         outcome: 'Claim rejected, May 2023'
   - kind: dataTable
     id: in-person
-    title: US in-person and machine fraud cases, 1936–1982
-    description: 'Large polling-place cases from the same record, for comparison with the absentee cases.'
+    title: In-person and machine fraud cases
+    subtitle: Large US polling-place cases, 1936–1982
+    description: 'For comparison with the absentee and mail-ballot cases.'
     caption: One card per case
     layout: timeline
     leadColumn: how
@@ -916,6 +905,27 @@ figures:
         outcome: Eight convicted (by April 1984)
 movedAnchors:
   observations-survey: absentee-cases
+observationMarks:
+  most-voidings-absentee: {rows: ["Mainly absentee or mail ballots", "Absentee or mail, plus other illegal votes"]}
+  carter-baker-largest-source: {rows: ["Absentee ballots"]}
+  each-case-caught-and-rerun: {rows: ["Philadelphia, 1993 state senate special", "Miami mayoral election (dated 1998 by Carter–Baker)", "East Chicago, Ind., 2003 primary", "North Carolina 9th District, 2018", "Paterson, N.J., 2020", "Aberdeen, Miss., 2020 primary", "Bridgeport, Conn., 2023 primary"]}
+  few-cases-against-ballots-cast: {rows: ["Heritage: tagged absentee-ballot fraud, outcomes 1982–2025", "News21: alleged absentee ballot fraud, since 2000", "Returned mail ballots counted in the 2024 general election alone"]}
+  detected-fraud-is-a-floor: {rows: ["Heritage: tagged absentee-ballot fraud", "News21: absentee ballot fraud"]}
+  no-voidings-in-all-mail-states: {rows: ["Colorado, Oregon, Utah, Washington"]}
+  carter-baker-oregon: {rows: ["Oregon"]}
+  officials-manipulated-count: {rows: ["Philadelphia, 1993", "Lincoln County, W.Va., 2010 primary"]}
+  refusals-ended-in-certification: {rows: ["Otero County, N.M., 2022 primary", "Cochise County, Ariz., 2022 general"]}
+  some-voidings-not-absentee: {rows: ["Ineligible voters or ballot order", "Votes ruled invalid", "Vote buying"]}
+  voided-races-small-and-close: {rows: ["East Chicago, Ind., 2003 primary", "Vernon, Calif. (entry 2012)", "Weslaco, Tex., 2013", "Perth Amboy, N.J. (entry 2015)", "Wetumpka, Ala. (entry 2017)", "Aberdeen, Miss., 2020 primary", "Caddo Parish, La., 2023 runoff", "Harris County, Tex. (entry 2024)"]}
+  invalid-could-change-winner: {rows: ["Vernon, Calif. (entry 2012)", "Weslaco, Tex., 2013", "Perth Amboy, N.J. (entry 2015)", "Wetumpka, Ala. (entry 2017)", "Aberdeen, Miss., 2020 primary", "Caddo Parish, La., 2023 runoff", "Harris County, Tex. (entry 2024)"]}
+  absentee-far-more-than-impersonation: {rows: ["Heritage: tagged absentee-ballot fraud", "Heritage: tagged impersonation at the polls", "News21: absentee ballot fraud", "News21: in-person voter impersonation"]}
+  absentee-schemes-voided-elections: {rows: ["East Chicago, Ind., 2003 primary", "North Carolina 9th District, 2018", "Bridgeport, Conn., 2023 primary"]}
+  paterson-voided-no-convictions: {rows: ["Paterson, N.J., 2020"]}
+  no-signature-review-case-found: {rows: ["Arizona governor, 2022"]}
+  in-person-machine-fraud-record: {rows: ["Kansas City, 1936", "Chicago, 1982"]}
+  hand-count-of-a-sample: {rows: ["Absentee or mail, plus other illegal votes"]}
+  floor-not-evidence-of-common: {rows: ["Heritage: tagged absentee-ballot fraud", "News21: absentee ballot fraud"]}
+  rasmussen-pointer: {whole: true}
 ---
 ## Observations {#absentee-fraud-and-manipulation-of-the-count--observations-voided-elections}
 
@@ -926,10 +936,6 @@ In this report's hand count of Heritage's file, about two-thirds of the voided o
 ### Not every voided election was an absentee case {#absentee-fraud-and-manipulation-of-the-count--some-voidings-not-absentee}
 
 Eleven were not. Georgia's 28th House District in 2018 was overturned over out-of-district voters, Compton's 2001 election over ballot order, and Pembroke, North Carolina, redid elections over residency. [10](#source-absentee-fraud-and-manipulation-of-the-count-10)
-
-### No voided election is in a long-standing all-mail state {#absentee-fraud-and-manipulation-of-the-count--no-voidings-in-all-mail-states}
-
-None of the 32 is in Colorado, Oregon, Utah or Washington. Their entries are individuals, often casting a dead or absent relative's ballot; one Washington man was caught because his wife's signature did not match. [10](#source-absentee-fraud-and-manipulation-of-the-count-10)
 
 ## Subtleties {#absentee-fraud-and-manipulation-of-the-count--subtleties-voided-elections}
 
@@ -953,10 +959,6 @@ In each charted case that gives a count of invalid ballots, they outnumbered the
 
 Two separately built compilations, Heritage's and News21's, each find absentee-ballot fraud many times more often than voting in person under another's name. [10](#source-absentee-fraud-and-manipulation-of-the-count-10) [12](#source-absentee-fraud-and-manipulation-of-the-count-12)
 
-### Detected cases are few against the mail ballots cast {#absentee-fraud-and-manipulation-of-the-count--few-cases-against-ballots-cast}
-
-Heritage's absentee entries span four decades. In the 2024 general election alone, 47,629,437 returned mail ballots were counted. [14](#source-absentee-fraud-and-manipulation-of-the-count-14) No source turns the case counts into a rate per ballot.
-
 ## Subtleties {#absentee-fraud-and-manipulation-of-the-count--subtleties-absentee-and-impersonation-cases}
 
 ### Detected fraud is a floor, not a measure {#absentee-fraud-and-manipulation-of-the-count--detected-fraud-is-a-floor}
@@ -977,21 +979,13 @@ That counts are a floor does not show the true rate is high. No source measures 
 
 North Carolina's elections board found its 2018 congressional race "corrupted by fraud, improprieties, and irregularities so pervasive" that it ordered a new election. [1](#source-absentee-fraud-and-manipulation-of-the-count-1) Courts did the same in East Chicago, Bridgeport and elsewhere (see the timeline). [3](#source-absentee-fraud-and-manipulation-of-the-count-3) [9](#source-absentee-fraud-and-manipulation-of-the-count-9)
 
-### Each case was local, caught and rerun {#absentee-fraud-and-manipulation-of-the-count--each-case-caught-and-rerun}
+### Known schemes were local and caught, and most were rerun {#absentee-fraud-and-manipulation-of-the-count--each-case-caught-and-rerun}
 
-Every scheme in the timeline whose discovery is recorded was exposed by an election contest, an investigation or a paper trail, and the remedy was a new election. [1](#source-absentee-fraud-and-manipulation-of-the-count-1) [3](#source-absentee-fraud-and-manipulation-of-the-count-3) [9](#source-absentee-fraud-and-manipulation-of-the-count-9) No statewide or presidential result in this record was overturned for absentee fraud.
+Every scheme in the timeline whose discovery is recorded was exposed by an election contest, an investigation or a paper trail, and the remedy was usually a new election; in Philadelphia a judge overturned the result. [1](#source-absentee-fraud-and-manipulation-of-the-count-1) [3](#source-absentee-fraud-and-manipulation-of-the-count-3) [9](#source-absentee-fraud-and-manipulation-of-the-count-9) No statewide or presidential result in this record was overturned for absentee fraud.
 
 ### Paterson: a court voided the election, but no one has been convicted {#absentee-fraud-and-manipulation-of-the-count--paterson-voided-no-convictions}
 
 A judge ordered Paterson's May 2020 council election rerun. [6](#source-absentee-fraud-and-manipulation-of-the-count-6) The winner's indictment was dismissed in April 2026 on speedy-trial and disclosure grounds; the state is appealing. As of May 2026 no one has been convicted. [7](#source-absentee-fraud-and-manipulation-of-the-count-7) [8](#source-absentee-fraud-and-manipulation-of-the-count-8)
-
-### Carter–Baker called absentee ballots the largest source of potential fraud {#absentee-fraud-and-manipulation-of-the-count--carter-baker-largest-source}
-
-The 2005 bipartisan commission wrote that "absentee ballots remain the largest source of potential voter fraud", and that voters at home or in nursing homes are more open to pressure. It urged states to stop candidates and party workers handling absentee ballots. [13](#source-absentee-fraud-and-manipulation-of-the-count-13)
-
-### The same commission found little fraud in all-mail Oregon {#absentee-fraud-and-manipulation-of-the-count--carter-baker-oregon}
-
-It found "little evidence of fraud in Oregon, where the entire state votes by mail", and "no evidence of extensive fraud in U.S. elections". It still asked Oregon for better precautions against intercepted ballots. [13](#source-absentee-fraud-and-manipulation-of-the-count-13)
 
 ## Observations {#absentee-fraud-and-manipulation-of-the-count--observations-officials}
 
@@ -999,7 +993,7 @@ It found "little evidence of fraud in Oregon, where the entire state votes by ma
 
 In Lincoln County, West Virginia, the county clerk himself falsified absentee ballots and stuffed boxes, and in Philadelphia city commissioners were found complicit. [10](#source-absentee-fraud-and-manipulation-of-the-count-10) Chicago's 1982 fraud was done by election judges. [20](#source-absentee-fraud-and-manipulation-of-the-count-20) [18](#source-absentee-fraud-and-manipulation-of-the-count-18)
 
-### Recent refusals to certify ended in certification {#absentee-fraud-and-manipulation-of-the-count--refusals-ended-in-certification}
+### Two refusals to certify in 2022 ended in certification {#absentee-fraud-and-manipulation-of-the-count--refusals-ended-in-certification}
 
 In Otero and Cochise counties in 2022, officials who refused or delayed certification were ordered to certify, and did. Two Cochise supervisors were indicted. [24](#source-absentee-fraud-and-manipulation-of-the-count-24) [25](#source-absentee-fraud-and-manipulation-of-the-count-25) Refusals since 2023 were not searched.
 
@@ -1018,6 +1012,28 @@ Kansas City's 1936 fraud and Chicago's 1982 fraud, both run by officials at the 
 ### A widely cited survey of mail voters is not a fraud estimate {#absentee-fraud-and-manipulation-of-the-count--rasmussen-pointer}
 
 A 2023 Rasmussen–Heartland poll reported that about one in five 2020 mail voters filled out a ballot "in part or in full" for a friend or relative. [27](#source-absentee-fraud-and-manipulation-of-the-count-27) Its questions include lawful help, and critics note an opt-in panel and results "wildly out of line" with signature-flag rates. [28](#source-absentee-fraud-and-manipulation-of-the-count-28) It is weighed beside stronger surveys in [the secret-ballot report](#fact-secret-ballot-and-postal-voting-abroad/rasmussen-heartland-weak-measure).
+
+## Observations {#absentee-fraud-and-manipulation-of-the-count--observations-voided-by-state}
+
+### No voided election is in a long-standing all-mail state {#absentee-fraud-and-manipulation-of-the-count--no-voidings-in-all-mail-states}
+
+None of the 32 is in Colorado, Oregon, Utah or Washington. Their entries are individuals, often casting a dead or absent relative's ballot; one Washington man was caught because his wife's signature did not match. [10](#source-absentee-fraud-and-manipulation-of-the-count-10)
+
+## Observations {#absentee-fraud-and-manipulation-of-the-count--observations-cases-against-ballots}
+
+### Detected cases are few against the mail ballots cast {#absentee-fraud-and-manipulation-of-the-count--few-cases-against-ballots-cast}
+
+Heritage's absentee entries span four decades. In the 2024 general election alone, 47,629,437 returned mail ballots were counted. [14](#source-absentee-fraud-and-manipulation-of-the-count-14) No source turns the case counts into a rate per ballot.
+
+## Observations {#absentee-fraud-and-manipulation-of-the-count--observations-carter-baker}
+
+### Carter–Baker called absentee ballots "the largest source of potential voter fraud" {#absentee-fraud-and-manipulation-of-the-count--carter-baker-largest-source}
+
+The 2005 bipartisan commission wrote that "absentee ballots remain the largest source of potential voter fraud", and that voters at home or in nursing homes are more open to pressure. It urged states to stop candidates and party workers handling absentee ballots. [13](#source-absentee-fraud-and-manipulation-of-the-count-13)
+
+### The same commission found "little evidence of fraud in Oregon" {#absentee-fraud-and-manipulation-of-the-count--carter-baker-oregon}
+
+It found "little evidence of fraud in Oregon, where the entire state votes by mail", and "no evidence of extensive fraud in U.S. elections". It still asked Oregon for better precautions against intercepted ballots. [13](#source-absentee-fraud-and-manipulation-of-the-count-13)
 
 ## More {#absentee-fraud-and-manipulation-of-the-count--more-voided-elections}
 

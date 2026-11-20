@@ -54,12 +54,9 @@ sources:
     publisher: Home Office
     date: '2026-08-27'
   - stance: supports
-    quote: >-
-      Financial Year Quarter Total Managed Migration Entry Clearance Family
-      Visit Visa Deport and others [note 3] Deportation Appeals [note 4]
-      Deprivation of Citizenship Asylum/Protection/Revocation of Protection
-      [note 5][note 6] Human Rights [note 5] EEA Free Movement [note 5]
-      2026/27 Q1 155,798 1 3 0 [x] 29 294 90,341 31,459 33,671
+    quote: |-
+      Financial Year | Quarter | Total | Managed Migration | Entry Clearance | Family Visit Visa | Deport and others [note 3] | Deportation Appeals [note 4] | Deprivation of Citizenship | Asylum/Protection/Revocation of Protection [note 5][note 6] | Human Rights [note 5] | EEA Free Movement [note 5]
+      2026/27 | Q1 | 155,798 | 1 | 3 | 0 | [x] | 29 | 294 | 90,341 | 31,459 | 33,671
     title: >-
       Tribunals Statistics Quarterly, April to June 2026, main tables: Table
       FIA_4, First-tier Tribunal (Immigration and Asylum Chamber) total open
@@ -287,10 +284,12 @@ sources:
     publisher: National Audit Office
     date: '2025-12-10'
   - stance: supports
-    quote: >-
-      Accommodation and support £3,406 million Unaccompanied children, £636
-      million Intake and asylum casework, £442 million Appeals, £102 million
-      Detention and removals £46 million
+    quote: |-
+      - Accommodation and support £3,406 million
+      - Unaccompanied children, £636 million
+      - Intake and asylum casework, £442 million
+      - Appeals, £102 million
+      - Detention and removals £46 million
     title: >-
       An analysis of the asylum system (HC 1517), Figure 5: Cost of key areas of
       spend in the asylum system, 2024-25
@@ -329,10 +328,13 @@ sources:
     publisher: National Audit Office
     date: '2025-07-25'
   - stance: supports
-    quote: >-
-      Asylum and Protection – 4,498,823 – – – – – – Asylum Support,
-      Resettlement and Accommodation – – 5,424,708 4,512,567 4,181,193 – – –
-      Asylum Group – – – – – 4,116,034 3,795,700 3,621,700
+    quote: |-
+      Total departmental spending 2021-22 to 2028-29
+
+      Resource DEL | 2021-22 Outturn £’000 | 2022-23 Outturn £’000 | 2023-24 Outturn £’000 | 2024-25 Outturn £’000 | 2025-26 Outturn £’000 | 2026-27 Plans £’000 | 2027-28 Plans £’000 | 2028-29 Plans £’000
+      Asylum and Protection | – | 4,498,823 | – | – | – | – | – | –
+      Asylum Support, Resettlement and Accommodation | – | – | 5,424,708 | 4,512,567 | 4,181,193 | – | – | –
+      Asylum Group | – | – | – | – | – | 4,116,034 | 3,795,700 | 3,621,700
     title: >-
       Home Office Annual Report and Accounts 2025 to 2026 (HC 440), core table:
       Resource DEL by business group, 2021-22 to 2028-29 (£’000; outturn to
@@ -342,9 +344,11 @@ sources:
     publisher: Home Office
     date: '2026-07-14'
   - stance: supports
-    quote: >-
-      Total Resource DEL 14,711,572 17,005,341 18,856,370 18,149,688 17,919,340
-      19,528,445 19,736,000 19,888,500
+    quote: |-
+      Total departmental spending 2021-22 to 2028-29
+
+      Resource DEL | 2021-22 Outturn £’000 | 2022-23 Outturn £’000 | 2023-24 Outturn £’000 | 2024-25 Outturn £’000 | 2025-26 Outturn £’000 | 2026-27 Plans £’000 | 2027-28 Plans £’000 | 2028-29 Plans £’000
+      Total Resource DEL | 14,711,572 | 17,005,341 | 18,856,370 | 18,149,688 | 17,919,340 | 19,528,445 | 19,736,000 | 19,888,500
     title: >-
       Home Office Annual Report and Accounts 2025 to 2026 (HC 440), core table:
       Resource DEL by business group, 2021-22 to 2028-29 (£’000; outturn to
@@ -572,7 +576,8 @@ sources:
     publisher: Home Office
     date: '2026-08-27'
 series:
-  title: People waiting for a UK asylum decision or appeal, 2015-2026
+  title: 'Waiting for an asylum decision or appeal'
+  subtitle: 'Initial decisions and open tribunal appeals, UK, 2015–2026'
   description: >-
     Quarter-end counts of people waiting for an initial Home Office decision on
     an asylum claim, and of asylum and protection appeals open at the
@@ -647,6 +652,7 @@ series:
         date: '2026-09-10'
       lines:
         - name: People awaiting an initial decision
+          glossary: initial-decision
           points:
             - period: '2015-06'
               value: 16163
@@ -832,10 +838,11 @@ series:
               value: 90341
 additionalSeries:
   - id: support-by-accommodation
-    title: 'People on Home Office asylum support, by type, 2014-2026'
+    title: 'People on asylum support'
+    subtitle: 'By type of support, UK, March 2014 to June 2026'
     description: >-
       Quarter-end counts of asylum seekers receiving Home Office support,
-      main applicants and dependants, March 2014 to June 2026. Hotels are
+      main applicants and dependants. Hotels are
       inside the first line throughout; the Home Office has counted them
       separately only since December 2022 (next chart).
     periodLabel: Quarter ending
@@ -1204,7 +1211,8 @@ additionalSeries:
               - period: '2026-06'
                 value: 4204
   - id: hotel-breakdown
-    title: Where people on UK asylum support live, including hotels, 2022-2026
+    title: 'Where people on asylum support live'
+    subtitle: 'By accommodation, including hotels, UK, December 2022 to June 2026'
     description: >-
       Quarter-end counts of people on Home Office asylum support by
       accommodation type, December 2022 (when hotels were first counted
@@ -1371,7 +1379,8 @@ additionalSeries:
                 value: 4204
 comparisons:
   - id: support-spending
-    title: Home Office spending on asylum support, by financial year
+    title: 'Spending on asylum support'
+    subtitle: 'Home Office, by financial year, 2019-20 to 2024-25, in cash'
     description: >-
       Home Office direct spending on asylum support (accommodation, cash
       support, grants to local authorities and related costs), for each year
@@ -1402,7 +1411,8 @@ comparisons:
       resettlement (next chart), so their totals are higher and should not be
       mixed with these.
   - id: system-costs-2024-25
-    title: What asylum cost the Home Office and Ministry of Justice in 2024-25
+    title: 'The cost of the asylum system'
+    subtitle: 'Main areas, Home Office and Ministry of Justice, 2024-25'
     description: >-
       The National Audit Office's estimate of the main areas of spending on the
       asylum system, 2024-25, from actual costs.
@@ -1468,6 +1478,21 @@ dataStillNeeded:
       expensive per person or only large in total.
 figures:
   - kind: series
+  - kind: barChart
+    id: appeal-clearance-time
+    title: 'Time to clear an immigration appeal'
+    subtitle: 'Mean weeks at the First-tier Tribunal, by category, April to June 2026'
+    description: Mean weeks taken to clear an appeal at the First-tier Tribunal (Immigration and Asylum Chamber).
+    valueLabel: Mean weeks to clear
+    categoryLabel: Appeal category
+    format: { unit: number, decimals: 0 }
+    sort: none
+    sources: [5]
+    items:
+      - { label: Asylum and protection, value: 72, highlight: true }
+      - { label: Human rights, value: 74 }
+      - { label: All categories, value: 65 }
+      - { label: EEA free movement, value: 48 }
   - kind: series
     id: support-by-accommodation
   - kind: series
@@ -1476,7 +1501,8 @@ figures:
     id: support-spending
   - kind: compositionBar
     id: asylum-budget-line
-    title: The asylum budget line within the Home Office's day-to-day budget
+    title: 'Asylum in the Home Office budget'
+    subtitle: 'Day-to-day spending, 2022-23 to 2028-29, in cash; later years are plans'
     description: >-
       Home Office Resource DEL outturn, 2022-23 to 2025-26, and plans to
       2028-29, split into the asylum business group and everything else, in
@@ -1515,8 +1541,8 @@ figures:
     id: system-costs-2024-25
   - kind: barChart
     id: hotels-share-of-people-and-cost
-    title: >-
-      Hotels' share of people and of cost in UK asylum accommodation, 2024-25
+    title: 'Hotels'' share of people and cost'
+    subtitle: 'UK asylum accommodation, first seven months of 2024-25'
     description: >-
       People in hotels as a share of everyone in Home Office asylum
       accommodation, against hotels' share of the accommodation contracts'
@@ -1537,7 +1563,8 @@ figures:
       shares will differ.
   - kind: dataTable
     id: large-sites
-    title: Large sites used or proposed for UK asylum accommodation, 2026
+    title: 'Large asylum accommodation sites'
+    subtitle: 'Former military and other sites used or proposed, UK, 2026'
     description: Former military and other large sites used, or proposed, for asylum accommodation, as described in the sources cited.
     caption: One row per site
     columns:
@@ -1563,14 +1590,40 @@ figures:
       - site: MOD Linton-on-Ouse, North Yorkshire
         status: { value: Discussions under way, sources: [39] }
         people: Not given per site
+observationMarks:
+  queue-moved-to-appeals: {lines: ["People awaiting an initial decision", "Asylum and protection appeals open at the tribunal"], from: "2022-06", to: "2026-06"}
+  support-costs-about-4bn-a-year: {rows: ["2024-25"]}
+  backlog-and-hotels-below-peaks: {lines: ["People awaiting an initial decision"], from: "2023-06", to: "2026-06"}
+  hotels-third-of-people-three-quarters-of-cost: {rows: ["Share of people in asylum accommodation", "Share of the contracts' cost"]}
+  why-the-queue-rose-and-fell: {lines: ["People awaiting an initial decision"], from: "2021-06", to: "2026-06"}
+  two-in-five-appeals-allowed: {lines: ["Asylum and protection appeals open at the tribunal"]}
+  support-fell-less-than-the-queue: {from: "2023-09", to: "2026-06"}
+  dispersal-kept-growing: {lines: ["Dispersal accommodation"]}
+  hotel-use-far-below-peak: {lines: ["Hotels"], from: "2023-09", to: "2026-06"}
+  large-sites-small-share: {lines: ["Initial accommodation, other contingency and large sites"], at: "2026-06"}
+  hotels-drove-the-rise-and-fall: {rows: ["2022-23", "2023-24", "2024-25"]}
+  share-of-home-office-budget: {rows: ["2023-24", "2025-26"]}
+  accommodation-dominates-system-cost: {rows: ["Accommodation and support", "Appeals", "Detention and removals"]}
+  contracts-cost-overrun: {rows: ["Share of the contracts' cost"]}
+  large-sites-cost-and-reversal: {rows: ["Wethersfield, Essex (former RAF base)", "Crowborough Training Camp, East Sussex", "MOD Bicester (Site A), between Piddington and Upper Arncott, Oxfordshire", "MOD Barnham, Suffolk", "MOD Linton-on-Ouse, North Yorkshire"]}
+  europe-uses-large-sites-too: {whole: true}
+  people-and-appeals-are-different-counts: {lines: ["People awaiting an initial decision", "Asylum and protection appeals open at the tribunal"], at: "2026-06"}
+  whole-system-is-larger: {lines: ["People awaiting an initial decision"], at: "2024-06"}
+  hotel-shares-date-from-2024: {rows: ["Share of people in asylum accommodation", "Share of the contracts' cost"]}
+  appeals-queue-fourteen-times: {lines: ["Asylum and protection appeals open at the tribunal"], from: "2022-06", to: "2026-06"}
+  asylum-appeal-takes-72-weeks: {rows: ["Asylum and protection"]}
 ---
 ## Observations {#asylum-backlog-accommodation-and-cost--observations-queue}
 
-### The first-decision backlog and hotel use are far below their peaks {#asylum-backlog-accommodation-and-cost--backlog-and-hotels-below-peaks}
+### The first-decision queue is 77% below its June 2023 peak {#asylum-backlog-accommodation-and-cost--backlog-and-hotels-below-peaks}
 
-40,168 people were waiting for an initial decision at the end of June 2026, 77% fewer than at the June 2023 peak of 175,457 and the lowest number since June 2019. The queue is still longer than it was through the 2010s: it grew from 7,240 in December 2010 to 35,855 in December 2018. [1](#source-asylum-backlog-accommodation-and-cost-1) [2](#source-asylum-backlog-accommodation-and-cost-2)
+40,168 people were waiting for an [initial decision](#glossary-initial-decision) at the end of June 2026, 77% fewer than at the June 2023 peak of 175,457 and the lowest number since June 2019. The queue is still longer than it was through the 2010s: it grew from 7,240 in December 2010 to 35,855 in December 2018. [1](#source-asylum-backlog-accommodation-and-cost-1) [2](#source-asylum-backlog-accommodation-and-cost-2)
 
 Hotel use fell by the same order: 16,021 supported asylum seekers were in hotels at the end of June 2026, 71% below the peak of 56,018 in September 2023 (see the accommodation charts below). [17](#source-asylum-backlog-accommodation-and-cost-17)
+
+### Open asylum appeals are more than fourteen times their June 2022 level {#asylum-backlog-accommodation-and-cost--appeals-queue-fourteen-times}
+
+Open asylum and protection appeals at the [First-tier Tribunal](#glossary-first-tier-tribunal) rose from 6,319 at the end of June 2022 to 90,341 at the end of June 2026, more than fourteen times as many. [3](#source-asylum-backlog-accommodation-and-cost-3) [4](#source-asylum-backlog-accommodation-and-cost-4)
 
 ### The queue has moved into the appeals system {#asylum-backlog-accommodation-and-cost--queue-moved-to-appeals}
 
@@ -1599,6 +1652,12 @@ The first-decision line counts people, including dependants; the tribunal line c
 ### The whole asylum caseload is larger than either line, and its latest count is from 2024 {#asylum-backlog-accommodation-and-cost--whole-system-is-larger}
 
 The Home Office's count of all cases in the asylum system, including people awaiting an appeal outcome or removal, rose from 55,814 in June 2014 to 224,742 in June 2024, when 40% were awaiting an initial decision. It has not been published beyond June 2024 because of a change of casework system. The NAO also found that 41% of a sample of people who claimed in January 2023 had open claims that were neither awaiting an appeal nor further submissions, and had not been removed. [10](#source-asylum-backlog-accommodation-and-cost-10) [11](#source-asylum-backlog-accommodation-and-cost-11) [15](#source-asylum-backlog-accommodation-and-cost-15)
+
+## Observations {#asylum-backlog-accommodation-and-cost--observations-appeal-clearance-time}
+
+### An asylum appeal took 72 weeks on average to clear, well over a year {#asylum-backlog-accommodation-and-cost--asylum-appeal-takes-72-weeks}
+
+The mean time to clear an asylum or protection appeal was 72 weeks in April to June 2026, against 65 weeks across all categories. [5](#source-asylum-backlog-accommodation-and-cost-5)
 
 ## Observations {#asylum-backlog-accommodation-and-cost--observations-support}
 
@@ -1634,7 +1693,7 @@ Hotels took £2.3 billion of the £3.6 billion spent in 2022-23. Hotel spending 
 
 ### The asylum line is about a quarter of the Home Office's net day-to-day budget {#asylum-backlog-accommodation-and-cost--share-of-home-office-budget}
 
-The asylum business group was 29% of the Home Office's Resource DEL outturn in 2023-24 and 23% in 2025-26 (asylum line divided by the total, from the core table). The total is net of visa and passport fee income, which makes the asylum share larger than it would be against gross spending, and the asylum line includes resettlement, such as £222.1 million for Afghan resettlement in 2025-26. Plans to 2028-29 have the line falling every year. [28](#source-asylum-backlog-accommodation-and-cost-28) [29](#source-asylum-backlog-accommodation-and-cost-29) [31](#source-asylum-backlog-accommodation-and-cost-31)
+The asylum business group was 29% of the Home Office's [Resource DEL](#glossary-resource-del) outturn in 2023-24 and 23% in 2025-26 (asylum line divided by the total, from the core table). The total is net of visa and passport fee income, which makes the asylum share larger than it would be against gross spending, and the asylum line includes resettlement, such as £222.1 million for Afghan resettlement in 2025-26. Plans to 2028-29 have the line falling every year. [28](#source-asylum-backlog-accommodation-and-cost-28) [29](#source-asylum-backlog-accommodation-and-cost-29) [31](#source-asylum-backlog-accommodation-and-cost-31)
 
 ## Observations {#asylum-backlog-accommodation-and-cost--observations-system-costs-2024-25}
 

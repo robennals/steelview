@@ -26,7 +26,7 @@ deploys to production. `www.steelview.org` redirects permanently to
 ```bash
 pnpm dev        # dev server at localhost:3000
 pnpm test:unit  # node:test via tsx — content validation and pure logic
-pnpm test:e2e   # Playwright — builds the app, serves it on a free port, then drives it in a browser
+pnpm test:e2e   # Playwright — builds the app if its sources changed, serves it on a free port, then drives it in a browser
 pnpm lint       # eslint
 pnpm check:integrity # publication-time cross-item and editorial integrity checks
 pnpm check:figures  # audits figures asserted in prose against the quoted sources
@@ -35,12 +35,10 @@ pnpm build      # production build
 
 ## Content
 
-Principles are shared across topics; facts, viewpoints and cruxes belong to a topic:
+Facts, viewpoints and cruxes belong to a topic:
 
 ```
 content/
-  principles/
-    democratic-consent-over-membership.md
   topics/
     uk-immigration/
       topic.md
@@ -49,18 +47,9 @@ content/
       cruxes/
 ```
 
-A shared principle contains a `name` and markdown body, with no topic-specific
-`heldBy` list. Each `topic.md` lists the shared IDs it employs:
-
-```yaml
-principles: [democratic-consent-over-membership, obligation-to-people-in-danger]
-```
-
-Viewpoints list the subset they rest on in their own `principles` field. The
-loader resolves the topic's IDs from `content/principles/`, preserving existing
-in-page anchors. Editing one definition updates every topic that references it.
-The topic lists also provide the relationships for future principle-to-topic
-backlinks without maintaining a second list in each principle.
+Principles are not content items of their own. A viewpoint states the values
+it rests on in its own prose, and where viewpoints weigh those values
+differently, a crux (`kind: tradeoff` or `priority`) names the tension.
 
 The filename is the item's id, and the id is permanent — it forms the URL
 anchor for that item, prefixed with its kind (`/topics/uk-immigration#fact-net-migration-2024`),
@@ -84,7 +73,7 @@ while a report is part-way through an edit. Run that command before publishing. 
 the zod schema shape, it enforces and unit-tests these rules:
 
 1. Every id referenced in `citesFacts`, `acknowledges`, `setsAside`,
-   `principles`, `divides`, and `positions[].viewpoint` must
+   `divides`, and `positions[].viewpoint` must
    resolve to a real item.
 2. `citesFacts` may only contain `well-supported` or `contested` facts;
    `acknowledges` may only contain `well-supported` facts; a fact can appear
@@ -101,9 +90,7 @@ the zod schema shape, it enforces and unit-tests these rules:
 8. No orphan headline facts — each must appear in some viewpoint's
    `citesFacts`, `acknowledges`, or `setsAside`.
 9. A topic needs at least 1 fact and at least 2 viewpoints.
-10. Topic principle IDs must be unique and exist in the shared catalog. Each
-    viewpoint's principle IDs must be included in its topic's list. Topic-local
-    principle definitions and shared definitions with `heldBy` are rejected.
+10. No body links to `#principle-…`: principles are not linked items.
 
 `pnpm check:figures` extends the sourcing rule to prose: a money, percentage
 or thousands figure asserted in any markdown body must appear in a quoted

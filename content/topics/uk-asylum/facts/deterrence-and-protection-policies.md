@@ -48,10 +48,16 @@ claim: >-
 status: well-supported
 sources:
   - stance: supports
-    quote: >-
-      Year Number of boats Crew Number of people (excludes crew) 2009 60 141
-      2726 2010 134 345 6555 2011 69 168 4565 2012 278 392 17 204 2013 300 644
-      20 587 2014 1 N/A 160 2015 0 0 0 2016 0 0 0
+    quote: |-
+      Year | Number of boats | Crew | Number of people (excludes crew)
+      2009 | 60 | 141 | 2726
+      2010 | 134 | 345 | 6555
+      2011 | 69 | 168 | 4565
+      2012 | 278 | 392 | 17 204
+      2013 | 300 | 644 | 20 587
+      2014 | 1 | N/A | 160
+      2015 | 0 | 0 | 0
+      2016 | 0 | 0 | 0
     title: 'Boat arrivals and boat ‘turnbacks’ in Australia since 1976: a quick guide to the statistics'
     url: 'https://web.archive.org/web/20201213005758/https://www.aph.gov.au/About_Parliament/Parliamentary_Departments/Parliamentary_Library/pubs/rp/rp1617/Quick_Guides/BoatTurnbacks'
     publisher: 'Parliamentary Library, Parliament of Australia'
@@ -117,10 +123,17 @@ sources:
     publisher: 'Kaldor Centre for International Refugee Law, UNSW Sydney'
     date: '2021-08'
   - stance: supports
-    quote: >-
-      Table 2 Boat arrivals since September 2013 … 2013 25 1107 134 1241 2014
-      12 157 293 450 2015 9 0 217 217 2016 6 0 51 51 2017 3 0 60 60 2018 2 0
-      24 24 2019 3 0 33 33
+    quote: |-
+      Table 2 Boat arrivals since September 2013
+
+      Year | Number of boats | Number of people (excluding crew): Brought to Australia and transferred offshore | Returned | Total
+      2013 | 25 | 1107 | 134 | 1241
+      2014 | 12 | 157 | 293 | 450
+      2015 | 9 | 0 | 217 | 217
+      2016 | 6 | 0 | 51 | 51
+      2017 | 3 | 0 | 60 | 60
+      2018 | 2 | 0 | 24 | 24
+      2019 | 3 | 0 | 33 | 33
     title: 'Cruel, costly and ineffective: The failure of offshore processing in Australia (Policy Brief 11)'
     url: 'https://www.kaldorcentre.unsw.edu.au/sites/kaldorcentre.unsw.edu.au/files/Policy_Brief_11_Offshore_Processing.pdf'
     publisher: 'Kaldor Centre for International Refugee Law, UNSW Sydney'
@@ -176,12 +189,16 @@ sources:
     publisher: 'Kaldor Centre for International Refugee Law, UNSW Sydney'
     date: '2021-08'
   - stance: supports
-    quote: >-
-      Table 1 Location of people transferred offshore since 2012 (as at 31
-      January 2021) … In Australia 882 1161 2043 Offshore (Nauru and PNG) 0
-      263 263 Resettled in a third country 0 921 921 Returned to country of
-      origin (voluntarily or involuntarily) 168 767 935 Deceased 5 13 18 Total
-      1055 3125 4180
+    quote: |-
+      Table 1 Location of people transferred offshore since 2012 (as at 31 January 2021)
+
+       | Transferred 13 August 2012 to 18 July 2013 | Transferred after 19 July 2013 | Total
+      In Australia | 882 | 1161 | 2043
+      Offshore (Nauru and PNG) | 0 | 263 | 263
+      Resettled in a third country | 0 | 921 | 921
+      Returned to country of origin (voluntarily or involuntarily) | 168 | 767 | 935
+      Deceased | 5 | 13 | 18
+      Total | 1055 | 3125 | 4180
     title: 'Cruel, costly and ineffective: The failure of offshore processing in Australia (Policy Brief 11)'
     url: 'https://www.kaldorcentre.unsw.edu.au/sites/kaldorcentre.unsw.edu.au/files/Policy_Brief_11_Offshore_Processing.pdf'
     publisher: 'Kaldor Centre for International Refugee Law, UNSW Sydney'
@@ -265,10 +282,23 @@ sources:
     publisher: 'Refugee Council of Australia'
     date: '2026-02-13'
   - stance: supports
-    quote: >-
-      Total people transferred offshore to a regional processing country
-      (Nauru and PNG) 4,359 … Total resettled in third country 1,547 …
-      Returned or removed to country of origin 978 … Deceased 21
+    quote: |-
+      Table 1. What has happened to the people who were subject to the offshore processing policy from August 2012 until December 2025
+
+      Situation for people subject to offshore processing 2012-2025 | Number of people | Further information
+      Total people transferred offshore to a regional processing country (Nauru and PNG) | 4,359 | People transferred at different points in time are subject to different policies
+      Number sent offshore since 19 July 2013 | 3,439 | People transferred offshore after 19 July 2013 were told that they would never settle in Australia
+      Total resettled in third country | 1,547 | 
+      Resettled in US | 1,115 | US arrangement began in 2016, with no new applications available.
+      Resettled in New Zealand | 324 | New Zealand arrangement began in 2022 and was to end in 2025. The remaining departures are due to finish in 2026, with no new applications available.
+      Resettled in other countries | 101 | Including Canada via private sponsorship arrangements organised by Australian and Canadian civil societies (e.g. Operation Not Forgotten, ONF)
+      Resettled in Cambodia | 7* | *Only 1 person remaining but to be resettled to another country this year. Remaining 6 people departed Cambodia, including via ONF. In September 2014, the Australian Government agreed to pay the Cambodian government $55 million to resettle refugees from Nauru. Cambodia agreed to take only those who agreed to go, and only 7 did so, albeit temporarily.
+      Returned or removed to country of origin | 978 | Wellbeing and whereabouts of those returned unknown, as monitoring not undertaken by the Australian Government
+      “Transitory Group” brought to Australia for a temporary purpose but remaining here indefinitely without permanent visas or a durable solution | 807 | Only 63 remaining places available in closed New Zealand arrangement, so ~750 people will have no durable solution available
+      In PNG | ~27 | People transferred 2013-2014
+      In Nauru | ~105 | People transferred since September 2023
+      Deceased | 21 | Inclusive of at least 14 deaths on Nauru and PNG
+      Children born to people subject to offshore processing | 238 | Inclusive of 156 children who are now in Australia
     title: 'Submission to the Legal and Constitutional Affairs References Committee: Inquiry into offshore processing and resettlement arrangements'
     url: 'https://www.refugeecouncil.org.au/wp-content/uploads/2026/02/260213-RCOA-offshore-processing-and-arrangements-submission.pdf'
     publisher: 'Refugee Council of Australia'
@@ -358,34 +388,23 @@ sources:
     publisher: 'UK Parliament (Shabana Mahmood, Home Secretary)'
     date: '2026-03-02'
   - stance: complicates
-    quote: >-
-      freq,citizen,applicant,sex,unit,age,geo\TIME_PERIOD 2008 2009 2010 2011
-      2012 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025
-      A,EXT_EU27_2020,FRST,T,PER,TOTAL,DE 21325 27575 41245 45685 64410 109375
-      172945 441805 722270 198255 161885 142450 102525 148175 217735 329035
-      229695 113170 A,EXT_EU27_2020,FRST,T,PER,TOTAL,DK 2350 3720 5065 3945
-      6045 7170 14535 20825 6055 3125 3465 2605 1420 1995 4475 2355 2180 1835
-      A,EXT_EU27_2020,FRST,T,PER,TOTAL,EU27_2020 : : : : : : 530560 1216860
-      1166815 620265 564680 628930 415235 535985 873680 1049510 912425 671895
-      A,EXT_EU27_2020,FRST,T,PER,TOTAL,SE 24275 23605 31785 29630 43835 49230
-      74980 156115 22335 22190 18635 20770 11765 9015 13180 8945 6755 5080
+    quote: |-
+      freq,citizen,applicant,sex,unit,age,geo\TIME_PERIOD | 2008 | 2009 | 2010 | 2011 | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025
+      A,EXT_EU27_2020,FRST,T,PER,TOTAL,DE | 21325 | 27575 | 41245 | 45685 | 64410 | 109375 | 172945 | 441805 | 722270 | 198255 | 161885 | 142450 | 102525 | 148175 | 217735 | 329035 | 229695 | 113170
+      A,EXT_EU27_2020,FRST,T,PER,TOTAL,DK | 2350 | 3720 | 5065 | 3945 | 6045 | 7170 | 14535 | 20825 | 6055 | 3125 | 3465 | 2605 | 1420 | 1995 | 4475 | 2355 | 2180 | 1835
+      A,EXT_EU27_2020,FRST,T,PER,TOTAL,EU27_2020 | : | : | : | : | : | : | 530560 | 1216860 | 1166815 | 620265 | 564680 | 628930 | 415235 | 535985 | 873680 | 1049510 | 912425 | 671895
+      A,EXT_EU27_2020,FRST,T,PER,TOTAL,SE | 24275 | 23605 | 31785 | 29630 | 43835 | 49230 | 74980 | 156115 | 22335 | 22190 | 18635 | 20770 | 11765 | 9015 | 13180 | 8945 | 6755 | 5080
     title: 'Asylum applicants by type, citizenship, age and sex - annual aggregated data (migr_asyappctza)'
     url: 'https://ec.europa.eu/eurostat/databrowser/view/migr_asyappctza/default/table'
     publisher: 'Eurostat'
     date: '2026-09-03'
   - stance: complicates
-    quote: >-
-      freq,unit,citizen,sex,age,decision,geo\TIME_PERIOD 2008 2009 2010 2011
-      2012 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025
-      A,PER,EXT_EU27_2020,T,TOTAL,POS,DK 730 790 1345 1310 1695 2810 5480 9995
-      7125 2365 1315 1575 420 775 515 990 715 420
-      A,PER,EXT_EU27_2020,T,TOTAL,POS,EU27_2020 : : : : 83165 99060 157265
-      293700 662955 428715 207495 206865 212840 202980 312055 358275 387610
-      325935 A,PER,EXT_EU27_2020,T,TOTAL,TOTAL,DK 1240 1645 3280 3565 4680
-      6965 8055 12300 10410 6880 2625 3030 1185 1525 985 1570 1485 1170
-      A,PER,EXT_EU27_2020,T,TOTAL,TOTAL,EU27_2020 : : : : 260310 291800 341035
-      558590 1075490 933295 556390 546440 528165 531315 639150 677625 753970
-      833380
+    quote: |-
+      freq,unit,citizen,sex,age,decision,geo\TIME_PERIOD | 2008 | 2009 | 2010 | 2011 | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025
+      A,PER,EXT_EU27_2020,T,TOTAL,POS,DK | 730 | 790 | 1345 | 1310 | 1695 | 2810 | 5480 | 9995 | 7125 | 2365 | 1315 | 1575 | 420 | 775 | 515 | 990 | 715 | 420
+      A,PER,EXT_EU27_2020,T,TOTAL,POS,EU27_2020 | : | : | : | : | 83165 | 99060 | 157265 | 293700 | 662955 | 428715 | 207495 | 206865 | 212840 | 202980 | 312055 | 358275 | 387610 | 325935
+      A,PER,EXT_EU27_2020,T,TOTAL,TOTAL,DK | 1240 | 1645 | 3280 | 3565 | 4680 | 6965 | 8055 | 12300 | 10410 | 6880 | 2625 | 3030 | 1185 | 1525 | 985 | 1570 | 1485 | 1170
+      A,PER,EXT_EU27_2020,T,TOTAL,TOTAL,EU27_2020 | : | : | : | : | 260310 | 291800 | 341035 | 558590 | 1075490 | 933295 | 556390 | 546440 | 528165 | 531315 | 639150 | 677625 | 753970 | 833380
     title: 'First instance decisions on applications by type of decision, citizenship, age and sex - annual aggregated data (migr_asydcfsta)'
     url: 'https://ec.europa.eu/eurostat/databrowser/view/migr_asydcfsta/default/table'
     publisher: 'Eurostat'
@@ -647,8 +666,19 @@ sources:
     url: 'https://migrationobservatory.ox.ac.uk/resources/briefings/asylum-in-the-uk/'
     publisher: 'The Migration Observatory, University of Oxford'
     date: '2026-07-14'
+  - stance: complicates
+    quote: >-
+      However, there are limited circumstances in which small boats can be
+      turned around safely in the English Channel. In view of this, the policy
+      is currently withdrawn and there are no current plans for the turnaround
+      tactics to be reintroduced under Defence primacy.
+    title: 'Written question UIN 90882: small boats turnaround policy (answered by Robert Jenrick)'
+    url: https://questions-statements.parliament.uk/written-questions/detail/2022-11-18/90882
+    publisher: UK Parliament (Home Office answer)
+    date: '2022-11-28'
 series:
-  title: 'Australia: asylum-seeker boat arrivals, 1976-2016'
+  title: 'Australia: asylum-seeker boat arrivals'
+  subtitle: 'People arriving by boat each year, 1976–2016'
   description: >-
     People arriving in Australia by boat in each calendar year, as compiled by
     the Australian Parliamentary Library. Offshore processing restarted in
@@ -668,6 +698,11 @@ series:
       the Internet Archive copy of 13 December 2020. The Australian government
       has not published a comparable annual series since, so the chart stops in
       2016. Counts exclude crew from 1989.
+  events:
+  - period: '2013'
+    label: Boat arrivals barred from settling; boats turned back
+    note: Boats arriving from 19 July 2013 were barred from settlement in Australia, and from December 2013 boats were returned to their country of departure.
+    sources: [7, 2]
   breaks:
     - period: '1989'
       label: Department of Immigration figures, excluding crew
@@ -784,8 +819,8 @@ series:
               value: 0
 additionalSeries:
   - id: australia-interceptions
-    title: >-
-      Australia: people on boats intercepted after September 2013, by outcome
+    title: 'Australia: boats intercepted since 2013'
+    subtitle: 'People on boats after September 2013, by outcome'
     description: >-
       People (excluding crew) on boats that tried to reach Australia after
       Operation Sovereign Borders began, split into those brought to Australia
@@ -803,10 +838,17 @@ additionalSeries:
         source publishes later years in this form.
     source:
       stance: supports
-      quote: >-
-        Table 2 Boat arrivals since September 2013 … 2013 25 1107 134 1241
-        2014 12 157 293 450 2015 9 0 217 217 2016 6 0 51 51 2017 3 0 60 60
-        2018 2 0 24 24 2019 3 0 33 33
+      quote: |-
+        Table 2 Boat arrivals since September 2013
+
+        Year | Number of boats | Number of people (excluding crew): Brought to Australia and transferred offshore | Returned | Total
+        2013 | 25 | 1107 | 134 | 1241
+        2014 | 12 | 157 | 293 | 450
+        2015 | 9 | 0 | 217 | 217
+        2016 | 6 | 0 | 51 | 51
+        2017 | 3 | 0 | 60 | 60
+        2018 | 2 | 0 | 24 | 24
+        2019 | 3 | 0 | 33 | 33
       title: 'Cruel, costly and ineffective: The failure of offshore processing in Australia (Policy Brief 11)'
       url: 'https://www.kaldorcentre.unsw.edu.au/sites/kaldorcentre.unsw.edu.au/files/Policy_Brief_11_Offshore_Processing.pdf'
       publisher: 'Kaldor Centre for International Refugee Law, UNSW Sydney'
@@ -850,7 +892,8 @@ additionalSeries:
               - period: '2019'
                 value: 33
   - id: australia-offshore-cost
-    title: 'Australia: cost of offshore processing, 2012-13 to 2024-25'
+    title: 'Australia: cost of offshore processing'
+    subtitle: 'Nauru and Papua New Guinea, A$ million, 2012-13 to 2024-25'
     description: >-
       Estimated actual annual cost of offshore management (Nauru and Papua New
       Guinea), in millions of Australian dollars, by financial year ending June.
@@ -872,12 +915,26 @@ additionalSeries:
         settlements and charter flights may be excluded.
     source:
       stance: supports
-      quote: >-
-        Since Australia’s offshore detention centres were reopened by the
-        Gillard Government in 2012, successive governments have spent $13.35
-        billion on offshore detention and processing arrangements. … 2012-13
-        -- 2,106.4 2,106.4 … 2017-18 713.6 1,482.0 768.3 … 2024-25 604.4 575.2
-        - 29.2
+      quote: |-
+        Since Australia’s offshore detention centres were reopened by the Gillard Government in 2012, successive governments have spent $13.35 billion on offshore detention and processing arrangements. Below is a year-by-year breakdown of the actual spending on this disastrous policy.
+
+        OFFSHORE MANAGEMENT BUDGET ALLOCATIONS
+
+         | Budget announced before year begins ($mil) | Estimated actual cost reported as year ends ($mil) | Difference ($mil)
+        2012-13 | -- | 2,106.4 | 2,106.4
+        2013-14 | 2,867.4 | 721.0 | -2,146.4
+        2014-15 | 826.7 | 912.6 | 85.9
+        2015-16 | 810.8 | 1,078.1 | 267.3
+        2016-17 | 880.5 | 1,082.9 | 202.4
+        2017-18 | 713.6 | 1,482.0 | 768.3
+        2018-19 | 759.9 | 1,157.5 | 397.7
+        2019-20 | 525.6 | 961.7 | 436.0
+        2020-21 | 1,186.4 | 818.8 | -367.7
+        2021-22 | 811.8 | 700.7 | -111.1
+        2022-23 | 632.5 | 611.1 | -21.4
+        2023-24 | 611.1 | 563.7 | - 47.4
+        2024-25 | 604.4 | 575.2 | - 29.2
+        Total: July 2012 to June 2025 | 11,230.8 | 12,771.7 | 1,540.9
       title: 'Submission to the Legal and Constitutional Affairs References Committee: Inquiry into offshore processing and resettlement arrangements'
       url: 'https://www.refugeecouncil.org.au/wp-content/uploads/2026/02/260213-RCOA-offshore-processing-and-arrangements-submission.pdf'
       publisher: 'Refugee Council of Australia'
@@ -917,8 +974,8 @@ additionalSeries:
               - period: '2025'
                 value: 575.2
   - id: denmark-comparators
-    title: >-
-      Denmark, Sweden and Germany: first-time asylum applicants, 2008-2025
+    title: 'First-time asylum applicants'
+    subtitle: 'Denmark, Sweden and Germany, non-EU applicants, 2008–2025'
     description: >-
       Non-EU first-time asylum applicants per 10,000 residents, and in people,
       for Denmark and the two neighbours it is most often compared with. Denmark
@@ -941,18 +998,12 @@ additionalSeries:
         claims and decisions.
     source:
       stance: complicates
-      quote: >-
-        freq,citizen,applicant,sex,unit,age,geo\TIME_PERIOD 2008 2009 2010
-        2011 2012 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024
-        2025 A,EXT_EU27_2020,FRST,T,PER,TOTAL,DE 21325 27575 41245 45685 64410
-        109375 172945 441805 722270 198255 161885 142450 102525 148175 217735
-        329035 229695 113170 A,EXT_EU27_2020,FRST,T,PER,TOTAL,DK 2350 3720
-        5065 3945 6045 7170 14535 20825 6055 3125 3465 2605 1420 1995 4475
-        2355 2180 1835 A,EXT_EU27_2020,FRST,T,PER,TOTAL,EU27_2020 : : : : : :
-        530560 1216860 1166815 620265 564680 628930 415235 535985 873680
-        1049510 912425 671895 A,EXT_EU27_2020,FRST,T,PER,TOTAL,SE 24275 23605
-        31785 29630 43835 49230 74980 156115 22335 22190 18635 20770 11765
-        9015 13180 8945 6755 5080
+      quote: |-
+        freq,citizen,applicant,sex,unit,age,geo\TIME_PERIOD | 2008 | 2009 | 2010 | 2011 | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025
+        A,EXT_EU27_2020,FRST,T,PER,TOTAL,DE | 21325 | 27575 | 41245 | 45685 | 64410 | 109375 | 172945 | 441805 | 722270 | 198255 | 161885 | 142450 | 102525 | 148175 | 217735 | 329035 | 229695 | 113170
+        A,EXT_EU27_2020,FRST,T,PER,TOTAL,DK | 2350 | 3720 | 5065 | 3945 | 6045 | 7170 | 14535 | 20825 | 6055 | 3125 | 3465 | 2605 | 1420 | 1995 | 4475 | 2355 | 2180 | 1835
+        A,EXT_EU27_2020,FRST,T,PER,TOTAL,EU27_2020 | : | : | : | : | : | : | 530560 | 1216860 | 1166815 | 620265 | 564680 | 628930 | 415235 | 535985 | 873680 | 1049510 | 912425 | 671895
+        A,EXT_EU27_2020,FRST,T,PER,TOTAL,SE | 24275 | 23605 | 31785 | 29630 | 43835 | 49230 | 74980 | 156115 | 22335 | 22190 | 18635 | 20770 | 11765 | 9015 | 13180 | 8945 | 6755 | 5080
       title: 'Asylum applicants by type, citizenship, age and sex - annual aggregated data (migr_asyappctza)'
       url: 'https://ec.europa.eu/eurostat/databrowser/view/migr_asyappctza/default/table'
       publisher: 'Eurostat'
@@ -964,21 +1015,12 @@ additionalSeries:
         valueLabel: First-time applicants per 10,000 residents
         source:
           stance: supports
-          quote: >-
-            freq,indic_de,geo\TIME_PERIOD 2008 2009 2010 2011 2012 2013 2014
-            2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 A,JAN,DE
-            82217837 82002356 81802257 80222065 b 80327900 80523746 80767463
-            81197537 82175684 82521653 82792351 83019213 83166711 83155031
-            83237124 83118501 b 83456045 83577140 A,JAN,DK 5475791 5511451
-            5534738 5560628 5580516 5602628 5627235 5659715 5707251 5748769
-            5781190 5806081 5822763 5840045 5873420 5932654 5961249 5992734
-            A,JAN,EU27_2020 439074280 b 440467898 441160594 b 440526112 b
-            441280191 b 441739935 b 442235565 be 442883289 e 443954935 e
-            444609939 be 445227547 e 446060538 446923963 e 445767723 b
-            446177571 be 448268023 be 450054483 ep 451284558 ep A,JAN,SE
-            9182927 9256347 9340682 9415570 9482855 9555893 9644864 9747355
-            9851017 9995153 10120242 10230185 10327589 10379295 10452326
-            10521556 10551707 10587710
+          quote: |-
+            freq,indic_de,geo\TIME_PERIOD | 2008 | 2009 | 2010 | 2011 | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025
+            A,JAN,DE | 82217837 | 82002356 | 81802257 | 80222065 b | 80327900 | 80523746 | 80767463 | 81197537 | 82175684 | 82521653 | 82792351 | 83019213 | 83166711 | 83155031 | 83237124 | 83118501 b | 83456045 | 83577140
+            A,JAN,DK | 5475791 | 5511451 | 5534738 | 5560628 | 5580516 | 5602628 | 5627235 | 5659715 | 5707251 | 5748769 | 5781190 | 5806081 | 5822763 | 5840045 | 5873420 | 5932654 | 5961249 | 5992734
+            A,JAN,EU27_2020 | 439074280 b | 440467898 | 441160594 b | 440526112 b | 441280191 b | 441739935 b | 442235565 be | 442883289 e | 443954935 e | 444609939 be | 445227547 e | 446060538 | 446923963 e | 445767723 b | 446177571 be | 448268023 be | 450054483 ep | 451284558 ep
+            A,JAN,SE | 9182927 | 9256347 | 9340682 | 9415570 | 9482855 | 9555893 | 9644864 | 9747355 | 9851017 | 9995153 | 10120242 | 10230185 | 10327589 | 10379295 | 10452326 | 10521556 | 10551707 | 10587710
           title: 'Population change - Demographic balance and crude rates at national level (demo_gind)'
           url: 'https://ec.europa.eu/eurostat/databrowser/view/demo_gind/default/table'
           publisher: 'Eurostat'
@@ -1218,9 +1260,8 @@ additionalSeries:
               - period: '2025'
                 value: 113170
   - id: grant-rates
-    title: >-
-      Denmark, Sweden and Germany: share of first-instance asylum decisions that
-      were positive, 2008-2025
+    title: 'Asylum grant rates'
+    subtitle: 'Denmark, Sweden and Germany, first-instance decisions, 2008–2025'
     description: >-
       Positive first-instance decisions (refugee status, subsidiary protection
       or humanitarian status) as a share of all first-instance decisions, for
@@ -1236,22 +1277,14 @@ additionalSeries:
         the Observations.
     source:
       stance: complicates
-      quote: >-
-        freq,unit,citizen,sex,age,decision,geo\TIME_PERIOD 2008 2009 2010 2011
-        2012 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025
-        A,PER,EXT_EU27_2020,T,TOTAL,POS,DE 7870 9765 10445 9675 17135 20125
-        40560 140910 433905 261620 75940 70320 62470 59850 128460 135275
-        133710 87395 A,PER,EXT_EU27_2020,T,TOTAL,POS,DK 730 790 1345 1310 1695
-        2810 5480 9995 7125 2365 1315 1575 420 775 515 990 715 420
-        A,PER,EXT_EU27_2020,T,TOTAL,POS,SE 7840 7095 8510 8805 12400 24020
-        30650 32360 66585 26510 10820 6905 5450 3900 4845 5250 3320 2185
-        A,PER,EXT_EU27_2020,T,TOTAL,TOTAL,DE 19245 26760 45300 40280 58605
-        76165 97275 249285 631090 524195 179115 154175 128590 132680 197540
-        217430 250255 272700 A,PER,EXT_EU27_2020,T,TOTAL,TOTAL,DK 1240 1645
-        3280 3565 4680 6965 8055 12300 10410 6880 2625 3030 1185 1525 985 1570
-        1485 1170 A,PER,EXT_EU27_2020,T,TOTAL,TOTAL,SE 29460 23920 27645 23815
-        25320 35955 39905 48570 95775 60575 34830 26330 24380 17145 16810
-        19155 9670 8615
+      quote: |-
+        freq,unit,citizen,sex,age,decision,geo\TIME_PERIOD | 2008 | 2009 | 2010 | 2011 | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025
+        A,PER,EXT_EU27_2020,T,TOTAL,POS,DE | 7870 | 9765 | 10445 | 9675 | 17135 | 20125 | 40560 | 140910 | 433905 | 261620 | 75940 | 70320 | 62470 | 59850 | 128460 | 135275 | 133710 | 87395
+        A,PER,EXT_EU27_2020,T,TOTAL,POS,DK | 730 | 790 | 1345 | 1310 | 1695 | 2810 | 5480 | 9995 | 7125 | 2365 | 1315 | 1575 | 420 | 775 | 515 | 990 | 715 | 420
+        A,PER,EXT_EU27_2020,T,TOTAL,POS,SE | 7840 | 7095 | 8510 | 8805 | 12400 | 24020 | 30650 | 32360 | 66585 | 26510 | 10820 | 6905 | 5450 | 3900 | 4845 | 5250 | 3320 | 2185
+        A,PER,EXT_EU27_2020,T,TOTAL,TOTAL,DE | 19245 | 26760 | 45300 | 40280 | 58605 | 76165 | 97275 | 249285 | 631090 | 524195 | 179115 | 154175 | 128590 | 132680 | 197540 | 217430 | 250255 | 272700
+        A,PER,EXT_EU27_2020,T,TOTAL,TOTAL,DK | 1240 | 1645 | 3280 | 3565 | 4680 | 6965 | 8055 | 12300 | 10410 | 6880 | 2625 | 3030 | 1185 | 1525 | 985 | 1570 | 1485 | 1170
+        A,PER,EXT_EU27_2020,T,TOTAL,TOTAL,SE | 29460 | 23920 | 27645 | 23815 | 25320 | 35955 | 39905 | 48570 | 95775 | 60575 | 34830 | 26330 | 24380 | 17145 | 16810 | 19155 | 9670 | 8615
       title: 'First instance decisions on applications by type of decision, citizenship, age and sex - annual aggregated data (migr_asydcfsta)'
       url: 'https://ec.europa.eu/eurostat/databrowser/view/migr_asydcfsta/default/table'
       publisher: 'Eurostat'
@@ -1378,7 +1411,8 @@ additionalSeries:
                 value: 32
 comparisons:
   - id: australia-outcomes
-    title: 'Australia: what happened to the people it sent offshore'
+    title: 'Australia: people sent offshore'
+    subtitle: 'Sent to Nauru or Papua New Guinea in 2012–2014, as of January 2021'
     description: >-
       The 4,180 people transferred to Nauru or Papua New Guinea from August 2012
       to 2014, by where they were on 31 January 2021.
@@ -1399,6 +1433,7 @@ comparisons:
         value: 263
       - label: Died
         value: 18
+        detail: By 31 January 2021
     note: >-
       Department of Home Affairs answers to Senate questions on notice, as
       reproduced in the Kaldor Centre's Policy Brief 11 (Table 1). "Returned"
@@ -1408,7 +1443,8 @@ comparisons:
       covers 4,359 people including transfers since 2023 and does not split into
       parts that add to its total, so it is cited in the Observations instead.
   - id: rwanda-spend
-    title: What the UK spent on the Rwanda partnership, to June 2024
+    title: 'Spending on the Rwanda partnership'
+    subtitle: 'UK Home Office, by type, April 2022 to June 2024'
     description: >-
       Home Office spending on the Migration and Economic Development Partnership
       with Rwanda and the Illegal Migration Act 2023, April 2022 to June 2024,
@@ -1466,21 +1502,54 @@ figures:
   - kind: series
   - kind: series
     id: australia-interceptions
+  - kind: dataTable
+    id: turnback-definitions
+    title: 'Turning boats back: Australia and Britain'
+    subtitle: 'As Operation Sovereign Borders defines them, and Britain''s 2022 policy'
+    description: The two ways Australia has returned people on boats, in the operation's own words, and what became of Britain's own turnback policy.
+    caption: One card per term
+    layout: cards
+    leadColumn: means
+    columns:
+      - { key: term, label: Term, rowHeader: true }
+      - { key: means, label: What it means, sortable: false }
+    rows:
+      - term: Turnback
+        means: { value: '"the safe removal of vessels from Australian waters, with passengers and crew returned to their countries of departure"', sources: [3] }
+      - term: Take-back
+        means: { value: 'A transfer, often at sea, of passengers from one sovereign authority to another "where Australia works with a country of departure in order to see the safe return of passengers and crew"', sources: [3] }
+      - term: Britain's turnaround tactic, 2022
+        means: { value: 'Withdrawn by November 2022, when the government said boats can be turned around safely in the Channel only in limited circumstances', sources: [60] }
   - kind: series
     id: australia-offshore-cost
   - kind: comparison
     id: australia-outcomes
   - kind: comparison
     id: rwanda-spend
+  - kind: dataTable
+    id: rwanda-results
+    title: 'Rwanda partnership: cost and who went'
+    subtitle: 'UK spending and people sent to Rwanda, to June 2024'
+    description: Total Home Office spending on the Rwanda partnership and the Illegal Migration Act, and the people sent to Rwanda.
+    caption: One row per measure
+    columns:
+      - { key: measure, label: Measure, rowHeader: true }
+      - { key: result, label: Result, sortable: false }
+    rows:
+      - measure: Home Office spend on the partnership and the Illegal Migration Act
+        result: { value: £715 million, sources: [25] }
+      - measure: Asylum seekers sent to Rwanda
+        result: { value: None, sources: [24] }
+      - measure: Volunteers sent to Rwanda
+        result: { value: Four, sources: [24] }
   - kind: series
     id: denmark-comparators
   - kind: series
     id: grant-rates
   - kind: dataTable
     id: residence-status
-    title: >-
-      Denmark, Germany and Sweden: temporary versus permanent status and
-      refugees' employment
+    title: 'Temporary status and refugees'' work'
+    subtitle: 'Denmark, Germany and Sweden: reforms and employment'
     description: European reforms that made permanent residence harder or slower to get, partly on the argument that it would push refugees into work. The UK government gives the same reason for its 2026 changes.
     caption: One card per reform or study
     layout: timeline
@@ -1508,7 +1577,8 @@ figures:
         finding: { value: 'Less take-up of Swedish language courses; no effect on employment, education or welfare receipt in the first year', sources: [41] }
   - kind: dataTable
     id: work-rights
-    title: European studies of work rights for people waiting on an asylum claim
+    title: 'Work rights while waiting on a claim'
+    subtitle: 'Four European studies of work bans and waiting times'
     description: Four European studies of work bans and waiting times. In the UK, a person waiting on an asylum claim may ask for permission to work after 12 months, and only in jobs on the Immigration Salary List.
     caption: One card per study
     layout: cards
@@ -1521,7 +1591,7 @@ figures:
     rows:
       - study: Di Iasio and Wahba (working paper, 2023)
         data: First-time asylum applicants to EU countries, 2008 to 2020
-        finding: { value: 'Networks are the strongest pull; a work ban one per cent shorter is associated with 0.18% more first-time applications', sources: [42, 43] }
+        finding: { value: 'Networks are the strongest pull; a work ban one per cent shorter is associated with 0.18% more first-time applications; the authors say bans "are not a strong deterrence"', sources: [42, 43] }
       - study: Fasani, Frattini and Minale (2021)
         data: Refugees arriving in European countries, 1985 to 2012
         finding: { value: 'A work ban at arrival cut later employment probability by 15%, with effects lasting up to 10 years', sources: [44] }
@@ -1533,7 +1603,8 @@ figures:
         finding: { value: An extra year waiting for a decision meant a 20% lower employment rate later, sources: [46] }
   - kind: dataTable
     id: uk-2026
-    title: The UK's 2026 changes to refugee protection
+    title: 'The UK''s 2026 refugee protection changes'
+    subtitle: 'Each measure, who it applies to and how far it has gone'
     description: The measures in the UK's new approach to refugee protection, who each applies to and how far each has gone.
     caption: One card per measure
     layout: cards
@@ -1560,6 +1631,41 @@ figures:
       - measure: 'Repayment of asylum support by refugees who can afford it, suggested at around £10,000'
         applies-to: Adults who received support
         status: { value: In the Bill; amount set by regulations, sources: [57, 59] }
+observationMarks:
+  australia-arrivals-fell-after-turnbacks: {lines: ["People arriving by boat"], from: "2013", to: "2016"}
+  rwanda-cost-and-relocations: {rows: ["Home Office spend on the partnership and the Illegal Migration Act"]}
+  offshore-cost-per-year: {lines: ["Estimated actual cost"], from: "2013", to: "2025"}
+  australia-outcomes: {rows: ["Back in Australia", "Returned to country of origin", "Resettled in a third country"]}
+  turnbacks-need-departure-country: {rows: ["Take-back"]}
+  uk-turnbacks-withdrawn: {rows: ["Britain's turnaround tactic, 2022"]}
+  work-bans-reduce-employment: {rows: ["Fasani, Frattini and Minale (2021)", "Marbach, Hainmueller and Hangartner (2018)"]}
+  work-rights-modest-association: {rows: ["Di Iasio and Wahba (working paper, 2023)"]}
+  networks-strongest-pull: {rows: ["Di Iasio and Wahba (working paper, 2023)"]}
+  australia-peak: {lines: ["People arriving by boat"], from: "2009", to: "2013"}
+  offshore-processing-alone: {lines: ["People arriving by boat"], from: "2012", to: "2013"}
+  australia-cause: {lines: ["People arriving by boat"], from: "2013", to: "2014"}
+  australia-stayed-in-refugee-convention: {lines: ["People arriving by boat"], from: "2013", to: "2016"}
+  returned-not-landed: {lines: ["Brought to Australia and transferred offshore", "Returned to country of departure"], from: "2015", to: "2019"}
+  nauru-transfers-resumed: {lines: ["Brought to Australia and transferred offshore"]}
+  offshore-fixed-costs: {lines: ["Estimated actual cost"], from: "2014", to: "2021"}
+  rwanda-untested: {whole: true}
+  denmark-intake-low: {lines: ["Denmark"], at: "2025"}
+  denmark-2016-fall-matched-sweden: {lines: ["Denmark", "Sweden"], from: "2015", to: "2016"}
+  denmark-several-changes: {lines: ["Denmark"], from: "2015", to: "2025"}
+  forty-year-low: {lines: ["Denmark"], from: "2020", to: "2025"}
+  denmark-grant-rate: {lines: ["Denmark"], at: "2025"}
+  denmark-rank-2025: {lines: ["Denmark", "Sweden", "Germany"], at: "2025"}
+  less-secure-status-no-employment-gain: {rows: ["Denmark, 2002", "Denmark, 2007", "Germany, 2016", "Sweden, 2016"]}
+  sweden-short-run-exception: {rows: ["Sweden (natural experiment, published 2020)"]}
+  no-uk-evaluation: {whole: true}
+  uk-work-rule: {rows: ["Di Iasio and Wahba (working paper, 2023)"]}
+  inspired-by-denmark: {rows: ["30-month protection, renewed at review only if return is still unsafe", "20-year wait for settlement on \"core protection\", unless the refugee switches to a work or study route", "Refugee family reunion"]}
+  bill-not-law: {rows: ["30-month protection, renewed at review only if return is still unsafe", "One \"protection status\" replaces refugee status and humanitarian protection", "Repayment of asylum support by refugees who can afford it, suggested at around £10,000"]}
+  arrivals-are-not-attempts: {lines: ["People arriving by boat"], from: "2014", to: "2016"}
+  no-asylum-seekers-sent: {rows: ["Asylum seekers sent to Rwanda", "Volunteers sent to Rwanda"]}
+  eighteen-had-died: {rows: ["Died"]}
+  authors-say-bans-not-a-strong-deterrent: {rows: ["Di Iasio and Wahba (working paper, 2023)"]}
+  thirty-month-protection: {rows: ["30-month protection, renewed at review only if return is still unsafe"]}
 ---
 ## Observations {#deterrence-and-protection-policies--observations-arrivals}
 
@@ -1583,10 +1689,6 @@ The Kaldor Centre, which opposes offshore processing, reads the fall in arrivals
 
 The Australian government described offshore processing as part of a "broad chain of measures end to end", and as minister Peter Dutton argued that letting people move from Manus to Australia would bring the boats back. Both readings fit the annual data. [12](#source-deterrence-and-protection-policies-12) [13](#source-deterrence-and-protection-policies-13)
 
-### Takebacks rely on the country of departure's cooperation {#deterrence-and-protection-policies--turnbacks-need-departure-country}
-
-Operation Sovereign Borders defines a turnback as removing a vessel from Australian waters with passengers returned to their country of departure, and a takeback as a transfer to that country's authorities "where Australia works with a country of departure". [3](#source-deterrence-and-protection-policies-3)
-
 ### Australia did this while remaining in the Refugee Convention {#deterrence-and-protection-policies--australia-stayed-in-refugee-convention}
 
 Australia has ratified the 1951 Refugee Convention and its 1967 Protocol. The Kaldor Centre argues that offshore processing breached those obligations. Australia has no bill or charter of rights, so the policy could not be challenged in Australian courts on the ground that it broke international law. [19](#source-deterrence-and-protection-policies-19) [20](#source-deterrence-and-protection-policies-20)
@@ -1596,6 +1698,16 @@ Australia has ratified the 1951 Refugee Convention and its 1967 Protocol. The Ka
 ### Arrivals are not attempts {#deterrence-and-protection-policies--arrivals-are-not-attempts}
 
 A boat turned back is not counted as an arrival; the Parliamentary Library notes, for example, that one boat in 2014 was turned back and not counted. The zero arrivals for 2015 and 2016 therefore mean no boat landed, not that no boat set out. The next chart shows the boats intercepted. [4](#source-deterrence-and-protection-policies-4) [8](#source-deterrence-and-protection-policies-8)
+
+## Observations {#deterrence-and-protection-policies--observations-turnback-definitions}
+
+### Takebacks rely on the country of departure's cooperation {#deterrence-and-protection-policies--turnbacks-need-departure-country}
+
+Operation Sovereign Borders defines a turnback as removing a vessel from Australian waters with passengers returned to their country of departure, and a takeback as a transfer to that country's authorities "where Australia works with a country of departure". [3](#source-deterrence-and-protection-policies-3)
+
+### Britain withdrew its own turnback policy, citing safety at sea {#deterrence-and-protection-policies--uk-turnbacks-withdrawn}
+
+Britain had a policy of turning small boats back in the Channel. By November 2022 it had withdrawn it, saying boats can be turned around safely in the Channel only in limited circumstances, and that it had no plans to bring the policy back. [60](#source-deterrence-and-protection-policies-60)
 
 ## Observations {#deterrence-and-protection-policies--observations-after-sovereign-borders}
 
@@ -1609,9 +1721,9 @@ The Refugee Council of Australia reports that transfers to Nauru resumed in late
 
 ## Observations {#deterrence-and-protection-policies--observations-offshore-cost}
 
-### Offshore processing cost about a billion Australian dollars a year at its height {#deterrence-and-protection-policies--offshore-cost-per-year}
+### Offshore processing has cost billions of Australian dollars since 2012-13 {#deterrence-and-protection-policies--offshore-cost-per-year}
 
-Two sets of government figures compiled by the Kaldor Centre put the cost at an average of at least A$1 billion a year, peaking at A$1.49 billion in 2017-18. The Refugee Council of Australia puts total spending since 2012 at more than A$13 billion. [17](#source-deterrence-and-protection-policies-17) [21](#source-deterrence-and-protection-policies-21)
+Two sets of government figures compiled by the Kaldor Centre put the cost at an average of at least A$1 billion a year, reaching upwards of A$1.49 billion in 2017-18. The Refugee Council of Australia puts total spending since 2012 at more than A$13 billion. [17](#source-deterrence-and-protection-policies-17) [21](#source-deterrence-and-protection-policies-21)
 
 ### Costs stayed high as the number of people held fell {#deterrence-and-protection-policies--offshore-fixed-costs}
 
@@ -1625,17 +1737,27 @@ Of approximately 4,180 people transferred from 2012 to 2014, 2,043 were back in 
 
 The Refugee Council of Australia's count to December 2025 covers 4,359 people transferred, including those sent since 2023: 1,547 resettled in third countries, 978 returned or removed, and 21 dead. [23](#source-deterrence-and-protection-policies-23)
 
+### 18 people sent offshore had died by January 2021 {#deterrence-and-protection-policies--eighteen-had-died}
+
+Of the 4,180 people transferred from 2012 to 2014, 18 had died by 31 January 2021, offshore or in Australia after medical evacuation. [14](#source-deterrence-and-protection-policies-14) [16](#source-deterrence-and-protection-policies-16)
+
 ## Observations {#deterrence-and-protection-policies--observations-rwanda-spend}
 
-### The UK spent £715 million and sent four volunteers {#deterrence-and-protection-policies--rwanda-cost-and-relocations}
+### The scheme was never tested as a deterrent {#deterrence-and-protection-policies--rwanda-untested}
+
+The National Audit Office did not judge value for money, because that rests on whether the partnership deterred journeys. With no asylum seekers relocated, there is no evidence on that either way. [29](#source-deterrence-and-protection-policies-29) [24](#source-deterrence-and-protection-policies-24)
+
+## Observations {#deterrence-and-protection-policies--observations-rwanda-results}
+
+### The UK spent £715 million on the Rwanda scheme and the Illegal Migration Act {#deterrence-and-protection-policies--rwanda-cost-and-relocations}
 
 The Home Office spent £715 million on the Rwanda partnership and the Illegal Migration Act up to June 2024, including £290 million paid to Rwanda. Four volunteers and no asylum seekers were sent to Rwanda. Ending the partnership avoided over £220 million in scheduled payments. [25](#source-deterrence-and-protection-policies-25) [26](#source-deterrence-and-protection-policies-26) [24](#source-deterrence-and-protection-policies-24) [28](#source-deterrence-and-protection-policies-28)
 
 The £715 million covers the Illegal Migration Act as well as the partnership, so it is not all the cost of relocating four people. The payments to Rwanda were mostly fixed sums due whatever the number relocated, and the other categories are largely fixed costs; per person, the agreement also provided up to £150,874 for processing and support over five years. [27](#source-deterrence-and-protection-policies-27) [25](#source-deterrence-and-protection-policies-25) [30](#source-deterrence-and-protection-policies-30)
 
-### The scheme was never tested as a deterrent {#deterrence-and-protection-policies--rwanda-untested}
+### Four volunteers and no asylum seekers were sent to Rwanda {#deterrence-and-protection-policies--no-asylum-seekers-sent}
 
-The National Audit Office did not judge value for money, because that rests on whether the partnership deterred journeys. With no asylum seekers relocated, there is no evidence on that either way. [29](#source-deterrence-and-protection-policies-29) [24](#source-deterrence-and-protection-policies-24)
+During more than two years of the policy, only four volunteers and no asylum seekers were sent to Rwanda. [24](#source-deterrence-and-protection-policies-24)
 
 ## Observations {#deterrence-and-protection-policies--observations-per-head}
 
@@ -1681,6 +1803,10 @@ All five findings come from Denmark, Germany and Sweden, and they measure employ
 
 ## Observations {#deterrence-and-protection-policies--observations-work-rights}
 
+### People from home already there are the strongest pull to a destination, one European study finds {#deterrence-and-protection-policies--networks-strongest-pull}
+
+The one cross-country study of where asylum seekers apply finds that "the strongest pull factor for asylum seekers to a destination is social networks": earlier applicants and migrants from the same country already there. It is a working paper on EU countries, 2008 to 2020, not the UK. [42](#source-deterrence-and-protection-policies-42)
+
 ### Work rights show a modest association with where people claim {#deterrence-and-protection-policies--work-rights-modest-association}
 
 The one cross-country study of destinations finds that shorter work bans go with more applications, but the association is about a quarter the size of the association with earlier applications from the same country (0.18% against 0.66% for each one per cent change). Its authors conclude that work bans "are not a strong deterrence". It is a working paper on EU countries, not the UK. [43](#source-deterrence-and-protection-policies-43) [42](#source-deterrence-and-protection-policies-42)
@@ -1689,15 +1815,23 @@ The one cross-country study of destinations finds that shorter work bans go with
 
 Studies across Europe, Germany and Switzerland find that delaying work or decisions lowers refugees' employment for years afterwards. In 2021 the Migration Advisory Committee urged the government to review the UK ban, citing "clear evidence of the harm" and "little evidence" of significant benefits. [44](#source-deterrence-and-protection-policies-44) [45](#source-deterrence-and-protection-policies-45) [46](#source-deterrence-and-protection-policies-46) [47](#source-deterrence-and-protection-policies-47)
 
+### The study's authors say work bans are not a strong deterrent {#deterrence-and-protection-policies--authors-say-bans-not-a-strong-deterrent}
+
+The authors conclude that "employment bans are not a strong deterrence for asylum seekers given their modest association to asylum flows". [42](#source-deterrence-and-protection-policies-42)
+
 ### Ministers argue earlier work rights would draw more crossings {#deterrence-and-protection-policies--uk-work-rule}
 
 In Parliament the Home Secretary said in November 2025 that a right to work while waiting "would be a huge pull factor", and in September 2025 a Home Office minister said cutting the wait to three months "could act as a pull factor". No published Home Office estimate of the size of that effect was found (see What we don't know yet). [49](#source-deterrence-and-protection-policies-49) [50](#source-deterrence-and-protection-policies-50)
 
 ## Observations {#deterrence-and-protection-policies--observations-uk-2026}
 
+### Refugee protection now lasts 30 months, renewed only if return is still unsafe {#deterrence-and-protection-policies--thirty-month-protection}
+
+Adults and accompanied children claiming from 2 March 2026 receive 30 months' protection, renewed at review only if return is still unsafe. This is in force through the Immigration Rules. [51](#source-deterrence-and-protection-policies-51)
+
 ### The government presents the changes as following Denmark {#deterrence-and-protection-policies--inspired-by-denmark}
 
-The March 2026 statement calls the reset "inspired by Denmark’s success" and aims to "reduce the pull factors driving illegal migration". The Danish evidence above shows a low and falling intake, alongside a Swedish fall of similar timing and a grant rate near the EU's. [31](#source-deterrence-and-protection-policies-31)
+The March 2026 statement calls the reset "inspired by Denmark’s success" and aims to "reduce the pull factors driving illegal migration". The Danish evidence above shows a low and falling intake, alongside a Swedish fall of similar timing and a [grant rate](#glossary-grant-rate) near the EU's. [31](#source-deterrence-and-protection-policies-31)
 
 ### The Bill is not yet law {#deterrence-and-protection-policies--bill-not-law}
 

@@ -233,8 +233,13 @@ sources:
     publisher: Home Office
     date: '2026-07-16'
   - stance: supports
-    quote: >-
-      granted refugee status or other leave (grant rate) 79,589 72,236 (60%)
+    quote: |-
+      Table 1: Small boat arrivals claiming asylum and initial decision outcomes on their claims, by arrival date, January 2018 to December 2025
+
+       | January 2018 to December 2025 (people) | January 2018 to December 2025 (cases)
+      Received an initial decision (% of claims) | 132,894(74%) | 119,637(74%)
+      granted refugee status or other leave (grant rate) | 79,589 | 72,236(60%)
+      refused | 53,305 | 47,401
     title: >-
       How many small boat arrivals have claimed asylum or been referred to the
       National Referral Mechanism? (Table 1)
@@ -243,8 +248,12 @@ sources:
     publisher: Home Office
     date: '2026-07-16'
   - stance: complicates
-    quote: >-
-      Withdrawn / Received an administrative outcome 33,413 31,495
+    quote: |-
+      Table 1: Small boat arrivals claiming asylum and initial decision outcomes on their claims, by arrival date, January 2018 to December 2025
+
+       | January 2018 to December 2025 (people) | January 2018 to December 2025 (cases)
+      Asylum claims | 178,845 | 162,007
+      Withdrawn / Received an administrative outcome | 33,413 | 31,495
     title: >-
       How many small boat arrivals have claimed asylum or been referred to the
       National Referral Mechanism? (Table 1)
@@ -468,7 +477,8 @@ sources:
     publisher: Home Office
     date: '2026-08-27'
 series:
-  title: 'People claiming asylum in the UK, 2001–2025'
+  title: 'People claiming asylum in the UK'
+  subtitle: '2001–2025'
   description: >-
     Every person recorded as claiming asylum in the UK in each calendar year of
     the Home Office claims dataset, main applicants and dependants together,
@@ -620,7 +630,8 @@ series:
               value: 82559
 additionalSeries:
   - id: per-head-series
-    title: 'Asylum claims per 1,000 residents, UK and EU, 2014–2025'
+    title: 'Asylum claims per 1,000 residents'
+    subtitle: 'UK, EU27, Germany, France, Spain and Italy, 2014–2025'
     description: >-
       First-time asylum applicants per 1,000 residents in the EU27 as a whole
       and in the four EU countries the Home Office names as receiving the most
@@ -829,7 +840,8 @@ additionalSeries:
               - period: '2025'
                 value: 2.18
   - id: grant-rate-series
-    title: 'Share of UK asylum claims granted at initial decision, 2001–2025'
+    title: 'Share of asylum claims granted'
+    subtitle: 'At the first decision, UK, 2001–2025'
     description: >-
       Grants of refugee status, humanitarian protection or other leave as a
       share of grants plus refusals, main applicants, by the year the initial
@@ -842,6 +854,11 @@ additionalSeries:
       note: >-
         The full calendar-year run of the Home Office initial decisions
         dataset; 2026 is a half year and is left off.
+    events:
+    - period: '2022'
+      label: Nationality and Borders Act raises the standard of proof
+      note: Applicants must now show "on the balance of probabilities" that they would face persecution, a higher threshold than before.
+      source: 17
     breaks:
       - period: '2003'
         label: Exceptional leave replaced
@@ -925,7 +942,8 @@ additionalSeries:
               - period: '2025'
                 value: 42.1
   - id: cohort-series
-    title: 'What happened to UK asylum claims, by year of claim, 2007–2025'
+    title: 'What happened to UK asylum claims'
+    subtitle: 'Main applicants by year of claim, 2007–2025, outcomes as at July 2026'
     description: >-
       Each year's claims (main applicants) followed to their latest recorded
       outcome as at July 2026: the grant rate at initial decision and at latest
@@ -959,6 +977,7 @@ additionalSeries:
         valueLabel: Grants as a share of grants plus refusals
         lines:
           - name: At initial decision
+            glossary: initial-decision
             points:
               - period: '2007'
                 value: 29.7
@@ -1245,8 +1264,97 @@ additionalSeries:
                 value: 4447
               - period: '2025'
                 value: 9009
+  - id: small-boat-outcomes-series
+    title: 'Outcomes of small-boat claims by year'
+    subtitle: 'Initial outcome, UK, by year of arrival, as recorded in mid-2026'
+    description: >-
+      People (main applicants and dependants) who arrived by small boat in each
+      year and claimed asylum, stacked by initial outcome as recorded in
+      mid-2026, so the top edge is each year's total.
+    periodLabel: Year of arrival
+    coverage:
+      from: '2018'
+      to: '2025'
+      note: >-
+        The full range of IER_D03 in the year ending June 2026 release, which
+        re-extracts the 2018–2025 arrivals and so differs slightly from the
+        Home Office's published Table 1 (178,845 claims). Appeals are not
+        included: a refusal here may since have been overturned. "Granted"
+        includes refugee status, humanitarian protection and other leave.
+    breaks: []
+    source:
+      stance: supports
+      quote: >-
+        IER_D03: Initial decisions on asylum claims from small boat arrivals, by
+        arrival date, 2018 Q1 to 2025 Q4 - dataset
+      title: >-
+        Illegal entry routes to the UK detailed datasets, year ending June 2026
+      url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+      fileUrl: https://assets.publishing.service.gov.uk/media/6a85c41d3d82f78d5c514551/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
+      localFile: datasets/assets.publishing.service.gov.uk/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
+      publisher: Home Office
+      date: '2026-08-27'
+    readings:
+      - id: small-boat-outcomes
+        label: People by initial outcome
+        unit: count
+        valueLabel: People who arrived by small boat and claimed asylum, by initial outcome
+        valuesFrom: "IER_D03, initial outcome by year of arrival"
+        stacked: true
+        lines:
+          - name: Granted
+            points:
+              - { period: '2018', value: 145 }
+              - { period: '2019', value: 815 }
+              - { period: '2020', value: 4166 }
+              - { period: '2021', value: 15872 }
+              - { period: '2022', value: 17178 }
+              - { period: '2023', value: 10758 }
+              - { period: '2024', value: 13732 }
+              - { period: '2025', value: 18743 }
+          - name: Refused
+            points:
+              - { period: '2018', value: 129 }
+              - { period: '2019', value: 948 }
+              - { period: '2020', value: 3458 }
+              - { period: '2021', value: 5082 }
+              - { period: '2022', value: 7093 }
+              - { period: '2023', value: 10881 }
+              - { period: '2024', value: 14784 }
+              - { period: '2025', value: 14016 }
+          - name: Withdrawn
+            points:
+              - { period: '2018', value: 5 }
+              - { period: '2019', value: 41 }
+              - { period: '2020', value: 405 }
+              - { period: '2021', value: 3111 }
+              - { period: '2022', value: 9862 }
+              - { period: '2023', value: 4272 }
+              - { period: '2024', value: 4272 }
+              - { period: '2025', value: 2214 }
+          - name: Administrative outcome
+            points:
+              - { period: '2018', value: 1 }
+              - { period: '2019', value: 4 }
+              - { period: '2020', value: 176 }
+              - { period: '2021', value: 923 }
+              - { period: '2022', value: 6266 }
+              - { period: '2023', value: 1086 }
+              - { period: '2024', value: 681 }
+              - { period: '2025', value: 471 }
+          - name: Awaiting initial decision
+            points:
+              - { period: '2018', value: 0 }
+              - { period: '2019', value: 5 }
+              - { period: '2020', value: 71 }
+              - { period: '2021', value: 288 }
+              - { period: '2022', value: 789 }
+              - { period: '2023', value: 613 }
+              - { period: '2024', value: 1807 }
+              - { period: '2025', value: 4508 }
   - id: appeals-series
-    title: UK asylum appeals at the First-tier Tribunal, 2007/08–2025/26
+    title: 'Asylum appeals decided and allowed'
+    subtitle: 'First-tier Tribunal, UK, financial years 2007/08 to 2025/26'
     description: >-
       Asylum, protection and revocation-of-protection appeals determined at a
       hearing or on the papers each financial year, and the share allowed.
@@ -1381,10 +1489,11 @@ additionalSeries:
                 value: 14606
 comparisons:
   - id: per-head-2025
-    title: Asylum claims per 1,000 residents across Europe, 2025
+    title: 'Claims per 1,000 residents, by country'
+    subtitle: 'All 31 EU+ countries and the UK, 2025'
     description: >-
-      2025, all 31 EU+ countries and the UK, ranked from highest to lowest.
-      First-time applicants for EU+ countries; people claiming asylum for the
+      Countries ranked from highest to lowest. First-time applicants for EU+
+      countries; people claiming asylum for the
       UK.
     unit: count
     valueLabel: 'Applicants per 1,000 residents'
@@ -1467,9 +1576,11 @@ comparisons:
       Rankings that count all applicants, including repeat applications, put
       the UK lower (see Subtleties).
   - id: count-2025
-    title: Total asylum claims across Europe, 2025
+    title: 'Asylum claims by country'
+    subtitle: 'All 31 EU+ countries and the UK, 2025'
     description: >-
-      2025, all 31 EU+ countries and the UK, ranked from highest to lowest.
+      Countries ranked from highest to lowest: first-time applicants for EU+
+      countries, people claiming asylum for the UK.
     unit: count
     valueLabel: 'First-time applicants (UK: people claiming asylum)'
     sources:
@@ -1546,9 +1657,8 @@ comparisons:
       Office people claiming asylum for the UK. The complete EU+ comparator
       set is kept.
   - id: grant-rate-decomposition
-    title: >-
-      How much of the 2022–2025 fall in the UK grant rate is a change of
-      nationality mix?
+    title: 'Nationality mix and the UK grant rate'
+    subtitle: 'Initial decisions, main applicants, 2022 and 2025, with two what-ifs'
     description: >-
       UK initial grant rate, main applicants: the actual 2022 and 2025 rates,
       and two counterfactuals that hold either the nationality mix or each
@@ -1577,12 +1687,11 @@ comparisons:
       The answer depends on treating each nationality as one group; changes
       in who claims within a nationality show up as within-nationality change.
   - id: recognition-2025
-    title: >-
-      Share of first-instance asylum decisions that were positive across Europe,
-      2025
+    title: 'Asylum grant rates across Europe'
+    subtitle: 'First decisions, all EU+ countries, the EU27 and the UK, 2025'
     description: >-
-      All EU+ countries, the EU27 as a whole and the UK, ranked from highest
-      to lowest. People, including dependants.
+      Countries and the EU27 as a whole, ranked from highest to lowest.
+      People, including dependants.
     unit: percent
     valueLabel: Positive decisions as a share of all first-instance decisions
     domainMax: 100
@@ -1679,6 +1788,29 @@ dataStillNeeded:
       Eurostat stopped publishing UK figures after Brexit, so UK comparisons
       rest on Home Office counts that are close to, but not defined
       identically with, Eurostat's first-time applicants.
+observationMarks:
+  small-boat-claims-mostly-granted: {rows: ["Granted asylum or other protection", "Refused"]}
+  grant-rates-by-nationality: {rows: ["Sudan", "Eritrea", "Bangladesh", "Syria", "India"]}
+  two-in-five-appeals-allowed: {lines: ["Asylum and protection appeals allowed"], from: "2007", to: "2025"}
+  final-outcomes-after-appeal: {lines: ["At initial decision", "At latest outcome"], from: "2007", to: "2022"}
+  why-the-grant-rate-fell: {rows: ["Actual 2022", "Actual 2025"]}
+  within-nationality-falls: {rows: ["Syria", "Pakistan"]}
+  standard-of-proof: {lines: ["All nationalities (main applicants)"], from: "2022", to: "2025"}
+  claims-over-time: {lines: ["All claimants"], from: "2002", to: "2025", at: "2002"}
+  claims-now-falling: {lines: ["All claimants"], from: "2024", to: "2025"}
+  routes-before-claiming: {lines: ["All claimants"], at: "2025"}
+  uk-per-head-now-at-eu-average: {lines: ["United Kingdom", "EU27"], at: "2025"}
+  grant-rate-over-time: {lines: ["All nationalities (main applicants)"], from: "2022", to: "2025", at: "2022"}
+  recent-cohorts-incomplete: {lines: ["At initial decision", "At latest outcome"], from: "2023", to: "2025"}
+  withdrawals: {lines: ["Withdrawn"], from: "2021", to: "2024"}
+  appeals-backlog: {lines: ["Asylum and protection appeals allowed"], from: "2022", to: "2025"}
+  2023-2024-arrivals-granted-under-half: {lines: ["Granted", "Refused"], from: "2023", to: "2024", at: "2024"}
+  eu-grant-rate-similar: {rows: ["United Kingdom", "EU27 as a whole"]}
+  uk-and-eu-by-nationality: {rows: ["Afghanistan", "Somalia", "Iran", "Sudan", "Vietnam"]}
+  people-and-cases: {lines: ["All claimants", "Main applicants only"], at: "2001"}
+  rank-depends-on-measure: {rows: ["United Kingdom"]}
+  sudanese-and-eritreans-mostly-granted: {rows: ["Sudan", "Eritrea"]}
+  syrian-grant-rate-fell: {rows: ["Year to June 2025", "Year to June 2026"]}
 figures:
   - kind: series
   - kind: series
@@ -1695,7 +1827,8 @@ figures:
     id: count-2025
   - kind: barChart
     id: grant-rate-by-nationality
-    title: UK initial grant rate by nationality, 2022 and 2025
+    title: 'UK grant rate by nationality'
+    subtitle: 'Initial decisions, ten biggest nationalities and Syria, 2022 and 2025'
     description: >-
       Main applicants. The ten nationalities with the most initial decisions
       in 2025, plus Syria, and all nationalities together.
@@ -1703,7 +1836,7 @@ figures:
     categoryLabel: Nationality
     format: { unit: percent, decimals: 1 }
     domainMax: 100
-    sources: [42]
+    sources: [42, 14]
     style: dumbbell
     series:
       - { key: y2022, label: '2022' }
@@ -1720,54 +1853,50 @@ figures:
       - { label: Vietnam, values: { y2022: 73.8, y2025: 19.0 } }
       - { label: Somalia, values: { y2022: 78.4, y2025: 35.0 } }
       - { label: India, values: { y2022: 4.8, y2025: 0.5 } }
-      - { label: Syria, values: { y2022: 98.4, y2025: 9.3 } }
+      - { label: Syria, values: { y2022: 98.4, y2025: 9.3 }, detail: 'Home Office rolling years: 98% in the year to June 2025, 10% in the year to June 2026' }
     note: >-
       Calculated from Asy_D02: grants of protection and other leave divided by
       grants plus refusals, main applicants, by year of decision. Syria is
       added beyond the top ten because the Home Office singles out its fall.
       Some 2022 bases are small: Bangladesh 297, Somalia 273 and India 228
       decisions.
+  - kind: barChart
+    id: syrian-grant-rate-years
+    title: 'Syrian grant rate in the UK'
+    subtitle: 'Initial decisions, years to June 2025 and June 2026'
+    description: Share of Syrian nationals' initial asylum decisions that were grants, in two rolling years, as the Home Office reports them.
+    valueLabel: Share of initial decisions that were grants
+    categoryLabel: Year
+    format: { unit: percent, decimals: 0 }
+    sort: none
+    domainMax: 100
+    sources: [14]
+    items:
+      - { label: Year to June 2025, value: 98 }
+      - { label: Year to June 2026, value: 10 }
   - kind: comparison
     id: grant-rate-decomposition
-  - kind: compositionBar
-    id: small-boat-outcomes
-    title: >-
-      Initial outcomes of UK small-boat arrivals' asylum claims, by year of
-      arrival
-    description: >-
-      People (main applicants and dependants) who arrived by small boat in each
-      year and claimed asylum, by initial outcome as recorded in mid-2026. Each
-      bar is one year's arrivals, with that year's total beside it, so compare
-      shares across bars, not sizes.
-    rowLabel: Year of arrival
-    showCounts: true
-    sources: [36, 18]
-    categories:
-      - { key: granted, label: 'Granted' }
-      - { key: refused, label: 'Refused' }
-      - { key: withdrawn, label: 'Withdrawn' }
-      - { key: administrative, label: 'Administrative outcome' }
-      - { key: awaiting, label: 'Awaiting initial decision' }
-    rows:
-      - { label: 'Arrived 2018', total: 280, values: { granted: 145, refused: 129, withdrawn: 5, administrative: 1, awaiting: 0 } }
-      - { label: 'Arrived 2019', total: 1813, values: { granted: 815, refused: 948, withdrawn: 41, administrative: 4, awaiting: 5 } }
-      - { label: 'Arrived 2020', total: 8276, values: { granted: 4166, refused: 3458, withdrawn: 405, administrative: 176, awaiting: 71 } }
-      - { label: 'Arrived 2021', total: 25276, values: { granted: 15872, refused: 5082, withdrawn: 3111, administrative: 923, awaiting: 288 } }
-      - { label: 'Arrived 2022', total: 41188, values: { granted: 17178, refused: 7093, withdrawn: 9862, administrative: 6266, awaiting: 789 } }
-      - { label: 'Arrived 2023', total: 27610, values: { granted: 10758, refused: 10881, withdrawn: 4272, administrative: 1086, awaiting: 613 } }
-      - { label: 'Arrived 2024', total: 35276, values: { granted: 13732, refused: 14784, withdrawn: 4272, administrative: 681, awaiting: 1807 } }
-      - { label: 'Arrived 2025', total: 39952, values: { granted: 18743, refused: 14016, withdrawn: 2214, administrative: 471, awaiting: 4508 } }
-    note: >-
-      From IER_D03 in the year ending June 2026 release, which re-extracts the
-      2018–2025 arrivals and so differs slightly from the Home Office's
-      published Table 1 (178,845 claims). Appeals are not included: a refusal
-      here may since have been overturned. "Granted" includes refugee status,
-      humanitarian protection and other leave.
+  - kind: barChart
+    id: small-boat-decisions
+    title: 'Initial decisions on small-boat arrivals'
+    subtitle: 'People arriving since 2018 with a decision, UK, as published July 2026'
+    description: People who arrived by small boat since 2018, claimed asylum and had received a substantive initial decision, by that decision, as published in July 2026.
+    valueLabel: People
+    categoryLabel: Initial decision
+    format: { unit: count }
+    sort: none
+    sources: [18]
+    items:
+      - { label: Granted asylum or other protection, value: 79589 }
+      - { label: Refused, value: 53305 }
+  - kind: series
+    id: small-boat-outcomes-series
   - kind: comparison
     id: recognition-2025
   - kind: barChart
     id: recognition-by-nationality
-    title: UK and EU27 first-instance grant rates for the same nationalities, 2025
+    title: 'UK and EU27 grant rates by nationality'
+    subtitle: 'Top UK nationalities and Syria, first decisions, 2025'
     description: >-
       For the nationalities with the most UK initial decisions in 2025, plus
       Syria: the share of first-instance decisions that were positive in the
@@ -1815,7 +1944,7 @@ In the year to June 2026, 52% of people claiming asylum came by illegal entry ro
 
 ### People and cases are different counts {#asylum-claims-and-decisions--people-and-cases}
 
-One claim can cover dependants. The headline counts people; grant rates are calculated on main applicants, one per case. The 2001 figure is main applicants only, because dependants enter the data in 2002. [37](#source-asylum-claims-and-decisions-37)
+One claim can cover dependants. The headline counts people; [grant rates](#glossary-grant-rate) are calculated on main applicants, one per case. The 2001 figure is main applicants only, because dependants enter the data in 2002. [37](#source-asylum-claims-and-decisions-37)
 
 ## Observations {#asylum-claims-and-decisions--observations-per-head}
 
@@ -1835,7 +1964,7 @@ Claims made from 28 June 2022 must show persecution "on the balance of probabili
 
 ## Observations {#asylum-claims-and-decisions--observations-cohort-grant-rate}
 
-### Appeals and reconsiderations raise the final grant rate {#asylum-claims-and-decisions--final-outcomes-after-appeal}
+### Appeals and reconsiderations raised final grant rates by 20 points on average for 2007–2022 claims {#asylum-claims-and-decisions--final-outcomes-after-appeal}
 
 Following each year's claims to their latest outcome, the grant rate for claims made in 2007–2022 ended on average 20 percentage points above the initial rate, and between 8 and 29 points above it in every year. [22](#source-asylum-claims-and-decisions-22) [23](#source-asylum-claims-and-decisions-23) For claims made in 2010–2019, the latest-outcome grant rate was between about half and three-quarters.
 
@@ -1851,7 +1980,7 @@ Withdrawn claims, which end without a decision, rose with the claims made from 2
 
 ## Observations {#asylum-claims-and-decisions--observations-appeals-allowed}
 
-### Two in five asylum appeals are allowed {#asylum-claims-and-decisions--two-in-five-appeals-allowed}
+### Between a quarter and a half of asylum appeals have been allowed each year since 2007 {#asylum-claims-and-decisions--two-in-five-appeals-allowed}
 
 39% of asylum and protection appeals determined in April–June 2026 were allowed. [26](#source-asylum-claims-and-decisions-26) The allowed share rose from about a quarter in 2007/08 to about half in 2021/22–2022/23, and has fallen back since, to 39% in 2025/26. The appeals counted here were decided in that year and may concern claims refused years earlier.
 
@@ -1865,9 +1994,19 @@ The open asylum appeals caseload grew from 6,319 at the end of June 2022 to 87,4
 
 In the year to June 2026, 92% of Sudanese and 84% of Eritrean claims decided were granted, against 11% for Bangladeshis, 10% for Syrians and 1% for Indians. [13](#source-asylum-claims-and-decisions-13)
 
+### Most Sudanese and Eritrean claims were granted in 2025 {#asylum-claims-and-decisions--sudanese-and-eritreans-mostly-granted}
+
+Sudan and Eritrea had the highest initial grant rates of the main nationalities in the chart in 2025, and again in the year to June 2026, at 92% and 84%. [13](#source-asylum-claims-and-decisions-13) [42](#source-asylum-claims-and-decisions-42)
+
 ### Rates fell within most nationalities, steeply for some {#asylum-claims-and-decisions--within-nationality-falls}
 
-The Syrian grant rate fell from 98% to 10% in a year after the fall of the Assad regime, and the Pakistani rate from 46% to 25%. [14](#source-asylum-claims-and-decisions-14) Of the ten nationalities with most decisions in 2025, only Sudan was granted at a higher rate than in 2022. [17](#source-asylum-claims-and-decisions-17)
+The Syrian grant rate fell from 98% to 10% in a year, and the Pakistani rate from 46% to 25%. [14](#source-asylum-claims-and-decisions-14) Of the ten nationalities with most decisions in 2025, only Sudan was granted at a higher rate than in 2022. [17](#source-asylum-claims-and-decisions-17)
+
+## Observations {#asylum-claims-and-decisions--observations-syrian-grant-rate-years}
+
+### Syrians' grant rate fell from 98% to 10% in a year {#asylum-claims-and-decisions--syrian-grant-rate-fell}
+
+The grant rate for Syrian nationals fell from 98% in the year to June 2025 to 10% in the year to June 2026. [14](#source-asylum-claims-and-decisions-14)
 
 ## Observations {#asylum-claims-and-decisions--observations-grant-rate-decomposition}
 
@@ -1875,11 +2014,13 @@ The Syrian grant rate fell from 98% to 10% in a year after the fall of the Assad
 
 Applying each nationality's 2022 grant rate to the 2025 mix of decisions gives a rate about seven points below 2022's. Applying 2025 rates to the 2022 mix gives a rate close to 2025's. So the shift towards lower-grant nationalities such as Pakistanis, Bangladeshis and Indians explains a minority of the fall; lower rates for the same nationalities, notably Afghans, Syrians, Turks and Vietnamese, explain most of it. This calculation cannot say why rates fell within a nationality: a higher standard of proof, changed country conditions and a different mix of cases decided are all candidates. [12](#source-asylum-claims-and-decisions-12) [17](#source-asylum-claims-and-decisions-17)
 
-## Observations {#asylum-claims-and-decisions--observations-small-boat-outcomes}
+## Observations {#asylum-claims-and-decisions--observations-small-boat-decisions}
 
 ### Most decided small-boat claims were granted {#asylum-claims-and-decisions--small-boat-claims-mostly-granted}
 
-Of 178,845 people who arrived by small boat in 2018–2025 and claimed asylum, 79,589 had been granted at initial decision and 53,305 refused, a grant rate of 60% on cases. [18](#source-asylum-claims-and-decisions-18) [19](#source-asylum-claims-and-decisions-19) Rates vary by nationality: 86% for Eritreans who arrived in 2025, 34% for Afghans. [21](#source-asylum-claims-and-decisions-21)
+Of 178,845 people who arrived by small boat in 2018–2025 and claimed asylum, 79,589 had been granted at [initial decision](#glossary-initial-decision) and 53,305 refused, a grant rate of 60% on cases. [18](#source-asylum-claims-and-decisions-18) [19](#source-asylum-claims-and-decisions-19) Rates vary by nationality: 86% for Eritreans who arrived in 2025, 34% for Afghans. [21](#source-asylum-claims-and-decisions-21)
+
+## Observations {#asylum-claims-and-decisions--observations-small-boat-outcomes}
 
 ### 2023 and 2024 arrivals were refused more often than granted, and many claims ended without a decision {#asylum-claims-and-decisions--2023-2024-arrivals-granted-under-half}
 
@@ -1911,7 +2052,7 @@ These figures count people who claim asylum inside the UK. They do not count res
 
 ## More {#asylum-claims-and-decisions--more-per-head-2025}
 
-Per head of population that was about 15 claims per 10,000 residents in 2025, mid-table in the EU+ and level with the EU-wide rate of 1.5 per thousand. [10](#source-asylum-claims-and-decisions-10) [7](#source-asylum-claims-and-decisions-7)
+Per head of population that was about 15 claims per 10,000 residents in 2025, mid-table in the [EU+](#glossary-eu-plus) and level with the EU-wide rate of 1.5 per thousand. [10](#source-asylum-claims-and-decisions-10) [7](#source-asylum-claims-and-decisions-7)
 
 ## More {#asylum-claims-and-decisions--more-grant-rate}
 

@@ -10,7 +10,7 @@ previewCharts:
   - fact: human-and-financial-costs-of-the-war
     chart: us-deaths-earlier-wars
   - fact: iran-nuclear-programme
-    chart: series
+    chart: sixty-percent-stock
   - fact: iran-government-and-its-people
     chart: ihrngo-executions-series
   - fact: decisions-law-and-diplomacy
@@ -23,13 +23,4 @@ dataOrder:
   - iran-government-and-its-people
   - oil-shipping-and-prices
   - outside-attempts-to-change-hostile-regimes
-principles:
-  - safety-from-catastrophic-threats
-  - obligation-to-people-in-danger
-  - democratic-consent-over-membership
-  - first-duty-to-its-own-people
-  - war-only-as-a-last-resort
-  - priority-to-the-worst-off
-  - rules-must-mean-what-they-say
-  - loyalty-to-allies
 ---

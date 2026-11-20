@@ -7,34 +7,26 @@ status: well-supported
 sources:
   # 1
   - stance: supports
-    quote: >-
-      The majority of voters in the 2024 general election cast their ballots in
-      person, with 35.2% voting in person before Election Day and 37.4% voting
-      in person on Election Day. ... Mail voting comprised 30.3% of the turnout
-      for the 2024 election, which is down from the high water mark for mail
-      voting seen in 2020 (43%) but still larger than the percentage of the
-      electorate that voted by mail in pre-pandemic elections. ... the level of
-      mail voting in 2024 was still elevated compared to pre-pandemic
-      elections; for both 2016 and 2018, mail voting comprised approximately
-      one-quarter of voter turnout.
+    quote: |-
+      The majority of voters in the 2024 general election cast their ballots in person, with 35.2% voting in person before Election Day and 37.4% voting in person on Election Day. ...
+
+      Mail voting comprised 30.3% of the turnout for the 2024 election, which is down from the high water mark for mail voting seen in 2020 (43%) but still larger than the percentage of the electorate that voted by mail in pre-pandemic elections. ...
+
+      the level of mail voting in 2024 was still elevated compared to pre-pandemic elections; for both 2016 and 2018, mail voting comprised approximately one-quarter of voter turnout.
     title: 'Election Administration and Voting Survey 2024 Comprehensive Report'
     url: https://eac.gov/sites/default/files/2025-07/2024_EAVS_Report_508.pdf
     publisher: U.S. Election Assistance Commission
     date: '2025-06-30'
   # 2
   - stance: supports
-    quote: >-
-      In the 2016 EAVS, 54.5% of voters cast their ballots in person on
-      Election Day, and in the 2018 EAVS, 58.2% of voters did so. In 2020, only
-      30.5% of voters cast their ballots in person on Election Day. ... The
-      percentage of voters who used a mailed ballot to vote surged, from 24.5%
-      in 2016 and 25.6% in 2018 to 43.1% in 2020. ... In 2016, 25.3% of voters
-      cast their ballots early in person, and 22% did so in 2018, compared to
-      30.6% for the 2020 general election. ... Jurisdiction-level analysis shows
-      that the largest increases in mail voting rates occurred in jurisdictions
-      in states that newly instituted all-mail elections in 2020 and in
-      jurisdictions in states that removed requirements to provide an excuse to
-      request a mailed ballot.
+    quote: |-
+      In the 2016 EAVS, 54.5% of voters cast their ballots in person on Election Day, and in the 2018 EAVS, 58.2% of voters did so. In 2020, only 30.5% of voters cast their ballots in person on Election Day. ...
+
+      The percentage of voters who used a mailed ballot to vote surged, from 24.5% in 2016 and 25.6% in 2018 to 43.1% in 2020. ...
+
+      In 2016, 25.3% of voters cast their ballots early in person, and 22% did so in 2018, compared to 30.6% for the 2020 general election. ...
+
+      Jurisdiction-level analysis shows that the largest increases in mail voting rates occurred in jurisdictions in states that newly instituted all-mail elections in 2020 and in jurisdictions in states that removed requirements to provide an excuse to request a mailed ballot.
     title: 'Election Administration and Voting Survey 2020 Comprehensive Report'
     url: https://www.eac.gov/sites/default/files/document_library/files/2020_EAVS_Report_Final_508c.pdf
     publisher: U.S. Election Assistance Commission
@@ -63,53 +55,101 @@ sources:
     date: '2017-06-29'
   # 5
   - stance: supports
-    quote: >-
-      Overview Table 1: Mail Voting in the 2024 General Election ... % Turnout
-      by Mail ... Alabama 5.5% ... Alaska [1] 14.3% ... American Samoa [2] 1.9%
-      ... Arizona [3] 74.7% ... Arkansas 2.1% ... California 80.8% ... Colorado
-      [4] 91.3% ... Connecticut 6.5% ... Delaware 6.5% ... District of Columbia
-      51.1% ... Florida [5] 26.8% ... Georgia [6] 5.1% ... Guam [7] 0.3% ...
-      Hawaii 92.5% ... Idaho [8] 19.6% ... Illinois [9] 17.8% ... Indiana [10]
-      53.7% ... Iowa -- ... Kansas 11.0% ... Kentucky 5.6% ... Louisiana [11]
-      5.9% ... Maine [12] 25.5% ... Maryland 24.6% ... Massachusetts [13] 33.4%
-      ... Michigan 35.4% ... Minnesota 13.7% ... Mississippi [14] -- ...
-      Missouri 5.7% ... Montana [15] -- ... Nebraska [16] 31.8% ... Nevada
-      44.1% ... New Hampshire 11.2% ... New Jersey [17] 19.2% ... New Mexico
-      12.0% ... New York 10.0% ... North Carolina [18] 5.2% ... North Dakota
-      24.0% ... Northern Mariana Islands 7.3% ... Ohio 18.1% ... Oklahoma 6.3%
-      ... Oregon [19] 99.3% ... Pennsylvania [20] 27.3% ... Puerto Rico [21]
-      10.3% ... Rhode Island 10.0% ... South Carolina 3.8% ... South Dakota
-      36.6% ... Tennessee 2.8% ... Texas 3.3% ... U.S. Virgin Islands 3.8% ...
-      Utah 91.5% ... Vermont [22] 64.7% ... Virginia 10.5% ... Washington [23]
-      98.5% ... West Virginia 2.9% ... Wisconsin [24] 16.6% ... Wyoming 14.1%
-      ... U.S. Total 30.3% ... % Turnout by Mail uses (F1d+F1g)/F1a x 100.
+    quote: |-
+      Overview Table 1: Mail Voting in the 2024 General Election
+
+      State | % Turnout by Mail
+      Alabama | 5.5%
+      Alaska [1] | 14.3%
+      American Samoa [2] | 1.9%
+      Arizona [3] | 74.7%
+      Arkansas | 2.1%
+      California | 80.8%
+      Colorado [4] | 91.3%
+      Connecticut | 6.5%
+      Delaware | 6.5%
+      District of Columbia | 51.1%
+      Florida [5] | 26.8%
+      Georgia [6] | 5.1%
+      Guam [7] | 0.3%
+      Hawaii | 92.5%
+      Idaho [8] | 19.6%
+      Illinois [9] | 17.8%
+      Indiana [10] | 53.7%
+      Iowa | --
+      Kansas | 11.0%
+      Kentucky | 5.6%
+      Louisiana [11] | 5.9%
+      Maine [12] | 25.5%
+      Maryland | 24.6%
+      Massachusetts [13] | 33.4%
+      Michigan | 35.4%
+      Minnesota | 13.7%
+      Mississippi [14] | --
+      Missouri | 5.7%
+      Montana [15] | --
+      Nebraska [16] | 31.8%
+      Nevada | 44.1%
+      New Hampshire | 11.2%
+      New Jersey [17] | 19.2%
+      New Mexico | 12.0%
+      New York | 10.0%
+      North Carolina [18] | 5.2%
+      North Dakota | 24.0%
+      Northern Mariana Islands | 7.3%
+      Ohio | 18.1%
+      Oklahoma | 6.3%
+      Oregon [19] | 99.3%
+      Pennsylvania [20] | 27.3%
+      Puerto Rico [21] | 10.3%
+      Rhode Island | 10.0%
+      South Carolina | 3.8%
+      South Dakota | 36.6%
+      Tennessee | 2.8%
+      Texas | 3.3%
+      U.S. Virgin Islands | 3.8%
+      Utah | 91.5%
+      Vermont [22] | 64.7%
+      Virginia | 10.5%
+      Washington [23] | 98.5%
+      West Virginia | 2.9%
+      Wisconsin [24] | 16.6%
+      Wyoming | 14.1%
+      U.S. Total | 30.3%
+
+      … % Turnout by Mail uses (F1d+F1g)/F1a x 100.
     title: 'Election Administration and Voting Survey 2024 Comprehensive Report, Overview Table 1'
     url: https://eac.gov/sites/default/files/2025-07/2024_EAVS_Report_508.pdf
     publisher: U.S. Election Assistance Commission
     date: '2025-06-30'
   # 6
   - stance: supports
-    quote: >-
-      Voting methods also varied, with 39.6% of people voting in person on
-      Election Day, 30.7% voting in person before Election Day, and 29.0%
-      voting by mail. ... The Census Bureau has collected voting and
-      registration data since 1964 and has fielded the Voting and Registration
-      Supplement to the CPS every two years.
+    quote: |-
+      Voting methods also varied, with 39.6% of people voting in person on Election Day, 30.7% voting in person before Election Day, and 29.0% voting by mail. ...
+
+      The Census Bureau has collected voting and registration data since 1964 and has fielded the Voting and Registration Supplement to the CPS every two years.
     title: '2024 Presidential Election Voting and Registration Tables Now Available (CB25-TPS.29)'
     url: https://www.census.gov/newsroom/press-releases/2025/2024-presidential-election-voting-registration-tables.html
     publisher: U.S. Census Bureau
     date: '2025-04-30'
   # 7
   - stance: supports
-    quote: >-
+    quote: |-
       Table 14. Method of Voting, By Selected Characteristics: November 2022
-      (Numbers in thousands) ... In-person on Election Day | In-person Before
-      Election Day | By mail | Don't know or Refused ... Total 121916 49.5 18
-      31.8 0.7 ... Age 18 to 24 years 7372 54.7 14.6 29.1 1.5 ... 25 to 44
-      years 33798 53.6 15.3 30.3 0.8 ... 45 to 64 years 43661 52.7 18.8 27.8
-      0.8 ... 65 years and over 37086 41 20.3 38.3 0.4 ... Region Northeast
-      21812 72.1 7.2 20 0.7 ... Midwest 27183 66.1 12.9 20.6 0.4 ... South
-      43538 50.7 34.9 13.5 0.9 ... West 29383 15.7 5.8 77.9 0.7
+      (Numbers in thousands)
+
+      Percent distribution of methods of voting
+
+      Characteristics | | Total voted | In-person on Election Day | In-person Before Election Day | By mail | Don't know or Refused
+      Total | | 121916 | 49.5 | 18 | 31.8 | 0.7
+      Age | 18 to 24 years | 7372 | 54.7 | 14.6 | 29.1 | 1.5
+      Age | 25 to 44 years | 33798 | 53.6 | 15.3 | 30.3 | 0.8
+      Age | 45 to 64 years | 43661 | 52.7 | 18.8 | 27.8 | 0.8
+      Age | 65 years and over | 37086 | 41 | 20.3 | 38.3 | 0.4
+      Region | Northeast | 21812 | 72.1 | 7.2 | 20 | 0.7
+      Region | Midwest | 27183 | 66.1 | 12.9 | 20.6 | 0.4
+      Region | South | 43538 | 50.7 | 34.9 | 13.5 | 0.9
+      Region | West | 29383 | 15.7 | 5.8 | 77.9 | 0.7
     title: 'Table 14. Method of Voting, By Selected Characteristics: November 2022 (CPS Voting and Registration Supplement)'
     url: https://www.census.gov/data/tables/time-series/demo/voting-and-registration/p20-586.html
     fileUrl: https://www2.census.gov/programs-surveys/cps/tables/p20/586/vote14_2022.xlsx
@@ -118,15 +158,22 @@ sources:
     date: '2023-04'
   # 8
   - stance: supports
-    quote: >-
+    quote: |-
       Table 14. Method of Voting, By Selected Characteristics: November 2020
-      (In thousands) ... In-person on Election Day | In-person Before Election
-      Day | By mail | Don't know or Refused ... TOTAL 154628 30.4 26 43 0.7 ...
-      Age 18 to 24 years 13752 35.1 24.1 39.9 0.9 ... 25 to 44 years 47512
-      34.2 25.7 39.5 0.7 ... 45 to 64 years 53646 31.8 28.6 38.9 0.6 ... 65
-      years and over 39718 22.2 23.6 53.6 0.6 ... Region Northeast 27353 45 12
-      42.6 0.5 ... Midwest 34210 42 19.9 37.6 0.6 ... South 57064 29.2 46.4
-      23.6 0.8 ... West 36001 10.1 10.2 79.1 0.7
+      (In thousands)
+
+      Percent distribution of methods of voting
+
+      Selected characteristics | | Total voted | In-person on Election Day | In-person Before Election Day | By mail | Don't know or Refused
+      TOTAL | | 154628 | 30.4 | 26 | 43 | 0.7
+      Age | 18 to 24 years | 13752 | 35.1 | 24.1 | 39.9 | 0.9
+       | 25 to 44 years | 47512 | 34.2 | 25.7 | 39.5 | 0.7
+       | 45 to 64 years | 53646 | 31.8 | 28.6 | 38.9 | 0.6
+       | 65 years and over | 39718 | 22.2 | 23.6 | 53.6 | 0.6
+      Region | Northeast | 27353 | 45 | 12 | 42.6 | 0.5
+       | Midwest | 34210 | 42 | 19.9 | 37.6 | 0.6
+       | South | 57064 | 29.2 | 46.4 | 23.6 | 0.8
+       | West | 36001 | 10.1 | 10.2 | 79.1 | 0.7
     title: 'Table 14. Method of Voting, By Selected Characteristics: November 2020 (CPS Voting and Registration Supplement)'
     url: https://www.census.gov/data/tables/time-series/demo/voting-and-registration/p20-585.html
     fileUrl: https://www2.census.gov/programs-surveys/cps/tables/p20/585/table14.xlsx
@@ -135,15 +182,22 @@ sources:
     date: '2021-04'
   # 9
   - stance: supports
-    quote: >-
+    quote: |-
       Table 14. Method of Voting, By Selected Characteristics: November 2018
-      (In thousands) ... In-person on Election Day | In-person Before Election
-      Day | By mail | Don't know or Refused ... TOTAL 122281 59.6 16.6 23.1 0.7
-      ... Age 18 to 24 years 8726 60.9 15.1 22.5 1.4 ... 25 to 44 years 34587
-      64.5 14.2 20.5 0.7 ... 45 to 64 years 45829 61.7 17.6 20.2 0.5 ... 65
-      years and over 33139 51.2 18.2 30 0.6 ... Region Northeast 21378 90.3 3.1
-      6.2 0.4 ... Midwest 27696 73.5 11.4 14.6 0.4 ... South 44723 56 33.3 9.7
-      0.9 ... West 28483 28.5 5.6 65.2 0.7
+      (In thousands)
+
+      Percent distribution of methods of voting
+
+      Selected characteristics | | Total voted | In-person on Election Day | In-person Before Election Day | By mail | Don't know or Refused
+      TOTAL | | 122281 | 59.6 | 16.6 | 23.1 | 0.7
+      Age | 18 to 24 years | 8726 | 60.9 | 15.1 | 22.5 | 1.4
+       | 25 to 44 years | 34587 | 64.5 | 14.2 | 20.5 | 0.7
+       | 45 to 64 years | 45829 | 61.7 | 17.6 | 20.2 | 0.5
+       | 65 years and over | 33139 | 51.2 | 18.2 | 30 | 0.6
+      Region | Northeast | 21378 | 90.3 | 3.1 | 6.2 | 0.4
+       | Midwest | 27696 | 73.5 | 11.4 | 14.6 | 0.4
+       | South | 44723 | 56 | 33.3 | 9.7 | 0.9
+       | West | 28483 | 28.5 | 5.6 | 65.2 | 0.7
     title: 'Table 14. Method of Voting, By Selected Characteristics: November 2018 (CPS Voting and Registration Supplement)'
     url: https://www.census.gov/data/tables/time-series/demo/voting-and-registration/p20-583.html
     fileUrl: https://www2.census.gov/programs-surveys/cps/tables/p20/583/table14.xlsx
@@ -152,55 +206,53 @@ sources:
     date: '2019-04'
   # 10
   - stance: supports
-    quote: >-
-      According to the National Conference of State Legislatures (NCSL), as of
-      June 2026, all states and the District of Columbia (DC) allowed at least
-      some voters to receive their ballots by mail and 37 states and DC offered
-      some form of no-excuse mail voting. ... Federal law requires all states
-      to allow certain military and overseas voters to use mail voting in
-      federal elections. ... Figure 1. Reported Methods of
-      Voting, 2004-2024 ... Source: CRS, using data from the Voting and
-      Registration Supplement to the U.S. Census Bureau’s Current Population
-      Survey. Notes: Respondents were asked whether they voted in person or by
-      mail and, if the former, whether on or before Election Day. Some
-      respondents who received their ballots by mail and returned them in
-      person may have reported voting in person. ... State laws authorizing
-      some soldiers to vote away from home were enacted in the early 1800s, for
-      example, but no-excuse mail voting was not introduced until the late
-      1970s. ... For example, Oregon began using all-mail elections for all
-      races in 2000 but approved a test of the process for local elections in
-      1981 and used it for select elections through the 1990s.
+    quote: |-
+      According to the National Conference of State Legislatures (NCSL), as of June 2026, all states and the District of Columbia (DC) allowed at least some voters to receive their ballots by mail and 37 states and DC offered some form of no-excuse mail voting. Eight of those states and DC used all-mail elections for all elections (CA, CO, DC, HI, NV, OR, UT, and WA) or all general elections (VT); a number of the others gave counties the option of holding all-mail elections or permitted use of all-mail elections in certain jurisdictions or for certain types of elections. ...
+
+      Federal law requires all states to allow certain military and overseas voters to use mail voting in federal elections. ...
+
+      Figure 1. Reported Methods of Voting, 2004-2024 ...
+
+      Source: CRS, using data from the Voting and Registration Supplement to the U.S. Census Bureau’s Current Population Survey. Notes: Respondents were asked whether they voted in person or by mail and, if the former, whether on or before Election Day. Some respondents who received their ballots by mail and returned them in person may have reported voting in person. ...
+
+      State laws authorizing some soldiers to vote away from home were enacted in the early 1800s, for example, but no-excuse mail voting was not introduced until the late 1970s. ...
+
+      For example, Oregon began using all-mail elections for all races in 2000 but approved a test of the process for local elections in 1981 and used it for select elections through the 1990s.
     title: 'Early Voting and Mail Voting: Overview and Issues for Congress (IF11477)'
     url: https://www.everycrsreport.com/files/2026-07-10_IF11477_6b1984f8f326df526ae5607f823fd9b0a61e64a5.pdf
     publisher: Congressional Research Service
     date: '2026-07-10'
   # 11
   - stance: supports
-    quote: >-
-      Eight states and Washington, D.C., allow all elections to be conducted
-      entirely by mail: California, Colorado, Hawaii, Nevada, Oregon, Utah,
-      Vermont and Washington state. ... California ... 2021 | 2022 | AB 37 ...
-      Colorado ... 2013 | 2014 | HB 1303 ... District of Columbia ... 2022 |
-      2023 ... Hawaii ... 2019 | 2020 | HB 1248 ... Nevada ... 2021 | 2022 | AB
-      321 ... Oregon ... 1998 | 2000 | Citizen initiative ... Utah ... 2012
-      (Counties permitted to choose) | 2019 (The first year all counties opted
-      for mostly mail elections) | HB 172 ... Vermont ... (General elections
-      only.) | 2021 | 2022 | SB 15 ... Washington ... 2011 | 2012 | HB 5124
+    quote: |-
+      Eight states and Washington, D.C., allow all elections to be conducted entirely by mail: California, Colorado, Hawaii, Nevada, Oregon, Utah, Vermont and Washington state. Two states permit counties to opt into conducting elections by mail: Nebraska and North Dakota. ...
+
+      Table 18a: States That Conduct All Elections by Mail
+
+      State | Statute | Year Enacted | Year Implemented | Bill Number
+      California | Cal. Election Code § 3000.5 | 2021 | 2022 | AB 37
+      Colorado | Colo. Rev. Stat. § 1-5-401 | 2013 | 2014 | HB 1303
+      District of Columbia | D.C. Code § 1–1001.05 | 2022 | 2023 | D.C. Law 24-342
+      Hawaii | Hawaii Rev. Stat. § 11-101 | 2019 | 2020 | HB 1248
+      Nevada | Nev. Rev. Stat. § 293.269911 | 2021 | 2022 | AB 321
+      Oregon | Or. Rev. Stat. § 254.465 | 1998 | 2000 | Citizen initiative
+      Utah | Utah Code Ann. § 20A-3a-202 | 2012 (Counties permitted to choose) | 2019 (The first year all counties opted for mostly mail elections) | HB 172
+      Vermont | Vt. Stat. Ann. tit. 17, § 2537a (General elections only.) | 2021 | 2022 | SB 15
+      Washington | Wash. Rev. Code § 29A.40.010 | 2011 | 2012 | HB 5124
     title: 'Table 18: States With Mostly Mail Elections (with Table 18a, year enacted and year implemented)'
     url: https://www.ncsl.org/elections-and-campaigns/table-18-states-with-all-mail-elections
     publisher: National Conference of State Legislatures
     date: '2026-08-07'
   # 12
   - stance: complicates
-    quote: >-
-      for voting by mail: ... until 2029, permits a voter's identity to be
-      verified using signature comparison, if the voter doesn't enter the
-      digits described in the preceding paragraph; ... subject to certain
-      exceptions, provides that, beginning in 2029, a voter will not receive a
-      ballot by mail unless the voter requests to receive a ballot by mail;
-      provides that a request to receive a ballot by mail remains in effect for
-      eight years unless the voter takes certain action that results in
-      termination of the request
+    quote: |-
+      for voting by mail:
+      - requires a registered voter who has a Utah driver license or a state identification card to place to last four digits of the card's number on the return envelope, and permits a voter to enter the last four digits of the voter's social security number as an alternate form of identification;
+      - until 2029, permits a voter's identity to be verified using signature comparison, if the voter doesn't enter the digits described in the preceding paragraph;
+      - beginning in 2029, provides that if a voter does not have a Utah driver license, a Utah state identification card, or a social security card, the voter may provide identification by including a photocopy of certain forms of identification in the return envelope;
+      - beginning in 2029, if a voter does not have a type of identification described in the preceding two paragraphs, requires the voter to vote in person, unless the voter qualifies for certain exceptions;
+      - subject to certain exceptions, provides that, beginning in 2029, a voter will not receive a ballot by mail unless the voter requests to receive a ballot by mail;
+      - provides that a request to receive a ballot by mail remains in effect for eight years unless the voter takes certain action that results in termination of the request;
     title: 'H.B. 300 Amendments to Election Law (Enrolled Copy), 2025 General Session'
     url: https://le.utah.gov/Session/2025/bills/enrolled/HB0300.pdf
     publisher: Utah State Legislature
@@ -209,7 +261,8 @@ sources:
   - stance: supports
     quote: >-
       Thirty-seven percent of Democrats reported voting by mail, compared to 24%
-      of Republicans. ... In 2022, and then again in 2024, the gap closed
+      of Republicans. ... In 2020, the partisan gap in voting by mail opened
+      wide. In 2022, and then again in 2024, the gap closed
       somewhat, although this was primarily due to Democrats pulling back in
       the use of voting by mail rather than Republicans increasing their usage.
     title: 'How We Voted in 2024 (Survey of the Performance of American Elections)'
@@ -218,12 +271,12 @@ sources:
     date: '2025-07'
   # 14
   - stance: supports
-    quote: >-
-      More than 53% of people with disabilities voted by mail, compared to 42%
-      of people without disabilities. Just 26% of people with disabilities and
-      31% of people without disabilities voted at a polling place on Election
-      Day. ... 5% of people with disabilities experienced difficulties voting
-      by mail, compared to 18% of those who voted at a polling place.
+    quote: |-
+      More than 53% of people with disabilities voted by mail, compared to 42% of people without disabilities. Just 26% of people with disabilities and 31% of people without disabilities voted at a polling place on Election Day. ...
+
+      An earlier study, commissioned by the EAC under clearinghouse and research mandates outlined in the Help America Vote Act (HAVA), found:
+      - 11% of people with disabilities had trouble voting in 2020, down from 26% in 2012.
+      - 5% of people with disabilities experienced difficulties voting by mail, compared to 18% of those who voted at a polling place.
     title: 'New Data: 17.7 Million Americans With Disabilities Voted in 2020, a Significant Increase Over 2016'
     url: https://www.eac.gov/news/2021/07/07/new-data-177-million-americans-disabilities-voted-2020-significant-increase-over
     publisher: U.S. Election Assistance Commission
@@ -264,17 +317,10 @@ sources:
     date: '2020-06-09'
   # 18
   - stance: supports
-    quote: >-
-      Focusing on natural experiments in Texas and Indiana, we find that
-      65-year-olds turned out at nearly the same rate as 64-year-olds, despite
-      the fact that only 65-year-olds could vote absentee without an excuse.
-      Being just old enough to vote no-excuse absentee did not substantially
-      increase Democratic turnout relative to Republican turnout. ... In the
-      first column, we see that the estimated increase in turnout for
-      65-year-olds, who are eligible to vote absentee without an excuse in
-      Texas, is 0.02 percentage points—i.e., 2 basis points. The upper bound of
-      the 95% confidence interval (with robust standard errors) for this effect
-      is 0.26 percentage points.
+    quote: |-
+      Focusing on natural experiments in Texas and Indiana, we find that 65-year-olds turned out at nearly the same rate as 64-year-olds, despite the fact that only 65-year-olds could vote absentee without an excuse. Being just old enough to vote no-excuse absentee did not substantially increase Democratic turnout relative to Republican turnout. Voter interest appeared to be more important in driving turnout across vote modes, neutralizing the electoral impact of Democrats voting by mail at higher rates during the historic pandemic. ...
+
+      In the first column, we see that the estimated increase in turnout for 65-year-olds, who are eligible to vote absentee without an excuse in Texas, is 0.02 percentage points—i.e., 2 basis points. The upper bound of the 95% confidence interval (with robust standard errors) for this effect is 0.26 percentage points.
     title: 'How Did Absentee Voting Affect the 2020 U.S. Election? (Yoder, Handan-Nader, Myers, Nowacki, Thompson, Wu, Yorgason and Hall)'
     url: https://dthompson.scholar.ss.ucla.edu/wp-content/uploads/sites/19/2021/07/Yoder_et_al_VBM_TX_IN_short.pdf
     publisher: Stanford Democracy and Polarization Lab (working paper)
@@ -292,66 +338,47 @@ sources:
     date: '2021-06-25'
   # 20
   - stance: supports
-    quote: >-
-      In April 2020, during the early months of the COVID-19 pandemic, 70% of
-      Americans favored allowing any voter who wanted to cast a ballot via mail
-      to do so. This included nearly half of Republicans (49%) and nearly
-      nine-in-ten Democrats (87%). ... Now, 58% of Americans support allowing
-      voters to cast ballots by mail, including 32% of Republicans and 83% of
-      Democrats. ... According to Pew Research Center’s study of validated
-      voters, voters in the 2024 presidential election were roughly equally
-      likely to have voted in person on Election Day (34%), early in person
-      (32%) or by mail (34%). ... In states with universal mail-in voting –
-      like California, Colorado and Nevada, where ballots are mailed to all
-      voters before the election – 73% favor allowing any voter to vote by
-      mail, including 91% of Democrats and 46% of Republicans. ... In states
-      where voters can request an absentee ballot for any reason, but ballots
-      aren’t automatically sent to them – like Florida, New York and
-      Pennsylvania – 58% favor allowing any voter to cast a ballot by mail. ...
-      In these states, 45% favor allowing anyone to vote by mail, including 22%
-      of Republicans and 71% of Democrats.
+    quote: |-
+      In April 2020, during the early months of the COVID-19 pandemic, 70% of Americans favored allowing any voter who wanted to cast a ballot via mail to do so. This included nearly half of Republicans (49%) and nearly nine-in-ten Democrats (87%). ...
+
+      Now, 58% of Americans support allowing voters to cast ballots by mail, including 32% of Republicans and 83% of Democrats. ...
+
+      According to Pew Research Center’s study of validated voters, voters in the 2024 presidential election were roughly equally likely to have voted in person on Election Day (34%), early in person (32%) or by mail (34%). ...
+
+      In states with universal mail-in voting – like California, Colorado and Nevada, where ballots are mailed to all voters before the election – 73% favor allowing any voter to vote by mail, including 91% of Democrats and 46% of Republicans. ...
+
+      In states where voters can request an absentee ballot for any reason, but ballots aren’t automatically sent to them – like Florida, New York and Pennsylvania – 58% favor allowing any voter to cast a ballot by mail. ...
+
+      In these states, 45% favor allowing anyone to vote by mail, including 22% of Republicans and 71% of Democrats.
     title: 'Majority of Americans Continue to Back Expanded Early Voting, Voting by Mail, Voter ID'
     url: https://www.pewresearch.org/wp-content/uploads/sites/20/2025/08/PP_2025.8.22_voting-policy_report.pdf
     publisher: Pew Research Center
     date: '2025-08-22'
   # 21
   - stance: supports
-    quote: >-
-      The Pew Research Center survey, conducted Jan. 16-21 among 5,140 adults,
-      also finds smaller majorities supporting allowing anyone to vote by mail
-      if they want to (57%) ... Today, just 28% of Republicans say any voter
-      should be allowed to vote by mail if they want to. Four years ago, 49% of
-      Republicans said this. An overwhelming share of Democrats (84%) continue
-      to say voting by mail should be available to all voters.
+    quote: |-
+      The Pew Research Center survey, conducted Jan. 16-21 among 5,140 adults, also finds smaller majorities supporting allowing anyone to vote by mail if they want to (57%) ...
+
+      Today, just 28% of Republicans say any voter should be allowed to vote by mail if they want to. Four years ago, 49% of Republicans said this. An overwhelming share of Democrats (84%) continue to say voting by mail should be available to all voters.
     title: 'Bipartisan Support for Early In-Person Voting, Voter ID, Election Day National Holiday'
     url: https://www.pewresearch.org/politics/2024/02/07/bipartisan-support-for-early-in-person-voting-voter-id-election-day-national-holiday/
     publisher: Pew Research Center
     date: '2024-02-07'
   # 22
   - stance: supports
-    quote: >-
-      More than half of Americans have consistently expressed confidence in
-      the accuracy of elections throughout Gallup's trend since 2004, but
-      confidence was highest leading up to the 2004 presidential and 2006
-      midterm elections. ... In most election years since 2004, Gallup has found that Americans who
-      self-identify with the political party of the incumbent president have
-      expressed greater confidence in election accuracy -- with two
-      exceptions, 2008 and 2020. In October 2008, during the global economic
-      crisis, Republicans' and Democrats' confidence in the accuracy of that
-      year's presidential election each fell to 57% ... In 2020, amid
-      then-President Donald Trump's public questioning of the validity of mail
-      voting in the upcoming election, Republicans' confidence in voting
-      integrity dropped to a new low of 44%, while Democrats' confidence
-      remained high, slightly higher (76%) than in the previous election year.
-      The current 45 percentage points that separate Republicans' (40%) and
-      Democrats' (85%) confidence represents the largest gap Gallup has
-      recorded on this measure since 2004.
+    quote: |-
+      More than half of Americans have consistently expressed confidence in the accuracy of elections throughout Gallup's trend since 2004, but confidence was highest leading up to the 2004 presidential and 2006 midterm elections. ...
+
+      In most election years since 2004, Gallup has found that Americans who self-identify with the political party of the incumbent president have expressed greater confidence in election accuracy -- with two exceptions, 2008 and 2020. In October 2008, during the global economic crisis, Republicans' and Democrats' confidence in the accuracy of that year's presidential election each fell to 57% ...
+
+      In 2020, amid then-President Donald Trump's public questioning of the validity of mail voting in the upcoming election, Republicans' confidence in voting integrity dropped to a new low of 44%, while Democrats' confidence remained high, slightly higher (76%) than in the previous election year. The current 45 percentage points that separate Republicans' (40%) and Democrats' (85%) confidence represents the largest gap Gallup has recorded on this measure since 2004.
     title: 'Confidence in Election Integrity Hides Deep Partisan Divide'
     url: https://news.gallup.com/poll/404675/confidence-election-integrity-hides-deep-partisan-divide.aspx
     publisher: Gallup
     date: '2022-11-04'
 series:
-  title: 'How Americans voted, by method, age and region (Census survey), 2018–2024'
+  title: 'How voters say they voted'
+  subtitle: 'By method, age and region, Census survey, 2018–2024'
   description: >-
     Share of people who said they voted who voted in person on Election Day,
     in person before Election Day, or by mail, in each November election since
@@ -415,16 +442,22 @@ series:
           points: [{period: '2018', value: 9.7}, {period: '2020', value: 23.6}, {period: '2022', value: 13.5}, {period: '2024', value: 11.4}]
   source:
     stance: supports
-    quote: >-
+    quote: |-
       Table 14. Method of Voting, By Selected Characteristics: November 2024
-      (Numbers in thousands, Population 18 and Over) ... In-person on Election
-      Day | In-person Before Election Day | By mail | Don't know or Refused ...
-      Total 154308 39.6 30.7 29 0.7 ... Age 18 to 24 years 13150 43.9 28.2
-      26.3 1.5 ... 25 to 44 years 46488 45.2 27.6 26.4 0.8 ... 45 to 64 years
-      51354 41.3 32.8 25.4 0.5 ... 65 years and over 43317 30.2 32.4 36.8 0.6
-      ... Region Northeast 27119 58.8 19.3 21.3 0.5 ... Midwest 34554 52.5 28.8
-      18 0.7 ... South 57059 37.3 50.5 11.4 0.8 ... West 35575 16.1 9.6 73.5
-      0.8
+      (Numbers in thousands, Population 18 and Over)
+
+      Percent distribution of methods of voting
+
+      Characteristics | | Total voted | In-person on Election Day | In-person Before Election Day | By mail | Don't know or Refused
+      Total | | 154308 | 39.6 | 30.7 | 29 | 0.7
+      Age | 18 to 24 years | 13150 | 43.9 | 28.2 | 26.3 | 1.5
+      Age | 25 to 44 years | 46488 | 45.2 | 27.6 | 26.4 | 0.8
+      Age | 45 to 64 years | 51354 | 41.3 | 32.8 | 25.4 | 0.5
+      Age | 65 years and over | 43317 | 30.2 | 32.4 | 36.8 | 0.6
+      Region | Northeast | 27119 | 58.8 | 19.3 | 21.3 | 0.5
+      Region | Midwest | 34554 | 52.5 | 28.8 | 18 | 0.7
+      Region | South | 57059 | 37.3 | 50.5 | 11.4 | 0.8
+      Region | West | 35575 | 16.1 | 9.6 | 73.5 | 0.8
     title: 'Table 14. Method of Voting, By Selected Characteristics: November 2024 (CPS Voting and Registration Supplement)'
     url: https://www.census.gov/data/tables/time-series/demo/voting-and-registration/p20-590.html
     fileUrl: https://www2.census.gov/programs-surveys/cps/tables/p20/587/vote14_2024.xlsx
@@ -433,7 +466,8 @@ series:
     date: '2025-04-30'
 additionalSeries:
   - id: eavs-mode
-    title: 'How ballots were cast, from official counts (EAVS), 2016–2024'
+    title: 'How Americans cast their ballots'
+    subtitle: 'Share of ballots by method, official counts, 2016–2024'
     description: >-
       Share of all counted ballots cast by mail, in person before Election Day
       and in person on Election Day, as reported by state and local election
@@ -451,14 +485,10 @@ additionalSeries:
         percent early), from an earlier calculation. The 2026 survey is due in mid-2027.
     source:
       stance: supports
-      quote: >-
-        Source: Election Day turnout was calculated as F1b/F1a x 100 for all
-        years. Mail turnout was calculated as (F1d+F1g)/F1a x 100 for all years.
-        In-person early turnout was calculated as F1f/F1a x 100 for all years.
-        ... Casewise deletion was used at the state level (percentages for each
-        mode of voting were calculated independently, and only states that
-        reported data for a given mode were included in the analysis), and
-        because of this, percentages do not sum to 100%.
+      quote: |-
+        Source: Election Day turnout was calculated as F1b/F1a x 100 for all years. Mail turnout was calculated as (F1d+F1g)/F1a x 100 for all years. In-person early turnout was calculated as F1f/F1a x 100 for all years. ...
+
+        Casewise deletion was used at the state level (percentages for each mode of voting were calculated independently, and only states that reported data for a given mode were included in the analysis), and because of this, percentages do not sum to 100%.
       title: 'Election Administration and Voting Survey 2020 Comprehensive Report, Figure 3'
       url: https://www.eac.gov/sites/default/files/document_library/files/2020_EAVS_Report_Final_508c.pdf
       publisher: U.S. Election Assistance Commission
@@ -477,7 +507,8 @@ additionalSeries:
           - name: In person on Election Day
             points: [{period: '2016', value: 54.5}, {period: '2018', value: 58.2}, {period: '2020', value: 30.5}, {period: '2024', value: 37.4}]
   - id: state-rules
-    title: 'States offering mail voting to every voter, 2016–2026'
+    title: 'State rules on who may vote by mail'
+    subtitle: 'Number of states under each rule, 2016–2026'
     description: >-
       Number of states (excluding DC) that offer no-excuse absentee voting or
       send every voter a ballot, against those that require an excuse, at each
@@ -512,12 +543,16 @@ additionalSeries:
         source: 12
     source:
       stance: supports
-      quote: >-
-        November 2016 30 states and D.C. 20 states ... January 2020 32 states
-        and D.C. 18 states ... November 2020 38 states and D.C. 2 states 10
-        states ... November 2022 35 states and D.C. 15 states ... November 2024
-        36 states and D.C. 14 states ... November 2026 (expected) 37 states and
-        D.C. 13 states
+      quote: |-
+        Table 1: Absentee/Mail Voting Eligibility and Excuses
+
+        Date/Election | No-excuse absentee or all-mail elections | Excuse required | COVID-19 excuse added for 2020 election
+        November 2016 | 30 states and D.C. | 20 states | N/A
+        January 2020 | 32 states and D.C. | 18 states | N/A
+        November 2020 | 38 states and D.C. | 2 states | 10 states
+        November 2022 | 35 states and D.C. | 15 states | N/A
+        November 2024 | 36 states and D.C. | 14 states | N/A
+        November 2026 (expected) | 37 states and D.C. | 13 states | N/A
       title: 'Evolution of Absentee/Mail Voting Laws 2016–2026, Table 1 (columns: no-excuse absentee or all-mail elections | excuse required | COVID-19 excuse added for 2020 election)'
       url: https://www.ncsl.org/elections-and-campaigns/evolution-of-absentee-mail-voting-laws-2016-2026
       publisher: National Conference of State Legislatures
@@ -529,13 +564,15 @@ additionalSeries:
         valueLabel: 'States'
         lines:
           - name: No-excuse or all-mail
+            glossary: no-excuse-absentee
             points: [{period: '2016-11', value: 30}, {period: '2020-01', value: 32}, {period: '2020-11', value: 38}, {period: '2022-11', value: 35}, {period: '2024-11', value: 36}, {period: '2026-11', value: 37}]
           - name: Excuse required
             points: [{period: '2016-11', value: 20}, {period: '2020-01', value: 18}, {period: '2020-11', value: 2}, {period: '2022-11', value: 15}, {period: '2024-11', value: 14}, {period: '2026-11', value: 13}]
           - name: COVID-19 excuse added for 2020 only
             points: [{period: '2016-11', value: 0}, {period: '2020-01', value: 0}, {period: '2020-11', value: 10}, {period: '2022-11', value: 0}, {period: '2024-11', value: 0}, {period: '2026-11', value: 0}]
   - id: pew-mail-support
-    title: 'Support for letting any voter vote by mail, by party (Pew), 2020–2025'
+    title: 'Support for letting anyone vote by mail'
+    subtitle: 'US adults and each party, Pew surveys, 2020–2025'
     description: >-
       Share of US adults who favour "allowing any voter to vote by mail if they
       want to", in every Pew survey that asked it. Republicans and Democrats
@@ -557,12 +594,19 @@ additionalSeries:
           2024 "were conducted fully online".
     source:
       stance: supports
-      quote: >-
-        Note: This survey was conducted primarily online, with some interviews
-        conducted by live telephone. ... American Trends Panel surveys conducted
-        between October 2016 and June 2024 were conducted fully online ... ML
-        Allowing any voter to vote by mail if they want to Aug 4-10, 2025 34 24
-        18 24 1 Jan 16-21, 2024 35 23 15 26 1 Apr 7-12, 2020 44 26 13 16 1
+      quote: |-
+        Note: This survey was conducted primarily online, with some interviews conducted by live telephone. ...
+
+        American Trends Panel surveys conducted between October 2016 and June 2024 were conducted fully online (with tablets and data plans provided to adults without home internet). ...
+
+        VTPRIORITY Please indicate whether you would favor or oppose the following ideas about election policy. ...
+
+        ML Allowing any voter to vote by mail if they want to
+
+         | Strongly favor | Somewhat favor | Somewhat oppose | Strongly oppose | No answer*
+        Aug 4-10, 2025 | 34 | 24 | 18 | 24 | 1
+        Jan 16-21, 2024 | 35 | 23 | 15 | 26 | 1
+        Apr 7-12, 2020 | 44 | 26 | 13 | 16 | 1
       title: 'American Trends Panel Wave 176, August 2025: Final Topline'
       url: https://www.pewresearch.org/wp-content/uploads/sites/20/2025/08/PP_2025.8.22_voting-policy_topline.pdf
       publisher: Pew Research Center
@@ -581,7 +625,8 @@ additionalSeries:
             points: [{period: '2020-04', value: 87}, {period: '2024-01', value: 84}, {period: '2025-08', value: 83}]
 comparisons:
   - id: state-mail-share
-    title: 'Mail ballots as a share of each state''s turnout, 2024'
+    title: 'Mail ballots as a share of turnout'
+    subtitle: 'By state and territory, 2024 general election'
     description: >-
       Share of all counted ballots in the November 2024 general election that
       were cast by mail, in every state and territory that reported it.
@@ -714,7 +759,8 @@ comparisons:
       - label: 'Guam'
         value: 0.3
   - id: mail-use-by-party
-    title: US voters who voted by mail, by party, 2024
+    title: Who voted by mail, by party
+    subtitle: Share of each party's voters, MIT survey, November 2024
     description: >-
       Share of each party's voters who said they voted by mail in the November
       2024 election, from MIT's Survey of the Performance of American
@@ -763,9 +809,9 @@ figures:
     id: pew-mail-support
   - kind: dataTable
     id: adoption
-    title: >-
-      When the eight states and DC that mail every voter a ballot adopted it
-    description: 'The eight states and DC that mail every voter a ballot, in the order they adopted it.'
+    title: When all-mail voting came in
+    subtitle: The eight states and DC that mail every voter a ballot
+    description: 'Each one in the order it adopted all-mail voting, with when and how.'
     sources:
       - 11
     caption: One row per state
@@ -830,11 +876,10 @@ figures:
     id: mail-use-by-party
   - kind: barChart
     id: mail-use-by-disability
-    title: US voters who voted by mail, with and without a disability, 2020
+    title: Mail voting and disability
+    subtitle: Voters with and without a disability, Rutgers survey for the EAC, 2020
     description: >-
-      Share of voters with and without a disability who voted by mail in
-      November 2020, from the Rutgers University survey released by the
-      Election Assistance Commission.
+      Share of voters in each group who voted by mail in November 2020.
     valueLabel: '% who voted by mail'
     categoryLabel: Voters
     format: { unit: percent, decimals: 0 }
@@ -847,9 +892,26 @@ figures:
     items:
       - { label: Voters with a disability, value: { value: 53, qualifier: more than, asPublished: More than 53% } }
       - { label: Voters without a disability, value: 42 }
+  - kind: barChart
+    id: disability-difficulty
+    title: Difficulty voting with a disability
+    subtitle: By how they voted, Rutgers survey for the EAC, 2020
+    description: >-
+      Share of people with disabilities who experienced difficulties voting by
+      mail, and at a polling place, in November 2020.
+    valueLabel: '% who had difficulty'
+    categoryLabel: How they voted
+    format: { unit: percent, decimals: 0 }
+    sort: none
+    domainMax: 100
+    sources: [14]
+    items:
+      - { label: Voted by mail, value: 5 }
+      - { label: Voted at a polling place, value: 18 }
   - kind: estimateRange
     id: effect-estimates
-    title: 'Estimated effects of mail-voting rules on turnout and party share'
+    title: 'Effects of mail-voting rules'
+    subtitle: 'Percentage points of turnout and party share, from two studies'
     description: >-
       Estimates from two studies, in percentage points, against no effect:
       universal mail ballots in California, Utah and Washington counties,
@@ -875,7 +937,8 @@ figures:
       - { label: 'No-excuse eligibility at 65: turnout', year: 'Texas 2020', estimate: 0.02, high: 0.26, note: Upper bound of the 95% confidence interval., source: 18 }
   - kind: barChart
     id: support-by-state-rule
-    title: 'Support for letting any voter vote by mail, by the rule in the respondent''s state, 2025'
+    title: 'Support for mail voting, by state rule'
+    subtitle: 'Favour letting any voter vote by mail, Pew, August 2025'
     description: >-
       Share of US adults, and of each party, who favour allowing any voter to
       vote by mail, grouped by whether their state mails every voter a
@@ -897,6 +960,29 @@ figures:
       - { label: 'States that mail every voter a ballot', values: { all: 73, dem: 91, rep: 46 } }
       - { label: 'States where any voter may ask for one', values: { all: 58, dem: null, rep: null } }
       - { label: 'States that require an excuse', values: { all: 45, dem: 71, rep: 22 } }
+observationMarks:
+  universal-mail-raised-turnout-modestly: {rows: ["Universal mail ballots: turnout"]}
+  disabled-voters-use-mail-more: {rows: ["Voters with a disability", "Voters without a disability"]}
+  all-mail-states-lead: {rows: ["Oregon", "Washington", "Hawaii", "Utah", "Colorado"]}
+  older-voters-use-mail-most: {lines: ["18 to 24", "25 to 44", "45 to 64", "65 and over"], at: "2024"}
+  no-partisan-tilt: {rows: ["Universal mail ballots: Democratic share"]}
+  democrats-use-mail-more: {rows: ["Democrats", "Republicans"]}
+  oregon-by-initiative: {rows: ["Oregon"]}
+  utah-all-mail-and-opt-in: {rows: ["Utah"]}
+  west-votes-by-mail: {lines: ["West", "Northeast", "Midwest", "South"], at: "2024"}
+  low-mail-states: {rows: ["Oklahoma", "Louisiana", "Kentucky", "Alabama", "North Carolina", "Georgia", "South Carolina", "Texas", "West Virginia", "Tennessee", "Arkansas"]}
+  mail-share-fell-after-2020: {lines: ["By mail"], from: "2020", to: "2024"}
+  mail-above-pre-pandemic: {lines: ["By mail", "In person before Election Day"], from: "2018", to: "2024"}
+  official-counts-match-survey: {lines: ["By mail"], from: "2020", to: "2024"}
+  no-excuse-states-grew: {lines: ["No-excuse or all-mail"]}
+  republican-support-fell: {lines: ["Rep/lean Rep", "Dem/lean Dem"]}
+  recent-adoptions: {rows: ["Utah", "Hawaii", "California", "Nevada", "Vermont (general elections only)", "District of Columbia"]}
+  eligibility-shifted-method: {rows: ["No-excuse eligibility at 65: turnout"]}
+  support-higher-where-used: {rows: ["States that mail every voter a ballot", "States that require an excuse"]}
+  disabled-voters-find-mail-easier: {rows: ["Voted by mail", "Voted at a polling place"]}
+  states-moved-both-ways: {lines: ["No-excuse or all-mail"]}
+  three-measures: {lines: ["By mail"], at: "2024"}
+  studies-predate-split: {rows: ["Universal mail ballots: turnout", "Universal mail ballots: Democratic share"]}
 ---
 ## Observations {#mail-voting-use-and-effects--observations-cps-method}
 
@@ -934,15 +1020,11 @@ Election offices' counts and voters' own reports agree on the shape: a peak in 2
 
 ### More states offer mail voting to everyone than in 2016 {#mail-voting-use-and-effects--no-excuse-states-grew}
 
-NCSL expects seven more states to offer no-excuse or all-mail voting in November 2026 than in 2016 (chart). [25](#source-mail-voting-use-and-effects-25) The count peaked in 2020, dropped by 2022 and has crept up since.
+NCSL expects seven more states to offer [no-excuse](#glossary-no-excuse-absentee) or all-mail voting in November 2026 than in 2016 (chart). [25](#source-mail-voting-use-and-effects-25) The count peaked in 2020, dropped by 2022 and has crept up since.
 
-States have moved in both directions: several adopted all-mail voting after 2016, while Utah has voted to end automatic mail ballots (events under the chart). [11](#source-mail-voting-use-and-effects-11) [12](#source-mail-voting-use-and-effects-12)
+### States have moved in both directions {#mail-voting-use-and-effects--states-moved-both-ways}
 
-### Utah, a Republican-led state, votes by mail, but is moving to mail on request {#mail-voting-use-and-effects--utah-all-mail-and-opt-in}
-
-Utah has sent every voter a ballot since all its counties adopted it in 2019, and in 2024 more than nine in ten of its votes came by mail. [11](#source-mail-voting-use-and-effects-11) [5](#source-mail-voting-use-and-effects-5)
-
-A 2025 law changes that: from 2029 "a voter will not receive a ballot by mail unless the voter requests to receive a ballot by mail". A request lasts eight years. [12](#source-mail-voting-use-and-effects-12) NCSL's table does not yet show the change.
+The count of states offering mail voting to every voter rose from 30 in 2016 to 38 in 2020, fell to 35 in 2022 and is expected to reach 37 in 2026 (chart). [25](#source-mail-voting-use-and-effects-25) Several states adopted all-mail voting after 2016, while Utah has voted to end automatic mail ballots (events under the chart). [11](#source-mail-voting-use-and-effects-11) [12](#source-mail-voting-use-and-effects-12)
 
 ## Observations {#mail-voting-use-and-effects--observations-pew-mail}
 
@@ -962,9 +1044,15 @@ Oregon's statewide system came from a 1998 citizen initiative, after the state h
 
 Six of the nine first used it statewide from 2019 onward, around and after the pandemic; only Oregon, Washington and Colorado ran statewide mail elections before 2019. [11](#source-mail-voting-use-and-effects-11)
 
+### Utah has mailed every voter a ballot since 2019, and is moving to mail on request {#mail-voting-use-and-effects--utah-all-mail-and-opt-in}
+
+Utah has sent every voter a ballot since all its counties adopted it in 2019, and in 2024 more than nine in ten of its votes came by mail. [11](#source-mail-voting-use-and-effects-11) [5](#source-mail-voting-use-and-effects-5)
+
+A 2025 law changes that: from 2029 "a voter will not receive a ballot by mail unless the voter requests to receive a ballot by mail". A request lasts eight years. [12](#source-mail-voting-use-and-effects-12) NCSL's table does not yet show the change.
+
 ## Observations {#mail-voting-use-and-effects--observations-state-mail-share}
 
-### The mostly-mail states lead, but not all of them vote mostly by mail {#mail-voting-use-and-effects--all-mail-states-lead}
+### Five states cast more than nine in ten ballots by mail {#mail-voting-use-and-effects--all-mail-states-lead}
 
 Oregon, Washington, Hawaii, Utah and Colorado cast more than nine in ten ballots by mail in 2024. Vermont, DC and Nevada, which also mail every voter a ballot, cast between two-fifths and two-thirds that way (chart). [5](#source-mail-voting-use-and-effects-5)
 
@@ -982,9 +1070,9 @@ In 2024 Democratic voters were about half as likely again as Republicans to vote
 
 ## Observations {#mail-voting-use-and-effects--observations-mail-use-by-disability}
 
-### Voters with disabilities rely on mail more, and find it easier {#mail-voting-use-and-effects--disabled-voters-use-mail-more}
+### Voters with disabilities rely on mail more {#mail-voting-use-and-effects--disabled-voters-use-mail-more}
 
-In 2020 more than half of voters with disabilities voted by mail, a larger share than other voters (chart). [14](#source-mail-voting-use-and-effects-14) Disabled voters who voted by mail were far less likely to report difficulty than those who voted at a polling place: 5% against 18%. [14](#source-mail-voting-use-and-effects-14)
+In 2020 more than half of voters with disabilities voted by mail, a larger share than other voters (chart). [14](#source-mail-voting-use-and-effects-14)
 
 ## Observations {#mail-voting-use-and-effects--observations-effect-estimates}
 
@@ -992,7 +1080,7 @@ In 2020 more than half of voters with disabilities voted by mail, a larger share
 
 As California, Utah and Washington counties switched to universal mail ballots between 1996 and 2018, turnout rose by about 2 points of the citizen voting-age population (chart). [15](#source-mail-voting-use-and-effects-15) That is a real but small effect, and it comes from years before mail voting split by party.
 
-### Mail voting gave neither party an advantage {#mail-voting-use-and-effects--no-partisan-tilt}
+### Universal mail moved the Democratic share of turnout by only 0.1 points {#mail-voting-use-and-effects--no-partisan-tilt}
 
 The same study found universal mail raised the Democratic share of turnout by only 0.1 points with trends included, with an upper bound of "only about 0.3%". [16](#source-mail-voting-use-and-effects-16) Vote-share effects were "modest or null". [17](#source-mail-voting-use-and-effects-17)
 
@@ -1025,6 +1113,12 @@ The Census notes that some people who returned a mail ballot in person may have 
 ### The effect studies predate the party split in mail voting {#mail-voting-use-and-effects--studies-predate-split}
 
 The universal-mail study ends in 2018, and the no-excuse study covers one election. [15](#source-mail-voting-use-and-effects-15) [18](#source-mail-voting-use-and-effects-18) Since 2020, Democrats have used mail far more than Republicans. [13](#source-mail-voting-use-and-effects-13) Whether a rule change now would shift party shares is not measured by either study.
+
+## Observations {#mail-voting-use-and-effects--observations-disability-difficulty}
+
+### Voters with disabilities report far less difficulty by mail than at a polling place {#mail-voting-use-and-effects--disabled-voters-find-mail-easier}
+
+Disabled voters who voted by mail were far less likely to report difficulty than those who voted at a polling place: 5% against 18%. [14](#source-mail-voting-use-and-effects-14)
 
 ## More {#mail-voting-use-and-effects--more-cps-method}
 

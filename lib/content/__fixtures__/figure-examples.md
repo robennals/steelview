@@ -288,6 +288,8 @@ comparisons:
     items:
       - { label: For the bill, value: 50, detail: As the roll call records it }
       - { label: Against the bill, value: 50 }
+observationMarks:
+  older-law: {whole: true}
 figures:
   - kind: series
   - kind: comparison

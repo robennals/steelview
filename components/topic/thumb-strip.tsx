@@ -8,6 +8,8 @@ type ThumbStripProps = {
   thumbs: ReactNode[];
   /** How many there are in all, which can be more than `thumbs`. */
   total: number;
+  /** The step each thumbnail opens, where not every step has one; otherwise the nth opens the nth. */
+  steps?: number[];
 };
 
 /**
@@ -16,7 +18,7 @@ type ThumbStripProps = {
  * columns, or if some will not fit, one fewer and a last tile counting the rest.
  * Without JavaScript the line is simply cut off at the edge.
  */
-export function ThumbStrip({ thumbs, total }: ThumbStripProps) {
+export function ThumbStrip({ thumbs, total, steps }: ThumbStripProps) {
   const list = useRef<HTMLOListElement>(null);
   const [columns, setColumns] = useState(thumbs.length);
 
@@ -38,7 +40,8 @@ export function ThumbStrip({ thumbs, total }: ThumbStripProps) {
       {thumbs.slice(0, shown)}
       {shown < total && (
         <li>
-          <RowThumb step={shown}>
+          {/* Opens at the first step not shown. */}
+          <RowThumb step={steps?.[shown] ?? shown}>
             <span className="sv-row__thumb sv-walk__more">+{total - shown} more</span>
           </RowThumb>
         </li>

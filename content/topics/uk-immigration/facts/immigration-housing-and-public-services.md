@@ -45,11 +45,13 @@ sources:
     publisher: Office for National Statistics
     date: '2025-10-28'
   - stance: supports
-    quote: >-
-      Table 430a: Household projection variants and difference between principal
-      projection and each variant, local authorities and higher administrative
-      areas, mid-2032 ... E92000001 ENGLAND 25958408 26233056 26233056 26645597
-      25744716 25559547 24670656 274648 274648 687189 -213691 -398861 -1287752
+    quote: |-
+      Table 430a: Household projection variants and difference between principal projection and each variant, local authorities and higher administrative areas, mid-2032
+
+      Units: Households
+
+      Area code | Area name | Households 2032: Migration category variant | Households 2032: 5-Year migration | Households 2032: 10-Year migration | Households 2032: High international migration | Households 2032: Low international migration | Households 2032: Projected HRR throughout | Households 2032: Zero net migration | Diff: 5-Year migration and migration category variant | Diff: 10-Year migration and migration category variant | Diff: High international migration and migration category variant | Diff: Low international migration and migration category variant | Diff: Projected HRR throughout and migration category variant | Diff: Zero net migration and migration category variant
+      E92000001 | ENGLAND | 25958408 | 26233056 | 26233056 | 26645597 | 25744716 | 25559547 | 24670656 | 274648 | 274648 | 687189 | -213691 | -398861 | -1287752
     title: '2022-based household projections: variant comparison'
     url: https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationprojections/datasets/householdprojectionsforengland
     fileUrl: https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/populationandmigration/populationprojections/datasets/householdprojectionsforengland/2022basedvariantcomparison/2022basedhhpsvariantcomparison.xlsx
@@ -57,8 +59,9 @@ sources:
     publisher: Office for National Statistics
     date: '2025-10-28'
   - stance: supports
-    quote: >-
-      E92000001 ENGLAND All Ages Persons 23540823.735300701
+    quote: |-
+      CODE | AREA NAME | AGE GROUP | SEX | 2022
+      E92000001 | ENGLAND | All Ages | Persons | 23540823.735300701
     title: >-
       2022-based household projections (migration category variant) - detailed
       data: Stage 1 projected households
@@ -440,11 +443,11 @@ sources:
     publisher: NHS England Digital
     date: '2026-10-22'
   - stance: supports
-    quote: >-
-      Social Rent [note 4] 25,705 57,023 48,941 52,190 56,949 42,465 35,780
-      33,579 28,794 27,087 26,810 23,955 22,661 21,674 23,633 24,683 29,643
-      31,122 33,491 39,562 37,677 17,580 10,924 9,331 6,803 5,827 7,049 6,363
-      6,766 6,051 7,661 9,458 10,325 12,267
+    quote: |-
+      Live Table 1000: Additional affordable homes provided by tenure and provider, England, Completions [note 17] [note 20]
+
+      Tenure | Notes | 1991-92 | 1992-93 | 1993-94 | 1994-95 | 1995-96 | 1996-97 | 1997-98 | 1998-99 | 1999-00 | 2000-01 | 2001-02 | 2002-03 | 2003-04 | 2004-05 | 2005-06 | 2006-07 | 2007-08 | 2008-09 | 2009-10 | 2010-11 | 2011-12 | 2012-13 | 2013-14 | 2014-15 | 2015-16 | 2016-17 | 2017-18 | 2018-19 | 2019-20 | 2020-21 | 2021-22 | 2022-23 | 2023-24 | 2024-25
+      Social Rent | [note 4] | 25,705 | 57,023 | 48,941 | 52,190 | 56,949 | 42,465 | 35,780 | 33,579 | 28,794 | 27,087 | 26,810 | 23,955 | 22,661 | 21,674 | 23,633 | 24,683 | 29,643 | 31,122 | 33,491 | 39,562 | 37,677 | 17,580 | 10,924 | 9,331 | 6,803 | 5,827 | 7,049 | 6,363 | 6,766 | 6,051 | 7,661 | 9,458 | 10,325 | 12,267
     title: >-
       Live Table 1000: Additional affordable homes provided by tenure and
       provider, England, Completions
@@ -510,14 +513,12 @@ sources:
     publisher: OECD
     date: '2026'
   - stance: supports
-    quote: >-
-      Between 2021 and 2024, average annual capital expenditure on health across
-      OECD countries remained at around 0.6% of GDP ... Of the G7 countries, Japan at 0.9% and the United States at 0.8% remained
-      above the OECD average, while France, Italy and the United Kingdom all
-      invested below the average at 0.4-0.5% of GDP. ... On the other hand,
-      after the United Kingdom experienced a clear decline in investment through
-      the mid-2010s, there has been a notable increase in recent years – even if
-      the level remains below the OECD average.
+    quote: |-
+      Between 2021 and 2024, average annual capital expenditure on health across OECD countries remained at around 0.6% of GDP
+
+      ... Of the G7 countries, Japan at 0.9% and the United States at 0.8% remained above the OECD average, while France, Italy and the United Kingdom all invested below the average at 0.4-0.5% of GDP.
+
+      ... On the other hand, after the United Kingdom experienced a clear decline in investment through the mid-2010s, there has been a notable increase in recent years – even if the level remains below the OECD average.
     title: 'Health at a Glance 2025: OECD Indicators (Capital expenditure in the health sector)'
     url: https://www.oecd.org/en/publications/health-at-a-glance-2025_8f9e3f98-en.html
     publisher: OECD
@@ -579,7 +580,8 @@ sources:
     publisher: Department for Education
     date: '2026-01-29'
 series:
-  title: 'Net additional dwellings in England, 1991-92 to 2024-25'
+  title: 'Net additional dwellings'
+  subtitle: 'England, financial years 1991-92 to 2024-25'
   description: >-
     The net change in England's number of homes each financial year: new homes,
     conversions and changes of use, minus demolitions. Financial years run from April to
@@ -626,6 +628,7 @@ series:
       valueLabel: Net additional dwellings in the financial year
       lines:
         - name: Net additional dwellings
+          glossary: net-additional-dwellings
           points:
             - period: '1992'
               value: 165000
@@ -697,7 +700,8 @@ series:
               value: 208600
 additionalSeries:
   - id: rents
-    title: 'Private rent growth in the UK, January 2016 to September 2026'
+    title: 'Private rent growth'
+    subtitle: 'Annual change each month, UK, January 2016 to September 2026'
     description: >-
       Annual change in the average private rent paid in the UK, covering new
       and existing tenancies, each month. Net migration peaked at 944,000 in the
@@ -991,7 +995,8 @@ additionalSeries:
               - period: '2026-09'
                 value: 3.8
   - id: pupil-numbers
-    title: 'Pupils in state-funded schools in England, 2016 to 2026'
+    title: 'Pupils in state-funded schools'
+    subtitle: 'England, January census, 2016 to 2026'
     description: >-
       The number of pupils in England's state-funded schools at each January school
       census, by primary, secondary and other schools. Independent schools are not
@@ -1123,7 +1128,8 @@ additionalSeries:
               - period: '2026'
                 value: 230101
   - id: affordable-homes
-    title: 'Affordable and social rent homes completed in England, 1991-92 to 2024-25'
+    title: 'Affordable and social rent homes'
+    subtitle: 'Completed in England, financial years 1991-92 to 2024-25'
     description: >-
       New affordable homes completed in England each financial year, and the social rent
       homes, let at lower rents, among them. This is a gross count of new build and
@@ -1150,9 +1156,12 @@ additionalSeries:
           common since 2023-14, following its introduction in 2011-12."
     source:
       stance: supports
-      quote: >-
-        Live Table 1000: Additional affordable homes provided by tenure and
-        provider, England, Completions
+      quote: |-
+        Live Table 1000: Additional affordable homes provided by tenure and provider, England, Completions [note 17] [note 20]
+
+        Tenure | Notes | 1991-92 | 1992-93 | 1993-94 | 1994-95 | 1995-96 | 1996-97 | 1997-98 | 1998-99 | 1999-00 | 2000-01 | 2001-02 | 2002-03 | 2003-04 | 2004-05 | 2005-06 | 2006-07 | 2007-08 | 2008-09 | 2009-10 | 2010-11 | 2011-12 | 2012-13 | 2013-14 | 2014-15 | 2015-16 | 2016-17 | 2017-18 | 2018-19 | 2019-20 | 2020-21 | 2021-22 | 2022-23 | 2023-24 | 2024-25
+        Social Rent | [note 4] | 25,705 | 57,023 | 48,941 | 52,190 | 56,949 | 42,465 | 35,780 | 33,579 | 28,794 | 27,087 | 26,810 | 23,955 | 22,661 | 21,674 | 23,633 | 24,683 | 29,643 | 31,122 | 33,491 | 39,562 | 37,677 | 17,580 | 10,924 | 9,331 | 6,803 | 5,827 | 7,049 | 6,363 | 6,766 | 6,051 | 7,661 | 9,458 | 10,325 | 12,267
+        All affordable |  | 29,674 | 65,721 | 63,736 | 70,390 | 74,530 | 56,544 | 47,464 | 42,453 | 35,091 | 33,159 | 33,015 | 32,923 | 38,069 | 37,470 | 45,995 | 44,313 | 53,176 | 55,792 | 58,297 | 61,089 | 58,346 | 43,077 | 43,124 | 65,959 | 32,614 | 42,206 | 47,388 | 57,226 | 58,964 | 52,078 | 59,031 | 63,789 | 64,346 | 64,921
       title: >-
         Live Table 1000: Additional affordable homes provided by tenure and
         provider, England
@@ -1308,7 +1317,8 @@ additionalSeries:
               - period: '2025'
                 value: 12267
   - id: school-funding
-    title: 'School funding per pupil in England, real terms, 2010-11 to 2026-27'
+    title: 'School funding per pupil'
+    subtitle: 'England, real-terms change since 2010-11, to 2026-27'
     description: >-
       Funding per pupil for 5–16 year olds in England's state-funded schools, after
       inflation, shown as the change since 2010-11. This is revenue funding, adjusted
@@ -1377,7 +1387,8 @@ additionalSeries:
               - period: '2027'
                 value: 8.1
   - id: investment
-    title: 'Government investment as a share of GDP: UK and OECD median, 1995–2024'
+    title: 'Government investment as a share of GDP'
+    subtitle: 'UK and the OECD median, 1995–2024'
     description: >-
       Government investment as a share of GDP, for the UK and for the median country in
       the OECD, a group of rich countries. Investment here is general government gross
@@ -1539,7 +1550,8 @@ additionalSeries:
                 value: 3.96
 comparisons:
   - id: household-growth-by-variant
-    title: Projected household growth in England by migration assumption
+    title: 'Projected household growth'
+    subtitle: 'England, 2022 to 2032, by migration assumption'
     description: >-
       How many more households England is projected to have in mid-2032 than in mid-2022,
       under different assumptions, ranked. These are the Office for National Statistics'
@@ -1577,7 +1589,8 @@ comparisons:
       household formation rates variant changes how many households a given
       population forms, not migration.
   - id: government-investment-oecd-2024
-    title: Government investment across the OECD in 2024
+    title: 'Government investment across the OECD'
+    subtitle: 'Share of GDP, 2024'
     description: >-
       Government investment as a share of GDP in 2024, for every member of the OECD, a
       group of rich countries, with data. Investment here is general government gross
@@ -1682,10 +1695,22 @@ figures:
 - kind: comparison
   id: household-growth-by-variant
 - kind: barChart
+  id: homes-against-households
+  title: 'Homes added against households projected'
+  subtitle: 'England, 2024-25 against the 2022–2032 yearly average'
+  description: "The net number of homes England added in 2024-25, beside the average number of extra households a year the Office for National Statistics projects for 2022 to 2032."
+  valueLabel: "Per year"
+  categoryLabel: "Measure"
+  format: {"unit": "count"}
+  sort: none
+  sources: [6, 2]
+  items:
+    - {"label": "Net additional dwellings, 2024-25", "value": 208600}
+    - {"label": "Projected additional households a year, 2022–2032", "value": 242000}
+- kind: barChart
   id: house-price-and-rent-effects
-  title: >-
-    International studies: how much house prices and rents rise per point of
-    immigrant share
+  title: 'Immigration and house prices and rents'
+  subtitle: 'International studies: rise per point of immigrant share'
   description: "Estimated rise in house prices or rents when the immigrant share of the population rises by one percentage point, by study group. Figures are median estimated percentage rises, from a review of international studies commissioned by the Migration Advisory Committee. A dash means the review gives no median for that group."
   valueLabel: "Median effect of a 1-point rise in immigrant share"
   categoryLabel: "Study group"
@@ -1705,6 +1730,38 @@ figures:
     values: { prices: 0.36, rents: null }
   - label: "All studies"
     values: { prices: null, rents: 0.64 }
+- kind: dataTable
+  id: official-findings
+  title: 'Official findings on housing and services'
+  subtitle: 'Reviews and forecasters on housing, investment and spending'
+  description: "Findings on immigration and housing costs, public investment, spending per person and council building, in the words of the bodies that made them."
+  caption: "One row per finding"
+  columns:
+    - {"key": "topic", "label": "Topic", "rowHeader": true}
+    - {"key": "says", "label": "What the source says"}
+  rows:
+    - {"topic": "Immigration and house prices", "says": {"value": "Immigration \"can explain approximately 4-6% of the total increase in UK house prices over the last three decades\" and is \"unlikely to be a dominant driver of rising housing costs in the UK\"", "sources": [8, 9]}}
+    - {"topic": "Planning limits and prices", "says": {"value": "\"in dense areas or where planning constraints limit construction, immigration-driven demand shocks are more likely to raise prices\"", "sources": [10]}}
+    - {"topic": "Migrants in construction", "says": {"value": "\"Migrants make up around 46% of construction employment in London\"", "sources": [15]}}
+    - {"topic": "Public investment and population", "says": {"value": "\"a significant proportion of public investment is fixed in nominal terms up to the end of a Spending Review period, so does not respond immediately to changes in the size of the population\"", "sources": [45]}}
+    - {"topic": "Health buildings and equipment", "says": {"value": "Between 2021 and 2024 the OECD average was \"around 0.6% of GDP\", while \"France, Italy and the United Kingdom all invested below the average at 0.4-0.5% of GDP\"", "sources": [42]}}
+    - {"topic": "Health spending per person", "says": {"value": "\"the UK spent almost £3,500 per person (in 2015 real-terms prices) on health in 2022 – almost double real per-person spending at the turn of the century\"", "sources": [43]}}
+    - {"topic": "Day-to-day spending per person", "says": {"value": "\"a lower population growth forecast, largely due to lower projected net migration, has increased projected real spending per person to around £7,800 in 2028-29\"", "sources": [44]}}
+    - {"topic": "Council-built affordable homes", "says": {"value": "\"10,480 or 16% of all new affordable housing completions were delivered by local authorities, the highest recorded value in the available period (since 1991-92)\"", "sources": [37]}}
+- kind: dataTable
+  id: migrant-housing-tenure
+  title: 'Migrants and housing tenure'
+  subtitle: 'England and Wales, Census 2021'
+  description: "How the foreign-born fit into private renting and home ownership in England and Wales, in the Migration Observatory's reading of the 2021 Census."
+  caption: "One row per group"
+  columns:
+    - {"key": "group", "label": "Group", "rowHeader": true}
+    - {"key": "says", "label": "The Migration Observatory's words"}
+  rows:
+    - {"group": "People in privately rented homes", "says": {"value": "\"Around a third of people living in privately rented households in England and Wales were non-UK born\"", "sources": [16]}}
+    - {"group": "People in owner-occupied homes", "says": {"value": "\"around 10% of people living in owner-occupier housing\"", "sources": [16]}}
+    - {"group": "Arrived in the previous five years", "says": {"value": "\"only 17% of foreign-born people who had moved to England or Wales in the previous five years owned their own home\"", "sources": [17]}}
+    - {"group": "Arrived over 20 years earlier", "says": {"value": "\"a homeownership rate of 68%, marginally higher than the UK-born (67%)\"", "sources": [17]}}
 - kind: comparison
   id: government-investment-oecd-2024
 relatedFacts:
@@ -1738,16 +1795,45 @@ dataStillNeeded:
     why: >-
       National pupil numbers are falling, but pressure from migration can be
       local; no local-authority capacity data were gathered.
+observationMarks:
+  investment-does-not-adjust: {rows: ["Public investment and population"]}
+  migration-share-of-household-growth: {rows: ["Migration category variant", "Zero net migration"]}
+  building-below-household-growth: {rows: ["Net additional dwellings, 2024-25", "Projected additional households a year, 2022–2032"]}
+  migrants-concentrated-in-private-renting: {rows: ["People in privately rented homes"]}
+  rent-growth-fell-as-migration-fell: {lines: ["United Kingdom"], from: "2024-03", to: "2026-09", at: "2026-09"}
+  immigration-explains-4-6-percent-of-house-price-rise: {rows: ["Immigration and house prices"]}
+  rent-effects: {rows: ["UK-like countries"]}
+  lower-migration-raises-spending-per-person: {rows: ["Day-to-day spending per person"]}
+  building-peaked-before-migration: {lines: ["Net additional dwellings"], from: "2020", to: "2025", at: "2020"}
+  rents-are-still-rising: {lines: ["United Kingdom"], at: "2026-09"}
+  local-versus-regional-effects: {rows: ["Planning limits and prices"]}
+  public-investment-low: {lines: ["United Kingdom", "OECD median"], from: "1995", to: "2024"}
+  health-capital-below-average: {rows: ["Health buildings and equipment"]}
+  social-rent-building-fell-after-2010: {lines: ["Social rent"]}
+  day-to-day-spending-per-head-above-2010: {lines: ["Funding per pupil"], from: "2011", to: "2027", at: "2027"}
+  council-building-record: {rows: ["Council-built affordable homes"]}
+  projections-not-a-target: {rows: ["Migration category variant", "Zero net migration"]}
+  social-lettings: {whole: true}
+  pupil-numbers-falling: {lines: ["All state-funded schools", "Primary"], from: "2019", to: "2026"}
+  gp-numbers-rising: {whole: true}
+  patients-per-gp-not-obtained: {whole: true}
+  uk-rank-2024: {rows: ["United Kingdom", "Germany", "Denmark", "Spain", "Portugal", "Ireland"]}
+  household-projection-revision: {lines: ["Net additional dwellings"], from: "2022", to: "2025"}
+  rent-timing-not-causal: {lines: ["United Kingdom"], from: "2024-03", to: "2026-09"}
+  how-the-4-6-percent-is-reached: {rows: ["UK-like countries"]}
+  eal-is-not-a-migration-measure: {lines: ["All state-funded schools"], at: "2026"}
+  local-pressure: {lines: ["All state-funded schools"], from: "2024", to: "2026"}
+  recent-migrants-rarely-own: {rows: ["Arrived in the previous five years"]}
+  migrants-in-london-construction: {rows: ["Migrants in construction"]}
+  health-spending-per-person-doubled: {rows: ["Health spending per person"]}
+  homelessness: {whole: true}
+  migrants-staff-services: {whole: true}
 movedAnchors:
   observations-use-of-services: government-investment
 ---
 ## Observations {#immigration-housing-and-public-services--observations-dwellings}
 
-### Building has run below projected household growth {#immigration-housing-and-public-services--building-below-household-growth}
-
-England added 208,600 net dwellings in 2024-25. The ONS projects an average of 242,000 additional households a year over 2022–2032. [6](#source-immigration-housing-and-public-services-6) [2](#source-immigration-housing-and-public-services-2) A household is not a dwelling, as some homes stand empty or are second homes, so the two numbers are not an exact measure of shortfall. The ONS says its projections are not a forecast of how many homes should be built. [5](#source-immigration-housing-and-public-services-5)
-
-### Building peaked before migration did {#immigration-housing-and-public-services--building-peaked-before-migration}
+### Building peaked in 2019-20, and has fallen in each year since 2021-22 {#immigration-housing-and-public-services--building-peaked-before-migration}
 
 Net additions fell to 130,610 in 2012-13 after the financial crisis, rose to 248,590 in 2019-20, and have fallen in each year since 2021-22. [7](#source-immigration-housing-and-public-services-7) [6](#source-immigration-housing-and-public-services-6) Net migration peaked at 944,000 in the year to March 2023, so the latest fall in building came while net migration was at or near its peak. [28](#source-immigration-housing-and-public-services-28)
 
@@ -1759,7 +1845,7 @@ The ONS projection of 242,000 additional households a year over 2022–2032 is u
 
 ## Observations {#immigration-housing-and-public-services--observations-rent-growth}
 
-### Rent growth fell from its 2024 peak as migration fell {#immigration-housing-and-public-services--rent-growth-fell-as-migration-fell}
+### Rent growth fell to less than half its 2024 peak {#immigration-housing-and-public-services--rent-growth-fell-as-migration-fell}
 
 Annual private rent growth peaked in March 2024 and stayed near that level through 2024, then fell through 2025 to 3.8% in the year to September 2026 — less than half its peak. Over roughly the same period net migration fell from 944,000 in the year to March 2023 to 171,000 in 2025. [26](#source-immigration-housing-and-public-services-26) [28](#source-immigration-housing-and-public-services-28) Rent growth turned about a year after net migration did.
 
@@ -1785,21 +1871,9 @@ These are projections of past demographic trends, not forecasts of need, and the
 
 ## Observations {#immigration-housing-and-public-services--observations-house-price-and-rent-effects}
 
-### Immigration explains about 4–6% of the real house-price rise {#immigration-housing-and-public-services--immigration-explains-4-6-percent-of-house-price-rise}
+### In UK-like countries a rise in the immigrant share raises rents more than house prices {#immigration-housing-and-public-services--rent-effects}
 
-In markets most like the UK's, the median study finds a one-point rise in the immigrant share raises house prices by 0.65%. For the UK, the review says this "can explain approximately 4-6%" of the three-decade rise in real house prices. It calls immigration "unlikely to be a dominant driver" of UK housing costs, while finding the effect positive. [8](#source-immigration-housing-and-public-services-8) [13](#source-immigration-housing-and-public-services-13) [9](#source-immigration-housing-and-public-services-9)
-
-### Rent effects per person are at least as large as price effects {#immigration-housing-and-public-services--rent-effects}
-
-Across all studies the median rent effect is 0.64%, against 0.36% for house prices; in UK-like countries it is 0.81% for rents and 0.65% for prices. [11](#source-immigration-housing-and-public-services-11) [12](#source-immigration-housing-and-public-services-12) [13](#source-immigration-housing-and-public-services-13) The review produces no rent equivalent of the 4–6% figure.
-
-### Effects are larger where building is constrained, and UK local studies find falls {#immigration-housing-and-public-services--local-versus-regional-effects}
-
-Prices respond more where planning limits construction. Small-area studies find weaker or negative effects as existing residents move away; in the UK, Sá (2015) finds a 1.7% fall in local house prices per point of immigrant share. [10](#source-immigration-housing-and-public-services-10) [14](#source-immigration-housing-and-public-services-14) Migration also supplies the building workforce in London, where migrants are around 46% of construction employment. [15](#source-immigration-housing-and-public-services-15)
-
-### Recent migrants rent privately; settled migrants own homes at UK-born rates {#immigration-housing-and-public-services--migrants-concentrated-in-private-renting}
-
-Around a third of people in privately rented homes in England and Wales were born abroad in 2021, against around 10% of owner-occupiers. Home ownership was 17% for migrants who had arrived in the past five years and 68% for those here more than 20 years, against 67% for the UK-born. [16](#source-immigration-housing-and-public-services-16) [17](#source-immigration-housing-and-public-services-17)
+Across all studies the median rent effect is 0.64%, against 0.36% for house prices; in UK-like countries it is 0.81% for rents and 0.65% for prices. In less comparable countries prices rise more than rents. [11](#source-immigration-housing-and-public-services-11) [12](#source-immigration-housing-and-public-services-12) [13](#source-immigration-housing-and-public-services-13) The review produces no rent equivalent of the 4–6% figure.
 
 ### Non-UK nationals are a rising minority of new social tenants {#immigration-housing-and-public-services--social-lettings}
 
@@ -1837,37 +1911,21 @@ A falling national roll does not rule out pressure in areas where migrants settl
 
 ## Observations {#immigration-housing-and-public-services--observations-affordable-completions}
 
-### Social rent building fell after 2010-11 {#immigration-housing-and-public-services--social-rent-building-fell-after-2010}
+### Since 2013-14, social rent building has been lower every year than in any year from 1991-92 to 2012-13 {#immigration-housing-and-public-services--social-rent-building-fell-after-2010}
 
-Social rent completions fell from 39,562 in 2010-11 to 5,827 in 2016-17, and were 12,267 in 2024-25 — less than a third of the 2010-11 level. [36](#source-immigration-housing-and-public-services-36) Total affordable completions held up because the new affordable rent tenure, at higher rents, replaced much of social rent from 2011-12.
-
-### Council building is at a record, from a low base {#immigration-housing-and-public-services--council-building-record}
-
-Local authorities completed 10,480 affordable homes in 2024-25, the most since the series began in 1991-92. [37](#source-immigration-housing-and-public-services-37) The release described 12,198 social rent homes as the most since 2012-13; the June 2026 revision puts the figure at 12,267. [38](#source-immigration-housing-and-public-services-38) [36](#source-immigration-housing-and-public-services-36)
+Social rent completions were between 17,580 and 57,023 a year from 1991-92, where this record starts, to 2012-13. Every year since, they have been 12,267 or fewer; they fell to 5,827 in 2016-17 and were 12,267 in 2024-25. [36](#source-immigration-housing-and-public-services-36) Total affordable completions held up because the new affordable rent tenure, at higher rents, replaced much of social rent from 2011-12.
 
 ## Observations {#immigration-housing-and-public-services--observations-school-funding-per-pupil}
 
-### Day-to-day spending per head is above its 2010 level, after a dip in schools {#immigration-housing-and-public-services--day-to-day-spending-per-head-above-2010}
+### School funding per pupil is above its 2010-11 level, after a dip {#immigration-housing-and-public-services--day-to-day-spending-per-head-above-2010}
 
-Real school funding per pupil was flat at around £7,700 from 2010-11 to 2015-16, fell 3.6% to 2018-19, then rose, to £8,390 in 2026-27 in 2025-26 prices. [46](#source-immigration-housing-and-public-services-46) Real health spending per person was almost £3,500 in 2022, almost double its level at the turn of the century, though still below the average of 19 advanced economies. [43](#source-immigration-housing-and-public-services-43)
-
-### Lower migration raises spending per person {#immigration-housing-and-public-services--lower-migration-raises-spending-per-person}
-
-The OBR projects real day-to-day departmental spending per person to reach its highest level in two decades outside the pandemic, around £7,800 in 2028-29. It attributes the rise from about £7,700 in the June 2025 Spending Review plans to a lower population forecast, "largely due to lower projected net migration". [44](#source-immigration-housing-and-public-services-44)
+Real school funding per pupil was flat at around £7,700 from 2010-11 to 2015-16, fell 3.6% to 2018-19, then rose, to £8,390 in 2026-27 in 2025-26 prices. [46](#source-immigration-housing-and-public-services-46)
 
 ## Observations {#immigration-housing-and-public-services--observations-government-investment}
 
-### Public investment has been low by OECD standards {#immigration-housing-and-public-services--public-investment-low}
+### UK public investment was below the OECD median in every year from 1995 to 2024 {#immigration-housing-and-public-services--public-investment-low}
 
 UK government investment as a share of GDP was below the OECD median in every year from 1995 to 2024. In the decade to 2017, the OBR ranked the UK between 23rd and 27th of 30 OECD countries. [40](#source-immigration-housing-and-public-services-40) [41](#source-immigration-housing-and-public-services-41) [39](#source-immigration-housing-and-public-services-39) UK investment has been higher as a share of GDP since 2020 than in most of the 2010s, but the OECD median rose too.
-
-### Health capital spending is below the OECD average {#immigration-housing-and-public-services--health-capital-below-average}
-
-In 2021–2024 the UK invested 0.4–0.5% of GDP a year in health capital, below the OECD average, after a clear decline through the mid-2010s and a rise since. [42](#source-immigration-housing-and-public-services-42)
-
-### Investment does not adjust quickly to population {#immigration-housing-and-public-services--investment-does-not-adjust}
-
-The OBR notes that much public investment is fixed in cash terms for each Spending Review period, so it "does not respond immediately to changes in the size of the population"; whether it catches up later is uncertain. [45](#source-immigration-housing-and-public-services-45)
 
 ## Observations {#immigration-housing-and-public-services--observations-government-investment-oecd-2024}
 
@@ -1898,3 +1956,56 @@ The MAC's 2018 review of EEA migration found that EEA migrants contributed more 
 ### Non-UK citizens head about a fifth of homeless households {#immigration-housing-and-public-services--homelessness}
 
 Of households in England assessed as homeless or at risk in 2024/25, 22% (71,580) were headed by a non-UK citizen, including 7% by EEA citizens and 6% by people granted refugee status. People subject to the no recourse to public funds condition are not eligible and are not counted. [22](#source-immigration-housing-and-public-services-22)
+
+## Observations {#immigration-housing-and-public-services--observations-homes-against-households}
+
+### England added fewer homes in 2024-25 than the households projected each year {#immigration-housing-and-public-services--building-below-household-growth}
+
+England added 208,600 net dwellings in 2024-25. The ONS projects an average of 242,000 additional households a year over 2022–2032. [6](#source-immigration-housing-and-public-services-6) [2](#source-immigration-housing-and-public-services-2) A household is not a dwelling, as some homes stand empty or are second homes, so the two numbers are not an exact measure of shortfall. The ONS says its projections are not a forecast of how many homes should be built. [5](#source-immigration-housing-and-public-services-5)
+
+
+## Observations {#immigration-housing-and-public-services--observations-migrant-housing-tenure}
+
+### About a third of private renters in England and Wales were born abroad {#immigration-housing-and-public-services--migrants-concentrated-in-private-renting}
+
+Around a third of people in privately rented homes in England and Wales were born abroad in 2021, against around 10% of owner-occupiers. [16](#source-immigration-housing-and-public-services-16)
+
+### Only 17% of recent migrants own their home {#immigration-housing-and-public-services--recent-migrants-rarely-own}
+
+Home ownership was 17% for migrants who had arrived in the past five years and 68% for those here more than 20 years, against 67% for the UK-born. [17](#source-immigration-housing-and-public-services-17)
+
+
+## Observations {#immigration-housing-and-public-services--observations-official-findings}
+
+### Immigration explains about 4–6% of the real house-price rise {#immigration-housing-and-public-services--immigration-explains-4-6-percent-of-house-price-rise}
+
+In markets most like the UK's, the median study finds a one-point rise in the immigrant share raises house prices by 0.65%. For the UK, the review says this "can explain approximately 4-6%" of the three-decade rise in real house prices. It calls immigration "unlikely to be a dominant driver" of UK housing costs, while finding the effect positive. [8](#source-immigration-housing-and-public-services-8) [13](#source-immigration-housing-and-public-services-13) [9](#source-immigration-housing-and-public-services-9)
+
+### Immigration is more likely to raise prices where planning limits construction {#immigration-housing-and-public-services--local-versus-regional-effects}
+
+Prices respond more where planning limits construction. Small-area studies find weaker or negative effects as existing residents move away; in the UK, Sá (2015) finds a 1.7% fall in local house prices per point of immigrant share. [10](#source-immigration-housing-and-public-services-10) [14](#source-immigration-housing-and-public-services-14)
+
+### Much public investment is fixed up to the end of a spending period, so it does not respond straight away to population {#immigration-housing-and-public-services--investment-does-not-adjust}
+
+The OBR notes that much public investment is fixed in cash terms for each Spending Review period, so it "does not respond immediately to changes in the size of the population"; whether it catches up later is uncertain. [45](#source-immigration-housing-and-public-services-45)
+
+### UK health capital spending is below the OECD average as a share of GDP {#immigration-housing-and-public-services--health-capital-below-average}
+
+In 2021–2024 the UK invested 0.4–0.5% of GDP a year in health capital, below the OECD average, after a clear decline through the mid-2010s and a rise since. [42](#source-immigration-housing-and-public-services-42)
+
+### Lower projected migration raises projected spending per person {#immigration-housing-and-public-services--lower-migration-raises-spending-per-person}
+
+The OBR projects real day-to-day departmental spending per person to reach its highest level in two decades outside the pandemic, around £7,800 in 2028-29. It attributes the rise from about £7,700 in the June 2025 Spending Review plans to a lower population forecast, "largely due to lower projected net migration". [44](#source-immigration-housing-and-public-services-44)
+
+### Councils completed more affordable homes in 2024-25 than in any year since 1991-92, 16% of the total {#immigration-housing-and-public-services--council-building-record}
+
+Local authorities completed 10,480 affordable homes in 2024-25, the most since the series began in 1991-92. [37](#source-immigration-housing-and-public-services-37) The release described 12,198 social rent homes as the most since 2012-13; the June 2026 revision puts the figure at 12,267. [38](#source-immigration-housing-and-public-services-38) [36](#source-immigration-housing-and-public-services-36)
+
+### Migrants are almost half of London's construction workers {#immigration-housing-and-public-services--migrants-in-london-construction}
+
+Migration supplies the building workforce in London, where migrants are around 46% of construction employment. [15](#source-immigration-housing-and-public-services-15)
+
+### Real health spending per person has almost doubled since the turn of the century {#immigration-housing-and-public-services--health-spending-per-person-doubled}
+
+Real health spending per person was almost £3,500 in 2022, almost double its level at the turn of the century, though still below the average of 19 advanced economies. [43](#source-immigration-housing-and-public-services-43)
+

@@ -1,4 +1,5 @@
 import { test, expect } from './hydrated-test';
+import { expectChartAlone } from './topic-rows';
 
 const rows = (page: import('@playwright/test').Page) => page.locator('.sv-row');
 const toggle = (page: import('@playwright/test').Page, n: number) => rows(page).nth(n).locator('.sv-row__toggle');
@@ -58,15 +59,16 @@ test('a short bar chart preview spreads its rows a little, and a wrapped label k
   const row = rows(page).filter({ hasText: 'Voter ID and citizenship checks' });
   await row.locator('.sv-row__toggle').click({ position: { x: 400, y: 12 } });
   // Five rows at 2.5rem each, against 108px at their own spacing.
-  const short = row.locator('.sv-comparison').filter({ hasText: 'Non-citizen registrants found' }).locator('.sv-comparison__rows');
+  const short = row.locator('.sv-comparison').filter({ hasText: 'Non-citizens found on voter rolls' }).locator('.sv-comparison__rows');
   await expect(short.locator('> li')).toHaveCount(5);
   await expect.poll(() => short.evaluate(list => list.clientHeight)).toBe(200);
 
+  // On a phone the slide is as tall as its chart, so nothing spreads the rows,
+  // but labels wrapped onto two or three lines are never cut off.
   await page.setViewportSize({ width: 390, height: 844 });
-  const wrapped = row.locator('.sv-comparison').filter({ hasText: 'Adult citizens without each kind' }).locator('.sv-comparison__rows');
+  const wrapped = row.locator('.sv-comparison').filter({ hasText: 'Adult citizens without ID documents' }).locator('.sv-comparison__rows');
   const { height, content } = await wrapped.evaluate(list => ({ height: list.clientHeight, content: list.scrollHeight }));
   expect(content).toBeLessThanOrEqual(height);
-  expect(height).toBeGreaterThan(200);
 });
 
 test('the UK topics come after every other topic', async ({ page }) => {
@@ -87,6 +89,79 @@ test('the first topic starts open and its carousel steps through the charts', as
   await expect(carousel.locator('.sv-carousel__count')).toContainText('2 / 4');
   await carousel.locator('.sv-carousel__strip').press('ArrowLeft');
   await expect(carousel.locator('.sv-carousel__count')).toContainText('1 / 4');
+});
+
+test('on a phone an open row leaves out its viewpoints, and its carousel is only as tall as the chart showing', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+  const row = rows(page).first();
+  await expect(row.locator('.sv-row__viewpoints')).toBeHidden();
+  await expect(row.locator('.sv-row__cta')).toBeVisible();
+  // Counted as the topic page names them: its viewpoints and its cruxes.
+  await expect(row.locator('.sv-row__counts')).toHaveText(/^\d+ viewpoints? · \d+ (crux|cruxes)$/);
+  const carousel = row.locator('.sv-carousel');
+  const strip = carousel.locator('.sv-carousel__strip');
+  const heights = new Set<number>();
+  for (let n = 1; n <= 4; n++) {
+    if (n > 1) await carousel.getByRole('button', { name: 'Next chart' }).click();
+    await expect(carousel.locator('.sv-carousel__count')).toContainText(`${n} / 4`);
+    const slide = carousel.locator('.sv-carousel__slide').nth(n - 1);
+    const height = await slide.evaluate(el => el.getBoundingClientRect().height);
+    await expect.poll(() => strip.evaluate(el => el.getBoundingClientRect().height)).toBeCloseTo(height, 0);
+    heights.add(Math.round(height));
+  }
+  // Each slide takes its own chart's height, not one height for all.
+  expect(heights.size).toBeGreaterThan(1);
+});
+
+test('a preview chart opens its data in a sheet over the home page, which Back closes', async ({ page }) => {
+  await page.goto('/');
+  const slide = page.locator('[data-preview]#human-and-financial-costs-of-the-war--chart-us-deaths-earlier-wars');
+  const row = rows(page).filter({ has: slide });
+  if (await row.getAttribute('data-open') !== 'true') await row.locator('.sv-row__toggle').click({ position: { x: 400, y: 12 } });
+  await slide.locator('.sv-graph-heading a').click();
+  const sheet = page.locator('dialog[open]');
+  await expect(sheet.locator('[id="human-and-financial-costs-of-the-war--chart-us-deaths-earlier-wars"]')).toBeInViewport();
+  await expectChartAlone(sheet);
+  await expect(page).toHaveURL(/\/$/);
+  await page.goBack();
+  await expect(sheet).toHaveCount(0);
+  await expect(page).toHaveURL(/\/$/);
+
+  // Clicking anywhere on the chart opens it too, and the close button closes it.
+  await slide.click({ position: { x: 200, y: 150 } });
+  await expect(sheet).toHaveCount(1);
+  await sheet.locator('.sv-modal__close').click();
+  await expect(sheet).toHaveCount(0);
+});
+
+// A preview is one of the charts its topic's viewpoint cards are made with,
+// so its link opens that same chart alone over the topic page.
+test('every preview chart links to a chart its topic page opens alone', async ({ page }) => {
+  await page.goto('/');
+  const hrefs = await page.locator('.sv-carousel__slide .sv-graph-heading a').evaluateAll(
+    links => links.map(link => link.getAttribute('href') ?? '')
+  );
+  expect(hrefs.length).toBeGreaterThanOrEqual(4 * await rows(page).count());
+  for (const href of hrefs) {
+    const [path, address] = href.split('#');
+    expect(path).toMatch(/^\/topics\/[a-z0-9-]+$/);
+    await page.goto(href);
+    const sheet = page.locator('dialog.sv-modal');
+    await expect(sheet.locator(`[data-chart-anchor="${address}"], [id="${address}"]`).first(), href).toBeAttached();
+    await expectChartAlone(sheet);
+  }
+});
+
+test('a sheet fills a phone\'s screen', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+  const slide = page.locator('[data-preview]#human-and-financial-costs-of-the-war--chart-us-deaths-earlier-wars');
+  const row = rows(page).filter({ has: slide });
+  if (await row.getAttribute('data-open') !== 'true') await row.locator('.sv-row__toggle').click({ position: { x: 200, y: 12 } });
+  await slide.locator('.sv-graph-heading a').click();
+  const box = await page.locator('dialog[open] .sv-modal__panel').boundingBox();
+  expect(box).toEqual({ x: 0, y: 0, width: 390, height: 844 });
 });
 
 test('every row shows its tags', async ({ page }) => {
@@ -146,4 +221,17 @@ test.describe('without JavaScript', () => {
     await page.getByRole('link', { name: 'The US war with Iran', exact: true }).click();
     await expect(page).toHaveURL(/\/topics\/us-iran-war$/);
   });
+});
+
+test('each topic lists its viewpoints as its own page names them, in the same order', async ({ page }) => {
+  await page.goto('/');
+  const listed = await page.locator('.sv-row').evaluateAll(rows => rows.map(row => ({
+    href: row.querySelector<HTMLAnchorElement>('.sv-row__cta')?.getAttribute('href'),
+    names: [...row.querySelectorAll('.sv-row__viewpoints li')].map(li => li.textContent?.trim()),
+  })));
+  expect(listed.length).toBeGreaterThan(1);
+  for (const { href, names } of listed) {
+    await page.goto(href!);
+    await expect(page.locator('.sv-row--viewpoint .sv-row__title'), href!).toHaveText(names.map(name => name!));
+  }
 });

@@ -294,13 +294,16 @@ sources:
   publisher: UK Parliament (Home Office answer)
   date: '2026-09-10'
 - stance: complicates
-  quote: >-
-    Data on preventions are operational estimates collected and provided to the UK
-    by French authorities. The data on preventions for migrants includes: individuals
-    who are prevented from departing France, or those who return to France The data
-    on events includes: boats that are prevented from departing France or return to
-    France finds of general maritime equipment arrests of facilitators linked to small
-    boats crossings
+  quote: |-
+    Data on preventions are operational estimates collected and provided to the UK by French authorities.
+
+    The data on preventions for migrants includes:
+    - individuals who are prevented from departing France, or those who return to France
+
+    The data on events includes:
+    - boats that are prevented from departing France or return to France
+    - finds of general maritime equipment
+    - arrests of facilitators linked to small boats crossings
   title: Weekly summary of small boat arrivals and preventions
   url: >-
     https://www.gov.uk/government/publications/migrants-detected-crossing-the-english-channel-in-small-boats/weekly-summary-of-small-boat-arrivals-and-preventions
@@ -411,7 +414,8 @@ sources:
   publisher: The Migration Observatory, University of Oxford
   date: '2025-10-22'
 series:
-  title: Small-boat arrivals across the Channel, 2018–2026
+  title: 'Small-boat crossings of the Channel'
+  subtitle: 'People and boats detected arriving, 2018–2026'
   description: >-
     People detected arriving in the UK by small boat each calendar year, from the
     Home Office's daily operational count. One line is the whole year; the other counts
@@ -593,7 +597,8 @@ series:
         value: 68.6
 additionalSeries:
 - id: nationality
-  title: UK small-boat arrivals by nationality, 2018–2025
+  title: 'Small-boat arrivals by nationality'
+  subtitle: 'Top ten nationalities and the rest, UK, 2018–2025'
   description: >-
     People detected arriving by small boat each year, by recorded nationality. The
     ten nationalities with the most arrivals over 2018–2025 are shown by name, in
@@ -862,7 +867,8 @@ additionalSeries:
       - period: '2025'
         value: 9354
 - id: routes
-  title: Detected illegal arrivals in the UK by method, 2018–2025
+  title: 'Detected illegal arrivals by method'
+  subtitle: 'Small boats, air, lorries and ports, UK, 2018–2025'
   description: >-
     People detected arriving in the UK by an illegal route, by method of entry, each
     year. Detection rates differ by method, so the lines show what was detected, not
@@ -981,7 +987,8 @@ additionalSeries:
       - period: '2025'
         value: 204
 - id: monthly
-  title: UK small-boat arrivals by month, January 2018 to October 2026
+  title: 'Small-boat arrivals by month'
+  subtitle: 'UK, January 2018 to 22 October 2026'
   description: >-
     People detected arriving by small boat each month, from the Home Office's daily
     operational count. Crossings are seasonal, so a month is best compared with the
@@ -1228,7 +1235,8 @@ additionalSeries:
       - period: 2026-10
         value: 1739
 - id: europe
-  title: Irregular crossings into the EU, 2009–2026
+  title: 'Irregular crossings into the EU'
+  subtitle: 'Detected at the EU''s external borders, by Frontex, 2009–2026'
   description: >-
     Detections of irregular border crossings at the EU's external borders, all routes,
     from Frontex. One line is the whole year; the other counts only January to August,
@@ -1344,9 +1352,8 @@ additionalSeries:
       - period: '2026'
         value: 76778
 - id: weather
-  title: >-
-    Good Channel-crossing weather and arrivals per good day, January–August
-    2020–2026
+  title: 'Channel crossing weather and arrivals'
+  subtitle: 'Good-weather “red days” and arrivals per red day, Jan–Aug 2020–2026'
   description: >-
     Red days are days the Met Office judged at least one crossing attempt likely.
     The first reading counts red days from January to August each year; the second
@@ -1420,9 +1427,8 @@ additionalSeries:
       - period: '2026'
         value: 144
 - id: preventions
-  title: >-
-    Channel crossings stopped by the French authorities, May 2024 to October
-    2026
+  title: 'Crossings stopped by French authorities'
+  subtitle: 'People arrived and stopped, by month, May 2024 to October 2026'
   description: >-
     People who reached the UK by small boat, and people the French authorities report
     stopping from leaving France, by the month in which each reporting week ends.
@@ -1718,7 +1724,8 @@ additionalSeries:
       - period: 2026-10
         value: 57.9
 - id: albania
-  title: Albanian and other small-boat arrivals in the UK by quarter, 2018–2026
+  title: 'Albanian small-boat arrivals'
+  subtitle: 'Albanians and everyone else, UK, by quarter, 2018–2026'
   description: >-
     People detected arriving by small boat each quarter: Albanian nationals, and everyone
     else. The UK–Albania returns agreement was announced on 13 December 2022, in the
@@ -1733,6 +1740,11 @@ additionalSeries:
       minus Albanian nationals, including people whose nationality is not yet recorded.
       Monthly figures for late 2022, which this quarterly dataset cannot show, are
       quoted in Observations from the Migration Observatory.
+  events:
+  - period: '2022-12'
+    label: UK–Albania returns agreement signed
+    note: Signed on 13 December 2022, in the last month of this point's quarter.
+    source: 31
   breaks:
   - period: 2022-09
     label: 2022 Q3 small-boat total from caseworking systems
@@ -1906,9 +1918,8 @@ additionalSeries:
         value: 7413
 comparisons:
 - id: europe-change
-  title: >-
-    Change in irregular crossings into the EU and the UK, January–August 2026
-    against January–August 2025
+  title: 'Change in irregular crossings'
+  subtitle: 'January to August 2026 against the same months of 2025, EU and UK'
   description: >-
     Percentage change in detected irregular crossings on each Frontex route into the
     EU, the EU total, and small-boat arrivals in the UK, over the same eight months.
@@ -1929,9 +1940,11 @@ comparisons:
     EU's external border; the UK figure counts people arriving in the UK, most of
     whom will have crossed into the EU earlier.
   items:
-  - label: Western African route (Canary Islands)
+  - label: Western African route
+    subtitle: Canary Islands
     value: -57.5
-  - label: Central Mediterranean (Italy, Malta)
+  - label: Central Mediterranean
+    subtitle: Italy, Malta
     value: -54.1
   - label: Eastern land borders
     value: -48.3
@@ -1945,11 +1958,20 @@ comparisons:
   - label: "Eastern Mediterranean"
     detail: "Greece, Cyprus, Bulgaria"
     value: -16.0
-  - label: Western Mediterranean (Spain)
+  - label: Western Mediterranean
+    subtitle: Spain
     value: 27.9
   - label: Albania to Greece (circular route)
     value: 28.6
 dataStillNeeded:
+- measure: >-
+    Small-boat departures by place: each stretch of the northern French coast,
+    and Belgium
+  why: >-
+    No official source found counts departures by place, so the map shows where
+    the boats leave from without sizing its arrows. The French coastguard's
+    annual reports count rescues by département, which are not departures and
+    leave out Belgium.
 - measure: >-
     An official series of irregular entry attempts and detections before 2018, by
     method (lorries, trains, ferries, juxtaposed controls)
@@ -1975,10 +1997,102 @@ dataStillNeeded:
     Frontex's downloadable monthly file covers routes into the EU but not Channel
     exit attempts (arrivals plus people stopped), which appear in its press releases;
     a dataset would allow the UK route to be charted on the same basis as the EU routes.
+figures:
+- kind: series
+- kind: series
+  id: nationality
+- kind: map
+  id: where-the-boats-leave-from
+  title: 'Where the small boats leave from'
+  subtitle: 'Departures to the UK across the Channel and the North Sea, 2026'
+  description: >-
+    The coasts the small boats leave from to reach the UK: the beaches of northern
+    France and, since the first half of 2026, more often the Belgian coast.
+  preset: europe
+  areaLabel: Country
+  categoryLabel: Role in small-boat crossings
+  categories:
+    - {id: departures, label: Boats leave from its northern beaches, mark: D}
+    - {id: more-departures, label: More boats left from here in 2026, mark: B}
+    - {id: arrivals, label: The boats arrive here, mark: A}
+  areas: {FR: departures, BE: more-departures, GB: arrivals}
+  crop: {minLon: -1.5, maxLon: 5, minLat: 49.6, maxLat: 52.4}
+  flows:
+    label: Small-boat crossings
+    from:
+      - {label: Northern French beaches, lon: 1.7, lat: 50.8}
+      - {label: Belgian coast, lon: 2.7, lat: 51.15}
+    to: {label: Kent, lon: 1.25, lat: 51.2}
+  sources: [21, 28]
+  note: >-
+    Only the countries the sources name are shaded. The arrows show the coasts the
+    boats leave from, not individual crossings; the sources give no count of boats
+    by place of departure.
+- kind: series
+  id: routes
+- kind: series
+  id: monthly
+- kind: series
+  id: europe
+- kind: series
+  id: weather
+- kind: series
+  id: preventions
+- kind: series
+  id: albania
+- kind: dataTable
+  id: albania-what-changed
+  title: 'Albanian arrivals and the returns deal'
+  subtitle: 'UK small-boat arrivals, claims and returns around December 2022'
+  description: The fall in Albanian arrivals in late 2022, the returns deal, and what happened to Albanian claims and returns.
+  caption: One card per change
+  layout: cards
+  leadColumn: says
+  columns:
+    - { key: change, label: Change, rowHeader: true }
+    - { key: says, label: What the source says, sortable: false }
+  rows:
+    - change: Arrivals before the deal
+      says: { value: 'Around 9,000 in July to September 2022, around 1,000 in October and 166 in November; the deal was announced in December.', sources: [30] }
+    - change: Returns deal
+      says: { value: 'Signed on 13 December 2022. The Migration Observatory says it "could be a major driver of continuing low numbers".', sources: [30, 31] }
+    - change: Claim processing
+      says: { value: 'The government "prioritised the processing of Albanian asylum applications after arrivals spiked in 2022".', sources: [33] }
+    - change: Initial decisions
+      says: { value: 'Almost half were positive in 2021 and 2022; this "fell to just 3% in 2024".', sources: [34] }
+    - change: Returns
+      says: { value: '"overall returns to the country increased sharply following the signing of a returns agreement".', sources: [33] }
+- kind: comparison
+  id: europe-change
+observationMarks:
+  crossings-since-2018: {lines: ["Whole year (2026: to 22 October)"], from: "2018", to: "2026"}
+  albanian-arrivals-have-stayed-low: {lines: ["Albanian nationals"], from: "2023-03", to: "2026-06"}
+  albanian-arrivals-collapsed-before-the-deal: {rows: ["Arrivals before the deal", "Returns deal"]}
+  arrivals-fell-sharply-in-2026: {lines: ["1 January to 22 October"], from: "2025", to: "2026"}
+  the-uk-fall-is-within-the-european-range: {rows: ["UK: Channel small-boat arrivals", "All EU external borders"]}
+  the-peak-year-was-2022: {lines: ["Whole year (2026: to 22 October)"], from: "2021", to: "2025", at: "2022"}
+  what-caused-the-2026-fall-is-not-settled: {lines: ["1 January to 22 October"], from: "2025", to: "2026"}
+  fewer-boats-more-people-in-each: {lines: ["1 January to 22 October"], from: "2025", to: "2026"}
+  a-few-nationalities-make-up-most-arrivals: {lines: ["Iran", "Afghanistan", "Iraq", "Eritrea", "Albania", "Syria"]}
+  boats-leave-from-france-and-belgium: {rows: [FR, BE]}
+  the-mix-has-shifted: {lines: ["Eritrea", "Sudan", "Somalia", "Syria"], from: "2024", to: "2025"}
+  boats-did-not-simply-replace-lorries: {lines: ["Small boats", "Detected inside the UK (often lorries or ferries)"]}
+  before-2018-the-figures-are-attempts-stopped-in-france: {whole: true}
+  crossings-are-seasonal: {lines: ["Arrivals"], from: "2025-01", to: "2026-09"}
+  crossings-into-the-eu-have-also-fallen: {lines: ["January to August"], from: "2024", to: "2026"}
+  weather-explains-little-of-the-2026-fall: {lines: ["Red days"], at: "2026"}
+  french-preventions-fell-in-step-with-arrivals: {lines: ["Arrived in the UK", "Stopped by French authorities"], from: "2025-01", to: "2026-10"}
+  interceptions-at-sea-are-not-counted: {lines: ["Stopped by French authorities"]}
+  compare-the-same-months-of-each-year: {lines: ["1 January to 22 October"]}
+  detected-arrivals-are-not-every-entry: {whole: true}
+  deal-could-be-a-major-driver: {rows: ["Returns deal"]}
+  albanian-claims-prioritised: {rows: ["Claim processing"]}
+  albanian-claims-nearly-all-refused: {rows: ["Initial decisions"]}
+  returns-to-albania-rose: {rows: ["Returns"]}
 ---
 ## Observations {#channel-crossings-and-irregular-arrivals--observations-arrivals}
 
-### About 193,000 people crossed from 2018 to 2025 {#channel-crossings-and-irregular-arrivals--crossings-since-2018}
+### More than two hundred thousand people have crossed since 2018 {#channel-crossings-and-irregular-arrivals--crossings-since-2018}
 
 The Migration Observatory counts around 193,000 people detected reaching the UK in small boats from 2018 to the end of 2025. [1](#source-channel-crossings-and-irregular-arrivals-1) Adding the 16,300 who arrived in 2026 up to 9 September takes the total past two hundred thousand. [3](#source-channel-crossings-and-irregular-arrivals-3) Crossings were small until 2020: 10,608 across 2018–2020 together. [2](#source-channel-crossings-and-irregular-arrivals-2)
 
@@ -2027,6 +2141,12 @@ From 2018 to 2025, people from six countries made up 65% of arrivals: Iran (16%)
 
 Eritreans were the largest group in the year to June 2026, with 5,875 arrivals. Sudanese arrivals rose 11% to 4,191, and Somali arrivals rose 76% to 3,901. [16](#source-channel-crossings-and-irregular-arrivals-16) [15](#source-channel-crossings-and-irregular-arrivals-15) Syrian arrivals fell by 67% between 2024 and 2025, which the Home Office attributes to the fall of the Assad regime. [17](#source-channel-crossings-and-irregular-arrivals-17) Albanian arrivals rose and fell within 2022 (see the Albanian chart below).
 
+## Observations {#channel-crossings-and-irregular-arrivals--observations-where-the-boats-leave-from}
+
+### The boats leave from France, and lately Belgium {#channel-crossings-and-irregular-arrivals--boats-leave-from-france-and-belgium}
+
+The small boats leave from the beaches of northern France, and the Migration Observatory says most people who cross travel through the EU to get there. [21](#source-channel-crossings-and-irregular-arrivals-21) In the first half of 2026, more boats left from Belgium. [28](#source-channel-crossings-and-irregular-arrivals-28)
+
 ## Observations {#channel-crossings-and-irregular-arrivals--observations-route-people}
 
 ### Boats grew as other detected routes shrank, but did not simply replace them {#channel-crossings-and-irregular-arrivals--boats-did-not-simply-replace-lorries}
@@ -2053,7 +2173,7 @@ Frontex recorded just over 91 000 irregular crossings into the EU in January–S
 
 ## Observations {#channel-crossings-and-irregular-arrivals--observations-europe-change}
 
-### The UK's fall is within the range of European routes {#channel-crossings-and-irregular-arrivals--the-uk-fall-is-within-the-european-range}
+### The UK's 2026 fall came during a wider European fall {#channel-crossings-and-irregular-arrivals--the-uk-fall-is-within-the-european-range}
 
 Over January–August, the UK's fall was larger than the EU total's and smaller than the falls on the Central Mediterranean, Western African and eastern land-border routes. Frontex's January–September release gives the Central Mediterranean down 56% and the Western African route down 45%. The Western Mediterranean rose 26%. [20](#source-channel-crossings-and-irregular-arrivals-20) The comparison shows that the UK's fall happened during a wider European one. It cannot show whether the two share a cause.
 
@@ -2075,10 +2195,28 @@ France changed its maritime law to allow boats to be intercepted at sea in limit
 
 ## Observations {#channel-crossings-and-irregular-arrivals--observations-albania-people}
 
+### Albanian arrivals have stayed low since 2023 {#channel-crossings-and-irregular-arrivals--albanian-arrivals-have-stayed-low}
+
+Albanian arrivals have stayed under a thousand a year since 2023, while arrivals from other countries recovered. Several things changed together after 2022, and the Migration Observatory says the deal "could be a major driver" of the continuing low numbers. [30](#source-channel-crossings-and-irregular-arrivals-30) The government prioritised Albanian asylum cases, and returns to Albania rose sharply. Albania accounts for 76% of all small-boat returns. [33](#source-channel-crossings-and-irregular-arrivals-33) The share of Albanian claims granted at first decision fell from almost half in 2021–2022 to 3% in 2024. [34](#source-channel-crossings-and-irregular-arrivals-34) No source separates the effect of the deal from faster processing, more refusals and more returns.
+
+## Observations {#channel-crossings-and-irregular-arrivals--observations-albania-what-changed}
+
 ### Albanian arrivals collapsed before the returns deal {#channel-crossings-and-irregular-arrivals--albanian-arrivals-collapsed-before-the-deal}
 
 The UK and Albania signed their returns agreement on 13 December 2022. Albania already accepted removals from the UK before then. [31](#source-channel-crossings-and-irregular-arrivals-31) Albanian arrivals had already fallen: from around 9,000 in July–September 2022 to around 1,000 in October, 166 in November and 28 in December. [30](#source-channel-crossings-and-irregular-arrivals-30) The fall was specific to Albanians: arrivals of other nationalities rose in the last quarter of 2022. [32](#source-channel-crossings-and-irregular-arrivals-32) The deal therefore cannot explain the initial collapse.
 
-### Albanian arrivals have stayed low since {#channel-crossings-and-irregular-arrivals--albanian-arrivals-have-stayed-low}
+### The Migration Observatory says the deal could be a major driver of the continuing low numbers {#channel-crossings-and-irregular-arrivals--deal-could-be-a-major-driver}
 
-Albanian arrivals have stayed under a thousand a year since 2023, while arrivals from other countries recovered. Several things changed together after 2022, and the Migration Observatory says the deal "could be a major driver" of the continuing low numbers. [30](#source-channel-crossings-and-irregular-arrivals-30) The government prioritised Albanian asylum cases, and returns to Albania rose sharply. Albania accounts for 76% of all small-boat returns. [33](#source-channel-crossings-and-irregular-arrivals-33) The share of Albanian claims granted at first decision fell from almost half in 2021–2022 to 3% in 2024. [34](#source-channel-crossings-and-irregular-arrivals-34) No source separates the effect of the deal from faster processing, more refusals and more returns.
+The Migration Observatory says the deal "could be a major driver of continuing low numbers of Albanian small boat arrivals", while finding it difficult to attribute the first fall to the deal. [30](#source-channel-crossings-and-irregular-arrivals-30)
+
+### The government prioritised Albanian asylum claims {#channel-crossings-and-irregular-arrivals--albanian-claims-prioritised}
+
+The government prioritised the processing of Albanian asylum applications after arrivals spiked in 2022. [33](#source-channel-crossings-and-irregular-arrivals-33)
+
+### Nearly all Albanian claims were refused at first decision by 2024 {#channel-crossings-and-irregular-arrivals--albanian-claims-nearly-all-refused}
+
+Almost half of [initial decisions](#glossary-initial-decision) on Albanian claims were positive in 2021 and 2022, and just 3% in 2024. [34](#source-channel-crossings-and-irregular-arrivals-34)
+
+### Returns to Albania rose sharply {#channel-crossings-and-irregular-arrivals--returns-to-albania-rose}
+
+Overall returns to Albania increased sharply following the returns agreement, and 76% of all returns of small-boat arrivals have been to Albania. [33](#source-channel-crossings-and-irregular-arrivals-33)

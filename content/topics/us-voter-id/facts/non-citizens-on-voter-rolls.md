@@ -60,50 +60,36 @@ sources:
     publisher: Texas Secretary of State
     date: '2025-10-20'
   - stance: complicates
-    quote: >-
-      The tally of 2,724 potential noncitizens is about 0.015% of the state’s
-      voters. … Denton County election director Frank Phillips told NPR that so
-      far out of the 84 flagged registered voters he sent notices to, 14 have
-      proven their citizenship. The county determined that another 14 people
-      were registered in error because they had indicated on registration forms
-      they were not citizens. The county has canceled their registrations. None
-      had voted. … Fifty-five people in Denton County besides Nel have also had
-      their registration canceled after not responding to the notice, including
-      five people whose notices came back as undeliverable, according to
-      Phillips.
+    quote: |-
+      The tally of 2,724 potential noncitizens is about 0.015% of the state’s voters.
+
+      … Denton County confirmed to NPR that Nel’s voter registration was canceled because he has not yet proven his citizenship.
+
+      There is not yet any official data on how many eligible Texas voters like Nel were flagged by SAVE but Denton County election director Frank Phillips told NPR that so far out of the 84 flagged registered voters he sent notices to, 14 have proven their citizenship. The county determined that another 14 people were registered in error because they had indicated on registration forms they were not citizens. The county has canceled their registrations. None had voted.
+
+      … Fifty-five people in Denton County besides Nel have also had their registration canceled after not responding to the notice, including five people whose notices came back as undeliverable, according to Phillips.
     title: Trump’s SAVE tool is looking for noncitizen voters. But it’s flagging U.S. citizens too
     url: https://www.vpm.org/npr-news/2025-12-10/trumps-save-tool-is-looking-for-noncitizen-voters-but-its-flagging-u-s-citizens-too
     publisher: NPR (via VPM)
     date: '2025-12-10'
   - stance: complicates
-    quote: >-
-      More than 47 million voters have been run through SAVE, according to the
-      agency. States that have announced their results so far have not
-      identified large numbers of suspected noncitizens casting ballots.
-      Louisiana found 79 likely noncitizens voted in elections going back to the
-      1980s, Tennessee referred 42 potential noncitizens who cast ballots to the
-      FBI, and Indiana said it found “at least 21” noncitizens who voted. …
-      USCIS’ own fact sheet warns that “if an individual with acquired
-      citizenship has not received a Certificate of Citizenship from USCIS
-      (e.g., some foreign-born children of U.S. citizens) or is not designated
-      as a U.S. citizen in [Social Security Administration] records, SAVE may
-      not be able to confirm that individual’s U.S. citizenship.”
+    quote: |-
+      More than 47 million voters have been run through SAVE, according to the agency. States that have announced their results so far have not identified large numbers of suspected noncitizens casting ballots. Louisiana found 79 likely noncitizens voted in elections going back to the 1980s, Tennessee referred 42 potential noncitizens who cast ballots to the FBI, and Indiana said it found “at least 21” noncitizens who voted.
+
+      … But cases like Nel’s, of foreign-born children who acquired citizenship from parents who naturalized, are known to stump SAVE.
+
+      USCIS’ own fact sheet warns that “if an individual with acquired citizenship has not received a Certificate of Citizenship from USCIS (e.g., some foreign-born children of U.S. citizens) or is not designated as a U.S. citizen in [Social Security Administration] records, SAVE may not be able to confirm that individual’s U.S. citizenship.”
     title: Trump’s SAVE tool is looking for noncitizen voters. But it’s flagging U.S. citizens too
     url: https://www.vpm.org/npr-news/2025-12-10/trumps-save-tool-is-looking-for-noncitizen-voters-but-its-flagging-u-s-citizens-too
     publisher: NPR (via VPM)
     date: '2025-12-10'
   - stance: complicates
-    quote: >-
-      Texas officials have now determined that 11 registered voters in Travis
-      County flagged as potential noncitizens actually provided proof of
-      citizenship while obtaining a driver’s license or state ID at the Texas
-      Department of Public Safety, according to county leaders. … Votebeat
-      sought information from 24 counties and to date, election officials who
-      have responded confirmed they have collectively identified at least 33
-      U.S. citizens on the list. At least 218 people flagged, and potentially
-      more, registered at DPS and should have been required to provide proof of
-      citizenship that the agency should have on file, according to officials
-      from 11 counties.
+    quote: |-
+      Texas officials have now determined that 11 registered voters in Travis County flagged as potential noncitizens actually provided proof of citizenship while obtaining a driver’s license or state ID at the Texas Department of Public Safety, according to county leaders.
+
+      Votebeat earlier this month reported that hundreds of individuals the Texas Secretary of State’s Office identified as potential noncitizens had registered to vote at DPS, which requires proof of citizenship or legal presence.
+
+      … Votebeat sought information from 24 counties and to date, election officials who have responded confirmed they have collectively identified at least 33 U.S. citizens on the list. At least 218 people flagged, and potentially more, registered at DPS and should have been required to provide proof of citizenship that the agency should have on file, according to officials from 11 counties.
     title: Texas flagged some voters as ‘potential noncitizens’ but they had already provided proof of citizenship
     url: https://www.votebeat.org/texas/2025/12/18/texas-voter-roll-citizens-investigation-save-database-travis-county/
     publisher: Votebeat
@@ -135,37 +121,25 @@ sources:
     publisher: The Texas Tribune
     date: '2026-07-16'
   - stance: supports
-    quote: >-
-      A review of Iowa's voter rolls found 35 people who are not U.S. citizens
-      were among more than 1.6 million Iowa voters who cast ballots in the 2024
-      general election, despite them being ineligible to vote. Iowa Secretary of
-      State Paul Pate said Thursday that his office also identified 277
-      noncitizens who were registered to vote, a small percentage of the nearly
-      2.3 million registered voters. … The new numbers are also a fraction of
-      the original number — 2,176 — that Pate’s office identified last year,
-      just two weeks before the Nov. 5 election, after comparing the state’s
-      voter rolls to a list of people who self-reported as noncitizens to the
-      Iowa Department of Transportation. … The review also found five
-      noncitizens that cast a ballot that was ultimately rejected by county
-      review boards.
+    quote: |-
+      A review of Iowa's voter rolls found 35 people who are not U.S. citizens were among more than 1.6 million Iowa voters who cast ballots in the 2024 general election, despite them being ineligible to vote. Iowa Secretary of State Paul Pate said Thursday that his office also identified 277 noncitizens who were registered to vote, a small percentage of the nearly 2.3 million registered voters.
+
+      … The new numbers are also a fraction of the original number — 2,176 — that Pate’s office identified last year, just two weeks before the Nov. 5 election, after comparing the state’s voter rolls to a list of people who self-reported as noncitizens to the Iowa Department of Transportation.
+
+      … The review also found five noncitizens that cast a ballot that was ultimately rejected by county review boards.
     title: Iowa review finds 35 noncitizens voted last fall. That is a tiny fraction of the ballots cast
     url: https://www.news4jax.com/news/politics/2025/03/20/iowa-review-finds-35-noncitizens-voted-last-fall-that-is-a-tiny-fraction-of-the-ballots-cast/
     publisher: Associated Press (via News4JAX)
     date: '2025-03-20'
   - stance: supports
-    quote: >-
-      Secretary of State Frank LaRose said he’s found 1,084 alleged cases of
-      noncitizens who registered to vote, including 167 people who allegedly
-      voted in a federal election going back to 2018. … "What we know is that
-      noncitizens registering is exceedingly rare. It's even more rare for
-      noncitizens to actually cast a ballot, especially now that we've got a
-      really good process in place for identifying that at the time of
-      registration and checking for that," LaRose said. … LaRose had asked
-      county prosecutors to act on 633 cases of suspected voter fraud last
-      year. Prosecutors took up just 12 of them, saying the others lacked
-      evidence to pursue indictments. LaRose took the cases to Attorney General
-      Dave Yost, who presented them to grand juries. Six cases resulted in
-      indictments, including a person who died in December 2022.
+    quote: |-
+      Secretary of State Frank LaRose said he’s found 1,084 alleged cases of noncitizens who registered to vote, including 167 people who allegedly voted in a federal election going back to 2018.
+
+      “In these cases, the county prosecutor has decided for whatever reason not to take them up. In some cases they've been referred to the attorney general as well, and we're sending them along to the federal government to see if they want to prosecute these cases," LaRose said in an interview.
+
+      … "What we know is that noncitizens registering is exceedingly rare. It's even more rare for noncitizens to actually cast a ballot, especially now that we've got a really good process in place for identifying that at the time of registration and checking for that," LaRose said.
+
+      … LaRose had asked county prosecutors to act on 633 cases of suspected voter fraud last year. Prosecutors took up just 12 of them, saying the others lacked evidence to pursue indictments. LaRose took the cases to Attorney General Dave Yost, who presented them to grand juries. Six cases resulted in indictments, including a person who died in December 2022.
     title: Ohio's secretary of state forwards alleged voter fraud cases to DOJ after local prosecutors don't act
     url: https://wysu.org/ohio-news/2025-10-28/ohios-secretary-of-state-forwards-alleged-voter-fraud-cases-to-doj-after-local-prosecutors-dont-act
     publisher: Statehouse News Bureau (via WYSU)
@@ -207,85 +181,62 @@ sources:
     publisher: The Highland County Press
     date: '2024-12-03'
   - stance: supports
-    quote: >-
-      Louisiana’s top election official said she has discovered 390
-      non-citizen registered voters in the state, with 79 voting in at least one
-      election over the past several decades. The 390 suspected non-citizen
-      voters represent approximately 0.01% of the roughly 2.9 million registered
-      voters in Louisiana. … In a later interview, Landry acknowledged the
-      possibility that some of her findings could be attributed to errors or
-      outdated information. … While Landry said voter fraud is “not a systemic
-      problem in Louisiana,” she noted that some local elections have been
-      decided by just a handful of votes. She didn’t say if the newly
-      discovered noncitizen voters impacted any of those elections.
+    quote: |-
+      Louisiana’s top election official said she has discovered 390 non-citizen registered voters in the state, with 79 voting in at least one election over the past several decades. The 390 suspected non-citizen voters represent approximately 0.01% of the roughly 2.9 million registered voters in Louisiana.
+
+      … In a later interview, Landry acknowledged the possibility that some of her findings could be attributed to errors or outdated information.
+
+      … While Landry said voter fraud is “not a systemic problem in Louisiana,” she noted that some local elections have been decided by just a handful of votes. She didn’t say if the newly discovered noncitizen voters impacted any of those elections.
     title: Louisiana election investigation finds 79 noncitizens have voted since 1980s
     url: https://www.newsfromthestates.com/article/louisiana-election-investigation-finds-79-noncitizens-have-voted-1980s
     publisher: Louisiana Illuminator (via News From The States)
     date: '2025-09-04'
   - stance: supports
-    quote: >-
-      Georgia’s top elections official said Wednesday that a check of voter
-      rolls found that 20 of the 8.2 million people registered to vote in the
-      state are not U.S. citizens. … His office said none of those people has
-      cast a ballot in November’s general election, but nine of the 20 had
-      voted in previous elections and the other 11 had no record of voting.
-      Additionally, there are 156 people whose citizenship status requires
-      additional investigation and his office has opened case files for those
-      individuals, Raffensperger said. … Raffensperger said the 20 people who
-      were conclusively identified as noncitizens lived in seven counties,
-      mostly in metro Atlanta, and had filled out a sworn statement saying they
-      were not citizens to get out of jury duty.
+    quote: |-
+      Georgia’s top elections official said Wednesday that a check of voter rolls found that 20 of the 8.2 million people registered to vote in the state are not U.S. citizens.
+
+      Secretary of State Brad Raffensperger said during a news conference that the voter registrations for those people had been canceled and that they will be referred to local prosecutors for potential criminal charges. His office said none of those people has cast a ballot in November’s general election, but nine of the 20 had voted in previous elections and the other 11 had no record of voting. Additionally, there are 156 people whose citizenship status requires additional investigation and his office has opened case files for those individuals, Raffensperger said.
+
+      … Raffensperger said the 20 people who were conclusively identified as noncitizens lived in seven counties, mostly in metro Atlanta, and had filled out a sworn statement saying they were not citizens to get out of jury duty.
     title: Georgia citizenship audit finds few noncitizens on voter rolls
     url: https://www.walb.com/2024/10/24/georgia-citizenship-audit-finds-few-noncitizens-voter-rolls/
     publisher: Associated Press (via WALB)
     date: '2024-10-23'
   - stance: supports
-    quote: >-
-      The U.S. Department of Homeland Security claims to have found about 2,500
-      noncitizen voters in Georgia, according to a report released during
-      President Donald Trump’s speech Thursday on election security. … Most of the
-      people flagged by DHS had applied to become registered voters but were in
-      a “pending” status, according to the secretary of state’s office. …
-      Georgia has 8.1 million registered voters as of Friday. But only about 150
-      registrants identified as possible noncitizens by DHS had previously
-      voted, the secretary of state’s office said.
+    quote: |-
+      The U.S. Department of Homeland Security claims to have found about 2,500 noncitizen voters in Georgia, according to a report released during President Donald Trump’s speech Thursday on election security.
+
+      But it’s not that simple.
+
+      Most of the people flagged by DHS had applied to become registered voters but were in a “pending” status, according to the secretary of state’s office.
+
+      … Georgia has 8.1 million registered voters as of Friday. But only about 150 registrants identified as possible noncitizens by DHS had previously voted, the secretary of state’s office said.
     title: Most ‘noncitizen voters’ DHS found in Georgia were never voters at all
     url: https://www.ajc.com/politics/2026/07/most-noncitizen-voters-dhs-found-in-georgia-were-never-voters-at-all/
     publisher: The Atlanta Journal-Constitution
     date: '2026-07-17'
   - stance: complicates
-    quote: >-
-      Under the August initiative, the secretary of state’s office identified
-      3,251 potential noncitizens registered to vote using foreign national
-      numbers collected by state agencies on both unemployment benefits and
-      driver's license applications. … Approximately 2,000 of the 3,251 voters
-      who were made inactive were legally registered citizens, according to
-      testimony from the secretary of state’s chief of staff Clay Helms on
-      Tuesday. More than 900 of the initial 3,251 voters proved they were legal
-      voters by September, according to Helms' testimony. On Tuesday, less than
-      a month before the election, another 1,000 were reactivated after the
-      secretary of state's office doublechecked driver's license information
-      from the Alabama Law Enforcement Agency, Helms said. … At least 159 people
-      from the list were “disqualified” after the purge in August, meaning they
-      will be removed from the voter rolls. … “A few” of those disqualified
-      indicated on voter removal forms that they were noncitizens, according to
-      Helms' written testimony.
+    quote: |-
+      Under the August initiative, the secretary of state’s office identified 3,251 potential noncitizens registered to vote using foreign national numbers collected by state agencies on both unemployment benefits and driver's license applications. He then instructed local board of registrars to make those voters inactive, which doesn't immediately remove them from the voter rolls but does require the resident to provide additional verification before voting.
+
+      The list was also given to the Alabama Attorney General for “possible criminal prosecution.”
+
+      Approximately 2,000 of the 3,251 voters who were made inactive were legally registered citizens, according to testimony from the secretary of state’s chief of staff Clay Helms on Tuesday. More than 900 of the initial 3,251 voters proved they were legal voters by September, according to Helms' testimony. On Tuesday, less than a month before the election, another 1,000 were reactivated after the secretary of state's office doublechecked driver's license information from the Alabama Law Enforcement Agency, Helms said. Those voters were sent registered voter cards with polling information.
+
+      At least 159 people from the list were “disqualified” after the purge in August, meaning they will be removed from the voter rolls.
+
+      … “A few” of those disqualified indicated on voter removal forms that they were noncitizens, according to Helms' written testimony.
     title: Federal judge to halt Alabama program that purged thousands of legal voters
     url: https://www.wsls.com/news/politics/2024/10/16/federal-judge-to-halt-alabama-program-that-purged-thousands-of-legal-voters/
     publisher: Associated Press (via WSLS)
     date: '2024-10-16'
   - stance: complicates
-    quote: >-
-      When Alabama engaged in a similar system based on checkboxes on forms
-      from the Alabama Department of Labor, the error rate was astronomical.
-      After a lawsuit was filed, the Secretary cross-checked the checkbox data
-      with documents on file with the driver’s license agency and immediately
-      confirmed the citizenship of 93.8% of them. … To be clear, the data did
-      not confirm noncitizenship among the remaining 6.2 percent. … Critically,
-      while Applicants failed to show that any of the 1,610 people removed from
-      the rolls from the Purge Program were in fact noncitizens, the court
-      credited Respondents’ “evidence that revealed that citizens have been
-      removed from those rolls.”
+    quote: |-
+      Critically, while Applicants failed to show that any of the 1,610 people removed from the rolls from the Purge Program were in fact noncitizens, the court credited Respondents’ “evidence that revealed that citizens have been removed from those rolls.”
+
+      … When Alabama engaged in a similar system based on checkboxes on forms from the Alabama Department of Labor, the error rate was astronomical. After a lawsuit was filed, the Secretary cross-checked the checkbox data with documents on file with the driver’s license agency and immediately confirmed the citizenship of 93.8% of them. It appears Applicants have made little effort to uncover errors.
+
+      … To be clear, the data did not confirm noncitizenship among the remaining 6.2 percent.
     title: "Private Plaintiffs-Respondents' Response in Opposition to Emergency Application for Stay, Beals v. Virginia Coalition for Immigrant Rights, No. 24A407"
     url: https://www.supremecourt.gov/DocketPDF/24/24A407/330579/20241029145523924_SCOTUS%20Stay%20Opp%20FINAL%20TO%20FILE.pdf
     publisher: Supreme Court of the United States (filing by the private respondents)
@@ -312,68 +263,53 @@ sources:
     publisher: United States Court of Appeals for the Fourth Circuit
     date: '2021-05-10'
   - stance: supports
-    quote: >-
-      Even assuming all ineligible ballots identified in this report were cast
-      for the prevailing candidate, no races -- statewide or local -- would have
-      had a different outcome than the one already certified by the state. …
-      Nearly 4.8 million N.C. voters participated in the 2016 general election,
-      the largest number in state history. … 41 non-citizens with legal status
-      (green card, etc.) cast ballots. The State Constitution only permits U.S.
-      citizens to register and to vote. The audit pairing state and federal
-      databases identified an additional 34 voters who provided documents
-      showing they are U.S. citizens. Investigators continue to review 61
-      additional records. … A number of non-citizens said they were not aware
-      that they were prohibited from voting.
+    quote: |-
+      Even assuming all ineligible ballots identified in this report were cast for the prevailing candidate, no races -- statewide or local -- would have had a different outcome than the one already certified by the state.
+
+      SUMMARY
+
+      Nearly 4.8 million N.C. voters participated in the 2016 general election, the largest number in state history.
+
+      … 41 non-citizens with legal status (green card, etc.) cast ballots. The State Constitution only permits U.S. citizens to register and to vote. The audit pairing state and federal databases identified an additional 34 voters who provided documents showing they are U.S. citizens. Investigators continue to review 61 additional records.
+
+      … A number of non-citizens said they were not aware that they were prohibited from voting.
     title: 'Post-Election Audit Report: 2016 General Election'
     url: https://s3.amazonaws.com/dl.ncsbe.gov/sboe/Post-Election%20Audit%20Report_2016%20General%20Election/Post-Election_Audit_Report.pdf
     publisher: North Carolina State Board of Elections
     date: '2017-04'
   - stance: supports
-    quote: >-
-      Across 42 jurisdictions, election officials who oversaw the tabulation of
-      23.5 million votes in the 2016 general election referred only an
-      estimated 30 incidents of suspected noncitizen voting for further
-      investigation or prosecution. In other words, improper noncitizen votes
-      accounted for 0.0001 percent of the 2016 votes in those jurisdictions. …
-      In the ten counties with the largest populations of noncitizens in 2016,
-      only one reported any instances of noncitizen voting, consisting of fewer
-      than 10 votes, and New York City, home to two of the counties, declined
-      to provide any information.
+    quote: |-
+      Across 42 jurisdictions, election officials who oversaw the tabulation of 23.5 million votes in the 2016 general election referred only an estimated 30 incidents of suspected noncitizen voting for further investigation or prosecution. In other words, improper noncitizen votes accounted for 0.0001 percent of the 2016 votes in those jurisdictions.
+
+      Forty of the jurisdictions — all but two of the 42 we studied — reported no known incidents of noncitizen voting in 2016. All of the officials we spoke with said that the incidence of noncitizen voting in prior years was not significantly greater than in 2016.
+
+      In the ten counties with the largest populations of noncitizens in 2016, only one reported any instances of noncitizen voting, consisting of fewer than 10 votes, and New York City, home to two of the counties, declined to provide any information.
     title: 'Noncitizen Voting: The Missing Millions'
     url: https://www.brennancenter.org/our-work/research-reports/noncitizen-voting-missing-millions
     publisher: Brennan Center for Justice
     date: '2017-05-05'
   - stance: supports
-    quote: >-
-      These figures amount to 31,089 total applicants who were denied
-      registration for failure to provide DPOC, 16,802 of whom applied through
-      the DOV. … the evidence shows that 67 noncitizen individuals registered
-      to vote under the attestation regime, or attempted to register after the
-      DPOC law was passed. Of these, 39 successfully registered to vote
-      despite the attestation requirement, and 28 noncitizens attempted to
-      register to vote after the DPOC law was passed but were thwarted by
-      operation of that law. … there are only 39 confirmed noncitizens who
-      successfully registered to vote between 1999 and 2013 when the DPOC law
-      became effective. This is but .002% of all registered voters in Kansas
-      as of January 1, 2013 (1,762,330). … these numbers support the opinions
-      of Drs. Minnite, McDonald, and Hersh that while there is evidence of a
-      small number of noncitizen registrations in Kansas, it is largely
-      explained by administrative error, confusion, or mistake.
+    quote: |-
+      These figures amount to 31,089 total applicants who were denied registration for failure to provide DPOC, 16,802 of whom applied through the DOV.
+
+      … the evidence shows that 67 noncitizen individuals registered to vote under the attestation regime, or attempted to register after the DPOC law was passed. Of these, 39 successfully registered to vote despite the attestation requirement, and 28 noncitizens attempted to register to vote after the DPOC law was passed but were thwarted by operation of that law.
+
+      … there are only 39 confirmed noncitizens who successfully registered to vote between 1999 and 2013 when the DPOC law became effective. This is but .002% of all registered voters in Kansas as of January 1, 2013 (1,762,330).
+
+      … these numbers support the opinions of Drs. Minnite, McDonald, and Hersh that while there is evidence of a small number of noncitizen registrations in Kansas, it is largely explained by administrative error, confusion, or mistake.
     title: 'Fish v. Kobach, Nos. 16-2105-JAR-JPO and 15-9300-JAR-JPO, Findings of Fact and Conclusions of Law'
     url: https://clearinghouse-umich-production.s3.amazonaws.com/media/doc/143642.pdf
     publisher: United States District Court for the District of Kansas (via Civil Rights Litigation Clearinghouse)
     date: '2018-06-18'
   - stance: complicates
-    quote: >-
-      The Secretary of State’s Office issued a revised estimate that said more
-      than twice as many voters — 218,000 — were affected … New information
-      obtained by Votebeat this week showed that the MVD has historically
-      categorized anyone with a pre-1996 license as a U.S. citizen, even though
-      the agency has not obtained their proof of citizenship, such as a birth
-      certificate or passport. … All of the voters attested to their U.S.
-      citizenship under penalty of perjury when they registered to vote, as
-      required by federal law. Only two on the list have so far been identified
-      as noncitizens.
+    quote: |-
+      The Secretary of State’s Office issued a revised estimate that said more than twice as many voters — 218,000 — were affected, indicating that officials didn’t have a clear picture from the Motor Vehicle Division about just how many voters were affected by a database error, or why, when they provided recommendations to the court on how to solve the issue.
+
+      State law in Arizona requires voters to provide proof of citizenship to vote in state and local elections, but the court had said it was too close to the election to ask these voters for the documents, especially since the problem with collecting the documents wasn’t their fault.
+
+      … New information obtained by Votebeat this week showed that the MVD has historically categorized anyone with a pre-1996 license as a U.S. citizen, even though the agency has not obtained their proof of citizenship, such as a birth certificate or passport.
+
+      … All of the voters attested to their U.S. citizenship under penalty of perjury when they registered to vote, as required by federal law. Only two on the list have so far been identified as noncitizens.
     title: Arizona labeled longtime residents as citizens without proof for years, leading to voter roll errors
     url: https://votebeat.org/arizona/2024/10/03/citizenship-proof-error-federal-only-voter-registration-drivers-license-records
     publisher: Votebeat
@@ -422,32 +358,24 @@ sources:
     publisher: Iowa Capital Dispatch (via Little Village)
     date: '2024-12-02'
   - stance: complicates
-    quote: >-
-      The review found that 1,634 people who had attempted to register to vote
-      were not able to be verified by U.S. Citizenship and Immigration
-      Services’ (USCIS) Systematic Alien Verification for Entitlements (SAVE)
-      program. Due to Georgia’s existing citizenship check procedures, the
-      noncitizens identified in the citizenship check were placed into
-      “pending citizenship” status and were not able to vote. … The search
-      found 1,634 individuals who had attempted to register to vote in Georgia
-      despite not being citizens. In total, 2,258 voter registration
-      applications are currently in “pending citizenship” status. The
-      difference between the two numbers is because there were 624 records
-      where the Secretary of State’s office was not able to obtain the
-      required information to utilize the SAVE verification tool. … All 2,258
-      individuals were placed in pending status and not added to the voter
-      rolls. None of these individuals have cast ballots in Georgia elections.
+    quote: |-
+      The review found that 1,634 people who had attempted to register to vote were not able to be verified by U.S. Citizenship and Immigration Services’ (USCIS) Systematic Alien Verification for Entitlements (SAVE) program. Due to Georgia’s existing citizenship check procedures, the noncitizens identified in the citizenship check were placed into “pending citizenship” status and were not able to vote.
+
+      … The search found 1,634 individuals who had attempted to register to vote in Georgia despite not being citizens. In total, 2,258 voter registration applications are currently in “pending citizenship” status. The difference between the two numbers is because there were 624 records where the Secretary of State’s office was not able to obtain the required information to utilize the SAVE verification tool.
+
+      … All 2,258 individuals were placed in pending status and not added to the voter rolls. None of these individuals have cast ballots in Georgia elections.
     title: Citizenship Audit Finds 1,634 Noncitizens Attempted to Register to Vote
     url: https://sos.ga.gov/news/citizenship-audit-finds-1634-noncitizens-attempted-register-vote
     publisher: Georgia Secretary of State
     date: '2022-03-28'
 comparisons:
   - id: registrants-found
-    title: Non-citizen registrants found per million registrants, by state review
+    title: 'Non-citizens found on voter rolls'
+    subtitle: 'Per million registered voters, by state review'
     description: >-
       Non-citizens each review found on the rolls, per million people registered
       in that state at the time. Each bar is a different review, period and
-      method; the status of the count is in each label.
+      method; the status of the count is in each row's subtitle.
     unit: count
     valueLabel: Non-citizen registrants per million registrants
     sources: [22, 14, 10, 12, 8, 13]
@@ -467,18 +395,24 @@ comparisons:
       chart but one. These are found cases; none of these reviews estimates
       undetected ones.
     items:
-      - label: Georgia, 2024 audit (confirmed)
+      - label: 'Georgia'
+        subtitle: '2024 audit, confirmed'
         value: 2.4
-      - label: Kansas, 1999–2013 (court finding)
+      - label: 'Kansas'
+        subtitle: '1999–2013, court finding'
         value: 22.1
-      - label: Ohio, 2024 referrals (apparent)
+      - label: 'Ohio'
+        subtitle: '2024 referrals, apparent'
         value: 73.2
-      - label: Iowa, 2024 review (identified)
+      - label: 'Iowa'
+        subtitle: '2024 review, identified'
         value: 120.4
-      - label: Louisiana, 2025 (suspected, preliminary)
+      - label: 'Louisiana'
+        subtitle: '2025, suspected, preliminary'
         value: 134.5
   - id: votes-found
-    title: Non-citizen votes found per million ballots, by election
+    title: Non-citizen votes found
+    subtitle: 'Per million ballots cast, by election review'
     description: >-
       Ballots that reviews found were cast by non-citizens, per million ballots
       cast in that election. Each bar is a different review and method.
@@ -497,20 +431,24 @@ comparisons:
       than"), so it is approximate. Ohio's later figure of 167 voters spans federal elections from
       2018, so it has no single-election denominator and is not shown here.
     items:
-      - label: "Brennan Center survey, 2016"
-        detail: "42 jurisdictions"
+      - label: "Brennan Center survey"
+        subtitle: "2016, 42 jurisdictions"
         value: 1.3
-      - label: Ohio, 2020 general
+      - label: Ohio
+        subtitle: "2020 general election"
         value: 2.2
-      - label: North Carolina, 2016 general
+      - label: North Carolina
+        subtitle: "2016 general election"
         value: 8.5
-      - label: Iowa, 2024 general
+      - label: Iowa
+        subtitle: "2024 general election"
         value: 21.9
   - id: flags-reversed
-    title: Share of flagged US voter registrants later shown to be citizens
+    title: Flagged voters later shown to be citizens
+    subtitle: 'Share of those a database match flagged as possible non-citizens'
     description: >-
-      Of the people a database match flagged as possible non-citizens, the
-      share later shown to be citizens, by program. Each figure is as of the
+      The share of flagged people later shown to be citizens, by program.
+      Each figure is as of the
       date its source gives and is a minimum where reviews are unfinished.
     unit: percent
     valueLabel: Flagged people later shown to be citizens (%)
@@ -528,16 +466,21 @@ comparisons:
       Transportation records, and its later 277 came from a separate check, so
       the share of the 2,176 who were citizens has not been published.
     items:
-      - label: Denton County, Texas (SAVE, 2025)
+      - label: Denton County, Texas
+        subtitle: SAVE check, 2025
         value: 16.7
-      - label: Texas statewide (SAVE, 2025–26)
+      - label: Texas statewide
+        subtitle: SAVE check, 2025–26
         value: 21.2
-      - label: Alabama (state agency records, 2024)
+      - label: Alabama
+        subtitle: State agency records, 2024
         value: 61.5
-      - label: North Carolina (DMV records, 2016)
+      - label: North Carolina
+        subtitle: DMV records, 2016
         value: 97.6
   - id: against-margins
-    title: Non-citizen voters found, against two recent close US margins
+    title: Non-citizen voters against close margins
+    subtitle: 'Two close US races, beside non-citizen voters states found'
     description: >-
       Votes separating the candidates in two close races, beside the
       non-citizen voters that the same states' reviews found. Counts, not
@@ -554,23 +497,26 @@ comparisons:
       election; Georgia's 9 are confirmed non-citizens who had voted in some
       earlier election, none in November 2024.
     items:
-      - label: Georgia, 2020 presidential margin
+      - label: Georgia presidential margin
+        subtitle: "2020, after the recount"
         value: 11779
         highlight: true
-      - label: Iowa 1st District, 2024 margin
+      - label: Iowa 1st District margin
+        subtitle: "2024 House race, after the recount"
         value: 798
         highlight: true
-      - label: "Georgia, DHS-flagged, ever voted"
-        detail: "Georgia, DHS-flagged registrants who had ever voted (2026)"
+      - label: "Georgia, DHS-flagged"
+        subtitle: "Registrants who had ever voted, 2026"
         value: 150
-      - label: "Iowa non-citizen voters, 2024 (statewide)"
-        detail: "Iowa, non-citizens who voted in 2024 (statewide)"
+      - label: "Iowa non-citizen voters (statewide)"
+        subtitle: "Voted in 2024"
         value: 35
-      - label: "Georgia, confirmed non-citizens, ever voted"
-        detail: "Georgia, confirmed non-citizens who had ever voted (2024 audit)"
+      - label: "Georgia, confirmed non-citizens"
+        subtitle: "Had ever voted, 2024 audit"
         value: 9
   - id: ohio-referrals
-    title: Ohio's non-citizen referrals, by year announced
+    title: Ohio's non-citizen referrals
+    subtitle: 'Apparent non-citizens referred for prosecution, by year announced'
     description: >-
       Apparent non-citizens Ohio's Secretary of State referred for possible
       prosecution, as AP compared them in August 2024. More than 8 million
@@ -643,11 +589,49 @@ dataStillNeeded:
 figures:
   - kind: comparison
     id: registrants-found
+  - kind: dataTable
+    id: how-they-got-on
+    title: How non-citizens reached the rolls
+    subtitle: 'What state reviews show, and the records that revealed them'
+    description: 'What each review says about how non-citizens got on the list or were flagged, and which government record showed it. Not every review gives a cause.'
+    caption: 'One card per review'
+    layout: cards
+    leadColumn: route
+    columns:
+      - { key: review, label: 'Review', rowHeader: true }
+      - { key: route, label: 'How they reached the list', sortable: false }
+      - { key: record, label: 'The record that showed it', sortable: false }
+    rows:
+      - review: 'Texas, 2025–26'
+        route: { value: 'Clerical error: people "mistakenly registered to vote—such as due to a clerical error by a voter registrar—even though they acknowledged on a voter registration application that they are not U.S. citizens"', sources: [7] }
+        record: { value: 'SAVE, the federal citizenship database', sources: [2] }
+      - review: 'Arizona, 2024'
+        route: { value: 'Wrong licence records: the motor vehicle agency "categorized anyone with a pre-1996 license as a U.S. citizen" without proof of citizenship; 218,000 voters were affected, and two had been identified as non-citizens', sources: [23] }
+        record: { value: 'Motor vehicle records', sources: [23] }
+      - review: 'North Carolina, 2016'
+        route: { value: 'Confusion: "A number of non-citizens said they were not aware that they were prohibited from voting"', sources: [20] }
+        record: { value: 'State and federal databases, paired', sources: [20] }
+      - review: 'Kansas, 1999–2013'
+        route: { value: 'Mistakes: registrations "largely explained by administrative error, confusion, or mistake"', sources: [22] }
+        record: { value: 'Evidence at trial', sources: [22] }
+      - review: 'Georgia, 2024 audit'
+        route: 'Not given'
+        record: { value: 'Jury records: the 20 "had filled out a sworn statement saying they were not citizens to get out of jury duty"', sources: [14] }
+      - review: 'Iowa, 2024'
+        route: 'Not given'
+        record: { value: 'Transportation department records of "people who self-reported as noncitizens"', sources: [8] }
+      - review: 'Georgia, 2022 audit'
+        route: { value: 'Held at registration: 1,634 applicants could not be verified by SAVE, and all 2,258 held were "not added to the voter rolls"', sources: [28] }
+        record: { value: 'SAVE, the federal citizenship database', sources: [28] }
+      - review: 'Travis County, Texas'
+        route: { value: 'Flagged by mistake: 11 flagged voters "actually provided proof of citizenship while obtaining a driver’s license or state ID"', sources: [5] }
+        record: { value: 'State licence records already held the proof', sources: [5] }
   - kind: comparison
     id: votes-found
   - kind: dataTable
     id: multi-election-counts
-    title: Non-citizen voters found or referred across several elections
+    title: Non-citizen voters across elections
+    subtitle: 'Found or referred, in counts spanning more than one election'
     description: >-
       Counts that span more than one election, or that are referrals rather
       than findings, so they have no single-election rate.
@@ -687,7 +671,8 @@ figures:
     id: flags-reversed
   - kind: dataTable
     id: both-errors
-    title: 'Non-citizens found against citizens wrongly flagged, by review'
+    title: 'Non-citizens found and citizens flagged'
+    subtitle: 'Texas, Denton County and Alabama reviews'
     description: 'The two counts each review with a published follow-up produces.'
     caption: 'One row per review'
     columns:
@@ -706,12 +691,55 @@ figures:
         flagged: { value: 'About 2,000', sources: [16] }
   - kind: comparison
     id: against-margins
+  - kind: dataTable
+    id: officials-on-scale
+    title: Election officials on scale
+    subtitle: "Louisiana's and Ohio's top election officials, 2025"
+    description: 'Two secretaries of state on how much non-citizen voting matters.'
+    caption: 'One card per official'
+    layout: cards
+    leadColumn: said
+    columns:
+      - { key: official, label: 'Official', rowHeader: true }
+      - { key: said, label: 'What they said', sortable: false }
+    rows:
+      - official: 'Louisiana''s top election official, 2025'
+        said: { value: 'Voter fraud is "not a systemic problem in Louisiana", but "some local elections have been decided by just a handful of votes"', sources: [13] }
+      - official: 'Ohio''s Secretary of State, 2025'
+        said: { value: '"noncitizens registering is exceedingly rare"', sources: [9] }
   - kind: comparison
     id: ohio-referrals
+observationMarks:
+  found-on-rolls: {rows: ["Georgia", "Kansas", "Ohio", "Iowa", "Louisiana"]}
+  how-noncitizens-reach-rolls: {rows: ["Texas, 2025–26", "Arizona, 2024", "North Carolina, 2016", "Kansas, 1999–2013"]}
+  hundredths-of-a-percent: {rows: ["Louisiana", "Georgia"]}
+  full-roll-check-feasible: {rows: ["Georgia"]}
+  georgia-2022-held-at-registration: {rows: ["Georgia, 2022 audit"]}
+  ohio-recurs: {rows: ["2019", "2021", "2022", "2024"]}
+  below-margins: {rows: ["Georgia presidential margin", "Iowa 1st District margin", "Georgia, DHS-flagged", "Iowa non-citizen voters (statewide)"]}
+  close-local-races: {rows: ["Louisiana's top election official, 2025"]}
+  detected-is-a-floor: {rows: ["Ohio", "North Carolina", "Iowa"]}
+  some-noncitizens-vote: {rows: ["Brennan Center survey", "Ohio", "North Carolina", "Iowa"]}
+  votes-per-ballots: {rows: ["Brennan Center survey", "Iowa"]}
+  alabama-2024: {rows: ["Alabama"]}
+  save-national-unaudited: {rows: ["Denton County, Texas", "Texas statewide"]}
+  state-records-would-have-cleared: {rows: ["Travis County, Texas"]}
+  both-errors-side-by-side: {rows: ["Texas, statewide SAVE check", "Alabama, 2024"]}
+  flag-lists-shrink: {rows: ["Denton County, Texas", "North Carolina"]}
+  texas-save-reversals: {rows: ["Texas statewide", "Denton County, Texas"]}
+  iowa-flags: {whole: true}
+  virginia-2024: {whole: true}
+  texas-2019: {rows: ["Texas statewide"]}
+  ohio-scale: {rows: ["2024"]}
+  kansas-court-findings: {rows: ["Kansas"]}
+  referrals-not-convictions: {rows: ["Ohio"]}
+
+  arizona-218000-no-proof: {rows: ["Arizona, 2024"]}
+  checks-rest-on-records: {rows: ["Texas, 2025–26", "North Carolina, 2016", "Georgia, 2024 audit", "Iowa, 2024"]}
 ---
 ## Observations {#non-citizens-on-voter-rolls--observations-registrants-found}
 
-### Every state that looked found some non-citizens on its rolls {#non-citizens-on-voter-rolls--found-on-rolls}
+### All five state reviews charted found or suspected non-citizens on their rolls {#non-citizens-on-voter-rolls--found-on-rolls}
 
 Georgia, Iowa, Louisiana, Ohio and Kansas each found some non-citizens on their rolls, and no state that ran a review reported zero. [14](#source-non-citizens-on-voter-rolls-14) [8](#source-non-citizens-on-voter-rolls-8) [13](#source-non-citizens-on-voter-rolls-13) [10](#source-non-citizens-on-voter-rolls-10) [22](#source-non-citizens-on-voter-rolls-22) The chart shows each count per million registrants; the raw counts are in its note.
 
@@ -723,7 +751,7 @@ The bars span two orders of magnitude partly because the states count different 
 
 ### A check of a whole statewide roll is now routine {#non-citizens-on-voter-rolls--full-roll-check-feasible}
 
-Texas ran its entire roll, more than 18 million voters, through SAVE in 2025 and flagged about 0.015% of it. [2](#source-non-citizens-on-voter-rolls-2) [3](#source-non-citizens-on-voter-rolls-3) Ohio's office says it now identifies non-citizens "at the time of registration". [9](#source-non-citizens-on-voter-rolls-9)
+Texas ran its entire roll, more than 18 million voters, through [SAVE](#glossary-save) in 2025 and flagged about 0.015% of it. [2](#source-non-citizens-on-voter-rolls-2) [3](#source-non-citizens-on-voter-rolls-3) Ohio's office says it now identifies non-citizens "at the time of registration". [9](#source-non-citizens-on-voter-rolls-9)
 
 Before SAVE was opened to bulk checks in 2025, states such as Georgia and North Carolina relied on licence, jury and individual immigration-record checks. [24](#source-non-citizens-on-voter-rolls-24) [14](#source-non-citizens-on-voter-rolls-14) [20](#source-non-citizens-on-voter-rolls-20)
 
@@ -731,19 +759,11 @@ Before SAVE was opened to bulk checks in 2025, states such as Georgia and North 
 
 The longest record comes from the Kansas litigation. The district court found that at most 67 non-citizens registered or tried to register, and 39 got onto the rolls; it found the cases "largely explained by administrative error, confusion, or mistake". [22](#source-non-citizens-on-voter-rolls-22)
 
-Kansas's proof-of-citizenship law, meanwhile, left 31,089 applicants denied registration. These are applicants who did not supply documents, not people shown to be citizens. [22](#source-non-citizens-on-voter-rolls-22)
+Kansas's [proof-of-citizenship](#glossary-documentary-proof-of-citizenship) law, meanwhile, left 31,089 applicants denied registration. These are applicants who did not supply documents, not people shown to be citizens. [22](#source-non-citizens-on-voter-rolls-22)
 
-### Georgia held 1,634 applicants SAVE could not verify before they reached the rolls {#non-citizens-on-voter-rolls--georgia-2022-held-at-registration}
+## Observations {#non-citizens-on-voter-rolls--observations-how-they-got-on}
 
-Georgia's first citizenship audit, announced in March 2022, counted applicants held at registration rather than people on the roll: [28](#source-non-citizens-on-voter-rolls-28)
-
-- **2,258** applications held in "pending citizenship" status; none was added to the rolls and none had voted.
-- **1,634** of them could not be verified by SAVE; the office called them non-citizens.
-- **624** could not be run through SAVE for lack of information, and were held because licence records listed them as non-citizens.
-
-Because none reached the rolls, they are not in the chart. "Not verified" by SAVE is not the same as confirmed: SAVE can miss citizens whose status is absent from federal records. [4](#source-non-citizens-on-voter-rolls-4)
-
-### Most non-citizens reach the rolls through paperwork errors {#non-citizens-on-voter-rolls--how-noncitizens-reach-rolls}
+### The reviews that give a cause trace non-citizens on the rolls to mistakes {#non-citizens-on-voter-rolls--how-noncitizens-reach-rolls}
 
 The reviews describe the same few routes:
 
@@ -754,11 +774,35 @@ The reviews describe the same few routes:
 
 Georgia found its 20 because they had sworn they were not citizens to get out of jury duty. [14](#source-non-citizens-on-voter-rolls-14) Each route runs through a check at the point of registration, which is where a records check or a documentary-proof rule would apply.
 
+### Arizona found 218,000 voters with no proof of citizenship on file {#non-citizens-on-voter-rolls--arizona-218000-no-proof}
+
+The state's motor vehicle agency had treated everyone licensed before 1996 as a citizen, without seeing proof. All of these voters had sworn to their citizenship, and when this was announced two had been identified as non-citizens. [23](#source-non-citizens-on-voter-rolls-23)
+
+### The checks rest on government records {#non-citizens-on-voter-rolls--checks-rest-on-records}
+
+Each review found people through a record some agency already held: the federal SAVE database, transportation department files, jury excusals. [2](#source-non-citizens-on-voter-rolls-2) [8](#source-non-citizens-on-voter-rolls-8) [14](#source-non-citizens-on-voter-rolls-14) [20](#source-non-citizens-on-voter-rolls-20) A non-citizen who appears as one in no record would not be found this way.
+
+### Georgia held 1,634 applicants SAVE could not verify before they reached the rolls {#non-citizens-on-voter-rolls--georgia-2022-held-at-registration}
+
+Georgia's first citizenship audit, announced in March 2022, counted applicants held at registration rather than people on the roll: [28](#source-non-citizens-on-voter-rolls-28)
+
+- **2,258** applications held in "pending citizenship" status; none was added to the rolls and none had voted.
+- **1,634** of them could not be verified by SAVE; the office called them non-citizens.
+- **624** could not be run through SAVE for lack of information, and were held because licence records listed them as non-citizens.
+
+Because none reached the rolls, they are not in the chart of registrants. "Not verified" by SAVE is not the same as confirmed: SAVE can miss citizens whose status is absent from federal records. [4](#source-non-citizens-on-voter-rolls-4)
+
+### Eleven voters flagged in Travis County had already given the licence agency proof of citizenship {#non-citizens-on-voter-rolls--state-records-would-have-cleared}
+
+Texas did not check its SAVE list against its own licence records before sending it to counties. In Travis County, 11 of 97 flagged voters had already given the licence agency proof of citizenship. [5](#source-non-citizens-on-voter-rolls-5)
+
+Across the counties that answered Votebeat, at least 33 citizens had been identified by December 2025. [5](#source-non-citizens-on-voter-rolls-5) The Texas Secretary of State wrote to USCIS that state licence records sometimes "inaccurately reflect a person's current citizenship status". [7](#source-non-citizens-on-voter-rolls-7)
+
 ## Observations {#non-citizens-on-voter-rolls--observations-votes-found}
 
-### Some non-citizens vote, and every review finds a few {#non-citizens-on-voter-rolls--some-noncitizens-vote}
+### Some non-citizens vote: all four reviews charted found some {#non-citizens-on-voter-rolls--some-noncitizens-vote}
 
-Every review that checked ballots found a few non-citizen voters; the chart shows the rate for each single election. [8](#source-non-citizens-on-voter-rolls-8) [20](#source-non-citizens-on-voter-rolls-20) [11](#source-non-citizens-on-voter-rolls-11) Iowa also found five whose ballots were rejected. [8](#source-non-citizens-on-voter-rolls-8) Counts that span several elections, or that are referrals rather than findings, are in the table after this chart.
+Each review charted found some non-citizen voters; the chart shows the rate for each single election. [8](#source-non-citizens-on-voter-rolls-8) [20](#source-non-citizens-on-voter-rolls-20) [11](#source-non-citizens-on-voter-rolls-11) Iowa also found five whose ballots were rejected. [8](#source-non-citizens-on-voter-rolls-8) Counts that span several elections, or that are referrals rather than findings, are in the table after this chart.
 
 ### Votes found are between about 1 and 22 per million ballots {#non-citizens-on-voter-rolls--votes-per-ballots}
 
@@ -782,7 +826,7 @@ A case not prosecuted is not thereby shown to involve an eligible voter, and a r
 
 ### Detected cases are a floor {#non-citizens-on-voter-rolls--detected-is-a-floor}
 
-Each review finds only people who appear as non-citizens in some government record: a licence issued to a green-card holder, a jury-duty excusal, an immigration file. [14](#source-non-citizens-on-voter-rolls-14) [8](#source-non-citizens-on-voter-rolls-8) [20](#source-non-citizens-on-voter-rolls-20)
+Each review finds only people who appear as non-citizens in some government record: a motor vehicle record, a jury-duty excusal, an immigration file. [14](#source-non-citizens-on-voter-rolls-14) [8](#source-non-citizens-on-voter-rolls-8) [20](#source-non-citizens-on-voter-rolls-20)
 
 A non-citizen who never declared that status to any agency would not be flagged. No source here measures how many such people exist, so these counts cannot rule out a larger undetected number; they also cannot show one.
 
@@ -803,7 +847,7 @@ The share depends on the database. Licence records keep showing people as non-ci
 
 No count of confirmed non-citizens among the 2,724 has been published.
 
-### Alabama: about 2,000 of 3,251 flagged were citizens {#non-citizens-on-voter-rolls--alabama-2024}
+### Most people Alabama flagged in 2024 were citizens {#non-citizens-on-voter-rolls--alabama-2024}
 
 In August 2024 Alabama made 3,251 people inactive, using non-citizen numbers recorded by its unemployment and licence agencies. The Secretary of State's chief of staff testified to what followed: [16](#source-non-citizens-on-voter-rolls-16)
 
@@ -834,23 +878,17 @@ What the Solicitor General told the Supreme Court in September 2026 about the re
 
 USCIS's own fact sheet says SAVE may be unable to confirm people who acquired citizenship through a parent. [4](#source-non-citizens-on-voter-rolls-4) In 2016, before the overhaul, North Carolina found that about 75% of people who later proved citizenship were still listed as non-citizens in SAVE. [19](#source-non-citizens-on-voter-rolls-19)
 
-### States' own records would have cleared some flagged citizens {#non-citizens-on-voter-rolls--state-records-would-have-cleared}
-
-Texas did not check its SAVE list against its own licence records before sending it to counties. In Travis County, 11 of 97 flagged voters had already given the licence agency proof of citizenship. [5](#source-non-citizens-on-voter-rolls-5)
-
-Across the counties that answered Votebeat, at least 33 citizens had been identified by December 2025. [5](#source-non-citizens-on-voter-rolls-5) The Texas Secretary of State wrote to USCIS that state licence records sometimes "inaccurately reflect a person's current citizenship status". [7](#source-non-citizens-on-voter-rolls-7)
-
 ### Texas's 2019 review flagged almost 100,000, including about 25,000 listed in error {#non-citizens-on-voter-rolls--texas-2019}
 
 In 2019 Texas questioned the citizenship of almost 100,000 registrants, using licence records from people who had once said they were not citizens. The state later said it had overstated the list by about 25,000 names, counties found hundreds of naturalised citizens on it, and the state agreed in a settlement to scrap it. [25](#source-non-citizens-on-voter-rolls-25)
 
 ## Observations {#non-citizens-on-voter-rolls--observations-both-errors}
 
-### Both kinds of error appear in the same reviews {#non-citizens-on-voter-rolls--both-errors-side-by-side}
+### In Texas and Alabama, more citizens were wrongly flagged than people were referred or removed {#non-citizens-on-voter-rolls--both-errors-side-by-side}
 
 Each review produces two counts: ineligible registrants found, and eligible citizens wrongly flagged.
 
-In the reviews with published follow-ups, citizens wrongly flagged outnumber the non-citizens confirmed.
+In Texas and Alabama, citizens wrongly flagged outnumber the people referred or removed. In Denton County the two counts are level at 14, and the status of 56 others is unknown.
 
 ## Observations {#non-citizens-on-voter-rolls--observations-against-margins}
 
@@ -860,7 +898,9 @@ Both margins dwarf the non-citizen voters the same states' reviews found, even c
 
 North Carolina's audit found that even if every ineligible ballot it identified in 2016 had gone to the winner, no race would have had a different outcome. [20](#source-non-citizens-on-voter-rolls-20)
 
-### Some local elections are decided by a handful of votes {#non-citizens-on-voter-rolls--close-local-races}
+## Observations {#non-citizens-on-voter-rolls--observations-officials-on-scale}
+
+### Louisiana's top election official says some local elections are decided by a handful of votes {#non-citizens-on-voter-rolls--close-local-races}
 
 Louisiana's Secretary of State said fraud was not systemic but noted that some local elections had been decided by a handful of votes; she did not say whether any non-citizen votes affected them. [13](#source-non-citizens-on-voter-rolls-13)
 
@@ -868,9 +908,9 @@ A race decided by single digits is within the range of counts found statewide. N
 
 ## Observations {#non-citizens-on-voter-rolls--observations-ohio-referrals}
 
-### Ohio has found non-citizen registrants in every batch since 2019 {#non-citizens-on-voter-rolls--ohio-recurs}
+### Ohio referred apparent non-citizens in 2019, 2021, 2022 and 2024 {#non-citizens-on-voter-rolls--ohio-recurs}
 
-Every batch in the chart contains non-citizen registrants, at sizes that vary widely. [10](#source-non-citizens-on-voter-rolls-10) In October 2025 Ohio forwarded to the Justice Department 1,084 cases going back to 2018 that included 167 people who allegedly voted in a federal election. [9](#source-non-citizens-on-voter-rolls-9) The batches cover different elections and methods, so they do not show a trend.
+Every batch in the chart contains apparent non-citizen registrants, at sizes that vary widely. [10](#source-non-citizens-on-voter-rolls-10) In October 2025 Ohio forwarded to the Justice Department 1,084 cases going back to 2018 that included 167 people who allegedly voted in a federal election. [9](#source-non-citizens-on-voter-rolls-9) The batches cover different elections and methods, so they do not show a trend.
 
 ### Ohio's counts are a small fraction of its electorate {#non-citizens-on-voter-rolls--ohio-scale}
 

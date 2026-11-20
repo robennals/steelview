@@ -1,5 +1,13 @@
 name: CI
-on: [push, pull_request]
+# Agents run these checks locally before opening a pull request, so nothing
+# waits on CI. It runs after each merge to main, on a clean machine with the
+# Node version Vercel uses, to catch what local runs cannot: branches that
+# pass alone but break together. `workflow_dispatch` lets a branch be run by
+# hand.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
 jobs:
   check:
     runs-on: ubuntu-latest
@@ -13,11 +21,17 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm lint
       - run: pnpm test:unit
+      # Playwright's browser, which changes only with its version. The headless
+      # shell is all the tests run; the system packages it needs are not cached.
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+      - run: pnpm exec playwright install --with-deps --only-shell chromium
       # The production build is covered by playwright.config.ts's webServer,
-      # which runs `pnpm build && pnpm start`. Publication-time editorial
-      # integrity is deliberately separate from CI so in-progress edits do not
-      # prevent a development build from rendering.
-      - run: pnpm exec playwright install --with-deps chromium
+      # which runs `pnpm build:if-changed && pnpm start`. Publication-time
+      # editorial integrity is deliberately separate from CI so in-progress
+      # edits do not prevent a development build from rendering.
       - run: pnpm test:e2e
       # The figures audit: a money/percentage/thousands figure asserted in a
       # markdown body must appear in a quoted source on the same topic. Runs

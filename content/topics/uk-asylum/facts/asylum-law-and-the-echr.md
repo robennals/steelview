@@ -131,7 +131,9 @@ sources:
       specific legislation. However, any legislation that sought to provide
       meaningful mitigations or solutions to these problems would face
       significant and potentially debilitating litigation (including in the UK)
-      and would likely be held incompatible with the ECHR
+      and would likely be held incompatible with the ECHR (as with the Northern
+      Ireland Troubles (Legacy and Reconciliation) Act 2023 which is going to the
+      UK Supreme Court (“UKSC”) in October 2025).
     title: Master ECHR Review (legal advice to the Leader of the Opposition)
     url: >-
       https://ukhumanrightsblog.com/wp-content/uploads/2025/10/Master-ECHR-Review-02.10.25-FINAL-1.pdf
@@ -145,7 +147,8 @@ sources:
       withdrawal from ECAT and, at least, significantly amend the Modern
       Slavery Act 2015, I do not consider it necessary at this time to leave
       the Refugee Convention to be able to achieve your policy goals on
-      immigration
+      immigration (although it would be necessary to remove or limit the
+      reference to those instruments in domestic UK legislation).
     title: Master ECHR Review (legal advice to the Leader of the Opposition)
     url: >-
       https://ukhumanrightsblog.com/wp-content/uploads/2025/10/Master-ECHR-Review-02.10.25-FINAL-1.pdf
@@ -208,16 +211,16 @@ sources:
     publisher: 'Foreign, Commonwealth and Development Office'
     date: '2021-04'
   - stance: supports
-    quote: >-
-      Part Three of the TCA concerns criminal law enforcement co-operation. It
-      provides for close co-operation on a range of issues: 269.1. Exchanges of
-      DNA, fingerprints and vehicles registration data (Title II & ANNEX 39);
-      […] 269.2. Transfer and processing of passenger name record data (Title
-      III & ANNEX 40); 269.3. Cooperation on operational information (Title
-      IV); 269.4. Cooperation with Europol (Title V & ANNEX 41); 269.5.
-      Cooperation with Eurojust (Title VI & ANNEX 42); 269.6. Surrender (Title
-      VII & ANNEX 43); 269.7. Mutual assistance (Title VIII); and 269.8.
-      Exchange of criminal record information (Title IX & ANNEX 44).
+    quote: |-
+      Part Three of the TCA concerns criminal law enforcement co-operation. It provides for close co-operation on a range of issues:
+      - 269.1. Exchanges of DNA, fingerprints and vehicles registration data (Title II & ANNEX 39); […]
+      - 269.2. Transfer and processing of passenger name record data (Title III & ANNEX 40);
+      - 269.3. Cooperation on operational information (Title IV);
+      - 269.4. Cooperation with Europol (Title V & ANNEX 41);
+      - 269.5. Cooperation with Eurojust (Title VI & ANNEX 42);
+      - 269.6. Surrender (Title VII & ANNEX 43);
+      - 269.7. Mutual assistance (Title VIII); and
+      - 269.8. Exchange of criminal record information (Title IX & ANNEX 44).
     title: Master ECHR Review (legal advice to the Leader of the Opposition)
     url: >-
       https://ukhumanrightsblog.com/wp-content/uploads/2025/10/Master-ECHR-Review-02.10.25-FINAL-1.pdf
@@ -332,16 +335,10 @@ sources:
     publisher: Council of Europe Committee of Ministers
     date: '2026-05-15'
   - stance: supports
-    quote: >-
-      45. States Parties may establish their own immigration policies, which
-      may include co-operation with third countries, provided that they
-      continue to fulfil their Convention obligations. 46. It is important that
-      States, including those that are exposed to mass arrivals, can pursue new
-      approaches to address and potentially deter irregular migration. Amongst
-      the forms of new approaches that have been envisaged by several member
-      States are processing requests for international protection in a third
-      country, third country "return hubs", and co-operation with countries of
-      transit.
+    quote: |-
+      45. States Parties may establish their own immigration policies, which may include co-operation with third countries, provided that they continue to fulfil their Convention obligations.
+
+      46. It is important that States, including those that are exposed to mass arrivals, can pursue new approaches to address and potentially deter irregular migration. Amongst the forms of new approaches that have been envisaged by several member States are processing requests for international protection in a third country, third country "return hubs", and co-operation with countries of transit.
     title: 'Chişinău Declaration, CM(2026)99-final, paragraphs 45-46 (full text as reproduced by EIN)'
     url: >-
       https://www.ein.org.uk/news/new-council-europe-declaration-clarifies-echr-interpretation-immigration-and-asylum-law
@@ -546,8 +543,8 @@ sources:
     date: '2025-10-02'
   - stance: supports
     quote: >-
-      S. 37 in force at 28.6.2022 by S.I. 2022/590 , regs. 1(2) , 2 , Sch. 1
-      para. 19 (with Sch. 2 para. 6 )
+      S. 37 in force at 28.6.2022 by S.I. 2022/590, regs. 1(2), 2, Sch. 1
+      para. 19 (with Sch. 2 para. 6)
     title: 'Nationality and Borders Act 2022, section 37: commencement information'
     url: 'https://www.legislation.gov.uk/ukpga/2022/36/section/37'
     publisher: legislation.gov.uk (The National Archives)
@@ -567,6 +564,16 @@ sources:
     localFile: datasets/ueaeprints.uea.ac.uk/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
     publisher: 'Kirsten McConnachie, University of East Anglia'
     date: '2025'
+  - stance: supports
+    quote: >-
+      Asylum seekers are thus protected against refoulement not only by the
+      Human Rights Act but also by provisions in the 1993 Act, the 2002 Act and
+      the 2004 Act, under which Parliament has given effect to the Refugee
+      Convention as well as the ECHR.
+    title: 'R (AAA and others) v Secretary of State for the Home Department [2023] UKSC 42 (the Rwanda judgment)'
+    url: https://supremecourt.uk/uploads/uksc_2023_0093_etc_judgment_636270e30e.pdf
+    publisher: The Supreme Court of the United Kingdom
+    date: '2023-11-15'
 dataStillNeeded:
   - measure: 'A published UK government legal assessment of whether leaving the ECHR is compatible with the Good Friday Agreement'
     why: >-
@@ -576,7 +583,7 @@ dataStillNeeded:
       be shown as disputed.
   - measure: 'Article 8 grant, refusal, appeal and removal outcomes after the Immigration and Asylum Bill takes effect'
     why: >-
-      The impact assessment's 11,700 extra refusals a year is modelling under
+      The impact assessment's 11,700 extra refusals are modelling under
       stated assumptions, not a measured effect. Whether statutory limits on
       Article 8 change outcomes, and whether the effect lasts, can only be
       measured once the Bill is in force.
@@ -587,9 +594,10 @@ dataStillNeeded:
 figures:
   - kind: dataTable
     id: article-31
-    title: Article 31 of the Refugee Convention and "coming directly", 1999–2024
-    description: How UK courts, Parliament and UNHCR have read the Refugee Convention's defence for refugees who stopped on the way.
-    caption: One card per ruling, law or guideline
+    title: 'Article 31 and "coming directly"'
+    subtitle: 'How UK courts, Parliament, UNHCR and a study read it, 1999–2025'
+    description: How UK courts, Parliament, UNHCR and one legal study have read the Refugee Convention's defence for refugees who stopped on the way.
+    caption: One card per ruling, law, guideline or study
     layout: timeline
     leadColumn: says
     dateColumn: year
@@ -614,9 +622,31 @@ figures:
       - year: '2024'
         text: UNHCR Guidelines on International Protection No. 14
         says: { value: 'Include the Adimi definitions of "coming directly", "presenting without delay" and "showing good cause". UNHCR called the UK''s 2022 approach a "fundamental misapplication of Article 31(1)".', sources: [4, 6] }
+      - year: '2025'
+        text: McConnachie, Landmark Cases chapter on Adimi
+        says: { value: '"Few refugees are able to enter the islands of the United Kingdom without first passing through the territory of another state".', sources: [6] }
+  - kind: dataTable
+    id: refugee-convention
+    title: 'What the Refugee Convention says'
+    subtitle: 'And what stays if the UK leaves the ECHR'
+    description: The two Refugee Convention articles this topic turns on, and the Wolfson review's advice on keeping the Convention after leaving the ECHR.
+    caption: One card per provision
+    layout: cards
+    leadColumn: says
+    columns:
+      - { key: provision, label: Provision, rowHeader: true }
+      - { key: says, label: What it says, sortable: false }
+    rows:
+      - provision: Article 33(1)
+        says: { value: 'No contracting state may "expel or return (‘refouler’) a refugee in any manner whatsoever to the frontiers of territories where his life or freedom would be threatened".', sources: [40] }
+      - provision: Article 31(1)
+        says: { value: '"Contracting States shall not impose penalties, on account of their illegal entry or presence, on refugees".', sources: [42] }
+      - provision: If the UK left the ECHR
+        says: { value: 'Wolfson: "a stringent regime could be pursued outside of the ECHR, while remaining within the Refugee Convention".', sources: [10] }
   - kind: dataTable
     id: wolfson-review
-    title: What the Wolfson review advised on the ECHR, 2025
+    title: 'The Wolfson review''s ECHR advice'
+    subtitle: 'Lord Wolfson''s advice to the Leader of the Opposition, October 2025'
     description: Legal advice to the Leader of the Opposition from Lord Wolfson of Tredegar KC, dated 2 October 2025. It contains no count of removals blocked by the ECHR.
     caption: One card per question the review answers
     layout: cards
@@ -637,7 +667,8 @@ figures:
         advice: { value: 'They "do not constitute legal barriers to leaving the ECHR".', sources: [11] }
   - kind: dataTable
     id: tca-part-three
-    title: What leaving the ECHR would do to UK–EU policing cooperation
+    title: 'Leaving the ECHR and EU policing ties'
+    subtitle: 'Part Three of the UK–EU Trade and Cooperation Agreement'
     description: The settled text of Part Three of the UK–EU Trade and Cooperation Agreement (TCA).
     caption: One card per provision
     layout: cards
@@ -656,7 +687,8 @@ figures:
         says: { value: 'Wolfson and CAJ agree: it gives the EU a ground to end Part Three, and only Part Three.', sources: [21, 44] }
   - kind: dataTable
     id: leaving-the-echr
-    title: Would leaving the ECHR breach the Good Friday Agreement?
+    title: 'The ECHR and the Good Friday Agreement'
+    subtitle: 'Would leaving the ECHR breach it? Two readings'
     description: Contested law. The two readings of the same commitment, side by side.
     caption: One card per point of dispute
     layout: cards
@@ -676,7 +708,8 @@ figures:
         caj: { value: 'The Irish government "has categorically rejected the idea of ECHR withdrawal as being compliant with the B/GFA".', sources: [19] }
   - kind: dataTable
     id: chisinau-declaration
-    title: What the Chişinău Declaration on the ECHR says, May 2026
+    title: 'The Chişinău Declaration on the ECHR'
+    subtitle: 'Adopted by all 46 Council of Europe states, May 2026'
     description: Adopted by all 46 Council of Europe states, including the UK, on 15 May 2026, a year after a letter led by Italy and Denmark that the UK did not sign.
     caption: One card per topic
     layout: cards
@@ -685,6 +718,10 @@ figures:
       - { key: topic, label: Topic, rowHeader: true }
       - { key: says, label: What the declaration says, sortable: false }
     rows:
+      - topic: Who adopted it
+        says: { value: '"The 46 member states of the Council of Europe, which includes the UK", on 15 May 2026.', sources: [22] }
+      - topic: Status
+        says: { value: '"a non-binding political declaration".', sources: [22] }
       - topic: The May 2025 letter
         says: { value: 'Nine states asked whether the Court "has over-extended the scope of the convention".', sources: [29, 30] }
       - topic: Article 3 threshold
@@ -693,15 +730,16 @@ figures:
         says: { value: 'Should raise an Article 3 risk only "in very exceptional circumstances".', sources: [24] }
       - topic: Diplomatic assurances
         says: { value: '"may obviate a risk of violation of Article 3".', sources: [27] }
-      - topic: Article 8 balance
+      - topic: Article 8 (family and private life) balance
         says: { value: 'The Court "would require strong reasons to substitute its view" for national courts''.', sources: [25] }
       - topic: Third-country processing and return hubs
         says: { value: 'Listed as approaches "envisaged by several member States", provided states "continue to fulfil their Convention obligations".', sources: [26] }
   - kind: dataTable
     id: immigration-and-asylum-bill
-    title: What the UK's Immigration and Asylum Bill would change, 2026
+    title: 'The Immigration and Asylum Bill'
+    subtitle: 'What it would change, UK, introduced 30 June 2026'
     description: The Bill was introduced in the Commons on 30 June 2026.
-    caption: One card per part of the Bill
+    caption: One card per part of the Bill or finding of its impact assessment
     layout: cards
     leadColumn: does
     columns:
@@ -712,10 +750,35 @@ figures:
         does: { value: 'Creates an Independent Immigration Appeals Authority (IIAA) to replace the First-tier Tribunal. Adjudicators "wouldn’t have to be legally qualified"; the government says this would let it recruit more decision-makers and cut delays. The Home Secretary would appoint the Chair.', sources: [31, 33] }
       - part: Part 2 (clauses 17 to 20)
         does: { value: 'Rewrites how judges apply Article 8 (family and private life) in appeals, so that fewer people win a right to stay.', sources: [32, 34] }
+      - part: 'Impact assessment: refusals'
+        does: { value: 'Suggests "there could be 11,700 more Article 8 cases refused", but says of its modelling that "it is not a target or forecast".', sources: [34, 35] }
+      - part: 'Impact assessment: who leaves'
+        does: { value: '"55 per cent of those who are denied Article 8 claims may not leave the UK".', sources: [36] }
+observationMarks:
+  uk-law-ties-article-31-to-the-first-safe-country: {rows: ["s37 Nationality and Borders Act 2022, in force 28 June 2022"]}
+  article-31-is-about-penalties: {rows: ["Article 31(1)"]}
+  wolfson-withdrawal-possible-refugee-convention-unnecessary: {rows: ["Can the UK leave?", "Must the UK also leave the Refugee Convention?"]}
+  eu-may-end-law-enforcement-cooperation-on-denunciation: {rows: ["What Part Three covers", "Article 692(2)", "How both sides read it"]}
+  refugee-convention-ban-on-return-remains: {rows: ["Article 33(1)", "If the UK left the ECHR"]}
+  the-bill-sets-no-target: {rows: ["Impact assessment: refusals"]}
+  the-declaration-is-non-binding: {rows: ["Status"]}
+  good-friday-agreement-is-disputed: {rows: ["Conclusion", "What the UK promised"]}
+  the-international-reading-is-still-adimis: {rows: ["Adimi (Divisional Court)", "UNHCR Guidelines on International Protection No. 14"]}
+  wolfsons-finding-is-legal-not-numerical: {rows: ["Does the ECHR constrain immigration policy?"]}
+  agreed-unanimously-with-dissent-recorded: {rows: ["Third-country processing and return hubs"]}
+  critics-doubt-the-iiaa: {rows: ["Part 1", "Part 2 (clauses 17 to 20)"]}
+  few-reach-the-uk-without-passing-through-another-state: {rows: ["McConnachie, Landmark Cases chapter on Adimi"]}
+  article-33-forbids-return: {rows: ["Article 33(1)"]}
+  wolfson-limits-inside-the-echr-likely-fail: {rows: ["Can the problems be fixed inside the ECHR?"]}
+  part-three-rests-on-the-echr: {rows: ["What Part Three covers", "Article 524(1)", "Article 692(2)"]}
+  all-46-agreed-strong-reasons: {rows: ["Who adopted it", "Article 8 (family and private life) balance"]}
+  bill-replaces-the-tribunal: {rows: ["Part 1"]}
+  bill-rewrites-article-8-appeals: {rows: ["Part 2 (clauses 17 to 20)"]}
+  many-refused-may-not-leave: {rows: ["Impact assessment: who leaves"]}
 ---
 ## Observations {#asylum-law-and-the-echr--observations-article-31}
 
-### UK law ties the Article 31 defence to the first safe country {#asylum-law-and-the-echr--uk-law-ties-article-31-to-the-first-safe-country}
+### Since 2022, UK law expects a refugee who stopped in another country to have sought protection there {#asylum-law-and-the-echr--uk-law-ties-article-31-to-the-first-safe-country}
 
 Since 28 June 2022, a refugee who stopped in another country on the way to
 the UK cannot rely on the Article 31 defence unless they show they could not
@@ -725,6 +788,10 @@ leave the UK from protection under article 31", because few reach the UK
 without passing through another state. [6](#source-asylum-law-and-the-echr-6) On this point UK statute already
 works as a first-safe-country rule.
 
+### Few refugees can reach the UK without passing through another state {#asylum-law-and-the-echr--few-reach-the-uk-without-passing-through-another-state}
+
+McConnachie's study of the case law says "few refugees are able to enter the islands of the United Kingdom without first passing through the territory of another state". [6](#source-asylum-law-and-the-echr-6)
+
 ### The international reading is still *Adimi*'s {#asylum-law-and-the-echr--the-international-reading-is-still-adimis}
 
 UNHCR's 2024 guidelines follow *Adimi*: refugees have "some element of
@@ -732,13 +799,26 @@ choice", and a short stopover does not break "coming directly". UNHCR
 describes the UK's statutory rule as a misapplication of the Convention, so
 UK law and UNHCR's reading of the same treaty now diverge. [2](#source-asylum-law-and-the-echr-2) [4](#source-asylum-law-and-the-echr-4) [6](#source-asylum-law-and-the-echr-6)
 
-### Article 31 is about penalties, not whether a claim is heard {#asylum-law-and-the-echr--article-31-is-about-penalties}
+## Observations {#asylum-law-and-the-echr--observations-refugee-convention}
+
+### Article 33(1) forbids sending a refugee back to danger {#asylum-law-and-the-echr--article-33-forbids-return}
+
+Article 33(1) of the Refugee Convention forbids returning a refugee "in any manner whatsoever" to where their life or freedom would be threatened. [40](#source-asylum-law-and-the-echr-40)
+
+### Article 31 bars penalties for illegal entry {#asylum-law-and-the-echr--article-31-is-about-penalties}
 
 Article 31 forbids penalties for illegal entry. It does not by itself decide
 whether a state must consider an asylum claim or where a person may be sent;
 sending a refugee somewhere they would be in danger is barred separately, by
 Article 33(1). [42](#source-asylum-law-and-the-echr-42) [40](#source-asylum-law-and-the-echr-40) The EU applies its own "first country of asylum"
 concept through the Dublin rules. [43](#source-asylum-law-and-the-echr-43)
+
+### Leaving the ECHR would leave the Refugee Convention's ban on return in place {#asylum-law-and-the-echr--refugee-convention-ban-on-return-remains}
+
+The Refugee Convention's Article 33(1) forbids returning a refugee "in any
+manner whatsoever" to where their life or freedom would be threatened. In UK
+practice, most claims of risk on return are asylum claims under the Refugee
+Convention, not Article 3 ECHR claims. [40](#source-asylum-law-and-the-echr-40) [41](#source-asylum-law-and-the-echr-41) When the Supreme Court found the Rwanda plan unlawful in 2023, it said asylum seekers are protected from return to danger by Acts of Parliament that give effect to the Refugee Convention, not only by the Human Rights Act. [47](#source-asylum-law-and-the-echr-47)
 
 ## Observations {#asylum-law-and-the-echr--observations-wolfson-review}
 
@@ -749,6 +829,10 @@ inside it would probably be litigated to failure, and that leaving the
 Refugee Convention is not needed to meet the Conservative policy goals on
 immigration: "a stringent regime could be pursued outside of the ECHR, while
 remaining within the Refugee Convention". [8](#source-asylum-law-and-the-echr-8) [9](#source-asylum-law-and-the-echr-9) [10](#source-asylum-law-and-the-echr-10)
+
+### Wolfson: limits inside the ECHR would likely fail in court {#asylum-law-and-the-echr--wolfson-limits-inside-the-echr-likely-fail}
+
+Wolfson advised that legislation staying inside the ECHR "would face significant and potentially debilitating litigation" and "would likely be held incompatible with the ECHR". [9](#source-asylum-law-and-the-echr-9)
 
 ### His finding on constraints is legal, not numerical {#asylum-law-and-the-echr--wolfsons-finding-is-legal-not-numerical}
 
@@ -769,6 +853,10 @@ notice; Wolfson describes this general right as twelve months' notice. [13](#sou
 political than legal"; CAJ calls them "serious consequences" for policing and
 criminal-justice cooperation. [44](#source-asylum-law-and-the-echr-44) [21](#source-asylum-law-and-the-echr-21)
 
+### UK–EU policing cooperation is based on respect for ECHR rights {#asylum-law-and-the-echr--part-three-rests-on-the-echr}
+
+Part Three of the Trade and Cooperation Agreement covers policing, extradition and criminal records. Article 524(1) says this cooperation is "based on" respect for rights including those in the ECHR, and Article 692(2) lets it end when a party's denunciation of the ECHR takes effect. [15](#source-asylum-law-and-the-echr-15) [14](#source-asylum-law-and-the-echr-14) [12](#source-asylum-law-and-the-echr-12)
+
 ## Observations {#asylum-law-and-the-echr--observations-leaving-the-echr}
 
 ### Whether withdrawal breaches the Good Friday Agreement is disputed {#asylum-law-and-the-echr--good-friday-agreement-is-disputed}
@@ -777,13 +865,6 @@ The two sides read the same commitment differently: as a promise to make
 ECHR rights part of Northern Ireland law, or as a promise that also requires
 the UK to stay a party to the Convention. No published UK government legal
 assessment was found. [16](#source-asylum-law-and-the-echr-16) [17](#source-asylum-law-and-the-echr-17) [18](#source-asylum-law-and-the-echr-18) [20](#source-asylum-law-and-the-echr-20)
-
-### Leaving the ECHR would leave the Refugee Convention's ban on return in place {#asylum-law-and-the-echr--refugee-convention-ban-on-return-remains}
-
-The Refugee Convention's Article 33(1) forbids returning a refugee "in any
-manner whatsoever" to where their life or freedom would be threatened. In UK
-practice, most claims of risk on return are asylum claims under the Refugee
-Convention, not Article 3 ECHR claims. [40](#source-asylum-law-and-the-echr-40) [41](#source-asylum-law-and-the-echr-41)
 
 ## Observations {#asylum-law-and-the-echr--observations-chisinau-declaration}
 
@@ -794,6 +875,10 @@ adoption as "non-binding". It does not amend the Convention. Its Article 8
 paragraph restates the Court's own case law ("According to the case law of
 the Court…"). [22](#source-asylum-law-and-the-echr-22) [25](#source-asylum-law-and-the-echr-25)
 
+### All 46 member states agreed the Court needs "strong reasons" to overrule national courts on Article 8 {#asylum-law-and-the-echr--all-46-agreed-strong-reasons}
+
+The 46 member states of the Council of Europe adopted the declaration. Its Article 8 paragraph says that where national authorities have done the balancing in line with the Court's criteria, the Court "would require strong reasons to substitute its view for that of the domestic courts". [22](#source-asylum-law-and-the-echr-22) [25](#source-asylum-law-and-the-echr-25)
+
 ### It was agreed unanimously, with dissent recorded {#asylum-law-and-the-echr--agreed-unanimously-with-dissent-recorded}
 
 All 46 states adopted it, but the minutes record Spain dissociating itself
@@ -801,13 +886,25 @@ from the references to "return hubs". [22](#source-asylum-law-and-the-echr-22) [
 
 ## Observations {#asylum-law-and-the-echr--observations-immigration-and-asylum-bill}
 
+### The Bill replaces the tribunal with a body whose adjudicators need not be lawyers, chaired by a Home Secretary appointee {#asylum-law-and-the-echr--bill-replaces-the-tribunal}
+
+The Independent Immigration Appeals Authority would replace the [First-tier Tribunal](#glossary-first-tier-tribunal). Its adjudicators "wouldn’t have to be legally qualified", and the Home Secretary would appoint its Chair. [31](#source-asylum-law-and-the-echr-31) [33](#source-asylum-law-and-the-echr-33)
+
+### The Bill rewrites how judges apply Article 8 in appeals {#asylum-law-and-the-echr--bill-rewrites-article-8-appeals}
+
+Part 2 of the Bill contains measures to reform how Article 8, the right to family and private life, is interpreted, so that fewer people win a right to stay. [32](#source-asylum-law-and-the-echr-32) [34](#source-asylum-law-and-the-echr-34)
+
 ### The Bill's impact assessment models more refusals but sets no target {#asylum-law-and-the-echr--the-bill-sets-no-target}
 
-The impact assessment models about 11,700 more Article 8 refusals a year
+The impact assessment models about 11,700 more Article 8 refusals
 after appeal, but says "it is not a target or forecast" and that a fixed
 target would not be appropriate. [34](#source-asylum-law-and-the-echr-34) [35](#source-asylum-law-and-the-echr-35) It estimates that 55% of people
 refused under Article 8 may not leave the UK, and expects 3,600 more a year
 to be removed or to claim asylum. [36](#source-asylum-law-and-the-echr-36) [37](#source-asylum-law-and-the-echr-37)
+
+### The assessment says 55% of people refused under Article 8 may not leave {#asylum-law-and-the-echr--many-refused-may-not-leave}
+
+It has been estimated that 55% of those denied Article 8 claims may not leave the UK, based on people refused a Family and Private life visa in 2022. [36](#source-asylum-law-and-the-echr-36)
 
 ### Critics doubt the IIAA's independence and the Bill's effect {#asylum-law-and-the-echr--critics-doubt-the-iiaa}
 

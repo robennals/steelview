@@ -21,7 +21,28 @@ claim: >-
 status: well-supported
 sources:
 - stance: supports
-  quote: "\"2007\",\"37625\" \"2008\",\"37300\" \"2009\",\"35339\" \"2010\",\"35850\" \"2011\",\"35856\" \"2012\",\"36160\" \"2013\",\"36537\" \"2014\",\"37411\" \"2015\",\"37937\" \"2016\",\"38467\" \"2017\",\"39415\" \"2018\",\"39831\" \"2019\",\"40125\" \"2020\",\"36033\" \"2021\",\"38972\" \"2022\",\"40554\" \"2023\",\"40126\" \"2024\",\"40153\" \"2025\",\"40546\""
+  quote: |-
+    Title | Gross domestic product (Average) per head, CVM market prices (reference year = 2023) £: SA
+    Unit | £
+    2007 | 37625
+    2008 | 37300
+    2009 | 35339
+    2010 | 35850
+    2011 | 35856
+    2012 | 36160
+    2013 | 36537
+    2014 | 37411
+    2015 | 37937
+    2016 | 38467
+    2017 | 39415
+    2018 | 39831
+    2019 | 40125
+    2020 | 36033
+    2021 | 38972
+    2022 | 40554
+    2023 | 40126
+    2024 | 40153
+    2025 | 40546
   title: "Gross domestic product (Average) per head, CVM market prices (reference year = 2023), series IHXW, dataset PN2 (rows 2007–2025)"
   url: https://www.ons.gov.uk/economy/grossdomesticproductgdp/timeseries/ihxw/pn2
   fileUrl: https://www.ons.gov.uk/generator?format=csv&uri=/economy/grossdomesticproductgdp/timeseries/ihxw/pn2
@@ -29,7 +50,17 @@ sources:
   publisher: Office for National Statistics
   date: "2026-08-13"
 - stance: supports
-  quote: "\"2019\",\"2673465\" \"2020\",\"2404838\" \"2021\",\"2610286\" \"2022\",\"2744708\" \"2023\",\"2752164\" \"2024\",\"2780853\" \"2025\",\"2817414\""
+  quote: |-
+    Title | Gross Domestic Product: chained volume measures: Seasonally adjusted £m
+    PreUnit | £
+    Unit | m
+    2019 | 2673465
+    2020 | 2404838
+    2021 | 2610286
+    2022 | 2744708
+    2023 | 2752164
+    2024 | 2780853
+    2025 | 2817414
   title: "Gross Domestic Product: chained volume measures: Seasonally adjusted £m, series ABMI, dataset PN2 (rows 2019–2025)"
   url: https://www.ons.gov.uk/economy/grossdomesticproductgdp/timeseries/abmi/pn2
   fileUrl: https://www.ons.gov.uk/generator?format=csv&uri=/economy/grossdomesticproductgdp/timeseries/abmi/pn2
@@ -37,7 +68,7 @@ sources:
   publisher: Office for National Statistics
   date: "2026-08-13"
 - stance: supports
-  quote: "In the high migration scenario, net migration falls by around 160,000 from its current level to settle at 515,000 a year in 2028-29. … Based on these assumptions, GDP is 1.5 per cent higher in 2028-29, but GDP per person is largely unchanged."
+  quote: "In the high migration scenario, net migration falls by around 160,000 from its current level to settle at 515,000 a year in 2028-29. … We also assume additional migrants have the same participation rate as the existing population. Based on these assumptions, GDP is 1.5 per cent higher in 2028-29, but GDP per person is largely unchanged."
   title: Economic and fiscal outlook – March 2024 (CP 1027), Box 2.3
   url: "https://obr.uk/docs/dlm_uploads/E03057758_OBR_EFO-March-2024_Web-AccessibleFinal.pdf"
   publisher: Office for Budget Responsibility
@@ -121,7 +152,7 @@ sources:
   publisher: Migration Advisory Committee
   date: "2025-12-11"
 - stance: supports
-  quote: "For the entire cohort of 329,200 arrivals, we estimate that they will contribute a net £47.1bn over their lifetime – or +£143,000"
+  quote: "For the entire cohort of 329,200 arrivals, we estimate that they will contribute a net £47.1bn over their lifetime – or +£143,000 per migrant. This is almost entirely driven by main applicants working outside of Health and Care."
   title: "The Fiscal Impact of Immigration: Static and Dynamic Estimates for the UK"
   url: "https://assets.publishing.service.gov.uk/media/6938108633c7ace9c4a41e42/The_Fiscal_Impact_of_Immigration_Final__1_.pdf"
   publisher: Migration Advisory Committee
@@ -163,7 +194,7 @@ sources:
   publisher: Migration Advisory Committee
   date: "2025-12-11"
 - stance: supports
-  quote: "We estimate that the top 10% of earners in the SW (excl. H&C) cohort (with a minimum salary in 2022/23 of £131,000) make an average lifetime contribution of £2.7m and account for 39% of the total contribution of"
+  quote: "We estimate that the top 10% of earners in the SW (excl. H&C) cohort (with a minimum salary in 2022/23 of £131,000) make an average lifetime contribution of £2.7m and account for 39% of the total contribution of this cohort (see Figure 18). In contrast, the bottom 10% contribute 1% of the total."
   title: "The Fiscal Impact of Immigration: Static and Dynamic Estimates for the UK"
   url: "https://assets.publishing.service.gov.uk/media/6938108633c7ace9c4a41e42/The_Fiscal_Impact_of_Immigration_Final__1_.pdf"
   publisher: Migration Advisory Committee
@@ -175,7 +206,7 @@ sources:
   publisher: Migration Advisory Committee
   date: "2025-12-11"
 - stance: complicates
-  quote: "a 3.0% real discount rate which is broadly in line with HMT Green Book"
+  quote: "In our baseline, we discount future net contributions using a 3.0% real discount rate which is broadly in line with HMT Green Book (this is the 𝑟 in Equation (4))."
   title: "The Fiscal Impact of Immigration: Static and Dynamic Estimates for the UK"
   url: "https://assets.publishing.service.gov.uk/media/6938108633c7ace9c4a41e42/The_Fiscal_Impact_of_Immigration_Final__1_.pdf"
   publisher: Migration Advisory Committee
@@ -205,7 +236,7 @@ sources:
   publisher: Office for Budget Responsibility
   date: "2024-09-12"
 - stance: supports
-  quote: "For example, a high-wage migrant earning 30 per cent more than the UK average would still be a net benefit to the public finances even if they lived to"
+  quote: "Earnings. Due to the differences in taxes paid over the working life, a higher wage migrant worker is more fiscally beneficial than the average UK resident (black line) over their lifetime. For example, a high-wage migrant earning 30 per cent more than the UK average would still be a net benefit to the public finances even if they lived to 100."
   title: "Fiscal risks and sustainability – September 2024 (CP 1142, corrected 14 November 2024), paragraph 4.33"
   url: "https://obr.uk/docs/dlm_uploads/Fiscal-risks-and-sustainability-report-September-2024-1.pdf"
   publisher: Office for Budget Responsibility
@@ -255,7 +286,12 @@ sources:
   publisher: Home Office
   date: "2025-05-12"
 - stance: supports
-  quote: "6145 Care Workers and Home Carers 32,000 £23,100 84% 6146 Senior Care Workers 16,800 £25,800 78%"
+  quote: |-
+    Table 5: Median annual adjusted earnings and minimum proportions who had PAYE earnings, for Health and Care Worker main applicants granted entry clearance visas, financial year 2023 to 2024, by occupation
+
+    Occupation (Top 5) | Count of those found to have PAYE earnings in 2023/24 | Median annual adjusted earnings in 2023/24 | Minimum proportion who had PAYE earnings in 2023/24
+    6145 Care Workers and Home Carers | 32,000 | £23,100 | 84%
+    6146 Senior Care Workers | 16,800 | £25,800 | 78%
   title: "Sponsored work and family visa earnings, employment and Income Tax, Table 5"
   url: "https://www.gov.uk/government/publications/sponsored-work-and-family-visa-earnings-employment-and-income-tax/sponsored-work-and-family-visa-earnings-employment-and-income-tax"
   publisher: Home Office
@@ -327,13 +363,27 @@ sources:
   publisher: The Migration Observatory, University of Oxford
   date: "2026-06-23"
 - stance: supports
-  quote: "Oxford Economics (2018) FY 2016/17 (1 year) +£4.7b -£9.0b -£41.4b Migration Watch (2016) FY 2014/15 (1 year) -£1.1b -£15.6b -£87.8b £0.0 -£6.2b Dustmann and Frattini (2014) 1995-2011 (17 years) +£4.4b (+£259m pa) -£118b (-£6.9b pa) -£591b (-£34.8b pa)"
+  quote: |-
+    Static estimates of the fiscal effects of migrants in the UK (£ billions)
+
+     | All migrants and UK born: EEA | All migrants and UK born: Non-EEA | All migrants and UK born: UK born | Recent migrants only: EEA | Recent migrants only: Non-EEA
+    Oxford Economics (2018) |  |  |  |  |
+    FY 2016/17 (1 year) | +£4.7b | -£9.0b | -£41.4b |  |
+    Migration Watch (2016) |  |  |  |  |
+    FY 2014/15 (1 year) | -£1.1b | -£15.6b | -£87.8b | £0.0 | -£6.2b
+    Dustmann and Frattini (2014) |  |  |  |  |
+    1995-2011 (17 years) | +£4.4b (+£259m pa) | -£118b (-£6.9b pa) | -£591b (-£34.8b pa) |  |
   title: "The Fiscal Impact of Immigration in the UK, Table 1 (columns: EEA, non-EEA, UK born, then recent EEA and non-EEA migrants)"
   url: "https://migrationobservatory.ox.ac.uk/resources/briefings/the-fiscal-impact-of-immigration-in-the-uk/"
   publisher: The Migration Observatory, University of Oxford
   date: "2026-06-23"
 - stance: supports
-  quote: "Migration Watch (2014) 1995-2011 (17 years) -£13.6b (-£0.8b pa) -£134.9b (-£7.94b pa) -£565b (-£33.2b pa)"
+  quote: |-
+    Static estimates of the fiscal effects of migrants in the UK (£ billions)
+
+     | All migrants and UK born: EEA | All migrants and UK born: Non-EEA | All migrants and UK born: UK born | Recent migrants only: EEA | Recent migrants only: Non-EEA
+    Migration Watch (2014) |  |  |  |  |
+    1995-2011 (17 years) | -£13.6b (-£0.8b pa) | -£134.9b (-£7.94b pa) | -£565b (-£33.2b pa) |  |
   title: The Fiscal Impact of Immigration in the UK, Table 1
   url: "https://migrationobservatory.ox.ac.uk/resources/briefings/the-fiscal-impact-of-immigration-in-the-uk/"
   publisher: The Migration Observatory, University of Oxford
@@ -429,7 +479,7 @@ sources:
   publisher: Migration Advisory Committee
   date: "2018-09"
 - stance: supports
-  quote: "reduced the hourly wage of UK-born wage earners at the 5 th percentile (i.e. the lowest earners in the labour market) by around half of one pence per year. The gains for top earners were also small: 1.7p per year for people at the 90 th percentile of wage earners."
+  quote: "reduced the hourly wage of UK-born wage earners at the 5th percentile (i.e. the lowest earners in the labour market) by around half of one pence per year. The gains for top earners were also small: 1.7p per year for people at the 90th percentile of wage earners."
   title: The labour market effects of immigration
   url: "https://migrationobservatory.ox.ac.uk/resources/briefings/the-labour-market-effects-of-immigration/"
   publisher: The Migration Observatory, University of Oxford
@@ -495,13 +545,14 @@ sources:
   publisher: The Entrepreneurs Network
   date: "2025"
 series:
-  title: GDP per head in the UK, 1955–2025
-  description: "Gross domestic product (GDP), the UK's total economic output, divided by its population and measured at 2023 prices. This is real GDP for every year the Office for National Statistics series publishes. It is output per person, not income per person or how that output is shared."
+  title: UK GDP
+  subtitle: Per head and for the whole economy, at 2023 prices
+  description: "Gross domestic product (GDP), the UK's total economic output, at 2023 prices: divided by the population, or for the whole economy. This is real GDP for every year the Office for National Statistics series publish. A larger population raises total output even when output per person does not change, so the two can tell different stories. The first view puts both on one scale, as the percentage each has grown since 1955; the others show each in pounds. Per head is output per person, not income per person or how that output is shared."
   periodLabel: Year
   coverage:
-    from: "1955"
+    from: "1948"
     to: "2025"
-    note: "The ONS annual series IHXW starts in 1955 (earlier cells are blank or zero) and ends in 2025; quarterly values run to 2026 Q2. Values are from the release of 13 August 2026, the latest the ONS series page returned on 29 October 2026."
+    note: "Values are from the ONS release of 13 August 2026, the latest the ONS series pages returned on 29 October 2026; quarterly values run to 2026 Q2."
   breaks: []
   source:
     stance: supports
@@ -513,12 +564,327 @@ series:
     publisher: Office for National Statistics
     date: "2026-08-13"
   readings:
+  - id: gdp-growth
+    label: Growth since 1955
+    unit: percent
+    valueLabel: "% change since 1955, at 2023 prices"
+    note: "Derived from the two ONS series charted in the other views: each year's value divided by its 1955 value, minus one. The ONS does not publish these percentages."
+    lines:
+    - name: UK GDP per head
+      coverage:
+        from: "1955"
+        to: "2025"
+        note: "The ONS annual series IHXW starts in 1955 (earlier cells are blank or zero)."
+      points:
+      - period: "1955"
+        value: 0.0
+      - period: "1956"
+        value: 1.2
+      - period: "1957"
+        value: 2.7
+      - period: "1958"
+        value: 3.7
+      - period: "1959"
+        value: 7.4
+      - period: "1960"
+        value: 13.3
+      - period: "1961"
+        value: 15.4
+      - period: "1962"
+        value: 15.6
+      - period: "1963"
+        value: 20.4
+      - period: "1964"
+        value: 26.4
+      - period: "1965"
+        value: 28.2
+      - period: "1966"
+        value: 29.5
+      - period: "1967"
+        value: 32.3
+      - period: "1968"
+        value: 38.9
+      - period: "1969"
+        value: 40.9
+      - period: "1970"
+        value: 44.3
+      - period: "1971"
+        value: 48.7
+      - period: "1972"
+        value: 54.7
+      - period: "1973"
+        value: 64.4
+      - period: "1974"
+        value: 60.3
+      - period: "1975"
+        value: 57.9
+      - period: "1976"
+        value: 62.7
+      - period: "1977"
+        value: 66.7
+      - period: "1978"
+        value: 73.7
+      - period: "1979"
+        value: 80.0
+      - period: "1980"
+        value: 76.1
+      - period: "1981"
+        value: 75.0
+      - period: "1982"
+        value: 78.7
+      - period: "1983"
+        value: 86.1
+      - period: "1984"
+        value: 89.9
+      - period: "1985"
+        value: 97.2
+      - period: "1986"
+        value: 102.9
+      - period: "1987"
+        value: 113.5
+      - period: "1988"
+        value: 124.6
+      - period: "1989"
+        value: 129.4
+      - period: "1990"
+        value: 130.1
+      - period: "1991"
+        value: 126.1
+      - period: "1992"
+        value: 126.1
+      - period: "1993"
+        value: 130.7
+      - period: "1994"
+        value: 138.0
+      - period: "1995"
+        value: 143.1
+      - period: "1996"
+        value: 148.8
+      - period: "1997"
+        value: 160.3
+      - period: "1998"
+        value: 168.0
+      - period: "1999"
+        value: 174.9
+      - period: "2000"
+        value: 186.4
+      - period: "2001"
+        value: 192.1
+      - period: "2002"
+        value: 195.8
+      - period: "2003"
+        value: 203.9
+      - period: "2004"
+        value: 209.4
+      - period: "2005"
+        value: 215.6
+      - period: "2006"
+        value: 220.3
+      - period: "2007"
+        value: 227.0
+      - period: "2008"
+        value: 224.2
+      - period: "2009"
+        value: 207.2
+      - period: "2010"
+        value: 211.6
+      - period: "2011"
+        value: 211.7
+      - period: "2012"
+        value: 214.3
+      - period: "2013"
+        value: 217.6
+      - period: "2014"
+        value: 225.2
+      - period: "2015"
+        value: 229.7
+      - period: "2016"
+        value: 234.4
+      - period: "2017"
+        value: 242.6
+      - period: "2018"
+        value: 246.2
+      - period: "2019"
+        value: 248.8
+      - period: "2020"
+        value: 213.2
+      - period: "2021"
+        value: 238.7
+      - period: "2022"
+        value: 252.5
+      - period: "2023"
+        value: 248.8
+      - period: "2024"
+        value: 249.0
+      - period: "2025"
+        value: 252.4
+    - name: UK GDP
+      coverage:
+        from: "1955"
+        to: "2025"
+        note: "The ONS annual series ABMI starts in 1948; shown here from 1955, so both lines grow from the same year."
+      source:
+        stance: supports
+        quote: "\"Title\",\"Gross Domestic Product: chained volume measures: Seasonally adjusted £m\""
+        title: "Gross Domestic Product: chained volume measures: Seasonally adjusted £m, series ABMI, dataset PN2"
+        url: https://www.ons.gov.uk/economy/grossdomesticproductgdp/timeseries/abmi/pn2
+        fileUrl: https://www.ons.gov.uk/generator?format=csv&uri=/economy/grossdomesticproductgdp/timeseries/abmi/pn2
+        localFile: datasets/ons.gov.uk/timeseries-abmi-pn2.csv
+        publisher: Office for National Statistics
+        date: "2026-08-13"
+      points:
+      - period: "1955"
+        value: 0.0
+      - period: "1956"
+        value: 1.7
+      - period: "1957"
+        value: 3.7
+      - period: "1958"
+        value: 5.1
+      - period: "1959"
+        value: 9.6
+      - period: "1960"
+        value: 16.5
+      - period: "1961"
+        value: 19.6
+      - period: "1962"
+        value: 20.9
+      - period: "1963"
+        value: 26.7
+      - period: "1964"
+        value: 34.0
+      - period: "1965"
+        value: 36.8
+      - period: "1966"
+        value: 38.9
+      - period: "1967"
+        value: 42.8
+      - period: "1968"
+        value: 50.6
+      - period: "1969"
+        value: 53.4
+      - period: "1970"
+        value: 57.6
+      - period: "1971"
+        value: 63.3
+      - period: "1972"
+        value: 70.4
+      - period: "1973"
+        value: 81.5
+      - period: "1974"
+        value: 76.9
+      - period: "1975"
+        value: 74.2
+      - period: "1976"
+        value: 79.5
+      - period: "1977"
+        value: 83.9
+      - period: "1978"
+        value: 91.6
+      - period: "1979"
+        value: 98.7
+      - period: "1980"
+        value: 94.7
+      - period: "1981"
+        value: 93.6
+      - period: "1982"
+        value: 97.4
+      - period: "1983"
+        value: 105.7
+      - period: "1984"
+        value: 110.3
+      - period: "1985"
+        value: 118.9
+      - period: "1986"
+        value: 125.8
+      - period: "1987"
+        value: 138.1
+      - period: "1988"
+        value: 151.0
+      - period: "1989"
+        value: 157.1
+      - period: "1990"
+        value: 158.5
+      - period: "1991"
+        value: 154.9
+      - period: "1992"
+        value: 155.6
+      - period: "1993"
+        value: 161.4
+      - period: "1994"
+        value: 170.3
+      - period: "1995"
+        value: 176.8
+      - period: "1996"
+        value: 184.1
+      - period: "1997"
+        value: 197.9
+      - period: "1998"
+        value: 207.6
+      - period: "1999"
+        value: 216.7
+      - period: "2000"
+        value: 231.0
+      - period: "2001"
+        value: 238.9
+      - period: "2002"
+        value: 244.7
+      - period: "2003"
+        value: 255.8
+      - period: "2004"
+        value: 264.1
+      - period: "2005"
+        value: 274.2
+      - period: "2006"
+        value: 282.4
+      - period: "2007"
+        value: 293.6
+      - period: "2008"
+        value: 293.4
+      - period: "2009"
+        value: 275.4
+      - period: "2010"
+        value: 283.9
+      - period: "2011"
+        value: 287.1
+      - period: "2012"
+        value: 293.1
+      - period: "2013"
+        value: 299.8
+      - period: "2014"
+        value: 312.4
+      - period: "2015"
+        value: 321.3
+      - period: "2016"
+        value: 330.6
+      - period: "2017"
+        value: 343.6
+      - period: "2018"
+        value: 350.5
+      - period: "2019"
+        value: 356.1
+      - period: "2020"
+        value: 310.3
+      - period: "2021"
+        value: 345.3
+      - period: "2022"
+        value: 368.3
+      - period: "2023"
+        value: 369.6
+      - period: "2024"
+        value: 374.4
+      - period: "2025"
+        value: 380.7
   - id: gdp-per-head
-    label: GDP per head
+    label: GDP per head, £
     unit: count
     valueLabel: £ per person, 2023 prices
     lines:
     - name: UK GDP per head
+      coverage:
+        from: "1955"
+        to: "2025"
+        note: "The ONS annual series IHXW starts in 1955 (earlier cells are blank or zero)."
       points:
       - period: "1955"
         value: 11505
@@ -662,30 +1028,20 @@ series:
         value: 40153
       - period: "2025"
         value: 40546
-additionalSeries:
-- id: gdp-total-series
-  title: Total UK GDP, 1948–2025
-  description: "Gross domestic product (GDP), the total output of the whole UK economy, at 2023 prices, in £ billion. This is real GDP, shown beside GDP per head because a larger population raises total output even when output per person does not change."
-  periodLabel: Year
-  coverage:
-    from: "1948"
-    to: "2025"
-    note: "ONS series ABMI, chained volume measure, published in £ million and shown here divided by 1,000. The annual series starts in 1948. Release of 13 August 2026."
-  breaks: []
-  source:
-    stance: supports
-    quote: "\"Title\",\"Gross Domestic Product: chained volume measures: Seasonally adjusted £m\""
-    title: "Gross Domestic Product: chained volume measures: Seasonally adjusted £m, series ABMI, dataset PN2"
-    url: https://www.ons.gov.uk/economy/grossdomesticproductgdp/timeseries/abmi/pn2
-    fileUrl: https://www.ons.gov.uk/generator?format=csv&uri=/economy/grossdomesticproductgdp/timeseries/abmi/pn2
-    localFile: datasets/ons.gov.uk/timeseries-abmi-pn2.csv
-    publisher: Office for National Statistics
-    date: "2026-08-13"
-  readings:
   - id: gdp-total
-    label: Total GDP
+    label: Total GDP, £ billion
     unit: count
     valueLabel: £ billion, 2023 prices
+    note: "ONS series ABMI, chained volume measure, published in £ million and shown here divided by 1,000. The annual series starts in 1948."
+    source:
+      stance: supports
+      quote: "\"Title\",\"Gross Domestic Product: chained volume measures: Seasonally adjusted £m\""
+      title: "Gross Domestic Product: chained volume measures: Seasonally adjusted £m, series ABMI, dataset PN2"
+      url: https://www.ons.gov.uk/economy/grossdomesticproductgdp/timeseries/abmi/pn2
+      fileUrl: https://www.ons.gov.uk/generator?format=csv&uri=/economy/grossdomesticproductgdp/timeseries/abmi/pn2
+      localFile: datasets/ons.gov.uk/timeseries-abmi-pn2.csv
+      publisher: Office for National Statistics
+      date: "2026-08-13"
     lines:
     - name: UK GDP
       points:
@@ -845,8 +1201,10 @@ additionalSeries:
         value: 2780.9
       - period: "2025"
         value: 2817.4
+additionalSeries:
 - id: g7-series
-  title: GDP per head across the G7, 1960–2025
+  title: 'GDP per head across the G7'
+  subtitle: 'US dollars at 2015 prices, 1960–2025'
   description: "Economic output per person in the seven large economies of the G7, in US dollars at 2015 prices and market exchange rates. This is real GDP per person, from the World Bank. All seven G7 members are shown; the UK is the subject."
   periodLabel: Year
   coverage:
@@ -1809,7 +2167,8 @@ additionalSeries:
         value: 45418
 comparisons:
 - id: g7-growth
-  title: Change in GDP per head, 2019 to 2025, G7
+  title: 'Change in GDP per head across the G7'
+  subtitle: 'Real terms, 2019 to 2025'
   description: "How much output per person changed between 2019 and 2025 in each of the seven large economies of the G7, ranked. This is the cumulative change in real GDP per person. The UK is highlighted."
   unit: percent
   valueLabel: '% change in GDP per head, 2019–2025'
@@ -1833,7 +2192,8 @@ comparisons:
   - label: Germany
     value: -0.2
 - id: obr-borrowing
-  title: 'OBR: UK borrowing in 2028-29 under higher or lower net migration'
+  title: 'Borrowing under higher or lower migration'
+  subtitle: 'Office for Budget Responsibility scenarios for 2028-29'
   description: "Estimated change in government borrowing in 2028-29 if net migration (arrivals minus departures) ran above or below forecast. This is the change in public sector net borrowing against the Office for Budget Responsibility's central forecast, in its March 2024 scenarios with net migration 200,000 a year higher or lower. Negative means less borrowing."
   unit: pounds
   valueLabel: Change in borrowing in 2028-29
@@ -1851,7 +2211,8 @@ comparisons:
   - label: Higher migration, spending left as planned
     value: -19900000000.0
 - id: lifetime-by-route
-  title: "Modelled lifetime net fiscal contribution, by visa route and against UK residents"
+  title: 'Lifetime fiscal contribution by visa route'
+  subtitle: 'Modelled net contribution per person, against UK residents'
   description: "Modelled taxes paid minus public spending received over the rest of a person's life, by visa route and for UK residents. Figures are present values from 2022/23. Migrant groups are the 2022/23 Skilled Worker and Partner-route cohorts; UK resident rows are the comparators used by the Migration Advisory Committee."
   unit: pounds
   valueLabel: Mean lifetime net contribution per person (present value)
@@ -1870,27 +2231,34 @@ comparisons:
   - label: "Other health and care occupations"
     detail: "Mainly nurses and doctors"
     value: 166000
-  - label: Age-matched UK resident (comparator, mean)
+  - label: 'Age-matched UK resident'
+    subtitle: 'Comparator, mean'
     value: 117000
     highlight: true
-  - label: Health and Care main applicants (all)
+  - label: 'Health and Care main applicants'
+    subtitle: 'All occupations'
     value: 54000
   - label: Skilled Worker adult dependants
     value: 3000
-  - label: Care workers (Health and Care visa)
+  - label: 'Care workers'
+    subtitle: 'Health and Care visa'
     value: -36000
-  - label: All UK residents (comparator, mean)
+  - label: 'All UK residents, mean'
+    subtitle: 'Comparator'
     value: -39000
     highlight: true
   - label: Health and Care adult dependants
     value: -67000
-  - label: Partner route (2022/23 cohort)
+  - label: 'Partner route'
+    subtitle: '2022/23 cohort'
     value: -109000
-  - label: All UK residents (comparator, median)
+  - label: 'All UK residents, median'
+    subtitle: 'Comparator'
     value: -145000
     highlight: true
 - id: earnings-by-route
-  title: Median earnings by UK visa route, 2023/24
+  title: 'Median earnings by visa route'
+  subtitle: 'People granted UK entry visas, against UK full-time median, 2023/24'
   description: "Median (middle) yearly earnings in 2023/24 of people granted UK entry visas, by visa route, beside the UK full-time median. These are median annual adjusted PAYE earnings in financial year 2023/24 of people aged 18–65 granted entry clearance visas from April 2019 to March 2023. The UK full-time median is there for reference."
   unit: pounds
   valueLabel: Median annual earnings
@@ -1921,7 +2289,8 @@ comparisons:
   - label: Family-route visa holders
     value: 20200
 - id: wage-effects-by-percentile
-  title: "Implied effect of EU immigration on UK-born wages, 1993–2017, by wage level"
+  title: 'EU immigration and UK-born wages'
+  subtitle: 'Implied effect by wage level, 1993–2017'
   description: "Implied effect on UK-born workers' wages, at each pay level, of the rise in the EU-born share of the working-age population. This is the Migration Advisory Committee's update of work by Dustmann, Frattini and Preston, giving the total effect implied by the 6.7-point rise in that share at each point of the UK-born wage distribution. Ordered from lowest to highest paid."
   unit: percent
   valueLabel: '% change in UK-born nominal wages'
@@ -1944,7 +2313,8 @@ comparisons:
   - label: "95th percentile (highest paid)"
     value: 3.1
 - id: tuition-fees-by-domicile
-  title: Who pays UK universities' course fees, 2024/25
+  title: 'Who pays UK universities'' course fees'
+  subtitle: 'Fee income by where students are domiciled, 2024/25'
   description: "Course fees received by UK higher-education providers in 2024/25, split between students from the UK and those from elsewhere. Students are grouped by where they are domiciled."
   unit: pounds
   valueLabel: Course fee income, 2024/25
@@ -1960,15 +2330,14 @@ comparisons:
 figures:
 - kind: series
 - kind: series
-  id: gdp-total-series
-- kind: series
   id: g7-series
 - kind: comparison
   id: g7-growth
 - kind: barChart
   id: obr-gdp-per-person
   replaces: ["chart-obr-gdp"]
-  title: 'OBR: UK GDP, per person and in total, if net migration were 200,000 a year higher'
+  title: 'GDP under higher net migration'
+  subtitle: 'Per person and in total, if 200,000 a year higher, 2028-29'
   description: "Scenario estimates of output per person and total GDP in 2028-29 if net migration (arrivals minus departures) ran above forecast. Each bar is the difference from the Office for Budget Responsibility's central forecast, for each measure in the same three cases, in its March 2024 scenarios. The lower-migration scenario is the mirror image."
   valueLabel: "% difference from central forecast, 2028-29"
   categoryLabel: "Case"
@@ -1992,8 +2361,22 @@ figures:
 - kind: comparison
   id: lifetime-by-route
 - kind: dataTable
+  id: mac-who-adds-most
+  title: 'Skilled workers'' fiscal gain'
+  subtitle: 'Migration Advisory Committee findings, over a lifetime'
+  description: "What the Migration Advisory Committee found about which skilled workers add most to the public finances over a lifetime."
+  caption: "One row per finding"
+  columns:
+    - {"key": "finding", "label": "Finding", "rowHeader": true}
+    - {"key": "says", "label": "The committee's words"}
+  rows:
+    - {"finding": "Top earners", "says": {"value": "The top 10% of earners outside health and care, \"with a minimum salary in 2022/23 of £131,000\", \"account for 39% of the total contribution\"", "sources": [24]}}
+    - {"finding": "Those who stay and those who leave", "says": {"value": "\"The lifetime net contribution of those who remain in the UK is +£931,000, whilst it is only +£174,000 for those who leave.\"", "sources": [19]}}
+    - {"finding": "Lower earners", "says": {"value": "\"Among the lower-earning skilled worker groups, temporary migration will be more beneficial than permanent migration from a fiscal perspective.\"", "sources": [27]}}
+- kind: dataTable
   id: headline-estimates
-  title: "Estimates of immigration's effect on UK public finances, side by side"
+  title: 'Estimates of immigration''s fiscal effect'
+  subtitle: 'Headline UK estimates, side by side'
   description: "The headline estimates of what immigration costs or adds, with what each covers and where it stands now."
   caption: "One row per estimate"
   sources: [53, 58, 17, 28, 51, 52]
@@ -2005,15 +2388,16 @@ figures:
   rows:
     - { estimate: "Centre for Policy Studies (2025)", covers: "Lifetime cost of settling recent migrants, from OBR profiles", figure: "£234 billion cost (£8,200 per household)", status: "Withdrawn by the CPS" }
     - { estimate: "Reform UK (2026)", covers: "2021–2025 arrivals settling in 2026–2030, to old age", figure: "£622.5 bn undiscounted; £154 bn discounted", status: "Reform's own figures; method disputed" }
-    - { estimate: "MAC (2025)", covers: "2022/23 Skilled Worker cohort, lifetime, discounted", figure: "+£47.1bn", status: "Current" }
-    - { estimate: "MAC (2025)", covers: "2022/23 Partner-route cohort, lifetime, discounted", figure: "−£109,000 per applicant", status: "Current" }
+    - { estimate: "MAC (2025), Skilled Worker cohort", covers: "2022/23 Skilled Worker cohort, lifetime, discounted", figure: "+£47.1bn", status: "Current" }
+    - { estimate: "MAC (2025), Partner route", covers: "2022/23 Partner-route cohort, lifetime, discounted", figure: "−£109,000 per applicant", status: "Current" }
     - { estimate: "Oxford Economics (2018)", covers: "One year, 2016/17: EEA, non-EEA, UK-born", figure: "+£4.7b, −£9.0b, −£41.4b", status: "Static, pre-Brexit" }
     - { estimate: "Dustmann and Frattini (2014)", covers: "1995–2011: EEA, non-EEA, UK-born", figure: "+£4.4b, −£118b, −£591b", status: "Static, pre-Brexit" }
     - { estimate: "Migration Watch (2014)", covers: "1995–2011: EEA, non-EEA, UK-born", figure: "−£13.6b, −£134.9b, −£565b", status: "Static, pre-Brexit" }
 - kind: barChart
   id: obr-cumulative-by-age
   replaces: ["chart-obr-cumulative-age-66", "chart-obr-cumulative-age-82", "chart-obr-cumulative-age-100"]
-  title: 'OBR: cumulative fiscal impact of migrants and UK residents by age 66, 82 and 100'
+  title: 'Lifetime fiscal impact by age'
+  subtitle: 'Stylised profiles of migrants and a UK resident, to ages 66, 82, 100'
   description: "Illustrative running totals of tax paid minus public spending received to ages 66, 82 and 100, for migrants and a UK resident. These are stylised profiles from the Office for Budget Responsibility: a migrant worker arriving at 25 on three wage levels, and a representative UK resident counted from birth. Not discounted."
   valueLabel: "Cumulative taxes minus spending"
   categoryLabel: "Profile"
@@ -2042,6 +2426,33 @@ figures:
   id: wage-effects-by-percentile
 - kind: comparison
   id: tuition-fees-by-domicile
+- kind: barChart
+  id: university-deficits
+  title: 'Universities reporting a deficit'
+  subtitle: 'England, 2024-25 and forecast for 2025-26'
+  description: "The share of higher-education institutions in England reporting a deficit, from the Office for Students, in 2024-25 and as forecast for 2025-26."
+  valueLabel: "Institutions in deficit (%)"
+  categoryLabel: "Year"
+  format: {"unit": "percent", "decimals": 1}
+  sort: none
+  sources: [72]
+  items:
+    - {"label": "2024-25, reported", "value": 35.8}
+    - {"label": "2025-26, forecast", "value": 42.7}
+- kind: barChart
+  id: fast-growth-founders
+  title: 'Foreign-born founders of fast-growing firms'
+  subtitle: 'The UK''s fastest-growing companies, The Entrepreneurs Network'
+  description: "How often the UK's fastest-growing companies had a founder born abroad, from The Entrepreneurs Network, beside the foreign-born share of the population."
+  valueLabel: "Share (%)"
+  categoryLabel: "Measure"
+  format: {"unit": "percent", "decimals": 0}
+  sort: none
+  sources: [75, 76, 77]
+  items:
+    - {"label": "Companies with a foreign-born founder or co-founder", "value": 54, "detail": "54 of the 100 fastest-growing companies"}
+    - {"label": "Founders and co-founders born overseas", "value": 42, "detail": "91 of 219"}
+    - {"label": "Foreign-born share of the UK population", "value": {"value": 16, "qualifier": "about", "asPublished": "around 16%"}, "detail": "2023"}
 relatedFacts:
 - work-and-study-routes
 - immigration-housing-and-public-services
@@ -2062,10 +2473,67 @@ dataStillNeeded:
   why: The HESA table used here covers fee income only.
 - measure: The share of UK patents or inventors who were born abroad
   why: "No UK birthplace-based measure was found; the founders figure covers only the 100 fastest-growing companies."
+observationMarks:
+  total-gdp-grew: {lines: ["UK GDP"], from: "2019", to: "2025"}
+  obr-per-head-effect-small: {rows: ["Nearly all adults on work visas", "Migrants as productive as residents", "Capital stock does not adjust"]}
+  g7-stalled-alike: {rows: ["United Kingdom", "Canada", "Germany"]}
+  skilled-workers-gain-care-workers-cost: {rows: ["Skilled Worker main applicants", "Care workers", "Health and Care adult dependants"]}
+  average-resident-is-a-lifetime-net-cost: {rows: ["All UK residents, mean", "All UK residents, median"]}
+  lower-migration-raises-borrowing: {rows: ["Lower migration, spending left as planned", "Lower migration, spending per person held"]}
+  five-year-window: {rows: ["Higher migration, spending per person held", "Higher migration, spending left as planned"]}
+  total-gdp-moves-with-migration: {rows: ["Nearly all adults on work visas", "Migrants as productive as residents", "Capital stock does not adjust"]}
+  non-uk-fee-share: {rows: ["Students domiciled outside the UK"]}
+  a-third-of-universities-in-deficit: {rows: ["2024-25, reported"]}
+  old-age-reverses-gains: {rows: ["High-wage migrant", "Average-wage migrant"]}
+  small-wage-effects: {rows: ["5th percentile (lowest paid)", "Median", "75th percentile", "90th percentile", "95th percentile (highest paid)"]}
+  gain-from-top-earners-and-stayers: {rows: ["Top earners"]}
+  earnings-by-route: {rows: ["Skilled Worker main applicants"]}
+  gdp-per-head-barely-grew: {lines: ["UK GDP per head"], from: "2019", to: "2025", at: "2025"}
+  timing-not-cause: {lines: ["UK GDP per head"], from: "2019", to: "2025", at: "2020"}
+  g7-levels: {lines: ["United Kingdom"], from: "2019", to: "2025"}
+  march-2026-revision: {rows: ["Migrants as productive as residents"]}
+  independent-forecasts: {rows: ["Lower migration, spending left as planned"]}
+  discounting-changes-the-sign: {rows: ["Age-matched UK resident"]}
+  routes-not-modelled: {whole: true}
+  earnings-and-age-decide: {rows: ["High-wage migrant", "Low-wage migrant"]}
+  obr-profiles-behind-cps: {rows: ["Average-wage migrant"]}
+  earnings-catch-up: {rows: ["UK full-time employees (ASHE, reference)"]}
+  no-post-brexit-wage-studies: {whole: true}
+  g7-net-migration-not-shown: {whole: true}
+  obr-mirror-image: {whole: true}
+  obr-participation-and-productivity: {rows: ["Nearly all adults on work visas", "Migrants as productive as residents"]}
+  obr-delaying-not-resolving: {rows: ["Higher migration, spending per person held", "Higher migration, spending left as planned"]}
+  obr-2024-long-run-scenarios: {whole: true}
+  lifetime-route-detail: {rows: ["Health and Care main applicants", "Care workers", "Other health and care occupations", "Skilled Worker adult dependants", "Health and Care adult dependants"]}
+  mac-clearly-fiscally-positive: {rows: ["Skilled Worker main applicants"]}
+  age-matched-comparators: {rows: ["Age-matched UK resident", "Skilled Worker main applicants", "Care workers", "Health and Care adult dependants"]}
+  childhood-paid-for-elsewhere: {rows: ["Average-wage migrant", "Representative UK resident"]}
+  earnings-dependants-family-and-ons: {rows: ["Skilled Worker dependants", "Health and Care dependants", "Family-route visa holders", "UK full-time employees (ASHE, reference)"]}
+  earnings-share-with-paye: {rows: ["Skilled Worker main applicants", "Skilled Worker dependants"]}
+  catch-up-data-limits: {rows: ["UK full-time employees (ASHE, reference)"]}
+  catch-up-who-stayed: {whole: true}
+  wage-effects-by-skill: {rows: ["5th percentile (lowest paid)", "95th percentile (highest paid)"]}
+  wage-effects-other-studies: {rows: ["5th percentile (lowest paid)", "90th percentile"]}
+  capital-does-not-adjust: {rows: ["Capital stock does not adjust"]}
+  skilled-workers-large-net-gain: {rows: ["Skilled Worker main applicants"]}
+  care-route-net-cost: {rows: ["Care workers", "Health and Care adult dependants"]}
+  care-workers-net-cost: {rows: ["Care workers"]}
+  partner-route-lifetime-cost: {rows: ["Partner route"]}
+  stayers-worth-more: {rows: ["Those who stay and those who leave"]}
+  temporary-better-for-lower-earners: {rows: ["Lower earners"]}
+  foreign-born-founders: {rows: ["Companies with a foreign-born founder or co-founder"]}
+  mac-cohort-adds-47bn: {rows: ["MAC (2025), Skilled Worker cohort"]}
+  234bn-withdrawn: {rows: ["Centre for Policy Studies (2025)"]}
+  622bn-undiscounted: {rows: ["Reform UK (2026)"]}
+  no-post-brexit-total: {whole: true}
+  estimates-table: {whole: true}
 movedAnchors:
   observations-founders: earnings-by-route
+  chart-gdp-total-series: gdp-total
+  observations-gdp-per-head: gdp-growth
+  observations-gdp-total: gdp-growth
 ---
-## Observations {#immigration-economy-and-public-finances--observations-gdp-per-head}
+## Observations {#immigration-economy-and-public-finances--observations-gdp-growth}
 
 ### GDP per head has barely grown since 2019 {#immigration-economy-and-public-finances--gdp-per-head-barely-grew}
 
@@ -2075,9 +2543,7 @@ In pounds per person at 2023 prices, UK GDP per head was 40,125 in 2019 and 40,5
 
 The 2019–2025 window contains the 2020 pandemic fall in output as well as other shocks. A series of GDP per head cannot by itself say how much of the stall, if any, is due to migration; that needs a model, and the OBR's scenarios are further down. No study attributing the stall among its causes was found. [1](#source-immigration-economy-and-public-finances-1) [8](#source-immigration-economy-and-public-finances-8)
 
-## Observations {#immigration-economy-and-public-finances--observations-gdp-total}
-
-### Total GDP kept growing while GDP per head stalled {#immigration-economy-and-public-finances--total-gdp-grew}
+### Total GDP grew from 2019 to 2025 {#immigration-economy-and-public-finances--total-gdp-grew}
 
 Total GDP rose from 2,673,465 to 2,817,414 (£ million, 2023 prices) between 2019 and 2025, while output per person barely moved. A larger population raises total output; whether it raises output per person is the separate question the OBR scenarios address. [2](#source-immigration-economy-and-public-finances-2) [1](#source-immigration-economy-and-public-finances-1)
 
@@ -2089,7 +2555,7 @@ The World Bank series uses market exchange rates, so the gaps between countries'
 
 ## Observations {#immigration-economy-and-public-finances--observations-g7-growth}
 
-### The UK was fifth of the seven G7 countries for growth in GDP per head after 2019 {#immigration-economy-and-public-finances--g7-stalled-alike}
+### The UK was fifth of the seven G7 countries for growth in GDP per head after 2019, and Canada and Germany did worse {#immigration-economy-and-public-finances--g7-stalled-alike}
 
 On the World Bank series, GDP per head rose more between 2019 and 2025 in the United States, Italy, Japan and France than in the UK; Canada grew less and Germany shrank slightly. The UK's stall was shared by other large economies, so on its own it is not evidence about migration. [81](#source-immigration-economy-and-public-finances-81)
 
@@ -2101,7 +2567,7 @@ Net migration per head for these countries over the same years is not shown here
 
 ## Observations {#immigration-economy-and-public-finances--observations-obr-gdp-per-person}
 
-### The OBR finds the per-head effect small and of uncertain sign {#immigration-economy-and-public-finances--obr-per-head-effect-small}
+### In the OBR's scenarios the effect on GDP per person is under 1%, up or down {#immigration-economy-and-public-finances--obr-per-head-effect-small}
 
 In March 2026 the OBR said effects on real GDP per person "are relatively small in either a positive or negative direction". [8](#source-immigration-economy-and-public-finances-8) [11](#source-immigration-economy-and-public-finances-11) In March 2024 scenarios, 200,000 more net migrants a year leave it "largely unchanged" if as productive as residents, 0.4% lower if the capital stock does not adjust, and 0.8% higher if nearly all adults arrive on work visas. [3](#source-immigration-economy-and-public-finances-3) [4](#source-immigration-economy-and-public-finances-4) [5](#source-immigration-economy-and-public-finances-5)
 
@@ -2109,9 +2575,13 @@ In March 2026 the OBR said effects on real GDP per person "are relatively small 
 
 After the ONS revised up emigration by British nationals, the OBR cut its net migration forecast by around 60,000 people a year, lowering the adult population in 2030 by around 200,000. Because the extra emigrants were assumed to be younger and lower-paid, the change left potential output per person "broadly unchanged". [9](#source-immigration-economy-and-public-finances-9) [10](#source-immigration-economy-and-public-finances-10)
 
-### Total GDP moves with migration in every case {#immigration-economy-and-public-finances--total-gdp-moves-with-migration}
+### Total GDP is higher with more migration in every OBR case {#immigration-economy-and-public-finances--total-gdp-moves-with-migration}
 
 In the same scenarios total GDP in 2028-29 is 1.5 per cent higher with migrants as productive as residents, 1 per cent higher if capital does not adjust, and 2.2 per cent higher with very high participation. [3](#source-immigration-economy-and-public-finances-3) [4](#source-immigration-economy-and-public-finances-4) [5](#source-immigration-economy-and-public-finances-5)
+
+### If capital does not keep up, extra migrants leave output per person 0.4% lower {#immigration-economy-and-public-finances--capital-does-not-adjust}
+
+In the March 2024 scenarios, 200,000 more net migrants a year leave GDP per person 0.4% lower in 2028-29 if the capital stock does not adjust. [3](#source-immigration-economy-and-public-finances-3) [4](#source-immigration-economy-and-public-finances-4) [5](#source-immigration-economy-and-public-finances-5)
 
 ## Subtleties {#immigration-economy-and-public-finances--subtleties-obr-gdp-per-person}
 
@@ -2157,10 +2627,6 @@ The Migration Advisory Committee models the 329,200 people who arrived on the Sk
 
 On the Migration Advisory Committee's method the whole UK resident population has a mean lifetime contribution of −£39,000 and a median of −£145,000. [23](#source-immigration-economy-and-public-finances-23) [21](#source-immigration-economy-and-public-finances-21) [22](#source-immigration-economy-and-public-finances-22) Partners of British citizens and settled residents arriving on the Partner route in 2022/23 are modelled at −£109,000 each. [28](#source-immigration-economy-and-public-finances-28)
 
-### Most of the gain comes from top earners and from those who stay {#immigration-economy-and-public-finances--gain-from-top-earners-and-stayers}
-
-The top 10% of earners outside health and care (salary at least £131,000) account for 39% of that group's contribution. Main applicants who stay are modelled at +£931,000 and those who leave at +£174,000. The MAC concludes that for lower earners temporary migration is fiscally better than permanent, and for higher earners the reverse. [24](#source-immigration-economy-and-public-finances-24) [19](#source-immigration-economy-and-public-finances-19) [27](#source-immigration-economy-and-public-finances-27)
-
 ### Discounting can change the sign {#immigration-economy-and-public-finances--discounting-changes-the-sign}
 
 The MAC uses a 3.0% real discount rate, "broadly in line with HMT Green Book". Without discounting, the future contribution of a 25-year-old UK resident would be −£186,000 rather than +£184,000, because old-age costs fall late in life. Any lifetime figure has to state its discount rate to be compared with another. [26](#source-immigration-economy-and-public-finances-26) [25](#source-immigration-economy-and-public-finances-25)
@@ -2168,6 +2634,22 @@ The MAC uses a 3.0% real discount rate, "broadly in line with HMT Green Book". W
 ### Most routes have not been modelled {#immigration-economy-and-public-finances--routes-not-modelled}
 
 The MAC has not estimated lifetime effects for refugees, students or other routes; the Migration Observatory expects refugees to be more negative because of lower employment and greater need for support. [29](#source-immigration-economy-and-public-finances-29)
+
+### Skilled Worker main applicants outside health and care are a large net gain {#immigration-economy-and-public-finances--skilled-workers-large-net-gain}
+
+Main applicants on the Skilled Worker route outside health and care average +£689,000 over their lifetimes. [18](#source-immigration-economy-and-public-finances-18)
+
+### Care workers and Health and Care adult dependants cost more than they pay over a lifetime {#immigration-economy-and-public-finances--care-route-net-cost}
+
+Care workers average −£36,000 and Health and Care adult dependants −£67,000. [21](#source-immigration-economy-and-public-finances-21) [22](#source-immigration-economy-and-public-finances-22)
+
+### Care workers cost more than they pay over a lifetime {#immigration-economy-and-public-finances--care-workers-net-cost}
+
+Care workers on the Health and Care visa average −£36,000 over their lifetimes. [21](#source-immigration-economy-and-public-finances-21)
+
+### Partner-route arrivals are modelled at a cost of £109,000 each {#immigration-economy-and-public-finances--partner-route-lifetime-cost}
+
+Partners of British citizens and settled residents arriving on the Partner route in 2022/23 are modelled at −£109,000 each. [28](#source-immigration-economy-and-public-finances-28)
 
 ## Subtleties {#immigration-economy-and-public-finances--subtleties-lifetime-by-route}
 
@@ -2205,7 +2687,7 @@ The migrant arriving at 25 becomes a net contributor before a resident of the sa
 
 ## Observations {#immigration-economy-and-public-finances--observations-earnings-by-route}
 
-### Earnings differ widely by route {#immigration-economy-and-public-finances--earnings-by-route}
+### Skilled Worker main applicants had median earnings of £56,600, the highest of the routes shown {#immigration-economy-and-public-finances--earnings-by-route}
 
 In 2023/24 median annual earnings were £56,600 for Skilled Worker main applicants, £47,900 for Senior or Specialist Workers and £30,900 for Health and Care main applicants; care workers and home carers earned £23,100. [38](#source-immigration-economy-and-public-finances-38) [39](#source-immigration-economy-and-public-finances-39) [40](#source-immigration-economy-and-public-finances-40) [43](#source-immigration-economy-and-public-finances-43) The Home Office advises caution in comparing routes, because work eligibility differs. [41](#source-immigration-economy-and-public-finances-41) [42](#source-immigration-economy-and-public-finances-42)
 
@@ -2231,10 +2713,6 @@ Entry-year pay fell sharply in 2025. The data mix full-time and part-time work. 
 
 Of non-EU migrants first on payroll in 2015, 60% were still there in 2025; of EU migrants, 45%. These data are by nationality, not by visa route. [48](#source-immigration-economy-and-public-finances-48)
 
-### Foreign-born founders are over-represented among the fastest-growing firms {#immigration-economy-and-public-finances--foreign-born-founders}
-
-The Entrepreneurs Network found that 54 of the UK's 100 fastest-growing companies had a foreign-born founder or co-founder, and 91 of 219 founders (42%) were born overseas, against a foreign-born population of around 16%. The sample is 100 companies selected on valuation growth between June 2024 and May 2025; it says nothing about migrants on most visa routes. No UK measure of foreign-born inventors was found. [75](#source-immigration-economy-and-public-finances-75) [76](#source-immigration-economy-and-public-finances-76) [77](#source-immigration-economy-and-public-finances-77) [78](#source-immigration-economy-and-public-finances-78)
-
 ## Observations {#immigration-economy-and-public-finances--observations-headline-estimates}
 
 ### The £234bn was withdrawn by its author {#immigration-economy-and-public-finances--234bn-withdrawn}
@@ -2259,9 +2737,13 @@ Every pre-Brexit study the Migration Observatory reviewed put the fiscal effect 
 
 Static estimates count one period's taxes and spending; lifetime estimates project and discount. The two kinds are not comparable. [53](#source-immigration-economy-and-public-finances-53) [58](#source-immigration-economy-and-public-finances-58) [17](#source-immigration-economy-and-public-finances-17) [28](#source-immigration-economy-and-public-finances-28) [51](#source-immigration-economy-and-public-finances-51) [52](#source-immigration-economy-and-public-finances-52)
 
+### The government's advisers model one year's Skilled Worker route arrivals at +£47.1bn {#immigration-economy-and-public-finances--mac-cohort-adds-47bn}
+
+The Migration Advisory Committee models the 329,200 people who arrived on the Skilled Worker route in 2022/23, including Health and Care visas and dependants, at a net £47.1bn over their lifetimes. [17](#source-immigration-economy-and-public-finances-17)
+
 ## Observations {#immigration-economy-and-public-finances--observations-wage-effects-by-percentile}
 
-### Average wage effects are small; slightly negative at the bottom, positive further up {#immigration-economy-and-public-finances--small-wage-effects}
+### EU immigration lowered the lowest wages by 5.2% and raised wages from the median up {#immigration-economy-and-public-finances--small-wage-effects}
 
 The Migration Advisory Committee found migration "is not a major determinate of the wages of UK-born workers". Its update implies EU immigration over 1993–2017 lowered UK-born wages by 5.2% at the 5th percentile and raised them by 1.6% at the median and by 4.4 and 3.1 per cent at the 90th and 95th percentiles, as short-run estimates. [65](#source-immigration-economy-and-public-finances-65) [66](#source-immigration-economy-and-public-finances-66)
 
@@ -2281,10 +2763,6 @@ Expressed per year, a 2022 study found immigration over 1994–2016 cut the hour
 
 ## Observations {#immigration-economy-and-public-finances--observations-tuition-fees-by-domicile}
 
-### A third of English universities are in deficit {#immigration-economy-and-public-finances--a-third-of-universities-in-deficit}
-
-The Office for Students found 35.8 per cent of institutions in deficit in 2024-25, forecast to rise to 42.7 per cent in 2025-26. It lists "an overreliance on fee income from international students" among the risks, alongside over-optimistic recruitment forecasts. [72](#source-immigration-economy-and-public-finances-72) [73](#source-immigration-economy-and-public-finances-73)
-
 ### Students from outside the UK pay close to half of course fees {#immigration-economy-and-public-finances--non-uk-fee-share}
 
 In 2024/25 UK-domiciled students paid 53.7% of higher-education course fees at UK providers; the rest came from students domiciled elsewhere. Fees are only part of university income, so this is not a share of income. [74](#source-immigration-economy-and-public-finances-74)
@@ -2292,3 +2770,32 @@ In 2024/25 UK-domiciled students paid 53.7% of higher-education course fees at U
 ## More {#immigration-economy-and-public-finances--more-lifetime-by-route}
 
 Fiscal figures are model estimates resting on stated assumptions; the assumptions are given beside each one.
+
+## Observations {#immigration-economy-and-public-finances--observations-mac-who-adds-most}
+
+### The top tenth of earners outside health and care provide almost two-fifths of the gain {#immigration-economy-and-public-finances--gain-from-top-earners-and-stayers}
+
+The top 10% of earners outside health and care (salary at least £131,000) account for 39% of that group's contribution. [24](#source-immigration-economy-and-public-finances-24)
+
+### Skilled workers who stay are worth far more than those who leave {#immigration-economy-and-public-finances--stayers-worth-more}
+
+Main applicants outside health and care who stay are modelled at +£931,000, and those who leave at +£174,000. [19](#source-immigration-economy-and-public-finances-19)
+
+### For lower earners, temporary migration is better for the public finances than permanent {#immigration-economy-and-public-finances--temporary-better-for-lower-earners}
+
+The MAC concludes that for lower earners temporary migration is fiscally better than permanent, and for higher earners the reverse. [27](#source-immigration-economy-and-public-finances-27)
+
+
+## Observations {#immigration-economy-and-public-finances--observations-university-deficits}
+
+### More than a third of English universities were in deficit in 2024-25 {#immigration-economy-and-public-finances--a-third-of-universities-in-deficit}
+
+The Office for Students found 35.8 per cent of institutions in deficit in 2024-25, forecast to rise to 42.7 per cent in 2025-26. It lists "an overreliance on fee income from international students" among the risks, alongside over-optimistic recruitment forecasts. [72](#source-immigration-economy-and-public-finances-72) [73](#source-immigration-economy-and-public-finances-73)
+
+
+## Observations {#immigration-economy-and-public-finances--observations-fast-growth-founders}
+
+### 54 of the UK's 100 fastest-growing companies had a foreign-born founder or co-founder {#immigration-economy-and-public-finances--foreign-born-founders}
+
+The Entrepreneurs Network found that 54 of the UK's 100 fastest-growing companies had a foreign-born founder or co-founder, and 91 of 219 founders (42%) were born overseas, against a foreign-born population of around 16%. The sample is 100 companies selected on valuation growth between June 2024 and May 2025; it says nothing about migrants on most visa routes. No UK measure of foreign-born inventors was found. [75](#source-immigration-economy-and-public-finances-75) [76](#source-immigration-economy-and-public-finances-76) [77](#source-immigration-economy-and-public-finances-77) [78](#source-immigration-economy-and-public-finances-78)
+

@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:if-changed": "tsx scripts/build-if-changed.ts",
     "start": "node scripts/start.mjs",
     "storybook": "storybook dev -p 6006 --no-open",
     "build-storybook": "storybook build -o storybook-static",
@@ -13,7 +14,7 @@
     "test:e2e": "playwright test",
     "check:integrity": "tsx scripts/check-integrity.ts",
     "check:figures": "tsx scripts/check-figures.ts",
-    "check": "pnpm lint && pnpm test:unit && pnpm check:integrity && pnpm check:figures && pnpm build"
+    "check": "pnpm lint && pnpm test:unit && pnpm check:integrity && pnpm check:figures && pnpm build:if-changed --force"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

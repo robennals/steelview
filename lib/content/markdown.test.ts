@@ -37,26 +37,20 @@ test('angle brackets in prose survive to the page', async () => {
   assert.match(html, /Home Office/);
 });
 
-test('a link to a fact anchor is marked as a citation', async () => {
+test('a fact citation renders as its plain text, with no link or pop-up behind it', async () => {
   const html = await renderMarkdown(
-    'Net migration [reached 944,000](#fact-net-migration-2024) that year.',
+    'Net migration [reached *944,000*](#fact-net-migration-2024/peak) that year.',
     SLUG
   );
-  // The authoring syntax is still the fact anchor; what ships is the fact's
-  // own address, so the citation is a real link a crawler can follow and a
-  // reader with no JavaScript can click.
-  assert.match(html, /<a[^>]*href="\/topics\/example\/facts\/net-migration-2024"/);
-  assert.doesNotMatch(html, /href="#fact-/);
-  assert.match(html, /class="sv-cite"/);
-  assert.match(html, />reached 944,000<\/a>/);
+  assert.equal(html, '<p>Net migration reached <em>944,000</em> that year.</p>');
 });
 
 test('ordinary links and other in-page anchors are left alone', async () => {
   const html = await renderMarkdown(
-    'See [the source](https://example.org) and [a principle](#principle-fairness).',
+    'See [the source](https://example.org) and [a crux](#crux-timing).',
     SLUG
   );
-  assert.match(html, /href="#principle-fairness"/);
+  assert.match(html, /href="#crux-timing"/);
   assert.doesNotMatch(html, /sv-cite/);
 });
 
@@ -65,16 +59,29 @@ test('a #needed link renders as its plain text, with no link', async () => {
   assert.equal(html, '<p>Some say integration succeeds at <em>different</em> rates.</p>');
 });
 
-test('with citationsAsText, a fact citation renders as its plain text and other links stay', async () => {
+test('a citation can take a footnote marker, once per finding in a paragraph, after its last citation', async () => {
+  const keys = new Map<string, number>();
+  const citationMarker = (id: string, section: string | undefined) => {
+    if (id === 'none') return undefined;
+    const key = `${id}--${section}`;
+    if (!keys.has(key)) keys.set(key, keys.size + 1);
+    return { key, label: String(keys.get(key)) };
+  };
+  const html = await renderMarkdown('[One](#fact-a/x), [two](#fact-a/x) and [three](#fact-b/y), but [four](#fact-none/z).\n\nAgain [five](#fact-a/x).', SLUG, { citationMarker });
+  const marker = (key: string, n: number) => `<a href="#${key}" class="sv-source-marker" data-sources="${key}" aria-label="Source ${n}">${n}</a>`;
+  assert.equal(html, `<p>One, two${marker('a--x', 1)} and three${marker('b--y', 2)}, but four.</p>\n<p>Again five${marker('a--x', 1)}.</p>`);
+});
+
+test('an in-page anchor and an ordinary link stay links beside a citation\'s text', async () => {
   const html = await renderMarkdown(
-    'Arrivals [rose *sharply*](#fact-alpha/peak), as [one](#principle-p) and [two](https://example.com) say.',
-    SLUG, [], { citationsAsText: true },
+    'Arrivals [rose *sharply*](#fact-alpha/peak), as [one](#crux-p) and [two](https://example.com) say.',
+    SLUG,
   );
-  assert.equal(html, '<p>Arrivals rose <em>sharply</em>, as <a href="#principle-p" class="sv-principle-cite">one</a> and <a href="https://example.com">two</a> say.</p>');
+  assert.equal(html, '<p>Arrivals rose <em>sharply</em>, as <a href="#crux-p">one</a> and <a href="https://example.com">two</a> say.</p>');
 });
 
 test('without footnotes, source footnotes are left out and the prose kept', async () => {
-  const html = await renderMarkdown('Arrivals rose. [2](#source-alpha-2) [1](#source-alpha-1)', SLUG, [], { footnotes: false });
+  const html = await renderMarkdown('Arrivals rose. [2](#source-alpha-2) [1](#source-alpha-1)', SLUG, { footnotes: false });
   assert.equal(html, '<p>Arrivals rose.</p>');
 });
 
@@ -90,7 +97,7 @@ test('"#fact-" with no id is not a citation', async () => {
 
 test('citedFactIds lists the facts a body cites, in order, with repeats', () => {
   const ids = citedFactIds(
-    'One [a](#fact-alpha), two [b](#fact-beta), again [c](#fact-alpha), plus [d](#principle-p) and [e](https://example.org).'
+    'One [a](#fact-alpha), two [b](#fact-beta), again [c](#fact-alpha), plus [d](#crux-p) and [e](https://example.org).'
   );
   assert.deepEqual(ids, ['alpha', 'beta', 'alpha']);
 });
@@ -101,9 +108,7 @@ test('citedFactIds ignores a fact anchor that is not a link', () => {
   assert.deepEqual(citedFactIds(''), []);
 });
 
-test('section citations retain a stable fragment and sections wrap their explanation', async () => {
-  const html = await renderMarkdown('[the number](#fact-alpha/comparison)', 'example');
-  assert.match(html, /href="\/topics\/example\/facts\/alpha#alpha--comparison"/);
+test('sections wrap their explanation and keep their ids', async () => {
   const body = await renderMarkdown('### Comparison {#alpha--comparison}\n\nMeasured here. [1](#source-alpha-1)', 'example');
   assert.match(body, /<section id="alpha--comparison"/);
   assert.match(body, /class="sv-footnote"/);

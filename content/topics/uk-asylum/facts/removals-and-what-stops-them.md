@@ -115,13 +115,10 @@ sources:
     publisher: 'The Migration Observatory, University of Oxford'
     date: '2026-03-31'
   - stance: supports
-    quote: >-
-      Legal challenges. An increase in legal challenges to removal is likely to
-      have played a role in the decline of returns during the 2010s, though
-      limited data prevent a definitive assessment. A report from the National
-      Audit Office showed that 52% of enforced return attempts were cancelled
-      in 2019, up from 11% in 2013 – a rise the authors say is “mostly
-      explained” by last-minute asylum claims and legal challenges.
+    quote: |-
+      Legal challenges.
+
+      An increase in legal challenges to removal is likely to have played a role in the decline of returns during the 2010s, though limited data prevent a definitive assessment. A report from the National Audit Office showed that 52% of enforced return attempts were cancelled in 2019, up from 11% in 2013 – a rise the authors say is “mostly explained” by last-minute asylum claims and legal challenges.
     title: Deportation and returns of unauthorised migrants from the UK
     url: https://migrationobservatory.ox.ac.uk/resources/briefings/returns-of-unauthorised-migrants-from-the-uk/
     publisher: 'The Migration Observatory, University of Oxford'
@@ -179,14 +176,11 @@ sources:
     publisher: 'The Migration Observatory, University of Oxford'
     date: '2026-03-31'
   - stance: supports
-    quote: >-
-      In response to Freedom of Information requests, the Home Office said it
-      did not hold data on the following: the number of people issued notices
-      of liability to remove who were subsequently granted legal status (e.g.,
-      following a human rights claim); the number of foreign national offenders
-      of different nationalities who had been removed vs. not removed after
-      finishing a prison sentence; and the number of people detained ahead of
-      removal (as opposed to detained for initial processing).
+    quote: |-
+      In response to Freedom of Information requests, the Home Office said it did not hold data on the following:
+      - the number of people issued notices of liability to remove who were subsequently granted legal status (e.g., following a human rights claim);
+      - the number of foreign national offenders of different nationalities who had been removed vs. not removed after finishing a prison sentence; and
+      - the number of people detained ahead of removal (as opposed to detained for initial processing).
     title: Deportation and returns of unauthorised migrants from the UK
     url: https://migrationobservatory.ox.ac.uk/resources/briefings/returns-of-unauthorised-migrants-from-the-uk/
     publisher: 'The Migration Observatory, University of Oxford'
@@ -227,41 +221,61 @@ sources:
     publisher: Home Office
     date: '2021-07-19'
   - stance: supports
-    quote: >-
-      At the same time there has been a decrease in the proportion of
-      detentions during which the person: applied on human rights or other
-      right-based grounds (from 10% to 5%) lodged an appeal (from 6% to 3%)
-      lodged a judicial review (from 20% to 9%) caused a return attempt to fail
-      due to physical disruption (from 13% to 5%).
+    quote: |-
+      At the same time there has been a decrease in the proportion of detentions during which the person:
+      - applied on human rights or other right-based grounds (from 10% to 5%)
+      - lodged an appeal (from 6% to 3%)
+      - lodged a judicial review (from 20% to 9%)
+      - caused a return attempt to fail due to physical disruption (from 13% to 5%).
     title: Issues raised by people facing return in immigration detention
     url: https://www.gov.uk/government/publications/issues-raised-by-people-facing-return-in-immigration-detention/issues-raised-by-people-facing-return-in-immigration-detention
     publisher: Home Office
     date: '2021-07-19'
   - stance: supports
-    quote: >-
-      Between 2017 and 2019, there has also been a rise in the proportion of
-      people in this group who, while in immigration detention, were: referred
-      as a potential victim of modern slavery (from 3% to 16%) the subject of a
-      MLR (from less than 1% to 19%, a rise from fewer than 50 instances in 2017
-      to over 2,000 in 2019)
+    quote: |-
+      Between 2017 and 2019, there has also been a rise in the proportion of people in this group who, while in immigration detention, were:
+      - referred as a potential victim of modern slavery (from 3% to 16%)
+      - the subject of a MLR (from less than 1% to 19%, a rise from fewer than 50 instances in 2017 to over 2,000 in 2019)
     title: Issues raised by people facing return in immigration detention
     url: https://www.gov.uk/government/publications/issues-raised-by-people-facing-return-in-immigration-detention/issues-raised-by-people-facing-return-in-immigration-detention
     publisher: Home Office
     date: '2021-07-19'
   - stance: supports
-    quote: >-
-      Table 2a: Number (and proportion) of detentions in which each issue was
-      raised, by year, for people detained within the UK following immigration
-      offences
+    quote: |-
+      Table 2a: Number (and proportion) of detentions in which each issue was raised, by year, for people detained within the UK following immigration offences
+
+      Issue raised | 2017 | 2018 | 2019
+      Asylum claim | 5,084 (32%) | 4,850 (37%) | 5,302 (47%)
+      Rights-based application | 1,520 (10%) | 1,034 (8%) | 519 (5%)
+      Further submissions | 2,072 (13%) | 1,809 (14%) | 1,435 (13%)
+      Appeal | 914 (6%) | 678 (5%) | 293 (3%)
+      Judicial review | 3,170 (20%) | 2,009 (15%) | 1,009 (9%)
+      NRM referral | 501 (3%) | 718 (5%) | 1,767 (16%)
+      Rule 35 report | 1,936 (12%) | 1,923 (15%) | 1,559 (14%)
+      Medico-legal report | 48 (0%) | 1,154 (9%) | 2,208 (19%)
+      Disrupted return | 2,000 (13%) | 1,609 (12%) | 558 (5%)
+      Any of the above | 9,849 (63%) | 8,771 (67%) | 8,351 (73%)
+      None of the above | 5,825 (37%) | 4,408 (33%) | 3,016 (27%)
     title: Issues raised by people facing return in immigration detention
     url: https://www.gov.uk/government/publications/issues-raised-by-people-facing-return-in-immigration-detention/issues-raised-by-people-facing-return-in-immigration-detention
     publisher: Home Office
     date: '2021-07-19'
   - stance: supports
-    quote: >-
-      Table 4a: Number (and proportion) of detentions that resulted in return
-      where each issue was raised, by year, for people detained within the UK
-      following immigration offences
+    quote: |-
+      Table 4a: Number (and proportion) of detentions that resulted in return where each issue was raised, by year, for people detained within the UK following immigration offences
+
+      Issue raised | 2017 | 2018 | 2019
+      Asylum claim | 775 (15%) | 502 (10%) | 175 (3%)
+      Rights-based application | 296 (19%) | 149 (14%) | 35 (7%)
+      Further submissions | 622 (30%) | 425 (23%) | 161 (11%)
+      Appeal | 205 (22%) | 119 (18%) | 15 (5%)
+      Judicial review | 645 (20%) | 327 (16%) | 81 (8%)
+      NRM referral | 67 (13%) | 70 (10%) | 20 (1%)
+      Rule 35 report | 423 (22%) | 286 (15%) | 128 (8%)
+      Medico-legal report | 8 (17%) | 45 (4%) | 48 (2%)
+      Disrupted return | 758 (38%) | 426 (26%) | 142 (25%)
+      Any of the above | 1,995 (20%) | 1,283 (15%) | 510 (6%)
+      None of the above | 3,898 (67%) | 2,942 (67%) | 2,014 (67%)
     title: Issues raised by people facing return in immigration detention
     url: https://www.gov.uk/government/publications/issues-raised-by-people-facing-return-in-immigration-detention/issues-raised-by-people-facing-return-in-immigration-detention
     publisher: Home Office
@@ -380,9 +394,14 @@ sources:
     publisher: National Audit Office
     date: '2020-06-17'
   - stance: supports
-    quote: >-
-      Figure 6: Outcome of planned FNO removals 2014/15 to 2016/17 [...] Total
-      24,289 16,517 (68%) 7,772 (32%)
+    quote: |-
+      Figure 6: Outcome of planned FNO removals 2014/15 to 2016/17
+
+      Year | Planned removals | Successful removals | Failed removals
+      2014/15 | 6,958 | 4,848 (70%) | 2,110 (30%)
+      2015/16 | 8,043 | 5,487 (68%) | 2,556 (32%)
+      2016/17 | 9,288 | 6,182 (67%) | 3,106 (33%)
+      Total | 24,289 | 16,517 (68%) | 7,772 (32%)
     title: An inspection of the Home Office’s management of non-detained foreign national offenders
     url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/656584/An_inspection_of_non-detained_FNOs.pdf
     publisher: Independent Chief Inspector of Borders and Immigration
@@ -402,18 +421,26 @@ sources:
     publisher: Independent Chief Inspector of Borders and Immigration
     date: '2017-11'
   - stance: supports
-    quote: >-
-      Figure 7: Jamaica charter flights – Planned FNO removals and numbers
-      successfully removed Date Planned removals FNOs removed September 2016
-      144 42 March 2017 163 32
+    quote: |-
+      Figure 7: Jamaica charter flights – Planned FNO removals and numbers successfully removed
+
+      Date | Planned removals | FNOs removed
+      September 2016 | 144 | 42
+      March 2017 | 163 | 32
     title: An inspection of the Home Office’s management of non-detained foreign national offenders
     url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/656584/An_inspection_of_non-detained_FNOs.pdf
     publisher: Independent Chief Inspector of Borders and Immigration
     date: '2017-11'
   - stance: supports
-    quote: >-
-      Figure 8: Most common reasons for failed removals on Jamaica charter
-      flights in September 2016 and March 2017
+    quote: |-
+      Figure 8: Most common reasons for failed removals on Jamaica charter flights in September 2016 and March 2017
+
+      Reason | Number
+      Fresh asylum claim made by FNO after removal directions set | 55
+      Judicial Review lodged after removal directions set | 35
+      ‘Further representations’ received – removal deferred by Operational Support and Certification Unit (OSCU) or case owner | 26
+      Non-detained FNO not encountered on enforcement visit | 20
+      No enforcement visit to collect non-detained FNO due to lack of resources | 13
     title: An inspection of the Home Office’s management of non-detained foreign national offenders
     url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/656584/An_inspection_of_non-detained_FNOs.pdf
     publisher: Independent Chief Inspector of Borders and Immigration
@@ -505,6 +532,8 @@ sources:
       Article 3 prohibits torture and inhuman or degrading treatment. If
       someone would experience treatment reaching this threshold, as
       interpreted by the court, they cannot be removed under any circumstances.
+      … In the UK, people who argue that their removal would expose them to such
+      treatment usually claim asylum.
     title: Immigration and the ECHR (CBP-10376)
     url: https://researchbriefings.files.parliament.uk/documents/CBP-10376/CBP-10376.pdf
     publisher: House of Commons Library
@@ -765,8 +794,36 @@ sources:
     url: https://migrationobservatory.ox.ac.uk/resources/briefings/unauthorised-migration-in-the-uk/
     publisher: 'The Migration Observatory, University of Oxford'
     date: '2026-07-28'
+  - stance: supports
+    quote: 'Asy_D04: Outcome analysis of asylum claims, 2007-2025 - dataset'
+    title: 'Outcome analysis of asylum claims detailed dataset, year ending June 2026 (Asy_D04)'
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c49e1b45e4e555421ede/outcome-analysis-asylum-claims-datasets-jun-2026.xlsx
+    localFile: datasets/assets.publishing.service.gov.uk/outcome-analysis-asylum-claims-datasets-jun-2026.xlsx
+    publisher: Home Office
+    date: '2026-08-27'
+  - stance: complicates
+    quote: |-
+      Rule 39 requests listed by respondent State processed by the Court in 2023, 2024 and 2025
+
+      STATE | 2023 OUTSIDE THE SCOPE | 2023 REFUSED | 2023 GRANTED | TOTAL 2023 | 2024 OUTSIDE THE SCOPE | 2024 REFUSED | 2024 GRANTED | TOTAL 2024 | 2025 OUTSIDE THE SCOPE | 2025 REFUSED | 2025 GRANTED | TOTAL 2025 | 2023-2025 OUTSIDE THE SCOPE | 2023-2025 REFUSED | 2023-2025 GRANTED | GRAND TOTAL
+      United Kingdom | 49 | 13 | 1 | 63 | 54 | 11 |  | 65 | 197 | 21 | 0 | 218 | 300 | 45 | 1 | 346
+    title: 'Rule 39 requests listed by respondent State processed by the Court in 2023, 2024 and 2025'
+    url: https://www.echr.coe.int/documents/d/echr/stats_art_39_02_eng
+    publisher: European Court of Human Rights
+    date: '2026-01-28'
+  - stance: complicates
+    quote: >-
+      the European Court of Human Rights did not rule that the policy or
+      relocations were unlawful, but it prohibited the removal of three of
+      those on last night’s flight.
+    title: 'Migration and Economic Development Partnership with Rwanda (Home Secretary''s statement)'
+    url: https://hansard.parliament.uk/Commons/2022-06-15/debates/78DA690C-B53E-4F57-B28B-2FA0F6FB0E6B/MigrationAndEconomicDevelopmentPartnershipWithRwanda
+    publisher: House of Commons Hansard
+    date: '2022-06-15'
 series:
-  title: 'Returns from the UK by type, 2004–2025'
+  title: 'Returns from the UK, by type'
+  subtitle: '2004–2025'
   description: >-
     Every return the Home Office records in each calendar year from 2004, the
     first year of its returns table: enforced returns, voluntary returns, and
@@ -955,7 +1012,8 @@ series:
               value: 18354
 additionalSeries:
   - id: fno-asylum-dataset
-    title: UK returns of foreign offenders and asylum-related returns, 2010–2025
+    title: 'Offender and asylum-related returns'
+    subtitle: 'Foreign offenders and people who claimed asylum, UK, 2010–2025'
     description: >-
       Returns of foreign national offenders (enforced, voluntary and port), and
       enforced plus voluntary returns of people who had claimed asylum at some
@@ -1074,9 +1132,8 @@ additionalSeries:
               - period: '2025'
                 value: 12396
   - id: refused-cohorts
-    title: >-
-      Refused and withdrawn UK asylum claims, and returns recorded, by year of
-      claim, 2007–2025
+    title: 'Asylum claims and later returns'
+    subtitle: 'UK, main applicants by year of claim, 2007–2025, as at July 2026'
     description: >-
       Main applicants who claimed asylum in each year, followed up to July
       2026: how many were refused or withdrew at their latest outcome, and how
@@ -1231,15 +1288,16 @@ additionalSeries:
               - period: '2025'
                 value: 3317
       - id: cohort-share
-        label: Returns as a share of refused claims
+        label: Returns as a share of claims
         unit: percent
         valueLabel: Returns as a percent of each year's claims
         note: >-
           Derived: enforced plus voluntary returns from each year's claims,
-          divided by that year's refusals, and by its refusals plus withdrawals,
-          at latest outcome. Returns are counted for the whole year's claims, so
-          neither is a matched rate: the share of refused can count someone who
-          withdrew.
+          divided by that year's refusals, by its refusals plus withdrawals, at
+          latest outcome, and by all of that year's claims (main applicants,
+          whatever their outcome, from the same Home Office table). Returns are
+          counted for the whole year's claims, so none is a matched rate: the
+          share of refused can count someone who withdrew.
         lines:
           - name: Returns as a share of refused
             points:
@@ -1302,8 +1360,30 @@ additionalSeries:
                 value: 10.2
               - period: '2025'
                 value: 7.8
+          - name: Returns as a share of all claims
+            points:
+              - {period: '2007', value: 29.1}
+              - {period: '2008', value: 29.1}
+              - {period: '2009', value: 28.3}
+              - {period: '2010', value: 31.2}
+              - {period: '2011', value: 28.2}
+              - {period: '2012', value: 28.1}
+              - {period: '2013', value: 27}
+              - {period: '2014', value: 19.4}
+              - {period: '2015', value: 12.7}
+              - {period: '2016', value: 13.2}
+              - {period: '2017', value: 11.1}
+              - {period: '2018', value: 8}
+              - {period: '2019', value: 8.3}
+              - {period: '2020', value: 7.2}
+              - {period: '2021', value: 6.9}
+              - {period: '2022', value: 12.1}
+              - {period: '2023', value: 8.4}
+              - {period: '2024', value: 5.8}
+              - {period: '2025', value: 4}
   - id: detention-leavers-dataset
-    title: People leaving UK immigration detention, by outcome, 2010–2025
+    title: 'Leaving immigration detention'
+    subtitle: 'By outcome, UK, 2010–2025'
     description: >-
       Every exit from immigration detention each year, by what happened next:
       returned from the UK, bailed (by the Home Secretary or an immigration
@@ -1443,7 +1523,8 @@ additionalSeries:
               - period: '2025'
                 value: 759
   - id: fno-appeals-dataset
-    title: Foreign offenders’ appeals against UK deportation, 2008/09–2020/21
+    title: 'Foreign offenders’ deportation appeals'
+    subtitle: 'Lodged and allowed, UK, financial years 2008/09 to 2020/21'
     description: >-
       Appeals against deportation lodged by foreign national offenders in each
       financial year (labelled by the year it starts), how many were allowed at
@@ -1462,13 +1543,33 @@ additionalSeries:
         a year. Appeals lodged in later years are more likely still to be
         undetermined. Upper Tribunal reversals are not reflected. No later
         figures have been published.
+    events:
+    - period: '2014'
+      label: Immigration Act 2014 raises the bar for offenders' appeals
+      source: 49
+    - period: '2017'
+      label: Supreme Court judgment pauses "deport first, appeal later"
+      source: 50
     breaks: []
     source:
       stance: supports
-      quote: >-
-        Appeal Lodged Financial Year | Number of Appeals Lodged | of which Number
-        of Appeals Allowed | of which Number of Appeals Allowed, Human Rights
-        grounds only
+      quote: |-
+        Appeal Lodged Financial Year | Number of Appeals Lodged | of which Number of Appeals Allowed | of which Number of Appeals Allowed, Human Rights grounds only
+        2008/09 | 1,820 | 271 | 35
+        2009/10 | 1,744 | 389 | 186
+        2010/11 | 1,724 | 522 | 249
+        2011/12 | 1,613 | 549 | 323
+        2012/13 | 2,192 | 716 | 337
+        2013/14 | 2,210 | 622 | 150
+        2014/15 | 1,720 | 448 | 98
+        2015/16 | 1,280 | 368 | 92
+        2016/17 | 1,356 | 442 | 168
+        2017/18 | 2,051 | 616 | 285
+        2018/19 | 1,836 | 570 | 237
+        2019/20 | 1,326 | 399 | 187
+        2020/21 | 568 | 126 | 44
+        April to June 2021 | 81 | 4 | 1
+        Grand Total | 21,521 | 6,042 | 2,392
       title: 'Statistical note: FNO appeals lodged and allowed on human rights grounds, 2008 to 2021'
       url: https://www.gov.uk/government/publications/foreign-national-offenders-appeals-on-human-rights-grounds-2008-to-2021/statistical-note-fno-appeals-lodged-and-allowed-on-human-rights-grounds-2008-to-2021
       publisher: Home Office
@@ -1508,6 +1609,7 @@ additionalSeries:
               - period: '2020'
                 value: 568
           - name: Allowed at First-tier Tribunal
+            glossary: first-tier-tribunal
             points:
               - period: '2008'
                 value: 271
@@ -1565,9 +1667,8 @@ additionalSeries:
               - period: '2020'
                 value: 44
   - id: fnos-community-dataset
-    title: >-
-      Foreign offenders liable to UK deportation living in the community,
-      2012–2026
+    title: 'Foreign offenders in the community'
+    subtitle: 'Liable to deportation, out of prison or detention, UK, 2012–2026'
     description: >-
       Foreign national offenders subject to deportation action who have
       finished their sentence and are living in the community rather than in
@@ -1727,7 +1828,8 @@ additionalSeries:
               - period: '2026-06'
                 value: 21294
   - id: france-pilot-dataset
-    title: 'UK–France "one in, one out" pilot: people moved each month, August 2025 – June 2026'
+    title: 'UK–France "one in, one out" pilot'
+    subtitle: 'People moved each month, August 2025 to June 2026'
     description: >-
       Small-boat arrivals returned to France ("out") and people transferred
       from France to the UK ("in") each month under the UK–France Agreement on
@@ -1810,7 +1912,8 @@ additionalSeries:
                 value: 314
 comparisons:
   - id: detention-issues
-    title: Issues raised during UK immigration detention before removal, 2019
+    title: 'Issues raised in immigration detention'
+    subtitle: 'Share of 2019 UK detentions after immigration offences'
     description: >-
       Share of detentions in 2019 in which each issue was raised, for people
       detained in the UK after immigration offences (not foreign offenders, not
@@ -1853,10 +1956,11 @@ comparisons:
       - label: Appeal
         value: 3
   - id: detention-issues-return
-    title: >-
-      Share of UK immigration detentions ending in return, by issue raised, 2019
+    title: 'Detentions ending in return, by issue'
+    subtitle: 'UK immigration detentions, 2019'
     description: >-
-      For the same 2019 detentions, the share that ended with the person
+      For 2019 detentions of people held after immigration offences, the
+      share that ended with the person
       returned from the UK, by issue raised, against detentions in which none
       of the issues was raised.
     unit: percent
@@ -1890,9 +1994,8 @@ comparisons:
       - label: Modern slavery referral
         value: 1
   - id: charter-failures
-    title: >-
-      Why foreign offenders were not removed from the UK on two Jamaica charter
-      flights, 2016–2017
+    title: 'Failed removals on Jamaica charters'
+    subtitle: 'Foreign offenders, flights of September 2016 and March 2017'
     description: >-
       The most common reasons removals failed on the September 2016 and March
       2017 charter flights to Jamaica, which planned 307 removals between them
@@ -1921,7 +2024,8 @@ comparisons:
         detail: "For lack of resources"
         value: 13
   - id: removal-scale
-    title: Removals a year — the UK record, a proposed target, and the EU and US
+    title: 'Removals a year'
+    subtitle: 'UK record and target, beside the EU and US'
     description: >-
       Annual removals or returns on each measure. The UK lines are calendar
       2025 and 2004 from the Home Office; the target is the Conservative
@@ -1945,14 +2049,16 @@ comparisons:
       - label: "US deportations after interior arrest"
         detail: "Yearly rate"
         value: 200000
-      - label: Proposed UK target ("Removals Force")
+      - label: Proposed UK target
+        subtitle: 'Conservative "Removals Force" pledge'
         value: 150000
         highlight: true
       - label: EU-27 returns to non-EU countries, 2025
         value: 139270
       - label: UK enforced and voluntary returns, 2025
         value: 39715
-      - label: UK enforced returns, 2004 (series high)
+      - label: UK enforced returns, 2004
+        subtitle: Series high
         value: 21425
       - label: UK enforced returns, 2025
         value: 9908
@@ -2005,6 +2111,18 @@ dataStillNeeded:
       origin countries rather than UK law.
 figures:
   - kind: series
+  - kind: barChart
+    id: return-costs
+    title: 'Average cost of a return'
+    subtitle: 'Enforced and voluntary, UK, 2024/25'
+    description: The average cost of one enforced return and one voluntary return in the 2024/25 financial year.
+    valueLabel: Average cost per return
+    categoryLabel: Type of return
+    format: { unit: currency, currency: GBP }
+    sources: [14]
+    items:
+      - { label: Enforced return, value: 48800 }
+      - { label: Voluntary return, value: 4300 }
   - kind: series
     id: fno-asylum-dataset
   - kind: series
@@ -2015,6 +2133,21 @@ figures:
     id: detention-issues
   - kind: comparison
     id: detention-issues-return
+  - kind: barChart
+    id: issue-outcomes
+    title: 'Outcomes of issues raised in detention'
+    subtitle: 'UK detentions ending in 2017, people detained from the community'
+    description: Issues raised during detentions ending in 2017, for immigration offenders detained from the community, by the outcome recorded when the Home Office looked back at them.
+    valueLabel: Share of issues raised
+    categoryLabel: Outcome
+    format: { unit: percent, decimals: 0 }
+    domainMax: 100
+    sort: none
+    sources: [28]
+    items:
+      - { label: No positive decision, value: 83 }
+      - { label: Positive decision or concession, value: 12 }
+      - { label: Still ongoing, value: 5 }
   - kind: comparison
     id: charter-failures
   - kind: series
@@ -2027,7 +2160,8 @@ figures:
     id: france-pilot-dataset
   - kind: estimateRange
     id: unlawful-population
-    title: Estimates of the UK population without lawful status, 2017
+    title: 'People without lawful status'
+    subtitle: 'Two estimates of the UK population, both for 2017'
     description: The two latest estimates, both for 2017 and both made by the residual method. The Home Office makes no official estimate.
     valueLabel: People without lawful status
     nullValue: null
@@ -2038,9 +2172,8 @@ figures:
       - { label: 'Pew, revised March 2025', low: 700000, high: 900000, source: 69 }
   - kind: dataTable
     id: echr-share
-    title: >-
-      What the nearest measures of the ECHR's weight in UK removals show, and
-      leave out
+    title: 'Measures of the ECHR''s role in removals'
+    subtitle: 'The nearest published measures and what each leaves out'
     description: No published source counts removals stopped by the ECHR. These are the nearest measures, each of which answers a narrower question.
     caption: One card per measure
     layout: cards
@@ -2050,18 +2183,98 @@ figures:
       - { key: shows, label: What it shows, sortable: false }
       - { key: leaves-out, label: What it leaves out, sortable: false }
     rows:
+      - measure: Removals stopped by the ECHR
+        shows: { value: No published source counts them, sources: [17] }
+      - measure: Emergency orders from the Strasbourg court pausing a UK removal
+        shows: { value: '1 granted out of 346 UK requests in 2023 to 2025, 300 of which were outside what the court decides', sources: [74] }
+        leaves-out: An order only pauses a removal while a case is heard; claims decided by UK courts and tribunals under the Human Rights Act do not appear
       - measure: Human-rights applications raised in detention, 2019
         shows: { value: '5% of detentions, against 47% for asylum claims', sources: [21, 22] }
         leaves-out: Article 3 risk on return is argued inside asylum claims, and people never put forward for removal because removal is not possible do not appear
       - measure: Foreign offenders' appeals won on human-rights grounds alone
-        shows: { value: 'About 3% of those removed', sources: [45] }
+        shows: { value: 'About 3% of those removed, 2015/16 to 2020/21', sources: [45] }
         leaves-out: Article 3 risk on return is argued inside asylum claims, and people never put forward for removal because removal is not possible do not appear
       - measure: People granted status after being told they were liable to removal
         shows: { value: The Home Office does not hold this data, sources: [17] }
       - measure: The government's position
         shows: { value: 'Says Article 8 is used to stop removals and cites the 86% release figure, but its impact assessment sets no target for fewer Article 8 grants or successful appeals', sources: [30, 59] }
+  - kind: quotes
+    id: said-about-the-echr
+    question: What do the Home Office and others say human-rights law does to removals?
+    description: >-
+      What the Home Office, the House of Commons Library and the Migration
+      Observatory say about how often the ECHR stops a removal, in date order.
+    quotes:
+      - text: Article 8 rights are also used to stop the removal of those who are living here illegally. In January to September 2022, 86% of people who raised rights-based applications, while in detention awaiting removal, were released.
+        speaker: Home Office
+        context: Additional statistics referred to in the asylum policy statement
+        date: '2025-11-21'
+        source: 30
+      - text: we see examples of foreign national offenders who are being allowed to stay in the UK on the basis of an Article 3 protection claim, despite committing serious criminal offences in the UK
+        speaker: Home Office
+        context: 'Restoring Order and Control (CP 1418)'
+        date: '2025-11-17'
+        source: 58
+      - text: From 2015/16 to 2024/25, immigration judges granted 61,000 out of the 115,000 human rights appeals brought against the Home Office (53%).
+        speaker: House of Commons Library
+        context: 'Immigration and the ECHR (CBP-10376)'
+        date: '2025-10-27'
+        source: 47
+      - text: If someone would experience treatment reaching this threshold, as interpreted by the court, they cannot be removed under any circumstances.
+        speaker: House of Commons Library
+        context: 'Immigration and the ECHR (CBP-10376), on Article 3'
+        date: '2025-10-27'
+        source: 48
+      - text: In the same 2015/16 to 2020/21 period, the Home Office removed 31,400 foreign national offenders from the UK. The 1,000 foreign criminals able to block deportation on ECHR grounds alone represent 3% of that figure.
+        speaker: House of Commons Library
+        context: 'Immigration and the ECHR (CBP-10376)'
+        date: '2025-10-27'
+        source: 45
+      - text: the Home Office said it did not hold data on … the number of people issued notices of liability to remove who were subsequently granted legal status (e.g., following a human rights claim)
+        speaker: The Migration Observatory, University of Oxford
+        context: Deportation and returns of unauthorised migrants from the UK
+        date: '2026-03-31'
+        source: 17
 observationMarks:
-  about-half-of-refused-claimants-recorded-leaving: {lines: [Returns as a share of refused], from: '2010', to: '2022'}
+  home-office-says-rights-claims-stop-removals: {rows: ["Home Office"]}
+  fewer-refused-recorded-leaving: {lines: ["Returns as a share of all claims", "Returns as a share of refused and withdrawn"], from: "2007", to: "2025"}
+  unlawful-population-estimates: {rows: ["Greater London Authority, central estimate", "Greater London Authority, with UK-born children", "Pew, as first published", "Pew, revised March 2025"]}
+  late-claims-not-human-rights-claims: {rows: ["Asylum claim", "Medico-legal report", "Modern slavery referral", "Rule 35 medical report", "Further submissions", "Judicial review", "Human rights or other rights-based application"]}
+  most-issues-refused: {rows: ["No positive decision", "Positive decision or concession"]}
+  article-8-reforms-cut-then-faded: {lines: ["Allowed on human-rights grounds only"], from: "2012", to: "2020"}
+  echr-share-not-measured: {rows: ["Removals stopped by the ECHR", "People granted status after being told they were liable to removal"]}
+  strasbourg-rarely-stops-uk-removals: {rows: ["Emergency orders from the Strasbourg court pausing a UK removal"]}
+  echr-hidden-in-other-rows: {rows: ["Human rights or other rights-based application", "Asylum claim", "Judicial review"]}
+  150000-about-15-times-enforced-returns: {rows: ["Proposed UK target", "UK enforced returns, 2025"]}
+  most-returns-are-voluntary: {lines: ["Enforced returns", "Voluntary returns"], at: "2025"}
+  human-rights-wins-about-3-percent: {rows: ["Foreign offenders' appeals won on human-rights grounds alone"]}
+  returns-fell-then-recovered: {lines: ["Enforced returns", "Voluntary returns"], at: "2021"}
+  why-returns-fell-is-not-settled: {lines: ["Enforced returns", "Voluntary returns"], from: "2010", to: "2019"}
+  return-agreements: {lines: ["Enforced returns", "Voluntary returns"], at: "2025"}
+  fno-returns-near-peak: {lines: ["Foreign national offenders returned"], from: "2016", to: "2025", at: "2016"}
+  asylum-related-returns-at-record: {lines: ["Asylum-related returns (enforced and voluntary)"], at: "2025"}
+  refusals-outrun-returns: {lines: ["Refused at latest outcome", "Recorded as returned (enforced or voluntary)"], from: "2021", to: "2025"}
+  not-recorded-leaving: {lines: ["Refused at latest outcome", "Withdrawn at latest outcome", "Recorded as returned (enforced or voluntary)"], from: "2010", to: "2024"}
+  more-bailed-than-returned: {lines: ["Returned from the UK", "Bailed"], from: "2015", to: "2025"}
+  detention-use: {from: "2015", to: "2025"}
+  2022-update: {rows: ["Human rights or other rights-based application", "Modern slavery referral"]}
+  raised-is-not-caused: {whole: true}
+  fno-issues-differ: {rows: ["Appeal", "Rule 35 medical report", "Judicial review", "Asylum claim"]}
+  removal-directions-cancelled: {rows: ["Fresh asylum claim"]}
+  charter-reasons: {rows: ["Fresh asylum claim", "Judicial review lodged", "Further representations"]}
+  planned-fno-removals: {whole: true}
+  all-human-rights-appeals-53-percent: {lines: ["Allowed on human-rights grounds only"], from: "2015", to: "2020"}
+  ratio-is-not-a-block-rate: {lines: ["Allowed at First-tier Tribunal", "Allowed on human-rights grounds only"], from: "2015", to: "2020"}
+  fnos-in-community-growing: {lines: ["Foreign offenders liable to deportation in the community"], from: "2016-06", to: "2026-06", at: "2026-06"}
+  pledged-budget: {rows: ["Proposed UK target"]}
+  us-comparison: {rows: ["US deportations after interior arrest"]}
+  france-pilot-about-4-percent: {lines: ["Returned to France (out)"]}
+  other-obstacles: {rows: ["Human-rights applications raised in detention, 2019", "Foreign offenders' appeals won on human-rights grounds alone"]}
+  observatory-cohort-figures: {lines: ["Returns as a share of refused", "Returns as a share of refused and withdrawn"], from: "2010", to: "2022"}
+  voluntary-returns-far-cheaper: {rows: ["Enforced return", "Voluntary return"]}
+  asylum-claims-commonest-in-detention: {rows: ["Asylum claim"]}
+  human-rights-applications-small-share: {rows: ["Human rights or other rights-based application"]}
+  counts-miss-article-3-in-asylum-claims: {rows: ["Human-rights applications raised in detention, 2019", "Foreign offenders' appeals won on human-rights grounds alone"]}
 ---
 ## Observations {#removals-and-what-stops-them--observations-returns}
 
@@ -2073,13 +2286,19 @@ Enforced returns drifted down from 2004 to 2019 and voluntary returns fell from 
 
 The Migration Observatory attributes the 2010s decline to a combination of resource constraints, more legal challenges, administrative delays and fewer referrals to Immigration Enforcement, and the recovery to bigger budgets and higher immigration. Enforcement spending fell 19% in real terms between 2014/15 and 2020/21. [9](#source-removals-and-what-stops-them-9) [10](#source-removals-and-what-stops-them-10) It says limited data prevent a definitive assessment of the legal-challenge share. [11](#source-removals-and-what-stops-them-11)
 
-### Most returns are voluntary, and much cheaper {#removals-and-what-stops-them--most-returns-are-voluntary}
+### Most returns are voluntary {#removals-and-what-stops-them--most-returns-are-voluntary}
 
-An enforced return cost an average of £48,800 in 2024/25, against £4,300 for a voluntary one. [14](#source-removals-and-what-stops-them-14) Port returns — people refused entry who leave again — are counted separately: 18,646 in the year to June 2026. [1](#source-removals-and-what-stops-them-1) All these figures count returns, not people: someone returned twice in a period is counted twice. [7](#source-removals-and-what-stops-them-7)
+Of the 40,605 returns in the year to June 2026, 76% were voluntary. [5](#source-removals-and-what-stops-them-5) Port returns — people refused entry who leave again — are counted separately: 18,646 in the year to June 2026. [1](#source-removals-and-what-stops-them-1) All these figures count returns, not people: someone returned twice in a period is counted twice. [7](#source-removals-and-what-stops-them-7)
 
 ### Return agreements are neither necessary nor sufficient {#removals-and-what-stops-them--return-agreements}
 
 Countries without a formal UK returns agreement accounted for 49% of returns in 2025, and the Migration Observatory cites studies finding agreements had little effect on return rates in the EU. [13](#source-removals-and-what-stops-them-13) Failing to obtain travel documents was the most common reason officials decided not to detain someone liable to removal, in a 2014/15 inspection. [12](#source-removals-and-what-stops-them-12)
+
+## Observations {#removals-and-what-stops-them--observations-return-costs}
+
+### A voluntary return cost £4,300 on average, an enforced one £48,800 {#removals-and-what-stops-them--voluntary-returns-far-cheaper}
+
+An enforced return cost an average of £48,800 in 2024/25, against £4,300 for a voluntary one. The Home Office prefers voluntary returns, partly for that reason. [14](#source-removals-and-what-stops-them-14)
 
 ## Observations {#removals-and-what-stops-them--observations-fno-asylum}
 
@@ -2103,9 +2322,9 @@ The government said 58,000 people had their asylum claim refused between June 20
 
 ## Observations {#removals-and-what-stops-them--observations-cohort-share}
 
-### About half of refused claimants are recorded as leaving {#removals-and-what-stops-them--about-half-of-refused-claimants-recorded-leaving}
+### Since 2015, under one in seven claims and under a third of failed claims each year have ended in a recorded return {#removals-and-what-stops-them--fewer-refused-recorded-leaving}
 
-Across claims made in 2010–2022, returns come to around half of refusals. [15](#source-removals-and-what-stops-them-15) The line starts near three-quarters, drops to about a third for 2017 and 2018, and recovers to a little over half by 2022. Later years are still working through decisions and appeals.
+Of all main applicants who claimed asylum in each year, more than a quarter are recorded as returned for every year of claims from 2007 to 2013, and under one in seven for every year since 2015. Of those whose claims were refused or withdrawn, the share was more than half up to 2013, and under a third since 2015. [73](#source-removals-and-what-stops-them-73) Measured against refused claims alone, the share is higher: over two-thirds up to 2013, under half in every year from 2015 to 2021, and just over half for 2022. Claims from recent years are still working through appeals, and returns come later, so their share will rise. For small-boat arrivals the Home Office gives only a running total: 9,694 people who arrived by small boat between 2018 and June 2026 have been returned. [6](#source-removals-and-what-stops-them-6) Not being recorded as leaving is an upper bound on staying: the Migration Observatory notes that some people were later granted status or left without being recorded. [71](#source-removals-and-what-stops-them-71)
 
 ## Subtleties {#removals-and-what-stops-them--subtleties-cohort-share}
 
@@ -2125,13 +2344,17 @@ Entries fell from 32,447 in 2015 to 24,480 in 2019, partly after the 2016 Shaw r
 
 ## Observations {#removals-and-what-stops-them--observations-detention-issues}
 
-### Late claims and judicial reviews, not human-rights claims, are the most common obstacles {#removals-and-what-stops-them--late-claims-not-human-rights-claims}
+### Asylum claims, medical reports, slavery referrals, further submissions and judicial reviews are all raised more often than human-rights applications {#removals-and-what-stops-them--late-claims-not-human-rights-claims}
 
 In 2019 people facing removal from detention after immigration offences raised at least one issue in 73% of detentions, and 94% of those were released. [20](#source-removals-and-what-stops-them-20) The commonest issue was an asylum claim, in 47% of detentions, followed by medical reports and modern slavery referrals. [21](#source-removals-and-what-stops-them-21) [23](#source-removals-and-what-stops-them-23) Human-rights and other rights-based applications fell from 10% to 5% of detentions between 2017 and 2019, and judicial reviews from 20% to 9%. [22](#source-removals-and-what-stops-them-22)
 
-### Most issues raised in detention were eventually refused {#removals-and-what-stops-them--most-issues-refused}
+### Asylum claims were the commonest issue raised in detention {#removals-and-what-stops-them--asylum-claims-commonest-in-detention}
 
-Of issues raised in detentions ending in 2017, 12% led to a positive decision or concession, 83% did not, and 5% were still open. [28](#source-removals-and-what-stops-them-28) When no issue was raised, 67% of detentions ended in return. [26](#source-removals-and-what-stops-them-26)
+Asylum applications were the most common issue raised by people detained after immigration offences, in 47% of detentions in 2019. [21](#source-removals-and-what-stops-them-21)
+
+### Human-rights applications were raised in 5% of detentions {#removals-and-what-stops-them--human-rights-applications-small-share}
+
+Human-rights and other rights-based applications were raised in 5% of detentions in 2019, down from 10% in 2017. [22](#source-removals-and-what-stops-them-22)
 
 ### The 2022 figures are the government's only later update {#removals-and-what-stops-them--2022-update}
 
@@ -2151,6 +2374,12 @@ Article 3 bars removal to torture or inhuman or degrading treatment in all circu
 
 Among foreign offenders leaving detention in 2019, the commonest issue was an appeal (9% of detentions), then Rule 35 reports (8%), judicial reviews (7%) and asylum claims (6%). [29](#source-removals-and-what-stops-them-29)
 
+## Observations {#removals-and-what-stops-them--observations-issue-outcomes}
+
+### Most issues raised in detention led to no positive decision {#removals-and-what-stops-them--most-issues-refused}
+
+Of issues raised in detentions ending in 2017, 12% led to a positive decision or concession, 83% did not, and 5% were still open. [28](#source-removals-and-what-stops-them-28) When no issue was raised, 67% of detentions ended in return. [26](#source-removals-and-what-stops-them-26)
+
 ## Observations {#removals-and-what-stops-them--observations-charter-failures}
 
 ### Half of removal directions were cancelled in 2019 {#removals-and-what-stops-them--removal-directions-cancelled}
@@ -2167,13 +2396,9 @@ Of 24,289 planned foreign-offender removals in 2014/15–2016/17, 16,517 (68%) s
 
 ## Observations {#removals-and-what-stops-them--observations-fno-appeals}
 
-### The 2014 Article 8 reforms cut allowed appeals, then the effect faded {#removals-and-what-stops-them--article-8-reforms-cut-then-faded}
+### Human-rights appeal wins fell from 2012/13 to 2015/16, rose to 2017/18, then fell again {#removals-and-what-stops-them--article-8-reforms-cut-then-faded}
 
-Appeals allowed on human-rights grounds only rose to 337 in 2012/13, fell by roughly three-quarters to 92 in 2015/16 after the Immigration Act 2014, then climbed back to 285 in 2017/18. [41](#source-removals-and-what-stops-them-41) The 2014 Act raised the bar for offenders' appeals while leaving judges some discretion. [49](#source-removals-and-what-stops-them-49) The rebound coincides with the 2017 Supreme Court judgment that paused "deport first, appeal later", so the data cannot separate the two. [50](#source-removals-and-what-stops-them-50)
-
-### Human-rights wins equal about 3% of offender deportations {#removals-and-what-stops-them--human-rights-wins-about-3-percent}
-
-From 2015/16 to 2020/21 about 1,000 foreign offenders won appeals on ECHR grounds alone, against 31,400 removed: 3%. [45](#source-removals-and-what-stops-them-45) The Bonavero Institute's count for April 2016 to June 2021 is 922 against 26,091, or 3.5%, and around 2.5% for Article 8 alone. [43](#source-removals-and-what-stops-them-43) [44](#source-removals-and-what-stops-them-44) A sample found 70% of human-rights wins rested solely on Article 8. [42](#source-removals-and-what-stops-them-42)
+Appeals allowed on human-rights grounds only rose to 337 in 2012/13, fell to 150 in 2013/14, before the Immigration Act 2014 took effect, and to 92 in 2015/16, roughly three-quarters below 2012/13, then climbed back to 285 in 2017/18, and fell again to 44 in 2020/21, when appeals lodged also fell, to 568. [41](#source-removals-and-what-stops-them-41) The counts move with the number of appeals lodged, and most of the fall came before the 2014 Act took effect. The 2014 Act raised the bar for offenders' appeals while leaving judges some discretion. [49](#source-removals-and-what-stops-them-49) The rebound coincides with the 2017 Supreme Court judgment that paused "deport first, appeal later", so the data cannot separate the two. [50](#source-removals-and-what-stops-them-50)
 
 ### Across all immigration cases, human-rights appeals usually succeed {#removals-and-what-stops-them--all-human-rights-appeals-53-percent}
 
@@ -2217,11 +2442,29 @@ By 30 June 2026, 1,087 people had been returned to France and 1,117 brought to t
 
 The Home Office makes no official estimate of the population without lawful status. [70](#source-removals-and-what-stops-them-70) The two latest estimates are for 2017, and Pew revised its range down in March 2025. [69](#source-removals-and-what-stops-them-69) Both use the residual method: the foreign-born population minus an estimate of those here lawfully.
 
+## Observations {#removals-and-what-stops-them--observations-said-about-the-echr}
+
+### The Home Office says human-rights claims are used to stop removals {#removals-and-what-stops-them--home-office-says-rights-claims-stop-removals}
+
+In November 2025 the Home Office said Article 8 is used to stop removals, and that 86% of people who raised a rights-based application while held for removal in January to September 2022 were released. It has not yet published the analysis behind that figure. [30](#source-removals-and-what-stops-them-30) It also said some foreign offenders have stayed on Article 3 grounds despite serious crimes. [58](#source-removals-and-what-stops-them-58) Released is not the same as never removed, and these are the government's own statements.
+
 ## Observations {#removals-and-what-stops-them--observations-echr-share}
 
 ### What share of failed removals the ECHR blocks is not measured {#removals-and-what-stops-them--echr-share-not-measured}
 
 No published source counts removals stopped by the ECHR. The Home Office does not hold data on people granted status after being told they were liable to removal. [17](#source-removals-and-what-stops-them-17) The proxies above each answer a narrower question, and both may understate the ECHR's weight. [21](#source-removals-and-what-stops-them-21) [45](#source-removals-and-what-stops-them-45)
+
+### The Strasbourg court rarely orders a UK removal paused {#removals-and-what-stops-them--strasbourg-rarely-stops-uk-removals}
+
+The European Court of Human Rights can order a country to pause a removal while it hears a case. In 2023 to 2025 it received 346 such requests about the UK. It found 300 outside what it decides, refused 45 and granted 1. [74](#source-removals-and-what-stops-them-74) In June 2022 it did stop three people being removed on the first flight to Rwanda. The Home Secretary told Parliament that the court had not ruled the policy unlawful. [75](#source-removals-and-what-stops-them-75)
+
+### The detention and appeal counts miss Article 3 risk argued inside asylum claims {#removals-and-what-stops-them--counts-miss-article-3-in-asylum-claims}
+
+Article 3 risk on return is usually argued inside an asylum or protection claim, so it appears in neither the count of human-rights applications in detention nor the count of offenders' human-rights appeal wins. [48](#source-removals-and-what-stops-them-48)
+
+### Human-rights wins equal about 3% of offender deportations {#removals-and-what-stops-them--human-rights-wins-about-3-percent}
+
+From 2015/16 to 2020/21 about 1,000 foreign offenders won appeals on ECHR grounds alone, against 31,400 removed: 3%. [45](#source-removals-and-what-stops-them-45) The Bonavero Institute's count for April 2016 to June 2021 is 922 against 26,091, or 3.5%, and around 2.5% for Article 8 alone. [43](#source-removals-and-what-stops-them-43) [44](#source-removals-and-what-stops-them-44) A sample found 70% of human-rights wins rested solely on Article 8. [42](#source-removals-and-what-stops-them-42)
 
 ### Other obstacles are documented alongside the legal ones {#removals-and-what-stops-them--other-obstacles}
 

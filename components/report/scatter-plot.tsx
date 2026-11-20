@@ -50,6 +50,8 @@ export type ScatterPlotProps = {
   pointLabel: string;
   id?: string;
   title?: string;
+  /** A short line under the title: the period, cases or source (see ReportFigure). */
+  subtitle?: string;
   description?: ReactNode;
   sources?: SourceCredit[];
   note?: ReactNode;
@@ -201,6 +203,7 @@ export function ScatterPlot({
   pointLabel,
   id,
   title,
+  subtitle,
   description,
   sources,
   note,
@@ -298,7 +301,7 @@ export function ScatterPlot({
   );
 
   if (preview) {
-    return <ReportFigure id={id} title={title} preview={preview} className="sv-scatter">{points.length > 0 && graph}</ReportFigure>;
+    return <ReportFigure id={id} title={title} subtitle={subtitle} preview={preview} className="sv-scatter">{points.length > 0 && graph}</ReportFigure>;
   }
 
   const table = (
@@ -330,7 +333,7 @@ export function ScatterPlot({
   );
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} headingLevel={headingLevel} className="sv-scatter">
+    <ReportFigure id={id} title={title} subtitle={subtitle} description={description} sources={sources} note={note} footer={footer} panel={panel} headingLevel={headingLevel} className="sv-scatter">
       {points.length === 0 ? <p className="sv-report__empty">No values to show.</p> : <ChartViewToggle label={label} graph={graph} table={table} />}
     </ReportFigure>
   );

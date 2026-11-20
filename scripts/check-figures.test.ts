@@ -54,14 +54,6 @@ test('an intro that cites no fact has no corpus to lean on', () => {
   assert.deepEqual(unmatched.map((f) => f.corpus), ['cites no fact whose sources could back it']);
 });
 
-test('a principle is still matched topic-wide', () => {
-  const { unmatched } = auditTopic([
-    fact('a', 'fees of $50 were charged'),
-    { kind: 'principle', id: 'p', data: { name: 'P' }, body: 'Even $50 matters.' },
-  ]);
-  assert.deepEqual(unmatched, []);
-});
-
 /** The figure fixture's frontmatter, with its id, as a fact the audit reads. */
 function figureFixture(): AuditItem {
   const { data } = matter(readFileSync(path.join(__dirname, '../lib/content/__fixtures__/figure-examples.md'), 'utf8'));

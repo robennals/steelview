@@ -17,7 +17,7 @@ declare module 'react' {
     '--sv-bars-count'?: number;
     /** Bar rows: a bar's, dumbbell dot's or series mark's fill, by series. */
     '--sv-bar-fill'?: string;
-    /** Event strip (and a long timeline's preview lane): plot insets that line it up with the chart above, and marker stacking. */
+    /** Event strip: plot insets that line it up with the chart above, and marker stacking. */
     '--sv-frame-ratio'?: number;
     '--sv-lane-levels'?: number;
     '--sv-strip-levels'?: number;
@@ -26,6 +26,9 @@ declare module 'react' {
     '--sv-period-color'?: string;
     /** Timeline: the category colour of an event marker. */
     '--sv-timeline-color'?: string;
+    /** Timeline axis: how many levels its markers stack to, and the level of one marker. */
+    '--sv-axis-levels'?: number;
+    '--sv-level'?: number;
     /** Composition bars: the column a compact row's total sits in. */
     '--sv-composition-total'?: string;
     /** Estimate rows: the column their figures sit in. */

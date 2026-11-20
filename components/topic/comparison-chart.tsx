@@ -4,9 +4,9 @@ import { aboutThisDataNote } from '@/lib/content/figure-text';
 import type { Fact, Source } from '@/lib/content/types';
 import { ChartAbout } from '@/components/report/chart-about';
 import { ObservationBar } from './observation-bar';
-import { PanelSources } from './sources-slot';
 import { COMPACT_PREVIEW_ITEMS, RankedColumns, fitsRankedColumns } from '@/components/report/ranked-columns';
 import { DetailRow, RowDetailHint } from '@/components/report/row-detail';
+import { formatValue } from '@/components/report/format';
 import type { PreviewFit } from '@/lib/chart/series-chart';
 
 type Comparison = NonNullable<Fact['comparisons']>[number];
@@ -15,7 +15,7 @@ type Comparison = NonNullable<Fact['comparisons']>[number];
 export type ChartPreview = {
   /** Where the title links. Without one the title is plain text, as in a step whose whole chart is clickable. */
   href?: string;
-  /** For a series, the one reading to draw (default: the first). */
+  /** For a series, the one reading to draw (default: the first), with any reading drawn alongside it. */
   reading?: string;
   /** For a series, the shape of the space it sits in (default: wide, as a carousel slide is). */
   fit?: PreviewFit;
@@ -38,11 +38,17 @@ export function ComparisonChart({ fact, chart, sources, observations, preview, p
   const groupLabel = chart.groupLabel ?? 'group';
   const allGroupsLabel = chart.allGroupsLabel ?? 'All groups';
   const items = chart.groups ? chart.items.map(item => ({ ...item, value: selected < 0 ? item.value : item.values![selected] })).sort((a, b) => b.value - a.value) : chart.items;
+  // A slideshow card's graph is the argument's evidence, so its groups can be switched there too.
+  const switchGroups = chart.groups && (!preview || preview.fit === 'card') ? chart.groups : undefined;
   const min = Math.min(0, ...items.map(item => item.value));
   const max = Math.max(0, chart.domainMax ?? 0, ...items.map(item => item.value));
   const range = max - min || 1;
   const zero = -min / range * 100;
-  const format = (value: number) => value > 0 && value < .01 ? `<0.01${chart.unit === 'percent' ? '%' : ''}` : `${value < 0 ? '−' : ''}${chart.unit === 'pounds' ? '£' : ''}${Math.abs(value).toLocaleString('en-GB', { maximumFractionDigits: 2 })}${chart.unit === 'percent' ? '%' : ''}`;
+  const exact = (value: number) => value > 0 && value < .01 ? `<0.01${chart.unit === 'percent' ? '%' : ''}` : `${value < 0 ? '−' : ''}${chart.unit === 'pounds' ? '£' : ''}${Math.abs(value).toLocaleString('en-GB', { maximumFractionDigits: 2 })}${chart.unit === 'percent' ? '%' : ''}`;
+  // Beside a bar, a figure of a million or more is written as prose writes it, £290m, so it fits its column; the breakdown table keeps every digit.
+  const format = (value: number) => chart.unit !== 'percent' && Math.abs(value) >= 1e6
+    ? formatValue(value, chart.unit === 'pounds' ? { compact: true, unit: 'currency', currency: 'GBP' } : { compact: true })
+    : exact(value);
   const aboutText = aboutThisDataNote(chart);
   const formatShare = (value: number) => chart.shareTotal ? `${(value / chart.shareTotal * 100).toLocaleString('en-GB', { maximumFractionDigits: 1 })}%` : null;
   const at = (hash: string) => `${preview?.href ?? ''}#${hash}`;
@@ -54,24 +60,24 @@ export function ComparisonChart({ fact, chart, sources, observations, preview, p
   return <figure className="sv-chart sv-comparison" id={`${fact.id}--chart-${chart.id}`} data-preview={preview ? true : undefined} data-panel-chart={panel ? true : undefined}>
     <figcaption className="sv-chart__caption">
       <Heading className="sv-graph-heading">{preview?.href ? <a href={preview.href}>{chart.title}</a> : chart.title}</Heading>
+      {chart.subtitle && !panel && <p className="sv-chart__subtitle">{chart.subtitle}</p>}
       {!preview && (panel
-        ? <ChartAbout description={chart.description}>{aboutText && <p>{aboutText}</p>}</ChartAbout>
+        ? <ChartAbout subtitle={chart.subtitle} description={chart.description} measure={chart.valueLabel}>{aboutText && <p>{aboutText}</p>}</ChartAbout>
         : <p className="sv-chart__desc">{chart.description}</p>)}
     </figcaption>
     {panel && <ObservationBar />}
-    {chart.groups && !preview && <fieldset className="sv-comparison-controls"><legend>Compare by {groupLabel}</legend>
-      {[...chart.groups, allGroupsLabel].map((label, index) => { const value = index === chart.groups!.length ? -1 : index; return <button type="button" key={label} aria-pressed={selected === value} onClick={() => setSelected(value)}>{label}</button>; })}
+    {switchGroups && <fieldset className="sv-comparison-controls"><legend>Compare by {groupLabel}</legend>
+      {[...switchGroups, allGroupsLabel].map((label, index) => { const value = index === switchGroups.length ? -1 : index; return <button type="button" key={label} aria-pressed={selected === value} onClick={() => setSelected(value)}>{label}</button>; })}
     </fieldset>}
-    {!preview && <p className="sv-chart__axis-label" aria-live="polite">{chart.groups ? `${selected < 0 ? allGroupsLabel : chart.groups[selected]} · ` : ''}{chart.valueLabel}</p>}
     {!preview && hasDetail && <RowDetailHint />}
     {columns ? <RankedColumns items={items} max={max} format={format} />
      : <ol className="sv-comparison__rows" data-dense={preview || chart.items.length > 12 || undefined} data-compact={(preview && items.length > COMPACT_PREVIEW_ITEMS) || undefined} style={{ '--sv-row-count': items.length }}>
       {items.map((item, index) => {
         const cells = <>
-          <span className="sv-comparison__label"><span title={preview ? item.label : undefined}>{item.label}</span><span>{format(item.value)}{formatShare(item.value) && <span className="sv-comparison__share"> · {formatShare(item.value)}</span>}</span></span>
+          <span className="sv-comparison__label"><span title={preview ? [item.label, item.subtitle].filter(Boolean).join(': ') : undefined}>{item.subtitle ? <><span className="sv-comparison__name">{item.label}</span><span className="sv-comparison__subtitle">{item.subtitle}</span></> : item.label}</span><span>{format(item.value)}{formatShare(item.value) && <span className="sv-comparison__share"> · {formatShare(item.value)}</span>}</span></span>
           <span className="sv-comparison__track" aria-hidden="true">
             <span className="sv-comparison__zero" style={{ left: `${zero}%` }} />
-            {chart.groups && selected < 0 ? item.values!.map((value, i) => <span key={i} className="sv-comparison__bar" style={{ background: `var(--sv-group-${i})`, left: `${item.values!.slice(0, i).reduce((a, b) => a + b, 0) / range * 100}%`, width: `${value / range * 100}%` }} />) : <span className="sv-comparison__bar" data-highlight={item.highlight || undefined} style={{ left: `${(Math.min(0, item.value) - min) / range * 100}%`, width: `${Math.abs(item.value) / range * 100}%` }} /> }
+            {chart.groups && selected < 0 ? item.values!.map((value, i) => <span key={i} className="sv-comparison__bar" style={{ background: `var(--sv-group-${i})`, left: `${item.values!.slice(0, i).reduce((a, b) => a + b, 0) / range * 100}%`, width: `${value / range * 100}%` }} />) : <span className="sv-comparison__bar" data-highlight={item.highlight || undefined} style={{ left: `${(Math.min(0, item.value) - min) / range * 100}%`, width: `${Math.abs(item.value) / range * 100}%`, ...(chart.groups && selected >= 0 ? { background: `var(--sv-group-${selected})` } : null) }} /> }
           </span>
         </>;
         return item.detail && !preview
@@ -80,9 +86,9 @@ export function ComparisonChart({ fact, chart, sources, observations, preview, p
       })}
     </ol>}
     {chart.groups && selected < 0 && <div className="sv-comparison-legend">{chart.groups.map((label, i) => <span key={label}><i style={{ background: `var(--sv-group-${i})` }} />{label}</span>)}</div>}
-    {chart.groups && !preview && <details className="sv-chart__data"><summary>Show all breakdowns</summary><div className="sv-breakdown-table"><table><caption>{chart.title}, by {groupLabel}</caption><thead><tr><th scope="col">{chart.itemLabel ?? 'Category'}</th>{chart.groups.map(group => <th key={group}>{group}</th>)}<th>Total</th>{hasDetail && <th>Detail</th>}</tr></thead><tbody>{chart.items.map(item => <tr key={item.label}><th>{item.label}</th>{item.values!.map((value, i) => <td key={i}>{format(value)}</td>)}<td>{format(item.value)}</td>{hasDetail && <td>{item.detail ?? '—'}</td>}</tr>)}</tbody></table></div></details>}
+    {chart.groups && !preview && <details className="sv-chart__data"><summary>Show all breakdowns</summary><div className="sv-breakdown-table"><table><caption>{chart.title}, by {groupLabel}</caption><thead><tr><th scope="col">{chart.itemLabel ?? 'Category'}</th>{chart.groups.map(group => <th key={group}>{group}</th>)}<th>Total</th>{hasDetail && <th>Detail</th>}</tr></thead><tbody>{chart.items.map(item => <tr key={item.label}><th>{item.label}</th>{item.values!.map((value, i) => <td key={i}>{exact(value)}</td>)}<td>{exact(item.value)}</td>{hasDetail && <td>{item.detail ?? '—'}</td>}</tr>)}</tbody></table></div></details>}
     {!preview && <p className="sv-comparison__scale" aria-hidden="true"><span>{format(min)}</span><span>{format(max)}</span></p>}
-    {panel ? <PanelSources /> : !preview && <p className="sv-chart__credit">Source: {chart.sources.map((n, i) => <span key={n}>{i > 0 && '; '}<a href={at(`source-${fact.id}-${n}`)}>{sources[n - 1].publisher} [{n}]</a></span>)}</p>}
+    {!panel && !preview && <p className="sv-chart__credit">Source: {chart.sources.map((n, i) => <span key={n}>{i > 0 && '; '}<a href={at(`source-${fact.id}-${n}`)}>{sources[n - 1].publisher} [{n}]</a></span>)}</p>}
     {observations}
     {aboutText && !preview && !panel && <details className="sv-chart__methodology"><summary>About this data</summary><p>{aboutText}</p></details>}
   </figure>;

@@ -1,8 +1,7 @@
 import type { ReactNode } from 'react';
 import type { ComponentFigure, Fact } from '@/lib/content/types';
 import { previewTarget } from '@/lib/content/preview';
-import { datePlacement } from '@/lib/content/period';
-import { layoutReading, pathFor, seriesStrokeDash } from '@/lib/chart/series-chart';
+import { bandPath, layoutReading, pathFor, seriesStrokeDash } from '@/lib/chart/series-chart';
 import { layoutScatter } from '@/lib/chart/scatter';
 import {
   areaMapProps,
@@ -28,8 +27,10 @@ import { periodSpan } from '@/components/report/period-timeline';
 import { seriesColor } from '@/components/report/scale';
 import { defaultChoices, sliceView } from '@/components/report/slice-view';
 import { layoutPanels } from '@/components/report/small-multiples-layout';
-import { extentValues, pointValue } from '@/components/report/qualified';
-import { percentAlong, spanOf, toYear } from '@/components/report/time-axis';
+import { extentValues, pointValue, qualificationOf } from '@/components/report/qualified';
+import { fitsRankedColumns } from '@/components/report/ranked-columns';
+import { percentAlong, toYear } from '@/components/report/time-axis';
+import { baselinePieces, eventAxis, namesOnAxis, previewEvents, sortEvents } from '@/components/report/timeline-layout';
 
 /**
  * A chart's silhouette, for a collapsed home-page row: the shape of the data
@@ -40,10 +41,22 @@ import { percentAlong, spanOf, toYear } from '@/components/report/time-axis';
  * Each silhouette is drawn from the same layout code as the chart it stands
  * for, so it cannot show a different shape from the slide: a series reading
  * from `SeriesChart`'s narrow plot, cropped to the plot area; a comparison as
- * one column per item; each figure kind from its component's own scales
+ * the horizontal rows it is drawn as, or the ranked columns a long one becomes
+ * in a preview; each figure kind from its component's own scales
  * (`figureThumb`), or plain rows where a kind has no shape of its own.
+ *
+ * `preview` says the chart it stands for is drawn as a preview (a home-page or
+ * viewpoint slide) rather than in full (a data panel), since a long bar chart
+ * changes shape between the two.
  */
-export function ChartThumb({ fact, chart, reading }: { fact: Fact; chart: string; reading?: string }) {
+export function ChartThumb({ fact, chart, reading, preview = false, picked }: {
+  fact: Fact;
+  chart: string;
+  reading?: string;
+  preview?: boolean;
+  /** The rows the slide it stands for picks out, as a viewpoint card's claim does: a timeline gives them its cards. */
+  picked?: string[];
+}) {
   const target = previewTarget(fact, chart);
   switch (target?.kind) {
     case 'series': {
@@ -52,16 +65,22 @@ export function ChartThumb({ fact, chart, reading }: { fact: Fact; chart: string
       const g = layout.geometry;
       return (
         <Thumb viewBox={`${g.left} ${g.top} ${g.plotWidth} ${g.plotHeight}`}>
+          {layout.lines.flatMap(line => line.band ? [<path key={`${line.name}-band`} d={bandPath(line.band)} fill={`var(--sv-series-${line.slot})`} fillOpacity="0.35" />] : [])}
           {layout.lines.flatMap(line => line.runs.map((run, i) => (
             <path key={`${line.name}-${i}`} d={pathFor(run.points)} fill="none" stroke={`var(--sv-series-${line.slot})`} strokeWidth="2" strokeDasharray={seriesStrokeDash(line.slot)} vectorEffect="non-scaling-stroke" />
           )))}
         </Thumb>
       );
     }
-    case 'comparison':
-      return <ColumnsThumb items={target.comparison.items} />;
+    case 'comparison': {
+      const { items, groups, domainMax } = target.comparison;
+      // As ComparisonChart draws it: grouped bars are sorted, and only a preview becomes columns.
+      return preview && !groups && fitsRankedColumns(items)
+        ? <ColumnsThumb items={items} />
+        : <BarsThumb items={items} sort={groups ? 'value' : 'none'} domainMax={domainMax} />;
+    }
     case 'figure':
-      return figureThumb(target.figure, fact);
+      return figureThumb(target.figure, fact, preview, picked);
     default:
       return null;
   }
@@ -72,11 +91,16 @@ export function ChartThumb({ fact, chart, reading }: { fact: Fact; chart: string
  * and its component's layout helpers. A kind with no case — tables, quotes
  * and key figures, which are set as type — is plain rows.
  */
-export function figureThumb(figure: ComponentFigure, fact: Fact): ReactNode {
+export function figureThumb(figure: ComponentFigure, fact: Fact, preview = false, picked?: string[]): ReactNode {
   const context = figureContext(fact);
   switch (figure.kind) {
-    case 'barChart':
-      return figure.series ? <PairedBarsThumb {...pairedBarChartProps(figure, context)} /> : <BarsThumb {...barChartProps(figure, context)} />;
+    case 'barChart': {
+      if (figure.series) return <PairedBarsThumb {...pairedBarChartProps(figure, context)} />;
+      const bars = barChartProps(figure, context);
+      // As BarChart draws it: a preview of many exact values becomes ranked columns.
+      const columns = bars.items.every(item => qualificationOf(item.value) === 'exact') ? bars.items.map(item => ({ ...item, value: pointValue(item.value) })) : [];
+      return preview && fitsRankedColumns(columns) ? <ColumnsThumb items={columns} /> : <BarsThumb {...bars} />;
+    }
     case 'compositionBar':
       return <CompositionThumb {...compositionBarProps(figure, context)} />;
     case 'estimateRange':
@@ -86,7 +110,7 @@ export function figureThumb(figure: ComponentFigure, fact: Fact): ReactNode {
     case 'map':
       return <MapThumb {...areaMapProps(figure, context)} />;
     case 'timeline':
-      return <EventsThumb {...timelineProps(figure, context)} />;
+      return <EventsThumb {...timelineProps(figure, context)} picked={picked} />;
     case 'periodTimeline':
       return <PeriodsThumb {...periodTimelineProps(figure, context)} />;
     case 'sliceExplorer':
@@ -146,7 +170,7 @@ function ColumnsThumb({ items }: { items: Array<{ value: number; highlight?: boo
  * published range is a bar to its low end and a whisker on to its high end,
  * as on the chart; a bound's arrowhead is too small to draw here.
  */
-function BarsThumb({ items, sort, domainMax }: BarChartProps) {
+function BarsThumb({ items, sort, domainMax }: Pick<BarChartProps, 'items' | 'sort' | 'domainMax'>) {
   const ordered = orderBars(items, sort);
   const scale = barScale(ordered.flatMap(item => extentValues(item.value)), domainMax);
   const row = 100 / Math.max(1, ordered.length);
@@ -243,15 +267,17 @@ function PanelsThumb({ panels, independentScales, zeroBased }: SmallMultiplesPro
 }
 
 /** One full-width bar per row, split into its parts' shares in the chart's colours. */
-function CompositionThumb({ categories, rows, otherThreshold, otherLabel }: CompositionBarProps) {
-  const composed = compose(categories, rows, { otherThreshold, otherLabel });
+function CompositionThumb({ categories, rows, otherThreshold, otherLabel, unit }: CompositionBarProps) {
+  const composed = compose(categories, rows, { otherThreshold, otherLabel, unit });
   const row = 100 / Math.max(1, composed.rows.length);
   return (
     <Thumb>
       {composed.rows.flatMap((r, i) => {
-        const starts = r.segments.map((_, j) => r.segments.slice(0, j).reduce((sum, s) => sum + s.share, 0));
+        // As on the chart, a bar's length is its row's total against the longest row's.
+        const scale = r.length / 100;
+        const starts = r.segments.map((_, j) => r.segments.slice(0, j).reduce((sum, s) => sum + s.share, 0) * scale);
         return r.segments.map((segment, j) => segment.share > 0 && (
-          <rect key={`${i}-${segment.key}`} x={starts[j]} width={segment.share} y={i * row + row * 0.2} height={row * 0.6} fill={compositionColor(categories, segment.key)} />
+          <rect key={`${i}-${segment.key}`} x={starts[j]} width={segment.share * scale} y={i * row + row * 0.2} height={row * 0.6} fill={compositionColor(categories, segment.key)} />
         ));
       })}
     </Thumb>
@@ -363,19 +389,44 @@ function GeoThumb(props: AreaMapProps) {
   );
 }
 
-/** Every event a tick on the timeline's span, in its category's colour; major events taller. */
-function EventsThumb({ events, categories }: TimelineProps) {
-  // An approximate date ("1850s", "c. 1888") sits where the timeline places it.
-  const span = spanOf(events.map(e => datePlacement(e.date)));
+/**
+ * The timeline as its preview draws it: the same broken axis and stacked
+ * markers, and below it a blank card for each event the preview gives one
+ * to. When the names go on the axis, a short bar stands for each name.
+ */
+function EventsThumb({ events, categories, picked }: TimelineProps) {
+  const sorted = sortEvents(events);
+  const axis = eventAxis(sorted);
+  const named = namesOnAxis(sorted);
   // The timeline's own slots: categories in order, else in order of first appearance.
   const order = categories?.map(c => c.id) ?? [...new Set(events.map(e => e.category))];
+  const colorOf = (category: string) => seriesColor(order.indexOf(category) + 1 || 1);
+  const baseline = named ? 62 : 26;
+  const step = named ? 22 : 9;
+  const cards = named ? [] : previewEvents(sorted, picked);
   return (
     <Thumb>
-      <line className="sv-thumb__rule" x1={0} x2={100} y1={50} y2={50} vectorEffect="non-scaling-stroke" />
-      {events.map((e, i) => {
-        const x = percentAlong(toYear(datePlacement(e.date)), span);
-        const reach = e.significance === 'major' ? 34 : 20;
-        return <line key={i} x1={x} x2={x} y1={50 - reach} y2={50 + reach} stroke={seriesColor(order.indexOf(e.category) + 1 || 1)} strokeWidth={2.5} vectorEffect="non-scaling-stroke" />;
+      {baselinePieces(axis.scale.breaks, 2).map(({ from, to }) => (
+        <line key={from} className="sv-thumb__rule" x1={from} x2={to} y1={baseline} y2={baseline} vectorEffect="non-scaling-stroke" />
+      ))}
+      {sorted.map((e, i) => {
+        const y = baseline - axis.levels[i] * step;
+        return (
+          <g key={i}>
+            {named && <rect className="sv-thumb__label" x={axis.places[i].x - 9} width={18} y={y - 17} height={7} />}
+            <Dot x={axis.places[i].x} y={y} size={6} color={colorOf(e.category)} />
+          </g>
+        );
+      })}
+      {cards.map((e, i) => {
+        const y = 40 + i * 20;
+        return (
+          <g key={`card-${i}`}>
+            <rect className="sv-thumb__card" x={1} width={98} y={y} height={16} rx={3} vectorEffect="non-scaling-stroke" />
+            <Dot x={7} y={y + 8} size={5} color={colorOf(e.category)} />
+            <rect className="sv-thumb__text" x={13} width={Math.min(78, 20 + e.title.length)} y={y + 6.5} height={3} />
+          </g>
+        );
       })}
     </Thumb>
   );

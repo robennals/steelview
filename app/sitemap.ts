@@ -1,14 +1,10 @@
 import type { MetadataRoute } from 'next';
 import { listTopicSlugs, loadTopic } from '@/lib/content/load';
-import { factPath, topicPath } from '@/lib/content/types';
+import { topicPath } from '@/lib/content/types';
 import { absoluteUrl } from '@/lib/site';
 
 /**
- * Home, the About, How it's made and Privacy pages, every topic, and every fact — headline and supporting alike.
- *
- * Facts are listed individually because they are the unit other people cite;
- * a crawler that only ever saw topic pages would index the argument and not
- * the evidence, which is the wrong way round for this site. `lastModified`
+ * Home, About, How it's made, Privacy and every topic: a fact has no page of its own. `lastModified`
  * comes from the topic's own `lastUpdated`, the only date the content model
  * has, so it says something true rather than "whenever this built".
  */
@@ -21,19 +17,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: absoluteUrl('/about'), changeFrequency: 'monthly', priority: 0.5 },
     { url: absoluteUrl('/how-its-made'), changeFrequency: 'monthly', priority: 0.5 },
     { url: absoluteUrl('/privacy'), changeFrequency: 'yearly', priority: 0.2 },
-    ...topics.flatMap((topic) => [
-      {
-        url: absoluteUrl(topicPath(topic.slug)),
-        lastModified: topic.lastUpdated,
-        changeFrequency: 'weekly' as const,
-        priority: 0.9,
-      },
-      ...topic.facts.map((fact) => ({
-        url: absoluteUrl(factPath(topic.slug, fact.id)),
-        lastModified: topic.lastUpdated,
-        changeFrequency: 'monthly' as const,
-        priority: fact.supports ? 0.5 : 0.7,
-      })),
-    ]),
+    ...topics.map((topic) => ({
+      url: absoluteUrl(topicPath(topic.slug)),
+      lastModified: topic.lastUpdated,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    })),
   ];
 }

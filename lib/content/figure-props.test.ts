@@ -27,6 +27,7 @@ import {
   smallMultiplesProps,
   timelineProps,
   toValueFormat,
+  topicQuotes,
 } from './figure-props';
 import type { Fact, FigureKind, FigureOf } from './types';
 
@@ -97,12 +98,17 @@ test('open periods end at the topic\'s lastUpdated; closed ones leave the axis a
   assert.equal(periodTimelineProps(periods, context).asOf, '2026-10-29');
 });
 
-test('period-timeline events are strip events crediting their citation', () => {
+test('period-timeline events are strip events crediting their citation, with the sentence their quoted words came from', () => {
+  const whiteHouse = { label: 'The White House', href: '#source-figure-examples-4', number: 4 };
   assert.deepEqual(periodTimelineProps(figureOf('periodTimeline'), context).events, [{
     date: '2026-05-01',
     label: 'Letter says hostilities "have terminated"',
     description: undefined,
-    sources: [{ label: 'The White House', href: '#source-figure-examples-4', number: 4 }],
+    sources: [whiteHouse],
+    passages: [{
+      source: whiteHouse,
+      parts: [{ text: 'The President reported that hostilities with Iran "' }, { text: 'have terminated', quoted: true }, { text: '".' }],
+    }],
   }]);
 });
 
@@ -151,6 +157,15 @@ test('a tileMap is a map that opens on its tiles, its preset resolved to tiles a
   assert.deepEqual(props.data.DE, { value: 5.1 });
   assert.deepEqual(props.data.AR, { value: 8.8, asPublished: '8.8%' });
   assert.equal(props.note?.endsWith('Values from EAVS 2024 Overview Table 1.'), true);
+});
+
+test('a map\'s arrows are weighted by their areas\' values, and its crop replaces the preset\'s extent', () => {
+  const map = figureOf('map', 'rejection-by-state');
+  const to = { label: 'There', lon: 0, lat: 0 };
+  const props = areaMapProps({ ...map, data: { ...map.data, NV: { low: 2, high: 4 } }, flows: { label: 'Route', from: ['DE', 'AR', 'NV'], via: [], to }, crop: { minLon: -100, maxLon: -70, minLat: 25, maxLat: 45 } }, context);
+  assert.deepEqual(props.flows, { label: 'Route', from: [{ regionId: 'DE', weight: 5.1 }, { regionId: 'AR', weight: 8.8 }, { regionId: 'NV', weight: 3 }], via: [], to });
+  assert.deepEqual(props.extent, { minLon: -100, maxLon: -70, minLat: 25, maxLat: 45 });
+  assert.equal(areaMapProps(map, context).flows, undefined);
 });
 
 test('the US territories join both views only when the figure names one', () => {
@@ -240,13 +255,11 @@ test('estimates may omit any bound, and a null no-effect value passes through', 
   assert.deepEqual(props.estimates.map(e => [e.estimate, e.low, e.high]), [[undefined, 25, 35], [40, 34, 42], [38, undefined, undefined], [43.6, undefined, undefined]]);
 });
 
-test('claim evidence links like an inline citation: to the parent page when the fact supports another', () => {
+test('claim evidence links like an inline citation: to the finding on the topic page', () => {
   const check = figureOf('claimCheck');
-  const facts: Pick<Fact, 'id' | 'supports'>[] = [{ id: 'figure-examples' }, { id: 'mail-ballot-privacy' }];
-  assert.equal(claimCheckProps(check, { ...context, slug: 'vbm', facts }).evidence?.href, '/topics/vbm/facts/figure-examples#figure-examples--chart-detected-is-a-floor');
-  const supporting = [{ id: 'mail-ballot-privacy', supports: 'mail-voting' }];
-  assert.equal(claimCheckProps({ ...check, evidence: { fact: 'mail-ballot-privacy' } }, { ...context, slug: 'vbm', facts: supporting }).evidence?.href, '/topics/vbm/facts/mail-voting#evidence-mail-ballot-privacy');
-  assert.equal(claimCheckProps(check, { ...context, slug: 'vbm', facts }).claimSource?.number, 22);
+  assert.equal(claimCheckProps(check, { ...context, slug: 'vbm' }).evidence?.href, '/topics/vbm#figure-examples--chart-detected-is-a-floor');
+  assert.equal(claimCheckProps({ ...check, evidence: { fact: 'mail-ballot-privacy' } }, { ...context, slug: 'vbm' }).evidence?.href, '/topics/vbm');
+  assert.equal(claimCheckProps(check, { ...context, slug: 'vbm' }).claimSource?.number, 22);
 });
 
 test('a quote\'s stance becomes its position, by its category\'s label; language and translation pass through', () => {
@@ -287,4 +300,19 @@ test('small multiples keep panel highlights and own sources, and name each panel
   assert.deepEqual(props.panels[4].sources, [{ label: 'Fixture Ship Tracker', href: '#source-figure-examples-40', number: 40 }]);
   assert.equal(props.note, 'Our monthly means of the daily counts. Kerch Strait: The counter began in July 2026.');
   assert.deepEqual(props.sources?.map(s => s.number), [39, 40]);
+});
+
+test('a topic\'s quotes are every collection\'s, each tagged with its question and credited to its own report', () => {
+  const collections = fact.figures!.filter((f): f is FigureOf<'quotes'> => f.kind === 'quotes');
+  assert.ok(collections.length > 1, 'the fixture has more than one collection');
+  // A second report, citing its own sources, with one of the collections.
+  const other: Fact = { ...fact, id: 'other-report', figures: [collections[0]] };
+  const quotes = topicQuotes([fact, other], '2026-10-29');
+  const count = collections.reduce((n, f) => n + f.quotes.length, 0) + collections[0].quotes.length;
+  assert.equal(quotes.length, count);
+  assert.deepEqual([...new Set(quotes.map(q => q.tags?.[0]))], collections.map(f => f.question));
+  const others = quotes.filter(q => q.id?.startsWith('other-report--'));
+  assert.equal(others.length, collections[0].quotes.length);
+  // In a panel a source links to the source itself.
+  assert.match(others[0].sources![0].href!, /^https?:/);
 });

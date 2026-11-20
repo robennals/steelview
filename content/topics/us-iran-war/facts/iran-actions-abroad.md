@@ -9,33 +9,28 @@ status: well-supported
 sources:
   # 1
   - stance: supports
-    quote: >-
-      Argentina’s Federal Criminal Cassation Court affirmed on Thursday that
-      the deadly attacks on the Israeli Embassy and the AMIA Jewish community
-      centre were the responsibility of the Islamic fundamentalist organisation
-      Hezbollah, sponsored by the government of Iran. The ruling also declared
-      that both episodes should be considered crimes against humanity, thus
-      placing them beyond the statute of limitations despite the passage of
-      time and the lack of judicial results. ... In 1992, a bomb attack on the
-      Israeli Embassy left 29 dead. Two years later, a truck loaded with
-      explosives drove into the AMIA Jewish centre and detonated, leaving 85
-      dead and 300 injured. ... put blame on then-Iran president Ali Akbar
-      Hashemi Bahramaie Rafsanjani as well as other Iranian officials and
-      Hezbollah members
+    quote: |-
+      Argentina’s Federal Criminal Cassation Court affirmed on Thursday that the deadly attacks on the Israeli Embassy and the AMIA Jewish community centre were the responsibility of the Islamic fundamentalist organisation Hezbollah, sponsored by the government of Iran. The ruling also declared that both episodes should be considered crimes against humanity, thus placing them beyond the statute of limitations despite the passage of time and the lack of judicial results. ...
+
+      In 1992, a bomb attack on the Israeli Embassy left 29 dead. Two years later, a truck loaded with explosives drove into the AMIA Jewish centre and detonated, leaving 85 dead and 300 injured. ...
+
+      put blame on then-Iran president Ali Akbar Hashemi Bahramaie Rafsanjani as well as other Iranian officials and Hezbollah members
     title: 'AMIA bombing: Argentina court holds Iran, Hezbollah responsible'
     url: https://www.batimes.com.ar/news/amp/argentina/amia-bombing-argentina-court-holds-iran-hezbollah-responsible.phtml
     publisher: Buenos Aires Times
     date: '2024-04-11'
   # 2
   - stance: supports
-    quote: >-
-      AMIA: procesaron a siete iraníes y un libanés por el atentado ... Rafecas
-      procesó como autores mediatos a cuatro exfuncionarios iraníes: Alí
-      Fallahijan, exministro de Inteligencia. Alí Velayati, exministro de
-      Relaciones Exteriores. Mohsen Rezai, excomandante de la Guardia
-      Revolucionaria. Ahmad Vahidi, exjefe de la Fuerza Al Quds. ... la Cámara
-      Federal de Casación Penal todavía debe resolver planteos sobre la
-      constitucionalidad del juicio en ausencia
+    quote: |-
+      AMIA: procesaron a siete iraníes y un libanés por el atentado ...
+
+      Rafecas procesó como autores mediatos a cuatro exfuncionarios iraníes:
+      - Alí Fallahijan, exministro de Inteligencia.
+      - Alí Velayati, exministro de Relaciones Exteriores.
+      - Mohsen Rezai, excomandante de la Guardia Revolucionaria.
+      - Ahmad Vahidi, exjefe de la Fuerza Al Quds. ...
+
+      la Cámara Federal de Casación Penal todavía debe resolver planteos sobre la constitucionalidad del juicio en ausencia
     title: 'AMIA: procesaron a siete iraníes y un libanés por el atentado'
     url: https://www.todojujuy.com/pais/amia-procesaron-siete-iranies-y-un-libanes-el-atentado-n296367
     publisher: TodoJujuy
@@ -52,11 +47,12 @@ sources:
     date: '2021-02-04'
   # 4
   - stance: supports
-    quote: >-
-      The Iranian Government Hired Polad Omarov and Rafat Amirov to Kill Masih
-      Alinejad in Exchange for $500,000 ... were each sentenced yesterday to
-      25 years' in prison ... The IRGC offered AMIROV $500,000 for Ms.
-      Alinejad's murder
+    quote: |-
+      The Iranian Government Hired Polad Omarov and Rafat Amirov to Kill Masih Alinejad in Exchange for $500,000
+
+      The Justice Department announced today that RAFAT AMIROV, a/k/a “Farkhaddin Mirzoev,” a/k/a “Pᴎᴍ,” a/k/a “Rome,” and POLAD OMAROV, a/k/a “Araz Aliyev,” a/k/a “Polad Qaqa,” a/k/a “Haci Qaqa,” were each sentenced yesterday to 25 years' in prison for their participation in a murder-for-hire plot targeting Masih Alinejad, a journalist, author, and human rights activist, on behalf of the Government of Iran. In March 2025, Amirov and Omarov were found guilty of murder-for-hire, attempted murder in aid of racketeering, and related charges, following a two-week trial before U.S. District Judge Colleen McMahon, who imposed today’s sentences. ...
+
+      The IRGC offered AMIROV $500,000 for Ms. Alinejad's murder
     title: 'Two Russian Mob Leaders Sentenced to 25 Years in Prison for Murder-For-Hire Targeting a Journalist on Behalf of the Iranian Government'
     url: https://www.justice.gov/opa/pr/two-russian-mob-leaders-sentenced-25-years-prison-murder-hire-targeting-journalist-behalf
     publisher: US Department of Justice
@@ -101,108 +97,84 @@ sources:
     date: '2011-10-11'
   # 8
   - stance: supports
-    quote: >-
-      Currently there are four countries designated under these authorities:
-      Cuba, the Democratic People’s Republic of Korea (North Korea), Iran, and
-      Syria. Country Designation Date Cuba January 12, 2021 Democratic
-      People’s Republic of Korea (North Korea) November 20, 2017 Iran January
-      19, 1984 Syria December 29, 1979
+    quote: |-
+      Currently there are four countries designated under these authorities: Cuba, the Democratic People’s Republic of Korea (North Korea), Iran, and Syria.
+
+      Country | Designation Date
+      Cuba | January 12, 2021
+      Democratic People’s Republic of Korea (North Korea) | November 20, 2017
+      Iran | January 19, 1984
+      Syria | December 29, 1979
     title: 'State Sponsors of Terrorism'
     url: https://www.state.gov/state-sponsors-of-terrorism/
     publisher: US Department of State
     date: '2025-12'
   # 9
   - stance: supports
-    quote: >-
-      In 2023, Iran remained the leading state sponsor of terrorism ... Iran
-      has provided hundreds of millions of dollars in support of Hizballah and
-      trained thousands of its fighters at camps in Iran. ... Since the end of
-      the 2006 Israeli-Hizballah conflict, Iran has supplied Hizballah in
-      Lebanon with thousands of rockets, missiles, and small arms in violation
-      of UNSCR 1701. ... Although there is no evidence that Iran knew about
-      Hamas’s October 7 attacks on Israel in advance, its long-standing
-      material, financial, and training support to Hamas enabled Hamas to
-      execute the attack. ... On October 18, IAMGs restarted attacks against
-      US military and diplomatic facilities, which came after an 18-month
-      general pause in attacks in Iraq and a six-month pause in attacks in
-      Syria. By the end of 2023, IAMGs had attacked US facilities in Iraq and
-      Syria more than 100 times.
+    quote: |-
+      In 2023, Iran remained the leading state sponsor of terrorism ...
+
+      Iran has provided hundreds of millions of dollars in support of Hizballah and trained thousands of its fighters at camps in Iran. ...
+
+      Since the end of the 2006 Israeli-Hizballah conflict, Iran has supplied Hizballah in Lebanon with thousands of rockets, missiles, and small arms in violation of UNSCR 1701. ...
+
+      Although there is no evidence that Iran knew about Hamas’s October 7 attacks on Israel in advance, its long-standing material, financial, and training support to Hamas enabled Hamas to execute the attack.
+
+      In Iraq and Syria, Iran supported various IAMGs in 2023, including the U.S.-designated terrorist groups Kata’ib Hizballah, Harakat al-Nujaba, and Asa’ib Ahl al-Haq, with sophisticated weapons – including increasingly accurate and lethal unmanned aerial systems (UAS) – support, funding, and training. On October 18, IAMGs restarted attacks against US military and diplomatic facilities, which came after an 18-month general pause in attacks in Iraq and a six-month pause in attacks in Syria. By the end of 2023, IAMGs had attacked US facilities in Iraq and Syria more than 100 times.
     title: 'Country Reports on Terrorism 2023'
     url: https://www.state.gov/reports/country-reports-on-terrorism-2023/
     publisher: US Department of State
     date: '2025-03'
   # 10
   - stance: supports
-    quote: >-
-      Information gathered by the Panel indicates that they have been
-      receiving technical assistance, training, weapons and financial support
-      from the Islamic Republic of Iran, Iraqi armed groups and Hizbullah. ...
-      70. The Panel observes strong similarities between the documented
-      materiel and those developed or operated by the Islamic Republic of Iran
-      (53 items). Similar items are also operated by armed groups in Iraq
-      (20), Lebanon (11), the occupied Palestinian territory (5), Bahrain (1)
-      and Somalia (1)
+    quote: |-
+      Information gathered by the Panel indicates that they have been receiving technical assistance, training, weapons and financial support from the Islamic Republic of Iran, Iraqi armed groups and Hizbullah. ...
+
+      70. The Panel observes strong similarities between the documented materiel and those developed or operated by the Islamic Republic of Iran (53 items). Similar items are also operated by armed groups in Iraq (20), Lebanon (11), the occupied Palestinian territory (5), Bahrain (1) and Somalia (1)
     title: 'Final report of the Panel of Experts on Yemen (S/2024/731)'
     url: https://documents.un.org/doc/undoc/gen/n24/259/53/pdf/n2425953.pdf
     publisher: UN Security Council, Panel of Experts on Yemen
     date: '2024-10-11'
   # 11
   - stance: complicates
-    quote: >-
-      This study draws on an unclassified and open-source dataset of 98 cases
-      of Iranian external operations from December 1979 through December 2021.
-      ... this is in no way a comprehensive listing of all such Iranian
-      external operations. ... Of the 98 cases in the dataset, 42 involved the
-      targeting of dissidents, 21 of whom were dual nationals or legal foreign
-      residents. An additional 31 of the 98 cases targeted Jews or Israelis,
-      24 targeted diplomats, 24 targeted Western interests, seven targeted Gulf
-      state interests, five involved the fatwa against Salman Rushdie ... Out
-      of 55 cases over the past decade, 22 operations targeted Iranian
-      dissidents, 25 cases targeted Jews or Israelis, 19 targeted diplomats,
-      12 targeted specifically Western interests, and six targeted Gulf state
-      interests. ... The dataset suggests there was a gap in Iranian external
-      operational activity for about 23 months after 9/11 ... there were only
-      two plots in Europe in the decade after 9/11. This dramatic drop in
-      attacks in Europe reversed itself over the past decade, however, with 17
-      plots in Europe since 2011.
+    quote: |-
+      This study draws on an unclassified and open-source dataset of 98 cases of Iranian external operations from December 1979 through December 2021. ...
+
+      this is in no way a comprehensive listing of all such Iranian external operations. ...
+
+      Of the 98 cases in the dataset, 42 involved the targeting of dissidents, 21 of whom were dual nationals or legal foreign residents. An additional 31 of the 98 cases targeted Jews or Israelis, 24 targeted diplomats, 24 targeted Western interests, seven targeted Gulf state interests, five involved the fatwa against Salman Rushdie ...
+
+      Limiting the analysis to the past decade, the numbers remain alarming. Out of 55 cases over the past decade, 22 operations targeted Iranian dissidents, 25 cases targeted Jews or Israelis, 19 targeted diplomats, 12 targeted specifically Western interests, and six targeted Gulf state interests.
+
+      Targeting Iranian dissidents has been a constant feature of Iranian external operations. ...
+
+      The dataset suggests there was a gap in Iranian external operational activity for about 23 months after 9/11 ...
+
+      there were only two plots in Europe in the decade after 9/11. This dramatic drop in attacks in Europe reversed itself over the past decade, however, with 17 plots in Europe since 2011.
     title: 'Trends in Iranian External Assassination, Surveillance, and Abduction Plots (CTC Sentinel, vol. 15, no. 2)'
     url: https://ctc.westpoint.edu/trends-in-iranian-external-assassination-surveillance-and-abduction-plots/
     publisher: Combating Terrorism Center at West Point (Matthew Levitt)
     date: '2022-02-24'
   # 12
   - stance: complicates
-    quote: >-
-      of the 218 plots in the overall dataset covering 1979 to today, 102
-      plots occurred in Europe. The pace of Iranian operational activity in
-      Europe has spiked, with over half of these plots (54 cases) occurring
-      between 2021 and 2024. These operations have focused on targeting
-      Iranian dissidents (34 cases), including journalists broadcasting news
-      in Farsi that Tehran would rather not see the light of day, Israeli
-      citizens and diplomats (10 cases), and Jews (7 cases). Furthermore, of
-      these 54 plots, sixteen involved the use of criminal perpetrators to
-      carry out the attacks. ... The Washington Institute has produced an
-      interactive map drawing on this dataset which depicts Iranian external
-      operations – assassinations, abductions, intimidation and surveillance
-      plots – around the world
+    quote: |-
+      of the 218 plots in the overall dataset covering 1979 to today, 102 plots occurred in Europe. The pace of Iranian operational activity in Europe has spiked, with over half of these plots (54 cases) occurring between 2021 and 2024. These operations have focused on targeting Iranian dissidents (34 cases), including journalists broadcasting news in Farsi that Tehran would rather not see the light of day, Israeli citizens and diplomats (10 cases), and Jews (7 cases). Furthermore, of these 54 plots, sixteen involved the use of criminal perpetrators to carry out the attacks. ...
+
+      The Washington Institute has produced an interactive map drawing on this dataset which depicts Iranian external operations – assassinations, abductions, intimidation and surveillance plots – around the world
     title: 'Iranian External Operations in Europe: The Criminal Connection'
     url: https://icct.nl/publication/iranian-external-operations-europe-criminal-connection
     publisher: International Centre for Counter-Terrorism (Matthew Levitt and Sarah Boches)
     date: '2024-10-16'
   # 13
   - stance: supports
-    quote: >-
-      The other state keen on subcontracting its UK violence is Iran. I’ve
-      been calling this out since 2022. Today, we continue to see familiar
-      Iranian intent – using criminal proxies to try to intimidate
-      oppositionists, Iranian media organisations, and Israeli sites. But 2026
-      has also seen the Iranians, like the Russians, attempting to expand their
-      hybrid campaign. Over the last twelve months, our Iran-linked operations
-      have led to more than fifty arrests in the UK. ... The spring saw a wave
-      of arson and sabotage incidents targeting Jewish communities in the UK
-      and other European nations. ... claimed by a group calling itself the
-      Islamic Movement of the Companions of the Right. Behind this front sat
-      members of the IRGC. ... The other major shift this year has been
-      Iranian ambitions to come at harder targets, like military sites.
+    quote: |-
+      The other state keen on subcontracting its UK violence is Iran. I’ve been calling this out since 2022. Today, we continue to see familiar Iranian intent – using criminal proxies to try to intimidate oppositionists, Iranian media organisations, and Israeli sites. But 2026 has also seen the Iranians, like the Russians, attempting to expand their hybrid campaign. Over the last twelve months, our Iran-linked operations have led to more than fifty arrests in the UK. ...
+
+      The spring saw a wave of arson and sabotage incidents targeting Jewish communities in the UK and other European nations. ...
+
+      claimed by a group calling itself the Islamic Movement of the Companions of the Right. Behind this front sat members of the IRGC. ...
+
+      The other major shift this year has been Iranian ambitions to come at harder targets, like military sites.
     title: 'MI5 Director General delivers annual threat update'
     url: https://www.mi5.gov.uk/news-categories/speeches-and-statements
     publisher: MI5 (the Security Service)
@@ -244,7 +216,8 @@ sources:
     publisher: Al Jazeera
     date: '2024-03-04'
 series:
-  title: 'Confirmed attacks on US and coalition forces in Iraq and Syria by Iran-aligned militias, by month, October 2023 – December 2024'
+  title: 'Attacks on US forces in Iraq and Syria'
+  subtitle: 'Confirmed attacks a month by Iran-aligned militias, Oct 2023 – Dec 2024'
   description: >-
     Attacks the Washington Institute's Militia Spotlight tracker confirmed and
     gave a serial number, by month. Claimed attacks on Israel are excluded.
@@ -271,19 +244,21 @@ series:
       source: 17
   source:
     stance: supports
-    quote: >-
-      Claimed attacks on U.S. and coalition bases in Iraq and Syria, which were
-      the predominant category until the temporary cessation of anti-U.S.
-      attacks in February-July 2024. When we can confirm attacks, we have given
-      them a serial number in the lefthand column. We can have very high
-      confidence these claimed anti-coalition attacks actually occurred. Since
-      September 2024, the number of anti-U.S. strikes in Syria seems to be
-      increasing again, but it is very hard to get high-confidence evidence of
-      these attacks. ... Claimed attacks on Israel ... do not receive a serial
-      number. ... Serial Number | Date | Target ... 223 | Dec 3 | Conoco, Syria
-      ... 182 | Feb 4 | Omar, Syria ... 180 | Jan 28 | Erbil, Iraq ... 128 |
-      Dec 31 | Erbil, Iraq ... 90 | Nov 23 | al-Asad and Erbil, Iraq ... 32 |
-      Oct 31 | al-Asad, Iraq ... 1 | Oct 18
+    quote: |-
+      Attacks fall into two categories:
+
+      Claimed attacks on U.S. and coalition bases in Iraq and Syria, which were the predominant category until the temporary cessation of anti-U.S. attacks in February-July 2024. When we can confirm attacks, we have given them a serial number in the lefthand column. We can have very high confidence these claimed anti-coalition attacks actually occurred. Since September 2024, the number of anti-U.S. strikes in Syria seems to be increasing again, but it is very hard to get high-confidence evidence of these attacks.
+
+      Claimed attacks on Israel, which have been by far the most prominent Iraqi attacks reported since February 2024. These attacks do not receive a serial number. …
+
+      Serial Number | Date | Target | Claimed By | Weapons System | Notes
+      223 | Dec 3 | Conoco, Syria |  | Unspecified rockets and mortar | U.S. airstrikes and counter-battery fire on a mobile artillery group.
+      182 | Feb 4 | Omar, Syria | The Islamic Resistance in Iraq War Media (new) | Unspecified drones | Some reporting suggests six Syrian Democratic Forces (SDF) special forces killed and numerous wounded, perhaps a deliberate lethal attack on non-Americans collocated near US troops in the coalition complex in the Omar oilfield. IRI claimed this as an attack on "a U.S. base".
+      180 | Jan 28 | Erbil, Iraq | The Islamic Resistance in Iraq War Media | Unspecified drones | There are unconfirmed reports of a drone impact near a compound on the Coalition military side of the airport that houses the small Hungarian CJTF-OIR contingent. The KDP’s Counter-Terrorism Directorate (CTD) denied any attack took place.
+      128 | Dec 31 | Erbil, Iraq | The Islamic Resistance in Iraq War Media | Unspecified drone | Launch image showed Shahed-101. Possibe targeting of Kurdistan leadership villa in Pirmam, Erbil.
+      90 | Nov 23 | al-Asad and Erbil, Iraq | The Islamic Resistance in Iraq War Media | Unspecified number of drones in 3-4 separate attacks | Unusual format - suggests 2x attacks on al-Asad, and 2x on Erbil International Airport, all using drones, but unclear how many. Could be hinting at swarm operations. Odd format to bundle all claims together.
+      32 | Oct 31 | al-Asad, Iraq | The Islamic Resistance in Iraq War Media | Unspecified rockets |
+      1 | Oct 18 | al-Asad, Iraq | The Islamic Resistance in Iraq War Media | 3x drones | DoD announces 4 minor injuries and destruction of aircraft hangar/small plane.
     title: 'Tracking Anti-U.S. and Anti-Israel Strikes From Iraq and Syria During the Gaza Crisis'
     url: https://www.washingtoninstitute.org/policy-analysis/tracking-anti-us-and-anti-israel-strikes-iraq-and-syria-during-gaza-crisis
     publisher: The Washington Institute for Near East Policy (Michael Knights, Amir al-Kaabi and Hamdi Malik, Militia Spotlight)
@@ -298,7 +273,8 @@ series:
           points: [{period: '2023-10', value: 32}, {period: '2023-11', value: 58}, {period: '2023-12', value: 38}, {period: '2024-01', value: 52}, {period: '2024-02', value: 2}, {period: '2024-03', value: 0}, {period: '2024-04', value: 2}, {period: '2024-05', value: 0}, {period: '2024-06', value: 0}, {period: '2024-07', value: 4}, {period: '2024-08', value: 3}, {period: '2024-09', value: 7}, {period: '2024-10', value: 16}, {period: '2024-11', value: 8}, {period: '2024-12', value: 1}]
 comparisons:
   - id: yemen-panel-matched-materiel
-    title: 'Houthi materiel inspected by the UN Panel of Experts, by where similar items are developed or operated, 2023–24'
+    title: 'Houthi materiel inspected by UN experts'
+    subtitle: 'By where similar items are developed or operated, UN panel, 2023–24'
     description: 'Number of inspected items the Panel found strongly similar to materiel developed or operated by each state or group, in its final report of October 2024.'
     unit: count
     valueLabel: 'Inspected items'
@@ -347,8 +323,8 @@ figures:
     id: "yemen-panel-matched-materiel"
   - kind: "timeline"
     id: "court-record"
-    title: >-
-      Court findings, convictions and charges over Iran-linked plots, 2011–2026
+    title: Court cases over Iran-linked plots
+    subtitle: Court findings, convictions and charges, 2011–2026
     description: "Court rulings and convictions are shown separately from charges, which are allegations that have not been tested in court."
     note: "Each entry is as of the date shown, except the first Alinejad case, whose status is as of 30 October 2025."
     categories:
@@ -365,7 +341,8 @@ figures:
       - { date: "2026-09-21", title: "AMIA bombing: seven Iranians and a Lebanese charged, including four former officials", description: "Argentine federal judge (Rafecas): charged as indirect perpetrators; trial in absentia under constitutional challenge.", category: "charge", source: 2 }
   - kind: "timeline"
     id: "state-sponsors"
-    title: US list of state sponsors of terrorism, by date designated
+    title: US list of state sponsors of terrorism
+    subtitle: Each country on the list, by the date it was designated
     description: "The US list as last readable on state.gov, a copy captured on 31 December 2025."
     categories:
       - { id: "designated", label: "Designated" }
@@ -376,8 +353,9 @@ figures:
       - { date: "2021-01-12", title: "Cuba", category: "designated", source: 8 }
   - kind: "dataTable"
     id: "plot-counts"
-    title: "Plots abroad attributed to Iran, in one author's dataset"
-    description: "Counts by Matthew Levitt of the Washington Institute, from open sources. He calls the dataset \"in no way a comprehensive listing\", and target categories overlap, so they do not add to the total."
+    title: "Plots abroad attributed to Iran"
+    subtitle: "Counts in one author's dataset: Matthew Levitt, Washington Institute"
+    description: "Counts Levitt compiled from open sources. He calls the dataset \"in no way a comprehensive listing\", and target categories overlap, so they do not add to the total."
     caption: "One row per count"
     columns:
       - { key: "measure", label: "Measure", rowHeader: true, sortable: false }
@@ -397,7 +375,8 @@ figures:
       - { measure: "Of which used criminal perpetrators", count: { value: 16, sources: [12], asPublished: "sixteen" }, period: "2021–2024" }
   - kind: "keyFigures"
     id: "mi5"
-    title: "MI5's statements on Iran-backed plots in the UK"
+    title: "MI5 on Iran-backed plots in the UK"
+    subtitle: "MI5's own statements, October 2025 and October 2026"
     description: "MI5's own totals, published without a case list or definitions, measuring different things over different years."
     figures:
       - { value: 20, qualifier: "more than", asPublished: "more than twenty", format: { unit: "count" }, label: "potentially lethal Iran-backed plots tracked", period: "2025-10-16", periodLabel: "The year to Oct 2025", source: 14 }
@@ -406,10 +385,26 @@ figures:
     id: "hostage-taking"
     description: "The US Secretary of State designated Iran \"a state sponsor of wrongful detention\" on 27 February 2026, the day before the war."
     quote: { text: "The Iranian regime must stop taking hostages and release all Americans unjustly detained in Iran, steps that could end this designation and associated actions", speaker: "Marco Rubio", role: "US Secretary of State", date: "2026-02-27", source: 15 }
+observationMarks:
+  attacks-on-us-forces-before-the-war: {lines: ["Confirmed attacks (WINEP)"], from: "2023-10", to: "2024-12"}
+  argentine-court-buenos-aires-bombings: {rows: ["1992 Israeli Embassy bombing (29 dead) and 1994 AMIA bombing (85 dead), Buenos Aires"]}
+  us-convictions-iran-directed-plots: {rows: ["Plot to kill journalist Masih Alinejad in New York", "Second plot against Alinejad, organised by Farhad Shakeri"]}
+  plots-mostly-target-opponents: {rows: ["Plots in Europe, 2021–2024", "Of which targeted Iranian dissidents"]}
+  attacks-came-in-a-burst: {lines: ["Confirmed attacks (WINEP)"], from: "2023-10", to: "2024-01"}
+  pause-before-october-2023: {lines: ["Confirmed attacks (WINEP)"], at: "2023-10"}
+  no-foreknowledge-of-october-7: {lines: ["Confirmed attacks (WINEP)"], at: "2023-10"}
+  us-plots-were-foiled: {rows: ["Alleged plot to kill the Saudi ambassador in Washington", "Alleged tasking of Farhad Shakeri to surveil and plot against President-elect Trump", "Plot to kill journalist Masih Alinejad in New York", "Second plot against Alinejad, organised by Farhad Shakeri"]}
+  amia-indictee-held-office: {rows: ["AMIA bombing: seven Iranians and a Lebanese charged, including four former officials"]}
+  plot-pace-varies: {rows: ["Plots in the dataset", "Plots in Europe in the decade after 9/11", "Plots in the decade 2011–2021"]}
+  plot-counts-one-author: {rows: ["Plots in the dataset", "Plots in the expanded dataset"]}
+  state-sponsor-since-1984: {rows: ["Syria", "Iran"]}
+  leading-state-sponsor: {rows: ["Iran"]}
+  houthi-materiel-similar-to-iranian: {rows: ["Iran"]}
+  similar-not-proven-supplied: {rows: ["Iran", "Armed groups in Iraq", "Armed groups in Lebanon"]}
 ---
 ## Observations {#iran-actions-abroad--observations-confirmed-attacks}
 
-### Iran-aligned militias attacked US forces more than 200 times before this war {#iran-actions-abroad--attacks-on-us-forces-before-the-war}
+### Iran-aligned militias attacked US and coalition forces more than 200 times before this war {#iran-actions-abroad--attacks-on-us-forces-before-the-war}
 
 The Washington Institute's tracker confirmed 223 attacks on US and coalition bases in Iraq and Syria between October 2023 and December 2024 (chart). [17](#source-iran-actions-abroad-17)
 
@@ -441,11 +436,11 @@ The finding is that items are "similar" to those Iran develops or operates, not 
 
 ## Observations {#iran-actions-abroad--observations-court-record}
 
-### Argentina's highest criminal court held Iran-backed Hezbollah responsible for two bombings {#iran-actions-abroad--argentine-court-buenos-aires-bombings}
+### A federal criminal court in Argentina held Iran-backed Hezbollah responsible for two bombings {#iran-actions-abroad--argentine-court-buenos-aires-bombings}
 
 In April 2024 the Cassation Court ruled that both Buenos Aires bombings were carried out by Hezbollah "sponsored by the government of Iran", and blamed then-president Rafsanjani and other officials. [1](#source-iran-actions-abroad-1) Iran denies involvement; no one has been tried in person.
 
-### US courts have sentenced men hired to kill a critic of the regime on US soil {#iran-actions-abroad--us-convictions-iran-directed-plots}
+### US courts have sentenced men hired, for Iran's Revolutionary Guards, to kill a journalist on US soil {#iran-actions-abroad--us-convictions-iran-directed-plots}
 
 Three men have been sentenced for plots against Masih Alinejad that DOJ says were directed by the Iranian government and the IRGC (timeline). [4](#source-iran-actions-abroad-4) [5](#source-iran-actions-abroad-5) In Belgium an Iranian diplomat was convicted of plotting to bomb an opposition rally. [3](#source-iran-actions-abroad-3)
 

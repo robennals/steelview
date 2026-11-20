@@ -180,8 +180,17 @@ export const seriesReadingSchema = z.object({
   label: z.string().min(1),
   /** `count` formats 1,441,000 and 1.4m; `percent` formats 2.10%. */
   unit: z.enum(['count', 'percent']),
-  /** The value-axis label — what one unit on the vertical axis means. */
+  /**
+   * Exactly what one unit on the vertical axis counts. No line on the chart
+   * shows it: the title, subtitle or tickUnit must make the unit clear, and a
+   * data panel's More says this in full.
+   */
   valueLabel: z.string().min(1),
+  /**
+   * A short unit written after every value on the axis ("kg" makes "500 kg"),
+   * so the reader needs no separate label line above the graph to read it.
+   */
+  tickUnit: z.string().min(1).max(6).optional(),
   /** Anything the reader must know to read this reading honestly, e.g. that it is derived. */
   note: z.string().optional(),
   source: sourceSchema.optional(),
@@ -191,6 +200,31 @@ export const seriesReadingSchema = z.object({
    * accept values no quote states.
    */
   valuesFrom: z.string().min(1).optional(),
+  /**
+   * Whether the value axis reaches zero; default true. Set false only when
+   * zero means nothing on this scale, and say why in `note`.
+   */
+  zeroBased: z.boolean().optional(),
+  /**
+   * Another reading of the same series to draw on this one's plot, against a
+   * second value axis on the right: a count and its rate, a total and its
+   * per-head figure, seen together rather than one at a time. That reading is
+   * then not a view of its own, and its observations are read on this one.
+   */
+  alongside: z.string().min(1).optional(),
+  /**
+   * Where the axis of the reading drawn alongside goes: `right` of the plot
+   * (the default), or `left`, beside this reading's own axis and further out.
+   * Either way, an axis read by one line has its numbers in that line's colour.
+   */
+  alongsideAxis: z.enum(['left', 'right']).optional(),
+  /**
+   * The lines are parts of one whole — outcomes of each year's claims — so
+   * each is drawn as a band stacked on the ones before it, and the top edge
+   * is the total. Every line must give the same periods, as counts that are
+   * never negative.
+   */
+  stacked: z.boolean().optional(),
   lines: z.array(seriesLineSchema).min(1),
 });
 
@@ -223,8 +257,16 @@ export const seriesEventSchema = z.object({
   ...citationFields,
 }).superRefine(citationRule({ required: false })).transform(toSources);
 
+/**
+ * A short line under a chart's title, shown everywhere the title is, previews
+ * included: the context the title is too short to carry, such as the period
+ * or which cases are compared ("The Iran war beside Iraq and Afghanistan").
+ */
+const chartSubtitle = z.string().min(1).optional();
+
 export const seriesSchema = z.object({
   title: z.string().min(1),
+  subtitle: chartSubtitle,
   /**
    * What the chart shows, in words. This is the screen-reader description and
    * the sighted reader's orientation, so it is required rather than derived
@@ -280,6 +322,7 @@ export const seriesSchema = z.object({
 export const comparisonChartSchema = z.object({
   id: z.string().regex(/^[a-z0-9-]+$/),
   title: z.string().min(1),
+  subtitle: chartSubtitle,
   description: z.string().min(1),
   unit: z.enum(['count', 'percent', 'pounds']),
   valueLabel: z.string().min(1),
@@ -307,6 +350,8 @@ export const comparisonChartSchema = z.object({
     value: z.number().finite(),
     highlight: z.boolean().optional(),
     values: z.array(z.number().finite().nonnegative()).optional(),
+    /** A short second line under the label, saying what the row is ("Iraq, 2003–2010"). Unlike `detail`, always shown, previews included. */
+    subtitle: z.string().min(1).optional(),
     /** What the one-line `label` leaves out: period, sample size, coverage. Opens under the row. */
     detail: z.string().min(1).optional(),
   })).min(2),
@@ -372,6 +417,7 @@ const figureBase = {
   id: slugId,
   replaces,
   title: z.string().min(1),
+  subtitle: chartSubtitle,
   /** The visible one-sentence orientation, and the screen-reader description. */
   description: z.string().min(1),
   /** Citations the whole figure rests on. Kinds whose items each cite a source may leave this empty. */
@@ -628,6 +674,24 @@ function mapEncodingRule(what: 'map' | 'tile map' | 'geo map') {
   };
 }
 
+/** A point on a map that an arrow passes through or ends at, named for the readout and the table: "Northern France". */
+const mapPlace = z.strictObject({ label: z.string().min(1), lon: z.number().min(-180).max(180), lat: z.number().min(-90).max(90) });
+
+/**
+ * Arrows on the real-shape view: from each start in `from`, through the `via`
+ * places in turn, to `to`. They converge, so the last stretch is one arrow.
+ * A start is an area, whose arrow on a numeric map is as thick as its datum,
+ * or a place, such as a stretch of coast. The tiles draw none; the
+ * screen-reader text names the route.
+ */
+const mapFlows = z.strictObject({
+  /** What the arrows show, for the key: "Route to the UK". */
+  label: z.string().min(1),
+  from: z.array(z.union([z.string().min(1), mapPlace])).min(1),
+  via: z.array(mapPlace).default([]),
+  to: mapPlace,
+});
+
 const mapFields = {
   ...figureBase,
   /** Table heading for the areas: "State". */
@@ -636,6 +700,9 @@ const mapFields = {
   highlight: z.array(z.string()).default([]),
   /** Areas too small to see at full scale, redrawn enlarged beside the real-shape view. */
   insets: z.array(z.object({ regionIds: z.array(z.string().min(1)).min(1), label: z.string().min(1).optional() })).optional(),
+  /** The lon/lat box the real-shape view shows, in place of its preset's: a world map cropped to the part of the world its data is in. */
+  crop: z.strictObject({ minLon: z.number(), maxLon: z.number(), minLat: z.number(), maxLat: z.number() }).optional(),
+  flows: mapFlows.optional(),
   ...mapEncodingFields,
 };
 
@@ -1042,6 +1109,8 @@ export const observationMarkSchema = z.strictObject({
   at: partialDate.optional(),
   lines: z.array(z.string().min(1)).min(1).optional(),
   rows: z.array(z.string().min(1)).min(1).optional(),
+  /** The observation is about the chart as a whole, so nothing in it recedes. */
+  whole: z.literal(true).optional(),
 }).refine(mark => Object.keys(mark).length > 0, 'must pick out part of the chart');
 
 export const factFrontmatterSchema = z.object({
@@ -1119,7 +1188,6 @@ export const viewpointFrontmatterSchema = z.object({
   citesFacts: z.array(z.string()).optional(),
   acknowledges: z.array(z.string()).optional(),
   setsAside: z.array(z.string()).optional(),
-  principles: z.array(z.string()).optional(),
   /**
    * Every claim this viewpoint marks `[claim](#needed)`, quoted exactly as
    * the link text reads. Readers see those claims as plain prose, so this is
@@ -1127,11 +1195,6 @@ export const viewpointFrontmatterSchema = z.object({
    * and the marks in the body in step.
    */
   researchNeeded: z.array(z.string().min(1)).optional(),
-});
-
-// Shared definitions must not carry topic-specific viewpoint relationships.
-export const principleFrontmatterSchema = z.strictObject({
-  name: z.string().min(1),
 });
 
 export const cruxPositionSchema = z.object({
@@ -1189,10 +1252,6 @@ export const topicFrontmatterSchema = z.object({
   dataOrder: z.array(z.string().min(1)).default([]).refine(
     (ids) => new Set(ids).size === ids.length,
     'dataOrder references must be unique'
-  ),
-  principles: z.array(z.string().min(1)).default([]).refine(
-    (ids) => new Set(ids).size === ids.length,
-    'principle references must be unique'
   ),
   title: z.string().min(1),
   subtitle: z.string().min(1),

@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import {
   type FigurePreview,
+  type Quote,
   AreaMap,
   BarChart,
   CaveatList,
@@ -46,15 +47,15 @@ import {
   SIDE_BY_SIDE_QUOTES,
   type FigureContext,
 } from '@/lib/content/figure-props';
-import { factSlides, type PreviewSlide } from '@/lib/content/preview';
-import { factCitations, markedObservations } from '@/lib/content/walkthrough';
+import type { PreviewSlide } from '@/lib/content/preview';
+import { markedObservations, slideCitations } from '@/lib/content/walkthrough';
 import { factSources, seriesSourceOffset } from '@/lib/content/sources';
 import { componentFigure } from '@/lib/content/types';
 import type { ComponentFigure, Fact } from '@/lib/content/types';
 import { ComparisonChart } from './comparison-chart';
 import { ChartSources } from './chart-sources';
 import { Prose } from './prose';
-import { SeriesChart } from './series-chart';
+import { methodChangesReadingId, SeriesChart } from './series-chart';
 import { SourcesSlot } from './sources-slot';
 
 /** What a figure needs from the topic around its fact. */
@@ -62,26 +63,26 @@ export type FigurePage = {
   slug: string;
   /** The topic's `lastUpdated`: where a period still in force stops. */
   asOf?: string;
-  /** The topic's facts, so a claim check's evidence link lands on the right page. */
-  facts: Pick<Fact, 'id' | 'supports'>[];
+  /** Every quote in the topic (`topicQuotes`): a list of quotes is the topic's whole collection, not one report's. */
+  quotes?: Quote[];
 };
 
 /**
- * One chart of a data panel in full: its controls and method changes, for one
- * reading of a series. Its observations come from the step it sits in, and its
- * sources row from the `SourcesSlot` around it. Its other source links lead to
+ * One chart of a data panel in full: its controls and method changes, and for
+ * a series every reading, behind its "Show as" switch. Its observations come
+ * from the step it sits in, and its sources row from the `SourcesSlot` around it. Its other source links lead to
  * the sources themselves, since a panel on a topic page has no list to link to.
  */
 export function PanelChart({ slide, page }: { slide: PreviewSlide; page: FigurePage }) {
-  const { fact, chart, reading: only } = slide;
+  const { fact, chart } = slide;
   const sources = factSources(fact);
   const index = chart === 'series' ? -1 : (fact.additionalSeries ?? []).findIndex(s => s.id === chart);
   const series = chart === 'series' ? fact.series : fact.additionalSeries?.[index];
   if (series) {
     const sourceOffset = seriesSourceOffset(fact, index);
-    const reading = series.readings.find(r => r.id === only) ?? series.readings[0];
-    const method = methodChanges(fact.id, reading.id, unmeasuredSpan(series), n => sources[n - 1].url);
-    return <SeriesChart factId={fact.id} chartId={chart === 'series' ? undefined : chart} series={series} sourceOffset={sourceOffset} sources={sources} onlyReading={reading.id} panel notes={<Prose html={method} className="sv-graph-observations" />} marks={markedObservations(fact, reading.id)} />;
+    const method = methodChanges(fact.id, methodChangesReadingId(series), unmeasuredSpan(series), n => sources[n - 1].url);
+    const marks = Object.fromEntries(series.readings.map(r => [r.id, markedObservations(fact, r.id)]));
+    return <SeriesChart factId={fact.id} chartId={chart === 'series' ? undefined : chart} series={series} sourceOffset={sourceOffset} sources={sources} panel notes={<Prose html={method} className="sv-graph-observations" />} marks={marks} />;
   }
   const comparison = fact.comparisons?.find(c => c.id === chart);
   if (comparison) return <ComparisonChart fact={fact} chart={comparison} sources={[]} panel />;
@@ -89,20 +90,9 @@ export function PanelChart({ slide, page }: { slide: PreviewSlide; page: FigureP
   return figure ? <FactFigure figure={figure} context={figureContext(fact, page.asOf, { panel: true })} page={page} /> : null;
 }
 
-/**
- * Every chart of a data panel in full, in step order, each with its sources
- * row. `addressed`, on a report's own page, gives each source its address, on
- * the first chart to cite it, so a link to it lands without script.
- */
-export function panelCharts(fact: Fact, page: FigurePage, { addressed = false } = {}): ReactNode[] {
-  const slides = factSlides(page.slug, fact);
-  const citations = factCitations(fact, slides);
-  const placed = new Set<number>();
-  return slides.map((slide, i) => {
-    const anchored = addressed ? citations[i].filter(number => !placed.has(number)) : [];
-    anchored.forEach(number => placed.add(number));
-    return <SourcesSlot key={i} row={<ChartSources fact={fact} numbers={citations[i]} anchored={anchored} />}><PanelChart slide={slide} page={page} /></SourcesSlot>;
-  });
+/** Charts of a collection in full, in the order given, each with its sources row. */
+export function panelCharts(fact: Fact, page: FigurePage, slides: PreviewSlide[]): ReactNode[] {
+  return slides.map((slide, i) => <SourcesSlot key={i} row={<ChartSources fact={fact} numbers={slideCitations(fact, slide)} />}><PanelChart slide={slide} page={page} /></SourcesSlot>);
 }
 
 /** One library figure: the adapter's props into its component. */
@@ -135,6 +125,17 @@ export function FactFigure({ figure, context, page }: { figure: ComponentFigure;
     case 'estimateRange':
       return <EstimateRange {...estimateRangeProps(figure, context)} />;
     case 'quotes':
+      if (page.quotes && page.quotes.length > figure.quotes.length) {
+        return (
+          <QuoteBrowser
+            {...quoteBrowserProps(figure, context)}
+            title="Every quote on this topic"
+            description="Every quote collected for this topic, in date order. Pick a question to see the quotes that answer it."
+            quotes={page.quotes}
+            tagLabel="Question"
+          />
+        );
+      }
       return figure.quotes.length <= SIDE_BY_SIDE_QUOTES
         ? <QuoteComparison {...quoteComparisonProps(figure, context)} />
         : <QuoteBrowser {...quoteBrowserProps(figure, context)} />;
@@ -149,7 +150,7 @@ export function FactFigure({ figure, context, page }: { figure: ComponentFigure;
     case 'claimCheck':
       return (
         <ReportFigure id={figureDomId(context.fact, figure.id)} panel={context.panel}>
-          <ClaimCheck {...claimCheckProps(figure, { ...context, slug: page.slug, facts: page.facts })} />
+          <ClaimCheck {...claimCheckProps(figure, { ...context, slug: page.slug })} />
         </ReportFigure>
       );
     case 'caveatList':
@@ -168,7 +169,13 @@ export function FactFigure({ figure, context, page }: { figure: ComponentFigure;
  * without a case here draws its linked title alone, so a kind added to that
  * list before its presentation exists degrades to a label, not a crash.
  */
-export function PreviewFigure({ figure, context, preview }: { figure: ComponentFigure; context: FigureContext; preview: FigurePreview }) {
+export function PreviewFigure({ figure, context, preview, picked }: {
+  figure: ComponentFigure;
+  context: FigureContext;
+  preview: FigurePreview;
+  /** The rows the claim it illustrates is about: a timeline gives them its cards. */
+  picked?: string[];
+}) {
   switch (figure.kind) {
     case 'barChart':
       return figure.series
@@ -183,7 +190,7 @@ export function PreviewFigure({ figure, context, preview }: { figure: ComponentF
     case 'map':
       return <AreaMap {...areaMapProps(figure, context)} preview={preview} />;
     case 'timeline':
-      return <Timeline {...timelineProps(figure, context)} preview={preview} />;
+      return <Timeline {...timelineProps(figure, context)} preview={preview} picked={picked} />;
     case 'periodTimeline':
       return <PeriodTimeline {...periodTimelineProps(figure, context)} preview={preview} />;
     case 'keyFigures':
@@ -193,6 +200,6 @@ export function PreviewFigure({ figure, context, preview }: { figure: ComponentF
     case 'smallMultiples':
       return <SmallMultiples {...smallMultiplesProps(figure, context)} preview={preview} />;
     default:
-      return <ReportFigure id={figureDomId(context.fact, figure.id)} title={'title' in figure ? figure.title : undefined} preview={preview} />;
+      return <ReportFigure id={figureDomId(context.fact, figure.id)} title={'title' in figure ? figure.title : undefined} subtitle={'subtitle' in figure ? figure.subtitle : undefined} preview={preview} />;
   }
 }

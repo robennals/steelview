@@ -88,7 +88,8 @@ For each viewpoint, the outline gives:
   makes a report broad rather than built around one side's preferred number.
 - **What it would probably concede.** A first guess at the well-supported facts
   that cut against it.
-- **Principles** it rests on, from `content/principles/` where one fits.
+- **Values** it rests on, a phrase each. A viewpoint states them in its own
+  words; where viewpoints weigh them differently, that is a crux.
 
 **The agent critiques its own first draft before showing it**, using the
 list below, and redrafts. A separate agent pass, or a fresh session, critiques
@@ -105,8 +106,6 @@ choices. The critique covers:
 - **Factual errors in the outline itself**, with a source. A live topic's
   timeline is the usual casualty: an argument built on a wrong date or a
   superseded event has to change before data is gathered for it.
-- **Principles that do not exist** in `content/principles/`, with the
-  nearest existing one or a proposal for a new shared principle.
 
 The redrafted outline ends with a short `## Revision notes` section listing,
 by number, what the critique changed and what it raised but the agent chose not
@@ -116,11 +115,6 @@ to change, with the reason — so the human can overrule either.
 holder would make better, framings that are off. The agent redrafts again.
 **Gate: the human signs off the viewpoint set.** Adding a viewpoint later is
 allowed but means returning to stage 3 for its claims.
-
-**New principles are written at this stage**, not later, when a viewpoint
-rests on a value no shared principle captures. Follow
-[Principles](AUTHORING.md#principles): the name and body must stand alone on a
-page about another issue.
 
 ## 3. Find candidate data
 
@@ -390,15 +384,27 @@ now costs one file; found later it costs every viewpoint that cites it.
 ## 6. Write the viewpoints
 
 **The agent drafts each viewpoint** from its outline and the observations
-that now exist, with every empirical assertion a pill to an observation. A
-viewpoint is read as a walkthrough of charts
-([Lead with the data](AUTHORING.md#lead-with-the-data)), so choose each step's
-chart before writing its text. Each viewpoint is a short lead, then one `###`
-section per outline argument: the heading is the argument's one-line claim, and
-beneath it two or three short sentences say what to notice in the chart and why
-it matters, with no bullet lists. The section's first chart-backed citation
-picks the chart, so cite the observation that shows the claim first. Write in
-short, plain sentences a middle-school reader can follow. Pill text states the
+that now exist, with every empirical assertion a pill to an observation,
+except one the card's own visual shows
+([Citations and data order](AUTHORING.md#citations-and-data-order)). A
+viewpoint is read as a slideshow of cards, one per section
+([Lead with the data](AUTHORING.md#lead-with-the-data)), so choose each card's
+visual before writing its text. Each viewpoint is a short lead, then one `###`
+section per outline argument. Each section is a card:
+
+- **the heading**, the argument's point in one sentence;
+- **the line**, the section's first paragraph: one to three sentences, about 25
+  to 55 words, that complete the step and cite the data it rests on;
+- **one visual**: the graph or collection of quotes behind the line's first
+  citation of one, so cite the observation that shows the point first;
+- **the evidence**, the rest of the section, which opens under "More": the
+  further facts and any concession, rarely more than about 80 words.
+
+That amount of text beside one visual is the target: the headings and lines,
+read card after card, make the whole argument, and each card shows the data it
+rests on. Everything a viewpoint says must be true and backed by what it cites
+([Write an argument someone can follow](AUTHORING.md#write-an-argument-someone-can-follow)).
+Write in short, plain sentences a middle-school reader can follow. Pill text states the
 point the argument needs and leaves exact figures, dates and sources to the
 chart and the report. The
 human and agent then edit together, one viewpoint at a time, until the
@@ -407,10 +413,18 @@ holder of that view would find it better argued than their own version
 
 - **Review the headings first.** Read each viewpoint's headings alone before
   its text: if they do not add up to the title, fix the argument before the
-  prose.
-- **Review each step's chart.** Step through each viewpoint on the topic page.
-  A chart that does not show its step's claim means reordering the citations,
-  choosing another observation, or going back to stage 5 for the chart it needs.
+  prose. A heading that could be a chart's title reports a finding; rewrite it
+  as what the finding shows for the argument.
+- **Then the lines.** Read heading and line, card after card: they should flow
+  as one argument, with nothing in the evidence needed to follow it.
+- **Review each card's visual.** Step through each viewpoint on the topic page.
+  A visual that does not show its card's point means reordering the citations
+  in the line, choosing another observation, or going back to stage 5 for the
+  graph it needs. No two cards show the same visual.
+- **Check every claim against its evidence**, headings and lines included:
+  each is sourced, shown by the card's visual, a value, or follows from what is
+  cited, and a chart's whole range supports what is said about it. A pill to
+  data the card already shows is clutter; take it out.
 - **Leave definitions to the legend.** Where a step would define a term its
   chart draws, give the chart's line a `glossary` entry instead.
 - **The agent proposes; the human decides** on every change of argument.
@@ -422,9 +436,7 @@ holder of that view would find it better argued than their own version
 - **Cruxes are drafted after the viewpoints settle**, because they depend on
   where the viewpoints actually ended up disagreeing. Each names a tension and
   stops, without arguing the evidence or resolving it
-  ([Cruxes](AUTHORING.md#cruxes)). Principles were written
-  in stage 2; adjust them here only if a viewpoint's final form rests on a
-  different value.
+  ([Cruxes](AUTHORING.md#cruxes)).
 - **Order last.** Set each viewpoint's `order` so the sides alternate, and
   list the headline reports in `topic.md`'s `dataOrder` in the order a reader
   should meet them. Viewpoint frontmatter is only `name`, `summary` and
@@ -433,8 +445,10 @@ holder of that view would find it better argued than their own version
   observation links.
 
 **Gate: the human is happy with every viewpoint**, read side by side —
-first its headings alone, then stepped through on the page with each chart.
-Check readability as for reports: look at each viewpoint rendered, and read it
+first its headings alone, then stepped through on the page with each chart,
+opening each card's chart in full to check it carries its own context
+([A Card's Chart Carries Its Own Context](AUTHORING.md#a-cards-chart-carries-its-own-context)):
+no page shows the collections' other charts. Check readability as for reports: look at each viewpoint rendered, and read it
 aloud for sentences that need a second reading.
 
 ## 7. Publish
@@ -465,7 +479,7 @@ What each stage-5 agent is told, beyond the report's entry in 3c:
   examples; the topic's outline and `candidate-data.md` (its review
   decisions, the report's 3c entry, the candidates it lists, and 3d).
 - **Write one file**, `content/topics/<slug>/facts/<report-id>.md`, and
-  touch nothing else: no other report, outline, principle, viewpoint, shared
+  touch nothing else: no other report, outline, viewpoint, shared
   code (including the glossary) or commit. Glossary terms wanted are listed
   in the reply.
 - **Verbatim or not at all.** Fetch every quote with `curl`; extract PDFs to

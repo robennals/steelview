@@ -28,24 +28,24 @@ export type ChartVariant = 'narrow' | 'wide';
 
 /**
  * A series can also be drawn at preview size, for a carousel slide or a
- * walkthrough step, sized so its type stays readable there rather than
+ * slideshow card, sized so its type stays readable there rather than
  * shrinking a full-size chart into the space. A preview is drawn at several
  * shapes, from very wide to nearly square, and the page shows whichever best
  * fills the space it has, so the chart is never squeezed into a band.
  */
-export type PreviewVariant = 'preview-wide' | 'preview' | 'preview-broad' | 'preview-medium' | 'preview-tall';
+export type PreviewVariant = 'preview-wide' | 'preview' | 'preview-broad' | 'preview-medium' | 'preview-tall' | 'preview-portrait';
 export type SeriesVariant = ChartVariant | PreviewVariant;
 
 /**
  * Where a preview sits decides the shapes it is drawn at, widest first: a
- * carousel slide is wide, a walkthrough step beside its prose is tall. Drawing
- * only the shapes a place can use keeps a page of previews light. A data
- * panel's full chart fills the space left around its controls.
+ * carousel slide is wide, and a slideshow card, which on a phone is most of
+ * the screen, can be taller than it is wide. Drawing only the shapes a place can use keeps a page of previews
+ * light. A data panel's full chart fills the space left around its controls.
  */
-export type PreviewFit = 'wide' | 'tall' | 'panel';
+export type PreviewFit = 'wide' | 'card' | 'panel';
 export const PREVIEW_VARIANTS: Record<PreviewFit, PreviewVariant[]> = {
   wide: ['preview-wide', 'preview'],
-  tall: ['preview-medium', 'preview-tall'],
+  card: ['preview-medium', 'preview-tall', 'preview-portrait'],
   panel: ['preview-wide', 'preview', 'preview-broad'],
 };
 
@@ -61,8 +61,6 @@ export type ChartGeometry = {
   markerRadius: number;
   /** Label every nth value tick — narrow charts cannot fit them all. */
   valueLabelEvery: number;
-  /** Time-axis ticks land on multiples of this many years. */
-  yearTickStep: number;
   /** In a focus window shorter than three years, a tick every this many months. */
   monthTickStep: number;
 };
@@ -78,7 +76,6 @@ const previewGeometry = (width: number, height: number): ChartGeometry => ({
   fontSize: 12,
   markerRadius: 4,
   valueLabelEvery: 1,
-  yearTickStep: 10,
   monthTickStep: 2,
 });
 
@@ -88,6 +85,8 @@ export const CHART_GEOMETRY: Record<SeriesVariant, ChartGeometry> = {
   'preview-broad': previewGeometry(750, 300),
   'preview-medium': previewGeometry(600, 338),
   'preview-tall': previewGeometry(520, 390),
+  // A phone's width, so its type stays the size of the narrow chart's.
+  'preview-portrait': previewGeometry(360, 540),
   narrow: {
     width: 360,
     height: 250,
@@ -98,7 +97,6 @@ export const CHART_GEOMETRY: Record<SeriesVariant, ChartGeometry> = {
     fontSize: 11,
     markerRadius: 4,
     valueLabelEvery: 2,
-    yearTickStep: 20,
     monthTickStep: 3,
   },
   wide: {
@@ -111,8 +109,7 @@ export const CHART_GEOMETRY: Record<SeriesVariant, ChartGeometry> = {
     fontSize: 13,
     markerRadius: 4.5,
     valueLabelEvery: 1,
-    yearTickStep: 10,
-    monthTickStep: 1,
+      monthTickStep: 1,
   },
 };
 
@@ -163,11 +160,46 @@ export function niceTicks(min: number, max: number, target = 7): number[] {
 }
 
 /**
+ * Ticks for a second value axis that sit on the first axis's gridlines: the
+ * same number of intervals, on round numbers covering `[min, max]`. Sharing the
+ * gridlines keeps the grid honest — two axes with their own grids would look
+ * like one, read wrongly against either.
+ */
+export function alignedTicks(min: number, max: number, intervals: number): number[] {
+  if (!Number.isFinite(min) || !Number.isFinite(max) || intervals < 1) return [0];
+  let step = niceStep((max - min) / intervals || Math.abs(max) || 1);
+  // Widen the step until the intervals, from a round start, reach the top.
+  for (let tries = 0; tries < 20; tries++) {
+    const lo = Math.floor(min / step) * step;
+    if (lo + intervals * step >= max - step / 1e6) return Array.from({ length: intervals + 1 }, (_, i) => tidy(lo + i * step));
+    step = niceStep(step * 1.01);
+  }
+  return niceTicks(min, max);
+}
+
+/**
  * Labels on the time axis. Short annual series label each year: using only
  * decade ticks for a 2019–2025 chart silently produces no labels at all.
  * Longer series retain the sparse decade-style ticks, while always naming
  * both ends of the published range.
  */
+/** The steps a time axis labels years at, finest first. */
+const YEAR_STEPS = [1, 2, 5, 10, 20, 25, 50, 100];
+/** Past this many labels an axis reads as a fence rather than a scale. */
+const MAX_YEAR_TICKS = 8;
+
+/**
+ * How many years apart an axis labels its years: the finest step whose
+ * labels fit the plot's width and come to no more than `MAX_YEAR_TICKS`, so
+ * a reader can find a year the text names without counting gridlines. A
+ * thirteen-year series gets every other year, not just 2010 and 2020.
+ */
+export function yearTickStep(fromYear: number, toYear: number, geometry: Pick<ChartGeometry, 'plotWidth' | 'fontSize'>): number {
+  const fit = Math.floor(geometry.plotWidth / (tickLabelWidth(String(toYear), geometry.fontSize) + 4));
+  const most = Math.max(2, Math.min(MAX_YEAR_TICKS, fit));
+  return YEAR_STEPS.find(step => Math.floor((toYear - fromYear) / step) + 1 <= most) ?? YEAR_STEPS[YEAR_STEPS.length - 1];
+}
+
 export function yearTicks(fromYear: number, toYear: number, step: number): number[] {
   if (toYear - fromYear <= 10) {
     return Array.from({ length: toYear - fromYear + 1 }, (_, i) => fromYear + i);
@@ -196,9 +228,47 @@ export function tickLabelWidth(label: string, fontSize: number): number {
 }
 
 /**
- * Drop interior ticks too close to either end tick to fit their labels. The
- * ends are always kept: they name the published range. A 1950–2026 axis at
- * 390px otherwise prints "2020" over "2026".
+ * The geometry with its plot moved right, and narrowed, until the widest value
+ * label fits left of it: a unit on every tick ("500 kg") can outgrow the
+ * fixed inset. The canvas keeps its size, so the chart's shape is unchanged.
+ */
+function roomForTicks(geometry: ChartGeometry, labels: string[]): ChartGeometry {
+  const needed = Math.ceil(Math.max(0, ...labels.map(label => tickLabelWidth(label, geometry.fontSize))) + 8);
+  if (needed <= geometry.left) return geometry;
+  return { ...geometry, left: needed, plotWidth: geometry.plotWidth - (needed - geometry.left) };
+}
+
+/**
+ * The geometry with its plot narrowed until a right-hand axis's widest label
+ * fits right of it, as `roomForTicks` makes room on the left.
+ */
+function roomOnRight(geometry: ChartGeometry, labels: string[]): ChartGeometry {
+  const needed = Math.ceil(Math.max(0, ...labels.map(label => tickLabelWidth(label, geometry.fontSize))) + 8);
+  const inset = geometry.width - geometry.left - geometry.plotWidth;
+  return needed <= inset ? geometry : { ...geometry, plotWidth: geometry.plotWidth - (needed - inset) };
+}
+
+/** The gap between two value axes stacked on the left, so their columns of numbers read as two. */
+const STACKED_AXIS_GAP = 16;
+
+/**
+ * The geometry with its plot moved right, and narrowed, until two columns of
+ * value labels fit left of it: the reading's own beside the plot, and the one
+ * drawn alongside further out. Also returns where that outer column ends.
+ */
+function roomForStackedTicks(geometry: ChartGeometry, own: string[], outer: string[]): { geometry: ChartGeometry; outerX: number } {
+  const widest = (labels: string[]) => Math.max(0, ...labels.map(label => tickLabelWidth(label, geometry.fontSize)));
+  const ownColumn = widest(own);
+  const needed = Math.ceil(8 + ownColumn + STACKED_AXIS_GAP + widest(outer));
+  const fitted = needed <= geometry.left ? geometry : { ...geometry, left: needed, plotWidth: geometry.plotWidth - (needed - geometry.left) };
+  return { geometry: fitted, outerX: fitted.left - 8 - ownColumn - STACKED_AXIS_GAP };
+}
+
+/**
+ * Drop interior ticks too close to a neighbour to fit their labels, working
+ * from the left so the kept ones stay evenly spread. The ends are always kept:
+ * they name the published range. A 1950–2026 axis at 390px otherwise prints
+ * "2020" over "2026", and a yearly 2017–2026 axis runs its years together.
  */
 export function dropCrowdedTicks<T extends { x: number; label: string }>(ticks: T[], fontSize: number): T[] {
   if (ticks.length <= 2) return ticks;
@@ -206,7 +276,11 @@ export function dropCrowdedTicks<T extends { x: number; label: string }>(ticks: 
   const last = ticks[ticks.length - 1];
   const fits = (a: T, b: T) =>
     Math.abs(a.x - b.x) >= (tickLabelWidth(a.label, fontSize) + tickLabelWidth(b.label, fontSize)) / 2;
-  return ticks.filter((tick, index) => index === 0 || index === ticks.length - 1 || (fits(tick, first) && fits(tick, last)));
+  const kept = [first];
+  for (const tick of ticks.slice(1, -1)) {
+    if (fits(tick, kept[kept.length - 1]) && fits(tick, last)) kept.push(tick);
+  }
+  return [...kept, last];
 }
 
 const MONTH_NAMES = new Set([
@@ -240,7 +314,11 @@ export function formatValue(value: number, unit: SeriesUnit): string {
   return withSign(Math.abs(value).toLocaleString('en-GB'), value < 0);
 }
 
-/** The compact value, for an axis tick: `1.5m` · `250k` · `0` · `2.5%`. */
+/**
+ * The value for an axis tick: `1.5m` · `250k` · `10,000` · `0` · `2.5%`.
+ * Below 100,000 it is written in full: beside a unit such as kg, readers
+ * take "10k" to be 10 kg and miss the thousand.
+ */
 export function formatTick(value: number, unit: SeriesUnit): string {
   if (unit === 'percent') {
     if (value === 0) return '0%';
@@ -249,8 +327,8 @@ export function formatTick(value: number, unit: SeriesUnit): string {
   const magnitude = Math.abs(value);
   if (magnitude === 0) return '0';
   if (magnitude >= 1_000_000) return withSign(`${tidy(magnitude / 1_000_000)}m`, value < 0);
-  if (magnitude >= 1000) return withSign(`${tidy(magnitude / 1000)}k`, value < 0);
-  return withSign(String(magnitude), value < 0);
+  if (magnitude >= 100_000) return withSign(`${tidy(magnitude / 1000)}k`, value < 0);
+  return withSign(magnitude.toLocaleString('en-GB'), value < 0);
 }
 
 /* ------------------------------------------------------------------ colour */
@@ -293,6 +371,8 @@ export type PlottedRun = { kind: RunKind; points: PlottedPoint[] };
 export type PlottedLine = {
   name: string;
   slot: number;
+  /** The value axis the line is read against: the reading's own on the left, or the one drawn alongside it on the right. */
+  axis: 'left' | 'right';
   /** Contiguous stretches of the line, split at breaks and wherever the drawing changes kind. */
   runs: PlottedRun[];
   /** The segments that step across a break — drawn dashed, never as smooth line. */
@@ -300,6 +380,8 @@ export type PlottedLine = {
   /** Estimate and provisional points, drawn as hollow circles when the reading is sparse enough to mark points. */
   hollow: PlottedPoint[];
   last: PlottedPoint;
+  /** In a stacked reading, the band the line fills: its own points along the top, and the total of the lines below along the floor. */
+  band?: { top: PlottedPoint[]; floor: PlottedPoint[] };
 };
 
 export type ValueTick = { value: number; y: number; label: string | null };
@@ -307,9 +389,17 @@ export type TimeTick = { year: number; x: number; label: string };
 export type BreakMark = { period: string; label: string; note: string; x: number };
 
 export type ReadingLayout = {
+  /** The variant's geometry, its plot narrowed to make room for a right-hand axis when there is one. */
   geometry: ChartGeometry;
   lines: PlottedLine[];
   valueTicks: ValueTick[];
+  /** The ticks of the reading drawn alongside, on the same gridlines, when there is one. */
+  secondTicks: ValueTick[];
+  /**
+   * Where that second axis's labels sit: right of the plot, starting at `x`,
+   * or left of the reading's own axis, ending at `x`.
+   */
+  secondAxis: { side: 'left' | 'right'; x: number } | null;
   timeTicks: TimeTick[];
   breaks: BreakMark[];
   /** The y of value 0, when zero is inside the domain — the line a net series crosses. */
@@ -322,7 +412,36 @@ export type ReadingLayout = {
   x: (period: string) => number;
   /** Where a value falls on the plot, for drawing over it. */
   y: (value: number) => number;
+  /** Where a value of the reading drawn alongside falls on the plot. */
+  y2: (value: number) => number;
 };
+
+/** The reading `reading` draws on its plot against a right-hand axis, if it names one. */
+export function alongsideOf(series: Pick<Series, 'readings'>, reading: SeriesReading): SeriesReading | undefined {
+  return reading.alongside ? series.readings.find(r => r.id === reading.alongside) : undefined;
+}
+
+/** The readings that have a plot of their own: every one not drawn alongside another. */
+export function plottedReadings(series: Pick<Series, 'readings'>): SeriesReading[] {
+  return series.readings.filter(reading => !series.readings.some(other => other.alongside === reading.id));
+}
+
+/** The id of the reading whose plot draws reading `id`: the one drawing it alongside, else itself. */
+export function plotReadingId(series: Pick<Series, 'readings'>, id: string): string {
+  return series.readings.find(reading => reading.alongside === id)?.id ?? id;
+}
+
+/** One line of a plot, with the unit and axis it is read against. */
+export type DrawnLine = { line: SeriesLine; unit: SeriesUnit; axis: 'left' | 'right' };
+
+/** Every line a reading's plot draws: its own, against the left axis, then any drawn alongside, against the right. */
+export function drawnLines(series: Pick<Series, 'readings'>, reading: SeriesReading): DrawnLine[] {
+  const partner = alongsideOf(series, reading);
+  return [
+    ...reading.lines.map(line => ({ line, unit: reading.unit, axis: 'left' as const })),
+    ...(partner?.lines.map(line => ({ line, unit: partner.unit, axis: 'right' as const })) ?? []),
+  ];
+}
 
 /** Hollow markers are drawn only when a reading is sparse enough that points read as points. */
 export const HOLLOW_MARKER_LIMIT = 120;
@@ -488,7 +607,7 @@ export function windowTicks(
   const from = periodToYear(window.from);
   const to = periodToYear(window.to);
   if (to - from >= 3) {
-    return yearTicks(Math.ceil(from), Math.floor(to), geometry.yearTickStep).map((year) => ({ year, x: x(String(year)), label: String(year) }));
+    return yearTicks(Math.ceil(from), Math.floor(to), yearTickStep(Math.ceil(from), Math.floor(to), geometry)).map((year) => ({ year, x: x(String(year)), label: String(year) }));
   }
   const ticks: TimeTick[] = [];
   const [startYear, startMonth] = normalizePeriod(window.from).split('-').map(Number);
@@ -506,10 +625,20 @@ export function windowTicks(
 }
 
 /**
+ * The span a value axis covers: the values, and zero when `fromZero`. An axis
+ * reaches zero unless its reading sets `zeroBased: false`, as a line from 22
+ * to 58 on an axis starting at 20 reads as nearly tripling when it did not.
+ */
+function valueSpan(values: number[], fromZero: boolean): [number, number] {
+  return fromZero ? [Math.min(0, ...values), Math.max(0, ...values)] : [Math.min(...values), Math.max(...values)];
+}
+
+/**
  * Lay out one reading's plot. With a `window`, the x domain is the window and
  * the y domain is fitted to the values inside it (plus the nearest point
- * either side); the caller clips the lines at the plot edges. Without one,
- * the domain is the full published range and a dense line is decimated.
+ * either side, and zero — see `valueSpan`); the caller clips the lines
+ * at the plot edges. Without one, the domain is the full published range and
+ * a dense line is decimated.
  */
 export function layoutReading(
   series: Series,
@@ -517,16 +646,37 @@ export function layoutReading(
   variant: SeriesVariant,
   window?: FocusWindow
 ): ReadingLayout {
-  const geometry = CHART_GEOMETRY[variant];
+  const base = CHART_GEOMETRY[variant];
+  const partner = alongsideOf(series, reading);
   const slots = seriesSlots(series);
 
-  const shown = reading.lines.map((line: SeriesLine) =>
-    window ? pointsAround(line.points, window) : thinned(line.points, geometry.plotWidth)
+  const drawn = drawnLines(series, reading);
+  // A stacked reading is never thinned: thinning keeps each line's own
+  // extremes, which would leave the bands' periods out of step.
+  const shown = drawn.map(({ line }) =>
+    window ? pointsAround(line.points, window) : reading.stacked ? line.points : thinned(line.points, base.plotWidth)
   );
-  const values = shown.flatMap((points) => points.map((p) => p.value));
-  const ticks = niceTicks(Math.min(...values), Math.max(...values));
+  // Each stacked line sits on the total of the lines before it, so its top
+  // edge is that running total and the top line's is the whole.
+  const floors = reading.stacked ? stackFloors(shown) : null;
+  const floorOf = (line: number, point: number) => floors?.[line][point] ?? 0;
+  const valuesOn = (axis: DrawnLine['axis']) => shown.flatMap((points, i) => (drawn[i].axis === axis ? points.map((p, j) => p.value + floorOf(i, j)) : []));
+  const values = valuesOn('left');
+  // Two axes are compared by their slopes, which only mean the same on both if
+  // both start at zero, so a plot with a reading alongside always does.
+  const fromZero = reading.zeroBased !== false || partner !== undefined;
+  const ticks = niceTicks(...valueSpan(values, fromZero));
   const valueMin = ticks[0];
   const valueMax = ticks[ticks.length - 1];
+  const tickText = (value: number, on: SeriesReading = reading) => (on.tickUnit ? `${formatTick(value, on.unit)} ${on.tickUnit}` : formatTick(value, on.unit));
+  const rightValues = valuesOn('right');
+  const secondTicks = partner ? alignedTicks(...valueSpan(rightValues, true), ticks.length - 1) : [];
+  const ownLabels = ticks.map(value => tickText(value));
+  const secondLabels = partner ? secondTicks.map(value => tickText(value, partner)) : [];
+  const stacked = partner && reading.alongsideAxis === 'left' ? roomForStackedTicks(base, ownLabels, secondLabels) : null;
+  const leftFitted = roomForTicks(base, ownLabels);
+  const geometry = stacked ? stacked.geometry : partner ? roomOnRight(leftFitted, secondLabels) : leftFitted;
+  const secondAxis = !partner ? null : stacked ? { side: 'left' as const, x: stacked.outerX } : { side: 'right' as const, x: geometry.left + geometry.plotWidth + 8 };
 
   // The declared coverage, not the data, sets the time domain: the two are
   // equal by rule 14, and saying so here means the axis is drawn from the
@@ -543,24 +693,29 @@ export function layoutReading(
   const x = (period: string) =>
     geometry.left +
     ((periodToYear(period) - fromYear) / (toYear - fromYear || 1)) * geometry.plotWidth;
-  const y = (value: number) =>
+  const scale = (domain: number[]) => (value: number) =>
     geometry.top +
     geometry.plotHeight -
-    ((value - valueMin) / (valueMax - valueMin || 1)) * geometry.plotHeight;
+    ((value - domain[0]) / (domain[domain.length - 1] - domain[0] || 1)) * geometry.plotHeight;
+  const y = scale(ticks);
+  const y2 = scale(secondTicks);
 
   const breakPeriods = series.breaks.map((b) => b.period);
   const markPoints = shown.reduce((n, points) => n + points.length, 0) <= HOLLOW_MARKER_LIMIT;
 
-  const lines: PlottedLine[] = reading.lines.map((line, index) => {
-    const plotted = shown[index].map((point) => ({ x: x(point.period), y: y(point.value), point }));
+  const lines: PlottedLine[] = drawn.map(({ line, axis }, index) => {
+    const yOf = axis === 'right' ? y2 : y;
+    const plotted = shown[index].map((point, j) => ({ x: x(point.period), y: yOf(point.value + floorOf(index, j)), point }));
     const { runs, bridges } = splitRuns(plotted, breakPeriods);
     return {
       name: line.name,
       slot: slots.get(line.name) ?? 1,
+      axis,
       runs,
       bridges,
       hollow: markPoints ? plotted.filter((p) => runKind(p.point) === 'estimate') : [],
       last: plotted[plotted.length - 1],
+      ...(floors ? { band: { top: plotted, floor: shown[index].map((point, j) => ({ x: x(point.period), y: yOf(floorOf(index, j)), point })) } } : {}),
     };
   });
 
@@ -582,12 +737,20 @@ export function layoutReading(
       value,
       y: y(value),
       label:
-        index % geometry.valueLabelEvery === labelOffset ? formatTick(value, reading.unit) : null,
+        index % geometry.valueLabelEvery === labelOffset ? tickText(value) : null,
     })),
+    secondTicks: partner
+      ? secondTicks.map((value, index) => ({
+        value,
+        y: y2(value),
+        label: index % geometry.valueLabelEvery === labelOffset ? tickText(value, partner) : null,
+      }))
+      : [],
+    secondAxis,
     timeTicks: dropCrowdedTicks(
       window || shortMonthly
         ? windowTicks(window ?? { from: series.coverage.from, to: end }, geometry, x)
-        : yearTicks(periodYear(series.coverage.from), periodYear(end), geometry.yearTickStep).map(
+        : yearTicks(periodYear(series.coverage.from), periodYear(end), yearTickStep(periodYear(series.coverage.from), periodYear(end), geometry)).map(
             (year) => ({ year, x: x(String(year)), label: String(year) })
           ),
       geometry.fontSize
@@ -602,7 +765,22 @@ export function layoutReading(
     unmeasured: window || end === series.coverage.to ? null : { x0: x(series.coverage.to), x1: x(end) },
     x,
     y,
+    y2,
   };
+}
+
+/**
+ * For each line of a stack, the total of the lines before it at each point.
+ * The lines give the same periods (validate.ts checks), so points line up by
+ * position.
+ */
+export function stackFloors(lines: SeriesPoint[][]): number[][] {
+  let running = lines[0]?.map(() => 0) ?? [];
+  return lines.map(points => {
+    const floor = running;
+    running = points.map((point, j) => (floor[j] ?? 0) + point.value);
+    return floor;
+  });
 }
 
 /** An observation's mark as drawn on a plot: veils over what it is not about, and dots on what it is. */
@@ -616,7 +794,7 @@ export type PlottedMark = {
  * plot either side of it rather than tinting it, so the lines inside keep their
  * colours; a point is a dot carrying its value, on each line the mark names.
  */
-export function plotMark(layout: ReadingLayout, reading: SeriesReading, mark: ObservationMark): PlottedMark {
+export function plotMark(layout: ReadingLayout, drawn: DrawnLine[], mark: ObservationMark): PlottedMark {
   const { left, plotWidth } = layout.geometry;
   const right = left + plotWidth;
   const clamp = (x: number) => Math.min(right, Math.max(left, x));
@@ -625,8 +803,12 @@ export function plotMark(layout: ReadingLayout, reading: SeriesReading, mark: Ob
   const veils = (mark.from || mark.to ? [{ x0: left, x1: x0 }, { x0: x1, x1: right }] : []).filter(veil => veil.x1 > veil.x0);
   const plotted = mark.at === undefined ? [] : layout.lines.filter(line => !mark.lines || mark.lines.includes(line.name));
   const points = plotted.flatMap(line => {
-    const point = reading.lines.find(l => l.name === line.name)?.points.find(p => p.period === mark.at);
-    return point ? [{ x: layout.x(point.period), y: layout.y(point.value), slot: line.slot, label: formatValue(point.value, reading.unit) }] : [];
+    const source = drawn.find(d => d.line.name === line.name && d.axis === line.axis);
+    const point = source?.line.points.find(p => p.period === mark.at);
+    const y = line.axis === 'right' ? layout.y2 : layout.y;
+    // On a stack the dot sits on the line's band, at the running total; its label is still the line's own value.
+    const stackedY = line.band?.top.find(p => p.point.period === mark.at)?.y;
+    return source && point ? [{ x: layout.x(point.period), y: stackedY ?? y(point.value), slot: line.slot, label: formatValue(point.value, source.unit) }] : [];
   });
   return { veils, points };
 }
@@ -655,8 +837,7 @@ export function layoutContext(
   const geometry = CONTEXT_GEOMETRY[variant];
   const slots = seriesSlots(series);
   const shown = reading.lines.map((line) => thinned(line.points, geometry.plotWidth));
-  const values = shown.flatMap((points) => points.map((p) => p.value));
-  const ticks = niceTicks(Math.min(...values), Math.max(...values));
+  const ticks = niceTicks(...valueSpan(shown.flatMap((points) => points.map((p) => p.value)), reading.zeroBased !== false));
   const end = axisEnd(series);
   const fromYear = periodToYear(series.coverage.from);
   const toYear = periodToYear(end);
@@ -672,7 +853,7 @@ export function layoutContext(
       points: shown[index].map((point) => ({ x: x(point.period), y: y(point.value), point })),
     })),
     timeTicks: dropCrowdedTicks(
-      yearTicks(periodYear(series.coverage.from), periodYear(end), CHART_GEOMETRY[variant].yearTickStep).map(
+      yearTicks(periodYear(series.coverage.from), periodYear(end), yearTickStep(periodYear(series.coverage.from), periodYear(end), geometry)).map(
         (year) => ({ year, x: x(String(year)), label: String(year) })
       ),
       geometry.fontSize
@@ -680,6 +861,11 @@ export function layoutContext(
     breaks: series.breaks.map((gap) => x(gap.period)),
     window: { x0: x(window.from), x1: x(window.to) },
   };
+}
+
+/** An SVG `d` for a stacked line's band: along its top, then back along its floor. */
+export function bandPath(band: { top: PlottedPoint[]; floor: PlottedPoint[] }): string {
+  return `${pathFor([...band.top, ...[...band.floor].reverse()])} Z`;
 }
 
 /** An SVG `d` for a run of points — plain line segments, never a smoothing curve. */
@@ -710,17 +896,18 @@ export function hasOwnSpans(series: Series): boolean {
 export type ReadingCell = SeriesPoint | 'outside' | null;
 
 /**
- * One reading's table: a row for every period any line has, in order. Lines
+ * One reading's table, with any reading drawn alongside it: a row for every period any line has, in order. Lines
  * that start or end at different dates would lose the earlier years if the
  * rows came from one line only; outside a line's own range the cell says so,
  * rather than looking like a value the source left out.
  */
 export function readingRows(series: Series, reading: SeriesReading): Array<{ period: string; cells: ReadingCell[] }> {
-  const periods = [...new Set(reading.lines.flatMap(line => line.points.map(point => point.period)))].sort(comparePeriods);
-  const byLine = reading.lines.map(line => new Map(line.points.map(point => [point.period, point])));
+  const lines = drawnLines(series, reading).map(({ line }) => line);
+  const periods = [...new Set(lines.flatMap(line => line.points.map(point => point.period)))].sort(comparePeriods);
+  const byLine = lines.map(line => new Map(line.points.map(point => [point.period, point])));
   return periods.map(period => ({
     period,
-    cells: reading.lines.map((line, index) => {
+    cells: lines.map((line, index) => {
       const span = lineSpan(series, line);
       if (comparePeriods(period, span.from) < 0 || comparePeriods(period, span.to) > 0) return 'outside';
       return byLine[index].get(period) ?? null;

@@ -25,6 +25,8 @@ export type SmallMultiplesProps = {
   zeroBased?: boolean;
   id?: string;
   title?: string;
+  /** A short line under the title: the period, cases or source (see ReportFigure). */
+  subtitle?: string;
   description?: ReactNode;
   sources?: SourceCredit[];
   note?: ReactNode;
@@ -61,6 +63,7 @@ export function SmallMultiples({
   zeroBased = true,
   id,
   title,
+  subtitle,
   description,
   sources,
   note,
@@ -126,7 +129,7 @@ export function SmallMultiples({
 
   if (preview) {
     return (
-      <ReportFigure id={id} title={title} preview={preview} className="sv-multiples">
+      <ReportFigure id={id} title={title} subtitle={subtitle} preview={preview} className="sv-multiples">
         <p className="sv-chart__axis-label">
           {valueLabel} · {scaleText}{first && last ? ` · ${formatDate(first)}–${formatDate(last)}` : ''}
         </p>
@@ -162,7 +165,7 @@ export function SmallMultiples({
   );
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} className="sv-multiples">
+    <ReportFigure id={id} title={title} subtitle={subtitle} description={description} sources={sources} note={note} footer={footer} panel={panel} className="sv-multiples">
       <p className="sv-chart__axis-label">
         {valueLabel}
         {' · '}{scaleText}

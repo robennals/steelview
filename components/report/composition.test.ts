@@ -48,3 +48,30 @@ test('a qualified part is sized by its number and keeps its qualification', () =
   assert.deepEqual(rows[0].segments.slice(0, 2).map(s => s.value), [30, 70]);
   assert.deepEqual(rows[0].segments[0].published, { value: 30, qualifier: 'about' });
 });
+
+test('bars of counts share one scale: the largest row fills the width, the rest are drawn to it', () => {
+  const { rows } = compose(categories, [
+    { label: 'HRANA', values: { a: 1701, b: 1221, c: 714 } },
+    { label: 'Hengaw', values: { a: 1030, b: 6620 }, total: 7650 },
+    { label: 'Authorities', values: { c: 3375 }, total: 3375 },
+  ]);
+  assert.equal(rows[1].length, 100);
+  assert.ok(Math.abs(rows[0].length - (3636 / 7650) * 100) < 1e-9);
+  assert.ok(Math.abs(rows[2].length - (3375 / 7650) * 100) < 1e-9);
+});
+
+test('rows with the same total are drawn the same length', () => {
+  const { rows } = compose(categories, [
+    { label: 'June', values: { a: 21, b: 3, c: 10 } },
+    { label: 'September', values: { a: 23, b: 3, c: 8 } },
+  ]);
+  assert.deepEqual(rows.map(r => r.length), [100, 100]);
+});
+
+test('bars of percentages are each a whole, so all are full length even when rounding leaves 101', () => {
+  const { rows } = compose(categories, [
+    { label: 'All adults', values: { a: 34, b: 63, c: 4 } },
+    { label: 'Republicans', values: { a: 79, b: 19, c: 2 } },
+  ], { unit: 'percent' });
+  assert.deepEqual(rows.map(r => r.length), [100, 100]);
+});

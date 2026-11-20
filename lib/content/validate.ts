@@ -4,11 +4,12 @@ import { observationTargets } from './chart-observations';
 import { citedFactTargets, neededClaims } from './markdown';
 import { mapAreaIds, mapAreas } from './map-presets';
 import { PARTIAL_DATE, comparePeriods, datePlacement } from './period';
-import { PREVIEW_FIGURE_KINDS, isPreviewable, previewTarget } from './preview';
+import { PREVIEW_FIGURE_KINDS, factSlides, isPreviewable, previewTarget, slideGroups } from './preview';
 import { factSources, figureCitations } from './sources';
 import { componentFigure, isComponentFigure } from './types';
-import type { ComponentFigure, Crux, Fact, Figure, FigureOf, ObservationMark, Series, Topic } from './types';
-import { observationGroups } from './walkthrough';
+import type { ComponentFigure, Crux, Fact, Figure, FigureOf, ObservationMark, Series, SeriesLine, Topic } from './types';
+import { featuredSlides, observationGroups } from './walkthrough';
+import { normaliseWithOffsets } from './source-passage';
 
 /**
  * Check the cross-reference graph of an already-shape-valid topic. Returns one
@@ -95,6 +96,7 @@ export function validateTopic(topic: Topic): string[] {
     for (const series of datasets) errors.push(...seriesErrors(f.id, series, topic.lastUpdated, sourceCount));
     const artifactIds = ['series', ...(f.additionalSeries ?? []).map(s => s.id), ...datasets.flatMap(s => s.readings.map(r => r.id)), ...(f.comparisons ?? []).map(c => c.id)];
     if (new Set(artifactIds).size !== artifactIds.length) errors.push(`fact ${f.id}: chart IDs must be unique`);
+    errors.push(...chartTitleErrors(f));
     const chartIds = new Set<string>();
     for (const chart of f.comparisons ?? []) {
       if (chartIds.has(chart.id)) errors.push(`fact ${f.id}: duplicate comparison chart id ${chart.id}`);
@@ -192,9 +194,9 @@ export function validateTopic(topic: Topic): string[] {
 }
 
 /**
- * A topic's home-page preview charts resolve, appear once each, and between
- * them represent every viewpoint: each viewpoint must cite, inline, the fact
- * behind at least one of them. Whether that chart is among the viewpoint's
+ * A topic's home-page preview charts resolve, appear once each, are each on a
+ * viewpoint's card, and between them represent every viewpoint: each viewpoint
+ * must cite, inline, the fact behind at least one of them. Whether that chart is among the viewpoint's
  * *strongest* evidence stays an editorial judgement (AUTHORING.md).
  */
 function previewChartErrors(topic: Topic, factById: Map<string, Fact>): string[] {
@@ -202,10 +204,13 @@ function previewChartErrors(topic: Topic, factById: Map<string, Fact>): string[]
   if (previews.length === 0) return [];
   const errors: string[] = [];
   const seen = new Set<string>();
+  const featured = featuredSlides(topic);
   for (const { fact, chart, reading } of previews) {
     const key = `${fact}/${chart}`;
     const owner = factById.get(fact);
     const target = owner && previewTarget(owner, chart);
+    // A slide opens its chart over the topic page, which shows only the charts the viewpoints' cards are made with.
+    if (owner && !featured.get(fact)?.some(slide => slide.chart === chart)) errors.push(`topic: preview chart ${key} is not on any viewpoint's card, and only those charts are on the topic page — preview one a card is made with`);
     if (!target) errors.push(`topic: preview chart ${key} does not resolve to a chart or figure`);
     else if (target.kind === 'figure' && !isPreviewable(target)) {
       errors.push(`topic: preview chart ${key} is a ${target.figure.kind} figure, which has no graph to preview — choose a series, a comparison or a figure of kind ${PREVIEW_FIGURE_KINDS.join(', ')}`);
@@ -257,6 +262,40 @@ function seriesErrors(factId: string, series: Series, lastUpdated: string, sourc
     errors.push(
       `${where} coverage runs backwards — from "${series.coverage.from}" to "${series.coverage.to}"`
     );
+  }
+
+  // A reading drawn alongside another shares its plot: it names another reading
+  // of this series, one that is not itself drawn alongside, nor drawing one.
+  for (const reading of series.readings) {
+    if (reading.alongside === undefined) {
+      if (reading.alongsideAxis !== undefined) errors.push(`${where} reading "${reading.id}" places the axis of a reading drawn alongside, but draws none`);
+      continue;
+    }
+    const partner = series.readings.find(r => r.id === reading.alongside);
+    if (!partner || partner === reading) errors.push(`${where} reading "${reading.id}" is drawn alongside "${reading.alongside}", which is not another reading of this series`);
+    else if (partner.alongside !== undefined) errors.push(`${where} reading "${reading.id}" is drawn alongside "${partner.id}", which draws another reading itself`);
+    else if (series.readings.some(r => r !== reading && r.alongside === partner.id)) errors.push(`${where} reading "${partner.id}" is drawn alongside two readings`);
+    else if (series.readings.some(r => r.alongside === reading.id)) errors.push(`${where} reading "${reading.id}" both draws a reading alongside and is drawn alongside one`);
+    // A plot's lines are told apart by name: their colour, legend key and highlight follow it.
+    const shared = partner?.lines.filter(line => reading.lines.some(own => own.name === line.name)) ?? [];
+    for (const line of shared) errors.push(`${where} readings "${reading.id}" and "${reading.alongside}" share a plot and both have a line "${line.name}"; give one a name of its own`);
+    if (series.focus) errors.push(`${where} draws a reading alongside another and has a focus window, whose context strip draws one axis only`);
+  }
+
+  // A stacked reading's bands sit on one another, so they must line up period
+  // for period, add up (counts, none negative) and own their plot.
+  for (const reading of series.readings.filter(r => r.stacked)) {
+    if (reading.unit !== 'count') errors.push(`${where} reading "${reading.id}" is stacked, so its unit must be count: shares and rates do not add up`);
+    if (reading.lines.length < 2) errors.push(`${where} reading "${reading.id}" is stacked but has one line; a stack needs two or more parts`);
+    if (reading.alongside !== undefined || series.readings.some(r => r.alongside === reading.id)) errors.push(`${where} reading "${reading.id}" is stacked, so no reading can share its plot`);
+    if (series.focus) errors.push(`${where} has a stacked reading and a focus window, whose context strip draws lines, not a stack`);
+    const periods = (line: SeriesLine) => line.points.map(p => p.period).join(',');
+    for (const line of reading.lines.slice(1)) {
+      if (periods(line) !== periods(reading.lines[0])) errors.push(`${where} reading "${reading.id}" is stacked, but line "${line.name}" has different periods from "${reading.lines[0].name}"`);
+    }
+    for (const line of reading.lines) {
+      if (line.points.some(p => p.value < 0)) errors.push(`${where} reading "${reading.id}" is stacked, but line "${line.name}" has a negative value`);
+    }
   }
 
   const seenReadings = new Set<string>();
@@ -472,14 +511,17 @@ function knownSection(fact: Fact, section: string): boolean {
 /**
  * M1 — a mark must land on its observation's chart, since a reader takes what
  * it picks out as what the observation is about. Line charts take a region, a
- * point and lines; most other charts take rows (see `figureRows`).
+ * point and lines; most other charts take rows (see `figureRows`). `whole` says
+ * an observation is about the entire chart.
  */
+const CANNOT_SHOW_MARKS = 'is on a chart that cannot show marks yet';
+
 function observationMarkErrors(f: Fact): string[] {
   const groups = observationGroups(f);
   return Object.entries(f.observationMarks ?? {}).flatMap(([id, mark]) => {
     const where = `fact ${f.id}: observation mark "${id}"`;
     const key = groups.get(id);
-    if (key === undefined) return [`${where} is not an observation of a chart`];
+    if (key === undefined) return [`${where} is not an observation or subtlety of a chart`];
     return markErrors(f, key, mark).map(error => `${where} ${error}`);
   });
 }
@@ -501,7 +543,7 @@ function markErrors(f: Fact, key: string, mark: ObservationMark): string[] {
   }
   const figure = componentFigure(f, key);
   const rows = f.comparisons?.find(c => c.id === key)?.items.map(item => item.label) ?? (figure && figureRows(figure));
-  if (!rows) return ['is on a chart that cannot show marks yet'];
+  if (!rows) return [CANNOT_SHOW_MARKS];
   return [
     ...(mark.from || mark.to || mark.at || mark.lines ? ['names periods or lines, but its chart has rows'] : []),
     ...(mark.rows ?? []).filter(row => !rows.includes(row)).map(row => `names "${row}", which is not a row of ${key}`),
@@ -777,6 +819,18 @@ function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topi
 /** Past this a row label wraps into a block beside its bar; AUTHORING asks for about 40. */
 const MAX_ROW_LABEL = 60;
 
+/** Each chart in a report has its own title, so a reader can tell any two apart by title alone. */
+function chartTitleErrors(f: Fact): string[] {
+  const titles = [
+    ...(f.series ? [f.series.title] : []),
+    ...(f.additionalSeries ?? []).map(s => s.title),
+    ...(f.comparisons ?? []).map(c => c.title),
+    ...(f.figures ?? []).flatMap(figure => isComponentFigure(figure) && 'title' in figure && figure.title ? [figure.title] : []),
+  ];
+  const repeated = new Set(titles.filter((title, i) => titles.indexOf(title) !== i));
+  return [...repeated].map(title => `fact ${f.id}: two charts are titled "${title}" — give each chart in a report its own title`);
+}
+
 /** A chart row is one short title; what else it has to say goes behind the row (`detail`, or an estimate's `note`). */
 function rowLabelErrors(rows: Array<{ label: string }>, where: string): string[] {
   return rows.filter(row => row.label.length > MAX_ROW_LABEL).map(row => `${where} row label "${row.label}" is over ${MAX_ROW_LABEL} characters: give the row a short title and put the rest in \`detail\` (\`note\` on an estimate)`);
@@ -923,8 +977,9 @@ function decimalPlaces(n: number): number {
 
 /**
  * F9, for every map (and its older spellings, tile and geo maps): every area id belongs to the preset,
- * a numeric scale runs upwards, categories are distinct and every assignment
- * names one, and any area drawn without a value or category is explained.
+ * an arrow that starts at an area starts at a shaded one, a crop and a numeric scale run upwards,
+ * categories are distinct and every assignment names one, and any area drawn
+ * without a value or category is explained.
  * `areas` is every id the preset knows; `shown` the ones this figure draws —
  * fewer when an optional row, such as the US territories, is left out.
  */
@@ -933,6 +988,13 @@ function mapErrors(figure: FigureOf<'map'>, areas: string[], shown: string[], pr
   const keyed = figure.categories ? figure.areas ?? {} : figure.data ?? {};
   for (const key of Object.keys(keyed)) if (!areas.includes(key)) errors.push(`${where} "${key}" is not an area of ${preset}`);
   for (const id of figure.highlight) if (!areas.includes(id)) errors.push(`${where} highlight "${id}" is not an area of ${preset}`);
+  // An arrow starts at an area, which the map must draw, shaded, so its thickness and its readout have a value.
+  for (const id of figure.flows?.from.filter(start => typeof start === 'string') ?? []) {
+    if (!areas.includes(id)) errors.push(`${where} flow from "${id}" is not an area of ${preset}`);
+    else if (!(id in keyed)) errors.push(`${where} flow from "${id}" has no datum`);
+  }
+  const { crop } = figure;
+  if (crop && !(crop.minLon < crop.maxLon && crop.minLat < crop.maxLat)) errors.push(`${where} crop must run from low to high`);
   const { breaks, domain, categories } = figure;
   if (breaks?.some((b, i) => i > 0 && b <= breaks[i - 1])) errors.push(`${where} breaks must be strictly ascending`);
   if (domain && !(domain[0] < domain[1])) errors.push(`${where} domain must run from low to high`);
@@ -996,9 +1058,13 @@ function escapeRegExp(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-/** Unicode NFC, straight quotes, collapsed whitespace, lower case: what F11 compares. */
+/**
+ * Unicode NFC, straight quotes, collapsed whitespace, lower case: what F11
+ * compares. A source quote's layout (`QuoteText`: a bullet's `- `, a table's
+ * ` | `) is not its words, so it is read as a space (`normaliseWithOffsets`).
+ */
 export function normaliseQuote(text: string): string {
-  return text.normalize('NFC').replace(/[\u2018\u2019\u201A\u2032]/g, "'").replace(/[\u201C\u201D\u201E\u2033]/g, '"').replace(/\s+/g, ' ').trim().toLowerCase();
+  return normaliseWithOffsets(text.normalize('NFC')).text;
 }
 
 /**
@@ -1046,15 +1112,63 @@ function citationErrors(topic: Topic, factById: Map<string, Fact>): string[] {
         errors.push(`${what}: body links to "#fact-${id}", which is not a fact in this topic`);
       }
     }
+    // Principles are not linked items: a viewpoint states its values in its
+    // own words, and cruxes weigh them against each other.
+    for (const match of body.matchAll(/\]\(#principle-([a-z0-9-]+)\)/g)) {
+      errors.push(`${what}: body links to "#principle-${match[1]}"; principles are not linked — state the value in plain prose, and name the tension in a crux`);
+    }
   };
 
   check('topic intro', topic.intro);
   for (const f of topic.facts) check(`fact ${f.id}`, f.body);
-  for (const p of topic.principles) check(`principle ${p.id}`, p.body);
 
   for (const v of topic.viewpoints) check(`viewpoint ${v.id}`, v.body + '\n' + v.summary);
 
   return errors;
+}
+
+/**
+ * What a published topic must also satisfy, for a reader to see each fact it
+ * links to. Separate from `validateTopic`, whose fixtures exercise other rules
+ * with citations of bare reports.
+ */
+export function evidenceErrors(topic: Topic): string[] {
+  return [...citationTargetErrors(topic, new Map(topic.facts.map(fact => [fact.id, fact]))), ...topic.facts.flatMap(unmarkedObservationErrors)];
+}
+
+/**
+ * M3 — a reader follows a citation to see the fact on a chart. So a viewpoint, a
+ * crux or the topic's introduction may only cite an observation of a chart that
+ * picks out the data showing it: not a report, a whole chart or a passage of text.
+ */
+function citationTargetErrors(topic: Topic, factById: Map<string, Fact>): string[] {
+  const texts: [string, string][] = [
+    ['topic intro', topic.intro],
+    ...topic.viewpoints.map((v): [string, string] => [`viewpoint ${v.id}`, `${v.body}\n${v.summary}`]),
+    ...topic.cruxes.map((c): [string, string] => [`crux ${c.id}`, [c.body, ...c.positions.map(p => p.holds)].join('\n')]),
+  ];
+  return texts.flatMap(([what, body]) => citedFactTargets(body).flatMap(({ id, section }) => {
+    const fact = factById.get(id);
+    if (!fact) return [];
+    const link = `#fact-${id}${section ? `/${section}` : ''}`;
+    const key = section && observationGroups(fact).get(section);
+    if (!key || !factSlides(topic.slug, fact).some(slide => slideGroups(fact, slide).includes(key))) return [`${what}: ${link} is not an observation of a chart`];
+    const mark = fact.observationMarks?.[section];
+    if (mark && !mark.whole) return [];
+    return markErrors(fact, key, {}).includes(CANNOT_SHOW_MARKS) ? [] : [`${what}: ${link} picks out no part of its chart`];
+  }));
+}
+
+/**
+ * M2 — a data panel selects each observation in turn, and a claim in a viewpoint
+ * opens the one it cites, so each must say what it picks out on any chart that
+ * can show it. An observation with nothing narrower to pick out says `whole`.
+ */
+function unmarkedObservationErrors(f: Fact): string[] {
+  const groups = observationGroups(f);
+  return [...groups].flatMap(([id, key]) => f.observationMarks?.[id] || markErrors(f, key, {}).includes(CANNOT_SHOW_MARKS)
+    ? []
+    : [`fact ${f.id}: "${id}" has no entry in observationMarks`]);
 }
 
 /**

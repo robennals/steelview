@@ -9,107 +9,78 @@ status: well-supported
 sources:
   # 1
   - stance: supports
-    quote: >-
-      These attacks took place between 13–24 June 2025. On 22 June 2025, the
-      United States conducted attacks on three of Iran’s nuclear facilities.
-      The Agency stopped conducting verification activities in Iran at the
-      commencement of the military attacks and, by the end of June 2025, had
-      decided to withdraw all of its inspectors from Iran for safety reasons. …
-      On 2 July 2025, the President of Iran signed into force a law suspending
-      cooperation with the Agency. … On 9 September 2025, the Director General
-      signed an agreement with the Foreign Minister of Iran, Dr Abbas Araghchi,
-      in Cairo – referred to as the ‘Cairo agreement’ … Iran, in a letter of 20
-      November 2025, informed the Director General that the Cairo agreement was
-      “no longer valid and shall henceforth be regarded as terminated”. … The
-      Director General was in attendance at the indirect negotiations between
-      the United States of America and Iran that took place on 17 and 26
-      February 2026 in Geneva, in which he provided advice on issues relevant
-      to the verification of Iran’s nuclear programme. On 28 February 2026, the
-      United States of America and Israel launched further military attacks on
-      Iran, including on the sites of some nuclear facilities. Consequently,
-      the Agency stopped conducting verification activities in Iran. … On 1–3
-      June 2026, the Agency conducted an inspection and DIV at the Bushehr
-      Nuclear Power Plant (BNPP) … On 10 June 2026, the Board adopted
-      resolution GOV/2026/40 in which, inter alia, it: recalled that “Iran’s
-      many failures to provide the Agency with full and timely cooperation
-      regarding undeclared nuclear material and activities at multiple
-      undeclared locations in Iran, as detailed in GOV/2025/25, constitute
-      non-compliance with its obligations under its Safeguards Agreement …” …
-      further reiterated that “consistent with Article 19 of Iran’s Safeguards
-      Agreement, the Agency is not able to verify that there has been no
-      diversion of nuclear material required to be safeguarded under the
-      Agreement to nuclear weapons or other nuclear explosive devices” … Due to the lack of information about, and
-      access to, any of Iran’s four declared enrichment facilities to perform
-      verification activities the Agency cannot provide any information on the
-      current size, composition or whereabouts of the stockpile of enriched
-      uranium in Iran or whether Iran has suspended all enrichment related
-      activities, including R&D. … The Board considered the Director General’s
-      report and, on 12 June 2025, adopted resolution GOV/2025/38 … Since Iran
-      stopped provisionally applying its Additional Protocol in February 2021,
-      the Agency has not been able, inter alia, to conduct complementary access
-      to any sites or other locations in Iran.
+    quote: |-
+      These attacks took place between 13–24 June 2025. On 22 June 2025, the United States conducted attacks on three of Iran’s nuclear facilities. The Agency stopped conducting verification activities in Iran at the commencement of the military attacks and, by the end of June 2025, had decided to withdraw all of its inspectors from Iran for safety reasons. …
+
+      On 2 July 2025, the President of Iran signed into force a law suspending cooperation with the Agency. …
+
+      On 9 September 2025, the Director General signed an agreement with the Foreign Minister of Iran, Dr Abbas Araghchi, in Cairo – referred to as the ‘Cairo agreement’ …
+
+      Iran, in a letter of 20 November 2025, informed the Director General that the Cairo agreement was “no longer valid and shall henceforth be regarded as terminated”. …
+
+      The Director General was in attendance at the indirect negotiations between the United States of America and Iran that took place on 17 and 26 February 2026 in Geneva, in which he provided advice on issues relevant to the verification of Iran’s nuclear programme. On 28 February 2026, the United States of America and Israel launched further military attacks on Iran, including on the sites of some nuclear facilities. Consequently, the Agency stopped conducting verification activities in Iran. …
+
+      On 1–3 June 2026, the Agency conducted an inspection and DIV at the Bushehr Nuclear Power Plant (BNPP) …
+
+      On 10 June 2026, the Board adopted resolution GOV/2026/40 in which, inter alia, it: recalled that “Iran’s many failures to provide the Agency with full and timely cooperation regarding undeclared nuclear material and activities at multiple undeclared locations in Iran, as detailed in GOV/2025/25, constitute non-compliance with its obligations under its Safeguards Agreement …” …
+
+      further reiterated that “consistent with Article 19 of Iran’s Safeguards Agreement, the Agency is not able to verify that there has been no diversion of nuclear material required to be safeguarded under the Agreement to nuclear weapons or other nuclear explosive devices” …
+
+      Due to the lack of information about, and access to, any of Iran’s four declared enrichment facilities to perform verification activities the Agency cannot provide any information on the current size, composition or whereabouts of the stockpile of enriched uranium in Iran or whether Iran has suspended all enrichment related activities, including R&D. …
+
+      The Board considered the Director General’s report and, on 12 June 2025, adopted resolution GOV/2025/38 …
+
+      The Agency is also concerned that Iran has not provided the Agency with access to its fourth declared enrichment facility (IFEP) since it was first declared by Iran in June 2025. Consequently, the Agency does not know its status for safeguards purposes or whether IFEP contains nuclear material.
+
+      Since Iran stopped provisionally applying its Additional Protocol in February 2021, the Agency has not been able, inter alia, to conduct complementary access to any sites or other locations in Iran.
     title: 'Implementation of the NPT Safeguards Agreement and relevant provisions of United Nations Security Council resolutions in the Islamic Republic of Iran, GOV/2026/50, paras 2–16, 28, 39, 45'
     url: https://www.iaea.org/sites/default/files/gov2026-50.pdf
     publisher: International Atomic Energy Agency (IAEA)
     date: '2026-09-01'
   # 2
   - stance: complicates
-    quote: >-
-      The IAEA conducted an inspection and a DIV between June 1-3, 2026, at
-      Bushehr. The IAEA stated in its February 2026 NPT report that “the Agency
-      had conducted inspections/DIVs at 7 of the 13 unaffected facilities, but
-      had yet to conduct inspections/DIVs at any of the 8 affected facilities
-      or at the Isfahan Fuel Enrichment Plant).” … With the massive destruction
-      of its gas centrifuge program and installed centrifuge cascades, for the
-      first time in 20 years, Iran has no identifiable route to produce
-      weapon-grade uranium (WGU) in its centrifuge enrichment plants. … While
-      before the strikes, Iran could have made its first non-missile
-      deliverable nuclear weapon within months, it would need more than a year
-      today and face significant new uncertainties in knowing whether the
-      weapon would work. Director General Grossi stated after the June 2025
-      strikes that the IAEA believes that most of the HEU, but less than 70
-      percent of the stock, is located inside the Esfahan tunnel complex. … The
-      IAEA emphasizes that “Iran is the only NPT non-nuclear-weapon State to
-      have produced and accumulated uranium enriched up to 60% U-235 …” … no
-      breakout estimate to WGU is included in the Institute’s analysis of the
-      IAEA report, since to do so would require unsubstantiated speculation
+    quote: |-
+      The IAEA conducted an inspection and a DIV between June 1-3, 2026, at Bushehr. The IAEA stated in its February 2026 NPT report that “the Agency had conducted inspections/DIVs at 7 of the 13 unaffected facilities, but had yet to conduct inspections/DIVs at any of the 8 affected facilities or at the Isfahan Fuel Enrichment Plant).” …
+
+      With the massive destruction of its gas centrifuge program and installed centrifuge cascades, for the first time in 20 years, Iran has no identifiable route to produce weapon-grade uranium (WGU) in its centrifuge enrichment plants. …
+
+      While before the strikes, Iran could have made its first non-missile deliverable nuclear weapon within months, it would need more than a year today and face significant new uncertainties in knowing whether the weapon would work. Director General Grossi stated after the June 2025 strikes that the IAEA believes that most of the HEU, but less than 70 percent of the stock, is located inside the Esfahan tunnel complex. …
+
+      The IAEA states that under the comprehensive safeguards agreement, HEU stockpiles need to be verified once a month, or every 30 days. The IAEA emphasizes that “Iran is the only NPT non-nuclear-weapon State to have produced and accumulated uranium enriched up to 60% U-235…The Agency’s lack of access to verify the previously declared HEU and LEU, for nearly a year – which is long overdue according to standard safeguards practice – is a matter of proliferation concern and of compliance with the NPT Safeguards Agreement.”
+
+      On September 9, 2025, the IAEA and Iran formed the Cairo Agreement, which “provided an understanding of the procedures for Agency inspections, notifications and safeguards implementation covering all declared nuclear facilities and nuclear materials in Iran.” …
+
+      no breakout estimate to WGU is included in the Institute’s analysis of the IAEA report, since to do so would require unsubstantiated speculation
     title: 'Analysis of IAEA Iran Verification and Monitoring and NPT Safeguards Reports — June 2026'
     url: https://isis-online.org/isis-reports/analysis-of-iaea-iran-verification-and-monitoring-and-npt-safeguards-reports-june-2026
     publisher: Institute for Science and International Security (David Albright, Sarah Burkhard, Spencer Faragasso, Andrea Stricker)
     date: '2026-06-09'
   # 3
   - stance: complicates
-    quote: >-
-      The status of Iran’s nuclear program is unclear. … A November 2024 ODNI
-      report explained that Iran’s fissile material stockpile would, if further
-      enriched, have been sufficient for “more than a dozen nuclear weapons.”
-      The U.S. government estimated that Iran would have needed as little as
-      one week to produce enough weapons-grade HEU for one nuclear weapon,
-      according to a State Department (DOS) official in March 2022. The Defense
-      Intelligence Agency assessed in May 2025 that Iran would have needed
-      “probably less than one week” to produce this amount of HEU. … HEU used in nuclear weapons typically
-      contains about 90% u-235. … The latter two categories of UF6 are of
-      particular concern because relatively little additional effort would be
-      necessary to produce weapons-grade HEU using UF6 containing these
-      amounts of u-235. … Iran’s
-      Foreign Minister Seyed Abbas Araghchi stated on March 15, 2026, that the
-      country’s enriched uranium is “under the rubble” created by the June 2025
-      attacks on Iran’s enrichment facilities. Iran has “no plan” to recover
-      this material, he added. In 2026, U.S. and Iranian officials have said
-      that Iran has not resumed enriching uranium. … Grossi stated on March 4,
-      2026, that the IAEA in June 2025 had no “information indicating that
-      there was a structured systematic [Iranian] program to build or to
-      construct a nuclear weapon.” … The 2024 ATA observed that “Iran is not
-      currently undertaking the key nuclear weapons-development activities
-      necessary to produce a testable nuclear device.” … The 2026 ATA states
-      that the United States is “monitoring Iranian WMD-related capabilities
-      and actions following” the 2026 attacks; the ATA does not address Iran’s
-      nuclear weapons activities. … A June 2026 memorandum of understanding
-      (MOU) between the United States and Iran states that “Iran reaffirms that
-      it shall not procure or develop nuclear weapons.” … The current assessed
-      timeline is unclear. … Neither the U.S. government nor the IAEA have
-      publicly described evidence that Iran is conducting covert fissile
-      material production nuclear activities.
+    quote: |-
+      The status of Iran’s nuclear program is unclear. …
+
+      A November 2024 ODNI report explained that Iran’s fissile material stockpile would, if further enriched, have been sufficient for “more than a dozen nuclear weapons.” The U.S. government estimated that Iran would have needed as little as one week to produce enough weapons-grade HEU for one nuclear weapon, according to a State Department (DOS) official in March 2022. The Defense Intelligence Agency assessed in May 2025 that Iran would have needed “probably less than one week” to produce this amount of HEU. …
+
+      The time needed to produce enough weapons-grade HEU for a nuclear weapon is a function of a nuclear program’s enrichment capacity, as well as the mass and u-235 content of the UF6 stockpile fed into the enrichment process. LEU used in nuclear power reactors typically contains less than 5% u-235; research reactor fuel can be made using enriched uranium containing 20% u-235; HEU used in nuclear weapons typically contains about 90% u-235.
+
+      The JCPOA has mandated restrictions on Iran’s declared enrichment capacity and requires that Iran’s enriched uranium stockpile must not exceed 300 kilograms (kg) of UF6 containing 3.67% u-235 “or the equivalent in other chemical forms.” …
+
+      The latter two categories of UF6 are of particular concern because relatively little additional effort would be necessary to produce weapons-grade HEU using UF6 containing these amounts of u-235. …
+
+      Iran’s Foreign Minister Seyed Abbas Araghchi stated on March 15, 2026, that the country’s enriched uranium is “under the rubble” created by the June 2025 attacks on Iran’s enrichment facilities. Iran has “no plan” to recover this material, he added. In 2026, U.S. and Iranian officials have said that Iran has not resumed enriching uranium. …
+
+      Grossi stated on March 4, 2026, that the IAEA in June 2025 had no “information indicating that there was a structured systematic [Iranian] program to build or to construct a nuclear weapon.” …
+
+      The 2024 ATA observed that “Iran is not currently undertaking the key nuclear weapons-development activities necessary to produce a testable nuclear device.” …
+
+      The 2026 ATA states that the United States is “monitoring Iranian WMD-related capabilities and actions following” the 2026 attacks; the ATA does not address Iran’s nuclear weapons activities. …
+
+      A June 2026 memorandum of understanding (MOU) between the United States and Iran states that “Iran reaffirms that it shall not procure or develop nuclear weapons.” …
+
+      The current assessed timeline is unclear. …
+
+      Neither the U.S. government nor the IAEA have publicly described evidence that Iran is conducting covert fissile material production nuclear activities.
     title: 'Iran and Nuclear Weapons Production (IF12106)'
     url: https://www.everycrsreport.com/files/2026-10-13_IF12106_ff4611e8ad95fe2ddcc2266816c7d28beec63b35.pdf
     publisher: Congressional Research Service (Paul K. Kerr), via EveryCRSReport
@@ -142,26 +113,22 @@ sources:
     date: '2026-03'
   # 6
   - stance: supports
-    quote: >-
-      these three locations, and other possible related locations, were part
-      of an undeclared structured nuclear programme carried out by Iran until
-      the early 2000s and that some activities used undeclared nuclear
-      material. … the Agency concludes that approximately 10 kg of natural
-      uranium metal, which had not been declared by Iran, was available to the
-      Applied Physics Institute (API) operating at Lavisan-Shian in the period
-      2002-2003. … Iran retained unknown nuclear material and/or heavily
-      contaminated equipment, and other assets, arising from the former
-      undeclared structured nuclear programme, at Turquzabad in the period 2009
-      until 2018, after which items were removed from the location. … The
-      Agency has no credible indications of an ongoing, undeclared structured
-      nuclear programme of the type described above in Iran and notes the
-      statements of the highest officials in Iran that the use of nuclear
-      weapons is incompatible with Islamic Law. … the fact that Iran is the
-      only non-nuclear-weapon State in the world that is producing and
-      accumulating uranium enriched to 60% remains a matter of serious concern
-      … has sanitised locations as listed in this report, which has impeded
-      Agency verification activities. … the Agency will not be in a position to
-      provide assurance that Iran’s nuclear programme is exclusively peaceful.
+    quote: |-
+      these three locations, and other possible related locations, were part of an undeclared structured nuclear programme carried out by Iran until the early 2000s and that some activities used undeclared nuclear material. …
+
+      the Agency concludes that approximately 10 kg of natural uranium metal, which had not been declared by Iran, was available to the Applied Physics Institute (API) operating at Lavisan-Shian in the period 2002-2003. …
+
+      Iran retained unknown nuclear material and/or heavily contaminated equipment, and other assets, arising from the former undeclared structured nuclear programme, at Turquzabad in the period 2009 until 2018, after which items were removed from the location. …
+
+      The Agency has no credible indications of an ongoing, undeclared structured nuclear programme of the type described above in Iran and notes the statements of the highest officials in Iran that the use of nuclear weapons is incompatible with Islamic Law. However, repeated statements by former high-level officials in Iran related to Iran having all capabilities to manufacture nuclear weapons continue to provide concerns in this area.
+
+      While safeguarded enrichment activities are not forbidden in and of themselves, the fact that Iran is the only non-nuclear-weapon State in the world that is producing and accumulating uranium enriched to 60% remains a matter of serious concern, which has drawn international attention given the potential proliferation implications.
+
+      While Iran continues to cooperate with the Agency on matters of routine safeguards implementation, in a number of respects as outlined in this report its cooperation with the Agency has been less than satisfactory. …
+
+      has sanitised locations as listed in this report, which has impeded Agency verification activities. …
+
+      the Agency will not be in a position to provide assurance that Iran’s nuclear programme is exclusively peaceful.
     title: 'NPT Safeguards Agreement with the Islamic Republic of Iran, GOV/2025/25, paras 17, 77–81, 86'
     url: https://www.iaea.org/sites/default/files/25/06/gov2025-25.pdf
     publisher: International Atomic Energy Agency (IAEA)
@@ -197,28 +164,24 @@ sources:
     date: '2011-11-08'
   # 9
   - stance: supports
-    quote: >-
-      Iran is meeting its nuclear obligations, although it slightly exceeded a
-      cap set on the stockpile of heavy water … bringing Iran back within the
-      limit … May 8, 2018: President Trump announces that he is withdrawing the
-      United States from the JCPOA … May 8, 2019: Iran announces that it will
-      no longer be bound by stockpiles limitations … July 1, 2019: Iran
-      announces that it breached the 300 kilogram limit … The IAEA confirms
-      that Iran has exceeded the limit. … April 13, 2021: Iran notifies the
-      International Atomic Energy Agency that it has begun to boost enrichment
-      levels to 60 percent … in response to the April 11 attack.
+    quote: |-
+      Iran is meeting its nuclear obligations, although it slightly exceeded a cap set on the stockpile of heavy water allowed under the agreement. The IAEA notes that Iran had 130.9 metric tons of heavy water, slightly above the 130 metric ton limit set by the deal, but shipped out 20 metric tons on February 24 to stay below the limit. … December 6, 2016: IAEA verifies that all 11 metric tons of heavy water shipped out of Iran have reached their destination and are in storage, bringing Iran back within the limit on heavy water of 130 metric tons established by the JCPOA. …
+      - May 8, 2018: President Trump announces that he is withdrawing the United States from the JCPOA …
+      - May 8, 2019: Iran announces that it will no longer be bound by stockpiles limitations …
+      - July 1, 2019: Iran announces that it breached the 300 kilogram limit … The IAEA confirms that Iran has exceeded the limit. …
+      - April 13, 2021: Iran notifies the International Atomic Energy Agency that it has begun to boost enrichment levels to 60 percent … in response to the April 11 attack.
     title: Timeline of Nuclear Diplomacy With Iran
     url: https://www.armscontrol.org/factsheets/Timeline-of-Nuclear-Diplomacy-With-Iran
     publisher: Arms Control Association
     date: '2023-01'
   # 10
   - stance: supports
-    quote: >-
-      For 10 years operating centrifuges reduced to 5,060 IR-1 machines … For
-      15 years level of uranium enrichment capped at 3.67 percent uranium-235
-      … For 15 years the stockpile is kept under 300 kilograms of 3.67 percent
-      enriched uranium in total (all forms) … January 16, 2016, Implementation
-      Day
+    quote: |-
+      - For 10 years operating centrifuges reduced to 5,060 IR-1 machines …
+      - For 15 years level of uranium enrichment capped at 3.67 percent uranium-235 …
+      - For 15 years the stockpile is kept under 300 kilograms of 3.67 percent enriched uranium in total (all forms) …
+
+      January 16, 2016, Implementation Day
     title: The Joint Comprehensive Plan of Action (JCPOA) at a Glance
     url: https://www.armscontrol.org/factsheets/JCPOA-at-a-glance
     publisher: Arms Control Association
@@ -235,15 +198,14 @@ sources:
     date: '2026-04-08'
   # 12
   - stance: complicates
-    quote: >-
-      U.S. intelligence assessments have concluded that Iran is now 9 to 12
-      months away from being able to build a nuclear weapon, according to a
-      Reuters report. … In July 2025, the Pentagon estimated that the June
-      strikes had pushed Iran back to roughly two years … prior to this
-      conflict and the 12-Day War, U.S. intelligence reportedly placed Iran's
-      breakout time at three to six months. … Any realistic assessment
-      accounting for all these setbacks would place the timeline at two and a
-      half years at least, absent foreign assistance.
+    quote: |-
+      U.S. intelligence assessments have concluded that Iran is now 9 to 12 months away from being able to build a nuclear weapon, according to a Reuters report. …
+
+      In July 2025, the Pentagon estimated that the June strikes had pushed Iran back to roughly two years …
+
+      prior to this conflict and the 12-Day War, U.S. intelligence reportedly placed Iran's breakout time at three to six months. …
+
+      Any realistic assessment accounting for all these setbacks would place the timeline at two and a half years at least, absent foreign assistance.
     title: "Oversights Mar Low-End Estimate of Tehran's Nuclear Weapons Timeline"
     url: https://www.fdd.org/analysis/2026/05/06/oversights-mar-low-end-estimate-of-tehrans-nuclear-weapons-timeline/
     publisher: Foundation for Defense of Democracies (Andrea Stricker)
@@ -295,12 +257,7 @@ sources:
   # 17
   - stance: supports
     quote: >-
-      Iran has not enriched uranium above 3.67% U-235 (para. 28). … Throughout
-      the reporting period, Iran’s total enriched uranium stockpile has not
-      exceeded 300 kg of UF6 enriched up to 3.67% U-235 (or the equivalent in
-      different chemical forms) (para. 56). … As of 18 February 2017, the
-      quantity of Iran’s uranium enriched up to 3.67% U-235 was 101.7 kg, based
-      on the JCPOA and decisions of the Joint Commission.
+      Iran has not enriched uranium above 3.67% U-235 (para. 28). As previously reported, the Agency, in its letter of 23 August 2016, requested Iran to reassess the quantity of enriched uranium in the process lines (hold up) at the Enriched UO2 Powder Plant (EUPP) at Esfahan and to revise its report accordingly. … The estimated amount of enriched uranium in the EUPP equipment and the output material do not count against Iran’s enriched uranium stockpile. Throughout the reporting period, Iran’s total enriched uranium stockpile has not exceeded 300 kg of UF6 enriched up to 3.67% U-235 (or the equivalent in different chemical forms) (para. 56). The quantity of 300 kg of UF6 corresponds to 202.8 kg of uranium. As of 18 February 2017, the quantity of Iran’s uranium enriched up to 3.67% U-235 was 101.7 kg, based on the JCPOA and decisions of the Joint Commission.
     title: 'Verification and monitoring in the Islamic Republic of Iran in light of United Nations Security Council resolution 2231 (2015), GOV/2017/10'
     url: https://www.iaea.org/sites/default/files/gov2017-10.pdf
     publisher: International Atomic Energy Agency (IAEA)
@@ -373,12 +330,7 @@ sources:
   # 23
   - stance: supports
     quote: >-
-      Iran has not enriched uranium above 3.67% U-235 (para. 28). … Throughout
-      the reporting period, Iran’s total enriched uranium stockpile has not
-      exceeded 300 kg of UF6 enriched up to 3.67% U-235 (or the equivalent in
-      different chemical forms) (para. 56). … As of 18 August 2018, the quantity
-      of Iran’s uranium enriched up to 3.67% U-235 was 139.4 kg, based on the
-      JCPOA and decisions of the Joint Commission. … The Agency has continued to
+      Iran has not enriched uranium above 3.67% U-235 (para. 28). Throughout the reporting period, Iran’s total enriched uranium stockpile has not exceeded 300 kg of UF6 enriched up to 3.67% U-235 (or the equivalent in different chemical forms) (para. 56). The quantity of 300 kg of UF6 corresponds to 202.8 kg of uranium. As of 18 August 2018, the quantity of Iran’s uranium enriched up to 3.67% U-235 was 139.4 kg, based on the JCPOA and decisions of the Joint Commission. At the Fordow Fuel Enrichment Plant (FFEP), no more than 1044 IR-1 centrifuges have been maintained in one wing (Unit 2) of the facility (para. 46). … The Agency has continued to
       evaluate Iran’s declarations under the Additional Protocol, and has
       conducted complementary accesses under the Additional Protocol to all the
       sites and locations in Iran which it needed to visit.
@@ -415,12 +367,7 @@ sources:
   # 26
   - stance: supports
     quote: >-
-      Iran has not enriched uranium above 3.67% U-235 (para. 28). … Throughout
-      the reporting period, Iran’s total enriched uranium stockpile has not
-      exceeded 300 kg of UF6 enriched up to 3.67% U-235 (or the equivalent in
-      different chemical forms) (para. 56). … As of 20 May 2019, the quantity of
-      Iran’s uranium enriched up to 3.67% U-235 was 174.1 kg, based on the JCPOA
-      and decisions of the Joint Commission.
+      Iran has not enriched uranium above 3.67% U-235 (para. 28). Throughout the reporting period, Iran’s total enriched uranium stockpile has not exceeded 300 kg of UF6 enriched up to 3.67% U-235 (or the equivalent in different chemical forms) (para. 56). The quantity of 300 kg of UF6 corresponds to 202.8 kg of uranium. As of 20 May 2019, the quantity of Iran’s uranium enriched up to 3.67% U-235 was 174.1 kg, based on the JCPOA and decisions of the Joint Commission.
     title: 'Verification and monitoring in the Islamic Republic of Iran in light of United Nations Security Council resolution 2231 (2015), GOV/2019/21'
     url: https://www.iaea.org/sites/default/files/19/06/gov2019-21.pdf
     publisher: International Atomic Energy Agency (IAEA)
@@ -503,17 +450,18 @@ sources:
     date: '2021-02-23'
   # 34
   - stance: supports
-    quote: >-
-      For this reporting period, the Agency has not been able to verify Iran’s
-      total enriched uranium stockpile, comprising enriched uranium produced at
-      FEP, PFEP and FFEP. … the Agency has estimated that, as of 22 May 2021,
-      Iran’s total enriched uranium stockpile was 3241.0 kg (+273.2 kg since the
-      previous quarterly report). … 2.4 kg of uranium enriched up to 60% U-235.
-      … has been enriching UF6 up to 60% U-235 since 17 April 2021. … Since 23
-      February 2021, while centrifuges and associated infrastructure in storage
-      remained under continuous monitoring by Agency surveillance equipment, the
-      Agency has not had access to the data and recordings collected by its
-      equipment (paras 29, 47, 48 and 70).
+    quote: |-
+      For this reporting period, the Agency has not been able to verify Iran’s total enriched uranium stockpile, comprising enriched uranium produced at FEP, PFEP and FFEP. …
+
+      the Agency has estimated that, as of 22 May 2021, Iran’s total enriched uranium stockpile was 3241.0 kg (+273.2 kg since the previous quarterly report). The estimated stockpile comprised 3206.3 kg of uranium in the form of UF6; 13.3 kg of uranium in the form of uranium oxides and their intermediate products; 10.5 kg of uranium in fuel assemblies and rods; and 10.9 kg of uranium in liquid and solid scrap.
+
+      The estimated total enriched uranium stockpile in the form of UF6 of 3206.3 kg comprises: 1367.9 kg of uranium enriched up to 2% U-235; 1773.2 kg of uranium enriched up to 5% U-235; 62.8 kg of uranium enriched up to 20% U-235; and 2.4 kg of uranium enriched up to 60% U-235.
+
+      Since 23 February 2021, the Agency has not had access to the data from its on-line enrichment monitors and electronic seals, or had access to the measurement recordings registered by its installed measurement devices (para. 67.1). …
+
+      Iran has continued the enrichment of UF6 at the Fuel Enrichment Plant (FEP) and the Pilot Fuel Enrichment Plant (PFEP) at Natanz, and at the Fordow Fuel Enrichment Plant (FFEP) at Fordow. As previously reported, Iran has been enriching UF6 up to 5% U-235 since 8 July 2019 (para. 28), has been enriching UF6 up to 20% U-235 since 4 January 2021, and has been enriching UF6 up to 60% U-235 since 17 April 2021. Iran has continued to conduct certain enrichment activities that are not in line with its long-term enrichment and R&D enrichment plan, as provided to the Agency on 16 January 2016 (para. 52).
+
+      Since 23 February 2021, while centrifuges and associated infrastructure in storage remained under continuous monitoring by Agency surveillance equipment, the Agency has not had access to the data and recordings collected by its equipment (paras 29, 47, 48 and 70).
     title: 'Verification and monitoring in the Islamic Republic of Iran in light of United Nations Security Council resolution 2231 (2015), GOV/2021/28'
     url: https://www.iaea.org/sites/default/files/21/06/gov2021-28.pdf
     publisher: International Atomic Energy Agency (IAEA)
@@ -652,10 +600,14 @@ sources:
     date: '2024-08-29'
   # 48
   - stance: supports
-    quote: >-
-      … the Agency has estimated that, as of 26 October 2024, Iran’s total
-      enriched uranium stockpile was 6604.4 kg. … 182.3 kg of uranium enriched
-      up to 60% U-235 (+17.6 kg).
+    quote: |-
+      … the Agency has estimated that, as of 26 October 2024, Iran’s total enriched uranium stockpile was 6604.4 kg. … The estimated stockpile comprised: 5807.2 kg of uranium in the form of UF6; 615.8 kg of uranium in the form of uranium oxide and other intermediate products; 44.3 kg of uranium in fuel assemblies, plates and rods; 4.4 kg of uranium in targets; and 132.7 kg of uranium in liquid and solid scrap.
+
+      As of 26 October 2024, the Agency has estimated that the total enriched uranium stockpile in the form of UF6 of 5807.2 kg comprised:
+      - 2190.9 kg of uranium enriched up to 2% U-235 (+539.9 kg since the previous quarterly report);
+      - 2594.8 kg of uranium enriched up to 5% U-235 (+273.3 kg);
+      - 839.2 kg of uranium enriched up to 20% U-235 (+25.3 kg); and
+      - 182.3 kg of uranium enriched up to 60% U-235 (+17.6 kg).
     title: 'Verification and monitoring in the Islamic Republic of Iran in light of United Nations Security Council resolution 2231 (2015), GOV/2024/61'
     url: https://www.iaea.org/sites/default/files/24/11/gov2024-61.pdf
     publisher: International Atomic Energy Agency (IAEA)
@@ -671,10 +623,15 @@ sources:
     publisher: International Atomic Energy Agency (IAEA)
     date: '2025-02-26'
 series:
-  title: "Iran's enriched-uranium stock, all enrichment levels, February 2017 – 13 June 2025"
+  title: "Iran's enriched-uranium stock"
+  subtitle: 'All enrichment levels, from under 2% to 60%, February 2017 – 13 June 2025'
   description: >-
     Kilograms of uranium in Iran's enriched stock, as reported in each IAEA
-    quarterly report, against the 2015 deal's limit of 202.8 kg. Figures
+    quarterly report, against the 2015 deal's limit of 202.8 kg. Most of it is
+    low-enriched: of the IAEA's last estimate, for 13 June 2025, 440.9 kg was
+    enriched to 60% and the rest to 20% or less. Weights are of the
+    uranium alone, not of the uranium hexafluoride (UF6) gas it is enriched
+    in. Figures
     were verified by inspectors to February 2021 and estimated by the IAEA
     after that. The last figure is the IAEA's estimate for 13 June 2025, the
     day Israel's strikes began; there is no later figure (as of 1 September
@@ -743,18 +700,14 @@ series:
       source: 1
   source:
     stance: supports
-    quote: >-
-      Based on the information provided by Iran up to 12 June 2025, previous
-      Agency verification activities and estimates based on the past operating
-      records of the relevant declared facilities, the Agency’s estimate of
-      Iran’s total enriched uranium stockpile, as of 13 June 2025, was 9874.9
-      kg, comprising 9040.5 kg of uranium in the form of UF6 and 834.4 kg of
-      uranium in other forms. The total enriched uranium stockpile of 9040.5
-      kg in the form of UF6 comprised: 8599.6 kg of LEU – 2391.1 kg of uranium
-      enriched up to 2% U-235, 6024.4 kg of uranium enriched up to 5% U-235,
-      and 184.1 kg of uranium enriched up to 20% U-235; and 440.9 kg of HEU –
-      uranium enriched up to 60% U-235. … The Agency has verified 432.9 kg of
-      this 440.9 kg of uranium in the form of UF6 enriched up to 60% U-235.
+    quote: |-
+      Based on the information provided by Iran up to 12 June 2025, previous Agency verification activities and estimates based on the past operating records of the relevant declared facilities, the Agency’s estimate of Iran’s total enriched uranium stockpile, as of 13 June 2025, was 9874.9 kg, comprising 9040.5 kg of uranium in the form of UF6 and 834.4 kg of uranium in other forms. The total enriched uranium stockpile of 9040.5 kg in the form of UF6 comprised:
+      - 8599.6 kg of LEU – 2391.1 kg of uranium enriched up to 2% U-235, 6024.4 kg of uranium enriched up to 5% U-235, and 184.1 kg of uranium enriched up to 20% U-235; and
+      - 440.9 kg of HEU – uranium enriched up to 60% U-235.
+
+      Due to the lack of information about, and access to, any of Iran’s four declared enrichment facilities to perform verification activities the Agency cannot provide any information on the current size, composition or whereabouts of the stockpile of enriched uranium in Iran or whether Iran has suspended all enrichment related activities, including R&D. …
+
+      The Agency has verified 432.9 kg of this 440.9 kg of uranium in the form of UF6 enriched up to 60% U-235.
     title: 'Implementation of the NPT Safeguards Agreement and relevant provisions of United Nations Security Council resolutions in the Islamic Republic of Iran, GOV/2026/50, para 27 and footnote 17'
     url: https://www.iaea.org/sites/default/files/gov2026-50.pdf
     publisher: International Atomic Energy Agency (IAEA)
@@ -764,6 +717,7 @@ series:
       label: Total enriched stock, kg of uranium
       unit: count
       valueLabel: kg of uranium (not of UF6 gas)
+      tickUnit: kg
       note: >-
         Each point is the figure in that quarter's IAEA report (sources 17–49,
         51 and the series source), in kilograms of uranium. The deal's limit
@@ -778,11 +732,16 @@ series:
           points: [{period: '2017-02-18', value: 202.8}, {period: '2025-06-13', value: 202.8}]
 additionalSeries:
   - id: sixty-percent-stock
-    title: "Iran's stock of uranium enriched to 60%, May 2021 – 13 June 2025"
+    title: "Iran's uranium enriched to 60%"
+    subtitle: 'IAEA estimates, May 2021 – 13 June 2025. Weapons typically use uranium enriched to about 90%.'
     description: >-
-      Kilograms of uranium enriched up to 60% U-235, in the form of UF6 gas,
-      as estimated in each IAEA quarterly report from the first one after
-      production began. Weapons uranium typically contains about 90%, according to the Congressional Research Service. The last
+      Kilograms of uranium enriched up to 60% U-235, as estimated in each IAEA
+      quarterly report from the first one after production began. It is held
+      as uranium hexafluoride (UF6), the gas that enrichment centrifuges spin.
+      Weapons uranium typically contains about 90%, according to the
+      Congressional Research Service, which also reports a November 2024 US
+      intelligence finding that Iran's stockpile, if further enriched, would
+      have been sufficient for "more than a dozen nuclear weapons". The last
       figure, for 13 June 2025, is the IAEA's latest; it has published none
       since (as of 1 September 2026).
     periodLabel: 'Date the IAEA figure describes'
@@ -824,6 +783,7 @@ additionalSeries:
         label: Uranium enriched to 60%, kg of uranium
         unit: count
         valueLabel: kg of uranium (in UF6 form)
+        tickUnit: kg
         note: >-
           Each point is the "uranium enriched up to 60% U-235" figure in that
           quarter's IAEA report (sources 34–49 and 51); the last is the
@@ -872,9 +832,24 @@ figures:
   - kind: "series"
   - kind: "series"
     id: "sixty-percent-stock"
+  - kind: "dataTable"
+    id: "enrichment-levels"
+    title: "What uranium enrichment levels mean"
+    subtitle: "From the 2015 deal's cap to the level used in weapons"
+    description: "Levels of enrichment in the 2015 deal, in Iran's stock and in nuclear weapons, with what the sources say about each."
+    caption: "One row per level"
+    columns:
+      - { key: "level", label: "Enrichment", rowHeader: true, sortable: false }
+      - { key: "means", label: "What it means", sortable: false }
+    rows:
+      - { level: "3.67%", means: { value: "Cap under the 2015 deal, for 15 years", sources: [10] } }
+      - { level: "60%", means: { value: "Iran is \"the only non-nuclear-weapon State in the world that is producing and accumulating uranium enriched to 60%\"", sources: [6] } }
+      - { level: "From 60% to weapons grade", means: { value: "\"relatively little additional effort would be necessary\"", sources: [3] } }
+      - { level: "About 90%", means: { value: "Uranium used in nuclear weapons \"typically contains about 90%\"", sources: [3] } }
   - kind: compositionBar
     id: board-votes
-    title: IAEA Board of Governors votes on Iran resolutions, 2026
+    title: IAEA Board votes on Iran
+    subtitle: Board of Governors resolutions, June and September 2026
     description: How the 34 voting Board members cast their votes on the two 2026 resolutions on Iran's
       safeguards non-compliance. The September resolution sent the matter to the UN Security Council and
       General Assembly.
@@ -899,28 +874,32 @@ figures:
       confirmed at source.'
   - kind: "timeline"
     id: "inspections"
-    title: What IAEA inspectors could see in Iran, 2016–2026
+    title: What IAEA inspectors could see in Iran
+    subtitle: January 2016 – September 2026
     description: "What the IAEA could verify in Iran at each step, from the 2015 deal taking effect to its latest report."
     categories:
       - { id: "access", label: "Inspections or agreed access" }
       - { id: "lost", label: "Access lost" }
       - { id: "strikes", label: "Strikes" }
+      - { id: "board", label: "Board finding" }
     events:
       - { date: "2016-01-16", title: "Implementation Day: the 2015 deal's limits take effect", category: "access", source: 10 }
       - { date: "2018-08", title: "Complementary access to every site it \"needed to visit\"", category: "access", source: 23 }
       - { date: "2021-02-23", title: "No access to its monitoring data", category: "lost", sources: [34, 1] }
       - { date: "2021-02", title: "Iran stops applying the Additional Protocol, ending complementary access", category: "lost", source: 1 }
       - { date: "2021-05", title: "Can no longer verify the total stock; figures become estimates", category: "lost", source: 34 }
-      - { date: "2025-06-13", endDate: "2025-06-30", title: "Strikes on Iran's nuclear sites; verification stops and inspectors leave", category: "strikes", significance: "major", source: 1 }
+      - { date: "2025-06-13", endDate: "2025-06-30", title: "Strikes on Iran's nuclear sites; verification stops and inspectors leave", description: "The IAEA had verified 432.9 kg of the 440.9 kg of 60% uranium it estimates for 13 June 2025.", category: "strikes", significance: "major", sources: [1, 50] }
       - { date: "2025-07-02", title: "Iranian law suspends cooperation with the IAEA", category: "lost", source: 1 }
       - { date: "2025-09-09", endDate: "2025-11-20", title: "Cairo agreement on inspection procedures, then ended by Iran", category: "access", source: 1 }
       - { date: "2026-02", title: "Inspections at 7 of 13 facilities not struck in 2025, none of the 8 struck", category: "access", source: 2 }
       - { date: "2026-02-28", title: "US and Israeli strikes; verification stops again", category: "strikes", significance: "major", source: 1 }
       - { date: "2026-06-01", endDate: "2026-06-03", title: "One inspection, at the Bushehr power plant", category: "access", sources: [1, 2] }
-      - { date: "2026-09-01", title: "No information on the size, composition or location of the enriched stock", category: "lost", source: 1 }
+      - { date: "2026-06-10", title: "IAEA Board: Iran's failures \"constitute non-compliance with its obligations\"", category: "board", source: 1 }
+      - { date: "2026-09-01", title: "No information on the size, composition or location of the enriched stock", description: "The IAEA \"cannot provide any information on the current size, composition or whereabouts\" of the stock.", category: "lost", source: 1 }
   - kind: "timeline"
     id: "statements"
-    title: "What the IAEA and US intelligence said about weapons work, 2011–2026"
+    title: "Official statements on weapons work"
+    subtitle: "What the IAEA and US intelligence said about Iran, 2011–2026"
     description: "Official statements on whether Iran had a weapons programme, by date. They are records of what was said, not measurements."
     categories:
       - { id: "iaea", label: "IAEA" }
@@ -932,13 +911,14 @@ figures:
       - { date: "2015-12", title: "A \"coordinated effort\" before the end of 2003", description: "It \"did not advance beyond feasibility and scientific studies\", with \"no credible indications\" of such work after 2009.", category: "iaea", source: 7 }
       - { date: "2024-03", title: "\"Iran is not currently undertaking the key nuclear weapons-development activities necessary to produce a testable nuclear device\"", description: "As quoted by CRS.", category: "us-intelligence", source: 3 }
       - { date: "2025-03", title: "\"Iran is not building a nuclear weapon\"", description: "Khamenei \"has not reauthorized\" the programme, \"though pressure has probably built on him\".", category: "us-intelligence", source: 4 }
-      - { date: "2025-05", title: "\"no credible indications of an ongoing, undeclared structured nuclear programme\"", description: "Three sites were \"part of an undeclared structured nuclear programme … until the early 2000s\"; Iran \"sanitised locations\".", category: "iaea", source: 6 }
+      - { date: "2025-05", title: "\"no credible indications of an ongoing, undeclared structured nuclear programme\"", description: "Three sites were \"part of an undeclared structured nuclear programme … until the early 2000s\"; Iran \"sanitised locations\". The IAEA \"will not be in a position to provide assurance that Iran's nuclear programme is exclusively peaceful\".", category: "iaea", source: 6 }
       - { date: "2026-03", title: "No information in June 2025 on \"a structured systematic … program to build or to construct a nuclear weapon\"", description: "IAEA chief Grossi, as quoted by CRS.", category: "iaea", source: 3 }
       - { date: "2026-03", title: "Iran was \"intending to try to recover\" its nuclear infrastructure", description: "No judgment on a weapons decision.", category: "us-intelligence", sources: [5, 3] }
       - { date: "2026-06", title: "\"Iran reaffirms that it shall not procure or develop nuclear weapons\"", description: "US–Iran memorandum, as quoted by CRS.", category: "agreement", source: 3 }
   - kind: "dataTable"
     id: "breakout"
-    title: "How close Iran was to weapons-grade uranium or a weapon, by source and date"
+    title: "How close Iran was to a weapon"
+    subtitle: "Estimates of time to weapons-grade uranium or a weapon, 2022–2026"
     description: "Published estimates, which measure different things: time to weapons-grade uranium, time to a weapon, or the size of the stock."
     caption: "One row per estimate"
     columns:
@@ -955,7 +935,7 @@ figures:
       - { when: "Jul 2025", estimate: "About two years", measures: "Set back by the June strikes", who: { value: "Pentagon (FDD)", sources: [12] } }
       - { when: "May 2026", estimate: "9 to 12 months", measures: "Able to build a weapon", who: { value: "US intelligence, per Reuters (FDD; Reuters not read)", sources: [12] } }
       - { when: "May 2026", estimate: "At least two and a half years", measures: "A weapon, without foreign help", who: { value: "FDD's own judgment", sources: [12] } }
-      - { when: "Jun 2026", estimate: "\"More than a year\"; \"no identifiable route\" to weapons-grade uranium", measures: "A first weapon not carried by a missile", who: { value: "ISIS's own judgment", sources: [2] } }
+      - { when: "Jun 2026", estimate: "\"More than a year\"; \"no identifiable route\" to weapons-grade uranium", measures: "A first weapon not carried by a missile", who: { value: "ISIS's own judgment: \"for the first time in 20 years\"; an estimate of the time \"would require unsubstantiated speculation\"", sources: [2] } }
       - { when: "Oct 2026", estimate: "\"Unclear\"", who: { value: "CRS", sources: [3] } }
   - kind: quotes
     id: damage-claims
@@ -976,12 +956,40 @@ figures:
         by CRS, date: '2026', source: 3}
     - {text: 'cannot provide any information on the current size, composition or whereabouts of the stockpile
         of enriched uranium in Iran', speaker: IAEA, context: Report GOV/2026/50, date: '2026-09-01', source: 1}
+observationMarks:
+  sixty-is-not-ninety: {rows: ["From 60% to weapons grade", "About 90%"]}
+  only-non-weapon-state-at-60: {rows: ["60%"]}
+  sixty-percent-growth: {lines: ["60% stock (IAEA estimate)"], from: "2021-05-22", to: "2025-06-13"}
+  stock-unaccounted-for: {rows: ["Strikes on Iran's nuclear sites; verification stops and inspectors leave", "Inspections at 7 of 13 facilities not struck in 2025, none of the 8 struck", "No information on the size, composition or location of the enriched stock"]}
+  deal-era-compliance: {lines: ["Enriched stock (IAEA)", "Limit under the 2015 deal"], from: "2017-02-18", to: "2025-06-13"}
+  breaches-after-us-exit: {lines: ["Enriched stock (IAEA)", "Limit under the 2015 deal"], from: "2018-05-14", to: "2019-07-01", at: "2019-07-01"}
+  board-referral-with-abstentions: {rows: ["GOV/2026/40, 10 June 2026", "GOV/2026/61, 9 September 2026 (referral to the UN)"]}
+  close-to-weapons-grade-before-strikes: {rows: ["\"Probably less than one week\""]}
+  no-route-to-weapons-grade: {rows: ["\"More than a year\"; \"no identifiable route\" to weapons-grade uranium"]}
+  access-narrowed-in-steps: {rows: ["Iran stops applying the Additional Protocol, ending complementary access", "Inspections at 7 of 13 facilities not struck in 2025, none of the 8 struck"]}
+  verification-stopped: {rows: ["US and Israeli strikes; verification stops again", "One inspection, at the Bushehr power plant"]}
+  ata-2025-not-building: {rows: ["\"Iran is not building a nuclear weapon\""]}
+  no-ongoing-programme-2025: {rows: ["\"no credible indications of an ongoing, undeclared structured nuclear programme\""]}
+  past-weapons-work: {rows: ["Weapons-relevant work \"took place under a structured programme\"", "A \"coordinated effort\" before the end of 2003", "\"no credible indications of an ongoing, undeclared structured nuclear programme\""]}
+  mou-no-weapons-clause: {rows: ["\"Iran reaffirms that it shall not procure or develop nuclear weapons\""]}
+  total-stock-dips: {lines: ["Enriched stock (IAEA)"], from: "2021-05-22", to: "2024-08-17", at: "2021-08-30"}
+  estimates-after-2021: {lines: ["Enriched stock (IAEA)"], from: "2021-02-16", to: "2025-06-13"}
+  estimates-differ-by-measure: {rows: ["\"Probably less than one week\"", "9 to 12 months", "Enough for \"more than a dozen\" weapons if further enriched", "\"Unclear\""]}
+  damage-claims-conflict: {rows: ["Pete Hegseth", "IAEA"]}
+  grossi-june-2025: {rows: ["No information in June 2025 on \"a structured systematic … program to build or to construct a nuclear weapon\""]}
+  ata-2026-silent: {rows: ["Iran was \"intending to try to recover\" its nuclear infrastructure"]}
+  no-assurance-peaceful: {rows: ["\"no credible indications of an ongoing, undeclared structured nuclear programme\""]}
+  complementary-access-ended: {rows: ["Iran stops applying the Additional Protocol, ending complementary access"]}
+  board-non-compliance: {rows: ["IAEA Board: Iran's failures \"constitute non-compliance with its obligations\""]}
+  iran-says-under-rubble: {rows: ["Abbas Araghchi"]}
 ---
 ## Observations {#iran-nuclear-programme--observations-total-stock}
 
-### While the deal held, the stock stayed under its limit {#iran-nuclear-programme--deal-era-compliance}
+### The stock stayed under the deal's limit until about a year after the US left, then rose far above it {#iran-nuclear-programme--deal-era-compliance}
 
 Every IAEA report from February 2017 to May 2019 found the stock under the 2015 deal's limit and enrichment no higher than 3.67%. [17](#source-iran-nuclear-programme-17) [26](#source-iran-nuclear-programme-26) In August 2018 the IAEA said it had made complementary access visits "to all the sites and locations in Iran which it needed to visit". [23](#source-iran-nuclear-programme-23)
+
+In July 2019, about a year after the US left the deal, the IAEA found the stock over the limit. [15](#source-iran-nuclear-programme-15) From then on it rose far above it (chart).
 
 In 2016 Iran slightly exceeded the deal's cap on heavy water, a material that is not enriched uranium, and was back within the limit by December. [9](#source-iran-nuclear-programme-9)
 
@@ -1001,25 +1009,17 @@ From February 2021 the IAEA lost access to its monitoring data, and from May 202
 
 ## Observations {#iran-nuclear-programme--observations-sixty-percent}
 
-### The 60% stock more than doubled in the seven months before the strikes {#iran-nuclear-programme--sixty-percent-growth}
+### Iran built its 60% stock slowly for three years, then more than doubled it before the 2025 strikes {#iran-nuclear-programme--sixty-percent-growth}
 
-Iran began enriching to 60% in April 2021 and built the stock slowly for three years. [34](#source-iran-nuclear-programme-34) It then more than doubled between October 2024 and May 2025. [48](#source-iran-nuclear-programme-48) [51](#source-iran-nuclear-programme-51)
+Iran began enriching to 60% in April 2021 and built the stock slowly for three years. [34](#source-iran-nuclear-programme-34) It then more than doubled, from 182.3 kg in October 2024 to 440.9 kg on the day the strikes began. [48](#source-iran-nuclear-programme-48) [50](#source-iran-nuclear-programme-50)
 
-### Most of the last 60% figure was verified, but no one has seen it since {#iran-nuclear-programme--stock-unaccounted-for}
-
-The IAEA's last estimate, for the day the strikes began, is 440.9 kg of 60% uranium. [50](#source-iran-nuclear-programme-50)
-
-It had verified 432.9 kg of that. [50](#source-iran-nuclear-programme-50) As of September 2026 it "cannot provide any information on the current size, composition or whereabouts" of the stock. [1](#source-iran-nuclear-programme-1)
-
-Grossi said after the June 2025 strikes that most of it, "but less than 70 percent", was in the tunnels at Isfahan, as ISIS reports him. [2](#source-iran-nuclear-programme-2) Iran's foreign minister said in March 2026 that it is "under the rubble" and Iran has "no plan" to recover it. [3](#source-iran-nuclear-programme-3)
+## Observations {#iran-nuclear-programme--observations-enrichment-levels}
 
 ### Iran is the only state without nuclear weapons making 60% uranium {#iran-nuclear-programme--only-non-weapon-state-at-60}
 
 In May 2025 the IAEA called Iran "the only non-nuclear-weapon State in the world that is producing and accumulating uranium enriched to 60%", which it said "remains a matter of serious concern". [6](#source-iran-nuclear-programme-6) It repeated the point in June 2026. [2](#source-iran-nuclear-programme-2)
 
-## Subtleties {#iran-nuclear-programme--subtleties-sixty-percent}
-
-### 60% is not weapons grade, but most of the work is done {#iran-nuclear-programme--sixty-is-not-ninety}
+### Bombs need about 90%, and little extra work gets there from 60% {#iran-nuclear-programme--sixty-is-not-ninety}
 
 Uranium for weapons typically contains about 90% U-235. [3](#source-iran-nuclear-programme-3) CRS notes that "relatively little additional effort" is needed to get there from Iran's higher-enriched stocks, which is why US estimates of the time to weapons-grade uranium were counted in days before the 2025 strikes (see the estimates table below).
 
@@ -1031,9 +1031,25 @@ In June 2026 the Board recalled that Iran's failures "constitute non-compliance"
 
 ## Observations {#iran-nuclear-programme--observations-inspections}
 
+### No inspector has seen the 60% uranium since June 2025 {#iran-nuclear-programme--stock-unaccounted-for}
+
+The IAEA's last estimate, for the day the strikes began, is 440.9 kg of 60% uranium. [50](#source-iran-nuclear-programme-50)
+
+It had verified 432.9 kg of that. [50](#source-iran-nuclear-programme-50) As of September 2026 it "cannot provide any information on the current size, composition or whereabouts" of the stock. [1](#source-iran-nuclear-programme-1)
+
+Grossi said after the June 2025 strikes that most of it, "but less than 70 percent", was in the tunnels at Isfahan, as ISIS reports him. [2](#source-iran-nuclear-programme-2) Iran's foreign minister said in March 2026 that it is "under the rubble" and Iran has "no plan" to recover it. [3](#source-iran-nuclear-programme-3)
+
 ### Inspectors' access narrowed in steps, long before the war {#iran-nuclear-programme--access-narrowed-in-steps}
 
 Complementary access ended in February 2021 and has not resumed. [1](#source-iran-nuclear-programme-1) By February 2026 the IAEA had inspected about half the facilities not hit in June 2025, and none of those that were. [2](#source-iran-nuclear-programme-2)
+
+### In February 2021 Iran ended complementary access visits {#iran-nuclear-programme--complementary-access-ended}
+
+Iran stopped applying the Additional Protocol in February 2021, and the IAEA has not been able to make a complementary access visit to any site since. [1](#source-iran-nuclear-programme-1)
+
+### The IAEA Board found Iran in non-compliance with its obligations {#iran-nuclear-programme--board-non-compliance}
+
+In June 2026 the Board recalled that Iran's failures to cooperate over undeclared material "constitute non-compliance with its obligations under its Safeguards Agreement". [1](#source-iran-nuclear-programme-1)
 
 ### Since 28 February 2026 inspectors have visited only Bushehr {#iran-nuclear-programme--verification-stopped}
 
@@ -1041,15 +1057,17 @@ The IAEA stopped verification when the US and Israel struck on 28 February 2026.
 
 ## Observations {#iran-nuclear-programme--observations-statements}
 
-### The IAEA found an undeclared weapons-relevant programme that ran to the early 2000s {#iran-nuclear-programme--past-weapons-work}
+### The IAEA found a secret weapons-relevant programme that ran to the early 2000s, and that Iran sanitised sites {#iran-nuclear-programme--past-weapons-work}
 
 The IAEA's findings of 2011, 2015 and 2025 all place organised weapons-relevant work before the end of 2003. [8](#source-iran-nuclear-programme-8) [7](#source-iran-nuclear-programme-7) [6](#source-iran-nuclear-programme-6)
 
 The 2025 report adds that Iran used about 10 kg of undeclared uranium metal in 2002–03 and kept material from the old programme at Turquzabad until 2018. Iran also "sanitised locations". [6](#source-iran-nuclear-programme-6)
 
-Because of this, the IAEA said in May 2025 it "will not be in a position to provide assurance" that the programme is "exclusively peaceful". [6](#source-iran-nuclear-programme-6)
+### The IAEA said it could not give assurance that the programme is exclusively peaceful {#iran-nuclear-programme--no-assurance-peaceful}
 
-### In May 2025 the IAEA found no ongoing structured programme {#iran-nuclear-programme--no-ongoing-programme-2025}
+In May 2025 the IAEA said it "will not be in a position to provide assurance" that the programme is "exclusively peaceful". [6](#source-iran-nuclear-programme-6)
+
+### In May 2025 the IAEA had no credible sign of an ongoing structured programme {#iran-nuclear-programme--no-ongoing-programme-2025}
 
 The same May 2025 report says the IAEA "has no credible indications of an ongoing, undeclared structured nuclear programme". [6](#source-iran-nuclear-programme-6) Its 2015 assessment found nothing credible after 2009. [7](#source-iran-nuclear-programme-7)
 
@@ -1057,17 +1075,13 @@ The same May 2025 report says the IAEA "has no credible indications of an ongoin
 
 In March 2026 Grossi said that in June 2025, when the first strikes came, the IAEA had no "information indicating that there was a structured systematic [Iranian] program to build or to construct a nuclear weapon". [3](#source-iran-nuclear-programme-3)
 
-### US intelligence said in 2025 that Iran was not building a weapon {#iran-nuclear-programme--ata-2025-not-building}
+### US intelligence said in 2025 that Iran was not building a weapon, but that pressure to build one had grown {#iran-nuclear-programme--ata-2025-not-building}
 
 The March 2025 threat assessment judged that Iran "is not building a nuclear weapon" and that Khamenei had not restarted the programme halted in 2003. It added that pressure on him to do so had "probably built". [4](#source-iran-nuclear-programme-4)
 
 ### The 2026 assessment does not say whether Iran had decided to build one {#iran-nuclear-programme--ata-2026-silent}
 
 The March 2026 assessment says Iran was "intending to try to recover" its nuclear infrastructure before the war. [5](#source-iran-nuclear-programme-5) As CRS puts it, the assessment "does not address Iran's nuclear weapons activities". [3](#source-iran-nuclear-programme-3) So the most recent public US judgment on a weapons decision is the 2025 one.
-
-### Talks were under way in the days before the war {#iran-nuclear-programme--geneva-talks-feb-2026}
-
-The IAEA's chief attended indirect US–Iran talks in Geneva on 17 and 26 February 2026 and advised on verification. [1](#source-iran-nuclear-programme-1) The US and Israel struck two days after the second round. [1](#source-iran-nuclear-programme-1)
 
 ### In June 2026 Iran signed a pledge not to make nuclear weapons {#iran-nuclear-programme--mou-no-weapons-clause}
 
@@ -1079,15 +1093,19 @@ The June 2026 US–Iran memorandum states that "Iran reaffirms that it shall not
 
 In May 2025 the Defense Intelligence Agency judged that Iran needed "probably less than one week" to make enough weapons-grade uranium for one weapon. [3](#source-iran-nuclear-programme-3) A November 2024 intelligence report said the stock could fuel "more than a dozen nuclear weapons" if further enriched. [3](#source-iran-nuclear-programme-3)
 
-### ISIS: for the first time in 20 years, no identifiable route {#iran-nuclear-programme--no-route-to-weapons-grade}
+### ISIS: for the first time in 20 years, no identifiable route, and no estimate of how long that will last {#iran-nuclear-programme--no-route-to-weapons-grade}
 
-In June 2026 ISIS wrote that "for the first time in 20 years, Iran has no identifiable route to produce weapon-grade uranium" in its enrichment plants. [2](#source-iran-nuclear-programme-2) It declined to give a time estimate, which "would require unsubstantiated speculation" about centrifuges that survived. [2](#source-iran-nuclear-programme-2)
+In June 2026 ISIS wrote that "for the first time in 20 years, Iran has no identifiable route to produce weapon-grade uranium" in its enrichment plants. [2](#source-iran-nuclear-programme-2) It declined to give a time estimate, which "would require unsubstantiated speculation". [2](#source-iran-nuclear-programme-2)
 
 ### The estimates measure different things {#iran-nuclear-programme--estimates-differ-by-measure}
 
 Time to weapons-grade uranium, time to a working weapon and the size of the stock are different measures, and the table keeps them apart. Most post-strike figures are reported second-hand, through CRS or FDD; CRS concludes that "the current assessed timeline is unclear". [3](#source-iran-nuclear-programme-3)
 
 ## Observations {#iran-nuclear-programme--observations-damage-claims}
+
+### Iran says its enriched uranium is under the rubble {#iran-nuclear-programme--iran-says-under-rubble}
+
+Iran's foreign minister said in March 2026 that the uranium is "under the rubble" and that Iran has "no plan" to recover it. [3](#source-iran-nuclear-programme-3)
 
 ### Damage claims cannot be checked against each other {#iran-nuclear-programme--damage-claims-conflict}
 

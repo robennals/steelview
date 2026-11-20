@@ -64,7 +64,7 @@ sources:
       accounting for around half of the population growth in England and Wales
       (natural change, that is the difference between births and deaths,
       accounting for the remainder). This is reflected in the increase in the
-      proportion of the usually resident population1 born abroad2 from 4.3 per
+      proportion of the usually resident population born abroad from 4.3 per
       cent (1.9 million) recorded in the 1951 Census to 13 per cent (7.5
       million) in the 2011 Census (see figure 1). While the total resident
       population of England and Wales increased by 28 per cent (from 43.7
@@ -191,16 +191,12 @@ sources:
     publisher: Department for Work and Pensions (Ethnicity facts and figures)
     date: '2023-11-28'
   - stance: supports
-    quote: >-
-      In 2021, people who identified as "Muslim" had the lowest percentage of
-      people aged 16 to 64 years in employment (51.4% compared with 70.9% of
-      the overall population); this resulted from the high percentages of
-      people who were students or looking after home or family in this group.
-      [...] For example, people who said they were "Muslim" had the youngest
-      age profile (median age 27 years) and the highest percentage of
-      overcrowding. [...] It is possible that some people on furlough may have
-      identified as economically inactive, instead of temporarily away from
-      work.
+    quote: |-
+      In 2021, people who identified as "Muslim" had the lowest percentage of people aged 16 to 64 years in employment (51.4% compared with 70.9% of the overall population); this resulted from the high percentages of people who were students or looking after home or family in this group.
+
+      [...] For example, people who said they were "Muslim" had the youngest age profile (median age 27 years) and the highest percentage of overcrowding.
+
+      [...] It is possible that some people on furlough may have identified as economically inactive, instead of temporarily away from work.
     title: 'Religion by housing, health, employment, and education, England and Wales: Census 2021'
     url: https://www.ons.gov.uk/peoplepopulationandcommunity/culturalidentity/religion/articles/religionbyhousinghealthemploymentandeducationenglandandwales/census2021
     publisher: Office for National Statistics
@@ -257,11 +253,18 @@ sources:
     publisher: Finansministeriet (Danish Ministry of Finance)
     date: '2023-05'
   - stance: supports
-    quote: >-
-      Tabel 2.1 Nettobidrag til de offentlige finanser efter herkomst, 2019.
-      Gennemsnitlig nettobidrag (1.000 kr. pr. person): Dansk oprindelse 22;
-      Alle indvandrere 5; - Heraf vestlige lande 52; - Heraf MENAPT-lande -79;
-      - Heraf øvrige ikke-vestlige lande 11; Alle efterkommere -102
+    quote: |-
+      Tabel 2.1 Nettobidrag til de offentlige finanser efter herkomst, 2019
+
+       | Gennemsnitlig nettobidrag (1.000 kr. pr. person) | 1.000 helårspersoner | Nettobidrag (mia. kr.)
+      Alle | 16 | 5.817 | 95
+      Dansk oprindelse | 22 | 5.020 | 112
+      Indvandrere og efterkommere | -21 | 797 | -16
+      Alle indvandrere | 5 | 608 | 3
+      Heraf vestlige lande | 52 | 253 | 13
+      Heraf MENAPT-lande | -79 | 157 | -12
+      Heraf øvrige ikke-vestlige lande | 11 | 198 | 2
+      Alle efterkommere | -102 | 189 | -19
     title: 'Økonomisk Analyse: Indvandreres nettobidrag til de offentlige finanser i 2019'
     url: https://web.archive.org/web/2024/https://fm.dk/media/27067/oekonomisk-analyse_indvandreres-nettobidrag-til-de-offentlige-finanser-i-2019.pdf
     publisher: Finansministeriet (Danish Ministry of Finance)
@@ -315,13 +318,10 @@ sources:
     publisher: Finansministeriet (Danish Ministry of Finance)
     date: '2023-05'
   - stance: complicates
-    quote: >-
-      Opgørelsen er i udgangspunktet ikke renset for konjunkturer eller andre
-      midlertidige udsving i skatteprovenu mv. [...] MENAPT-lande omfatter
-      igennem hele analysen følgende lande: Syrien, Kuwait, Libyen,
-      Saudi-Arabien, Libanon, Somalia, Irak, Qatar, Sudan, Bahrain, Djibouti,
-      Jordan, Algeriet, Forenede Arabiske Emirater, Tunesien, Egypten, Marokko,
-      Iran, Yemen, Mauretanien, Oman, Afghanistan, Pakistan og Tyrkiet.
+    quote: |-
+      Opgørelsen er i udgangspunktet ikke renset for konjunkturer eller andre midlertidige udsving i skatteprovenu mv.
+
+      [...] MENAPT-lande omfatter igennem hele analysen følgende lande: Syrien, Kuwait, Libyen, Saudi-Arabien, Libanon, Somalia, Irak, Qatar, Sudan, Bahrain, Djibouti, Jordan, Algeriet, Forenede Arabiske Emirater, Tunesien, Egypten, Marokko, Iran, Yemen, Mauretanien, Oman, Afghanistan, Pakistan og Tyrkiet.
     title: 'Økonomisk Analyse: Indvandreres nettobidrag til de offentlige finanser i 2019'
     url: https://web.archive.org/web/2024/https://fm.dk/media/27067/oekonomisk-analyse_indvandreres-nettobidrag-til-de-offentlige-finanser-i-2019.pdf
     publisher: Finansministeriet (Danish Ministry of Finance)
@@ -349,17 +349,10 @@ sources:
     publisher: 'Jan van de Beek, Hans Roodenburg, Joop Hartog and Gerrit Kreffer (demo-demo uitgever)'
     date: '2021-03'
   - stance: supports
-    quote: >-
-      There are also considerable differences by region of origin. On average,
-      Western immigrants make a positive contribution of €25,000, while
-      non-western immigrants cost nearly €275,000. Within the categories
-      Western and non-Western there is, however, much variation. [...]
-      Immigration from non-Western regions is usually unfavourable for public
-      finances. This applies especially to the areas of origin Caribbean,
-      West-Asia, Turkey and North, Central and West Africa with net costs
-      around ranging from €200,000 to €400,000 per immigrant, and Morocco, the
-      Horn of Africa and Sudan with net cost of €550,000 to €600.000 per
-      immigrant.
+    quote: |-
+      There are also considerable differences by region of origin. On average, Western immigrants make a positive contribution of €25,000, while non-western immigrants cost nearly €275,000. Within the categories Western and non-Western there is, however, much variation.
+
+      [...] Immigration from non-Western regions is usually unfavourable for public finances. This applies especially to the areas of origin Caribbean, West-Asia, Turkey and North, Central and West Africa with net costs around ranging from €200,000 to €400,000 per immigrant, and Morocco, the Horn of Africa and Sudan with net cost of €550,000 to €600.000 per immigrant.
     title: 'Borderless Welfare State: The Consequences of Immigration for Public Finances (English summary of Grenzeloze verzorgingsstaat)'
     url: https://www.wyniasweek.nl/wp-content/uploads/2021/03/Grenzeloze_Verzorgingsstaat.pdf
     publisher: 'Jan van de Beek, Hans Roodenburg, Joop Hartog and Gerrit Kreffer (demo-demo uitgever)'
@@ -646,10 +639,11 @@ sources:
     publisher: Channel 4
     date: '2016-04-11'
   - stance: supports
-    quote: >-
-      52% do not believe that homosexuality should be legal in Britain Q: To
-      what extent you agree or disagree with each one: homosexuality should be
-      legal in Britain? Net agree 18% (strongly agree 8%, tend to agree 10%)
+    quote: |-
+      52% do not believe that homosexuality should be legal in Britain
+
+      Q: To what extent you agree or disagree with each one: homosexuality should be legal in Britain?
+      Net agree 18% (strongly agree 8%, tend to agree 10%)
       Net disagree: 52% (strongly disagree: 38%, tend to disagree: 14%)
     title: 'C4 survey and documentary reveals What British Muslims Really Think'
     url: https://www.channel4.com/press/news/c4-survey-and-documentary-reveals-what-british-muslims-really-think
@@ -671,13 +665,12 @@ sources:
     publisher: Channel 4
     date: '2016-04-11'
   - stance: complicates
-    quote: >-
-      J.L. Partners polled two audiences in conjunction with Number Cruncher: a
-      nationally representative sample of British Muslims and a nationally
-      representative sample of the general public. Fieldwork dates of 14th
-      February – 12th March 2024 for British Muslims, 4th – 6th March 2024 for
-      General Public [...] Sample of 1,000 for British Muslims, 2,013 for General
-      Public [...] Sample collected using online panel
+    quote: |-
+      J.L. Partners polled two audiences in conjunction with Number Cruncher: a nationally representative sample of British Muslims and a nationally representative sample of the general public. Fieldwork dates of 14th February – 12th March 2024 for British Muslims, 4th – 6th March 2024 for General Public
+
+      [...] Sample of 1,000 for British Muslims, 2,013 for General Public
+
+      [...] Sample collected using online panel
     title: 'British Muslims poll: methodology and summary of findings (J.L. Partners for the Henry Jackson Society)'
     url: https://henryjacksonsociety.org/wp-content/uploads/2024/04/HJS-Deck-200324-Final.pdf
     publisher: Henry Jackson Society
@@ -722,7 +715,8 @@ sources:
     publisher: 'Kashyap and Lewis, Ethnic and Racial Studies 36(12)'
     date: '2012-04-26'
 series:
-  title: 'Foreign-born share of the resident population, England and Wales, Census 1951–2021'
+  title: 'Foreign-born share of the population'
+  subtitle: 'England and Wales, census years 1951–2021'
   description: >-
     The share of people usually living in England and Wales who were born outside the UK,
     at selected Censuses. Shown for each Census for which the Office for National
@@ -747,7 +741,7 @@ series:
       resident population1 born abroad2 from 4.3 per cent (1.9 million)
       recorded in the 1951 Census to 13 per cent (7.5 million) in the 2011
       Census (see figure 1). [...] There was a particularly marked increase in
-      the latest inter-censal period, from 8.9 per cent (4.6 million)4 in 2001.
+      the latest inter-censal period, from 8.9 per cent (4.6 million) in 2001.
     title: '2011 Census analysis: Immigration Patterns of Non-UK Born Populations in England and Wales in 2011'
     url: https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/internationalmigration/articles/immigrationpatternsofnonukbornpopulationsinenglandandwalesin2011/2013-12-17
     publisher: Office for National Statistics
@@ -776,7 +770,8 @@ series:
             - { period: '2021', value: 16.8 }
 additionalSeries:
   - id: employment
-    title: 'Employment rate by ethnic group, ages 16 to 64, Great Britain, 2004–2022'
+    title: 'Employment rate by ethnic group'
+    subtitle: 'Ages 16 to 64, Great Britain, 2004–2022'
     description: >-
       The share of 16- to 64-year-olds in work each year in Great Britain, by ethnic
       group, with the overall rate for comparison. It covers every ethnic group the Annual
@@ -997,9 +992,8 @@ additionalSeries:
               - { period: '2021', value: 67 }
               - { period: '2022', value: 68 }
   - id: denmark
-    title: >-
-      Denmark: average annual net contribution to public finances by origin,
-      2014–2019
+    title: 'Denmark: net fiscal contribution by origin'
+    subtitle: 'DKK thousand per person per year, 2019 prices, 2014–2019'
     description: >-
       Average yearly taxes paid per person in Denmark minus transfers and public services
       used, for people of different origins. The groups are people of Danish origin, and
@@ -1094,7 +1088,8 @@ additionalSeries:
               - { period: '2018', value: -114 }
               - { period: '2019', value: -106 }
   - id: higher-education
-    title: 'Entry rate into higher education at 18 by ethnic group, England, 2006–2024'
+    title: 'Higher education entry at 18'
+    subtitle: 'By ethnic group, English state-school pupils, 2006–2024'
     description: >-
       The share of 18-year-olds from English state schools accepted onto a full-time
       undergraduate course, by ethnic group. It counts acceptances through UCAS, the
@@ -1254,7 +1249,8 @@ additionalSeries:
               - { period: '2023', value: 29.8 }
               - { period: '2024', value: 29.8 }
   - id: cohesion
-    title: 'Neighbourhood trust and cohesion, England, 2018/19–2024/25'
+    title: 'Neighbourhood trust and cohesion'
+    subtitle: 'Share of adults in England agreeing, 2018/19–2024/25'
     description: >-
       How many adults in England trust people in their neighbourhood, and how many say
       people from different backgrounds get on there. One line is the share of adults who
@@ -1309,8 +1305,8 @@ additionalSeries:
               - { period: '2024', value: 40.28 }
 comparisons:
   - id: fastest-changing-areas
-    title: >-
-      Where the foreign-born share rose most, England and Wales, 2011 to 2021
+    title: 'Rise in the foreign-born share, by area'
+    subtitle: 'Percentage points, local areas, England and Wales, 2011–2021'
     description: >-
       The 20 local areas in England and Wales where the share of residents born outside
       the UK rose most between 2011 and 2021. These are local authorities, compared
@@ -1405,9 +1401,8 @@ comparisons:
         values: [1.76, 1.67]
         highlight: true
   - id: english-proficiency
-    title: >-
-      English proficiency of residents born abroad, by when they arrived,
-      England and Wales, 2021
+    title: 'English proficiency by arrival period'
+    subtitle: 'Residents born abroad, England and Wales, Census 2021'
     description: >-
       How well people born outside the UK and living in England and Wales say they speak
       English, by when they arrived, Census 2021. It covers everyone born outside the UK
@@ -1450,7 +1445,8 @@ comparisons:
         value: 99.9
         values: [37.4, 49.7, 10.8, 2.0]
   - id: employment-by-religion
-    title: Employment rate by religion, England and Wales, Census 2021
+    title: 'Employment rate by religion'
+    subtitle: 'Ages 16 to 64, England and Wales, Census 2021'
     description: >-
       The share of people aged 16 to 64 in work (employees and self-employed) in England
       and Wales in March 2021, by religion. Every religion the Census tick-box lists is
@@ -1487,8 +1483,8 @@ comparisons:
       - label: Muslim
         value: 51.4
   - id: netherlands-by-motive
-    title: >-
-      Netherlands: lifetime net fiscal contribution by reason for migrating
+    title: 'Netherlands: fiscal contribution by motive'
+    subtitle: '€ thousand per immigrant over a lifetime, by reason for migrating'
     description: >-
       The estimated average lifetime gain or cost to Dutch public finances per immigrant
       to the Netherlands, by reason for migrating. The figure is the net contribution over
@@ -1512,7 +1508,8 @@ comparisons:
       - label: Asylum migration
         value: -475
   - id: netherlands-by-region
-    title: 'Netherlands: lifetime net fiscal contribution by region of origin'
+    title: 'Netherlands: fiscal contribution by origin'
+    subtitle: '€ thousand per immigrant over a lifetime, by region of origin'
     description: >-
       The estimated average lifetime gain or cost to Dutch public finances per immigrant
       to the Netherlands, by region of origin. The figure is the net contribution over the
@@ -1548,7 +1545,8 @@ comparisons:
       - label: Horn of Africa and Sudan
         value: -600
   - id: norway-by-region
-    title: 'Norway: modelled net fiscal effect of extra immigrants'
+    title: 'Norway: fiscal effect of extra immigrants'
+    subtitle: 'NOK million per immigrant arriving in 2015, by country group'
     description: >-
       Modelled gain or cost to Norway's public finances per extra immigrant arriving in
       2015, including descendants, by country group. From a Statistics Norway model, the
@@ -1573,7 +1571,8 @@ comparisons:
       - label: R3 (rest of the world)
         value: -4.1
   - id: gcse-by-ethnicity
-    title: GCSE results by ethnic group, England, 2022/23
+    title: 'GCSE results by ethnic group'
+    subtitle: 'Attainment 8 score, England, 2022/23'
     description: >-
       Average GCSE results at the end of secondary school in England, as an Attainment 8
       score out of 90, by detailed ethnic group. It covers pupils at the end of Key Stage
@@ -1630,7 +1629,8 @@ comparisons:
       - label: Gypsy, Roma
         value: 20.3
   - id: gcse-fsm
-    title: GCSE results of pupils eligible for free school meals, by ethnic group, England, 2022/23
+    title: 'GCSE results of free-school-meal pupils'
+    subtitle: 'By ethnic group, Attainment 8 score, England, 2022/23'
     description: >-
       Average GCSE score (Attainment 8, out of 90) in England for pupils eligible for free
       school meals, a measure of low family income. Every detailed ethnic group is shown.
@@ -1683,9 +1683,8 @@ comparisons:
       - label: Gypsy, Roma
         value: 16.1
   - id: attitudes-homosexuality
-    title: >-
-      British Muslims and the general public saying it would be undesirable to
-      outlaw homosexuality, 2024
+    title: 'Views on outlawing homosexuality'
+    subtitle: 'British Muslims and the general public, one 2024 poll'
     description: >-
       The share of British Muslims and of the general public who said it would be
       undesirable to outlaw homosexuality in the UK. From one 2024 online poll by J.L.
@@ -1708,23 +1707,116 @@ comparisons:
       - label: British Muslims
         value: 28
         highlight: true
+observationMarks:
+  foreign-born-share-quadrupled: {lines: ["Born outside the UK"], from: "1951", to: "2021", at: "2021"}
+  recent-arrivals-struggle-with-english: {rows: ["Arrived 2011 to 2021", "Arrived before 1971"]}
+  identity-rises-with-time: {rows: ["Before 1951", "1981 to 1990", "2011 to 2021"]}
+  denmark-menapt-vs-western: {lines: ["Immigrants from MENAPT countries", "Immigrants from Western countries"], at: "2019"}
+  denmark-annual-not-lifetime: {lines: ["Danish origin", "Immigrants from MENAPT countries"], from: "2014", to: "2019"}
+  denmark-cost-fell-with-employment: {lines: ["Immigrants from MENAPT countries"], from: "2014", to: "2019"}
+  muslim-attitudes-homosexuality: {rows: ["General public", "British Muslims"]}
+  attitude-survey-methods: {rows: ["ICM for Channel 4, 2015", "J.L. Partners for the Henry Jackson Society, 2024", "Faith Matters survey, 2009"]}
+  minority-pupils-outperform: {rows: ["White British", "Chinese", "Indian", "Asian other", "Bangladeshi", "Mixed White and Asian", "White Irish", "Mixed other", "Black African", "White other", "Pakistani", "Other", "Mixed White and Black African"]}
+  a-stock-not-a-flow: {lines: ["Born outside the UK"], at: "2021"}
+  fastest-changing-places: {rows: ["Barking and Dagenham", "Watford", "Havering", "Thurrock", "England and Wales"]}
+  eu-share-of-the-change: {rows: ["Boston", "Peterborough", "Thurrock", "Luton", "Barking and Dagenham", "Watford"]}
+  non-eu-origins-vary: {rows: ["Hillingdon", "Swindon", "Sandwell", "Leicester", "Dartford", "Salford"]}
+  english-rises-with-time: {rows: ["Arrived before 1971", "Arrived 2011 to 2021"]}
+  employment-gaps-narrowing: {lines: ["Pakistani and Bangladeshi", "Indian", "White British"], from: "2004", to: "2022"}
+  wider-labour-market: {lines: ["All"], from: "2010", to: "2022"}
+  gap-is-among-women: {rows: ["Pakistani and Bangladeshi"]}
+  muslim-employment: {rows: ["Muslim", "England and Wales"]}
+  muslim-qualifications: {rows: ["Muslim", "England and Wales"]}
+  denmark-route-matters: {lines: ["Immigrants from MENAPT countries", "Immigrants from Western countries"], at: "2019"}
+  denmark-descendants-are-children: {lines: ["Descendants, Western origin", "Descendants, MENAPT origin", "Descendants, other non-Western origin"]}
+  netherlands-by-motive: {rows: ["Labour migration", "Family migration", "Asylum migration"]}
+  netherlands-by-region: {rows: ["Morocco", "Horn of Africa and Sudan"]}
+  norway-model: {rows: ["R1 (Western Europe, North America, others)", "R3 (rest of the world)"]}
+  gcse-fsm: {rows: ["White British", "Irish traveller", "Gypsy, Roma"]}
+  university-entry: {lines: ["Chinese", "White"], at: "2024"}
+  cohesion-stable: {lines: ["People from different backgrounds get on well together"], from: "2023", to: "2024", at: "2024"}
+  trust-lower-than-2013: {lines: ["Many people in the neighbourhood can be trusted"], at: "2024"}
+  trust-tracks-deprivation: {lines: ["Many people in the neighbourhood can be trusted"]}
+  diversity-and-trust-research: {lines: ["Many people in the neighbourhood can be trusted"]}
+  muslim-belonging: {rows: ["British Muslims"]}
+  attitudes-generations: {rows: ["British Muslims"]}
+  non-eu-led-places: {rows: ["Hillingdon", "Dartford", "Swindon", "Sandwell", "Sutton"]}
+  census-origins-by-continent: {rows: ["Hillingdon", "Swindon", "Sandwell", "Leicester", "Dartford", "Salford"]}
+  snapshot-not-cohort: {whole: true}
+  religion-not-age-adjusted: {rows: ["Muslim"]}
+  denmark-all-immigrants-and-descendants: {lines: ["Immigrants from Western countries", "Immigrants from MENAPT countries", "Immigrants from other non-Western countries", "Descendants, Western origin", "Descendants, MENAPT origin", "Descendants, other non-Western origin"], at: "2019"}
+  denmark-employment-gap-value: {lines: ["Immigrants from MENAPT countries", "Danish origin"], at: "2019"}
+  netherlands-not-cpb: {whole: true}
+  norway-assumptions: {rows: ["R3 (rest of the world)"]}
+  every-group-entry-rate-rose: {whole: true}
+  ethnicity-is-not-generation: {whole: true}
+  lowest-attainment-scores: {rows: ["Gypsy, Roma", "Irish traveller", "Mixed White and Black Caribbean"]}
+  diversity-not-immigration: {lines: ["Many people in the neighbourhood can be trusted"]}
+  london-segregation-and-cohesion: {lines: ["People from different backgrounds get on well together"]}
+  segregation-fell: {rows: ["All ethnic groups"]}
+  denmark-intake-asylum-and-family: {rows: ["MENAPT and other non-Western immigrants"]}
+  what-is-not-measured: {whole: true}
+  evenness-not-exposure: {whole: true}
+  school-segregation: {whole: true}
 figures:
 - kind: series
 - kind: series
   id: employment
 - kind: series
   id: denmark
+- kind: dataTable
+  id: denmark-who-came
+  title: 'Denmark: why immigrants came'
+  subtitle: 'Reasons for coming and average net contribution, 2019'
+  description: "Why different groups of immigrants came to Denmark, and the average net contribution in 2019 by reason for coming, from the Danish finance ministry."
+  caption: "One row per group"
+  columns:
+    - {"key": "group", "label": "Group", "rowHeader": true}
+    - {"key": "says", "label": "The ministry's finding"}
+  rows:
+    - {"group": "MENAPT and other non-Western immigrants", "says": {"value": "Came especially \"med asyl eller familiesammenføring\" (for asylum or family reunion)", "sources": [21]}}
+    - {"group": "Western immigrants", "says": {"value": "Came \"altovervejende\" (overwhelmingly) \"for at arbejde eller studere\" (to work or study)", "sources": [21]}}
+    - {"group": "Immigrants who came for asylum", "says": {"value": "\"ca. 95.000 kr. pr. person\" net cost in 2019", "sources": [21]}}
+    - {"group": "Immigrants who came for work", "says": {"value": "\"ca. 120.000 kr. pr. person\" net contribution in 2019", "sources": [21]}}
 - kind: series
   id: higher-education
 - kind: series
   id: cohesion
+- kind: dataTable
+  id: segregation-index
+  title: 'Residential segregation'
+  subtitle: 'England and Wales, index of dissimilarity, 1991–2021'
+  description: "How segregation across neighbourhoods has changed between censuses, on the index of dissimilarity, the standard measure."
+  caption: "One row per finding"
+  columns:
+    - {"key": "group", "label": "Group", "rowHeader": true}
+    - {"key": "says", "label": "The study's words"}
+  rows:
+    - {"group": "All ethnic groups", "says": {"value": "\"Looking across all four time points, we see steady declines in segregation for all ethnic groups: White and minority.\"", "sources": [41]}}
+    - {"group": "Black African", "says": {"value": "\"The largest proportional decline in residential segregation between 1991 and 2021 was for the Black African group, with a decrease of 0.17.\"", "sources": [41]}}
+    - {"group": "White British", "says": {"value": "\"White British segregation (not shown) remained the same between 2001 and 2011 (0.55), and decreased between 2011 and 2021 (to 0.53).\"", "sources": [43]}}
 - kind: comparison
   id: fastest-changing-areas
 - kind: comparison
   id: english-proficiency
 - kind: barChart
+  id: identity-by-arrival
+  title: 'UK-only national identity by arrival'
+  subtitle: 'Non-EU-born residents, England and Wales, Census 2021'
+  description: "The share of non-EU-born residents of England and Wales who gave a national identity from the UK only, by when they arrived, Census 2021. One Census, so this compares people who arrived at different times, not the same people over time."
+  valueLabel: "Share giving a UK-only identity (%)"
+  categoryLabel: "Arrived"
+  format: {"unit": "percent", "decimals": 0}
+  sort: none
+  sources: [8]
+  items:
+    - {"label": "Before 1951", "value": 94}
+    - {"label": "1981 to 1990", "value": 81}
+    - {"label": "2011 to 2021", "value": 20}
+- kind: barChart
   id: women-employment
-  title: Employment rate of women by ethnic group, Great Britain, 2022
+  title: 'Employment by sex and ethnic group'
+  subtitle: 'Women and men aged 16 to 64, Great Britain, 2022'
   description: "The share of women and men aged 16 to 64 in work in Great Britain in 2022, by ethnic group. Every group in the published breakdown is shown, ranked by the rate for women."
   valueLabel: "Share aged 16 to 64 in work"
   categoryLabel: "Ethnic group"
@@ -1769,6 +1861,20 @@ figures:
   id: gcse-fsm
 - kind: comparison
   id: attitudes-homosexuality
+- kind: dataTable
+  id: attitude-polls
+  title: 'Polls of British Muslim attitudes'
+  subtitle: 'How each was carried out, and its main limitation'
+  description: "The surveys behind these findings, how each was carried out, and the main limitation of each."
+  caption: "One row per survey"
+  columns:
+    - {"key": "poll", "label": "Survey", "rowHeader": true}
+    - {"key": "method", "label": "How it was done"}
+    - {"key": "limit", "label": "Limitation"}
+  rows:
+    - {"poll": "ICM for Channel 4, 2015", "method": {"value": "1,081 Muslims interviewed face to face; a control sample of 1,008 by telephone", "sources": [54]}, "limit": "Only areas at least 20% Muslim; the two samples used different methods"}
+    - {"poll": "J.L. Partners for the Henry Jackson Society, 2024", "method": {"value": "1,000 British Muslims and 2,013 of the general public, from an online panel", "sources": [58]}, "limit": "An online panel; commissioned by a think tank with a position on the subject"}
+    - {"poll": "Faith Matters survey, 2009", "method": {"value": "480 face-to-face interviews, with \"an overall high rate of non-response at 79 percent\"", "sources": [60]}, "limit": "Only areas at least 10% Muslim; old and small, with high non-response"}
 movedAnchors:
   observations-segregation: cohesion-and-trust
 ---
@@ -1816,10 +1922,6 @@ The same Census tables split the non-EU-born by continent. [4](#source-integrati
 
 84% of residents who arrived before 1971 had English as their main language, against 37% of 2011–21 arrivals; most recent arrivals who do not have English as a main language say they speak it well or very well. The share who cannot speak English at all is around 1 to 2% in every arrival period. [7](#source-integration-outcomes-7)
 
-### British identity follows the same pattern {#integration-outcomes--identity-rises-with-time}
-
-94% of non-EU-born residents who arrived before 1951 described their national identity as UK-only, against 81% of 1981–90 arrivals and 20% of 2011–21 arrivals. [8](#source-integration-outcomes-8)
-
 ## Subtleties {#integration-outcomes--subtleties-english-proficiency}
 
 ### One snapshot, not people followed over time {#integration-outcomes--snapshot-not-cohort}
@@ -1864,7 +1966,7 @@ The ONS figures are not age-standardised, and the Muslim group is the youngest i
 
 In 2019, immigrants from the Middle East, North Africa, Pakistan, Afghanistan and Turkey (the Danish finance ministry's "MENAPT" group) cost Danish public finances DKK 79 thousand each on average, while immigrants from Western countries contributed DKK 52 thousand each, and people of Danish origin DKK 22 thousand. [19](#source-integration-outcomes-19) [20](#source-integration-outcomes-20) [25](#source-integration-outcomes-25)
 
-### The cost fell sharply as employment rose {#integration-outcomes--denmark-cost-fell-with-employment}
+### The average cost of MENAPT immigrants fell by about a third from 2014 to 2019 {#integration-outcomes--denmark-cost-fell-with-employment}
 
 The average net cost of MENAPT immigrants fell by about DKK 37 thousand a person between 2014 and 2019. The Danish finance ministry attributes about half the fall for non-Western immigrants to stronger attachment to the labour market, during years when employment was rising for everyone. [24](#source-integration-outcomes-24) [26](#source-integration-outcomes-26)
 
@@ -1878,7 +1980,7 @@ Descendants of every origin, including Western, show net costs because most are 
 
 ## Subtleties {#integration-outcomes--subtleties-denmark-net-contribution}
 
-### One year, not a lifetime {#integration-outcomes--denmark-annual-not-lifetime}
+### Each point is one year, not a lifetime {#integration-outcomes--denmark-annual-not-lifetime}
 
 These are annual accounts for each year, not lifetime ones, and are not adjusted for the business cycle, which is why the Danish-origin line swings from year to year. They allocate shared spending such as defence across everyone. Denmark's MENAPT intake was mainly refugees and their families, so the figures say more about humanitarian routes than about work routes such as the UK's. [25](#source-integration-outcomes-25) [21](#source-integration-outcomes-21)
 
@@ -1982,10 +2084,6 @@ Almost all of the trust research relates trust to an area's ethnic mix, not to i
 
 The London study found diversity linked to higher perceived cohesion, with segregation within neighbourhoods linked to lower cohesion. [50](#source-integration-outcomes-50) [51](#source-integration-outcomes-51) [52](#source-integration-outcomes-52)
 
-### Residential segregation fell for every ethnic group, 1991–2021 {#integration-outcomes--segregation-fell}
-
-On the standard measure, the index of dissimilarity across neighbourhoods, segregation declined steadily for every ethnic group, White and minority, across the four censuses from 1991 to 2021. The largest fall was for the Black African group; Bangladeshi, Black Caribbean and Indian segregation also fell sharply. White British segregation was 0.55 in 2001 and 2011 and 0.53 in 2021. [41](#source-integration-outcomes-41) [43](#source-integration-outcomes-43)
-
 ### The standard measure is of evenness, not of who lives next to whom {#integration-outcomes--evenness-not-exposure}
 
 The index compares how evenly each group is spread across neighbourhoods relative to everyone else. A growing group can become more evenly spread while more of its members' neighbours belong to the same group; the study does not report that second measure, called isolation or exposure, and none was found for 2021. [42](#source-integration-outcomes-42)
@@ -2010,14 +2108,6 @@ The one academic study comparing generations, from 2009, found young Muslims mor
 
 ## Subtleties {#integration-outcomes--subtleties-attitudes-homosexuality}
 
-### Each survey has a limitation that matters {#integration-outcomes--attitude-survey-methods}
-
-- **ICM for Channel 4, 2015:** 1,081 Muslims interviewed face to face, only in areas at least 20% Muslim, which over-represents concentrated communities; the control sample of 1,008 was by telephone, a different method. [54](#source-integration-outcomes-54)
-- **J.L. Partners for the Henry Jackson Society, 2024:** 1,000 Muslims and 2,013 members of the public from an online panel, weighted by country of birth among other things; the commissioner is a think tank with a position on the subject. [58](#source-integration-outcomes-58)
-- **Faith Matters survey, 2009 (Kashyap and Lewis):** 480 interviews in areas at least 10% Muslim, with 79 percent non-response; old and small. [60](#source-integration-outcomes-60)
-
-No British Social Attitudes or European Social Survey series of these attitudes by religion and generation was found.
-
 ## More {#integration-outcomes--more-foreign-born-share}
 
 Who arrives and how they fare afterwards are measured by different statistics, and most of the UK's are by ethnicity or religion rather than by country of birth or generation. Read together, they show wide differences between groups, with most gaps narrowing over time: language improves with years in the country, employment gaps have shrunk, the children of most minority groups outperform White British pupils at school, and residential segregation has fallen. No UK fiscal estimate by origin was found; the three countries that do find large differences by origin and by reason for migrating. [1](#source-integration-outcomes-1) [6](#source-integration-outcomes-6) [11](#source-integration-outcomes-11) [36](#source-integration-outcomes-36) [41](#source-integration-outcomes-41) [20](#source-integration-outcomes-20)
@@ -2027,3 +2117,35 @@ Who arrives and how they fare afterwards are measured by different statistics, a
 ### What this report does not measure {#integration-outcomes--what-is-not-measured}
 
 Almost no UK statistic follows immigrants and their children by country of origin. Employment and school results are by ethnicity; the Census measures language and identity by year of arrival, not generation; and fiscal contribution by origin was found only for other countries. Comparisons with Denmark, the Netherlands and Norway carry over the differences in who those countries admitted, which were more often refugees and family members than the UK's recent work and study arrivals. [21](#source-integration-outcomes-21) [34](#source-integration-outcomes-34) [53](#source-integration-outcomes-53)
+
+## Observations {#integration-outcomes--observations-identity-by-arrival}
+
+### Residents who arrived long ago are far more likely to give a UK-only national identity than recent arrivals {#integration-outcomes--identity-rises-with-time}
+
+94% of non-EU-born residents who arrived before 1951 described their national identity as UK-only, against 81% of 1981–90 arrivals and 20% of 2011–21 arrivals. [8](#source-integration-outcomes-8)
+
+
+## Observations {#integration-outcomes--observations-segregation-index}
+
+### Residential segregation fell for every ethnic group, 1991–2021 {#integration-outcomes--segregation-fell}
+
+On the standard measure, the index of dissimilarity across neighbourhoods, segregation declined steadily for every ethnic group, White and minority, across the four censuses from 1991 to 2021. The largest fall was for the Black African group; Bangladeshi, Black Caribbean and Indian segregation also fell sharply. White British segregation was 0.55 in 2001 and 2011 and 0.53 in 2021. [41](#source-integration-outcomes-41) [43](#source-integration-outcomes-43)
+
+
+## Observations {#integration-outcomes--observations-attitude-polls}
+
+### Each survey has a limitation that matters {#integration-outcomes--attitude-survey-methods}
+
+- **ICM for Channel 4, 2015:** 1,081 Muslims interviewed face to face, only in areas at least 20% Muslim, which over-represents concentrated communities; the control sample of 1,008 was by telephone, a different method. [54](#source-integration-outcomes-54)
+- **J.L. Partners for the Henry Jackson Society, 2024:** 1,000 Muslims and 2,013 members of the public from an online panel, weighted by country of birth among other things; the commissioner is a think tank with a position on the subject. [58](#source-integration-outcomes-58)
+- **Faith Matters survey, 2009 (Kashyap and Lewis):** 480 interviews in areas at least 10% Muslim, with 79 percent non-response; old and small. [60](#source-integration-outcomes-60)
+
+No British Social Attitudes or European Social Survey series of these attitudes by religion and generation was found.
+
+
+## Observations {#integration-outcomes--observations-denmark-who-came}
+
+### In Denmark, non-Western immigrants came especially through asylum and family reunion {#integration-outcomes--denmark-intake-asylum-and-family}
+
+The Danish finance ministry says it is particularly immigrants from MENAPT and other non-Western countries who came for asylum or family reunion, while Western immigrants overwhelmingly came to work or study. Immigrants who came for asylum cost about DKK 95 thousand each in 2019; those who came for work contributed about DKK 120 thousand. [21](#source-integration-outcomes-21)
+

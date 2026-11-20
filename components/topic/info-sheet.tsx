@@ -1,12 +1,13 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useRef, type ReactNode } from 'react';
 import { wireModalExit } from '@/lib/modal/wire-modal-exit';
-import { Prose } from './prose';
 
-type Preview = { id: string; name: string; bodyHtml: string };
-
-type PrincipleSheetProps = {
+type InfoSheetProps = {
+  /** What kind of thing the sheet holds, above it: "Source". */
+  eyebrow: string;
+  /** Sized to what it holds, and on a phone rising from the bottom, for a few lines rather than a page. */
+  compact?: boolean;
   labelledBy: string;
   /** The link that opened the sheet, which gets focus back when it closes. */
   trigger: HTMLElement | null;
@@ -14,8 +15,8 @@ type PrincipleSheetProps = {
   children: ReactNode;
 };
 
-/** The sheet a principle is read in, over the page it was mentioned on. */
-function PrincipleSheet({ labelledBy, trigger, onClose, children }: PrincipleSheetProps) {
+/** The sheet a claim's sources are read in, over the page that mentioned them. */
+export function InfoSheet({ eyebrow, compact, labelledBy, trigger, onClose, children }: InfoSheetProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
@@ -49,9 +50,9 @@ function PrincipleSheet({ labelledBy, trigger, onClose, children }: PrincipleShe
 
   return (
     <dialog ref={dialogRef} className="sv-modal" aria-labelledby={labelledBy}>
-      <div className="sv-modal__panel">
+      <div className="sv-modal__panel" data-compact={compact || undefined}>
         <div className="sv-modal__bar">
-          <p className="sv-modal__eyebrow">Principle</p>
+          <p className="sv-modal__eyebrow">{eyebrow}</p>
           <button type="button" className="sv-modal__close" onClick={onClose}>
             <span className="sv-modal__close-label">Close</span>
             <svg viewBox="0 0 14 14" aria-hidden="true" focusable="false">
@@ -64,34 +65,5 @@ function PrincipleSheet({ labelledBy, trigger, onClose, children }: PrincipleShe
         </div>
       </div>
     </dialog>
-  );
-}
-
-/** Enhance shared principle anchors while preserving their no-JS destination. */
-export function PrincipleModals({ principles }: { principles: Preview[] }) {
-  const [active, setActive] = useState<{ principle: Preview; trigger: HTMLElement } | null>(null);
-  const close = useCallback(() => setActive(null), []);
-
-  useEffect(() => {
-    const onClick = (event: MouseEvent) => {
-      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-      const link = event.target instanceof Element
-        ? event.target.closest<HTMLAnchorElement>('a[href^="#principle-"]') : null;
-      if (!link || (link.target && link.target !== '_self') || link.hasAttribute('download')) return;
-      const principle = principles.find((item) => link.hash === `#principle-${item.id}`);
-      if (!principle) return;
-      event.preventDefault();
-      setActive({ principle, trigger: link });
-    };
-    document.addEventListener('click', onClick, true);
-    return () => document.removeEventListener('click', onClick, true);
-  }, [principles]);
-
-  if (!active) return null;
-  return (
-    <PrincipleSheet labelledBy="sv-principle-modal-title" trigger={active.trigger} onClose={close}>
-      <h2 id="sv-principle-modal-title">{active.principle.name}</h2>
-      <Prose html={active.principle.bodyHtml} />
-    </PrincipleSheet>
   );
 }
