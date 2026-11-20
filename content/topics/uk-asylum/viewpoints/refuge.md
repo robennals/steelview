@@ -4,11 +4,11 @@ shortName: "Offer refuge"
 summary: "[Most people who cross the Channel and receive a decision are granted protection](#fact-asylum-claims-and-decisions/small-boat-claims-mostly-granted). Britain should give refugees safe ways to come, decide their claims fairly and let them work while they wait, instead of paying for deterrence schemes like Rwanda, which [sent no asylum seekers at all](#fact-deterrence-and-protection-policies/no-asylum-seekers-sent)."
 order: 2
 ---
-Britain has an [obligation to people in danger](#principle-obligation-to-people-in-danger). Britain should give refugees safe ways to come, fair hearings, and the right to work while they wait.
+Britain has an obligation to people in danger. Britain should give refugees safe ways to come, fair hearings, and the right to work while they wait.
 
 ### Most people crossing the Channel are found to need protection
 
-[Most small-boat arrivals who got a decision were granted protection](#fact-asylum-claims-and-decisions/small-boat-claims-mostly-granted). [So were most Eritreans and Sudanese](#fact-asylum-claims-and-decisions/sudanese-and-eritreans-mostly-granted), [the largest groups now crossing](#fact-safe-and-legal-routes/eritreans-and-sudanese-largest-boat-groups). By Britain's own decisions, then, most would face danger if sent back. Britain has an [obligation to people in danger](#principle-obligation-to-people-in-danger).
+[Most small-boat arrivals who got a decision were granted protection](#fact-asylum-claims-and-decisions/small-boat-claims-mostly-granted). [So were most Eritreans and Sudanese](#fact-asylum-claims-and-decisions/sudanese-and-eritreans-mostly-granted), [the largest groups now crossing](#fact-safe-and-legal-routes/eritreans-and-sudanese-largest-boat-groups). By Britain's own decisions, then, most would face danger if sent back. Britain has an obligation to people in danger.
 
 ### Many refusals are overturned on appeal, so appeals must stay fair
 
@@ -16,7 +16,7 @@ Britain has an [obligation to people in danger](#principle-obligation-to-people-
 
 ### Where a safe route existed, people could come without a boat
 
-[Hundreds of thousands of Ukrainians and Hong Kongers got visas, and almost none came by boat](#fact-safe-and-legal-routes/nationalities-with-safe-routes-rarely-came-by-boat). [Some of the largest groups who cross by boat had almost no safe route](#fact-safe-and-legal-routes/some-boat-nationalities-had-no-route). A safe route gives people in danger a way in without a smuggler. [For the groups who do cross, boat arrivals far outnumbered safe-route grants in the year to June 2026](#fact-safe-and-legal-routes/after-the-pause), a year when family reunion was paused. [For Eritreans, Sudanese and Iranians, the main safe route was joining family here](#fact-safe-and-legal-routes/family-reunion-was-the-main-route-for-boat-nationalities). A route does not stop every crossing: [Afghans had a large route and still crossed](#fact-safe-and-legal-routes/afghans-large-route-still-crossed). But [the reopened scheme and its new routes plan for only hundreds of people at first](#fact-safe-and-legal-routes/planned-scale), far fewer than cross by boat.
+[Hundreds of thousands of Ukrainians and Hong Kongers got visas, and almost none came by boat](#fact-safe-and-legal-routes/nationalities-with-safe-routes-rarely-came-by-boat). Some of the largest groups who cross by boat had almost no safe route. A safe route gives people in danger a way in without a smuggler. [For the groups who do cross, boat arrivals far outnumbered safe-route grants in the year to June 2026](#fact-safe-and-legal-routes/after-the-pause), a year when family reunion was paused. For Eritreans, Sudanese and Iranians, the main safe route was joining family here. A route does not stop every crossing: Afghans had a large route and still crossed. But [the reopened scheme and its new routes plan for only hundreds of people at first](#fact-safe-and-legal-routes/planned-scale), far fewer than cross by boat.
 
 ### Britain's deterrence scheme failed at great cost
 

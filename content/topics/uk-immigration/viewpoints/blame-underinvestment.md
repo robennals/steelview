@@ -20,10 +20,10 @@ The hostile environment is the set of rules that make migrants' lives hard on pu
 
 ### Hate crime spikes after major events, so politicians should take care whom they blame
 
-[Racially and religiously motivated crimes spike after major events](#fact-crime-terrorism-and-group-exploitation/hate-crime-spikes-follow-events). [After the Southport murders, August 2024 was the worst month on record](#fact-crime-terrorism-and-group-exploitation/august-2024-worst-month). The figures cannot show how much the politics around these events added. Still, the risk is reason enough for care.
+[Racially and religiously motivated crimes spike after major events](#fact-crime-terrorism-and-group-exploitation/hate-crime-spikes-follow-events). After the Southport murders, August 2024 was the worst month on record. The figures cannot show how much the politics around these events added. Still, the risk is reason enough for care.
 
 ### So invest in homes and services, and end the hostile environment
 
 Britain should invest in social housing and the NHS, and fund care so it can pay a living wage. It should untie visas from employers and cut fees to cost. And it should stop barring families with children from public support.
 
-While [immigration does add to housing costs](#fact-immigration-housing-and-public-services/rent-effects), [it explains only a small part of the rise in house prices](#fact-immigration-housing-and-public-services/immigration-explains-4-6-percent-of-house-price-rise). The answer is to build. [Councils are already building more affordable homes than at any time since records began in 1991-92, though only about one in six of the total](#fact-immigration-housing-and-public-services/council-building-record). A decent society gives [priority to the worst off](#principle-priority-to-the-worst-off), and [rules must mean what they say](#principle-rules-must-mean-what-they-say) for people who came lawfully.
+While [immigration does add to housing costs](#fact-immigration-housing-and-public-services/rent-effects), [it explains only a small part of the rise in house prices](#fact-immigration-housing-and-public-services/immigration-explains-4-6-percent-of-house-price-rise). The answer is to build. [Councils are already building more affordable homes than at any time since records began in 1991-92, though only about one in six of the total](#fact-immigration-housing-and-public-services/council-building-record). A decent society gives priority to the worst off, and rules must mean what they say for people who came lawfully.

@@ -3,7 +3,6 @@ import assert from 'node:assert/strict';
 import {
   factFrontmatterSchema,
   viewpointFrontmatterSchema,
-  principleFrontmatterSchema,
   cruxFrontmatterSchema,
   topicFrontmatterSchema,
   seriesLineSchema,
@@ -145,7 +144,7 @@ test('lastUpdated given as a JS Date (YAML-coerced) normalizes to YYYY-MM-DD', (
   assert.equal(parsed.lastUpdated, '2026-08-18');
 });
 
-test.skip('a viewpoint defaults all four reference lists to empty arrays', () => {
+test.skip('a viewpoint defaults all three reference lists to empty arrays', () => {
   const parsed = viewpointFrontmatterSchema.parse({
     name: 'Control first',
     summary: 'One line.',
@@ -154,7 +153,6 @@ test.skip('a viewpoint defaults all four reference lists to empty arrays', () =>
   assert.deepEqual(parsed.citesFacts, []);
   assert.deepEqual(parsed.acknowledges, []);
   assert.deepEqual(parsed.setsAside, []);
-  assert.deepEqual(parsed.principles, []);
 });
 
 test('a viewpoint without an explicit order is rejected', () => {
@@ -192,18 +190,6 @@ test('an empty supports is rejected rather than read as "no parent"', () => {
       .success,
     false
   );
-});
-
-test('a shared principle has no topic-specific holders', () => {
-  assert.equal(principleFrontmatterSchema.safeParse({ name: 'Fairness' }).success, true);
-  assert.equal(principleFrontmatterSchema.safeParse({ name: 'Fairness', heldBy: ['one'] }).success, false);
-});
-
-test('topic principle references default to empty and reject duplicates or empty IDs', () => {
-  const topic = { title: 'Example', subtitle: 's', lastUpdated: '2026-08-18', tags: ['UK'], firstPublished: '2026-08-18', previewCharts: [{ fact: 'a', chart: 'series' }] };
-  assert.deepEqual(topicFrontmatterSchema.parse(topic).principles, []);
-  assert.equal(topicFrontmatterSchema.safeParse({ ...topic, principles: ['p', 'p'] }).success, false);
-  assert.equal(topicFrontmatterSchema.safeParse({ ...topic, principles: [''] }).success, false);
 });
 
 test('a crux requires a tension, a known kind, two viewpoints and two positions', () => {

@@ -12,7 +12,7 @@ Anyone who enters Britain illegally should not be allowed to stay. Britain shoul
 
 ### People who claim asylum can expect to stay, even if they are refused
 
-[Up to 2013, over a quarter of each year's asylum claims ended with the person recorded as returned](#fact-removals-and-what-stops-them/fewer-refused-recorded-leaving). [Since 2015, under one in seven have](#fact-removals-and-what-stops-them/fewer-refused-recorded-leaving). [Even among claims that were refused or withdrawn, under a third have](#fact-removals-and-what-stops-them/fewer-refused-recorded-leaving). So most people who claim asylum, granted or refused, are still here, as far as the records show. [In 2019, the most common challenge from people held for removal was an asylum claim](#fact-removals-and-what-stops-them/asylum-claims-commonest-in-detention). [In detentions ending in 2017, over four in five challenges to removal failed](#fact-removals-and-what-stops-them/most-issues-refused), but challenges take time: [an asylum appeal takes over a year on average](#fact-asylum-backlog-accommodation-and-cost/asylum-appeal-takes-72-weeks).
+[Up to 2013, over a quarter of each year's asylum claims ended with the person recorded as returned](#fact-removals-and-what-stops-them/fewer-refused-recorded-leaving). Since 2015, under one in seven have. Even among claims that were refused or withdrawn, under a third have. So most people who claim asylum, granted or refused, are still here, as far as the records show. [In 2019, the most common challenge from people held for removal was an asylum claim](#fact-removals-and-what-stops-them/asylum-claims-commonest-in-detention). [In detentions ending in 2017, over four in five challenges to removal failed](#fact-removals-and-what-stops-them/most-issues-refused), but challenges take time: [an asylum appeal takes over a year on average](#fact-asylum-backlog-accommodation-and-cost/asylum-appeal-takes-72-weeks).
 
 ### Australia's boats stopped once it began turning them back
 
@@ -24,6 +24,6 @@ Anyone who enters Britain illegally should not be allowed to stay. Britain shoul
 
 ### So Britain should bar these claims, remove those who come, and leave the ECHR
 
-If Britain refused these claims and removed those who come, crossing would no longer pay. Leaving the ECHR would let Parliament set those rules. [A government's first duty is to its own people](#principle-first-duty-to-its-own-people).
+If Britain refused these claims and removed those who come, crossing would no longer pay. Leaving the ECHR would let Parliament set those rules. A government's first duty is to its own people.
 
 While [the Conservatives' pledge of 150,000 removals a year would be about 15 times today's enforced returns](#fact-removals-and-what-stops-them/150000-about-15-times-enforced-returns), [most returns are already voluntary](#fact-removals-and-what-stops-them/most-returns-are-voluntary), and [those cost far less](#fact-removals-and-what-stops-them/voluntary-returns-far-cheaper). [Supporting asylum seekers already costs around £4 billion a year](#fact-asylum-backlog-accommodation-and-cost/support-costs-about-4bn-a-year).

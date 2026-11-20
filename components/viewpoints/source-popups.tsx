@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import type { QuotedSource } from '@/lib/content/walkthrough';
-import { InfoSheet } from '@/components/topic/principle-modals';
+import { InfoSheet } from '@/components/topic/info-sheet';
 import { QuoteText } from '@/components/topic/quote-text';
 
 type SourcePopupsProps = {
@@ -14,8 +14,7 @@ type SourcePopupsProps = {
  * Opens a claim's sources in a small pop-up when a reader taps its footnote
  * marker: each source's own words, the passages the finding rests on picked
  * out, and a link to the source itself. Nothing of ours is in it. It listens
- * on the document, as principle pop-ups do, rather than wrapping the
- * slideshows, so they stay server-rendered as they were.
+ * on the document rather than wrapping the slideshows, so they stay server-rendered as they were.
  */
 export function SourcePopups({ sources }: SourcePopupsProps) {
   const [active, setActive] = useState<{ quoted: QuotedSource[]; trigger: HTMLElement } | null>(null);

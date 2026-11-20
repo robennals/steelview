@@ -26,9 +26,4 @@ dataOrder:
   - safe-and-legal-routes
   - asylum-law-and-the-echr
   - public-opinion-on-asylum-and-the-echr
-principles:
-  - democratic-consent-over-membership
-  - first-duty-to-its-own-people
-  - obligation-to-people-in-danger
-  - rules-must-mean-what-they-say
 ---

@@ -1112,11 +1112,15 @@ function citationErrors(topic: Topic, factById: Map<string, Fact>): string[] {
         errors.push(`${what}: body links to "#fact-${id}", which is not a fact in this topic`);
       }
     }
+    // Principles are not linked items: a viewpoint states its values in its
+    // own words, and cruxes weigh them against each other.
+    for (const match of body.matchAll(/\]\(#principle-([a-z0-9-]+)\)/g)) {
+      errors.push(`${what}: body links to "#principle-${match[1]}"; principles are not linked — state the value in plain prose, and name the tension in a crux`);
+    }
   };
 
   check('topic intro', topic.intro);
   for (const f of topic.facts) check(`fact ${f.id}`, f.body);
-  for (const p of topic.principles) check(`principle ${p.id}`, p.body);
 
   for (const v of topic.viewpoints) check(`viewpoint ${v.id}`, v.body + '\n' + v.summary);
 

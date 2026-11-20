@@ -7,7 +7,7 @@ researchNeeded:
   - "The hardest step in building a nuclear bomb is enriching uranium, which means making it purer"
   - "Nuclear power plants need uranium enriched to only a few percent"
 ---
-An Iran with nuclear weapons would be far more dangerous than Iran today. Stopping it was worth a war, because [keeping people safe from the worst dangers](#principle-safety-from-catastrophic-threats) comes first.
+An Iran with nuclear weapons would be far more dangerous than Iran today. Stopping it was worth a war, because keeping people safe from the worst dangers comes first.
 
 ### Iran was close to having enough uranium for a bomb
 

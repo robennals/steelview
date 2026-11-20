@@ -45,11 +45,6 @@
   --accent: #b3350a;
   --accent-wash: #fdf2ec;
 
-  /* Principle citations are underlined in a second hue so a reader can tell,
-     at the point of use, a value the argument rests on from a fact it cites.
-     6.8:1 on paper, 5.3:1 on the dark paper. */
-  --principle: #1f5c9e;
-
   /* Chart series, in fixed slot order. Charts can carry several meaningful
      groups, so the shared palette provides eight durable hues rather than
      silently falling back to the page ink after the third line. */
@@ -89,8 +84,6 @@
 
     --accent: #ff8a4c;
     --accent-wash: #241812;
-
-    --principle: #3987e5;
 
     /* The shared series palette, re-stepped for the dark paper. */
     --sv-series-1: #3987e5;
@@ -2031,7 +2024,7 @@
   /* ------------------------------------------------------ fact citations */
 
   /* An inline citation keeps the prose's colour and has a dotted rule, in the
-     accent hue for a fact and the principle hue for a principle, so the claim
+     accent hue, so the claim
      reads as prose but can be seen to be clickable. The dots are a repeating
      background rather than a dotted text-decoration,
      because browsers pack decoration dots so tightly they read as a smudged
@@ -2048,14 +2041,7 @@
     color: var(--accent);
   }
 
-  .prose-body a.sv-principle-cite {
-    --sv-cite-hue: var(--principle);
-    color: var(--ink);
-    text-decoration: none;
-  }
-
-  .prose-body a.sv-cite,
-  .prose-body a.sv-principle-cite {
+  .prose-body a.sv-cite {
     --sv-cite-strength: 65%;
     background-image: radial-gradient(
       circle,
@@ -2070,16 +2056,13 @@
 
   /* On dark paper a part-transparent dot all but disappears. */
   @media (prefers-color-scheme: dark) {
-    .prose-body a.sv-cite,
-    .prose-body a.sv-principle-cite {
+    .prose-body a.sv-cite {
       --sv-cite-strength: 100%;
     }
   }
 
   .prose-body a.sv-cite:hover,
-  .prose-body a.sv-cite:focus-visible,
-  .prose-body a.sv-principle-cite:hover,
-  .prose-body a.sv-principle-cite:focus-visible {
+  .prose-body a.sv-cite:focus-visible {
     --sv-cite-strength: 100%;
     background-size: 4px 2.4px;
   }
@@ -2551,9 +2534,8 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
    can need more than that, so the rows are never held under their own height. */
 .sv-chart:is([data-preview], [data-panel-chart]) .sv-comparison__rows { flex: 1 1 auto; display: flex; flex-direction: column; min-height: min-content; max-height: calc(var(--sv-row-count) * var(--sv-row-room)); }
 .sv-chart:is([data-preview], [data-panel-chart]) .sv-comparison__rows > li { flex: 1 1 auto; }
-/* In a pop-up that closes around them, the rows ask for that same room, so
-   they sit as far apart as they would in a taller space. */
-.sv-walk[data-alone] .sv-chart[data-panel-chart] .sv-comparison__rows { flex-basis: calc(var(--sv-row-count) * var(--sv-row-room)); }
+/* A pop-up closes around its chart, so it has no spare height: the rows keep
+   their own spacing and the pop-up is only as tall as they need. */
 @container (aspect-ratio < 3.55) {
   .sv-chart[data-panel-chart] .sv-chart__variant[data-variant="preview-wide"] { display: none; }
   .sv-chart[data-panel-chart] .sv-chart__variant[data-variant="preview"] { display: block; }

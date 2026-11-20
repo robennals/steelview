@@ -1,15 +1,13 @@
 import type { Metadata } from 'next';
 import { loadTopic, listTopicSlugs } from '@/lib/content/load';
-import { renderMarkdown } from '@/lib/content/markdown';
 import { topicPath } from '@/lib/content/types';
 import { citedSources, renderFeaturedCharts, renderWalkthroughs, type DataStep, type QuotedSource, type RenderedWalkthrough } from '@/lib/content/walkthrough';
 import { absoluteUrl } from '@/lib/site';
 import { ExplorePanels } from '@/components/topic/explore-panels';
 import { FeaturedChartSheets } from '@/components/topic/featured-charts';
 import { ViewpointSlides } from '@/components/viewpoints/viewpoint-slides';
-import { PrincipleModals } from '@/components/topic/principle-modals';
 import { CruxRows } from '@/components/topic/crux-rows';
-import type { ItemKind, Topic } from '@/lib/content/types';
+import type { Topic } from '@/lib/content/types';
 
 export async function generateStaticParams() {
   return (await listTopicSlugs()).map((slug) => ({ slug }));
@@ -40,55 +38,17 @@ export async function generateMetadata({
   };
 }
 
-/** The key `bodies` is keyed on. Exported so the collision it guards against is unit-tested. */
-export function bodyKey(kind: ItemKind, id: string): string {
-  return `${kind}:${id}`;
-}
-
-/**
- * Render every markdown body once, here, so the components stay synchronous.
- * Ids are filenames and are unique only *within* a kind's directory — a fact
- * and a principle may legitimately share an id — so the map key must carry
- * the kind too, or one kind's prose silently overwrites another's.
- *
- * `slug` is needed because a fact citation in prose renders as a link to the
- * finding's address on the topic's page.
- */
-type BodiedItem = { id: string; body: string };
-
-export async function buildBodies(
-  topic: {
-    viewpoints: BodiedItem[];
-    principles: BodiedItem[];
-  },
-  slug: string
-): Promise<Map<string, string>> {
-  const bodies = new Map<string, string>();
-  const kinds: Array<[ItemKind, BodiedItem[]]> = [
-    ['viewpoint', topic.viewpoints],
-    ['principle', topic.principles],
-  ];
-  for (const [kind, items] of kinds) {
-    for (const item of items) {
-      bodies.set(bodyKey(kind, item.id), await renderMarkdown(item.body, slug));
-    }
-  }
-  return bodies;
-}
-
 /**
  * The viewpoints, with the cruxes below them: they are what the viewpoints turn
  * on, and no reader should have to find them. The only charts are the ones the
  * viewpoints' cards are made with; each opens in full over the page. A topic
  * that is only `topic.md` — or whose `cruxes/` directory is simply absent,
  * which is legal — must not ship a heading with nothing under it, so each
- * renders only when its list is non-empty. Principles have no section: a
- * viewpoint's mention of one opens its text in a pop-up. Exported and kept free
+ * renders only when its list is non-empty. Exported and kept free
  * of `loadTopic` so it is unit-testable without a real content directory.
  */
-export function TopicSections({ topic, bodies, walkthroughs, featured, sources = {} }: {
+export function TopicSections({ topic, walkthroughs, featured, sources = {} }: {
   topic: Topic;
-  bodies: Map<string, string>;
   walkthroughs: Map<string, RenderedWalkthrough>;
   /** The sources behind each claim a viewpoint cites (`citedSources`), read behind its footnote marker. */
   sources?: Record<string, QuotedSource[]>;
@@ -99,11 +59,6 @@ export function TopicSections({ topic, bodies, walkthroughs, featured, sources =
 
   return (
     <ExplorePanels panels={[...featured.keys()]}>
-      <PrincipleModals principles={topic.principles.map((principle) => ({
-        id: principle.id,
-        name: principle.name,
-        bodyHtml: bodies.get(bodyKey('principle', principle.id)) ?? '',
-      }))} />
       <FeaturedChartSheets slug={topic.slug} facts={topic.facts} charts={featured} />
 
       {topic.viewpoints.length > 0 && (
@@ -133,7 +88,6 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
 
   const topic = await loadTopic(slug);
 
-  const bodies = await buildBodies(topic, slug);
   const walkthroughs = await renderWalkthroughs(topic);
   const featured = await renderFeaturedCharts(topic);
   const sources = citedSources(topic);
@@ -152,7 +106,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
         <p className="sv-meta sv-pagehead__meta">Last updated {topic.lastUpdated}</p>
       </header>
 
-      <TopicSections topic={topic} bodies={bodies} walkthroughs={walkthroughs} featured={featured} sources={sources} />
+      <TopicSections topic={topic} walkthroughs={walkthroughs} featured={featured} sources={sources} />
     </main>
   );
 }

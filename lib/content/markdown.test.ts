@@ -47,10 +47,10 @@ test('a fact citation renders as its plain text, with no link or pop-up behind i
 
 test('ordinary links and other in-page anchors are left alone', async () => {
   const html = await renderMarkdown(
-    'See [the source](https://example.org) and [a principle](#principle-fairness).',
+    'See [the source](https://example.org) and [a crux](#crux-timing).',
     SLUG
   );
-  assert.match(html, /href="#principle-fairness"/);
+  assert.match(html, /href="#crux-timing"/);
   assert.doesNotMatch(html, /sv-cite/);
 });
 
@@ -72,12 +72,12 @@ test('a citation can take a footnote marker, once per finding in a paragraph, af
   assert.equal(html, `<p>One, two${marker('a--x', 1)} and three${marker('b--y', 2)}, but four.</p>\n<p>Again five${marker('a--x', 1)}.</p>`);
 });
 
-test('a principle and an ordinary link stay links beside a citation\'s text', async () => {
+test('an in-page anchor and an ordinary link stay links beside a citation\'s text', async () => {
   const html = await renderMarkdown(
-    'Arrivals [rose *sharply*](#fact-alpha/peak), as [one](#principle-p) and [two](https://example.com) say.',
+    'Arrivals [rose *sharply*](#fact-alpha/peak), as [one](#crux-p) and [two](https://example.com) say.',
     SLUG,
   );
-  assert.equal(html, '<p>Arrivals rose <em>sharply</em>, as <a href="#principle-p" class="sv-principle-cite">one</a> and <a href="https://example.com">two</a> say.</p>');
+  assert.equal(html, '<p>Arrivals rose <em>sharply</em>, as <a href="#crux-p">one</a> and <a href="https://example.com">two</a> say.</p>');
 });
 
 test('without footnotes, source footnotes are left out and the prose kept', async () => {
@@ -97,7 +97,7 @@ test('"#fact-" with no id is not a citation', async () => {
 
 test('citedFactIds lists the facts a body cites, in order, with repeats', () => {
   const ids = citedFactIds(
-    'One [a](#fact-alpha), two [b](#fact-beta), again [c](#fact-alpha), plus [d](#principle-p) and [e](https://example.org).'
+    'One [a](#fact-alpha), two [b](#fact-beta), again [c](#fact-alpha), plus [d](#crux-p) and [e](https://example.org).'
   );
   assert.deepEqual(ids, ['alpha', 'beta', 'alpha']);
 });
