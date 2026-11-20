@@ -8,7 +8,7 @@ tags: [USA, Voting]
 # viewpoint with a strong chart it relies on. See AUTHORING.md, "Home-page preview charts".
 previewCharts:
   - fact: mail-voting-use-and-effects
-    chart: eavs-mode
+    chart: state-mail-share
   - fact: mail-ballot-rejection-and-signature-checks
     chart: series
   - fact: ballot-deadlines-and-counting-speed

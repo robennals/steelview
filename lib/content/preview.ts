@@ -1,5 +1,5 @@
 import { plotReadingId } from '@/lib/chart/series-chart';
-import { componentFigure, factPath, figureLabel, isComponentFigure, topicPath } from './types';
+import { componentFigure, figureLabel, isComponentFigure, topicPath } from './types';
 import type { ComponentFigure, Fact, Series, Topic } from './types';
 
 type Comparison = NonNullable<Fact['comparisons']>[number];
@@ -70,7 +70,7 @@ export type PreviewSlide = {
   reading?: string;
   /** The chart's own title: names the slide in the carousel count and under its thumbnail. */
   label: string;
-  /** The chart in full, on its fact's page, where its table and methodology live. */
+  /** The chart's address on its topic page, where it opens in full. */
   href: string;
 };
 
@@ -86,7 +86,7 @@ export function resolvePreviews(topic: Topic): PreviewSlide[] {
     const title = target && isPreviewable(target) && targetTitle(target);
     if (!fact || !target || !title) return [];
     // Figures already take this DOM id on the fact page (figureDomId), as charts do.
-    return [{ fact, chart, reading, label: title, href: `${factPath(topic.slug, fact.id)}#${fact.id}--chart-${chart}` }];
+    return [{ fact, chart, reading, label: title, href: `${topicPath(topic.slug)}#${fact.id}--chart-${chart}` }];
   });
 }
 
@@ -105,7 +105,7 @@ export function slideGroups(fact: Fact, { chart, reading }: Pick<PreviewSlide, '
 }
 
 /**
- * The address of a slide's chart in its collection's data panel. A slide
+ * The address of a slide's chart, where it opens in full. A slide
  * naming a reading has the address of the chart showing it: the reading whose
  * plot draws it.
  */
@@ -114,10 +114,10 @@ export function chartAddress(slide: Pick<PreviewSlide, 'fact' | 'chart' | 'readi
 }
 
 /**
- * A home-page slide's chart on its topic's report, opened over it in its
- * collection's data panel (`ExplorePanels`): where its title leads in a new
- * tab or with no script. Every preview chart's collection has a panel there:
- * `validateTopic` requires it to be a headline fact.
+ * A home-page slide's chart on its topic's page, opened over it in full
+ * (`ExplorePanels`): where its title leads in a new tab or with no script.
+ * Every preview chart opens there: `validateTopic` requires a viewpoint's card
+ * to be made with it.
  */
 export function reportChartPath(slug: string, slide: Pick<PreviewSlide, 'fact' | 'chart' | 'reading'>): string {
   return `${topicPath(slug)}#${chartAddress(slide)}`;
@@ -134,7 +134,7 @@ export function reportChartPath(slug: string, slide: Pick<PreviewSlide, 'fact' |
  */
 export function factSlides(slug: string, fact: Fact): PreviewSlide[] {
   const slide = (chart: string, label: string): PreviewSlide =>
-    ({ fact, chart, label, href: `${factPath(slug, fact.id)}#${fact.id}--chart-${chart}` });
+    ({ fact, chart, label, href: `${topicPath(slug)}#${fact.id}--chart-${chart}` });
   const comparisonSlide = (id: string) => {
     const comparison = fact.comparisons?.find(c => c.id === id);
     return comparison ? [slide(comparison.id, comparison.title)] : [];

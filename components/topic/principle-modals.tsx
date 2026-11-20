@@ -18,7 +18,7 @@ type InfoSheetProps = {
   children: ReactNode;
 };
 
-/** The sheet a principle, or a cited finding, is read in, over the page it was mentioned on. */
+/** The sheet a principle, or a claim's sources, are read in, over the page that mentioned them. */
 export function InfoSheet({ eyebrow, compact, labelledBy, trigger, onClose, children }: InfoSheetProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
 

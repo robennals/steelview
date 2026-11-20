@@ -23,7 +23,7 @@ function RowPreview({ topic, slides }: { topic: Topic; slides: PreviewSlide[] })
       <PreviewCarousel name={topic.title} labels={slides.map(s => s.label)}>
         {slides.map(slide => (
           <PreviewChart key={slide.href} slug={topic.slug} fact={slide.fact.id} title={slide.label} observation={chartAddress(slide)}>
-            <SlideChart slide={slide} titleHref={reportChartPath(topic.slug, slide)} page={{ slug: topic.slug, asOf: topic.lastUpdated, facts: topic.facts }} />
+            <SlideChart slide={slide} titleHref={reportChartPath(topic.slug, slide)} page={{ slug: topic.slug, asOf: topic.lastUpdated }} />
           </PreviewChart>
         ))}
       </PreviewCarousel>
@@ -39,7 +39,7 @@ function RowPreview({ topic, slides }: { topic: Topic; slides: PreviewSlide[] })
         </ul>
         <Link className="sv-row__cta" href={topicPath(topic.slug)}>Read the full report <span aria-hidden="true">→</span></Link>
         <p className="sv-row__counts">
-          {plural(topic.viewpoints.length, 'viewpoint')} · {plural(topic.cruxes.length, 'crux', 'cruxes')} · {plural(topic.facts.length, 'fact')}
+          {plural(topic.viewpoints.length, 'viewpoint')} · {plural(topic.cruxes.length, 'crux', 'cruxes')}
         </p>
       </div>
     </div>

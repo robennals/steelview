@@ -1,68 +1,29 @@
 import type { ReactNode } from 'react';
 import type { Fact } from '@/lib/content/types';
-import { anchorFor } from '@/lib/content/types';
 import { previewTarget } from '@/lib/content/preview';
 import { plottedReadings } from '@/lib/chart/series-chart';
 import type { DataStep } from '@/lib/content/walkthrough';
-import { RowThumb, TopicAccordion, TopicRow } from '@/components/home/topic-accordion';
 import { ChartAbout } from '@/components/report/chart-about';
-import { ChartThumb } from './chart-thumb';
-import { DataStillNeededList } from './data-still-needed';
 import { PanelHost } from './explore-panels';
 import { ObservationBar, ObservationStep } from './observation-bar';
-import { ThumbStrip } from './thumb-strip';
 import { rowCharts } from '@/lib/content/row-charts';
 import { LazyChart, LazyCharts } from './lazy-charts';
-import { Walkthrough } from './walkthrough';
-
-/** The most chart silhouettes that fit on a closed row's line at the page's full width. */
-const THUMBS = 7;
-
-/** A step's miniature: its chart, or for the step without one a question mark. */
-function StepThumb({ fact, step }: { fact: Fact; step: DataStep }) {
-  return step.chart
-    ? <ChartThumb fact={fact} chart={step.chart.chart} reading={step.chart.reading} />
-    : <span className="sv-walk__no-chart" aria-hidden="true">?</span>;
-}
-
-type UnknownsStepProps = { fact: Fact; step: DataStep; addressed: boolean };
-
-/** A report's last slide: what it cannot yet say, and why that matters. */
-function UnknownsStep({ fact, step, addressed }: UnknownsStepProps) {
-  return (
-    <div className="sv-walk__step" data-chart>
-      {step.anchors.map(anchor => <span key={anchor} className="sv-walk__anchor" id={addressed ? anchor : undefined} data-chart-anchor={anchor} />)}
-      <div className="sv-walk__chart">
-        <div className="sv-slide">
-          <h3 className="sv-graph-heading">{step.label}</h3>
-          <DataStillNeededList fact={fact} />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-type ChartStepProps = { step: DataStep; number: number; addressed: boolean };
 
 /**
- * One chart, stepped through observation by observation, each picking out its
- * part of the chart. Script finds its addresses by `data-chart-anchor`;
- * `addressed`, on a report's own page, makes them real ids so they work without
- * it, except those the chart itself carries.
+ * One featured chart in full. Script finds its addresses by
+ * `data-chart-anchor`, except those the chart itself carries.
  */
-function ChartStep({ step, number, addressed }: ChartStepProps) {
-  const slide = step.chart;
-  if (!slide) return null;
-  const { fact, chart } = slide;
+function ChartStep({ step, number }: { step: DataStep; number: number }) {
+  const { fact, chart } = step.chart;
   // The ids the chart carries itself: its own, and each reading that has a plot.
   const target = previewTarget(fact, chart);
   const plots = target?.kind === 'series' ? plottedReadings(target.series).map(r => r.id) : [];
-  const drawn = [chart, ...plots].map(id => `${fact.id}--chart-${id}`);
+  const drawn = new Set([chart, ...plots].map(id => `${fact.id}--chart-${id}`));
   return (
     <div className="sv-walk__step" data-chart>
-      {step.anchors.map(anchor => <span key={anchor} className="sv-walk__anchor" id={addressed && !drawn.includes(anchor) ? anchor : undefined} data-chart-anchor={anchor} />)}
+      {step.anchors.filter(anchor => !drawn.has(anchor)).map(anchor => <span key={anchor} className="sv-walk__anchor" data-chart-anchor={anchor} />)}
       <div className="sv-walk__chart">
-        <ObservationStep observations={step.observations} views={step.views} more={step.more} addressed={addressed}>
+        <ObservationStep observations={step.observations} views={step.views} more={step.more}>
           <div className="sv-slide">
             <LazyChart index={number - 1}>
               <ChartAbout description={step.description} />
@@ -75,88 +36,41 @@ function ChartStep({ step, number, addressed }: ChartStepProps) {
   );
 }
 
-type DataPanelProps = {
+type FeaturedChartsProps = {
   slug: string;
   fact: Fact;
   steps: DataStep[];
-  /** The charts, already drawn, on a report's own page. Otherwise they load as the row opens. */
+  /** The charts, already drawn, for the home page's sheet. Otherwise they load as a reader reaches for one. */
   charts?: ReactNode[];
 };
 
 /**
- * A data collection's charts and observations: the body of its row on the
- * topic page, one chart of which a viewpoint's "Explore this data" lifts into
- * a sheet, and the top of its report's own page.
+ * One collection's featured charts, each opened alone and in full over the
+ * page, from a viewpoint's card or a home-page preview. Nothing shows until
+ * then: the page holds only each chart's addresses, so arriving at one opens
+ * its chart.
  */
-export function DataPanel({ slug, fact, steps, charts }: DataPanelProps) {
-  const title = fact.title ?? fact.claim;
-  const stepNodes = steps.map((step, i) => step.unknowns
-    ? <UnknownsStep key={i} fact={fact} step={step} addressed={charts !== undefined} />
-    : <ChartStep key={i} step={step} number={i + 1} addressed={charts !== undefined} />);
+export function FeaturedCharts({ slug, fact, steps, charts }: FeaturedChartsProps) {
   const panelSteps = steps.map((step, i) => ({
-    content: stepNodes[i],
+    content: <ChartStep key={i} step={step} number={i + 1} />,
     label: step.label,
     addresses: [...step.anchors, ...step.observations.map(o => o.id), ...(step.views ?? []).flatMap(view => view.anchors)],
   }));
   return (
-    <LazyCharts fact={fact.id} load={rowCharts.bind(null, slug, 'data', fact.id)} drawn={charts}>
-      <PanelHost fact={fact.id} title={title} steps={panelSteps}>
-        <Walkthrough
-          name={title}
-          headings={steps.map(s => s.label)}
-          noun="Chart"
-          endLabel="Last chart"
-          thumbs={steps.map(s => <StepThumb key={s.label} fact={fact} step={s} />)}
-        >
-          {stepNodes}
-        </Walkthrough>
+    <LazyCharts fact={fact.id} load={rowCharts.bind(null, slug, 'featured', fact.id)} drawn={charts}>
+      <PanelHost fact={fact.id} title={fact.title ?? fact.claim} steps={panelSteps}>
+        <div hidden>
+          {[...new Set(panelSteps.flatMap(step => step.addresses))].map(address => <span key={address} data-chart-anchor={address} />)}
+        </div>
       </PanelHost>
     </LazyCharts>
   );
 }
 
-type DataRowsProps = { slug: string; facts: Fact[]; walkthroughs: Map<string, DataStep[]> };
-
-/**
- * The Data section: one row per headline data collection. Closed, a row is
- * its title, a one-line overview and its first charts in miniature; open, every
- * chart runs across the top as a miniature, and the chosen one sits large under
- * them, with the observations made about it between its title and its graph.
- * Supporting collections are read inside their parent, so have no row.
- */
-export function DataRows({ slug, facts, walkthroughs }: DataRowsProps) {
-  return (
-    <TopicAccordion initial="">
-      {facts.map(fact => {
-        const steps = walkthroughs.get(fact.id) ?? [];
-        const title = fact.title ?? fact.claim;
-        return (
-          <TopicRow
-            key={fact.id}
-            slug={fact.id}
-            anchor={anchorFor('fact', fact.id)}
-            className="sv-row--walk sv-row--data"
-            title={title}
-            subtitle={fact.title ? fact.claim : ''}
-            meta={null}
-            thumbs={
-              <ThumbStrip
-                total={steps.length}
-                thumbs={steps.slice(0, THUMBS).map((step, i) => (
-                  <li key={i}>
-                    <RowThumb step={i}>
-                      <span className="sv-row__thumb" aria-hidden="true"><StepThumb fact={fact} step={step} /></span>
-                      <span className="sv-walk__thumb-label">{i + 1}. {step.label}</span>
-                    </RowThumb>
-                  </li>
-                ))}
-              />
-            }
-          >
-            {steps.length > 0 && <DataPanel slug={slug} fact={fact} steps={steps} />}
-          </TopicRow>
-        );
-      })}
-    </TopicAccordion>
-  );
+/** Every featured chart on a topic page, keyed by collection (`renderFeaturedCharts`). */
+export function FeaturedChartSheets({ slug, facts, charts }: { slug: string; facts: Fact[]; charts: Map<string, DataStep[]> }) {
+  return facts.flatMap(fact => {
+    const steps = charts.get(fact.id);
+    return steps ? [<FeaturedCharts key={fact.id} slug={slug} fact={fact} steps={steps} />] : [];
+  });
 }

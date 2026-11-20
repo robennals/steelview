@@ -4,135 +4,22 @@ const nextConfig: NextConfig = {
   // Local previews can use the loopback IP instead of localhost. Their JS
   // must load too, or fact links fall back to full-page navigation.
   allowedDevOrigins: ['127.0.0.1'],
-  redirects: async () => [{
-    source: '/topics/uk-immigration/facts/net-migration-peak-and-fall',
-    destination: '/topics/uk-immigration/facts/immigration-against-the-long-run#immigration-against-the-long-run--net-migration-is-not-unusual-at-all',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/immigration-shifted-from-eu-to-non-eu',
-    destination: '/topics/uk-immigration/facts/immigration-against-the-long-run#immigration-against-the-long-run--nationality-shift',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/asylum-accommodation-cost-overrun',
-    destination: '/topics/uk-asylum/facts/asylum-backlog-accommodation-and-cost',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/asylum-backlog-and-hotel-use-have-fallen',
-    destination: '/topics/uk-asylum/facts/asylum-backlog-accommodation-and-cost',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/asylum-claims-in-historical-and-european-context',
-    destination: '/topics/uk-asylum/facts/asylum-claims-and-decisions',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/asylum-grant-rate-fell',
-    destination: '/topics/uk-asylum/facts/asylum-claims-and-decisions',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/births-to-foreign-born-mothers',
-    destination: '/topics/uk-immigration/facts/immigration-against-the-long-run',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/care-worker-route-fiscally-negative',
-    destination: '/topics/uk-immigration/facts/immigration-economy-and-public-finances',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/care-worker-route-opened-then-closed',
-    destination: '/topics/uk-immigration/facts/work-and-study-routes',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/deportable-offenders-living-in-the-community',
-    destination: '/topics/uk-asylum/facts/removals-and-what-stops-them',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/deterrence-would-reduce-channel-crossings',
-    destination: '/topics/uk-asylum/facts/deterrence-and-protection-policies',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/ethnic-composition-at-the-2021-census',
-    destination: '/topics/uk-immigration/facts/integration-outcomes',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/fiscal-break-even-salary',
-    destination: '/topics/uk-immigration/facts/immigration-economy-and-public-finances',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/health-and-care-relies-on-migrant-workers',
-    destination: '/topics/uk-immigration/facts/work-and-study-routes',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/housing-cost-effect-positive-but-small',
-    destination: '/topics/uk-immigration/facts/immigration-housing-and-public-services',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/how-people-actually-arrive',
-    destination: '/topics/uk-immigration/facts/immigration-against-the-long-run',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/illegal-arrivals-drove-the-net-migration-rise',
-    destination: '/topics/uk-asylum/facts/channel-crossings-and-irregular-arrivals',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/immigration-and-local-social-trust',
-    destination: '/topics/uk-immigration/facts/integration-outcomes',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/immigration-is-salient-and-objection-varies-by-route',
-    destination: '/topics/uk-immigration/facts/immigration-against-the-long-run',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/incoming-immigration-composition',
-    destination: '/topics/uk-immigration/facts/immigration-against-the-long-run',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/migrants-access-to-benefits',
-    destination: '/topics/uk-immigration/facts/settlement-and-migrant-status',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/migration-is-the-only-source-of-population-growth',
-    destination: '/topics/uk-immigration/facts/immigration-against-the-long-run',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/non-citizens-share-of-convictions-and-prisons',
-    destination: '/topics/uk-immigration/facts/crime-terrorism-and-group-exploitation',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/overseas-recruitment-and-domestic-training',
-    destination: '/topics/uk-immigration/facts/work-and-study-routes',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/public-opinion-on-immigration',
-    destination: '/topics/uk-immigration/facts/immigration-against-the-long-run',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/religion-of-arrivals-is-not-recorded',
-    destination: '/topics/uk-immigration/facts/integration-outcomes',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/religious-composition-at-the-2021-census',
-    destination: '/topics/uk-immigration/facts/integration-outcomes',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/share-of-the-population-born-abroad',
-    destination: '/topics/uk-immigration/facts/integration-outcomes',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/skilled-worker-fiscal-gain-concentrated',
-    destination: '/topics/uk-immigration/facts/immigration-economy-and-public-finances',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/wage-effects-small-and-uneven',
-    destination: '/topics/uk-immigration/facts/immigration-economy-and-public-finances',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/what-happens-to-students-after-they-graduate',
-    destination: '/topics/uk-immigration/facts/work-and-study-routes',
-    permanent: true,
-  }, {
-    source: '/topics/uk-immigration/facts/work-visas-swung-to-low-skill-and-back',
-    destination: '/topics/uk-immigration/facts/work-and-study-routes',
-    permanent: true,
-  }],
+  /*
+   * Data collections no longer have pages of their own, so an old link to one
+   * lands on its topic. A few collections moved from UK immigration to UK
+   * asylum first; their old addresses go there. Not permanent: the pages may
+   * come back.
+   */
+  redirects: async () => [
+    { source: '/topics/uk-immigration/facts/asylum-accommodation-cost-overrun', destination: '/topics/uk-asylum', permanent: false },
+    { source: '/topics/uk-immigration/facts/asylum-backlog-and-hotel-use-have-fallen', destination: '/topics/uk-asylum', permanent: false },
+    { source: '/topics/uk-immigration/facts/asylum-claims-in-historical-and-european-context', destination: '/topics/uk-asylum', permanent: false },
+    { source: '/topics/uk-immigration/facts/asylum-grant-rate-fell', destination: '/topics/uk-asylum', permanent: false },
+    { source: '/topics/uk-immigration/facts/deportable-offenders-living-in-the-community', destination: '/topics/uk-asylum', permanent: false },
+    { source: '/topics/uk-immigration/facts/deterrence-would-reduce-channel-crossings', destination: '/topics/uk-asylum', permanent: false },
+    { source: '/topics/uk-immigration/facts/illegal-arrivals-drove-the-net-migration-rise', destination: '/topics/uk-asylum', permanent: false },
+    { source: '/topics/:slug/facts/:fact*', destination: '/topics/:slug', permanent: false },
+  ],
 };
 
 export default nextConfig;

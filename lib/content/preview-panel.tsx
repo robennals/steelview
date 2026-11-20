@@ -3,25 +3,25 @@
 import type { ReactNode } from 'react';
 import { listTopicSlugs, loadTopic } from './load';
 import { topicQuotes } from './figure-props';
-import { renderDataWalkthroughs } from './walkthrough';
-import { DataPanel } from '@/components/topic/data-rows';
+import { featuredSlides, renderFeaturedCharts } from './walkthrough';
+import { FeaturedCharts } from '@/components/topic/featured-charts';
 import { panelCharts } from '@/components/topic/fact-figures';
 
 /**
- * One data collection's whole panel, its charts drawn in full, of which a
- * sheet shows the one chart a reader opened. Fetched by the home page when a
- * reader opens a preview chart, so the page does not carry a panel for every
- * preview it shows.
+ * One collection's featured charts, drawn in full, of which a sheet shows the
+ * one chart a reader opened. Fetched by the home page when a reader opens a
+ * preview chart, so the page does not carry them for every preview it shows.
  *
  * Callable from the browser, so every argument is checked against the content
- * rather than trusted; anything unknown gets no panel.
+ * rather than trusted; anything unknown gets nothing.
  */
 export async function previewPanel(slug: string, factId: string): Promise<ReactNode> {
   if (!(await listTopicSlugs()).includes(slug)) return null;
   const topic = await loadTopic(slug);
   const fact = topic.facts.find(f => f.id === factId);
-  if (!fact) return null;
-  const steps = (await renderDataWalkthroughs(topic, [fact])).get(fact.id) ?? [];
-  const page = { slug, asOf: topic.lastUpdated, facts: topic.facts, quotes: topicQuotes(topic.facts, topic.lastUpdated) };
-  return <DataPanel slug={slug} fact={fact} steps={steps} charts={panelCharts(fact, page)} />;
+  const slides = featuredSlides(topic).get(factId);
+  if (!fact || !slides) return null;
+  const steps = (await renderFeaturedCharts(topic)).get(fact.id) ?? [];
+  const page = { slug, asOf: topic.lastUpdated, quotes: topicQuotes(topic.facts, topic.lastUpdated) };
+  return <FeaturedCharts slug={slug} fact={fact} steps={steps} charts={panelCharts(fact, page, slides)} />;
 }
