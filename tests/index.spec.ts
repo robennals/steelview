@@ -43,7 +43,7 @@ test('a short bar chart preview spreads its rows a little, and a wrapped label k
   // On a phone the slide is as tall as its chart, so nothing spreads the rows,
   // but labels wrapped onto two or three lines are never cut off.
   await page.setViewportSize({ width: 390, height: 844 });
-  const wrapped = row.locator('.sv-comparison').filter({ hasText: 'Adult citizens without ID documents' }).locator('.sv-comparison__rows');
+  const wrapped = row.locator('.sv-comparison').filter({ hasText: "Gaps in adult citizens' ID" }).locator('.sv-comparison__rows');
   const { height, content } = await wrapped.evaluate(list => ({ height: list.clientHeight, content: list.scrollHeight }));
   expect(content).toBeLessThanOrEqual(height);
 });

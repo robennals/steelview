@@ -420,7 +420,7 @@ sources:
 comparisons:
   - id: voided-elections
     title: Voided elections, by what was found
-    subtitle: In the Heritage Foundation's fraud list, 1992–2023
+    subtitle: 'At least 32, 1992–2023, from a collection of reported cases'
     description: >-
       Every election-level voiding, overturning or court-ordered rerun in the
       Heritage Foundation's Election Fraud Map data file (archived July 2026),
