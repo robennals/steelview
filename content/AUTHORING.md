@@ -1632,7 +1632,9 @@ belongs in a crux. In practice:
 - **No predictions or comparisons the evidence does not make.** Say what has
   happened, or state the conditional.
 - **Headings and lines are claims too.** The rule covers every sentence, not
-  only the pills.
+  only the pills. A claim the card's own visual shows is backed by it, and
+  needs no pill of its own
+  ([Citations and data order](#citations-and-data-order)).
 
 **Show the whole range, and claim only what it shows.** A chart shows every
 period its data covers; never cut a range to the years that fit a claim. A
@@ -1908,6 +1910,18 @@ linked observation pill, including non-numeric statements and key premises that 
 obviously true. Link the relevant phrase each time it appears; a list at the
 bottom is not a substitute. Include essential qualifications inside the pill.
 Values, preferences and purely logical reasoning remain ordinary prose.
+
+**What the card's visual shows needs no further citation.** The line's first
+citation picks the card's graph or quotes, and puts them, with their sources,
+beside every sentence of the line. A claim a reader can read off that visual —
+a later year on the same line, another bar, the trend across the whole range, a
+second speaker in the collection — is already backed on the card, so leave it
+as plain prose. Cite only what the visual does not show: another chart's data,
+a figure from a source the visual does not draw, or a premise from elsewhere.
+The visual must really show the claim, by the standard of
+[Every link shows its fact on a chart](#lead-with-the-data): the same place,
+period and measure, and matching numbers. A summary, and a card of text, has no
+visual, so every empirical claim in it is still a pill.
 
 **Keep pill text to the point the argument needs.** The chart and the report
 hold the exact figures, dates, sources and method, so the pill does not need to
@@ -2401,8 +2415,8 @@ Run this before opening a pull request.
       argument actually rests on.
 - [ ] Every fact it leans on is in one of its three lists.
 - [ ] Every empirical assertion in prose and summaries is a pill targeting the
-      relevant finding, or is marked `#needed` (shown as plain prose) until the
-      evidence audit is complete.
+      relevant finding, is shown by its card's own visual, or is marked
+      `#needed` (shown as plain prose) until the evidence audit is complete.
 
 **Every principle**
 

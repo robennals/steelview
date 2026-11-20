@@ -8,7 +8,7 @@ Britain is richer with the people who come here to work. It should keep welcomin
 
 ### Skilled migrants pay far more in than they take out
 
-[Skilled workers outside health and care add hundreds of thousands of pounds each over their lives](#fact-immigration-economy-and-public-finances/skilled-workers-large-net-gain). [The government's migration advisers expect one year's skilled workers to add tens of billions of pounds to the public purse](#fact-immigration-economy-and-public-finances/mac-cohort-adds-47bn). While [care workers, and adult dependants on the health and care route, cost more than they pay over a lifetime](#fact-immigration-economy-and-public-finances/care-route-net-cost), that is a reason to choose carefully. It is no case against the workers who pay their way.
+[Skilled workers outside health and care add hundreds of thousands of pounds each over their lives](#fact-immigration-economy-and-public-finances/skilled-workers-large-net-gain). [The government's migration advisers expect one year's skilled workers to add tens of billions of pounds to the public purse](#fact-immigration-economy-and-public-finances/mac-cohort-adds-47bn). While care workers, and adult dependants on the health and care route, cost more than they pay over a lifetime, that is a reason to choose carefully. It is no case against the workers who pay their way.
 
 ### Britain's hospitals and universities depend on people from abroad
 
