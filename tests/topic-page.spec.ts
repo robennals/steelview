@@ -436,6 +436,12 @@ test('a pop-up closes around its chart, a graph keeping a wide shape, in the mid
   for (const extra of spare) expect(extra).toBeLessThan(2);
   expect((await sheet.boundingBox())!.height).toBeLessThan(600);
 
+  // Rows that open fit whole too: the last row's tap target does not reach past the chart and make it scroll.
+  await page.goto('/');
+  await page.goto('/topics/us-iran-war#human-and-financial-costs-of-the-war--deaths-in-the-thousands');
+  await settled();
+  await expect(sheet.locator('.sv-row-detail').first()).toBeVisible();
+  expect(await sheet.locator('.sv-slide').evaluate(slide => slide.scrollHeight - slide.clientHeight)).toBe(0);
 });
 
 for (const viewport of [{ width: 1280, height: 900 }, { width: 390, height: 844 }]) {
