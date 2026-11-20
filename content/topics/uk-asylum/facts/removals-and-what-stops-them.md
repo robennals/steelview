@@ -1133,7 +1133,7 @@ additionalSeries:
                 value: 12396
   - id: refused-cohorts
     title: 'Asylum claims and later returns'
-    subtitle: 'UK, main applicants by year of claim, 2007–2025, as at July 2026'
+    subtitle: 'Enforced or voluntary returns, by year of claim, UK, 2007–2025'
     description: >-
       Main applicants who claimed asylum in each year, followed up to July
       2026: how many were refused or withdrew at their latest outcome, and how

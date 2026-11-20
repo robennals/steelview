@@ -740,11 +740,11 @@ additionalSeries:
             points: [{period: '2016', value: 53.9}, {period: '2020', value: 59.9}, {period: '2024', value: 59.3}]
 comparisons:
   - id: documents-held
-    title: 'Adult citizens without ID documents'
-    subtitle: 'US, by kind of document, 2023'
+    title: 'Gaps in adult citizens'' ID'
+    subtitle: 'US, 2023: from no photo ID at all to an old address on a licence'
     description: >-
       Estimated US citizens aged 18 or over, national survey fielded
-      September–October 2023. "No photo ID of any kind" and "outdated licence"
+      September–October 2023. "No photo ID at all" and "Licence shows an old name or address"
       are separate groups; the proof-of-citizenship bars are a separate
       question.
     unit: count
@@ -754,25 +754,25 @@ comparisons:
       Survey sponsored by VoteRiders, Public Wise, the University of Maryland's
       Center for Democracy and Civic Engagement and the Brennan Center, run by
       SSRS with 2,386 respondents; counts are the authors' projections onto
-      Census population figures. "No non-expired driver's licence" includes
+      Census population figures. "No current driver's licence" includes
       people who hold other photo ID such as a passport or state ID card, which
-      is why it is far larger than "no photo ID of any kind". "Cannot readily
-      reach proof of citizenship" includes those with none at all. The bars are
+      is why it is far larger than "No photo ID at all". "Proof of citizenship
+      not to hand" includes those with none at all. The bars are
       not additive.
     items:
-      - label: No government photo ID of any kind
+      - label: "No photo ID at all"
         detail: "Just over 1% of adult citizens"
         value: 2600000
         highlight: true
-      - label: No non-expired driver's licence
+      - label: "No current driver's licence"
         value: 20760000
-      - label: "Licence lacks current name or address"
+      - label: "Licence shows an old name or address"
         detail: "Unexpired licence; ninety-six percent of these lack the current address"
         value: 28600000
-      - label: No proof-of-citizenship document at all
+      - label: "No proof of citizenship at all"
         value: 3800000
         highlight: true
-      - label: "Cannot readily reach proof of citizenship"
+      - label: "Proof of citizenship not to hand"
         detail: "Includes none; over 9% of adult citizens"
         value: 21300000
   - id: why-no-licence
@@ -1134,8 +1134,8 @@ movedAnchors:
   observations-great-britain: turnout-overall
   subtleties-kansas-dpoc: kansas-findings
 observationMarks:
-  no-id-versus-outdated-id: {rows: ["No government photo ID of any kind", "Licence lacks current name or address"]}
-  dpoc-not-readily-available: {rows: ["Cannot readily reach proof of citizenship", "No proof-of-citizenship document at all"]}
+  no-id-versus-outdated-id: {rows: ["No photo ID at all", "Licence shows an old name or address"]}
+  dpoc-not-readily-available: {rows: ["Proof of citizenship not to hand", "No proof of citizenship at all"]}
   national-panel-no-turnout-effect: {rows: ["National panel: registration", "National panel: turnout"]}
   burden-without-turnout-effect: {rows: ["National panel: turnout", "GAO: Kansas turnout", "GAO: Tennessee turnout"]}
   kansas-blocked-vs-noncitizens: {rows: ["Suspended or cancelled (2013–2016)", "Non-citizens on the rolls (1999–2013)"]}
@@ -1150,7 +1150,7 @@ observationMarks:
   two-states-opposite: {lines: ["Texas", "Georgia"], from: "2016", to: "2024"}
   arizona-eight-noncitizens: {rows: ["Found to be non-citizens who voted"]}
   who-ran-the-survey: {whole: true}
-  2006-survey-not-comparable: {rows: ["No government photo ID of any kind", "Cannot readily reach proof of citizenship"]}
+  2006-survey-not-comparable: {rows: ["No photo ID at all", "Proof of citizenship not to hand"]}
   dpoc-by-group: {rows: ["Independents", "People of color", "Republicans"]}
   georgia-gap-widened-2022: {lines: ["White minus nonwhite"], at: "2022"}
   georgia-gap-predates-sb202: {lines: ["White minus Black"], from: "2014", to: "2020"}
