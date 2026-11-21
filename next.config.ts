@@ -4,6 +4,11 @@ const nextConfig: NextConfig = {
   // Local previews can use the loopback IP instead of localhost. Their JS
   // must load too, or fact links fall back to full-page navigation.
   allowedDevOrigins: ['127.0.0.1'],
+  // Reader feedback is checked against the topic it is about, so its routes
+  // read the content files at request time.
+  outputFileTracingIncludes: {
+    '/api/topics/**': ['./content/topics/**/*.md'],
+  },
   /*
    * Data collections no longer have pages of their own, so an old link to one
    * lands on its topic. A few collections moved from UK immigration to UK

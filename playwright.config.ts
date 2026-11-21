@@ -21,5 +21,8 @@ export default defineConfig({
     command: 'pnpm build:if-changed && pnpm start',
     wait: { stdout: new RegExp(String.raw`(?<PLAYWRIGHT_TEST_BASE_URL>http://localhost:\d+)[\s\S]*Ready in`) },
     timeout: 180_000,
+    // No database and no sign-in: `.env.local` points at the live database,
+    // and Next keeps a variable already set, even empty, over the file's.
+    env: { DATABASE_URL: '', AUTH_SECRET: '' },
   },
 });

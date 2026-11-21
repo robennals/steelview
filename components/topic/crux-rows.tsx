@@ -1,6 +1,7 @@
 import type { Crux, Viewpoint } from '@/lib/content/types';
 import { anchorFor } from '@/lib/content/types';
 import { TopicAccordion, TopicRow } from '@/components/home/topic-accordion';
+import { CruxDiscussion } from '@/components/feedback/crux-discussion';
 
 const KIND_LABELS = {
   tradeoff: 'Tension between principles',
@@ -17,7 +18,7 @@ type CruxRowsProps = {
 /**
  * The cruxes as rows, none open at first. Closed, a row is what kind of crux
  * it is, what is at issue and why it divides people; open, it shows where each
- * side stands.
+ * side stands, and under that, a preview of readers' discussion of it.
  *
  * The positions are columns of equal width and identical styling, so neither
  * side is given the floor.
@@ -46,6 +47,7 @@ export function CruxRows({ cruxes, viewpointsById }: CruxRowsProps) {
               </div>
             ))}
           </dl>
+          <CruxDiscussion cruxId={crux.id} title={crux.title} />
         </TopicRow>
       ))}
     </TopicAccordion>

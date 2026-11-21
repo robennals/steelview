@@ -14,14 +14,21 @@
     "test:e2e": "playwright test",
     "check:integrity": "tsx scripts/check-integrity.ts",
     "check:figures": "tsx scripts/check-figures.ts",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
     "check": "pnpm lint && pnpm test:unit && pnpm check:integrity && pnpm check:figures && pnpm build:if-changed --force"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^1.12.0",
+    "@auth/drizzle-adapter": "^1.11.3",
     "@fontsource-variable/inter": "5.3.0",
     "@fontsource-variable/inter-tight": "5.3.0",
     "@fontsource-variable/source-serif-4": "5.3.1",
+    "@neondatabase/serverless": "^1.2.1",
+    "drizzle-orm": "^0.45.4",
     "gray-matter": "^4.0.3",
     "next": "16.3.1",
+    "next-auth": "5.0.0-beta.32",
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "rehype-stringify": "^10.0.1",
@@ -33,6 +40,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@electric-sql/pglite": "^0.5.17",
     "@playwright/test": "^1.62.1",
     "@storybook/addon-docs": "10.6.3",
     "@storybook/nextjs-vite": "10.6.3",
@@ -42,6 +50,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "drizzle-kit": "^0.31.11",
     "eslint": "^9",
     "eslint-config-next": "16.3.1",
     "storybook": "10.6.3",
