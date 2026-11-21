@@ -1,0 +1,129 @@
+# The agent's half of this viewpoint: which phrase of the text cites which
+# data, the chart each card shows, and whether each passage has been checked
+# against its evidence. The text itself is in the .md file beside this one.
+# Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
+summary:
+  citations:
+    - phrase: a bigger economy
+      href: "#fact-immigration-economy-and-public-finances/total-gdp-grew"
+    - phrase: almost no rise in output per person
+      href: "#fact-immigration-economy-and-public-finances/gdp-per-head-barely-grew"
+    - phrase: England's households are projected to grow faster than it is building homes
+      href: "#fact-immigration-housing-and-public-services/building-below-household-growth"
+  verification:
+    status: verified
+    textHash: 59ba5ab27316
+    checkedAt: 2026-11-20
+lead:
+  citations: []
+  verification:
+    status: verified
+    textHash: 39fca6865d0b
+    checkedAt: 2026-11-20
+cards:
+  - heading: Britain has just had the biggest wave of immigration on record
+    visual:
+      cite: "#fact-immigration-against-the-long-run/record-immigration-2021-to-2024"
+      kind: series
+      title: UK migration
+    citations:
+      - phrase: More people moved to Britain in each year from 2021 to 2024 than in any year since the record began in 1964
+        href: "#fact-immigration-against-the-long-run/record-immigration-2021-to-2024"
+      - phrase: Migration now makes up almost all of the country's population growth
+        href: "#fact-immigration-against-the-long-run/migration-is-almost-all-population-growth"
+    verification:
+      status: verified
+      textHash: 50f403f46c51
+      checkedAt: 2026-11-20
+  - heading: More people make the economy bigger, but barely make anyone richer
+    visual:
+      cite: "#fact-immigration-economy-and-public-finances/gdp-per-head-barely-grew"
+      kind: series
+      title: UK GDP
+    citations:
+      - phrase: Since 2019, output per person has barely moved
+        href: "#fact-immigration-economy-and-public-finances/gdp-per-head-barely-grew"
+      - phrase: in its scenarios, migration moves output per person by under 1%, up or down
+        href: "#fact-immigration-economy-and-public-finances/obr-per-head-effect-small"
+      - phrase: extra migrants leave output per person lower if buildings and equipment do not keep up
+        href: "#fact-immigration-economy-and-public-finances/capital-does-not-adjust"
+      - phrase: public investment does not do straight away
+        href: "#fact-immigration-housing-and-public-services/investment-does-not-adjust"
+      - phrase: Canada and Germany stalled too
+        href: "#fact-immigration-economy-and-public-finances/g7-stalled-alike"
+    verification:
+      status: verified
+      textHash: a23818cf4073
+      checkedAt: 2026-11-20
+  - heading: Migration is expected to add half of England's new households, and building falls short
+    visual:
+      cite: "#fact-immigration-housing-and-public-services/migration-share-of-household-growth"
+      kind: comparison
+      title: Projected household growth
+    citations:
+      - phrase: Migration accounts for just over half of the extra households expected in England
+        href: "#fact-immigration-housing-and-public-services/migration-share-of-household-growth"
+      - phrase: England is adding fewer homes each year than the households projected
+        href: "#fact-immigration-housing-and-public-services/building-below-household-growth"
+      - phrase: About a third of private renters were born abroad
+        href: "#fact-immigration-housing-and-public-services/migrants-concentrated-in-private-renting"
+      - phrase: rent growth dropped to less than half its peak as net migration fell
+        href: "#fact-immigration-housing-and-public-services/rent-growth-fell-as-migration-fell"
+      - phrase: immigration explains only a small part of the long rise in house prices
+        href: "#fact-immigration-housing-and-public-services/immigration-explains-4-6-percent-of-house-price-rise"
+      - phrase: in countries like Britain it raises rents more than prices
+        href: "#fact-immigration-housing-and-public-services/rent-effects"
+    verification:
+      status: verified
+      textHash: 9deb1dc7910b
+      checkedAt: 2026-11-20
+  - heading: Low-paid routes bring people who cost more than they pay in
+    visual:
+      cite: "#fact-immigration-economy-and-public-finances/skilled-workers-large-net-gain"
+      kind: comparison
+      title: Lifetime fiscal contribution by visa route
+    citations:
+      - phrase: Skilled workers outside health and care are a large gain to the public purse
+        href: "#fact-immigration-economy-and-public-finances/skilled-workers-large-net-gain"
+      - phrase: lower migration raises borrowing within five years
+        href: "#fact-immigration-economy-and-public-finances/lower-migration-raises-borrowing"
+      - phrase: the costs that come as migrants grow old
+        href: "#fact-immigration-economy-and-public-finances/old-age-reverses-gains"
+      - phrase: lower migration raises public spending per person
+        href: "#fact-immigration-housing-and-public-services/lower-migration-raises-spending-per-person"
+    verification:
+      status: verified
+      textHash: 01370cbebb7f
+      checkedAt: 2026-11-20
+  - heading: The fall in numbers rests on rules a future government can undo
+    visual:
+      cite: "#fact-immigration-against-the-long-run/net-migration-is-not-unusual-at-all"
+      kind: series
+      title: Net migration by route and nationality
+    citations:
+      - phrase: Net migration has fallen by about four-fifths from its peak
+        href: "#fact-immigration-against-the-long-run/net-migration-is-not-unusual-at-all"
+      - phrase: since the 2010 pledge, net migration has reached the promised "tens of thousands" only in 2020, during Covid
+        href: "#fact-immigration-against-the-long-run/tens-of-thousands-met-only-in-covid"
+      - phrase: later Conservative and Labour pledges named no number
+        href: "#fact-immigration-against-the-long-run/later-pledges-unquantified"
+    verification:
+      status: verified
+      textHash: ec41d486d986
+      checkedAt: 2026-11-20
+  - heading: So Parliament should set a binding cap and lengthen the wait to settle
+    visual:
+      cite: "#fact-immigration-against-the-long-run/public-preferences"
+      kind: barChart
+      title: What people want for immigration numbers
+    citations:
+      - phrase: Most people want immigration reduced
+        href: "#fact-immigration-against-the-long-run/public-preferences"
+      - phrase: about 1.6 million people are expected to settle by 2030
+        href: "#fact-settlement-and-migrant-status/forecast-1-6-million"
+      - phrase: once settled, they can claim most of the benefits that people on temporary visas cannot
+        href: "#fact-settlement-and-migrant-status/settlement-unlocks-benefits"
+    verification:
+      status: verified
+      textHash: da5af0fe16e3
+      checkedAt: 2026-11-20
