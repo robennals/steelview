@@ -1,6 +1,7 @@
 import { readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
 import matter from 'gray-matter';
+import { parse as parseYaml } from 'yaml';
 import type { z } from 'zod';
 import {
   factFrontmatterSchema,
@@ -10,8 +11,9 @@ import {
 } from './schema';
 import { rankFacts, sortViewpoints } from './rank-facts';
 import { evidenceErrors, validateTopic } from './validate';
-import { cardParagraphErrors, repeatedCardVisualErrors } from './walkthrough';
-import type { Topic, Item } from './types';
+import { cardParagraphErrors, cardVisualErrors, repeatedCardVisualErrors } from './walkthrough';
+import { joinViewpoint, viewpointLinksSchema, type ViewpointLinks } from './viewpoint-links';
+import type { Topic, Item, Viewpoint } from './types';
 
 const CONTENT_ROOT = path.join(process.cwd(), 'content', 'topics');
 
@@ -73,6 +75,45 @@ async function readItems<T extends Record<string, unknown>>(
   );
 }
 
+/**
+ * Read a topic's viewpoints: each `<id>.md` is the text, joined with the
+ * citations, card visuals and checks in `<id>.links.yaml` beside it. A
+ * missing links file leaves the text unlinked and unchecked, which only
+ * `pnpm check:integrity` reports, so an editor's new draft renders while the
+ * agent has yet to link it.
+ */
+async function readViewpoints(dir: string): Promise<Viewpoint[]> {
+  const items = await readItems(dir, viewpointFrontmatterSchema);
+  return Promise.all(
+    items.map(async (item) => {
+      const file = path.join(dir, `${item.id}.links.yaml`);
+      let links: ViewpointLinks;
+      try {
+        const parsed = viewpointLinksSchema.safeParse(parseYaml(await readFile(file, 'utf8')));
+        if (!parsed.success) throw new ContentError(`${file}: ${formatIssues(parsed.error)}`);
+        links = parsed.data;
+      } catch (err) {
+        if (!(err instanceof Error && 'code' in err && err.code === 'ENOENT')) throw err;
+        links = viewpointLinksSchema.parse({});
+      }
+      const joined = joinViewpoint(item.body, item.summary, links);
+      // The text is the editor's; a link in it is a citation in the wrong file.
+      const inText = [...`${item.summary}\n${item.body}`.matchAll(/\[[^\]]+\]\(#[^)\s]+\)/g)].map(
+        ([link]) => `the text links ${link}; citations go in ${item.id}.links.yaml`
+      );
+      return {
+        ...item,
+        body: joined.body,
+        summary: joined.summary,
+        researchNeeded: links.researchNeeded,
+        visuals: joined.visuals,
+        linkErrors: [...inText, ...joined.linkErrors],
+        unverified: joined.unverified,
+      };
+    })
+  );
+}
+
 export type LoadTopicOptions = {
   /** Run the publication-time cross-item integrity checks. */
   validateIntegrity?: boolean;
@@ -100,7 +141,7 @@ export async function loadTopic(
   }
 
   const facts = await readItems(path.join(dir, 'facts'), factFrontmatterSchema);
-  const viewpoints = await readItems(path.join(dir, 'viewpoints'), viewpointFrontmatterSchema);
+  const viewpoints = await readViewpoints(path.join(dir, 'viewpoints'));
   sortViewpoints(viewpoints);
 
   const topic: Topic = {
@@ -125,13 +166,22 @@ export async function loadTopic(
   }
 
   if (options.validateIntegrity) {
-    const errors = [...validateTopic(topic), ...evidenceErrors(topic), ...repeatedCardVisualErrors(topic), ...cardParagraphErrors(topic)];
+    const errors = [...validateTopic(topic), ...evidenceErrors(topic), ...repeatedCardVisualErrors(topic), ...cardParagraphErrors(topic), ...cardVisualErrors(topic), ...viewpointLinkErrors(topic)];
     if (errors.length > 0) {
       throw new ContentError(`Topic "${slug}" has ${errors.length} problem(s):\n  - ${errors.join('\n  - ')}`);
     }
   }
 
   return topic;
+}
+
+/**
+ * A viewpoint's text and links file out of step, or a passage the agent has
+ * not checked as it now stands. Publication waits on both: what a reader sees
+ * must be cited, and checked, as written.
+ */
+function viewpointLinkErrors(topic: Topic): string[] {
+  return topic.viewpoints.flatMap((v) => [...(v.linkErrors ?? []), ...(v.unverified ?? [])].map((e) => `viewpoint ${v.id}: ${e}`));
 }
 
 export async function listTopicSlugs(root: string = CONTENT_ROOT): Promise<string[]> {

@@ -1,3 +1,4 @@
+import type { CardVisualRef } from './viewpoint-links';
 import { z } from 'zod';
 import {
   sourceSchema,
@@ -68,7 +69,21 @@ export type FigureValueFormat = z.infer<typeof valueFormatSchema>;
 
 export type Fact = Item<z.infer<typeof factFrontmatterSchema>>;
 export type ObservationMark = z.infer<typeof observationMarkSchema>;
-export type Viewpoint = Item<z.infer<typeof viewpointFrontmatterSchema>>;
+/**
+ * A viewpoint as the site reads it: its text joined with its links file
+ * (`viewpoint-links.ts`), so `body` and `summary` carry the citations as
+ * inline links.
+ */
+export type Viewpoint = Item<z.infer<typeof viewpointFrontmatterSchema>> & {
+  /** Every claim the text cites as `#needed`, quoted exactly: the research queue. */
+  researchNeeded?: string[];
+  /** Each card's graph or quotes, by heading, as the links file names it. A card without one is text. */
+  visuals?: Map<string, CardVisualRef>;
+  /** Where the text and its links file do not line up. */
+  linkErrors?: string[];
+  /** Passages the agent has not checked against their evidence as they now stand. */
+  unverified?: string[];
+};
 export type Crux = Item<z.infer<typeof cruxFrontmatterSchema>>;
 
 export type PreviewChart = z.infer<typeof previewChartSchema>;
