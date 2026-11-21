@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { db } from '@/lib/db/client';
 import { addViewpointSuggestion, MAX_TEXT } from '@/lib/feedback/store';
-import { body, topicTargets, writer } from '@/lib/feedback/route-helpers';
+import { body, checkPost, topicTargets, writer } from '@/lib/feedback/route-helpers';
 
 const schema = z.object({
   title: z.string().trim().min(1).max(300),
@@ -18,5 +18,12 @@ export async function POST(req: Request, { params }: { params: Promise<{ slug: s
   if (input instanceof Response) return input;
   const userId = await writer({ named: true });
   if (userId instanceof Response) return userId;
-  return Response.json(await addViewpointSuggestion(db, { userId, topicSlug: slug, ...input }), { status: 201 });
+  const moderation = await checkPost({
+    kind: 'a viewpoint the page is missing',
+    topic: targets.title,
+    about: input.title,
+    text: [input.steps, input.holders && `Held by: ${input.holders}`].filter(Boolean).join('\n'),
+  });
+  if (moderation instanceof Response) return moderation;
+  return Response.json(await addViewpointSuggestion(db, { userId, topicSlug: slug, ...input, moderation }), { status: 201 });
 }

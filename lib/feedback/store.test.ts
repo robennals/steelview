@@ -26,8 +26,8 @@ async function withReaders(names: (string | null)[]): Promise<{ db: DB; ids: str
 
 test('a suggestion reads back with its author, what it is about, and no backers', async () => {
   const { db, ids: [alice] } = await withReaders(['Alice']);
-  await addSuggestion(db, { userId: alice, topicSlug: TOPIC, viewpointId: 'keep-our-word', card: { index: 2, heading: 'Britain has usually let people finish' }, body: 'Cite the 2008 ruling.' });
-  await addSuggestion(db, { userId: alice, topicSlug: TOPIC, viewpointId: 'keep-our-word', card: null, body: 'Open with the proposal.' });
+  await addSuggestion(db, { userId: alice, topicSlug: TOPIC, viewpointId: 'keep-our-word', card: { index: 2, heading: 'Britain has usually let people finish' }, body: 'Cite the 2008 ruling.', moderation: 'allowed' });
+  await addSuggestion(db, { userId: alice, topicSlug: TOPIC, viewpointId: 'keep-our-word', card: null, body: 'Open with the proposal.', moderation: 'allowed' });
 
   const { suggestions: byViewpoint } = await readTopicFeedback(db, TOPIC, null);
   const [card, whole] = [...byViewpoint['keep-our-word']].sort((a, b) => a.text.localeCompare(b.text));
@@ -41,13 +41,13 @@ test('a suggestion reads back with its author, what it is about, and no backers'
 
 test('feedback on another topic is not read', async () => {
   const { db, ids: [alice] } = await withReaders(['Alice']);
-  await addSuggestion(db, { userId: alice, topicSlug: 'uk-asylum', viewpointId: 'refuge', card: null, body: 'Elsewhere.' });
+  await addSuggestion(db, { userId: alice, topicSlug: 'uk-asylum', viewpointId: 'refuge', card: null, body: 'Elsewhere.', moderation: 'allowed' });
   assert.deepEqual(await readTopicFeedback(db, TOPIC, alice), { suggestions: {}, discussions: {} });
 });
 
 test('backing counts each reader once, shows the reader their own backing, and can be withdrawn', async () => {
   const { db, ids: [alice, bob] } = await withReaders(['Alice', 'Bob']);
-  const { id } = await addSuggestion(db, { userId: alice, topicSlug: TOPIC, viewpointId: 'keep-our-word', card: null, body: 'x' });
+  const { id } = await addSuggestion(db, { userId: alice, topicSlug: TOPIC, viewpointId: 'keep-our-word', card: null, body: 'x', moderation: 'allowed' });
   assert.equal(await setBacking(db, { userId: bob, topicSlug: TOPIC, suggestionId: id, backed: true }), true);
   await setBacking(db, { userId: bob, topicSlug: TOPIC, suggestionId: id, backed: true });
   await setBacking(db, { userId: alice, topicSlug: TOPIC, suggestionId: id, backed: true });
@@ -64,7 +64,7 @@ test('backing counts each reader once, shows the reader their own backing, and c
 
 test('only an open suggestion on the same topic can be backed', async () => {
   const { db, ids: [alice] } = await withReaders(['Alice']);
-  const { id } = await addSuggestion(db, { userId: alice, topicSlug: TOPIC, viewpointId: 'keep-our-word', card: null, body: 'x' });
+  const { id } = await addSuggestion(db, { userId: alice, topicSlug: TOPIC, viewpointId: 'keep-our-word', card: null, body: 'x', moderation: 'allowed' });
   assert.equal(await setBacking(db, { userId: alice, topicSlug: 'uk-asylum', suggestionId: id, backed: true }), false);
   await db.update(suggestions).set({ status: 'incorporated' }).where(eq(suggestions.id, id));
   assert.equal(await setBacking(db, { userId: alice, topicSlug: TOPIC, suggestionId: id, backed: true }), false);
@@ -72,8 +72,8 @@ test('only an open suggestion on the same topic can be backed', async () => {
 
 test('an answered suggestion carries the editor’s reply, and a hidden one is not shown', async () => {
   const { db, ids: [alice] } = await withReaders(['Alice']);
-  const answered = await addSuggestion(db, { userId: alice, topicSlug: TOPIC, viewpointId: 'keep-our-word', card: null, body: 'a' });
-  const hidden = await addSuggestion(db, { userId: alice, topicSlug: TOPIC, viewpointId: 'keep-our-word', card: null, body: 'b' });
+  const answered = await addSuggestion(db, { userId: alice, topicSlug: TOPIC, viewpointId: 'keep-our-word', card: null, body: 'a', moderation: 'allowed' });
+  const hidden = await addSuggestion(db, { userId: alice, topicSlug: TOPIC, viewpointId: 'keep-our-word', card: null, body: 'b', moderation: 'allowed' });
   await db.update(suggestions).set({ status: 'answered', answer: 'Covered at card 4.' }).where(eq(suggestions.id, answered.id));
   await db.update(suggestions).set({ hiddenAt: new Date() }).where(eq(suggestions.id, hidden.id));
 
@@ -85,10 +85,10 @@ test('an answered suggestion carries the editor’s reply, and a hidden one is n
 
 test('a reply sits under its comment, in the order written, and useful marks count each reader once', async () => {
   const { db, ids: [alice, bob] } = await withReaders(['Alice', 'Bob']);
-  const comment = await addComment(db, { userId: alice, topicSlug: TOPIC, cruxId: 'will-recent-arrivals-integrate', parentId: null, body: 'Is there a survey?' });
+  const comment = await addComment(db, { userId: alice, topicSlug: TOPIC, cruxId: 'will-recent-arrivals-integrate', parentId: null, body: 'Is there a survey?', moderation: 'allowed' });
   assert.ok(comment);
-  await addComment(db, { userId: bob, topicSlug: TOPIC, cruxId: 'will-recent-arrivals-integrate', parentId: comment.id, body: 'Only the census.' });
-  await addComment(db, { userId: alice, topicSlug: TOPIC, cruxId: 'will-recent-arrivals-integrate', parentId: comment.id, body: 'Thanks.' });
+  await addComment(db, { userId: bob, topicSlug: TOPIC, cruxId: 'will-recent-arrivals-integrate', parentId: comment.id, body: 'Only the census.', moderation: 'allowed' });
+  await addComment(db, { userId: alice, topicSlug: TOPIC, cruxId: 'will-recent-arrivals-integrate', parentId: comment.id, body: 'Thanks.', moderation: 'allowed' });
   await setUseful(db, { userId: bob, topicSlug: TOPIC, commentId: comment.id, useful: true });
   await setUseful(db, { userId: bob, topicSlug: TOPIC, commentId: comment.id, useful: true });
 
@@ -104,19 +104,19 @@ test('a reply sits under its comment, in the order written, and useful marks cou
 
 test('a reply must be to a comment, not a reply, in the same discussion', async () => {
   const { db, ids: [alice] } = await withReaders(['Alice']);
-  const comment = await addComment(db, { userId: alice, topicSlug: TOPIC, cruxId: 'growth-or-continuity', parentId: null, body: 'a' });
+  const comment = await addComment(db, { userId: alice, topicSlug: TOPIC, cruxId: 'growth-or-continuity', parentId: null, body: 'a', moderation: 'allowed' });
   assert.ok(comment);
-  const reply = await addComment(db, { userId: alice, topicSlug: TOPIC, cruxId: 'growth-or-continuity', parentId: comment.id, body: 'b' });
+  const reply = await addComment(db, { userId: alice, topicSlug: TOPIC, cruxId: 'growth-or-continuity', parentId: comment.id, body: 'b', moderation: 'allowed' });
   assert.ok(reply);
-  assert.equal(await addComment(db, { userId: alice, topicSlug: TOPIC, cruxId: 'growth-or-continuity', parentId: reply.id, body: 'c' }), null);
-  assert.equal(await addComment(db, { userId: alice, topicSlug: TOPIC, cruxId: 'another-crux', parentId: comment.id, body: 'd' }), null);
+  assert.equal(await addComment(db, { userId: alice, topicSlug: TOPIC, cruxId: 'growth-or-continuity', parentId: reply.id, body: 'c', moderation: 'allowed' }), null);
+  assert.equal(await addComment(db, { userId: alice, topicSlug: TOPIC, cruxId: 'another-crux', parentId: comment.id, body: 'd', moderation: 'allowed' }), null);
 });
 
 test('replies to a hidden comment go with it', async () => {
   const { db, ids: [alice] } = await withReaders(['Alice']);
-  const comment = await addComment(db, { userId: alice, topicSlug: TOPIC, cruxId: 'growth-or-continuity', parentId: null, body: 'a' });
+  const comment = await addComment(db, { userId: alice, topicSlug: TOPIC, cruxId: 'growth-or-continuity', parentId: null, body: 'a', moderation: 'allowed' });
   assert.ok(comment);
-  await addComment(db, { userId: alice, topicSlug: TOPIC, cruxId: 'growth-or-continuity', parentId: comment.id, body: 'b' });
+  await addComment(db, { userId: alice, topicSlug: TOPIC, cruxId: 'growth-or-continuity', parentId: comment.id, body: 'b', moderation: 'allowed' });
   await db.update(cruxComments).set({ hiddenAt: new Date() }).where(eq(cruxComments.id, comment.id));
   assert.deepEqual(await readTopicFeedback(db, TOPIC, null), { suggestions: {}, discussions: {} });
 });
@@ -131,6 +131,6 @@ test('a reader has no name until they set one', async () => {
 
 test('a suggested viewpoint is stored for editors', async () => {
   const { db, ids: [alice] } = await withReaders(['Alice']);
-  const { id } = await addViewpointSuggestion(db, { userId: alice, topicSlug: TOPIC, title: 'A view', steps: 'One\nTwo', holders: null });
+  const { id } = await addViewpointSuggestion(db, { userId: alice, topicSlug: TOPIC, title: 'A view', steps: 'One\nTwo', holders: null, moderation: 'allowed' });
   assert.match(id, /^[0-9a-f-]{36}$/);
 });

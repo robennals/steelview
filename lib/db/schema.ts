@@ -71,6 +71,10 @@ export const emailPins = pgTable('email_pins', {
 
 export const SUGGESTION_STATUSES = ['open', 'incorporated', 'answered'] as const;
 
+/** Whether the moderation check passed a post, or it went up unchecked because the check could not run. Blocked posts are not stored. */
+export const MODERATION_RESULTS = ['allowed', 'unchecked'] as const;
+const moderation = () => text('moderation', { enum: MODERATION_RESULTS }).notNull().default('unchecked');
+
 const createdAt = () => timestamp('created_at', { mode: 'date', withTimezone: true }).notNull().defaultNow();
 /** Set by an editor to take something down; a hidden row is never shown. */
 const hiddenAt = () => timestamp('hidden_at', { mode: 'date', withTimezone: true });
@@ -95,6 +99,7 @@ export const suggestions = pgTable(
     status: text('status', { enum: SUGGESTION_STATUSES }).notNull().default('open'),
     /** The editor's reply, once answered. */
     answer: text('answer'),
+    moderation: moderation(),
     createdAt: createdAt(),
     hiddenAt: hiddenAt(),
   },
@@ -128,6 +133,7 @@ export const cruxComments = pgTable(
     cruxId: text('crux_id').notNull(),
     parentId: uuid('parent_id').references((): AnyPgColumn => cruxComments.id, { onDelete: 'cascade' }),
     body: text('body').notNull(),
+    moderation: moderation(),
     createdAt: createdAt(),
     hiddenAt: hiddenAt(),
   },
@@ -159,5 +165,6 @@ export const viewpointSuggestions = pgTable('viewpoint_suggestions', {
   title: text('title').notNull(),
   steps: text('steps').notNull(),
   holders: text('holders'),
+  moderation: moderation(),
   createdAt: createdAt(),
 });

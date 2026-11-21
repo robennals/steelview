@@ -54,7 +54,7 @@ export function PostGate({ label, ready, onPost }: PostGateProps) {
     setError(null);
     const result = await onPost();
     setBusy(false);
-    if (!result.ok) setError(writeErrorMessage(result.error));
+    if (!result.ok) setError(writeErrorMessage(result));
   };
 
   const submit = async (event: FormEvent) => {
@@ -68,7 +68,7 @@ export function PostGate({ label, ready, onPost }: PostGateProps) {
       const named = await write('PUT', '/api/account/name', { name });
       setBusy(false);
       if (!named.ok) {
-        setError(writeErrorMessage(named.error));
+        setError(writeErrorMessage(named));
         return;
       }
     }

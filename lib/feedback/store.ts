@@ -2,6 +2,10 @@ import { and, eq, inArray, isNull } from 'drizzle-orm';
 import type { DB } from '@/lib/db/client';
 import { commentUseful, cruxComments, suggestionBackers, suggestions, users, viewpointSuggestions } from '@/lib/db/schema';
 import type { CruxComment, Reader, Suggestion, TopicFeedback } from './types';
+import type { MODERATION_RESULTS } from '@/lib/db/schema';
+
+/** What the moderation check said about a post that is going up. */
+export type ModerationResult = (typeof MODERATION_RESULTS)[number];
 
 /*
  * Reading and writing reader feedback. Each function takes the database, so
@@ -95,6 +99,7 @@ export type NewSuggestion = {
   /** The card it is about, with its heading as it reads now; null for the whole case. */
   card: { index: number; heading: string } | null;
   body: string;
+  moderation: ModerationResult;
 };
 
 export async function addSuggestion(db: DB, input: NewSuggestion): Promise<{ id: string }> {
@@ -105,6 +110,7 @@ export async function addSuggestion(db: DB, input: NewSuggestion): Promise<{ id:
     card: input.card?.index ?? null,
     cardHeading: input.card?.heading ?? null,
     body: input.body,
+    moderation: input.moderation,
   }).returning({ id: suggestions.id });
   return row;
 }
@@ -131,6 +137,7 @@ export type NewComment = {
   /** The comment this replies to, for a reply. */
   parentId: string | null;
   body: string;
+  moderation: ModerationResult;
 };
 
 /**
@@ -167,7 +174,7 @@ export async function setUseful(db: DB, input: { userId: string; topicSlug: stri
   return true;
 }
 
-export type NewViewpointSuggestion = { userId: string; topicSlug: string; title: string; steps: string; holders: string | null };
+export type NewViewpointSuggestion = { userId: string; topicSlug: string; title: string; steps: string; holders: string | null; moderation: ModerationResult };
 
 export async function addViewpointSuggestion(db: DB, input: NewViewpointSuggestion): Promise<{ id: string }> {
   const [row] = await db.insert(viewpointSuggestions).values(input).returning({ id: viewpointSuggestions.id });

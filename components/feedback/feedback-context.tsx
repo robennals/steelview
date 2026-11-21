@@ -13,8 +13,8 @@ export type FeedbackState =
   | { status: 'failed' }
   | { status: 'ready'; feedback: TopicFeedbackResponse };
 
-/** What a write came back with: done, or the error code the API gave. */
-export type WriteResult = { ok: true } | { ok: false; error: string };
+/** What a write came back with: done, or the error code the API gave, with the moderation check's reason when it refused the post. */
+export type WriteResult = { ok: true } | { ok: false; error: string; reason?: string };
 
 type FeedbackContextValue = {
   slug: string;
@@ -75,7 +75,8 @@ export function FeedbackProvider({ slug, children }: { slug: string; children: R
       if (!res.ok) {
         const data: unknown = await res.json().catch(() => null);
         const error = data && typeof data === 'object' && 'error' in data && typeof data.error === 'string' ? data.error : 'failed';
-        return { ok: false, error };
+        const reason = data && typeof data === 'object' && 'reason' in data && typeof data.reason === 'string' ? data.reason : undefined;
+        return { ok: false, error, reason };
       }
       await refresh();
       return { ok: true };
@@ -89,8 +90,9 @@ export function FeedbackProvider({ slug, children }: { slug: string; children: R
 }
 
 /** A write's error, in words a reader can act on. */
-export function writeErrorMessage(error: string): string {
-  switch (error) {
+export function writeErrorMessage(result: Extract<WriteResult, { ok: false }>): string {
+  switch (result.error) {
+    case 'blocked': return `Not posted. ${result.reason ?? ''} You can edit it and try again.`;
     case 'rate_limited': return 'You’ve posted a lot in the last hour. Please try again later.';
     case 'unauthorized': return 'Your sign-in has run out. Please sign in again.';
     case 'invalid_body': return 'That’s empty or too long.';

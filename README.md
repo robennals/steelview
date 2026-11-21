@@ -47,10 +47,18 @@ viewpoint, card or crux that exists.
 
 It needs these variables, which `vercel env pull` writes to `.env.local`:
 `DATABASE_URL` (and `DATABASE_URL_UNPOOLED` for migrations), `AUTH_SECRET`,
-`GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `RESEND_TOKEN` and `RESEND_FROM`.
+`GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `RESEND_TOKEN`, `RESEND_FROM`
+and `ANTHROPIC_API_KEY`.
 Without `DATABASE_URL` and `AUTH_SECRET` the site still renders, with no
 sign-in, and says posting is switched off. The browser tests run that way on
 purpose (`playwright.config.ts`), so they never touch the live database.
+
+Every post is checked first by Claude Haiku 5.5 (`lib/feedback/moderate.ts`),
+which blocks only slurs and dehumanizing language, attacks on readers or
+private individuals, threats, spam, sexual content and posts with nothing to do
+with the topic — never disagreement. A blocked post is not stored, and its
+writer sees why. If the check cannot run, the post goes up with `moderation`
+set to `unchecked`, so an editor can find it.
 
 There is no editor interface yet. An editor marks a suggestion
 `incorporated` or `answered` (with an `answer`), or hides a suggestion or

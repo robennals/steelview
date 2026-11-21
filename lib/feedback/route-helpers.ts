@@ -3,7 +3,8 @@ import { currentUserId, isAuthConfigured } from '@/auth';
 import { db } from '@/lib/db/client';
 import { checkRateLimit } from '@/lib/auth/rate-limit';
 import { makeDbRateLimitStore } from '@/lib/auth/rate-limit-store-db';
-import { readReader } from './store';
+import { moderate, type Post } from './moderate';
+import { readReader, type ModerationResult } from './store';
 import { feedbackTargets, type FeedbackTargets } from './targets';
 
 /*
@@ -44,4 +45,14 @@ export async function writer({ named }: { named: boolean }): Promise<string | Re
 export async function body<T>(req: Request, schema: z.ZodType<T>): Promise<T | Response> {
   const parsed = schema.safeParse(await req.json().catch(() => null));
   return parsed.success ? parsed.data : failure('invalid_body', 400);
+}
+
+/**
+ * The moderation check's result for a post that may go up, or a 422 carrying
+ * the reason it may not, which the writer sees.
+ */
+export async function checkPost(post: Post): Promise<ModerationResult | Response> {
+  const result = await moderate(post);
+  if (result.verdict === 'blocked') return Response.json({ error: 'blocked', reason: result.reason }, { status: 422 });
+  return result.verdict;
 }
