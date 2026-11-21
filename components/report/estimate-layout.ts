@@ -11,18 +11,43 @@ function present(row: EstimateBounds): number[] {
  * Where a lone bound's open tail reaches, in data units, so the axis can
  * hold it: `room` past the bound on its open side, but never across zero —
  * a time or a cost axis does not run negative to make room for "less than
- * one week".
+ * one week". A log axis passes `stopAtZero: false`: its units are logarithms,
+ * where crossing zero only means crossing 1.
  */
-function openTailReach(row: EstimateBounds, room: number): number[] {
+function openTailReach(row: EstimateBounds, room: number, stopAtZero = true): number[] {
   if (row.low !== undefined && row.high === undefined) {
     const reach = row.low + room;
-    return [row.low <= 0 && reach > 0 ? 0 : reach];
+    return [stopAtZero && row.low <= 0 && reach > 0 ? 0 : reach];
   }
   if (row.high !== undefined && row.low === undefined) {
     const reach = row.high - room;
-    return [row.high >= 0 && reach < 0 ? 0 : reach];
+    return [stopAtZero && row.high >= 0 && reach < 0 ? 0 : reach];
   }
   return [];
+}
+
+/** How the axis spaces values: evenly (`linear`), or by ratio (`log`), for multiples such as "7× the British rate". */
+export type EstimateAxis = 'linear' | 'log';
+
+/**
+ * Round ticks for a log axis: 1, 2 and 5 times each power of ten (fewer over
+ * a wide range), from the
+ * last at or below `lo` to the first at or above `hi`, so equal ratios get
+ * equal room and every tick is a number a reader can say.
+ */
+export function logTicks(lo: number, hi: number): number[] {
+  // Over a wide range 1–2–5 crowds the labels together, so a range of more
+  // than two and a half powers of ten keeps only 1 and 5, and one of more
+  // than four only the powers of ten themselves.
+  const decades = Math.log10(hi / lo);
+  const steps = decades > 4 ? [1] : decades > 2.5 ? [1, 5] : [1, 2, 5];
+  const ticks: number[] = [];
+  for (let power = Math.floor(Math.log10(lo)) - 1; power <= Math.ceil(Math.log10(hi)) + 1; power++) {
+    for (const step of steps) ticks.push(Number((step * 10 ** power).toPrecision(1)));
+  }
+  const first = Math.max(0, ticks.findLastIndex(t => t <= lo));
+  const last = ticks.findIndex(t => t >= hi);
+  return ticks.slice(first, last === -1 ? undefined : last + 1);
 }
 
 /**
@@ -33,20 +58,40 @@ function openTailReach(row: EstimateBounds, room: number): number[] {
  * adds nothing to the extent. Without a fixed `domain`, a lone bound at the
  * end of the data gets room for its open tail, so "at least 30" does not
  * stop dead at the axis edge.
+ *
+ * A `log` axis lays values out by their logarithm, so 0.5× and 2× sit the
+ * same distance either side of 1×; every value on it must be above zero.
  */
 export function estimateScale(
   rows: EstimateBounds[],
   nullValue: number | null = 0,
   domain?: [number, number],
+  axis: EstimateAxis = 'linear',
 ) {
-  const data = [...(nullValue === null ? [] : [nullValue]), ...rows.flatMap(present)];
+  const log = axis === 'log';
+  // Layout works in "position units": the value itself, or its logarithm.
+  const toUnits = (value: number) => (log ? Math.log10(value) : value);
+  const fromUnits = (units: number) => (log ? 10 ** units : units);
+  const inUnits = (row: EstimateBounds): EstimateBounds => ({
+    low: row.low === undefined ? undefined : toUnits(row.low),
+    estimate: row.estimate === undefined ? undefined : toUnits(row.estimate),
+    high: row.high === undefined ? undefined : toUnits(row.high),
+  });
+  const data = [...(nullValue === null ? [] : [toUnits(nullValue)]), ...rows.map(inUnits).flatMap(present)];
   const room = ((Math.max(...data) - Math.min(...data)) * OPEN_TAIL) / 100;
-  const values = [...data, ...rows.flatMap(row => openTailReach(row, room))];
+  const tails = rows.map(inUnits).flatMap(row => openTailReach(row, room, !log));
+  const values = [...data, ...tails].map(fromUnits);
   const lo = domain?.[0] ?? Math.min(...values);
   const hi = domain?.[1] ?? Math.max(...values);
-  const ticks = domain ? niceTicks(lo, hi, 5).filter(t => t >= lo && t <= hi) : niceTicks(lo, hi, 5);
+  // On a log axis the reference line never sits on the edge, where it would be
+  // mistaken for the axis itself: the axis runs at least one tick past it.
+  const reference = nullValue === null || domain ? undefined : nullValue;
+  const ticks = log
+    ? logTicks(reference === undefined ? lo : Math.min(lo, reference * 0.99), reference === undefined ? hi : Math.max(hi, reference * 1.01)).filter(t => !domain || (t >= lo && t <= hi))
+    : domain ? niceTicks(lo, hi, 5).filter(t => t >= lo && t <= hi) : niceTicks(lo, hi, 5);
   const extent: [number, number] = domain ?? [ticks[0], ticks[ticks.length - 1]];
-  const x = linearScale(extent, [0, 100]);
+  const position = linearScale([toUnits(extent[0]), toUnits(extent[1])], [0, 100]);
+  const x = (value: number) => position(toUnits(value));
   const clamp = (value: number) => Math.max(0, Math.min(100, x(value)));
   /** Which edge a value lies past, when a fixed `domain` cuts it off: it is drawn at that edge, marked as continuing. */
   const beyond = (value: number): AxisEdge | undefined => (value < extent[0] ? 'start' : value > extent[1] ? 'end' : undefined);

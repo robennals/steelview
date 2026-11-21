@@ -838,10 +838,19 @@ export const estimateRangeFigureSchema = z.object({
   itemLabel: z.string().min(1).optional(),
   format: valueFormatSchema.optional(),
   intervalLabel: z.string().min(1).optional(),
+  /** Names the dot in the key; defaults to "Central estimate". */
+  pointLabel: z.string().min(1).optional(),
   /** The "no effect" value. `null` for estimates with no natural reference, such as costs. Defaults to 0. */
   nullValue: z.number().nullable().optional(),
   nullLabel: z.string().min(1).optional(),
   domain: z.tuple([z.number(), z.number()]).optional(),
+  /** `log` spaces values by ratio, for multiples ("7× the British rate"): every value, and `nullValue`, must be above zero. */
+  axis: z.enum(['linear', 'log']).optional(),
+  /** Show one `group` at a time, picked from a dropdown named `groupLabel`, instead of every group under its own subheading. */
+  switchGroups: z.boolean().optional(),
+  groupLabel: z.string().min(1).optional(),
+  /** With `switchGroups`, the group shown first. */
+  defaultGroup: z.string().min(1).optional(),
   estimates: z
     .array(
       z.object({
@@ -860,6 +869,25 @@ export const estimateRangeFigureSchema = z.object({
       }).superRefine(citationRule({ required: true })).transform(toSources)
     )
     .min(2),
+}).superRefine((f, ctx) => {
+  const issue = (message: string, path: PropertyKey[] = []) => ctx.addIssue({ code: 'custom', message, path });
+  const groups = new Set(f.estimates.map(e => e.group));
+  if (f.switchGroups) {
+    if (f.estimates.some(e => e.group === undefined)) issue('with `switchGroups`, every estimate needs a `group`', ['estimates']);
+    if (groups.size < 2) issue('`switchGroups` needs two or more groups', ['switchGroups']);
+  } else {
+    if (f.groupLabel !== undefined) issue('`groupLabel` names the group dropdown, which needs `switchGroups`', ['groupLabel']);
+    if (f.defaultGroup !== undefined) issue('`defaultGroup` needs `switchGroups`', ['defaultGroup']);
+  }
+  if (f.defaultGroup !== undefined && !groups.has(f.defaultGroup)) issue(`\`defaultGroup\` "${f.defaultGroup}" is not one of the estimates' groups`, ['defaultGroup']);
+  if (f.axis === 'log') {
+    if (f.nullValue === undefined || (f.nullValue !== null && f.nullValue <= 0)) issue('a `log` axis needs a `nullValue` above zero (1 for ratios), or `null`', ['nullValue']);
+    if (f.domain && f.domain[0] <= 0) issue('a `log` axis cannot start at or below zero', ['domain']);
+    f.estimates.forEach((e, i) => {
+      const values = [e.low, e.estimate === undefined ? undefined : typeof e.estimate === 'number' ? e.estimate : e.estimate.value, e.high];
+      if (values.some(v => v !== undefined && v <= 0)) issue(`"${e.label}": a \`log\` axis cannot draw a value at or below zero`, ['estimates', i]);
+    });
+  }
 });
 
 /* --- scatterPlot ---------------------------------------------------------- */
