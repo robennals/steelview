@@ -3,6 +3,7 @@
 import { useEffect, useRef, type ReactNode } from 'react';
 import { useStepRequest } from '@/components/home/topic-accordion';
 import { useCarousel } from '@/components/home/use-carousel';
+import { CommentGlyph } from '@/components/feedback/comment-glyph';
 
 type SlideshowProps = {
   name: string;
@@ -10,6 +11,8 @@ type SlideshowProps = {
   headings: string[];
   /** One card per heading, in order. */
   children: ReactNode[];
+  /** A slide after the argument's last card, marked with a speech bubble rather than a number: where readers' suggestions are. */
+  final?: { heading: string; slide: ReactNode };
 };
 
 /**
@@ -21,8 +24,12 @@ type SlideshowProps = {
  * Every slide is server-rendered into a scroll-snapped strip, so without
  * JavaScript each is still reachable by scrolling.
  */
-export function Slideshow({ name, headings, children }: SlideshowProps) {
-  const count = children.length;
+export function Slideshow({ name, headings: points, children, final }: SlideshowProps) {
+  const headings = final ? [...points, final.heading] : points;
+  const slides = final ? [...children, final.slide] : children;
+  const count = slides.length;
+  /** The final slide's number, or its speech bubble. */
+  const marker = (i: number) => (final && i === count - 1 ? <CommentGlyph /> : i + 1);
   const { strip, index, announced, enhanced, go, onKeyDown, onScroll } = useCarousel(count);
   const last = index === count - 1;
   const stage = useRef<HTMLDivElement>(null);
@@ -51,7 +58,7 @@ export function Slideshow({ name, headings, children }: SlideshowProps) {
         {headings.map((heading, i) => (
           <li key={i}>
             <button type="button" className="sv-deck__outline-item" aria-current={i === index ? 'step' : undefined} disabled={!enhanced} onClick={() => go(i)}>
-              <span className="sv-deck__number" aria-hidden="true">{i + 1}</span>
+              <span className="sv-deck__number" aria-hidden="true">{marker(i)}</span>
               <span>{heading}</span>
             </button>
           </li>
@@ -64,8 +71,8 @@ export function Slideshow({ name, headings, children }: SlideshowProps) {
           <ol className="sv-deck__points">
             {headings.map((heading, i) => (
               <li key={i}>
-                <button type="button" aria-label={`Point ${i + 1}: ${heading}`} aria-current={i === index ? 'step' : undefined} data-seen={i < index || undefined} onClick={() => step(i)}>
-                  <span aria-hidden="true">{i + 1}</span>
+                <button type="button" aria-label={final && i === count - 1 ? heading : `Point ${i + 1}: ${heading}`} aria-current={i === index ? 'step' : undefined} data-seen={i < index || undefined} onClick={() => step(i)}>
+                  <span aria-hidden="true">{marker(i)}</span>
                 </button>
               </li>
             ))}
@@ -80,7 +87,7 @@ export function Slideshow({ name, headings, children }: SlideshowProps) {
           onKeyDown={onKeyDown}
           onScroll={onScroll}
         >
-          {children.map((slide, i) => (
+          {slides.map((slide, i) => (
             <div className="sv-deck__slide" key={i} role="group" aria-roledescription="slide" aria-label={`Slide ${i + 1} of ${count}: ${headings[i]}`}>
               {slide}
             </div>

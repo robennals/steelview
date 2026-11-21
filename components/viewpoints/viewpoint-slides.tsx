@@ -8,6 +8,8 @@ import { LazyChart, LazyCharts } from '@/components/topic/lazy-charts';
 import { RowThumb, TopicAccordion, TopicRow } from '@/components/home/topic-accordion';
 import { ChartThumb } from '@/components/topic/chart-thumb';
 import { ThumbStrip } from '@/components/topic/thumb-strip';
+import { SuggestionsSlide, SUGGESTIONS_HEADING } from '@/components/feedback/suggestions';
+import { SuggestViewpoint } from '@/components/feedback/suggest-viewpoint';
 import { Slideshow } from './slideshow';
 import { SourcePopups } from './source-popups';
 
@@ -57,7 +59,9 @@ type ViewpointSlidesProps = {
  * its argument is made with, each opening the row at its card. Open, it is a
  * slideshow: one card per step of the argument, made with a graph or quotes where the
  * step has one. A card's graph opens in full over the page, and a claim's
- * footnote marker opens its sources' own words.
+ * footnote marker opens its sources' own words. After the last card, a slide
+ * previews readers' suggestions for making the viewpoint stronger, and after
+ * the last row, a reader can suggest a viewpoint the page is missing.
  */
 export function ViewpointSlides({ slug, viewpoints, walkthroughs, sources }: ViewpointSlidesProps) {
   return (
@@ -98,7 +102,10 @@ export function ViewpointSlides({ slug, viewpoints, walkthroughs, sources }: Vie
               }
             >
               <LazyCharts load={rowCharts.bind(null, slug, 'viewpoint', viewpoint.id)}>
-                <Slideshow name={viewpoint.name} headings={steps.map(step => step.heading)}>
+                <Slideshow name={viewpoint.name} headings={steps.map(step => step.heading)} final={{
+                  heading: SUGGESTIONS_HEADING,
+                  slide: <SuggestionsSlide viewpointId={viewpoint.id} shortName={viewpoint.shortName} headings={steps.map(step => step.heading)} />,
+                }}>
                   {steps.map((step, i) => <StepCard key={i} step={step} index={i} />)}
                 </Slideshow>
               </LazyCharts>
@@ -106,6 +113,7 @@ export function ViewpointSlides({ slug, viewpoints, walkthroughs, sources }: Vie
           );
         })}
       </TopicAccordion>
+      <SuggestViewpoint />
     </>
   );
 }
