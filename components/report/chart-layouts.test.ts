@@ -30,8 +30,10 @@ test('a log axis puts equal ratios an equal distance either side of 1', () => {
   assert.deepEqual(scale.ticks, [0.5, 1, 2]);
 });
 
-test('log ticks run 1, 2, 5 from the last at or below the data to the first at or above it', () => {
-  assert.deepEqual(logTicks(0.04, 13), [0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10, 20]);
+test('log ticks run 1, 2, 5 — thinned over a wide range — from the last at or below the data to the first at or above it', () => {
+  assert.deepEqual(logTicks(0.04, 13), [0.01, 0.05, 0.1, 0.5, 1, 5, 10, 50]);
+  assert.deepEqual(logTicks(0.5, 7), [0.5, 1, 2, 5, 10]);
+  assert.deepEqual(logTicks(0.001, 50), [0.001, 0.01, 0.1, 1, 10, 100]);
   assert.deepEqual(logTicks(1, 5), [1, 2, 5]);
 });
 

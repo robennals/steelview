@@ -30,14 +30,20 @@ function openTailReach(row: EstimateBounds, room: number, stopAtZero = true): nu
 export type EstimateAxis = 'linear' | 'log';
 
 /**
- * Round ticks for a log axis: 1, 2 and 5 times each power of ten, from the
+ * Round ticks for a log axis: 1, 2 and 5 times each power of ten (fewer over
+ * a wide range), from the
  * last at or below `lo` to the first at or above `hi`, so equal ratios get
  * equal room and every tick is a number a reader can say.
  */
 export function logTicks(lo: number, hi: number): number[] {
+  // Over a wide range 1–2–5 crowds the labels together, so a range of more
+  // than two and a half powers of ten keeps only 1 and 5, and one of more
+  // than four only the powers of ten themselves.
+  const decades = Math.log10(hi / lo);
+  const steps = decades > 4 ? [1] : decades > 2.5 ? [1, 5] : [1, 2, 5];
   const ticks: number[] = [];
   for (let power = Math.floor(Math.log10(lo)) - 1; power <= Math.ceil(Math.log10(hi)) + 1; power++) {
-    for (const step of [1, 2, 5]) ticks.push(Number((step * 10 ** power).toPrecision(1)));
+    for (const step of steps) ticks.push(Number((step * 10 ** power).toPrecision(1)));
   }
   const first = Math.max(0, ticks.findLastIndex(t => t <= lo));
   const last = ticks.findIndex(t => t >= hi);

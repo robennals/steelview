@@ -290,10 +290,13 @@
     flex-shrink: 0;
   }
 
+  /* On the row a setting shows in full while the row has room, and is cut
+     short with an ellipsis only as the row runs out of it. */
   .sv-bar__row > .sv-bar__button .sv-bar__summary {
     display: block;
     flex: 0 1 auto;
     min-width: 0;
+    max-width: none;
   }
 
   .sv-bar__measure .sv-bar__summary {

@@ -1182,6 +1182,14 @@
     color: var(--ink-2);
   }
 
+  /* A narrow screen has no room for every label on a crowded log axis: the
+     in-between ticks keep their gridlines but drop their labels. */
+  @container (max-width: 32rem) {
+    .sv-estimates__axis[data-crowded] .sv-bars__tick[data-minor] {
+      visibility: hidden;
+    }
+  }
+
   .sv-estimates__whisker {
     position: absolute;
     top: 50%;

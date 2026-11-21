@@ -167,13 +167,15 @@ export function EstimateRange({
     const rowGroups = switchGroups ? [''] : [...new Set(rows.map(e => e.group ?? ''))];
     /** The tick labels, above the plot as well as below it, so a long list can be read without scrolling to its foot. */
     const axisRow = (position: 'top' | 'bottom') => (
-      <div className="sv-estimates__axis" data-position={position} aria-hidden="true">
+      <div className="sv-estimates__axis" data-position={position} data-crowded={scale.ticks.length > 6 || undefined} aria-hidden="true">
         <span className="sv-estimates__ticks">
           {scale.ticks.map((tick, i) => (
             <span
               key={tick}
               className="sv-bars__tick"
               data-edge={i === 0 ? 'start' : i === scale.ticks.length - 1 ? 'end' : undefined}
+              // On a log axis, the ticks between powers of ten ("5×") can give way on a narrow screen.
+              data-minor={axis === 'log' && !Number.isInteger(Math.log10(tick)) || undefined}
               style={{ left: `${scale.x(tick)}%` }}
             >
               {formatValue(tick, tick === nullValue ? format : signed)}{times}
