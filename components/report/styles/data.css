@@ -1059,7 +1059,7 @@
   .sv-estimates__key-null {
     width: 0;
     height: 0.8rem;
-    border-left: 1px dashed var(--ink-3);
+    border-left: 2px solid var(--ink);
   }
 
   .sv-estimates__group {
@@ -1164,11 +1164,22 @@
     border-top: 1px solid var(--rule);
   }
 
+  /* The reference line ("no effect", "the British rate"): solid and dark, the
+     one line on the plot that is not a gridline, running the plot's height. */
   .sv-estimates__null {
     position: absolute;
-    top: -0.4rem;
-    bottom: -0.4rem;
-    border-left: 1px dashed var(--ink-3);
+    top: 0;
+    bottom: 0;
+    margin-left: -1px;
+    border-left: 2px solid var(--ink);
+  }
+
+  .sv-estimates__axis[data-position="top"] {
+    margin-bottom: 0.15rem;
+  }
+
+  .sv-estimates__axis .sv-bars__tick {
+    color: var(--ink-2);
   }
 
   .sv-estimates__whisker {

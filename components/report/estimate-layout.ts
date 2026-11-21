@@ -77,8 +77,11 @@ export function estimateScale(
   const values = [...data, ...tails].map(fromUnits);
   const lo = domain?.[0] ?? Math.min(...values);
   const hi = domain?.[1] ?? Math.max(...values);
+  // On a log axis the reference line never sits on the edge, where it would be
+  // mistaken for the axis itself: the axis runs at least one tick past it.
+  const reference = nullValue === null || domain ? undefined : nullValue;
   const ticks = log
-    ? logTicks(lo, hi).filter(t => !domain || (t >= lo && t <= hi))
+    ? logTicks(reference === undefined ? lo : Math.min(lo, reference * 0.99), reference === undefined ? hi : Math.max(hi, reference * 1.01)).filter(t => !domain || (t >= lo && t <= hi))
     : domain ? niceTicks(lo, hi, 5).filter(t => t >= lo && t <= hi) : niceTicks(lo, hi, 5);
   const extent: [number, number] = domain ?? [ticks[0], ticks[ticks.length - 1]];
   const position = linearScale([toUnits(extent[0]), toUnits(extent[1])], [0, 100]);

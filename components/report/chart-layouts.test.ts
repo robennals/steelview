@@ -363,3 +363,21 @@ test('on a log axis a lone bound still gets room for its open tail', () => {
   assert.ok(scale.ticks[scale.ticks.length - 1] > 2);
   assert.ok(whiskerSpan({ low: 2 }, scale)!.right <= 100);
 });
+
+test('a log axis runs past its reference line, so the line is never on the edge', () => {
+  const above = estimateScale([{ estimate: 1.2 }, { estimate: 1.97 }], 1, undefined, 'log');
+  assert.ok(above.ticks[0] < 1 && above.zero! > 0);
+  const below = estimateScale([{ estimate: 0.2 }, { estimate: 0.9 }], 1, undefined, 'log');
+  assert.ok(below.ticks[below.ticks.length - 1] > 1 && below.zero! < 100);
+});
+
+test('a log-axis chart marks its values and ticks as multiples', () => {
+  const html = renderToStaticMarkup(createElement(EstimateRange, {
+    valueLabel: 'Times the British rate',
+    nullValue: 1,
+    axis: 'log',
+    estimates: [{ label: 'A', estimate: 1.69 }, { label: 'B', estimate: 1.2 }],
+  }));
+  assert.match(html, />1\.69×</);
+  assert.match(html, />1×</);
+});

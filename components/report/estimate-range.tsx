@@ -127,7 +127,9 @@ export function EstimateRange({
   // Signs say which side of "no effect" a value is on; with no such value — or on a ratio axis, where 1 is no effect and nothing is negative — they say nothing.
   const signed: ValueFormat = nullValue === null || axis === 'log' ? format : { ...format, signed: true };
   const groups = [...new Set(estimates.map(e => e.group ?? ''))];
-  const show = (value: number | QualifiedPoint | undefined) => (value === undefined ? '—' : qualifiedLabel(value, signed));
+  // On a log axis the values are multiples, and say so: "1.69×".
+  const times = axis === 'log' ? '×' : '';
+  const show = (value: number | QualifiedPoint | undefined) => (value === undefined ? '—' : `${qualifiedLabel(value, signed)}${times}`);
   const intervalText = (e: Estimate) =>
     e.low !== undefined && e.high !== undefined ? `${show(e.low)} to ${show(e.high)}`
       : e.low !== undefined ? `at least ${show(e.low)}`
@@ -163,6 +165,23 @@ export function EstimateRange({
     const beyondAxis = spans.some(span => span?.start === 'clipped' || span?.end === 'clipped')
       || rows.some(e => { const central = bounds(e).estimate; return central !== undefined && scale.beyond(central) !== undefined; });
     const rowGroups = switchGroups ? [''] : [...new Set(rows.map(e => e.group ?? ''))];
+    /** The tick labels, above the plot as well as below it, so a long list can be read without scrolling to its foot. */
+    const axisRow = (position: 'top' | 'bottom') => (
+      <div className="sv-estimates__axis" data-position={position} aria-hidden="true">
+        <span className="sv-estimates__ticks">
+          {scale.ticks.map((tick, i) => (
+            <span
+              key={tick}
+              className="sv-bars__tick"
+              data-edge={i === 0 ? 'start' : i === scale.ticks.length - 1 ? 'end' : undefined}
+              style={{ left: `${scale.x(tick)}%` }}
+            >
+              {formatValue(tick, tick === nullValue ? format : signed)}{times}
+            </span>
+          ))}
+        </span>
+      </div>
+    );
     return (
       <div className="sv-estimates" data-compact={(preview && rows.length > COMPACT_PREVIEW_ITEMS) || undefined} style={widths}>
         {!preview && <p className="sv-estimates__key" aria-hidden="true">
@@ -175,6 +194,7 @@ export function EstimateRange({
           {nullValue !== null && <span className="sv-estimates__key-item"><i className="sv-estimates__key-null" />{nullLabel}</span>}
         </p>}
         {hasDetail && <RowDetailHint />}
+        {!preview && rows.length > 8 && axisRow('top')}
         {rowGroups.map(group => (
           <Fragment key={group || 'all'}>
             {group && <h3 className="sv-estimates__group">{group}</h3>}
@@ -186,6 +206,7 @@ export function EstimateRange({
                 {scale.ticks.map((tick, i) => (
                   <span key={tick} className="sv-estimates__grid" data-edge={i === scale.ticks.length - 1 ? 'end' : undefined} style={{ left: `${scale.x(tick)}%` }} />
                 ))}
+                {scale.zero !== undefined && <span className="sv-estimates__null" style={{ left: `${scale.zero}%` }} />}
               </span>
             </div>
             <ol className="sv-estimates__rows">
@@ -207,7 +228,6 @@ export function EstimateRange({
                         )}
                       </span>
                       <span className="sv-estimates__track" aria-hidden="true">
-                        {scale.zero !== undefined && <span className="sv-estimates__null" style={{ left: `${scale.zero}%` }} />}
                         {whisker && (
                           <span
                             className="sv-estimates__whisker"
@@ -236,20 +256,7 @@ export function EstimateRange({
             </div>
           </Fragment>
         ))}
-        <div className="sv-estimates__axis" aria-hidden="true">
-          <span className="sv-estimates__ticks">
-            {scale.ticks.map((tick, i) => (
-              <span
-                key={tick}
-                className="sv-bars__tick"
-                data-edge={i === 0 ? 'start' : i === scale.ticks.length - 1 ? 'end' : undefined}
-                style={{ left: `${scale.x(tick)}%` }}
-              >
-                {formatValue(tick, tick === nullValue ? format : signed)}
-              </span>
-            ))}
-          </span>
-        </div>
+        {axisRow('bottom')}
       </div>
     );
   };
