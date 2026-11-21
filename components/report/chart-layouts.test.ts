@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { OPEN_TAIL, crossesNull, estimateScale, whiskerSpan } from './estimate-layout';
+import { OPEN_TAIL, crossesNull, estimateScale, logTicks, whiskerSpan } from './estimate-layout';
 import { BarChart } from './bar-chart';
 import { EstimateRange } from './estimate-range';
 import { PairedBarChart } from './paired-bar-chart';
@@ -21,6 +21,52 @@ test('a fixed forest-plot domain clamps positions to the track', () => {
   assert.equal(scale.x(-2), 0);
   assert.equal(scale.x(2), 100);
   assert.equal(scale.zero, 50);
+});
+
+test('a log axis puts equal ratios an equal distance either side of 1', () => {
+  const scale = estimateScale([{ estimate: 0.5 }, { estimate: 2 }], 1, [0.25, 4], 'log');
+  assert.equal(scale.zero, 50);
+  assert.equal(scale.x(2) - 50, 50 - scale.x(0.5));
+  assert.deepEqual(scale.ticks, [0.5, 1, 2]);
+});
+
+test('log ticks run 1, 2, 5 — thinned over a wide range — from the last at or below the data to the first at or above it', () => {
+  assert.deepEqual(logTicks(0.04, 13), [0.01, 0.05, 0.1, 0.5, 1, 5, 10, 50]);
+  assert.deepEqual(logTicks(0.5, 7), [0.5, 1, 2, 5, 10]);
+  assert.deepEqual(logTicks(0.001, 50), [0.001, 0.01, 0.1, 1, 10, 100]);
+  assert.deepEqual(logTicks(1, 5), [1, 2, 5]);
+});
+
+test('an estimate chart that switches groups draws only the group it opens on, and tables every row', () => {
+  const html = renderToStaticMarkup(createElement(EstimateRange, {
+    title: 'Rates',
+    valueLabel: 'Times the British rate',
+    nullValue: 1,
+    axis: 'log',
+    switchGroups: true,
+    defaultGroup: 'By offence',
+    estimates: [
+      { label: 'Afghanistan', estimate: 7, group: 'By nationality' },
+      { label: 'Other Europe', estimate: { value: 1.7, qualifier: 'about' }, group: 'By nationality' },
+      { label: 'Drug offences', estimate: 1.21, group: 'By offence' },
+      { label: 'Robbery', estimate: 0.87, group: 'By offence' },
+    ],
+  }));
+  const plot = html.slice(0, html.indexOf('<table'));
+  assert.match(plot, /data-row="Drug offences"/);
+  assert.doesNotMatch(plot, /data-row="Afghanistan"/);
+  assert.match(html, /By nationality: Afghanistan/);
+  assert.doesNotMatch(plot, /data-qualification="approximate"/);
+});
+
+test('an approximate central estimate is drawn hollow and keyed', () => {
+  const html = renderToStaticMarkup(createElement(EstimateRange, {
+    valueLabel: 'Times the British rate',
+    nullValue: 1,
+    estimates: [{ label: 'A', estimate: { value: 1.7, qualifier: 'about' } }, { label: 'B', estimate: 2 }],
+  }));
+  assert.match(html, /sv-estimates__dot"[^>]*data-qualification="approximate"/);
+  assert.match(html, /Hollow: an approximate value/);
 });
 
 test('small multiples share one y-scale unless asked not to', () => {
@@ -312,4 +358,28 @@ test('a range in a dumbbell is a capsule from low to high, not a dot at its midp
   }));
   assert.match(html, /class="sv-bars__dot" data-slot="1" data-qualification="range" style="left:20%;width:20%/);
   assert.match(html, /class="sv-bars__link" style="left:20%;width:40%"/);
+});
+
+test('on a log axis a lone bound still gets room for its open tail', () => {
+  const scale = estimateScale([{ low: 2 }, { estimate: 0.5 }], 1, undefined, 'log');
+  assert.ok(scale.ticks[scale.ticks.length - 1] > 2);
+  assert.ok(whiskerSpan({ low: 2 }, scale)!.right <= 100);
+});
+
+test('a log axis runs past its reference line, so the line is never on the edge', () => {
+  const above = estimateScale([{ estimate: 1.2 }, { estimate: 1.97 }], 1, undefined, 'log');
+  assert.ok(above.ticks[0] < 1 && above.zero! > 0);
+  const below = estimateScale([{ estimate: 0.2 }, { estimate: 0.9 }], 1, undefined, 'log');
+  assert.ok(below.ticks[below.ticks.length - 1] > 1 && below.zero! < 100);
+});
+
+test('a log-axis chart marks its values and ticks as multiples', () => {
+  const html = renderToStaticMarkup(createElement(EstimateRange, {
+    valueLabel: 'Times the British rate',
+    nullValue: 1,
+    axis: 'log',
+    estimates: [{ label: 'A', estimate: 1.69 }, { label: 'B', estimate: 1.2 }],
+  }));
+  assert.match(html, />1\.69×</);
+  assert.match(html, />1×</);
 });

@@ -285,10 +285,13 @@ function CompositionThumb({ categories, rows, otherThreshold, otherLabel, unit }
 }
 
 /** Each estimate's interval as a line (a lone bound's open tail dashed) and its central estimate as a dot, against the no-effect line. */
-function EstimatesThumb({ estimates, nullValue = 0, domain }: EstimateRangeProps) {
+function EstimatesThumb({ estimates, nullValue = 0, domain, axis, switchGroups, defaultGroup }: EstimateRangeProps) {
+  // A chart that shows one group at a time is previewed by the group it opens on.
+  const firstGroup = defaultGroup ?? estimates[0]?.group;
+  const shown = switchGroups ? estimates.filter(e => e.group === firstGroup) : estimates;
   // As on the chart, layout reads the central estimate's number; its qualifier is for the text.
-  const bounds = estimates.map(e => ({ low: e.low, high: e.high, estimate: e.estimate === undefined ? undefined : pointValue(e.estimate) }));
-  const scale = estimateScale(bounds, nullValue, domain);
+  const bounds = shown.map(e => ({ low: e.low, high: e.high, estimate: e.estimate === undefined ? undefined : pointValue(e.estimate) }));
+  const scale = estimateScale(bounds, nullValue, domain, axis);
   const row = 100 / Math.max(1, bounds.length);
   return (
     <Thumb>

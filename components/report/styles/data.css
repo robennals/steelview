@@ -1059,7 +1059,7 @@
   .sv-estimates__key-null {
     width: 0;
     height: 0.8rem;
-    border-left: 1px dashed var(--ink-3);
+    border-left: 2px solid var(--ink);
   }
 
   .sv-estimates__group {
@@ -1090,8 +1090,11 @@
       "track track";
     align-items: baseline;
     column-gap: 0.85rem;
-    row-gap: 0.25rem;
-    margin-bottom: 0.75rem;
+    row-gap: 0.1rem;
+    /* Room between rows; the line through each row's plot (below) leads the
+       eye from a name to its mark. On a phone the name sits above its line,
+       so the space goes above the name, keeping it nearest its own line. */
+    padding-block: 0.8rem 0.3rem;
     font-family: var(--font-sans);
     font-size: 0.8125rem;
     line-height: 1.35;
@@ -1119,11 +1122,72 @@
     height: 1rem;
   }
 
+  .sv-estimates__plot {
+    position: relative;
+  }
+
+  /* The gridlines sit behind the rows, filling their height. */
+  .sv-estimates__gridlines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .sv-estimates__gridlines .sv-estimates__ticks {
+    height: 100%;
+  }
+
+  .sv-estimates__grid {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-left: 1px solid var(--rule);
+  }
+
+  /* The last line sits just inside the track, so it never widens the figure. */
+  .sv-estimates__grid[data-edge="end"] {
+    margin-left: -1px;
+  }
+
+  .sv-estimates__rows {
+    position: relative;
+  }
+
+  /* A light line through the middle of the plot, level with the name and the
+     mark, as in a printed dot plot. */
+  .sv-estimates__track::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* The reference line ("no effect", "the British rate"): solid and dark, the
+     one line on the plot that is not a gridline, running the plot's height. */
   .sv-estimates__null {
     position: absolute;
-    top: -0.4rem;
-    bottom: -0.4rem;
-    border-left: 1px dashed var(--ink-3);
+    top: 0;
+    bottom: 0;
+    margin-left: -1px;
+    border-left: 2px solid var(--ink);
+  }
+
+  .sv-estimates__axis[data-position="top"] {
+    margin-bottom: 0.15rem;
+  }
+
+  .sv-estimates__axis .sv-bars__tick {
+    color: var(--ink-2);
+  }
+
+  /* A narrow screen has no room for every label on a crowded log axis: the
+     in-between ticks keep their gridlines but drop their labels. */
+  @container (max-width: 32rem) {
+    .sv-estimates__axis[data-crowded] .sv-bars__tick[data-minor] {
+      visibility: hidden;
+    }
   }
 
   .sv-estimates__whisker {
@@ -1201,6 +1265,13 @@
     box-shadow: 0 0 0 2px var(--paper);
   }
 
+  /* An approximate value ("about 1.7"): an open ring, so it never reads as a measured point. */
+  .sv-estimates__dot[data-qualification="approximate"],
+  .sv-estimates__key-dot[data-qualification="approximate"] {
+    background: var(--paper);
+    border: 2px solid var(--ink);
+  }
+
   /* A central estimate past a fixed axis sits on the edge, pointing on. */
   .sv-estimates__dot[data-beyond]::after {
     content: "";
@@ -1243,8 +1314,10 @@
       grid-template-areas: ". track .";
     }
 
+
+
     .sv-estimates__row {
-      margin-bottom: 0.55rem;
+      padding-block: 0.5rem;
     }
 
     .sv-estimates__label {
