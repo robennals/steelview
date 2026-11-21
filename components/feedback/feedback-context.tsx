@@ -22,7 +22,7 @@ type FeedbackContextValue = {
   /** Fetches the topic's feedback again, after a write or a sign-in. */
   refresh: () => Promise<void>;
   /** Sends a write to the topic's feedback API at `path` (under `/api/topics/<slug>/`, or absolute), then refreshes. */
-  write: (method: 'POST' | 'PUT' | 'DELETE', path: string, body?: unknown) => Promise<WriteResult>;
+  write: (method: 'POST' | 'PUT' | 'PATCH' | 'DELETE', path: string, body?: unknown) => Promise<WriteResult>;
 };
 
 const FeedbackContext = createContext<FeedbackContextValue | null>(null);
@@ -65,7 +65,7 @@ export function FeedbackProvider({ slug, children }: { slug: string; children: R
 
   const refresh = useCallback(async () => setState(await fetchFeedback(slug)), [slug]);
 
-  const write = useCallback(async (method: 'POST' | 'PUT' | 'DELETE', path: string, body?: unknown): Promise<WriteResult> => {
+  const write = useCallback(async (method: 'POST' | 'PUT' | 'PATCH' | 'DELETE', path: string, body?: unknown): Promise<WriteResult> => {
     try {
       const res = await fetch(path.startsWith('/') ? path : `/api/topics/${slug}/${path}`, {
         method,

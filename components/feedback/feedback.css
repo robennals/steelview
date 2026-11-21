@@ -272,8 +272,8 @@
   .sv-postgate { margin-top: 0.6rem; }
   .sv-postgate__name label { display: block; margin: 0 0 0.3rem; font-family: var(--font-sans); font-size: 0.82rem; font-weight: 600; color: var(--ink); }
   .sv-postgate__who { min-width: 0; font-family: var(--font-sans); font-size: 0.78rem; color: var(--ink-4); }
-  .sv-postgate__signout { padding: 0; border: 0; background: none; font: inherit; color: var(--ink-3); text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
-  .sv-postgate__signout:hover { color: var(--accent); }
+  .sv-postgate__link { padding: 0; border: 0; background: none; font: inherit; color: var(--ink-3); text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
+  .sv-postgate__link:hover { color: var(--accent); }
 
   .sv-signin {
     margin-top: 0.75rem;
@@ -302,4 +302,13 @@
   .sv-signin__error { margin: 0.5rem 0 0; font-family: var(--font-sans); font-size: 0.8rem; color: var(--accent); }
 
   .sv-feedback__empty--loading { color: var(--ink-4); }
+
+  /* --------------------------------------------- changing your own posts */
+
+  .sv-own-post__actions { display: flex; align-items: baseline; gap: 0.75rem; margin: 0.35rem 0 0; font-family: var(--font-sans); font-size: 0.75rem; color: var(--ink-3); }
+  .sv-own-post__action { padding: 0; border: 0; background: none; font: inherit; color: var(--ink-3); text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
+  .sv-own-post__action:hover { color: var(--accent); }
+  .sv-own-post__action--danger { color: var(--accent); font-weight: 600; }
+  .sv-own-post__edit { margin: 0.25rem 0 0; }
+  .sv-comment__text--deleted { font-style: italic; color: var(--ink-4); }
 }

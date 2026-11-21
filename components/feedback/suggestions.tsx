@@ -6,6 +6,7 @@ import { InfoSheet } from '@/components/topic/info-sheet';
 import { useFeedback } from './feedback-context';
 import { count, shortDate } from './format';
 import { inOpeningOrder } from './order';
+import { OwnPost } from './own-post';
 import { PostGate, useDraft } from './post-gate';
 
 /** The final slide's heading, in the outline and on the slide: says plainly that what follows is from readers, not the page. */
@@ -164,16 +165,20 @@ function SuggestionsSheet({ viewpointId, shortName, headings, trigger, onClose }
               <li key={s.id} className="sv-suggestion">
                 <p className="sv-suggestion__meta">
                   <span className="sv-suggestion__about">{aboutLabel(s.about)}</span>
-                  {s.status === 'open' && (signedIn ? (
+                  {s.status === 'open' && (signedIn && !s.mine ? (
                     <button type="button" className="sv-back" aria-pressed={s.backed} onClick={() => write(s.backed ? 'DELETE' : 'PUT', `suggestions/${s.id}/backing`)}>
                       {s.backed ? 'Backed' : 'Back this'} · {s.backers}
                     </button>
                   ) : <span>Backed by {s.backers}</span>)}
                   {s.status === 'incorporated' && <span className="sv-suggestion__outcome">Incorporated</span>}
                 </p>
-                <p className="sv-suggestion__text">{s.text}</p>
+                {s.mine ? (
+                  <OwnPost path={`suggestions/${s.id}`} text={s.text} editable={s.status === 'open'}>
+                    <p className="sv-suggestion__text">{s.text}</p>
+                  </OwnPost>
+                ) : <p className="sv-suggestion__text">{s.text}</p>}
                 {s.answer && <p className="sv-suggestion__answer"><span>Editor’s reply</span> {s.answer}</p>}
-                <p className="sv-suggestion__by">{s.author} · {shortDate(s.date)}</p>
+                <p className="sv-suggestion__by">{s.mine ? 'You' : s.author} · {shortDate(s.date)}{s.edited && ' · edited'}</p>
               </li>
             ))}
           </ul>

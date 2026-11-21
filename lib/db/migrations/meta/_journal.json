@@ -15,6 +15,13 @@
       "when": 1795243370419,
       "tag": "0001_moderation",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1795284180667,
+      "tag": "0002_edit-and-delete",
+      "breakpoints": true
     }
   ]
 }
