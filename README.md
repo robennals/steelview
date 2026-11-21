@@ -9,9 +9,10 @@ written themselves, and reads the others as recognisable rather than
 caricatured. A reader who arrives holding one view should leave able to state
 the other views in a form their holders would endorse.
 
-This milestone ships one topic, UK immigration, as a statically rendered
-page. There is no auth and no comments yet — those are future milestones
-(see the design spec below).
+Topic pages are statically rendered. Readers can also add to them: each
+viewpoint ends with a "Readers’ suggestions" slide of suggestions for
+strengthening it, each crux has a discussion, and the viewpoints list ends
+with a way to suggest a missing one. See [Reader feedback](#reader-feedback).
 
 ## Deployment
 
@@ -31,7 +32,29 @@ pnpm lint       # eslint
 pnpm check:integrity # publication-time cross-item and editorial integrity checks
 pnpm check:figures  # audits figures asserted in prose against the quoted sources
 pnpm build      # production build
+pnpm db:generate # write a migration after changing lib/db/schema.ts
+pnpm db:migrate  # apply migrations to the database in .env.local
 ```
+
+## Reader feedback
+
+Readers sign in as on ACX Reviews: with Google, or a six-digit PIN emailed
+through Resend (`auth.ts`, `lib/auth/`). What they write is kept in Neon
+Postgres (`lib/db/schema.ts`), never in `content/`. Topic pages stay static
+and fetch their feedback from `/api/topics/<slug>/feedback` once loaded; every
+write is checked against the topic's content, so it can only be about a
+viewpoint, card or crux that exists.
+
+It needs these variables, which `vercel env pull` writes to `.env.local`:
+`DATABASE_URL` (and `DATABASE_URL_UNPOOLED` for migrations), `AUTH_SECRET`,
+`GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `RESEND_TOKEN` and `RESEND_FROM`.
+Without `DATABASE_URL` and `AUTH_SECRET` the site still renders, with no
+sign-in, and says posting is switched off. The browser tests run that way on
+purpose (`playwright.config.ts`), so they never touch the live database.
+
+There is no editor interface yet. An editor marks a suggestion
+`incorporated` or `answered` (with an `answer`), or hides a suggestion or
+comment by setting its `hidden_at`, directly in the database.
 
 ## Content
 
