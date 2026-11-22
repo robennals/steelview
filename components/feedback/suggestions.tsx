@@ -3,13 +3,14 @@
 import { useCallback, useId, useState, type MouseEvent } from 'react';
 import type { Suggestion, SuggestionAbout, SuggestionStatus } from '@/lib/feedback/types';
 import { InfoSheet } from '@/components/topic/info-sheet';
+import { CommentGlyph } from './comment-glyph';
 import { useFeedback } from './feedback-context';
 import { count, shortDate } from './format';
 import { inOpeningOrder } from './order';
 import { OwnPost } from './own-post';
 import { PostGate, useDraft } from './post-gate';
 
-/** The final slide's heading, in the outline and on the slide: says plainly that what follows is from readers, not the page. */
+/** The afterword's heading, in the outline and on the slide: says plainly that what follows is from readers, not the page. */
 export const SUGGESTIONS_HEADING = 'Readers’ suggestions';
 
 /** How many suggestions the preview shows. */
@@ -49,7 +50,8 @@ type SuggestionsSlideProps = {
 };
 
 /**
- * A viewpoint's last slide: a preview of the suggestions readers have made
+ * A viewpoint's afterword, drawn as a panel rather than as a card of the
+ * argument: a preview of the suggestions readers have made
  * for strengthening it, which opens them all, and the box to add one, over
  * the page. The preview holds only open suggestions: an incorporated one is
  * already in the argument the reader has just read.
@@ -66,8 +68,9 @@ export function SuggestionsSlide({ viewpointId, shortName, headings }: Suggestio
   };
 
   return (
-    <div className="sv-deck__card sv-feedback">
-      <h3 className="sv-deck__heading">{SUGGESTIONS_HEADING}</h3>
+    <div className="sv-feedback">
+      <h3 className="sv-feedback__heading"><CommentGlyph />{SUGGESTIONS_HEADING}</h3>
+      <p className="sv-feedback__disclaimer">Written by readers. Not part of the argument.</p>
       {/* The whole preview opens the full view, as a card's chart does; the button below is its keyboard way in. */}
       <div className="sv-feedback__preview" onClick={show} aria-busy={suggestions === null}>
         {suggestions === null ? (

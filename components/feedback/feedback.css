@@ -2,9 +2,52 @@
    a crux, and suggesting a viewpoint. Kept quiet, in the page's own type and
    rules: it sits after the content, never on it. */
 @layer components {
-  /* The speech bubble that stands in for a number in the outline and dots. */
-  .sv-comment-glyph { width: 0.8em; height: 0.8em; overflow: visible; }
-  .sv-deck__points .sv-comment-glyph { width: 0.95rem; height: 0.95rem; }
+  .sv-comment-glyph { flex: none; width: 0.95rem; height: 0.95rem; overflow: visible; }
+
+  /* ------------------------------------------------------- the afterword */
+
+  /* Readers' words are not a point of the argument, so nothing here looks
+     like one: no circle, no accent when current, no display heading. A rule
+     cuts it off from the points and it sits on sunk paper, set as a label. */
+  .sv-deck__outline .sv-deck__apart { margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--rule-strong); }
+  .sv-deck__points .sv-deck__apart { flex: none; margin-left: 0.6rem; padding-left: 0.6rem; border-left: 1px solid var(--rule-strong); }
+
+  .sv-deck__afterword {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    width: 100%;
+    padding: 0.6rem 0.65rem;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background: var(--paper-sunk);
+    font: 600 0.6875rem/1.35 var(--font-sans);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: left;
+    color: var(--ink-3);
+    cursor: pointer;
+  }
+  .sv-deck__points .sv-deck__afterword { justify-content: center; width: 2.4rem; height: 2.1rem; padding: 0; }
+  .sv-deck__afterword:disabled { cursor: default; }
+  .sv-deck__afterword:hover { color: var(--ink); }
+  .sv-deck__afterword[aria-current] { border-color: var(--ink-3); color: var(--ink); }
+  .sv-deck__afterword:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .sv-feedback { flex: 1; min-width: 0; padding: 1rem; border-radius: 4px; background: var(--paper-sunk); }
+  .sv-feedback .sv-feedback__preview { background: var(--paper); }
+
+  .sv-feedback__heading {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    font: 600 0.75rem/1.35 var(--font-sans);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+  .sv-feedback__disclaimer { margin: 0.2rem 0 0.8rem; font: 0.8rem/1.4 var(--font-sans); color: var(--ink-3); }
 
   /* ------------------------------------------------------------- previews */
 
