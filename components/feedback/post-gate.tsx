@@ -94,7 +94,7 @@ export function PostGate({ label, ready, onPost }: PostGateProps) {
           </span>
         ) : reader ? <span /> : (
           // Signing in needs no post first: a reader may only want to change what they wrote before.
-          <button type="button" className="sv-postgate__link" onClick={() => setSigningIn(true)}>Sign in</button>
+          <button type="button" className="sv-feedback__more" onClick={() => setSigningIn(true)}>Sign in</button>
         )}
         <button type="submit" className="sv-compose__submit" disabled={!ready || busy || state.status === 'loading' || (!!reader && !reader.name && !name.trim())}>
           {busy ? 'Posting…' : reader ? label : `Sign in to ${label.toLowerCase()}`}
