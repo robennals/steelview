@@ -1,0 +1,127 @@
+# The agent's half of this viewpoint: which phrase of the text cites which
+# data, the chart each card shows, and whether each passage has been checked
+# against its evidence. The text itself is in the .md file beside this one.
+# Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
+summary:
+  citations: []
+  verification:
+    status: verified
+    textHash: "6697296374e7"
+    checkedAt: 2026-11-20
+lead:
+  citations: []
+  verification:
+    status: verified
+    textHash: 4d4c9015a130
+    checkedAt: 2026-11-20
+cards:
+  - heading: Mail voting for everyone has spread since 2016
+    visual:
+      cite: "#fact-mail-voting-use-and-effects/no-excuse-states-grew"
+      kind: series
+      title: State rules on who may vote by mail
+    citations:
+      - phrase: By 2026, seven more states are expected to let every voter vote by mail than in 2016
+        href: "#fact-mail-voting-use-and-effects/no-excuse-states-grew"
+      - phrase: six of the nine mostly-mail states began it statewide in 2019 or later
+        href: "#fact-mail-voting-use-and-effects/recent-adoptions"
+      - phrase: mail voting is still above its level before the pandemic
+        href: "#fact-mail-voting-use-and-effects/mail-above-pre-pandemic"
+    verification:
+      status: verified
+      textHash: c9d5c8af752c
+      checkedAt: 2026-11-20
+  - heading: The secret ballot protects voters from being watched
+    citations:
+      - phrase: a vote buyer could hand a bribed voter a ballot and watch him cast it
+        href: "#fact-secret-ballot-and-postal-voting-abroad/secret-ballot-against-watching"
+      - phrase: In Chile, landlords lost their sway over how local people voted once ballots became secret
+        href: "#fact-secret-ballot-and-postal-voting-abroad/chile-secret-ballot-effect"
+    verification:
+      status: verified
+      textHash: 836f6b57bcb6
+      checkedAt: 2026-11-20
+  - heading: A ballot filled in at home is not secret, and that changes how people vote
+    citations:
+      - phrase: In the best national survey, nearly a quarter of mail voters had someone else in the room
+        href: "#fact-secret-ballot-and-postal-voting-abroad/mail-voters-often-not-alone"
+      - phrase: mail voters were likelier to say their choices were not kept secret
+        href: "#fact-secret-ballot-and-postal-voting-abroad/mail-voters-doubt-secrecy"
+      - phrase: people who doubt their vote is secret are more swayed by others in how they vote
+        href: "#fact-secret-ballot-and-postal-voting-abroad/secrecy-doubts-matter"
+      - phrase: in Oregon surveys 1% or fewer felt pressured
+        href: "#fact-secret-ballot-and-postal-voting-abroad/pressure-rarely-reported"
+      - phrase: in one Oregon pilot about 5% said others had marked their ballots
+        href: "#fact-secret-ballot-and-postal-voting-abroad/pressure-may-be-underreported"
+      - phrase: some British postal voters said another adult insisted on helping them choose
+        href: "#fact-secret-ballot-and-postal-voting-abroad/uk-postal-help-insisted"
+    verification:
+      status: verified
+      textHash: 702af29a49bf
+      checkedAt: 2026-11-20
+  - heading: Mail ballots are the biggest fraud risk, and most known overturned elections involved them
+    visual:
+      cite: "#fact-absentee-fraud-and-manipulation-of-the-count/most-voidings-absentee"
+      kind: comparison
+      title: Voided elections, by what was found
+    citations:
+      - phrase: most elections thrown out for fraud involved absentee ballots
+        href: "#fact-absentee-fraud-and-manipulation-of-the-count/most-voidings-absentee"
+      - phrase: a bipartisan commission called absentee ballots "the largest source of potential voter fraud"
+        href: "#fact-absentee-fraud-and-manipulation-of-the-count/carter-baker-largest-source"
+      - phrase: Paterson's 2020 council election, held entirely by mail, was voided
+        href: "#fact-absentee-fraud-and-manipulation-of-the-count/paterson-was-all-mail"
+      - phrase: the known cases are few against tens of millions of mail ballots
+        href: "#fact-absentee-fraud-and-manipulation-of-the-count/few-cases-against-ballots-cast"
+      - phrase: in Cobb County, Georgia, an envelope signed by the voter's spouse passed the check
+        href: "#fact-mail-ballot-rejection-and-signature-checks/cobb-spouse-signature-passed"
+    verification:
+      status: verified
+      textHash: 9c85b941a300
+      checkedAt: 2026-11-20
+  - heading: Few countries let everyone vote by post, and Britain found fraud when it did
+    visual:
+      cite: "#fact-secret-ballot-and-postal-voting-abroad/universal-postal-voting-is-rare"
+      kind: map
+      title: Who can vote by post
+    citations:
+      - phrase: Only 11 countries let every voter vote by post from home
+        href: "#fact-secret-ballot-and-postal-voting-abroad/universal-postal-voting-is-rare"
+      - phrase: After Britain let anyone vote by post, a court found thousands of postal votes falsified
+        href: "#fact-secret-ballot-and-postal-voting-abroad/uk-fraud-under-on-demand"
+      - phrase: France banned postal voting in 1975 because of serious fraud
+        href: "#fact-secret-ballot-and-postal-voting-abroad/france-abolished-over-fraud"
+      - phrase: Britain kept postal voting for all, adding identity checks and banning campaigners from handling postal votes
+        href: "#fact-secret-ballot-and-postal-voting-abroad/uk-kept-on-demand-added-checks"
+    verification:
+      status: verified
+      textHash: 6c75cde2583a
+      checkedAt: 2026-11-20
+  - heading: Mailing everyone a ballot adds little turnout, and voters trust mail counts less
+    visual:
+      cite: "#fact-mail-voting-use-and-effects/universal-mail-raised-turnout-modestly"
+      kind: estimateRange
+      title: Effects of mail-voting rules
+    citations:
+      - phrase: Sending every voter a ballot raised turnout only about two points
+        href: "#fact-mail-voting-use-and-effects/universal-mail-raised-turnout-modestly"
+      - phrase: in every Pew poll since 2020, fewer voters trusted the mail count than the in-person count
+        href: "#fact-confidence-and-disputed-results/mail-below-in-person"
+      - phrase: no study tests whether limiting mail voting would raise losers' confidence
+        href: "#fact-confidence-and-disputed-results/would-restriction-raise-confidence"
+    verification:
+      status: verified
+      textHash: 0dda16c3abfb
+      checkedAt: 2026-11-20
+  - heading: So polling booths should be the default, with mail for anyone who needs it
+    visual:
+      cite: "#fact-mail-voting-use-and-effects/disabled-voters-use-mail-more"
+      kind: barChart
+      title: Mail voting and disability
+    citations:
+      - phrase: Voters with disabilities rely on mail ballots more than other voters
+        href: "#fact-mail-voting-use-and-effects/disabled-voters-use-mail-more"
+    verification:
+      status: verified
+      textHash: 2a4fca3c0b14
+      checkedAt: 2026-11-20

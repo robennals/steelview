@@ -1,0 +1,121 @@
+# The agent's half of this viewpoint: which phrase of the text cites which
+# data, the chart each card shows, and whether each passage has been checked
+# against its evidence. The text itself is in the .md file beside this one.
+# Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
+summary:
+  citations:
+    - phrase: The share of Americans with no confidence at all in the count has roughly tripled in 20 years
+      href: "#fact-opinion-and-confidence-in-elections/no-confidence-tripled"
+    - phrase: about a third of local election officials now report threats, harassment or abuse
+      href: "#fact-opinion-and-confidence-in-elections/officials-threatened"
+    - phrase: Voters trust results less under rules they oppose
+      href: "#fact-opinion-and-confidence-in-elections/procedures-they-oppose"
+  verification:
+    status: verified
+    textHash: cca4f709ef0d
+    checkedAt: 2026-11-20
+lead:
+  citations: []
+  verification:
+    status: verified
+    textHash: 2892b91549f6
+    checkedAt: 2026-11-20
+cards:
+  - heading: Distrust in the count is growing, and splits by party
+    visual:
+      cite: "#fact-opinion-and-confidence-in-elections/no-confidence-tripled"
+      kind: barChart
+      title: Not at all confident in the vote
+    citations:
+      - phrase: The share of Americans with no confidence at all in the vote has roughly tripled in 20 years, to about one in five
+        href: "#fact-opinion-and-confidence-in-elections/no-confidence-tripled"
+      - phrase: in 2024 the gap between the parties hit a record 56 points
+        href: "#fact-opinion-and-confidence-in-elections/gallup-gap-record-2024"
+      - phrase: after each presidential election, the winning side grows more confident and the losing side less
+        href: "#fact-opinion-and-confidence-in-elections/post-election-winner-swing"
+    verification:
+      status: verified
+      textHash: 3c3d032071ac
+      checkedAt: 2026-11-20
+  - heading: The people who run elections now work under threat, and most say false claims make it worse
+    visual:
+      cite: "#fact-opinion-and-confidence-in-elections/officials-threatened"
+      kind: barChart
+      title: What local election officials report
+    citations:
+      - phrase: About a third of local election officials report threats, harassment or abuse because of their job
+        href: "#fact-opinion-and-confidence-in-elections/officials-threatened"
+    verification:
+      status: verified
+      textHash: ca10e1e6542d
+      checkedAt: 2026-11-20
+  - heading: Each side fears a different failure, but nearly everyone wants both prevented
+    visual:
+      cite: "#fact-opinion-and-confidence-in-elections/eligibility-confidence-2026"
+      kind: comparison
+      title: Confidence in voter eligibility checks
+    citations:
+      - phrase: Republicans doubt non-citizens will be stopped
+        href: "#fact-opinion-and-confidence-in-elections/eligibility-confidence-2026"
+      - phrase: Republicans have also grown more likely to expect ineligible people to vote
+        href: "#fact-opinion-and-confidence-in-elections/different-fears"
+      - phrase: at least 85% of Americans call each goal important
+        href: "#fact-opinion-and-confidence-in-elections/shared-goals"
+    verification:
+      status: verified
+      textHash: 0a6b3fa8b4fa
+      checkedAt: 2026-11-20
+  - heading: Beyond who wins, rules passed by one side lower the other side's trust
+    visual:
+      cite: "#fact-opinion-and-confidence-in-elections/sb202-self-reported"
+      kind: comparison
+      title: "Georgia: SB 202's effect on confidence"
+    citations:
+      - phrase: most Republicans said the 2021 election law raised their trust
+        href: "#fact-opinion-and-confidence-in-elections/sb202-self-reported"
+      - phrase: voters trust results less when they oppose the rules used, even allowing for who won, and especially for voter ID
+        href: "#fact-opinion-and-confidence-in-elections/procedures-they-oppose"
+      - phrase: one would require proof of citizenship and photo ID
+        href: "#fact-federal-and-state-power-over-voting-rules/save-america-act-provisions"
+      - phrase: the other would have required early voting and made ID states accept alternatives
+        href: "#fact-federal-and-state-power-over-voting-rules/freedom-to-vote-act-provisions"
+      - phrase: both stalled in the Senate
+        href: "#fact-federal-and-state-power-over-voting-rules/national-bills-stalled"
+    verification:
+      status: verified
+      textHash: 3e013a48570b
+      checkedAt: 2026-11-20
+  - heading: Most Americans back both photo ID and early voting
+    visual:
+      cite: "#fact-opinion-and-confidence-in-elections/photo-id-83-percent"
+      kind: series
+      title: Support for photo ID and automatic registration
+    citations:
+      - phrase: 83% of adults back photo ID
+        href: "#fact-opinion-and-confidence-in-elections/photo-id-83-percent"
+      - phrase: 80% back two weeks of early voting
+        href: "#fact-opinion-and-confidence-in-elections/overlap-not-published"
+      - phrase: Republican support for two weeks of early voting has risen since Pew first asked in 2021
+        href: "#fact-opinion-and-confidence-in-elections/republicans-moved-toward-early-voting"
+    verification:
+      status: verified
+      textHash: f8ff857700f8
+      checkedAt: 2026-11-20
+  - heading: So both parties should pass free ID and early voting together
+    visual:
+      cite: "#fact-voter-id-rules-in-the-us-and-abroad/strict-states-early-voting"
+      kind: comparison
+      title: Early voting in strict-photo-ID states
+    citations:
+      - phrase: eight of the 10 strict photo-ID states also let everyone vote early, starting two to four weeks before Election Day
+        href: "#fact-voter-id-rules-in-the-us-and-abroad/strict-states-early-voting"
+      - phrase: paired photo ID with free cards
+        href: "#fact-voter-id-rules-in-the-us-and-abroad/carter-baker-bargain"
+      - phrase: Texas's ID-number rule rejected more mail ballots, and Georgia's fewer
+        href: "#fact-burdens-of-id-and-citizenship-rules/two-states-opposite"
+      - phrase: Studies disagree on whether ID itself raises trust
+        href: "#fact-opinion-and-confidence-in-elections/studies-disagree"
+    verification:
+      status: verified
+      textHash: ecefe414052c
+      checkedAt: 2026-11-20

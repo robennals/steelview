@@ -1,0 +1,119 @@
+# The agent's half of this viewpoint: which phrase of the text cites which
+# data, the chart each card shows, and whether each passage has been checked
+# against its evidence. The text itself is in the .md file beside this one.
+# Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
+summary:
+  citations:
+    - phrase: invested a smaller share of GDP than most rich countries for decades
+      href: "#fact-immigration-housing-and-public-services/public-investment-low"
+    - phrase: its investment does not grow when its population does
+      href: "#fact-immigration-housing-and-public-services/investment-does-not-adjust"
+    - phrase: Falling interest rates, not immigration, explain most of the long rise in house prices
+      href: "#fact-immigration-housing-and-public-services/falling-interest-rates-explain-price-rise"
+  verification:
+    status: verified
+    textHash: 363581582dd3
+    checkedAt: 2026-11-20
+lead:
+  citations: []
+  verification:
+    status: verified
+    textHash: f997c15b29df
+    checkedAt: 2026-11-20
+cards:
+  - heading: Britain has long invested less than other rich countries, and investment does not follow population
+    visual:
+      cite: "#fact-immigration-housing-and-public-services/public-investment-low"
+      kind: series
+      title: Government investment as a share of GDP
+    citations:
+      - phrase: The UK government invested a smaller share of GDP than the typical rich country in every year for three decades
+        href: "#fact-immigration-housing-and-public-services/public-investment-low"
+      - phrase: much public investment is fixed years ahead, so it does not grow when the population does
+        href: "#fact-immigration-housing-and-public-services/investment-does-not-adjust"
+      - phrase: migration is just over half of the extra households England expects
+        href: "#fact-immigration-housing-and-public-services/migration-share-of-household-growth"
+      - phrase: health spending per person has almost doubled since 2000
+        href: "#fact-immigration-housing-and-public-services/health-spending-per-person-doubled"
+      - phrase: Britain spends less than the average rich country on health buildings and equipment
+        href: "#fact-immigration-housing-and-public-services/health-capital-below-average"
+    verification:
+      status: verified
+      textHash: 5902c7d918bd
+      checkedAt: 2026-11-20
+  - heading: Cheap borrowing, not immigration, drove most of the rise in house prices
+    visual:
+      cite: "#fact-immigration-housing-and-public-services/rent-effects"
+      kind: barChart
+      title: Immigration and house prices and rents
+    citations:
+      - phrase: In countries like Britain, raising the immigrant share by one point raises house prices by under 1%, and rents by a little more
+        href: "#fact-immigration-housing-and-public-services/rent-effects"
+      - phrase: Bank of England economists find that falling interest rates more than account for the rise in house prices against incomes since 1985
+        href: "#fact-immigration-housing-and-public-services/falling-interest-rates-explain-price-rise"
+      - phrase: the government's advisers put immigration's share of the long rise at about 4–6%
+        href: "#fact-immigration-housing-and-public-services/immigration-explains-4-6-percent-of-house-price-rise"
+      - phrase: for over a decade, England has built fewer homes for social rent each year than in any year of the two decades before
+        href: "#fact-immigration-housing-and-public-services/social-rent-building-fell-after-2010"
+    verification:
+      status: verified
+      textHash: fed11ee3a433
+      checkedAt: 2026-11-20
+  - heading: Migrants staff the NHS and care homes, and care is short because it is underfunded
+    visual:
+      cite: "#fact-work-and-study-routes/fifth-of-nhs-staff"
+      kind: series
+      title: NHS staff without British nationality
+    citations:
+      - phrase: About a fifth of NHS staff in England are not British, and over a third of doctors
+        href: "#fact-work-and-study-routes/fifth-of-nhs-staff"
+      - phrase: About 150,000 care jobs are done by people on health and care visas
+        href: "#fact-work-and-study-routes/care-posts-on-visas"
+      - phrase: the root cause of care's staff shortages is underfunding, which immigration could not solve alone
+        href: "#fact-work-and-study-routes/mac-names-underfunding"
+      - phrase: care pay sits only about 5% above the legal minimum
+        href: "#fact-work-and-study-routes/care-pay-near-the-floor"
+    verification:
+      status: verified
+      textHash: a2a3c1c3bcef
+      checkedAt: 2026-11-20
+  - heading: Checks meant for illegal migrants harmed people with every right to be here
+    visual:
+      cite: "#fact-settlement-and-migrant-status/windrush-compensation-paid"
+      kind: series
+      title: Windrush compensation paid
+    citations:
+      - phrase: the state has since paid out well over a hundred million pounds in compensation
+        href: "#fact-settlement-and-migrant-status/windrush-compensation-paid"
+      - phrase: the state denied people with every right to be here work, homes and services, and detained or removed others
+        href: "#fact-settlement-and-migrant-status/windrush-record"
+    verification:
+      status: verified
+      textHash: 56cc49f634c7
+      checkedAt: 2026-11-20
+  - heading: Visas tied to one employer leave lawful workers open to exploitation
+    visual:
+      cite: "#fact-work-and-study-routes/revocations-at-a-record"
+      kind: series
+      title: UK sponsor licences revoked
+    citations:
+      - phrase: Visas tied to one employer left care workers open to exploitation
+        href: "#fact-work-and-study-routes/visas-tied-to-one-employer"
+      - phrase: The Home Office cancelled a record number of employers' licences to hire migrants
+        href: "#fact-work-and-study-routes/revocations-at-a-record"
+      - phrase: the fee for settlement is ten times what it costs the Home Office to process
+        href: "#fact-settlement-and-migrant-status/ilr-fee-ten-times-cost"
+      - phrase: people on temporary visas are usually barred from most benefits
+        href: "#fact-settlement-and-migrant-status/nrpf-costs"
+    verification:
+      status: verified
+      textHash: e23734012671
+      checkedAt: 2026-11-20
+  - heading: So invest in homes and services, and end the hostile environment
+    citations:
+      - phrase: Councils are already building more affordable homes than at any time since records began in 1991-92, though only about one in six of the total
+        href: "#fact-immigration-housing-and-public-services/council-building-record"
+    verification:
+      status: verified
+      textHash: ec0762cebf78
+      checkedAt: 2026-11-20

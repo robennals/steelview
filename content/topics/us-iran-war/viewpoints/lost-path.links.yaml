@@ -1,0 +1,119 @@
+# The agent's half of this viewpoint: which phrase of the text cites which
+# data, the chart each card shows, and whether each passage has been checked
+# against its evidence. The text itself is in the .md file beside this one.
+# Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
+summary:
+  citations:
+    - phrase: in every check from 2017 to 2019, its uranium stock stayed under the 2015 deal's limit
+      href: "#fact-iran-nuclear-programme/deal-era-compliance"
+    - phrase: killed thousands of Iranians
+      href: "#fact-human-and-financial-costs-of-the-war/deaths-in-the-thousands"
+    - phrase: all but stopped inspections
+      href: "#fact-iran-nuclear-programme/verification-stopped"
+  verification:
+    status: verified
+    textHash: effe2c7eeb2f
+    checkedAt: 2026-11-20
+lead:
+  citations: []
+  verification:
+    status: verified
+    textHash: 491ff4a1f63b
+    checkedAt: 2026-11-20
+cards:
+  - heading: The war has killed thousands of Iranians who had no say in it
+    visual:
+      cite: "#fact-human-and-financial-costs-of-the-war/civilian-minimum-by-april"
+      kind: compositionBar
+      title: Deaths in Iran from the war, by counter
+    citations:
+      - phrase: One group counted at least 1,701 civilians killed by early April, at least 254 of them children
+        href: "#fact-human-and-financial-costs-of-the-war/civilian-minimum-by-april"
+      - phrase: the outside counts stop in April
+        href: "#fact-human-and-financial-costs-of-the-war/no-count-after-april"
+      - phrase: Millions more have been forced from their homes
+        href: "#fact-human-and-financial-costs-of-the-war/displaced-millions"
+    verification:
+      status: verified
+      textHash: dba010487b7f
+      checkedAt: 2026-11-20
+  - heading: The 2015 deal kept Iran's uranium in check until the US walked away
+    visual:
+      cite: "#fact-iran-nuclear-programme/deal-era-compliance"
+      kind: series
+      title: Iran's enriched-uranium stock
+    citations:
+      - phrase: Iran's uranium stock stayed under the 2015 deal's limit until about a year after the US left the deal, then rose far above it
+        href: "#fact-iran-nuclear-programme/deal-era-compliance"
+      - phrase: it began building up uranium enriched to 60% in 2021
+        href: "#fact-iran-nuclear-programme/sixty-percent-growth"
+      - phrase: US–Iran talks were under way in Geneva two days before the strikes
+        href: "#fact-decisions-law-and-diplomacy/talks-under-way-when-strikes-came"
+    verification:
+      status: verified
+      textHash: c5756edfac7f
+      checkedAt: 2026-11-20
+  - heading: Iran was not about to build a bomb
+    visual:
+      cite: "#fact-iran-nuclear-programme/no-ongoing-programme-2025"
+      kind: timeline
+      title: Official statements on weapons work
+    citations:
+      - phrase: In 2025, UN nuclear inspectors found no credible sign of an active weapons programme
+        href: "#fact-iran-nuclear-programme/no-ongoing-programme-2025"
+      - phrase: US intelligence judged that Iran was not building a bomb
+        href: "#fact-iran-nuclear-programme/ata-2025-not-building"
+      - phrase: Iran was the only country without nuclear weapons making 60% uranium
+        href: "#fact-iran-nuclear-programme/only-non-weapon-state-at-60"
+    verification:
+      status: verified
+      textHash: b8078290e36a
+      checkedAt: 2026-11-20
+  - heading: The war has blinded the inspectors, and bombs cannot do their job
+    visual:
+      cite: "#fact-iran-nuclear-programme/verification-stopped"
+      kind: timeline
+      title: What IAEA inspectors could see in Iran
+    citations:
+      - phrase: Since the war began, inspectors have visited only one site in Iran, a power plant
+        href: "#fact-iran-nuclear-programme/verification-stopped"
+      - phrase: no inspector has seen Iran's 60% uranium since June 2025
+        href: "#fact-iran-nuclear-programme/stock-unaccounted-for"
+      - phrase: access had narrowed in steps since 2021
+        href: "#fact-iran-nuclear-programme/access-narrowed-in-steps"
+      - phrase: Experts see no way for Iran to make bomb-grade uranium for now, but give no estimate of how long that will last
+        href: "#fact-iran-nuclear-programme/no-route-to-weapons-grade"
+      - phrase: past strikes on nuclear sites slowed programmes only a little
+        href: "#fact-outside-attempts-to-change-hostile-regimes/strikes-delay-modestly"
+    verification:
+      status: verified
+      textHash: d1f753281b4e
+      checkedAt: 2026-11-20
+  - heading: Keeping Iran in check never needed Iran to become friendly
+    visual:
+      cite: "#fact-iran-government-and-its-people/earlier-openings-reversed"
+      kind: timeline
+      title: Openings and reversals in Iran
+    citations:
+      - phrase: Earlier openings in Iran were reversed
+        href: "#fact-iran-government-and-its-people/earlier-openings-reversed"
+      - phrase: executions rose fastest under the moderate president
+        href: "#fact-iran-government-and-its-people/execution-rate-by-president"
+      - phrase: in 2024 voters chose the one moderate candidate
+        href: "#fact-iran-government-and-its-people/reformist-backed-president-2024"
+      - phrase: a harsher headscarf law was put on hold, most likely with the Supreme Leader's consent
+        href: "#fact-iran-government-and-its-people/hijab-law-shelved"
+    verification:
+      status: verified
+      textHash: 760a078d30ef
+      checkedAt: 2026-11-20
+  - heading: So the US should stop bombing and go back to inspections
+    citations:
+      - phrase: Oman's foreign minister said the UN never approved it
+        href: "#fact-decisions-law-and-diplomacy/no-un-authorisation-per-oman"
+      - phrase: Britain, France and Germany did not join the strikes
+        href: "#fact-decisions-law-and-diplomacy/key-allies-did-not-join"
+    verification:
+      status: verified
+      textHash: 9814f4e3e657
+      checkedAt: 2026-11-20

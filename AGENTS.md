@@ -12,6 +12,13 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 Copies of the data files behind our sources are in a git-ignored `datasets/` folder in the main checkout, not in this repo. Never commit one. `content/SOURCE-FILES.md` explains how to find and add them.
 
+# Viewpoint text is the editor's
+
+A viewpoint's `.md` file is its text alone; citations, card visuals and checks
+go in the `.links.yaml` beside it (`content/AUTHORING.md`, "A viewpoint's text
+and its links"). Any edit you make to a viewpoint's text, however small, sets
+`draft: ai` in its frontmatter, so the editor sees and reviews it.
+
 # Turn corrections into workflow fixes
 
 When Rob gives directions for improving a particular topic, report, viewpoint

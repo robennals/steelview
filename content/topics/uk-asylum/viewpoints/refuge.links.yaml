@@ -1,0 +1,135 @@
+# The agent's half of this viewpoint: which phrase of the text cites which
+# data, the chart each card shows, and whether each passage has been checked
+# against its evidence. The text itself is in the .md file beside this one.
+# Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
+summary:
+  citations:
+    - phrase: Most people who cross the Channel and receive a decision are granted protection
+      href: "#fact-asylum-claims-and-decisions/small-boat-claims-mostly-granted"
+    - phrase: Britain paused family reunion, the largest safe route open to them
+      href: "#fact-safe-and-legal-routes/family-reunion-paused"
+    - phrase: sent no asylum seekers at all
+      href: "#fact-deterrence-and-protection-policies/no-asylum-seekers-sent"
+  verification:
+    status: verified
+    textHash: 1b2076f26c07
+    checkedAt: 2026-11-20
+lead:
+  citations: []
+  verification:
+    status: verified
+    textHash: 208152c3f41c
+    checkedAt: 2026-11-20
+cards:
+  - heading: Most people crossing the Channel have been found to need protection
+    visual:
+      cite: "#fact-asylum-claims-and-decisions/small-boat-claims-mostly-granted"
+      kind: barChart
+      title: Initial decisions on small-boat arrivals
+    citations:
+      - phrase: Of small-boat arrivals since 2018 who got a decision, most were granted protection
+        href: "#fact-asylum-claims-and-decisions/small-boat-claims-mostly-granted"
+      - phrase: arrivals in 2023 and 2024 were refused slightly more often than granted
+        href: "#fact-asylum-claims-and-decisions/2023-2024-arrivals-granted-under-half"
+      - phrase: Most Eritreans and Sudanese were granted in 2025
+        href: "#fact-asylum-claims-and-decisions/sudanese-and-eritreans-mostly-granted"
+      - phrase: they are now the largest groups crossing
+        href: "#fact-safe-and-legal-routes/eritreans-and-sudanese-largest-boat-groups"
+      - phrase: after Syria's government fell, Syrians' grant rate dropped from 98% to 10% in a year
+        href: "#fact-asylum-claims-and-decisions/syrian-grant-rate-fell"
+    verification:
+      status: verified
+      textHash: 7fa63ff5c9c9
+      checkedAt: 2026-11-20
+  - heading: Britain has closed the safe routes most of them could use
+    visual:
+      cite: "#fact-safe-and-legal-routes/family-reunion-paused"
+      kind: series
+      title: People offered a safe and legal route
+    citations:
+      - phrase: Family reunion, joining a refugee already here, became the largest route open to any nationality, and was then paused
+        href: "#fact-safe-and-legal-routes/family-reunion-paused"
+      - phrase: For Eritreans, Sudanese and Iranians, family reunion had been the main safe route
+        href: "#fact-safe-and-legal-routes/family-reunion-was-the-main-route-for-boat-nationalities"
+      - phrase: in the year to June 2026, boat arrivals far exceeded safe-route grants for all three
+        href: "#fact-safe-and-legal-routes/after-the-pause"
+      - phrase: Some of the largest groups who cross had almost no safe route at all
+        href: "#fact-safe-and-legal-routes/some-boat-nationalities-had-no-route"
+    verification:
+      status: verified
+      textHash: 81c6e71c735a
+      checkedAt: 2026-11-20
+  - heading: A safe route lets Britain choose how many it protects; a boat does not
+    visual:
+      cite: "#fact-safe-and-legal-routes/nationalities-with-safe-routes-rarely-came-by-boat"
+      kind: compositionBar
+      title: How each nationality came to the UK
+    citations:
+      - phrase: Hundreds of thousands of Ukrainians and Hong Kongers came on visas, and almost none came by boat
+        href: "#fact-safe-and-legal-routes/nationalities-with-safe-routes-rarely-came-by-boat"
+      - phrase: The reopened resettlement scheme has a yearly cap
+        href: "#fact-safe-and-legal-routes/resettlement-is-reopening"
+      - phrase: comparing routes with boats side by side is not a test of cause
+        href: "#fact-safe-and-legal-routes/not-a-test-of-cause"
+    verification:
+      status: verified
+      textHash: 86b89fee9927
+      checkedAt: 2026-11-20
+  - heading: Many refusals are overturned on appeal, so appeals must stay fair
+    visual:
+      cite: "#fact-asylum-claims-and-decisions/two-in-five-appeals-allowed"
+      kind: series
+      title: Asylum appeals decided and allowed
+    citations:
+      - phrase: Since 2007, between a quarter and a half of asylum appeals each year have succeeded
+        href: "#fact-asylum-claims-and-decisions/two-in-five-appeals-allowed"
+      - phrase: Counting appeals and second decisions, final grant rates rose by 20 points on average for claims made in 2007–2022
+        href: "#fact-asylum-claims-and-decisions/final-outcomes-after-appeal"
+      - phrase: a 2022 law raised the standard of proof
+        href: "#fact-asylum-claims-and-decisions/standard-of-proof"
+      - phrase: ministers plan a new appeals body whose decision-makers need not be lawyers, chaired by a Home Secretary appointee
+        href: "#fact-asylum-law-and-the-echr/bill-replaces-the-tribunal"
+    verification:
+      status: verified
+      textHash: 34370ad1e59e
+      checkedAt: 2026-11-20
+  - heading: Britain paid £715 million for a deterrent that sent no asylum seekers
+    citations:
+      - phrase: Britain spent £715 million on the Rwanda scheme and a related law
+        href: "#fact-deterrence-and-protection-policies/rwanda-cost-and-relocations"
+      - phrase: sent no asylum seekers there
+        href: "#fact-deterrence-and-protection-policies/no-asylum-seekers-sent"
+      - phrase: Australia's offshore camps cost billions
+        href: "#fact-deterrence-and-protection-policies/offshore-cost-per-year"
+      - phrase: 18 people sent there had died by 2021
+        href: "#fact-deterrence-and-protection-policies/eighteen-had-died"
+      - phrase: Australia's arrivals fell to almost none after it turned boats back
+        href: "#fact-deterrence-and-protection-policies/australia-arrivals-fell-after-turnbacks"
+      - phrase: handing people back at sea needs the country they left from to take them
+        href: "#fact-deterrence-and-protection-policies/turnbacks-need-departure-country"
+    verification:
+      status: verified
+      textHash: da0d74f04a5b
+      checkedAt: 2026-11-20
+  - heading: Work bans hurt refugees and do little to deter claims
+    citations:
+      - phrase: Studies across Europe find that work bans leave refugees less likely to have a job for years afterwards
+        href: "#fact-deterrence-and-protection-policies/work-bans-reduce-employment"
+      - phrase: The one study of where people choose to claim finds that bans are not a strong deterrent
+        href: "#fact-deterrence-and-protection-policies/authors-say-bans-not-a-strong-deterrent"
+      - phrase: shorter bans are linked to slightly more claims
+        href: "#fact-deterrence-and-protection-policies/work-rights-modest-association"
+    verification:
+      status: verified
+      textHash: c352198649cb
+      checkedAt: 2026-11-20
+  - heading: So Britain should open capped safe routes, decide claims fairly, and let people work
+    citations:
+      - phrase: would not remove the Refugee Convention's ban on sending refugees back to danger
+        href: "#fact-asylum-law-and-the-echr/refugee-convention-ban-on-return-remains"
+      - phrase: could cost Britain police cooperation with the EU
+        href: "#fact-asylum-law-and-the-echr/eu-may-end-law-enforcement-cooperation-on-denunciation"
+    verification:
+      status: verified
+      textHash: f0f96e3803a6
+      checkedAt: 2026-11-20

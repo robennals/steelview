@@ -152,44 +152,57 @@ function citedChart(slug: string, fact: Fact, groups: Map<string, string>, secti
   return key ? chartFor(slug, fact, key, section) : undefined;
 }
 
-/**
- * A viewpoint as a sequence of steps, one per `###` section, each paired with
- * a chart. The chart is derived, not authored: it is the one beside the first
- * observation the section cites that has a chart, or the first chart it cites
- * by name, so a section reads beside the evidence its own argument leads with.
- */
-export function viewpointWalkthrough(topic: Topic, viewpoint: Viewpoint): Walkthrough {
-  const [lead, ...sections] = viewpoint.body.split(/^### /m);
-  const groups = new Map(topic.facts.map(fact => [fact.id, observationGroups(fact)]));
-  /** The charts behind a passage's citations, in order, each with the citation it was chosen for. */
-  const chartsCited = (markdown: string) => citedFactTargets(markdown).flatMap(({ id, section: observation }) => {
+/** The chart a citation target (`#fact-<id>/<section>`) is about, with the target. */
+function chartsCitedIn(topic: Topic, groups: Map<string, Map<string, string>>, markdown: string) {
+  return citedFactTargets(markdown).flatMap(({ id, section: observation }) => {
     const fact = topic.facts.find(f => f.id === id);
     const chart = fact && observation && citedChart(topic.slug, fact, groups.get(id) ?? new Map(), observation);
     return chart ? [{ chart, cited: { id, section: observation } }] : [];
   });
+}
+
+/**
+ * A viewpoint as a sequence of steps, one per `###` section. A step's `chart`
+ * is derived: the one beside the first observation the section cites that
+ * has a chart, or the first chart it cites by name. Its `cardVisual`, what
+ * its slideshow card is made with, is the one its links file names: chosen,
+ * not derived, so an editor rewording a line cannot swap its card's chart.
+ */
+export function viewpointWalkthrough(topic: Topic, viewpoint: Viewpoint): Walkthrough {
+  const [lead, ...sections] = viewpoint.body.split(/^### /m);
+  const groups = new Map(topic.facts.map(fact => [fact.id, observationGroups(fact)]));
   const steps = sections.map(section => {
-    const [heading, ...rest] = section.split('\n');
+    const [rawHeading, ...rest] = section.split('\n');
+    const heading = rawHeading.trim();
     const markdown = rest.join('\n').trim();
-    const [first] = chartsCited(markdown);
-    return { heading: heading.trim(), markdown, ...first, cardVisual: cardVisual(chartsCited(splitFirstParagraph(markdown)[0])) };
+    const [first] = chartsCitedIn(topic, groups, markdown);
+    const inLine = chartsCitedIn(topic, groups, splitFirstParagraph(markdown)[0]);
+    const named = viewpoint.visuals?.get(heading);
+    // A named table or text figure is reported by `cardVisualErrors` and shown as no visual.
+    const visual = named && chartsCitedIn(topic, groups, `[visual](${named.cite})`).find(({ chart }) => isCardVisual(chart));
+    return { heading, markdown, ...first, cardVisual: visual && cardVisual(visual, inLine) };
   });
   return { lead: lead.trim(), steps };
 }
 
 /**
- * What a slideshow card is made with: the first graph or collection of quotes
- * behind the claims its reasoning line cites, so the line's claim is what the
- * reader sees. One, because a phone has room for one; a graph with several
- * views shows them as modes, and a collection of quotes one quote at a time. A
- * line that cites neither makes a card of text. A table is never one: it reads
- * as more text, which the card already gives.
+ * Whether a chart can be what a slideshow card is made with: a graph or a
+ * collection of quotes. One, because a phone has room for one; a graph with
+ * several views shows them as modes, and a collection of quotes one quote at a
+ * time. A table is never one: it reads as more text, which the card already gives.
  */
-function cardVisual(inReasoning: { chart: PreviewSlide; cited: { id: string; section: string } }[]) {
-  const first = inReasoning.find(({ chart }) => isGraph(chart) || componentFigure(chart.fact, chart.chart)?.kind === 'quotes');
-  if (!first) return undefined;
+function isCardVisual(chart: PreviewSlide): boolean {
+  return isGraph(chart) || componentFigure(chart.fact, chart.chart)?.kind === 'quotes';
+}
+
+/**
+ * A card's visual, with the rows on it that the card's line picks out: those
+ * of its own citation, and of every citation in the line of the same chart.
+ */
+function cardVisual(first: { chart: PreviewSlide; cited: { id: string; section: string } }, inReasoning: { chart: PreviewSlide; cited: { id: string; section: string } }[]) {
   // A line can cite two findings about one chart, as two cases on one timeline.
   const marks = first.chart.fact.observationMarks;
-  const sameChart = inReasoning.filter(({ chart }) => chart.fact.id === first.chart.fact.id && chart.chart === first.chart.chart);
+  const sameChart = [first, ...inReasoning.filter(({ chart }) => chart.fact.id === first.chart.fact.id && chart.chart === first.chart.chart)];
   return { ...first, picked: [...new Set(sameChart.flatMap(({ cited }) => marks?.[cited.section]?.rows ?? []))] };
 }
 
@@ -208,6 +221,17 @@ export function featuredSlides(topic: Topic): Map<string, PreviewSlide[]> {
     if (shown.length > 0) slides.set(fact.id, shown);
   }
   return slides;
+}
+
+/**
+ * What kind of chart a card's visual is, as a viewpoint's links file names it:
+ * `series` for a time series at one reading, `comparison` for a comparison
+ * chart, and otherwise the figure's own `kind` (`quotes`, `timeline`, `barChart`…).
+ */
+export function visualKind({ fact, chart }: Pick<PreviewSlide, 'fact' | 'chart'>): string {
+  if (chart === 'series' || fact.additionalSeries?.some(s => s.id === chart)) return 'series';
+  if (fact.comparisons?.some(c => c.id === chart)) return 'comparison';
+  return componentFigure(fact, chart)?.kind ?? 'unknown';
 }
 
 /**
@@ -246,6 +270,26 @@ export function repeatedCardVisualErrors(topic: Topic): string[] {
       return [`viewpoint ${viewpoint.id}: "${heading}" shows the same evidence as "${first}" (${label}); make them one point, or cite another graph first`];
     });
   });
+}
+
+/**
+ * A card's visual as its links file names it must be a graph or quotes the
+ * citation resolves to, and the `kind` and `title` written beside it, which a
+ * reader of the links file goes by, must be that chart's.
+ */
+export function cardVisualErrors(topic: Topic): string[] {
+  const groups = new Map(topic.facts.map(fact => [fact.id, observationGroups(fact)]));
+  return topic.viewpoints.flatMap(viewpoint => [...(viewpoint.visuals ?? [])].flatMap(([heading, named]) => {
+    const where = `viewpoint ${viewpoint.id}: "${heading}"`;
+    const [resolved] = chartsCitedIn(topic, groups, `[visual](${named.cite})`);
+    if (!resolved) return [`${where} names visual ${named.cite}, which is no chart`];
+    if (!isCardVisual(resolved.chart)) return [`${where} names visual ${named.cite}, which is a table or text figure, not a graph or quotes`];
+    const kind = visualKind(resolved.chart);
+    const errors: string[] = [];
+    if (named.kind !== kind) errors.push(`${where}'s visual is a ${kind}, but its links file says ${named.kind}`);
+    if (named.title !== resolved.chart.label) errors.push(`${where}'s visual is titled "${resolved.chart.label}", but its links file says "${named.title}"`);
+    return errors;
+  }));
 }
 
 /**

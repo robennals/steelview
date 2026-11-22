@@ -1,0 +1,113 @@
+# The agent's half of this viewpoint: which phrase of the text cites which
+# data, the chart each card shows, and whether each passage has been checked
+# against its evidence. The text itself is in the .md file beside this one.
+# Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
+summary:
+  citations:
+    - phrase: comes from skilled workers outside health and care
+      href: "#fact-immigration-economy-and-public-finances/skilled-workers-large-net-gain"
+    - phrase: care workers and adult dependants on the health and care route cost the public finances
+      href: "#fact-immigration-economy-and-public-finances/care-route-net-cost"
+  verification:
+    status: verified
+    textHash: a95486d5506f
+    checkedAt: 2026-11-20
+lead:
+  citations: []
+  verification:
+    status: verified
+    textHash: 845805778fab
+    checkedAt: 2026-11-20
+cards:
+  - heading: The biggest gain comes from skilled workers outside health and care
+    visual:
+      cite: "#fact-immigration-economy-and-public-finances/skilled-workers-large-net-gain"
+      kind: comparison
+      title: Lifetime fiscal contribution by visa route
+    citations:
+      - phrase: Skilled workers outside health and care add hundreds of thousands of pounds each
+        href: "#fact-immigration-economy-and-public-finances/skilled-workers-large-net-gain"
+      - phrase: among skilled workers outside health and care, the top tenth of earners provide almost two-fifths of it
+        href: "#fact-immigration-economy-and-public-finances/gain-from-top-earners-and-stayers"
+      - phrase: for lower earners, a temporary stay is better for the public purse than a permanent one
+        href: "#fact-immigration-economy-and-public-finances/temporary-better-for-lower-earners"
+    verification:
+      status: verified
+      textHash: 36f97d801675
+      checkedAt: 2026-11-20
+  - heading: When Britain loosened the rules, low-paid visas and abuse surged
+    visual:
+      cite: "#fact-work-and-study-routes/skill-threshold-lowered-then-raised"
+      kind: series
+      title: UK work visas issued
+    citations:
+      - phrase: In 2020 the skill bar for a work visa was cut to A-level, and in 2022 care workers were added
+        href: "#fact-work-and-study-routes/skill-threshold-lowered-then-raised"
+      - phrase: At the peak, health and care visas went to more family members than workers
+        href: "#fact-work-and-study-routes/dependants-outnumbered-main-applicants"
+      - phrase: The Home Office cancelled a record number of employers' licences to hire migrants
+        href: "#fact-work-and-study-routes/revocations-at-a-record"
+      - phrase: adult social care among the worst sectors
+        href: "#fact-work-and-study-routes/social-care-among-worst-sectors"
+      - phrase: cancellations, as a share of employers with licences, are only back to their mid-2010s level
+        href: "#fact-work-and-study-routes/revocation-rate-not-a-record"
+      - phrase: the number of those employers roughly quadrupled
+        href: "#fact-work-and-study-routes/skilled-sponsors-quadrupled"
+    verification:
+      status: verified
+      textHash: d0934178ec91
+      checkedAt: 2026-11-20
+  - heading: Care has coped without overseas recruits so far
+    visual:
+      cite: "#fact-work-and-study-routes/vacancies-held-as-recruitment-fell"
+      kind: series
+      title: Adult social care workforce
+    citations:
+      - phrase: care vacancies have not risen
+        href: "#fact-work-and-study-routes/vacancies-held-as-recruitment-fell"
+      - phrase: care-worker visas collapsed in late 2023
+        href: "#fact-work-and-study-routes/care-visas-collapsed-before-the-closure"
+      - phrase: once officials checked employers more closely
+        href: "#fact-work-and-study-routes/scrutiny-began-the-fall"
+      - phrase: the British share of care jobs is still falling
+        href: "#fact-work-and-study-routes/british-share-still-falling"
+      - phrase: care pay sits just above the legal minimum
+        href: "#fact-work-and-study-routes/care-pay-near-the-floor"
+    verification:
+      status: verified
+      textHash: 4407d77684ab
+      checkedAt: 2026-11-20
+  - heading: Every route must be used for its purpose
+    visual:
+      cite: "#fact-work-and-study-routes/visa-holders-two-in-five-claims"
+      kind: series
+      title: Asylum claims by route held before
+    citations:
+      - phrase: In 2025, almost two in five people claiming asylum had held a visa, up from under a third before 2020
+        href: "#fact-work-and-study-routes/visa-holders-two-in-five-claims"
+      - phrase: Claims from people on the graduate visa more than doubled in a year
+        href: "#fact-work-and-study-routes/graduate-claims-doubled"
+    verification:
+      status: verified
+      textHash: a8fd625becb1
+      checkedAt: 2026-11-20
+  - heading: Settlement should follow contribution
+    citations:
+      - phrase: most of the benefits that people on temporary visas cannot claim
+        href: "#fact-settlement-and-migrant-status/settlement-unlocks-benefits"
+      - phrase: Hundreds of thousands would not yet meet the proposed rule that they be in work
+        href: "#fact-settlement-and-migrant-status/hundreds-of-thousands-would-fail"
+      - phrase: a ten-year standard wait would make Britain an outlier among rich countries
+        href: "#fact-settlement-and-migrant-status/ten-year-baseline-outlier"
+    verification:
+      status: verified
+      textHash: d2d0ee09ae11
+      checkedAt: 2026-11-20
+  - heading: So select hard, police each route, and make settlement earned
+    citations:
+      - phrase: The routes for the most talented are a small slice of work visas
+        href: "#fact-work-and-study-routes/talent-routes-are-small"
+    verification:
+      status: verified
+      textHash: 9154fe1e3bae
+      checkedAt: 2026-11-20

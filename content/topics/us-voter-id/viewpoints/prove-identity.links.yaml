@@ -1,0 +1,127 @@
+# The agent's half of this viewpoint: which phrase of the text cites which
+# data, the chart each card shows, and whether each passage has been checked
+# against its evidence. The text itself is in the .md file beside this one.
+# Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
+summary:
+  citations:
+    - phrase: People have voted in other people's names
+      href: "#fact-election-fraud-and-voter-exclusion-history/in-person-ghost-voting"
+    - phrase: state reviews keep finding non-citizens on voter lists
+      href: "#fact-non-citizens-on-voter-rolls/found-on-rolls"
+    - phrase: Where photo ID came in after organised fraud, suspected personation fell
+      href: "#fact-voter-id-rules-in-the-us-and-abroad/ni-personation-fell"
+    - phrase: very few citizens have no photo ID at all
+      href: "#fact-burdens-of-id-and-citizenship-rules/no-id-versus-outdated-id"
+  verification:
+    status: verified
+    textHash: eeda2b6c3525
+    checkedAt: 2026-11-20
+lead:
+  citations: []
+  verification:
+    status: verified
+    textHash: ec2f76c5fa7b
+    checkedAt: 2026-11-20
+cards:
+  - heading: Fraud at the polls has happened, and when it works it leaves no trace
+    visual:
+      cite: "#fact-election-fraud-and-voter-exclusion-history/in-person-ghost-voting"
+      kind: comparison
+      title: Twenty fraud cases by method
+    citations:
+      - phrase: People have voted several times, or in other people's names
+        href: "#fact-election-fraud-and-voter-exclusion-history/in-person-ghost-voting"
+      - phrase: frauds in Kansas City and Chicago led to hundreds of convictions
+        href: "#fact-election-fraud-and-voter-exclusion-history/machine-fraud-real-and-prosecuted"
+      - phrase: modern counts find few cases of voting as someone else at the polls
+        href: "#fact-election-fraud-and-voter-exclusion-history/two-counts-rare"
+      - phrase: said good ID could deter this fraud
+        href: "#fact-election-fraud-and-voter-exclusion-history/carter-baker-id-deters"
+    verification:
+      status: verified
+      textHash: b53b684722c9
+      checkedAt: 2026-11-20
+  - heading: State reviews keep finding non-citizens on voter lists
+    visual:
+      cite: "#fact-non-citizens-on-voter-rolls/found-on-rolls"
+      kind: comparison
+      title: Non-citizens found on voter rolls
+    citations:
+      - phrase: all five state reviews charted found or suspected non-citizens on the voter list
+        href: "#fact-non-citizens-on-voter-rolls/found-on-rolls"
+      - phrase: Ohio referred apparent non-citizens for prosecution in 2019, 2021, 2022 and 2024
+        href: "#fact-non-citizens-on-voter-rolls/ohio-recurs"
+      - phrase: The reviews that give a cause trace non-citizens on the lists to mistakes
+        href: "#fact-non-citizens-on-voter-rolls/how-noncitizens-reach-rolls"
+      - phrase: the federal registration form asks people only to swear that they are citizens
+        href: "#fact-federal-and-state-power-over-voting-rules/federal-form-sworn-citizenship"
+    verification:
+      status: verified
+      textHash: 47a85ca95f7c
+      checkedAt: 2026-11-20
+  - heading: Even a few illegal votes matter when races turn on a handful
+    citations:
+      - phrase: Louisiana's top election official says some local elections are decided by a handful of votes
+        href: "#fact-non-citizens-on-voter-rolls/close-local-races"
+      - phrase: The non-citizen votes found are at most about 22 per million ballots
+        href: "#fact-non-citizens-on-voter-rolls/votes-per-ballots"
+      - phrase: they are far fewer than the margins in recent close races
+        href: "#fact-non-citizens-on-voter-rolls/below-margins"
+      - phrase: The checks rest on government records
+        href: "#fact-non-citizens-on-voter-rolls/checks-rest-on-records"
+    verification:
+      status: verified
+      textHash: 5130e12b2bbe
+      checkedAt: 2026-11-20
+  - heading: Where photo ID came in after organised fraud, suspected fraud fell and turnout held
+    citations:
+      - phrase: Northern Ireland brought in ID after organised voting in other people's names
+        href: "#fact-voter-id-rules-in-the-us-and-abroad/northern-ireland-after-personation"
+      - phrase: Once it required photo ID, suspected personation fell sharply
+        href: "#fact-voter-id-rules-in-the-us-and-abroad/ni-personation-fell"
+      - phrase: there was no evidence of a fall in turnout
+        href: "#fact-voter-id-rules-in-the-us-and-abroad/ni-after-photo-id"
+      - phrase: A national study found strict ID had no effect on fraud, actual or perceived
+        href: "#fact-opinion-and-confidence-in-elections/studies-find-no-effect"
+    verification:
+      status: verified
+      textHash: e5d58d3031be
+      checkedAt: 2026-11-20
+  - heading: Few citizens lack photo ID, and strict ID laws show no clear effect on turnout
+    visual:
+      cite: "#fact-burdens-of-id-and-citizenship-rules/no-id-versus-outdated-id"
+      kind: comparison
+      title: Gaps in adult citizens' ID
+    citations:
+      - phrase: Very few citizens have no photo ID at all; many more just have a licence with an old address
+        href: "#fact-burdens-of-id-and-citizenship-rules/no-id-versus-outdated-id"
+      - phrase: A national study found strict ID laws had no clear effect on registration or turnout
+        href: "#fact-burdens-of-id-and-citizenship-rules/national-panel-no-turnout-effect"
+      - phrase: no extra effect on non-white voters compared with white voters
+        href: "#fact-burdens-of-id-and-citizenship-rules/no-extra-effect-non-white"
+      - phrase: Texas's ID-number rule for mail ballots rejected one in eight in its first primary
+        href: "#fact-burdens-of-id-and-citizenship-rules/texas-march-2022-spike"
+    verification:
+      status: verified
+      textHash: 454fd36b7020
+      checkedAt: 2026-11-20
+  - heading: So states should ask for free photo ID, and check citizenship against records
+    visual:
+      cite: "#fact-opinion-and-confidence-in-elections/photo-id-majorities"
+      kind: series
+      title: Support for photo ID and automatic registration
+    citations:
+      - phrase: large majorities in both parties support photo ID
+        href: "#fact-opinion-and-confidence-in-elections/photo-id-majorities"
+      - phrase: 83% of adults favour proof of citizenship when people first register
+        href: "#fact-opinion-and-confidence-in-elections/proof-of-citizenship-support"
+      - phrase: free to anyone without one, as in Georgia
+        href: "#fact-voter-id-rules-in-the-us-and-abroad/strict-states-exceptions"
+      - phrase: The government says it has checked more than 65 million voters in 26 states against federal records
+        href: "#fact-federal-and-state-power-over-voting-rules/save-whole-rolls"
+      - phrase: Kansas, which asked for papers first, blocked 31,089 applicants without papers, against 39 confirmed non-citizens on its rolls
+        href: "#fact-burdens-of-id-and-citizenship-rules/kansas-blocked-vs-noncitizens"
+    verification:
+      status: verified
+      textHash: e47c05efb387
+      checkedAt: 2026-11-20

@@ -408,9 +408,11 @@ test.describe('a slideshow viewpoint on a phone', () => {
   test('open, a viewpoint runs to the screen\'s edges, its arrow on the title\'s line', async ({ page }) => {
     await page.goto(SLIDES_TOPIC);
     const row = page.locator(SLIDES_VIEWPOINT);
-    const title = await row.locator('.sv-row__title').boundingBox();
+    // The arrow sits on the head's first line: the title's, or an "AI draft" tag's above it, as on a crux.
+    const tag = row.locator('.sv-row__meta');
+    const firstLine = (await tag.count()) > 0 ? await tag.boundingBox() : await row.locator('.sv-row__title').boundingBox();
     const chevron = await row.locator('.sv-row__chevron').boundingBox();
-    expect(Math.abs(chevron!.y + chevron!.height / 2 - (title!.y + 14))).toBeLessThan(16);
+    expect(Math.abs(chevron!.y + chevron!.height / 2 - (firstLine!.y + 14))).toBeLessThan(16);
     await row.locator('.sv-row__toggle').click(headCorner);
     await expect(row).toHaveAttribute('data-open', 'true');
     await expect.poll(async () => (await row.boundingBox())!.width).toBe(390);
