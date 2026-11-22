@@ -1532,6 +1532,10 @@ or unsupported, or it grants a well-supported fact that cuts against them and
 which they cannot honestly deny. Toning down for comfort is not one of the
 permitted reasons.
 
+**The test is a reader with no view.** Reading any one viewpoint, they should
+think it plainly right and backed by data. Reading the next, they should think
+the same, and so learn that every side has a strong case.
+
 **A balanced, inoffensive viewpoint is a failure.** Each must have real
 argumentative force. If every viewpoint on the page sounds equally reasonable
 and equally mild, nothing has been steelmanned; the page has just been
@@ -1808,6 +1812,107 @@ says what is happening and not why it is bad. Use `###` headings only,
 never bold mini-headings or nested levels. The summary should give the central
 reason and direction in one or two natural sentences, rather than compressing
 the evidence inventory.
+
+### Make it read as one argument
+
+A draft can obey every rule above and still read as a list of facts with
+caveats attached. These are the steps that turn such a draft into an argument a
+person would make. Use them when drafting, and when asked to make a viewpoint
+more readable or more persuasive.
+
+**Each section answers the question the last one raised.** Write down, for each
+section, the question a reader has in mind when they reach it: what is
+happening? Why is that bad? Why does it keep happening? Can it be fixed? Has
+that worked anywhere? So what should be done? A section whose question nobody
+would ask at that point is in the wrong place, or does not belong. A question
+with no section is a missing step. The step most often dropped is "why is that
+bad?": "record numbers are arriving" is not a problem until the argument says
+what harm follows.
+
+**The lead gives the reason, not the title again.** Open with the value or the
+plain observation the whole case rests on, in words the holder would use.
+
+> Before: Anyone who enters Britain illegally should not be allowed to stay.
+> Britain should refuse their claims, remove them, and leave European
+> human-rights law if it stands in the way.
+>
+> After: Asylum is for people fleeing danger. It should not be a way to choose
+> which country to live in. Yet a person who reaches Britain by boat and claims
+> asylum can expect to stay, whatever the answer to their claim.
+
+**Open each section with its point in plain words, then give the figures.** The
+first sentence says what the section will show, so the reader knows what each
+number is for.
+
+> Before: Up to 2013, over a quarter of each year's asylum claims ended with
+> the person recorded as returned. Since 2015, under one in seven have.
+>
+> After: An asylum system only works if a refusal means leaving. In Britain it
+> usually does not. Up to 2013, over a quarter of each year's asylum claims
+> ended with the person recorded as returned. Since 2015 it has been under one
+> in seven.
+
+**Close a section by saying what its evidence shows.** One sentence that draws
+the inference, where the reader might not draw it alone: "A system that says no
+when the danger ends can be believed when it says yes." This is not the
+portentous one-liner that [Prose style](#prose-style) bans. The test is whether
+the sentence makes a claim the section's evidence supports and the reader could
+dispute. "The numbers speak for themselves" does not.
+
+**Give scale by comparison.** One comparison does more than three totals:
+"Small boats have brought between 29,000 and 46,000 people a year. In 2022
+alone, Britain gave more than 270,000 people a safe route." Cut a figure that
+repeats a point the section has already made.
+
+**Answer every caveat, or cut it.** A fact that cuts against the case, left
+standing with no reply, reads as the author losing the thread. Give the reply
+in the same sentence
+([Concessions and an independent voice](#concessions-and-an-independent-voice)).
+If the viewpoint has no honest reply, the caveat is a real weakness: say so
+once, in the conclusion, with what would have to be true for the case to hold.
+"The government plans a few hundred places a year. At that scale, 'help them
+there' is only a polite way of saying no."
+
+**Argue for the remedy; do not assume it.** A viewpoint that says a route
+should reopen, or a rule should change, must say why that is right, not only
+that it happened. Then check that each piece of evidence supports this
+viewpoint's own claim and not a neighbouring one. Family reunion visas go to
+the relatives of refugees, who need not be refugees themselves, so they cannot
+carry an argument about how a refugee reaches Britain.
+
+**Tell the causal story the dates allow.** Where the argument says why
+something happened, ask what a thoughtful holder of the view would say caused
+it, then check the order of events in the reports. "Boats rose because Britain
+closed its safe routes" fails if the routes closed after the boats rose. The
+true story is often the stronger one: boats rising with wars abroad also shows
+that the people in them are fleeing real danger.
+
+**Meet the other viewpoints' best points without naming them.** List the two
+or three strongest claims each rival viewpoint makes. For each, the text should
+either grant it and say why the conclusion stands, or give the fact that
+answers it. Against "everyone on a boat has already reached a safe country",
+the reply is "few refugees can reach an island without crossing another country
+first. If each had to stop in the first safe country they reached, Britain
+would protect almost no one." The sentence stands alone; a reader who has seen
+the other viewpoint recognises what it answers. Where there is nothing sourced
+to answer with, stay silent and tell the editor, rather than assert.
+
+**End on the conclusion.** The last section says what to do, deals honestly
+with what makes it hard, and stops on the sentence the holder would want
+remembered. No leftover caveats after it: each belongs in the section it bears
+on.
+
+**Rewrite from the reports, and list what has no data.** A readability pass
+uses the facts the topic's reports already hold; look them up there, and do not
+start new research. Where the argument needs a premise the reports lack, write
+it, keep it modest, and list it for the editor as needing research
+([Research-needed citations](#research-needed-citations)). Say which listed
+premises the argument would fall without.
+
+**Then read it as its reader would.** Read the whole viewpoint aloud, start to
+finish, without the charts. Someone with no view should finish it thinking the
+case is plainly right and rests on data. If they would finish every viewpoint
+on the page thinking that, the page has done its job.
 
 ### Concessions and an independent voice
 
@@ -2369,6 +2474,12 @@ Run this before opening a pull request.
       idea each, everyday words, sources named plainly; no statistics
       inventory or methodological detours.
 - [ ] Exact numbers appear only where necessary to understand the reasoning.
+- [ ] Each section answers the question the one before raised, including
+      "why is that bad?"; each opens with its point; every caveat has a reply;
+      nothing follows the conclusion
+      ([Make it read as one argument](#make-it-read-as-one-argument)).
+- [ ] It meets the strongest points of the other viewpoints, without naming
+      them.
 - [ ] The conclusion follows from the reasons, with a concrete choice or judgment.
 - [ ] The values it applies are stated in its own words, not linked.
 - [ ] Each empirical premise maps to a report Observation backed by credible evidence;
