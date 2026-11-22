@@ -38,6 +38,22 @@ test('the topic page shows its viewpoints and then its cruxes, with no tabs', as
   expect(await precedes(page.locator('.sv-row--viewpoint').last())).toBe(true);
 });
 
+// No viewpoint is put first: they come in a random order, and Shuffle deals them again.
+test('the viewpoints are in random order, and Shuffle reorders them', async ({ page }) => {
+  await page.goto(ASYLUM);
+  const ids = () => page.locator('.sv-row--viewpoint').evaluateAll(rows => rows.map(row => row.id));
+  const before = await ids();
+  expect(before.length).toBeGreaterThan(1);
+  // An open row stays open, wherever it moves to.
+  const row = page.locator(`#${before[0]}`);
+  await row.locator('.sv-row__toggle').click(headCorner);
+  await expect(row).toHaveAttribute('data-open', 'true');
+  await page.getByRole('button', { name: 'Shuffle' }).click();
+  await expect.poll(ids).not.toEqual(before);
+  expect([...(await ids())].sort()).toEqual([...before].sort());
+  await expect(row).toHaveAttribute('data-open', 'true');
+});
+
 test('a crux is plain text: it links to nothing', async ({ page }) => {
   await page.goto(TOPIC);
   const crux = page.locator('.sv-row--crux').first();

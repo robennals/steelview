@@ -322,6 +322,31 @@
     font-style: italic;
   }
 
+  /* Deals the viewpoints in a new random order. Plain small text at the
+     head's right edge, no taller than the head's own labels, so it does not
+     add to the head's height or compete with the rows. */
+  .sv-section__shuffle {
+    margin-left: auto;
+    /* Not flex: a flex box takes its baseline from its first item, the icon,
+       not the text. */
+    display: inline-block;
+    /* Its text shares the title's font, size and line height, and the head
+       lines items up on their baselines, so "Shuffle" sits exactly level
+       with "Viewpoints". */
+    align-self: baseline;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--ink-3);
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    line-height: inherit;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .sv-section__shuffle:hover { color: var(--accent); }
+  .sv-section__shuffle svg { display: inline-block; margin-right: 0.3rem; vertical-align: -0.05em; }
+
   /* ------------------------------------------------------------- statuses */
 
   /* A claim check's verdict is carried by three channels at once: the text
