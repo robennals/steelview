@@ -78,6 +78,8 @@ const moderation = () => text('moderation', { enum: MODERATION_RESULTS }).notNul
 const createdAt = () => timestamp('created_at', { mode: 'date', withTimezone: true }).notNull().defaultNow();
 /** Set by an editor to take something down; a hidden row is never shown. */
 const hiddenAt = () => timestamp('hidden_at', { mode: 'date', withTimezone: true });
+/** When the writer last changed what they wrote. */
+const editedAt = () => timestamp('edited_at', { mode: 'date', withTimezone: true });
 
 /**
  * A reader's suggestion for making a viewpoint stronger, about its whole case
@@ -101,6 +103,7 @@ export const suggestions = pgTable(
     answer: text('answer'),
     moderation: moderation(),
     createdAt: createdAt(),
+    editedAt: editedAt(),
     hiddenAt: hiddenAt(),
   },
   (t) => [index('suggestions_viewpoint_idx').on(t.topicSlug, t.viewpointId)],
@@ -135,6 +138,9 @@ export const cruxComments = pgTable(
     body: text('body').notNull(),
     moderation: moderation(),
     createdAt: createdAt(),
+    editedAt: editedAt(),
+    /** Set when the writer deletes a comment others have replied to: it stays, emptied, so the replies keep their place. */
+    deletedAt: timestamp('deleted_at', { mode: 'date', withTimezone: true }),
     hiddenAt: hiddenAt(),
   },
   (t) => [index('crux_comments_crux_idx').on(t.topicSlug, t.cruxId)],

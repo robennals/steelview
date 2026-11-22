@@ -8,6 +8,10 @@ import {
   addComment,
   addSuggestion,
   addViewpointSuggestion,
+  deleteComment,
+  deleteSuggestion,
+  editComment,
+  editSuggestion,
   readReader,
   readTopicFeedback,
   setBacking,
@@ -133,4 +137,71 @@ test('a suggested viewpoint is stored for editors', async () => {
   const { db, ids: [alice] } = await withReaders(['Alice']);
   const { id } = await addViewpointSuggestion(db, { userId: alice, topicSlug: TOPIC, title: 'A view', steps: 'One\nTwo', holders: null, moderation: 'allowed' });
   assert.match(id, /^[0-9a-f-]{36}$/);
+});
+
+test('a writer can edit their own open suggestion, which then reads as edited and theirs', async () => {
+  const { db, ids: [alice, bob] } = await withReaders(['Alice', 'Bob']);
+  const { id } = await addSuggestion(db, { userId: alice, topicSlug: TOPIC, viewpointId: 'keep-our-word', card: null, body: 'First draft.', moderation: 'allowed' });
+  assert.equal(await editSuggestion(db, { userId: bob, topicSlug: TOPIC, id, body: 'Not mine.', moderation: 'allowed' }), false);
+  assert.equal(await editSuggestion(db, { userId: alice, topicSlug: TOPIC, id, body: 'Second draft.', moderation: 'allowed' }), true);
+
+  const [asAlice] = (await readTopicFeedback(db, TOPIC, alice)).suggestions['keep-our-word'];
+  assert.equal(asAlice.text, 'Second draft.');
+  assert.equal(asAlice.edited, true);
+  assert.equal(asAlice.mine, true);
+  assert.equal((await readTopicFeedback(db, TOPIC, bob)).suggestions['keep-our-word'][0].mine, false);
+});
+
+test('a suggestion an editor has dealt with can be deleted by its writer but not edited', async () => {
+  const { db, ids: [alice] } = await withReaders(['Alice']);
+  const { id } = await addSuggestion(db, { userId: alice, topicSlug: TOPIC, viewpointId: 'keep-our-word', card: null, body: 'x', moderation: 'allowed' });
+  await db.update(suggestions).set({ status: 'incorporated' }).where(eq(suggestions.id, id));
+  assert.equal(await editSuggestion(db, { userId: alice, topicSlug: TOPIC, id, body: 'y', moderation: 'allowed' }), false);
+  assert.equal(await deleteSuggestion(db, { userId: alice, topicSlug: 'uk-asylum', id }), false);
+  assert.equal(await deleteSuggestion(db, { userId: alice, topicSlug: TOPIC, id }), true);
+  assert.deepEqual(await readTopicFeedback(db, TOPIC, alice), { suggestions: {}, discussions: {} });
+});
+
+test('a writer can edit their own comment or reply, and no one else can', async () => {
+  const { db, ids: [alice, bob] } = await withReaders(['Alice', 'Bob']);
+  const comment = await addComment(db, { userId: alice, topicSlug: TOPIC, cruxId: 'growth-or-continuity', parentId: null, body: 'a', moderation: 'allowed' });
+  assert.ok(comment);
+  const reply = await addComment(db, { userId: bob, topicSlug: TOPIC, cruxId: 'growth-or-continuity', parentId: comment.id, body: 'b', moderation: 'allowed' });
+  assert.ok(reply);
+  assert.equal(await editComment(db, { userId: bob, topicSlug: TOPIC, id: comment.id, body: 'hijack', moderation: 'allowed' }), false);
+  assert.equal(await editComment(db, { userId: bob, topicSlug: TOPIC, id: reply.id, body: 'b, rethought', moderation: 'allowed' }), true);
+
+  const [shown] = (await readTopicFeedback(db, TOPIC, bob)).discussions['growth-or-continuity'];
+  assert.equal(shown.text, 'a');
+  assert.equal(shown.mine, false);
+  assert.deepEqual([shown.replies[0].text, shown.replies[0].edited, shown.replies[0].mine], ['b, rethought', true, true]);
+});
+
+test('deleting a comment with replies empties it and keeps the replies; once they go, it goes', async () => {
+  const { db, ids: [alice, bob] } = await withReaders(['Alice', 'Bob']);
+  const comment = await addComment(db, { userId: alice, topicSlug: TOPIC, cruxId: 'growth-or-continuity', parentId: null, body: 'a', moderation: 'allowed' });
+  assert.ok(comment);
+  const reply = await addComment(db, { userId: bob, topicSlug: TOPIC, cruxId: 'growth-or-continuity', parentId: comment.id, body: 'b', moderation: 'allowed' });
+  assert.ok(reply);
+  assert.equal(await deleteComment(db, { userId: bob, topicSlug: TOPIC, id: comment.id }), false);
+  assert.equal(await deleteComment(db, { userId: alice, topicSlug: TOPIC, id: comment.id }), true);
+
+  const [shown] = (await readTopicFeedback(db, TOPIC, alice)).discussions['growth-or-continuity'];
+  assert.deepEqual([shown.deleted, shown.text, shown.author, shown.mine], [true, '', '', false]);
+  assert.equal(shown.replies[0].text, 'b');
+  // No new replies, marks or edits on a deleted comment.
+  assert.equal(await addComment(db, { userId: bob, topicSlug: TOPIC, cruxId: 'growth-or-continuity', parentId: comment.id, body: 'c', moderation: 'allowed' }), null);
+  assert.equal(await setUseful(db, { userId: bob, topicSlug: TOPIC, commentId: comment.id, useful: true }), false);
+  assert.equal(await editComment(db, { userId: alice, topicSlug: TOPIC, id: comment.id, body: 'back', moderation: 'allowed' }), false);
+
+  assert.equal(await deleteComment(db, { userId: bob, topicSlug: TOPIC, id: reply.id }), true);
+  assert.deepEqual(await readTopicFeedback(db, TOPIC, alice), { suggestions: {}, discussions: {} });
+});
+
+test('deleting a comment with no replies removes it', async () => {
+  const { db, ids: [alice] } = await withReaders(['Alice']);
+  const comment = await addComment(db, { userId: alice, topicSlug: TOPIC, cruxId: 'growth-or-continuity', parentId: null, body: 'a', moderation: 'allowed' });
+  assert.ok(comment);
+  assert.equal(await deleteComment(db, { userId: alice, topicSlug: TOPIC, id: comment.id }), true);
+  assert.equal((await db.select().from(cruxComments)).length, 0);
 });

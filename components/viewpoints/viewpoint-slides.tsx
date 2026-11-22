@@ -5,11 +5,12 @@ import { ExplorableChart, ExploreLink } from '@/components/topic/explore-panels'
 import { Prose } from '@/components/topic/prose';
 import { rowCharts } from '@/lib/content/row-charts';
 import { LazyChart, LazyCharts } from '@/components/topic/lazy-charts';
-import { RowThumb, TopicAccordion, TopicRow } from '@/components/home/topic-accordion';
+import { RowThumb, TopicRow } from '@/components/home/topic-accordion';
 import { ChartThumb } from '@/components/topic/chart-thumb';
 import { ThumbStrip } from '@/components/topic/thumb-strip';
 import { SuggestionsSlide, SUGGESTIONS_HEADING } from '@/components/feedback/suggestions';
 import { SuggestViewpoint } from '@/components/feedback/suggest-viewpoint';
+import { ShuffledViewpoints } from './shuffled-viewpoints';
 import { Slideshow } from './slideshow';
 import { SourcePopups } from './source-popups';
 
@@ -55,8 +56,9 @@ type ViewpointSlidesProps = {
 };
 
 /**
- * The viewpoints as rows, none open at first. Closed, a row previews the graphs
- * its argument is made with, each opening the row at its card. Open, it is a
+ * The viewpoints as rows under their heading, in a random order the reader
+ * can shuffle again (`ShuffledViewpoints`), none open at first. Closed, a row
+ * previews the graphs its argument is made with, each opening the row at its card. Open, it is a
  * slideshow: one card per step of the argument, made with a graph or quotes where the
  * step has one. A card's graph opens in full over the page, and a claim's
  * footnote marker opens its sources' own words. After the last card, a slide
@@ -67,7 +69,7 @@ export function ViewpointSlides({ slug, viewpoints, walkthroughs, sources }: Vie
   return (
     <>
       <SourcePopups sources={sources} />
-      <TopicAccordion initial="">
+      <ShuffledViewpoints>
         {viewpoints.map(viewpoint => {
           const { steps } = walkthroughs.get(viewpoint.id) ?? { steps: [] };
           const graphs = steps.flatMap((step, card) => (step.cardVisual ? [{ step, chart: step.cardVisual.chart, picked: step.cardVisual.picked, card }] : []));
@@ -102,7 +104,7 @@ export function ViewpointSlides({ slug, viewpoints, walkthroughs, sources }: Vie
               }
             >
               <LazyCharts load={rowCharts.bind(null, slug, 'viewpoint', viewpoint.id)}>
-                <Slideshow name={viewpoint.name} headings={steps.map(step => step.heading)} final={{
+                <Slideshow name={viewpoint.name} headings={steps.map(step => step.heading)} afterword={{
                   heading: SUGGESTIONS_HEADING,
                   slide: <SuggestionsSlide viewpointId={viewpoint.id} shortName={viewpoint.shortName} headings={steps.map(step => step.heading)} />,
                 }}>
@@ -112,7 +114,7 @@ export function ViewpointSlides({ slug, viewpoints, walkthroughs, sources }: Vie
             </TopicRow>
           );
         })}
-      </TopicAccordion>
+      </ShuffledViewpoints>
       <SuggestViewpoint />
     </>
   );

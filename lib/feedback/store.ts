@@ -53,6 +53,8 @@ export async function readTopicFeedback(db: DB, topicSlug: string, readerId: str
       date: s.createdAt.toISOString(),
       backers: backers.length,
       backed: backers.some(b => b.userId === readerId),
+      mine: s.userId === readerId,
+      edited: s.editedAt !== null,
       status: s.status,
       ...(s.answer ? { answer: s.answer } : {}),
     };
@@ -63,20 +65,37 @@ export async function readTopicFeedback(db: DB, topicSlug: string, readerId: str
   const comments = new Map<string, CruxComment>();
   for (const { comment: c, author } of commentRows.filter(r => r.comment.parentId === null)) {
     const useful = usefulRows.filter(u => u.commentId === c.id);
+    const deleted = c.deletedAt !== null;
     const shown: CruxComment = {
       id: c.id,
-      author: author ?? NAMELESS,
+      author: deleted ? '' : author ?? NAMELESS,
       date: c.createdAt.toISOString(),
-      text: c.body,
+      text: deleted ? '' : c.body,
       useful: useful.length,
       markedUseful: useful.some(u => u.userId === readerId),
+      mine: !deleted && c.userId === readerId,
+      edited: c.editedAt !== null,
+      deleted,
       replies: [],
     };
     comments.set(c.id, shown);
     (feedback.discussions[c.cruxId] ??= []).push(shown);
   }
   for (const { comment: c, author } of commentRows.filter(r => r.comment.parentId !== null).sort((a, b) => a.comment.createdAt.getTime() - b.comment.createdAt.getTime())) {
-    comments.get(c.parentId ?? '')?.replies.push({ id: c.id, author: author ?? NAMELESS, date: c.createdAt.toISOString(), text: c.body });
+    comments.get(c.parentId ?? '')?.replies.push({
+      id: c.id,
+      author: author ?? NAMELESS,
+      date: c.createdAt.toISOString(),
+      text: c.body,
+      mine: c.userId === readerId,
+      edited: c.editedAt !== null,
+    });
+  }
+  // A deleted comment stays only while replies need it.
+  for (const [cruxId, discussion] of Object.entries(feedback.discussions)) {
+    const kept = discussion.filter(c => !c.deleted || c.replies.length > 0);
+    if (kept.length > 0) feedback.discussions[cruxId] = kept;
+    else delete feedback.discussions[cruxId];
   }
   return feedback;
 }
@@ -154,6 +173,7 @@ export async function addComment(db: DB, input: NewComment): Promise<{ id: strin
         eq(cruxComments.cruxId, input.cruxId),
         isNull(cruxComments.parentId),
         isNull(cruxComments.hiddenAt),
+        isNull(cruxComments.deletedAt),
       ))
       .limit(1);
     if (!parent) return null;
@@ -165,7 +185,7 @@ export async function addComment(db: DB, input: NewComment): Promise<{ id: strin
 /** Marks a comment useful, or unmarks it. Only a visible comment on this topic counts; false if there is none. */
 export async function setUseful(db: DB, input: { userId: string; topicSlug: string; commentId: string; useful: boolean }): Promise<boolean> {
   const [target] = await db.select({ id: cruxComments.id }).from(cruxComments)
-    .where(and(eq(cruxComments.id, input.commentId), eq(cruxComments.topicSlug, input.topicSlug), isNull(cruxComments.hiddenAt)))
+    .where(and(eq(cruxComments.id, input.commentId), eq(cruxComments.topicSlug, input.topicSlug), isNull(cruxComments.hiddenAt), isNull(cruxComments.deletedAt)))
     .limit(1);
   if (!target) return false;
   const mine = and(eq(commentUseful.commentId, target.id), eq(commentUseful.userId, input.userId));
@@ -179,4 +199,65 @@ export type NewViewpointSuggestion = { userId: string; topicSlug: string; title:
 export async function addViewpointSuggestion(db: DB, input: NewViewpointSuggestion): Promise<{ id: string }> {
   const [row] = await db.insert(viewpointSuggestions).values(input).returning({ id: viewpointSuggestions.id });
   return row;
+}
+
+/** Which of a reader's own posts a write is about. */
+type OwnPost = { userId: string; topicSlug: string; id: string };
+
+/**
+ * The reader's own suggestion, while they may still change it: it is open
+ * and visible. Null if there is no such suggestion of theirs.
+ */
+export async function ownOpenSuggestion(db: DB, own: OwnPost): Promise<{ viewpointId: string; cardHeading: string | null } | null> {
+  const [row] = await db.select({ viewpointId: suggestions.viewpointId, cardHeading: suggestions.cardHeading }).from(suggestions)
+    .where(and(eq(suggestions.id, own.id), eq(suggestions.userId, own.userId), eq(suggestions.topicSlug, own.topicSlug), eq(suggestions.status, 'open'), isNull(suggestions.hiddenAt)))
+    .limit(1);
+  return row ?? null;
+}
+
+/** Rewrites the reader's own open suggestion. False if there is none they may change. */
+export async function editSuggestion(db: DB, own: OwnPost & { body: string; moderation: ModerationResult }): Promise<boolean> {
+  const rows = await db.update(suggestions).set({ body: own.body, moderation: own.moderation, editedAt: new Date() })
+    .where(and(eq(suggestions.id, own.id), eq(suggestions.userId, own.userId), eq(suggestions.topicSlug, own.topicSlug), eq(suggestions.status, 'open'), isNull(suggestions.hiddenAt)))
+    .returning({ id: suggestions.id });
+  return rows.length > 0;
+}
+
+/** Deletes the reader's own suggestion, whatever became of it, and its backings with it. False if there is none of theirs. */
+export async function deleteSuggestion(db: DB, own: OwnPost): Promise<boolean> {
+  const rows = await db.delete(suggestions)
+    .where(and(eq(suggestions.id, own.id), eq(suggestions.userId, own.userId), eq(suggestions.topicSlug, own.topicSlug)))
+    .returning({ id: suggestions.id });
+  return rows.length > 0;
+}
+
+/** The reader's own comment or reply, while it is visible and not deleted. Null if there is no such post of theirs. */
+export async function ownLiveComment(db: DB, own: OwnPost): Promise<{ cruxId: string; parentId: string | null } | null> {
+  const [row] = await db.select({ cruxId: cruxComments.cruxId, parentId: cruxComments.parentId }).from(cruxComments)
+    .where(and(eq(cruxComments.id, own.id), eq(cruxComments.userId, own.userId), eq(cruxComments.topicSlug, own.topicSlug), isNull(cruxComments.hiddenAt), isNull(cruxComments.deletedAt)))
+    .limit(1);
+  return row ?? null;
+}
+
+/** Rewrites the reader's own comment or reply. False if there is none they may change. */
+export async function editComment(db: DB, own: OwnPost & { body: string; moderation: ModerationResult }): Promise<boolean> {
+  const rows = await db.update(cruxComments).set({ body: own.body, moderation: own.moderation, editedAt: new Date() })
+    .where(and(eq(cruxComments.id, own.id), eq(cruxComments.userId, own.userId), eq(cruxComments.topicSlug, own.topicSlug), isNull(cruxComments.hiddenAt), isNull(cruxComments.deletedAt)))
+    .returning({ id: cruxComments.id });
+  return rows.length > 0;
+}
+
+/**
+ * Deletes the reader's own comment or reply. A comment others have replied
+ * to is emptied and marked deleted instead, so their replies keep their
+ * place. False if there is no such post of theirs.
+ */
+export async function deleteComment(db: DB, own: OwnPost): Promise<boolean> {
+  const mine = and(eq(cruxComments.id, own.id), eq(cruxComments.userId, own.userId), eq(cruxComments.topicSlug, own.topicSlug), isNull(cruxComments.deletedAt));
+  const [target] = await db.select({ id: cruxComments.id }).from(cruxComments).where(mine).limit(1);
+  if (!target) return false;
+  const [reply] = await db.select({ id: cruxComments.id }).from(cruxComments).where(eq(cruxComments.parentId, target.id)).limit(1);
+  if (reply) await db.update(cruxComments).set({ body: '', deletedAt: new Date() }).where(mine);
+  else await db.delete(cruxComments).where(mine);
+  return true;
 }

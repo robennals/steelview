@@ -2,9 +2,48 @@
    a crux, and suggesting a viewpoint. Kept quiet, in the page's own type and
    rules: it sits after the content, never on it. */
 @layer components {
-  /* The speech bubble that stands in for a number in the outline and dots. */
-  .sv-comment-glyph { width: 0.8em; height: 0.8em; overflow: visible; }
-  .sv-deck__points .sv-comment-glyph { width: 0.95rem; height: 0.95rem; }
+  .sv-comment-glyph { flex: none; width: 0.95rem; height: 0.95rem; overflow: visible; }
+
+  /* ------------------------------------------------------- the afterword */
+
+  /* Readers' words are not a point of the argument, so a rule cuts them off
+     from the points. The rule does that work: past it everything is quieter
+     than a point, with no circle, fill or accent, even when current. */
+  .sv-deck__outline .sv-deck__apart { margin-top: 0.5rem; padding-top: 0.35rem; border-top: 1px solid var(--rule); }
+  .sv-deck__points .sv-deck__apart { flex: none; margin-left: 0.6rem; padding-left: 0.3rem; border-left: 1px solid var(--rule); }
+
+  .sv-deck__afterword {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    width: 100%;
+    padding: 0.5rem 0.4rem;
+    border: 0;
+    background: none;
+    font: 400 0.82rem/1.35 var(--font-sans);
+    text-align: left;
+    color: var(--ink-4);
+    cursor: pointer;
+  }
+  /* As wide as a point's circle, so the label lines up with theirs. */
+  .sv-deck__outline .sv-deck__afterword .sv-comment-glyph { width: 1.35rem; height: 0.85rem; }
+  .sv-deck__points .sv-deck__afterword { justify-content: center; width: 2.1rem; height: 2.1rem; padding: 0; }
+  .sv-deck__afterword:disabled { cursor: default; }
+  .sv-deck__afterword:hover, .sv-deck__afterword[aria-current] { color: var(--ink); }
+  .sv-deck__afterword:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* The strip lands up to a pixel off on its last slide, which would clip the preview's border. */
+  .sv-feedback { flex: 1; min-width: 0; padding-inline: 1px; }
+
+  .sv-feedback__heading {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin: 0;
+    font: 500 0.875rem/1.35 var(--font-sans);
+    color: var(--ink-3);
+  }
+  .sv-feedback__disclaimer { margin: 0.15rem 0 0.75rem; font: 0.8rem/1.4 var(--font-sans); color: var(--ink-4); }
 
   /* ------------------------------------------------------------- previews */
 
@@ -272,8 +311,8 @@
   .sv-postgate { margin-top: 0.6rem; }
   .sv-postgate__name label { display: block; margin: 0 0 0.3rem; font-family: var(--font-sans); font-size: 0.82rem; font-weight: 600; color: var(--ink); }
   .sv-postgate__who { min-width: 0; font-family: var(--font-sans); font-size: 0.78rem; color: var(--ink-4); }
-  .sv-postgate__signout { padding: 0; border: 0; background: none; font: inherit; color: var(--ink-3); text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
-  .sv-postgate__signout:hover { color: var(--accent); }
+  .sv-postgate__link { padding: 0; border: 0; background: none; font: inherit; color: var(--ink-3); text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
+  .sv-postgate__link:hover { color: var(--accent); }
 
   .sv-signin {
     margin-top: 0.75rem;
@@ -302,4 +341,13 @@
   .sv-signin__error { margin: 0.5rem 0 0; font-family: var(--font-sans); font-size: 0.8rem; color: var(--accent); }
 
   .sv-feedback__empty--loading { color: var(--ink-4); }
+
+  /* --------------------------------------------- changing your own posts */
+
+  .sv-own-post__actions { display: flex; align-items: baseline; gap: 0.75rem; margin: 0.35rem 0 0; font-family: var(--font-sans); font-size: 0.75rem; color: var(--ink-3); }
+  .sv-own-post__action { padding: 0; border: 0; background: none; font: inherit; color: var(--ink-3); text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
+  .sv-own-post__action:hover { color: var(--accent); }
+  .sv-own-post__action--danger { color: var(--accent); font-weight: 600; }
+  .sv-own-post__edit { margin: 0.25rem 0 0; }
+  .sv-comment__text--deleted { font-style: italic; color: var(--ink-4); }
 }

@@ -64,9 +64,6 @@ export function TopicSections({ topic, walkthroughs, featured, sources = {} }: {
 
       {topic.viewpoints.length > 0 && (
         <section className="sv-section">
-          <div className="sv-section__head">
-            <h2 className="sv-section__title">Viewpoints</h2>
-          </div>
           <ViewpointSlides slug={topic.slug} viewpoints={topic.viewpoints} walkthroughs={walkthroughs} sources={sources} />
         </section>
       )}
