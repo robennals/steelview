@@ -6,48 +6,44 @@
 
   /* ------------------------------------------------------- the afterword */
 
-  /* Readers' words are not a point of the argument, so nothing here looks
-     like one: no circle, no accent when current, no display heading. A rule
-     cuts it off from the points and it sits on sunk paper, set as a label. */
-  .sv-deck__outline .sv-deck__apart { margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--rule-strong); }
-  .sv-deck__points .sv-deck__apart { flex: none; margin-left: 0.6rem; padding-left: 0.6rem; border-left: 1px solid var(--rule-strong); }
+  /* Readers' words are not a point of the argument, so a rule cuts them off
+     from the points. The rule does that work: past it everything is quieter
+     than a point, with no circle, fill or accent, even when current. */
+  .sv-deck__outline .sv-deck__apart { margin-top: 0.5rem; padding-top: 0.35rem; border-top: 1px solid var(--rule); }
+  .sv-deck__points .sv-deck__apart { flex: none; margin-left: 0.6rem; padding-left: 0.3rem; border-left: 1px solid var(--rule); }
 
   .sv-deck__afterword {
     display: flex;
     align-items: center;
     gap: 0.6rem;
     width: 100%;
-    padding: 0.6rem 0.65rem;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    background: var(--paper-sunk);
-    font: 600 0.6875rem/1.35 var(--font-sans);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+    padding: 0.5rem 0.4rem;
+    border: 0;
+    background: none;
+    font: 400 0.82rem/1.35 var(--font-sans);
     text-align: left;
-    color: var(--ink-3);
+    color: var(--ink-4);
     cursor: pointer;
   }
-  .sv-deck__points .sv-deck__afterword { justify-content: center; width: 2.4rem; height: 2.1rem; padding: 0; }
+  /* As wide as a point's circle, so the label lines up with theirs. */
+  .sv-deck__outline .sv-deck__afterword .sv-comment-glyph { width: 1.35rem; height: 0.85rem; }
+  .sv-deck__points .sv-deck__afterword { justify-content: center; width: 2.1rem; height: 2.1rem; padding: 0; }
   .sv-deck__afterword:disabled { cursor: default; }
-  .sv-deck__afterword:hover { color: var(--ink); }
-  .sv-deck__afterword[aria-current] { border-color: var(--ink-3); color: var(--ink); }
+  .sv-deck__afterword:hover, .sv-deck__afterword[aria-current] { color: var(--ink); }
   .sv-deck__afterword:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-  .sv-feedback { flex: 1; min-width: 0; padding: 1rem; border-radius: 4px; background: var(--paper-sunk); }
-  .sv-feedback .sv-feedback__preview { background: var(--paper); }
+  /* The strip lands up to a pixel off on its last slide, which would clip the preview's border. */
+  .sv-feedback { flex: 1; min-width: 0; padding-inline: 1px; }
 
   .sv-feedback__heading {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.45rem;
     margin: 0;
-    font: 600 0.75rem/1.35 var(--font-sans);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-2);
+    font: 500 0.875rem/1.35 var(--font-sans);
+    color: var(--ink-3);
   }
-  .sv-feedback__disclaimer { margin: 0.2rem 0 0.8rem; font: 0.8rem/1.4 var(--font-sans); color: var(--ink-3); }
+  .sv-feedback__disclaimer { margin: 0.15rem 0 0.75rem; font: 0.8rem/1.4 var(--font-sans); color: var(--ink-4); }
 
   /* ------------------------------------------------------------- previews */
 
