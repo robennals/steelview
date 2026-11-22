@@ -520,10 +520,10 @@ test('a slideshow viewpoint on a wide screen lists its points down the left, a p
   await expect(outline).toBeVisible();
   // With the list showing, the numbered circles would only repeat it.
   await expect(page.locator(`${SLIDES_VIEWPOINT} .sv-deck__points`)).toBeHidden();
-  // One card per step of the argument, the last its conclusion, then readers' suggestions.
-  await expect(outline.locator('li')).toHaveCount(8);
-  await expect(outline.locator('li').nth(6)).toContainText('So Britain should open capped safe routes, decide claims fairly, and let people work');
-  await expect(outline.locator('li').last()).toHaveText('Readers’ suggestions');
+  // One card per step of the argument, the last its conclusion. Readers' suggestions are outside that list.
+  await expect(outline.locator('li')).toHaveCount(7);
+  await expect(outline.locator('li').last()).toContainText('So Britain should open capped safe routes, decide claims fairly, and let people work');
+  await expect(outline.locator('.sv-deck__afterword')).toHaveText('Readers’ suggestions');
   const deterrence = outline.getByRole('button', { name: /deterrent that sent no asylum seekers/ });
   await deterrence.click();
   await expect(deterrence).toHaveAttribute('aria-current', 'step');
@@ -541,9 +541,20 @@ test('a viewpoint ends with a slide for suggestions, which opens the box to make
   await page.setViewportSize({ width: 1400, height: 900 });
   await page.goto(TOPIC);
   const row = await openViewpoint(page, 'keep-our-word');
+  // The argument ends at its conclusion: the count stops there, and the way on says it leads out.
+  const points = await row.locator('.sv-deck__outline-item').count();
   await row.locator('.sv-deck__outline-item').last().click();
+  await expect(row.locator('.sv-deck__count')).toHaveText(`${points} / ${points}`);
+  await expect(row.locator('.sv-deck__next')).toHaveText('Suggestions ›');
+  await row.locator('.sv-deck__next').click();
   const slide = row.locator('.sv-feedback');
   await expect(slide).toBeInViewport();
+  // Past it, no point is current and nothing is counted.
+  await expect(row.locator('.sv-deck__outline-item[aria-current]')).toHaveCount(0);
+  await expect(row.locator('.sv-deck__outline .sv-deck__afterword')).toHaveAttribute('aria-current', 'true');
+  await expect(row.locator('.sv-deck__count')).toBeEmpty();
+  await expect(slide).toContainText('Not part of the argument.');
+  await expect(slide.locator('.sv-deck__heading')).toHaveCount(0);
   await expect(slide).toContainText('Readers’ suggestions');
   await expect(slide).toContainText('No one has suggested anything yet. Be the first to make this argument stronger.');
   await expect(slide.locator('textarea')).toHaveCount(0);

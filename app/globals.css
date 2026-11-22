@@ -1870,7 +1870,8 @@
 
   /* Only on a wide screen are the slides listed down the left; the numbered
      circles stand in for the list on narrower screens. */
-  .sv-deck__outline { display: none; margin: 0; padding: 0; list-style: none; }
+  .sv-deck__outline { display: none; }
+  .sv-deck__outline ol { margin: 0; padding: 0; list-style: none; }
 
   @media (width > 64rem) {
     .sv-deck { grid-template-columns: minmax(14rem, 1fr) minmax(0, 2.6fr); gap: 2rem; align-items: start; }
@@ -1918,11 +1919,12 @@
   /* A numbered circle per point: the one showing is filled, the ones read are
      ringed in the accent, and each is a button to its point. Circles, like
      the outline's, so they read as places to go, not a gauge. */
-  .sv-deck__points { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0 1rem; padding: 0; list-style: none; }
+  .sv-deck__points { display: flex; align-items: flex-start; margin: 0 0 1rem; }
+  .sv-deck__points ol { display: flex; flex-wrap: wrap; gap: 0.4rem; min-width: 0; margin: 0; padding: 0; list-style: none; }
   /* Where the outline shows, it already marks the point showing and goes to any point. */
   @media (width > 64rem) { .sv-deck__points { display: none; } }
 
-  .sv-deck__points button {
+  .sv-deck__points li button {
     display: grid;
     place-items: center;
     width: 2.1rem;
@@ -1938,9 +1940,9 @@
     transition: background-color 0.2s, border-color 0.2s, color 0.2s;
   }
 
-  .sv-deck__points button[data-seen] { border-color: var(--accent); color: var(--accent); }
-  .sv-deck__points button[aria-current] { border-color: var(--accent); background: var(--accent); color: var(--paper); }
-  .sv-deck__points button:hover:not([aria-current]) { border-color: var(--ink); color: var(--ink); }
+  .sv-deck__points li button[data-seen] { border-color: var(--accent); color: var(--accent); }
+  .sv-deck__points li button[aria-current] { border-color: var(--accent); background: var(--accent); color: var(--paper); }
+  .sv-deck__points li button:hover:not([aria-current]) { border-color: var(--ink); color: var(--ink); }
   .sv-deck__points button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
   /* A card is as tall as its point, its line and its graph. The strip follows
@@ -2015,6 +2017,9 @@
   .sv-deck__next:hover:not(:disabled) { background: var(--accent); border-color: var(--accent); }
   .sv-deck__back:disabled { opacity: 0; pointer-events: none; }
   .sv-deck__next:disabled { background: var(--paper-sunk); border-color: var(--paper-sunk); color: var(--ink-4); cursor: default; }
+  .sv-deck__next[data-leaves-argument] { border-color: var(--rule-strong); background: var(--paper); color: var(--ink-3); }
+  .sv-deck__next[data-leaves-argument]:hover:not(:disabled) { border-color: var(--ink); background: var(--paper); color: var(--ink); }
+  .sv-deck__next[data-leaves-argument]:disabled { visibility: hidden; }
 
   @media (max-width: 47.5rem) {
     .sv-deck { padding-inline: 1rem; }

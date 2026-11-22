@@ -38,7 +38,9 @@ Block a post only if it:
 - is sexual content; or
 - has nothing to do with the topic.
 
-Never block a post for being wrong, one-sided, strongly worded, uncomfortable, or for disagreeing with anyone. Criticising public figures, governments and groups' ideas is allowed. When unsure, allow it.
+Never block a post for being wrong, one-sided, strongly worded, uncomfortable, or for disagreeing with anyone. Criticising public figures, governments and groups' ideas is allowed.
+
+You are not judging quality. Never block a post for being short, terse, a fragment, vague, badly argued or unhelpful: a few words suggesting a change to an argument are fine. When unsure, allow it.
 
 If you block it, give the reason in one plain sentence addressed to the writer, saying what to change.`;
 

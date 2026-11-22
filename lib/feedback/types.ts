@@ -15,12 +15,24 @@ export type Suggestion = {
   backers: number;
   /** Whether the reader looking at it has backed it. */
   backed: boolean;
+  /** Whether the reader looking at it wrote it, and so may edit or delete it. */
+  mine: boolean;
+  /** Whether its writer has changed it since posting. */
+  edited: boolean;
   status: SuggestionStatus;
   /** The editor's reply, for an answered suggestion. */
   answer?: string;
 };
 
-export type CruxReply = { id: string; author: string; date: string; text: string };
+export type CruxReply = {
+  id: string;
+  author: string;
+  date: string;
+  text: string;
+  /** Whether the reader looking at it wrote it. */
+  mine: boolean;
+  edited: boolean;
+};
 
 /** A comment in a crux's discussion, as the page shows it. Replies go one level deep. */
 export type CruxComment = {
@@ -32,6 +44,11 @@ export type CruxComment = {
   useful: number;
   /** Whether the reader looking at it marked it useful. */
   markedUseful: boolean;
+  /** Whether the reader looking at it wrote it. */
+  mine: boolean;
+  edited: boolean;
+  /** Deleted by its writer, kept only so its replies keep their place: it has no author or text. */
+  deleted: boolean;
   replies: CruxReply[];
 };
 

@@ -1,0 +1,3 @@
+ALTER TABLE "crux_comments" ADD COLUMN "edited_at" timestamp with time zone;--> statement-breakpoint
+ALTER TABLE "crux_comments" ADD COLUMN "deleted_at" timestamp with time zone;--> statement-breakpoint
+ALTER TABLE "suggestions" ADD COLUMN "edited_at" timestamp with time zone;

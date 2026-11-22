@@ -6,6 +6,7 @@ import { InfoSheet } from '@/components/topic/info-sheet';
 import { useFeedback } from './feedback-context';
 import { count, shortDate } from './format';
 import { inOpeningOrder } from './order';
+import { OwnPost } from './own-post';
 import { PostGate, useDraft } from './post-gate';
 
 /** How many comments the preview shows. */
@@ -40,8 +41,8 @@ export function CruxDiscussion({ cruxId, title }: CruxDiscussionProps) {
   const comments = useComments(cruxId);
   const [trigger, setTrigger] = useState<HTMLElement | null>(null);
   const close = useCallback(() => setTrigger(null), []);
-  const top = ranked(comments ?? []).slice(0, PREVIEW);
-  const total = (comments ?? []).reduce((n, c) => n + 1 + c.replies.length, 0);
+  const top = ranked((comments ?? []).filter(c => !c.deleted)).slice(0, PREVIEW);
+  const total = (comments ?? []).reduce((n, c) => n + (c.deleted ? 0 : 1) + c.replies.length, 0);
 
   const show = (event: MouseEvent<HTMLElement>) => {
     setTrigger(event.currentTarget.closest<HTMLElement>('.sv-discussion')?.querySelector<HTMLElement>('.sv-feedback__more') ?? null);
@@ -66,13 +67,16 @@ export function CruxDiscussion({ cruxId, title }: CruxDiscussionProps) {
               </li>
             ))}
           </ul>
+        ) : total > 0 ? (
+          // Only replies are left, under a comment its writer deleted.
+          <p className="sv-feedback__empty">{count(total, 'reply', 'replies')} to a deleted comment.</p>
         ) : (
           <p className="sv-feedback__empty">No one has commented yet. {PROMPT}</p>
         )}
       </div>
       <div className="sv-feedback__foot">
         <button type="button" className="sv-feedback__more" onClick={show}>
-          {top.length > 0 ? 'Join the discussion' : 'Start the discussion'} <span aria-hidden="true">→</span>
+          {total > 0 ? 'Join the discussion' : 'Start the discussion'} <span aria-hidden="true">→</span>
         </button>
       </div>
       {trigger && <DiscussionSheet cruxId={cruxId} title={title} trigger={trigger} onClose={close} />}
@@ -120,20 +124,34 @@ function DiscussionSheet({ cruxId, title, trigger, onClose }: DiscussionSheetPro
           <ul className="sv-feedback__list">
             {shown.map(c => (
               <li key={c.id} className="sv-comment">
-                <p className="sv-comment__by"><b>{c.author}</b> · {shortDate(c.date)}</p>
-                <p className="sv-comment__text">{c.text}</p>
-                <p className="sv-comment__foot">
+                {c.deleted ? (
+                  <p className="sv-comment__text sv-comment__text--deleted">Deleted by its writer.</p>
+                ) : (
+                  <>
+                    <p className="sv-comment__by"><b>{c.mine ? 'You' : c.author}</b> · {shortDate(c.date)}{c.edited && ' · edited'}</p>
+                    {c.mine ? (
+                      <OwnPost path={`comments/${c.id}`} text={c.text} editable>
+                        <p className="sv-comment__text">{c.text}</p>
+                      </OwnPost>
+                    ) : <p className="sv-comment__text">{c.text}</p>}
+                  </>
+                )}
+                {!c.deleted && <p className="sv-comment__foot">
                   {signedIn ? (
                     <button type="button" className="sv-back" aria-pressed={c.markedUseful} onClick={() => write(c.markedUseful ? 'DELETE' : 'PUT', `comments/${c.id}/useful`)}>Useful · {c.useful}</button>
                   ) : <span>Useful · {c.useful}</span>}
                   <button type="button" className="sv-back" aria-expanded={replyingTo === c.id} onClick={() => setReplyingTo(replyingTo === c.id ? null : c.id)}>Reply</button>
-                </p>
+                </p>}
                 {(c.replies.length > 0 || replyingTo === c.id) && (
                   <ul className="sv-comment__replies">
                     {c.replies.map(r => (
                       <li key={r.id} className="sv-comment">
-                        <p className="sv-comment__by"><b>{r.author}</b> · {shortDate(r.date)}</p>
-                        <p className="sv-comment__text">{r.text}</p>
+                        <p className="sv-comment__by"><b>{r.mine ? 'You' : r.author}</b> · {shortDate(r.date)}{r.edited && ' · edited'}</p>
+                        {r.mine ? (
+                          <OwnPost path={`comments/${r.id}`} text={r.text} editable>
+                            <p className="sv-comment__text">{r.text}</p>
+                          </OwnPost>
+                        ) : <p className="sv-comment__text">{r.text}</p>}
                       </li>
                     ))}
                     {replyingTo === c.id && <li><ReplyBox cruxId={cruxId} comment={c} onPosted={() => setReplyingTo(null)} /></li>}

@@ -60,6 +60,11 @@ with the topic — never disagreement. A blocked post is not stored, and its
 writer sees why. If the check cannot run, the post goes up with `moderation`
 set to `unchecked`, so an editor can find it.
 
+Readers can sign in from any feedback view without writing first, and edit or
+delete what they wrote. An edit is checked again and marked edited; a suggestion
+can be edited only while it is open. A deleted comment that others have replied
+to stays as "Deleted by its writer", so the replies keep their place.
+
 There is no editor interface yet. An editor marks a suggestion
 `incorporated` or `answered` (with an `answer`), or hides a suggestion or
 comment by setting its `hidden_at`, directly in the database.

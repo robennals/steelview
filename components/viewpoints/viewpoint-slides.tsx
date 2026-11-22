@@ -104,7 +104,7 @@ export function ViewpointSlides({ slug, viewpoints, walkthroughs, sources }: Vie
               }
             >
               <LazyCharts load={rowCharts.bind(null, slug, 'viewpoint', viewpoint.id)}>
-                <Slideshow name={viewpoint.name} headings={steps.map(step => step.heading)} final={{
+                <Slideshow name={viewpoint.name} headings={steps.map(step => step.heading)} afterword={{
                   heading: SUGGESTIONS_HEADING,
                   slide: <SuggestionsSlide viewpointId={viewpoint.id} shortName={viewpoint.shortName} headings={steps.map(step => step.heading)} />,
                 }}>
