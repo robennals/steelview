@@ -1,28 +1,29 @@
 ---
 name: Iran's government kills its own people, and America should stand with Iranians while they bring it down
-shortName: "Stand with Iranians"
-summary: "Iran's government [killed thousands of protesters in the crackdown of winter 2025–26](#fact-iran-government-and-its-people/january-2026-crackdown-toll) and [put more people to death in 2025 than in any year since 1989](#fact-iran-government-and-its-people/executions-most-since-1989). [Few Iranians in one online survey want it](#fact-iran-government-and-its-people/few-prefer-islamic-republic). Iranians must end it themselves, and the US should stand with them."
+shortName: Stand with Iranians
+summary: Iran's government killed thousands of protesters in the crackdown of winter 2025–26 and put more people to death in 2025 than in any year since 1989. Few Iranians in one online survey want it. Iranians must end it themselves, and the US should stand with them.
 order: 5
+draft: ai
 ---
 Iran's government kills its own people by the thousands. It has no right to be left alone. Iranians must bring it down themselves, and the US should stand with them while they do.
 
 ### The government kills people who protest
 
-[In the crackdown of winter 2025–26, thousands of people were killed, most of them protesters](#fact-iran-government-and-its-people/january-2026-crackdown-toll), and [the authorities arrested more than 50,000](#fact-iran-government-and-its-people/arrests-january-2026). [A UN team found crimes against humanity](#fact-iran-government-and-its-people/un-crimes-against-humanity). This is not a single bad year: [each of the last three waves of protest was crushed with deadly force](#fact-iran-government-and-its-people/crackdowns-2019-2022-2026).
+In the crackdown of winter 2025–26, thousands of people were killed, most of them protesters, and the authorities arrested more than 50,000. A UN team found crimes against humanity. This is not a single bad year: each of the last three waves of protest was crushed with deadly force.
 
 ### The killing goes on between protests, whoever wins elections
 
-[In 2025, Iran put more people to death than in any year since 1989](#fact-iran-government-and-its-people/executions-most-since-1989), and [executions rose under every recent president, fastest under the moderate one](#fact-iran-government-and-its-people/execution-rate-by-president). So voting in a new president has not stopped the killing. [Iran carried out most of the world's known executions in 2025](#fact-iran-government-and-its-people/iran-top-recorded-executioner), and it goes after critics abroad too: [most recent Iranian plots in Europe targeted opponents of the government](#fact-iran-actions-abroad/plots-mostly-target-opponents).
+In 2025, Iran put more people to death than in any year since 1989, and executions rose under every recent president, fastest under the moderate one. So voting in a new president has not stopped the killing. Iran carried out most of the world's known executions in 2025, and it goes after critics abroad too: most recent Iranian plots in Europe targeted opponents of the government.
 
 ### Iranians are turning away from their government
 
-[Turnout in the last two presidential elections was the lowest since the revolution](#fact-iran-government-and-its-people/turnout-record-lows). [In one online survey, few Iranians said they want the current system of government](#fact-iran-government-and-its-people/few-prefer-islamic-republic), and [most said they were glad to see it weakened during the war](#fact-iran-government-and-its-people/satisfaction-at-weakening). Nor do Iranians choose their top leader: [the new Supreme Leader is the son of the old one](#fact-iran-government-and-its-people/hereditary-succession).
+Turnout in the last two presidential elections was the lowest since the revolution. In one online survey, few Iranians said they want the current system of government, and most said they were glad to see it weakened during the war. Nor do Iranians choose their top leader: the new Supreme Leader is the son of the old one.
 
 ### Iranians must win this themselves, and outsiders can only stand with them
 
-[Peaceful uprisings have won far more often when the security forces turned against the government](#fact-outside-attempts-to-change-hostile-regimes/security-force-defections-decide). [Outside backing has made no difference to whether peaceful uprisings win](#fact-outside-attempts-to-change-hostile-regimes/outside-backing-did-not-help-nonviolent-campaigns). And [overthrowing a government from outside more than doubles the risk of civil war](#fact-outside-attempts-to-change-hostile-regimes/imposed-regime-change-and-civil-war).
+Peaceful uprisings have won far more often when the security forces turned against the government. Outside backing has made no difference to whether peaceful uprisings win. And overthrowing a government from outside more than doubles the risk of civil war.
 
-So America cannot win this for Iranians, and should not try to impose a government. [Democracy has followed only where conditions helped it](#fact-outside-attempts-to-change-hostile-regimes/democracy-only-in-favourable-conditions). [In one survey, about as many Iranians called the strikes an attack on Iran as called them humanitarian help](#fact-iran-government-and-its-people/strikes-seen-as-aggression), and [more than 20,000 people were arrested after the June 2025 war](#fact-iran-government-and-its-people/arrests-after-june-2025).
+So America cannot win this for Iranians, and should not try to impose a government. Democracy has followed only where conditions helped it. In one survey, about as many Iranians called the strikes an attack on Iran as called them humanitarian help, and more than 20,000 people were arrested after the June 2025 war.
 
 ### So America should stand with Iranians while they end this government themselves
 

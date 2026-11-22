@@ -179,7 +179,8 @@ test('a card\'s claims carry footnote markers, not links, and its graph opens in
   const [first, second] = [...observationGroups(fact)].filter(([, key], i, all) => all.findIndex(([, k]) => k === key) === i);
   const viewpoint = topic.viewpoints[0];
   const body = `### A step\n\n[This](#fact-${fact.id}/${first[0]}) and [that](#fact-${fact.id}/${second[0]}).\n\n[More evidence](#fact-${fact.id}/${second[0]}).`;
-  const [step] = (await renderWalkthroughs({ ...topic, viewpoints: [{ ...viewpoint, body }] })).get(viewpoint.id)!.steps;
+  const visuals = new Map([['A step', { cite: `#fact-${fact.id}/${first[0]}`, kind: '', title: '' }]]);
+  const [step] = (await renderWalkthroughs({ ...topic, viewpoints: [{ ...viewpoint, body, visuals }] })).get(viewpoint.id)!.steps;
   // One number per finding across the card: the evidence's citation of the second is marked 2 again.
   assert.match(step.reasoningHtml, /^This<a [^>]*data-sources="[^"]+"[^>]*>1<\/a> and that<a [^>]*>2<\/a>\.$/);
   assert.match(step.evidenceHtml, /^<p>More evidence<a [^>]*data-sources="[^"]+"[^>]*>2<\/a>\.<\/p>$/);
@@ -223,7 +224,9 @@ test('a slideshow viewpoint may not show one graph on two cards', async () => {
   const topic = await loadTopic('uk-asylum');
   assert.deepEqual(repeatedCardVisualErrors(topic), [], 'the published viewpoints show each graph once');
   const cite = '[The queue has moved to appeals](#fact-asylum-backlog-accommodation-and-cost/queue-moved-to-appeals).';
-  const viewpoint = { ...topic.viewpoints[0], body: `Lead.\n\n### First point\n\n${cite}\n\n### Second point\n\n${cite}\n` };
+  const visual = { cite: '#fact-asylum-backlog-accommodation-and-cost/queue-moved-to-appeals', kind: '', title: '' };
+  const visuals = new Map([['First point', visual], ['Second point', visual]]);
+  const viewpoint = { ...topic.viewpoints[0], body: `Lead.\n\n### First point\n\n${cite}\n\n### Second point\n\n${cite}\n`, visuals };
   const errors = repeatedCardVisualErrors({ ...topic, viewpoints: [viewpoint] });
   assert.equal(errors.length, 1);
   assert.match(errors[0], /"Second point" shows the same evidence as "First point"/);
@@ -232,7 +235,8 @@ test('a slideshow viewpoint may not show one graph on two cards', async () => {
 test('a card made with a graph is one paragraph; a card of text may have more', async () => {
   const topic = await loadTopic('uk-asylum');
   const graph = '[The queue has moved to appeals](#fact-asylum-backlog-accommodation-and-cost/queue-moved-to-appeals).';
-  const viewpoint = { ...topic.viewpoints[0], body: `Lead.\n\n### With a graph\n\n${graph}\n\nA second paragraph.\n\n### Of text\n\nA value.\n\nAnother paragraph.\n` };
+  const visuals = new Map([['With a graph', { cite: '#fact-asylum-backlog-accommodation-and-cost/queue-moved-to-appeals', kind: '', title: '' }]]);
+  const viewpoint = { ...topic.viewpoints[0], body: `Lead.\n\n### With a graph\n\n${graph}\n\nA second paragraph.\n\n### Of text\n\nA value.\n\nAnother paragraph.\n`, visuals };
   const errors = cardParagraphErrors({ ...topic, viewpoints: [viewpoint] });
   assert.equal(errors.length, 1);
   assert.match(errors[0], /"With a graph" is made with a graph or quotes, so its point is one paragraph/);

@@ -57,6 +57,7 @@ import { readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
 import matter from 'gray-matter';
 import { citedFactIds } from '../lib/content/markdown';
+import { loadTopic } from '../lib/content/load';
 import { factFrontmatterSchema } from '../lib/content/schema';
 import { chartProse, figureProse } from '../lib/content/figure-text';
 import { isComponentFigure } from '../lib/content/types';
@@ -67,10 +68,6 @@ import { checkDerivedFigures, verifiedDerivedFigures } from './derived-figures';
 
 const CONTENT_ROOT = path.join(process.cwd(), 'content', 'topics');
 
-const KINDS = [
-  { dir: 'facts', kind: 'fact' },
-  { dir: 'viewpoints', kind: 'viewpoint' },
-] as const;
 
 /** One content item as the audit sees it: raw frontmatter plus markdown body. */
 export type AuditItem = {
@@ -306,15 +303,15 @@ function printValues(values: readonly AuditedValue[], strict: boolean): number {
   return untraced.length;
 }
 
-/** A topic's intro, facts and viewpoints, read from disk. */
+/** A topic's intro and facts, read from disk, and its viewpoints as the loader joins them. */
 async function readTopic(slug: string): Promise<AuditItem[]> {
   const dir = path.join(CONTENT_ROOT, slug);
   const topicFile = matter(await readFile(path.join(dir, 'topic.md'), 'utf8'));
 
   const items: AuditItem[] = [{ kind: 'topic', id: slug, data: topicFile.data, body: topicFile.content }];
-  for (const { dir: kindDir, kind } of KINDS) {
-    for (const item of await readMarkdown(path.join(dir, kindDir))) items.push({ kind, ...item });
-  }
+  for (const item of await readMarkdown(path.join(dir, 'facts'))) items.push({ kind: 'fact', ...item });
+  // A viewpoint's citations are in its links file; the loader joins them into its body.
+  for (const { id, body, ...data } of (await loadTopic(slug)).viewpoints) items.push({ kind: 'viewpoint', id, data, body });
 
   return items;
 }

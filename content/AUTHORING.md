@@ -1896,11 +1896,35 @@ empirical argument needs an observation that actually states its premise. A
 missing observation is work to finish in the report, not permission to bury the
 premise in a chart or leave it supported only by an external link.
 
+### A viewpoint's text and its links
+
+A viewpoint is two files beside each other in `viewpoints/`:
+
+- **`<id>.md` is the text**, and the editor's: frontmatter of `name`,
+  `shortName`, `summary` and `order`, then the lead and one `###` section per
+  card, as plain prose with no links in it. While the text is an agent's draft
+  its frontmatter has `draft: ai`, and the topic page labels it "AI draft".
+  The editor takes a viewpoint over by rewriting the text and deleting that
+  line. **Any agent edit to the text, however small, puts `draft: ai` back.**
+- **`<id>.links.yaml` is the agent's**: for the summary, the lead and each
+  card (matched by its heading), the citations, each a phrase of the text and
+  the target it links to; each card's `visual`, the graph or quotes it is made
+  with, named by a citation target with its `kind` and `title`; and a
+  `verification` recording whether the agent has checked that passage's claims
+  against what they cite, against a hash of the text it checked, with `notes`
+  to the editor. The format is in `lib/content/viewpoint-links.ts`.
+
+The loader joins the two, so the rest of this guide's "pills" and "links" are
+the citations in the links file, shown on the page as before. A citation whose
+phrase the text no longer contains renders as plain prose, and an edited
+passage is no longer verified; `pnpm check:integrity` fails on both, so nothing
+is published that has not been cited and checked as it now reads. A link typed
+into the text file is an error too: citations go in the links file.
+
 ### Citations and data order
 
-Viewpoint frontmatter contains only `name`, `summary` and `order`. There are
-no `citesFacts`, `acknowledges` or `setsAside` lists. The prose itself shows what the argument builds on, concedes or sets
-aside through inline citations.
+There are no `citesFacts`, `acknowledges` or `setsAside` lists. The citations
+themselves show what the argument builds on, concedes or sets aside.
 
 `topic.md` contains `dataOrder`: the order of the headline data collections.
 No page shows them in a list today; the order is kept for when one does. List
@@ -1947,10 +1971,13 @@ paraphrase must not shift a date, scope or comparison.
 ### Research-needed citations
 
 An argument-first draft may contain an empirical premise that deserves research
-but does not yet have a report. Mark the exact claim with a `#needed` link:
+but does not yet have a report. Cite the exact claim as `#needed` in the
+links file:
 
-```markdown
-[integration succeeds at different rates](#needed)
+```yaml
+citations:
+  - phrase: integration succeeds at different rates
+    href: "#needed"
 ```
 
 The mark is for the research queue, not for readers: the page renders the
@@ -1958,18 +1985,18 @@ claim as plain prose, with no link, pill or popup. It is never styled as a data
 citation, so an unverified premise cannot be mistaken for evidence, and it is
 not counted as a fact citation or a viewpoint relationship.
 
-Also list the claim, exactly as its link text reads, in the viewpoint's
-`researchNeeded` frontmatter. That list is where the research queue is read
-from, since nothing on the page shows it:
+Also list the claim, exactly as its phrase reads, in the links file's
+`researchNeeded`. That list is where the research queue is read from, since
+nothing on the page shows it:
 
 ```yaml
 researchNeeded:
   - "integration succeeds at different rates"
 ```
 
-`pnpm check:integrity` fails if a `#needed` mark is missing from the list, or
-the list names a claim no mark in the body carries. Remove both together once
-a data report supports the claim and the link points at it instead.
+`pnpm check:integrity` fails if a `#needed` citation is missing from the list,
+or the list names a claim no citation carries. Remove both together once a data
+report supports the claim and the citation points at it instead.
 
 Use it for a concrete empirical claim that a future data report could confirm,
 qualify or disprove. Link the claim itself, not a vague sentence such as “more

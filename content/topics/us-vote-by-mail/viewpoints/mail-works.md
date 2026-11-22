@@ -1,39 +1,40 @@
 ---
 name: Voting by mail works, and the states that do it prove it
-shortName: "Mail works"
-summary: "Every voter should be able to vote by mail. Bills in Congress and a presidential order would cut it back, yet states that mail every voter a ballot have done it for years without the fraud critics fear. Mail ballots have checks a polling place lacks, and mailing everyone a ballot helps the voters who find polling places hardest to reach."
+shortName: Mail works
+summary: Every voter should be able to vote by mail. Bills in Congress and a presidential order would cut it back, yet states that mail every voter a ballot have done it for years without the fraud critics fear. Mail ballots have checks a polling place lacks, and mailing everyone a ballot helps the voters who find polling places hardest to reach.
 order: 2
+draft: ai
 ---
 Every voter should be able to vote by mail. The states that mail every voter a ballot show it can be done honestly.
 
 ### Bills in Congress and a presidential order would cut mail voting back
 
-[Two bills would stop states mailing ballots except on request, and an order would have the Postal Service carry ballots only for voters on a state list](#fact-federal-and-state-power-over-mail-voting/federal-moves-to-narrow-mail). [Utah, after years of mailing every voter a ballot, is moving to mail ballots only on request](#fact-mail-voting-use-and-effects/utah-all-mail-and-opt-in).
+Two bills would stop states mailing ballots except on request, and an order would have the Postal Service carry ballots only for voters on a state list. Utah, after years of mailing every voter a ballot, is moving to mail ballots only on request.
 
-Neither bill has passed, and [the Postal Service rule written under the order is blocked for November 2026](#fact-federal-and-state-power-over-mail-voting/usps-rule-blocked). Only that one election is covered, and [the Supreme Court let the order itself go ahead](#fact-federal-and-state-power-over-mail-voting/eo-14399-stands).
+Neither bill has passed, and the Postal Service rule written under the order is blocked for November 2026. Only that one election is covered, and the Supreme Court let the order itself go ahead.
 
 ### In the all-mail states, no known fraud has overturned an election
 
-[Oregon, Washington, Utah and Colorado cast more than nine in ten ballots by mail](#fact-mail-voting-use-and-effects/all-mail-states-lead). Yet [none of the elections thrown out for fraud in the Heritage Foundation's list was in one of them](#fact-absentee-fraud-and-manipulation-of-the-count/no-voidings-in-all-mail-states), and a commission that warned about absentee ballots still [found "little evidence of fraud in Oregon"](#fact-absentee-fraud-and-manipulation-of-the-count/carter-baker-oregon). Nor did mailing everyone a ballot mean more ballots thrown out: [in 2024, all-mail states fell on both sides of the national rate of rejected mail ballots](#fact-mail-ballot-rejection-and-signature-checks/all-mail-states-not-different).
+Oregon, Washington, Utah and Colorado cast more than nine in ten ballots by mail. Yet none of the elections thrown out for fraud in the Heritage Foundation's list was in one of them, and a commission that warned about absentee ballots still found "little evidence of fraud in Oregon". Nor did mailing everyone a ballot mean more ballots thrown out: in 2024, all-mail states fell on both sides of the national rate of rejected mail ballots.
 
 ### Every mail ballot is checked before it counts, and known schemes were caught
 
-[Every state checks returned envelopes before the ballot counts, though the checks differ](#fact-mail-ballot-rejection-and-signature-checks/checks-differ-by-state), and [known schemes that overturned elections were exposed, and most of those elections were rerun](#fact-absentee-fraud-and-manipulation-of-the-count/each-case-caught-and-rerun). That includes an election held entirely by mail: [in Paterson's 2020 council election, postal inspectors found bundled ballots and nearly a quarter of the ward's mail ballots were rejected](#fact-absentee-fraud-and-manipulation-of-the-count/paterson-was-all-mail), and it was rerun. Checks need not cost honest voters their vote: where voters can fix mistakes, [more than half the ballots set aside were corrected and counted](#fact-mail-ballot-rejection-and-signature-checks/more-than-half-cured).
+Every state checks returned envelopes before the ballot counts, though the checks differ, and known schemes that overturned elections were exposed, and most of those elections were rerun. That includes an election held entirely by mail: in Paterson's 2020 council election, postal inspectors found bundled ballots and nearly a quarter of the ward's mail ballots were rejected, and it was rerun. Checks need not cost honest voters their vote: where voters can fix mistakes, more than half the ballots set aside were corrected and counted.
 
 ### Mail helps voters who struggle at polling places, and mailing everyone a ballot adds voters
 
-[Voters with disabilities report far less difficulty by mail than at the polling place](#fact-mail-voting-use-and-effects/disabled-voters-find-mail-easier), and [older voters use mail most](#fact-mail-voting-use-and-effects/older-voters-use-mail-most). The wider gain comes from mailing the ballot, not from letting people ask for one: [sending every voter a ballot raised turnout by about two points](#fact-mail-voting-use-and-effects/universal-mail-raised-turnout-modestly), while [Texans newly able to vote by mail without an excuse switched how they voted, not whether](#fact-mail-voting-use-and-effects/eligibility-shifted-method). Two points is a great many citizens, and [it moved the Democratic share of turnout by only 0.1 points](#fact-mail-voting-use-and-effects/no-partisan-tilt), in years before the parties split over mail voting.
+Voters with disabilities report far less difficulty by mail than at the polling place, and older voters use mail most. The wider gain comes from mailing the ballot, not from letting people ask for one: sending every voter a ballot raised turnout by about two points, while Texans newly able to vote by mail without an excuse switched how they voted, not whether. Two points is a great many citizens, and it moved the Democratic share of turnout by only 0.1 points, in years before the parties split over mail voting.
 
 ### Other democracies vote heavily by post, and Britain fixed its fraud without ending it
 
-[Germany cast almost half its 2021 vote by post](#fact-secret-ballot-and-postal-voting-abroad/germany-postal-share-rose), and [Switzerland votes about 90% by post](#fact-secret-ballot-and-postal-voting-abroad/switzerland-about-90-percent). Britain shows fraud can be fixed without ending postal voting: [after it let anyone vote by post, a court found thousands of postal votes falsified](#fact-secret-ballot-and-postal-voting-abroad/uk-fraud-under-on-demand). [It added identity checks and banned campaigners from handling postal votes](#fact-secret-ballot-and-postal-voting-abroad/uk-kept-on-demand-added-checks), and [in recent years its Electoral Commission has found no evidence of large-scale fraud](#fact-secret-ballot-and-postal-voting-abroad/uk-no-large-scale-fraud).
+Germany cast almost half its 2021 vote by post, and Switzerland votes about 90% by post. Britain shows fraud can be fixed without ending postal voting: after it let anyone vote by post, a court found thousands of postal votes falsified. It added identity checks and banned campaigners from handling postal votes, and in recent years its Electoral Commission has found no evidence of large-scale fraud.
 
 ### Voting at home rarely means voting under pressure
 
-While [nearly a quarter of mail voters have someone else in the room](#fact-secret-ballot-and-postal-voting-abroad/mail-voters-often-not-alone), [in Oregon surveys 1% or fewer felt pressured by someone else's presence](#fact-secret-ballot-and-postal-voting-abroad/pressure-rarely-reported). An Oregon researcher found no sign that bribes or threats had been a problem.
+While nearly a quarter of mail voters have someone else in the room, in Oregon surveys 1% or fewer felt pressured by someone else's presence. An Oregon researcher found no sign that bribes or threats had been a problem.
 
-The evidence is thin on both sides: [in one Oregon pilot about 5% said others had marked their ballots](#fact-secret-ballot-and-postal-voting-abroad/pressure-may-be-underreported). But [polling places are not fully private either: in the same national survey, more than one in five in-person voters had no privacy screen](#fact-secret-ballot-and-postal-voting-abroad/in-person-not-fully-private).
+The evidence is thin on both sides: in one Oregon pilot about 5% said others had marked their ballots. But polling places are not fully private either: in the same national survey, more than one in five in-person voters had no privacy screen.
 
 ### So every voter should get the choice, under rules both parties can trust
 
-[Democrats now use mail far more than Republicans](#fact-mail-voting-use-and-effects/democrats-use-mail-more), so the rules must earn both parties' trust: every voter should get the choice, with ballot tracking, a chance to fix signatures and a ban on paid ballot collection. Low trust among one party's voters does not, by itself, show that mail voting fails: [voters of the president's party are usually the more confident in the count](#fact-confidence-and-disputed-results/confidence-follows-power), and [people who vote by mail trust the mail count](#fact-confidence-and-disputed-results/mail-voters-trust-mail).
+Democrats now use mail far more than Republicans, so the rules must earn both parties' trust: every voter should get the choice, with ballot tracking, a chance to fix signatures and a ban on paid ballot collection. Low trust among one party's voters does not, by itself, show that mail voting fails: voters of the president's party are usually the more confident in the count, and people who vote by mail trust the mail count.

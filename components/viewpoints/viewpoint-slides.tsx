@@ -79,7 +79,7 @@ export function ViewpointSlides({ slug, viewpoints, walkthroughs, sources }: Vie
               className="sv-row--walk sv-row--deck sv-row--viewpoint"
               title={viewpoint.shortName}
               subtitle={viewpoint.name}
-              meta={null}
+              meta={viewpoint.draft === 'ai' ? <p key="meta" className="sv-row__meta"><span className="sv-tag">AI draft</span></p> : null}
               thumbs={
                 // Without a key, React's development build reports this strip as an
                 // unkeyed list child of TopicRow. The walkthrough rows pass the same

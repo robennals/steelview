@@ -1,0 +1,109 @@
+# The agent's half of this viewpoint: which phrase of the text cites which
+# data, the chart each card shows, and whether each passage has been checked
+# against its evidence. The text itself is in the .md file beside this one.
+# Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
+summary:
+  citations:
+    - phrase: pay far more into the public finances than they take out
+      href: "#fact-immigration-economy-and-public-finances/skilled-workers-large-net-gain"
+    - phrase: Immigration is a small part of why homes cost so much
+      href: "#fact-immigration-housing-and-public-services/immigration-explains-4-6-percent-of-house-price-rise"
+  verification:
+    status: verified
+    textHash: 52d17e0dda9a
+    checkedAt: 2026-11-20
+lead:
+  citations: []
+  verification:
+    status: verified
+    textHash: abade47a0642
+    checkedAt: 2026-11-20
+cards:
+  - heading: Skilled migrants pay far more in than they take out
+    visual:
+      cite: "#fact-immigration-economy-and-public-finances/skilled-workers-large-net-gain"
+      kind: comparison
+      title: Lifetime fiscal contribution by visa route
+    citations:
+      - phrase: Skilled workers outside health and care add hundreds of thousands of pounds each over their lives
+        href: "#fact-immigration-economy-and-public-finances/skilled-workers-large-net-gain"
+      - phrase: the government's migration advisers expect one year's skilled workers to add tens of billions of pounds to the public purse
+        href: "#fact-immigration-economy-and-public-finances/mac-cohort-adds-47bn"
+      - phrase: in the budget watchdog's scenarios, lower migration raises borrowing within five years
+        href: "#fact-immigration-economy-and-public-finances/lower-migration-raises-borrowing"
+    verification:
+      status: verified
+      textHash: de68c84d0013
+      checkedAt: 2026-11-20
+  - heading: Britain's hospitals and universities depend on people from abroad
+    visual:
+      cite: "#fact-work-and-study-routes/fifth-of-nhs-staff"
+      kind: series
+      title: NHS staff without British nationality
+    citations:
+      - phrase: About a fifth of NHS staff in England are not British, and over a third of doctors
+        href: "#fact-work-and-study-routes/fifth-of-nhs-staff"
+      - phrase: Students from abroad pay close to half of university course fees
+        href: "#fact-immigration-economy-and-public-finances/non-uk-fee-share"
+      - phrase: over a third of English universities are already in deficit
+        href: "#fact-immigration-economy-and-public-finances/a-third-of-universities-in-deficit"
+      - phrase: with no net migration, there would be 641 people aged 65 or over for every 1,000 of working age by 2074, against 525 on the main projection
+        href: "#fact-immigration-against-the-long-run/old-age-ratio-2074"
+      - phrase: migrants grow old too, which reverses much of their early gain
+        href: "#fact-immigration-economy-and-public-finances/old-age-reverses-gains"
+    verification:
+      status: verified
+      textHash: 2b2ab0814369
+      checkedAt: 2026-11-20
+  - heading: Immigration adds a little to housing costs; cheap borrowing drove most of the rise
+    visual:
+      cite: "#fact-immigration-housing-and-public-services/rent-effects"
+      kind: barChart
+      title: Immigration and house prices and rents
+    citations:
+      - phrase: In countries like Britain, raising the immigrant share by one point raises house prices by under 1%, and rents by a little more
+        href: "#fact-immigration-housing-and-public-services/rent-effects"
+      - phrase: Bank of England economists find that falling interest rates more than account for the rise in house prices against incomes since 1985
+        href: "#fact-immigration-housing-and-public-services/falling-interest-rates-explain-price-rise"
+      - phrase: the government's advisers put immigration's share of the long rise at about 4–6%
+        href: "#fact-immigration-housing-and-public-services/immigration-explains-4-6-percent-of-house-price-rise"
+      - phrase: migration is just over half of expected household growth
+        href: "#fact-immigration-housing-and-public-services/migration-share-of-household-growth"
+    verification:
+      status: verified
+      textHash: 09db8c49158a
+      checkedAt: 2026-11-20
+  - heading: Building more homes needs migrant workers
+    citations:
+      - phrase: Immigration is more likely to raise prices where planning rules hold back building
+        href: "#fact-immigration-housing-and-public-services/local-versus-regional-effects"
+      - phrase: migrants are almost half of London's construction workers
+        href: "#fact-immigration-housing-and-public-services/migrants-in-london-construction"
+    verification:
+      status: verified
+      textHash: a9a04627a0d8
+      checkedAt: 2026-11-20
+  - heading: Immigration has moved wages, and output per person, by only a few percent
+    visual:
+      cite: "#fact-immigration-economy-and-public-finances/small-wage-effects"
+      kind: comparison
+      title: EU immigration and UK-born wages
+    citations:
+      - phrase: The government's advisers estimate that 24 years of EU immigration cut the lowest wages by about 5%, and raised wages from the middle up
+        href: "#fact-immigration-economy-and-public-finances/small-wage-effects"
+      - phrase: The budget watchdog puts migration's effect on output per person at under 1%, up or down
+        href: "#fact-immigration-economy-and-public-finances/obr-per-head-effect-small"
+      - phrase: output per person has barely grown since 2019, though Canada and Germany did worse
+        href: "#fact-immigration-economy-and-public-finances/g7-stalled-alike"
+      - phrase: in one count of a hundred fast-growing firms, over half had a founder born abroad
+        href: "#fact-immigration-economy-and-public-finances/foreign-born-founders"
+    verification:
+      status: verified
+      textHash: d9d2b4d69105
+      checkedAt: 2026-11-20
+  - heading: So keep the door open, and spend the gains on homes and services
+    citations: []
+    verification:
+      status: verified
+      textHash: 8b09ed24387c
+      checkedAt: 2026-11-20
