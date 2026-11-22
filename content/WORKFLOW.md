@@ -53,7 +53,7 @@ For each viewpoint, the outline gives:
   redrafting. It normally becomes the viewpoint's filename in stage 6.
 - **Title**: a proposition someone would say aloud
   ([Titles](AUTHORING.md#titles)).
-- **Its arguments**, four to six, each as its holder would make it, in a
+- **Its arguments**, usually four to six, each as its holder would make it, in a
   sentence or two. Each opens with a one-line claim that becomes a section
   heading in stage 6, so the claims read alone should add up to the title
   ([Write an argument someone can follow](AUTHORING.md#write-an-argument-someone-can-follow)).

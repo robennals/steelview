@@ -1670,7 +1670,7 @@ the viewpoint explains why that evidence gives someone a reason to act.
 **A viewpoint is a tree: a lead, then a sequence of headed sections whose
 headings add up to the title.** Open with one or two sentences stating the
 belief or choice being defended, and the principle behind it where one does the
-work. Then give four to six sections, each headed with an `###` heading. Each
+work. Then give usually four to six sections, each headed with an `###` heading. Each
 heading is one claim in the argument, stated as a sentence the holder would say
 — "Iran had brought itself within reach of a bomb", not "The nuclear
 programme". Read in order without the text beneath them, the headings should
@@ -1800,8 +1800,11 @@ Aim for four to six sections of about 100 words each: a heading of up to about
 fifteen words, a line of 25 to 55, and evidence of up to about 80, so a
 viewpoint runs to about 450–600 words. These are editing defaults, not
 quotas. Use fewer words when they suffice. Six sections
-is a ceiling: past it, the headings read as a list of points rather than an
-argument, so merge the claims that make the same step. Use `###` headings only,
+is the target, not a hard limit. Past it, headings tend to read as a list of
+points rather than an argument, so first merge the claims that make the same
+step. But never cut or merge away a step the argument needs to reach the
+target: a seventh section is better than a missing link, such as a case that
+says what is happening and not why it is bad. Use `###` headings only,
 never bold mini-headings or nested levels. The summary should give the central
 reason and direction in one or two natural sentences, rather than compressing
 the evidence inventory.
@@ -2351,8 +2354,9 @@ Run this before opening a pull request.
 - [ ] A partisan would find it better argued than their own version, and
       would recognise themselves in it.
 - [ ] It has real argumentative force. It is not merely inoffensive.
-- [ ] A one- or two-sentence lead, then four to six `###` sections; the
-      headings alone add up to the title, and the last states the conclusion.
+- [ ] A one- or two-sentence lead, then usually four to six `###` sections, and more
+      only where each is a step the argument needs; the headings alone add up
+      to the title, and the last states the conclusion.
 - [ ] Each section is two or three short sentences, not a bullet list, and
       advances the argument for its heading.
 - [ ] Read on the topic page, every step's chart shows that step's claim, and
