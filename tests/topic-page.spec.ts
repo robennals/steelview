@@ -424,9 +424,11 @@ test.describe('a slideshow viewpoint on a phone', () => {
   test('open, a viewpoint runs to the screen\'s edges, its arrow on the title\'s line', async ({ page }) => {
     await page.goto(SLIDES_TOPIC);
     const row = page.locator(SLIDES_VIEWPOINT);
-    const title = await row.locator('.sv-row__title').boundingBox();
+    // The arrow sits on the head's first line: the title's, or an "AI draft" tag's above it, as on a crux.
+    const tag = row.locator('.sv-row__meta');
+    const firstLine = (await tag.count()) > 0 ? await tag.boundingBox() : await row.locator('.sv-row__title').boundingBox();
     const chevron = await row.locator('.sv-row__chevron').boundingBox();
-    expect(Math.abs(chevron!.y + chevron!.height / 2 - (title!.y + 14))).toBeLessThan(16);
+    expect(Math.abs(chevron!.y + chevron!.height / 2 - (firstLine!.y + 14))).toBeLessThan(16);
     await row.locator('.sv-row__toggle').click(headCorner);
     await expect(row).toHaveAttribute('data-open', 'true');
     await expect.poll(async () => (await row.boundingBox())!.width).toBe(390);
@@ -498,9 +500,10 @@ test('a slideshow viewpoint on a wide screen lists its points down the left, a p
   await expect(outline).toBeVisible();
   // With the list showing, the numbered circles would only repeat it.
   await expect(page.locator(`${SLIDES_VIEWPOINT} .sv-deck__points`)).toBeHidden();
-  // One card per step of the argument, the last its conclusion.
-  await expect(outline.locator('li')).toHaveCount(7);
-  await expect(outline.locator('li').last()).toContainText('So Britain should open capped safe routes, decide claims fairly, and let people work');
+  // One card per step of the argument, the last its conclusion, then readers' suggestions.
+  await expect(outline.locator('li')).toHaveCount(8);
+  await expect(outline.locator('li').nth(6)).toContainText('So Britain should open capped safe routes, decide claims fairly, and let people work');
+  await expect(outline.locator('li').last()).toHaveText('Readers’ suggestions');
   const deterrence = outline.getByRole('button', { name: /deterrent that sent no asylum seekers/ });
   await deterrence.click();
   await expect(deterrence).toHaveAttribute('aria-current', 'step');
@@ -510,6 +513,48 @@ test('a slideshow viewpoint on a wide screen lists its points down the left, a p
   await expect(card.locator('.sv-chart')).toHaveCount(0);
   await expect(card.locator('.sv-deck__reasoning')).toContainText('£715 million');
   await expect(card.locator('.sv-deck__prose')).toContainText("Australia's offshore camps cost billions");
+});
+
+// The browser tests run with no database (playwright.config.ts), so feedback
+// shows its empty state and says posting is switched off.
+test('a viewpoint ends with a slide for suggestions, which opens the box to make one', async ({ page }) => {
+  await page.setViewportSize({ width: 1400, height: 900 });
+  await page.goto(TOPIC);
+  const row = await openViewpoint(page, 'keep-our-word');
+  await row.locator('.sv-deck__outline-item').last().click();
+  const slide = row.locator('.sv-feedback');
+  await expect(slide).toBeInViewport();
+  await expect(slide).toContainText('Readers’ suggestions');
+  await expect(slide).toContainText('No one has suggested anything yet. Be the first to make this argument stronger.');
+  await expect(slide.locator('textarea')).toHaveCount(0);
+
+  await slide.getByRole('button', { name: 'Add a suggestion' }).click();
+  const sheet = page.locator('dialog.sv-modal');
+  await expect(sheet.getByRole('heading', { name: 'Make “Keep our word” stronger' })).toBeVisible();
+  await expect(sheet).toContainText('Strengthen an opposing viewpoint, or debate a crux.');
+  await expect(sheet.getByPlaceholder('What would make this argument stronger?')).toBeVisible();
+  await expect(sheet.getByRole('combobox')).toContainText('Card 6: So change the terms only for people who have not yet come');
+  await expect(sheet).toContainText('Posting isn’t switched on here.');
+  await page.keyboard.press('Escape');
+  await expect(sheet).toHaveCount(0);
+});
+
+test('an open crux ends with its discussion, which opens the box to join it', async ({ page }) => {
+  await page.goto(TOPIC);
+  const crux = page.locator('#crux-will-recent-arrivals-integrate');
+  await crux.locator('.sv-row__toggle').click(headCorner);
+  const discussion = crux.locator('.sv-discussion');
+  await expect(discussion).toContainText('No one has commented yet.');
+  await discussion.getByRole('button', { name: 'Start the discussion' }).click();
+  const sheet = page.locator('dialog.sv-modal');
+  await expect(sheet.getByPlaceholder('What would change your mind on this?')).toBeVisible();
+  await expect(sheet).toContainText('Posting isn’t switched on here.');
+});
+
+test('the viewpoints end with a way to suggest one the page is missing', async ({ page }) => {
+  await page.goto(TOPIC);
+  await page.getByRole('button', { name: /Suggest a viewpoint/ }).click();
+  await expect(page.locator('dialog.sv-modal').getByRole('heading', { name: 'Suggest a viewpoint this page is missing' })).toBeVisible();
 });
 
 test('a closed slideshow viewpoint previews its graphs, and a graph opens the row at its card', async ({ page }) => {

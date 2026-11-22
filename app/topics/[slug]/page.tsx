@@ -8,6 +8,7 @@ import { FeaturedChartSheets } from '@/components/topic/featured-charts';
 import { ViewpointSlides } from '@/components/viewpoints/viewpoint-slides';
 import { CruxRows } from '@/components/topic/crux-rows';
 import type { Topic } from '@/lib/content/types';
+import { FeedbackProvider } from '@/components/feedback/feedback-context';
 
 export async function generateStaticParams() {
   return (await listTopicSlugs()).map((slug) => ({ slug }));
@@ -58,7 +59,7 @@ export function TopicSections({ topic, walkthroughs, featured, sources = {} }: {
   const viewpointsById = new Map(topic.viewpoints.map((v) => [v.id, v]));
 
   return (
-    <ExplorePanels panels={[...featured.keys()]}>
+    <FeedbackProvider slug={topic.slug}><ExplorePanels panels={[...featured.keys()]}>
       <FeaturedChartSheets slug={topic.slug} facts={topic.facts} charts={featured} />
 
       {topic.viewpoints.length > 0 && (
@@ -76,7 +77,7 @@ export function TopicSections({ topic, walkthroughs, featured, sources = {} }: {
           <CruxRows cruxes={topic.cruxes} viewpointsById={viewpointsById} />
         </section>
       )}
-    </ExplorePanels>
+    </ExplorePanels></FeedbackProvider>
   );
 }
 

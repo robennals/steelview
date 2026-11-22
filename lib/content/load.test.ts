@@ -77,6 +77,20 @@ test('bad frontmatter throws ContentError naming the file and the field', async 
   });
 });
 
+test('a viewpoint joins its text with its links file, and reports a link left in the text', async () => {
+  const root = await fixtureCopy();
+  const dir = path.join(root, 'example', 'viewpoints');
+  await writeFile(path.join(dir, 'one.md'), '---\nname: One\nshortName: s\nsummary: s\norder: 1\ndraft: ai\n---\nLead.\n\n### A card\n\nAlpha is cited. [Beta](#fact-beta) is not.\n');
+  await writeFile(
+    path.join(dir, 'one.links.yaml'),
+    'cards:\n  - heading: A card\n    citations:\n      - phrase: Alpha\n        href: "#fact-alpha"\n'
+  );
+  const one = (await loadTopic('example', root)).viewpoints.find((v) => v.id === 'one')!;
+  assert.equal(one.draft, 'ai');
+  assert.equal(one.body, 'Lead.\n\n### A card\n\n[Alpha](#fact-alpha) is cited. [Beta](#fact-beta) is not.');
+  assert.deepEqual(one.linkErrors, ['the text links [Beta](#fact-beta); citations go in one.links.yaml']);
+});
+
 test('cross-reference integrity is deferred until the publication check', async () => {
   const root = await fixtureCopy();
   await writeFile(

@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "../components/report/report.css";
+@import "../components/feedback/feedback.css";
 
 /* ==========================================================================
    Steelview — a reading surface, not an app surface.

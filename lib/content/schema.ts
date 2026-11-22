@@ -1211,18 +1211,18 @@ export const viewpointFrontmatterSchema = z.object({
    * never group one side together) is in the design spec.
   */
   order: z.number().int(),
+  /**
+   * `ai` while the text is an agent's draft, which the topic page labels as
+   * one. An editor takes a viewpoint over by rewriting its text and deleting
+   * this line; any later edit by an agent puts it back. Citations and the
+   * agent's checks are in the viewpoint's `.links.yaml`, never in this file.
+   */
+  draft: z.literal('ai').optional(),
   // Accepted only so existing topic files can migrate gradually. New
   // viewpoints derive all relationships from inline citations instead.
   citesFacts: z.array(z.string()).optional(),
   acknowledges: z.array(z.string()).optional(),
   setsAside: z.array(z.string()).optional(),
-  /**
-   * Every claim this viewpoint marks `[claim](#needed)`, quoted exactly as
-   * the link text reads. Readers see those claims as plain prose, so this is
-   * where the research queue is read from; `pnpm check:integrity` keeps it
-   * and the marks in the body in step.
-   */
-  researchNeeded: z.array(z.string().min(1)).optional(),
 });
 
 export const cruxPositionSchema = z.object({

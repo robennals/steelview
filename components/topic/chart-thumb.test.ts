@@ -239,7 +239,11 @@ test('every figure drawn in full shows the observation being stepped through', (
 /** The observed fixture with a viewpoint whose cards, one per figure, each cite that figure's observation. */
 const featuringTopic = {
   ...observedTopic,
-  viewpoints: [{ ...observedTopic.viewpoints[0], body: libraryFigures.map(({ id }) => `### On ${id}\n\n[It](#fact-${observed.id}/seen-${id}).`).join('\n\n') }],
+  viewpoints: [{
+    ...observedTopic.viewpoints[0],
+    body: libraryFigures.map(({ id }) => `### On ${id}\n\n[It](#fact-${observed.id}/seen-${id}).`).join('\n\n'),
+    visuals: new Map(libraryFigures.map(({ id }) => [`On ${id}`, { cite: `#fact-${observed.id}/seen-${id}`, kind: '', title: '' }])),
+  }],
 };
 
 test('a featured chart is drawn in full beside its own observations', async () => {

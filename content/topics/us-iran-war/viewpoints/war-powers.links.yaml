@@ -1,0 +1,103 @@
+# The agent's half of this viewpoint: which phrase of the text cites which
+# data, the chart each card shows, and whether each passage has been checked
+# against its evidence. The text itself is in the .md file beside this one.
+# Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
+summary:
+  citations:
+    - phrase: The Constitution gives Congress the power to declare war
+      href: "#fact-decisions-law-and-diplomacy/congress-declares-war"
+    - phrase: the administration did not seek its approval before the 60-day mark
+      href: "#fact-decisions-law-and-diplomacy/no-authorisation-sought"
+    - phrase: The House passed three resolutions to end it
+      href: "#fact-decisions-law-and-diplomacy/house-passed-three-resolutions"
+    - phrase: the Senate passed one of those votes
+      href: "#fact-decisions-law-and-diplomacy/senate-adopted-one-resolution"
+    - phrase: The President reported each new strike as a new action
+      href: "#fact-decisions-law-and-diplomacy/separate-actions"
+  verification:
+    status: verified
+    textHash: "164203644928"
+    checkedAt: 2026-11-20
+lead:
+  citations:
+    - phrase: Congress has never voted to approve this war
+      href: "#fact-decisions-law-and-diplomacy/votes-all-to-end-the-war"
+  verification:
+    status: verified
+    textHash: 2e2ca5c77ec1
+    checkedAt: 2026-11-20
+cards:
+  - heading: Only Congress can declare war, and it has not approved this one
+    visual:
+      cite: "#fact-decisions-law-and-diplomacy/congress-declares-war"
+      kind: quotes
+      title: Who decides on war, and did the administration ask?
+    citations:
+      - phrase: The Constitution gives Congress, not the President, the power to declare war
+        href: "#fact-decisions-law-and-diplomacy/congress-declares-war"
+      - phrase: Every vote Congress has held on the war, as far as the record shows, was on ending it
+        href: "#fact-decisions-law-and-diplomacy/votes-all-to-end-the-war"
+      - phrase: the administration did not seek Congress's approval before the 60-day mark
+        href: "#fact-decisions-law-and-diplomacy/no-authorisation-sought"
+      - phrase: The President says he acted as Commander in Chief, in defence of allies, and filed his reports "consistent with" the War Powers law
+        href: "#fact-decisions-law-and-diplomacy/president-cites-commander-in-chief"
+    verification:
+      status: verified
+      textHash: b01fc095f0b6
+      checkedAt: 2026-11-20
+  - heading: When Congress has voted, it has voted to end the war
+    visual:
+      cite: "#fact-decisions-law-and-diplomacy/house-passed-three-resolutions"
+      kind: series
+      title: House votes to end the war
+    citations:
+      - phrase: After narrowly rejecting three resolutions, the House passed three to end the war
+        href: "#fact-decisions-law-and-diplomacy/house-passed-three-resolutions"
+      - phrase: the Senate passed one of those resolutions
+        href: "#fact-decisions-law-and-diplomacy/senate-adopted-one-resolution"
+      - phrase: most said the President should have asked Congress first
+        href: "#fact-decisions-law-and-diplomacy/most-wanted-congress-asked"
+    verification:
+      status: verified
+      textHash: 59385a68182e
+      checkedAt: 2026-11-20
+  - heading: The war has run past the law's 60-day limit, whatever the White House calls it
+    visual:
+      cite: "#fact-decisions-law-and-diplomacy/terminated-letter-then-new-strikes"
+      kind: timeline
+      title: What the War Powers letters said
+    citations:
+      - phrase: Two months in, the White House told Congress the fighting had ended. Then new strikes followed
+        href: "#fact-decisions-law-and-diplomacy/terminated-letter-then-new-strikes"
+      - phrase: the first blockade was still turning ships back weeks after that letter
+        href: "#fact-oil-shipping-and-prices/first-blockade-into-may"
+      - phrase: The War Powers law sets a 60-day limit on using force without Congress's approval
+        href: "#fact-decisions-law-and-diplomacy/sixty-day-requirement"
+    verification:
+      status: verified
+      textHash: 24c9c35ee9c5
+      checkedAt: 2026-11-20
+  - heading: Presidents have long sidestepped this rule, which is why it must be enforced now
+    visual:
+      cite: "#fact-decisions-law-and-diplomacy/only-one-report-started-the-clock"
+      kind: comparison
+      title: War Powers reports to Congress
+    citations:
+      - phrase: From 1975 to 2017, presidents almost never formally started the 60-day clock
+        href: "#fact-decisions-law-and-diplomacy/only-one-report-started-the-clock"
+      - phrase: presidents have used force abroad hundreds of times without a declaration of war
+        href: "#fact-decisions-law-and-diplomacy/declarations-and-instances"
+    verification:
+      status: verified
+      textHash: 9df81f7548b0
+      checkedAt: 2026-11-20
+  - heading: So Congress should vote either to approve this war or to end it
+    citations:
+      - phrase: the votes so far may not bind the President
+        href: "#fact-decisions-law-and-diplomacy/concurrent-resolutions-not-binding"
+      - phrase: Research shows Congress shapes how far wars go and how long they last
+        href: "#fact-decisions-law-and-diplomacy/congress-as-constraint"
+    verification:
+      status: verified
+      textHash: 9662435e7d0b
+      checkedAt: 2026-11-20

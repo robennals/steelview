@@ -1,0 +1,117 @@
+# The agent's half of this viewpoint: which phrase of the text cites which
+# data, the chart each card shows, and whether each passage has been checked
+# against its evidence. The text itself is in the .md file beside this one.
+# Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
+summary:
+  citations:
+    - phrase: promised no new wars
+      href: "#fact-decisions-law-and-diplomacy/campaign-said-stop-wars"
+    - phrase: costing tens of billions of dollars
+      href: "#fact-human-and-financial-costs-of-the-war/cost-38-to-47-billion"
+    - phrase: pushing up prices at the pump
+      href: "#fact-oil-shipping-and-prices/pump-prices-up-by-half"
+    - phrase: most Americans oppose it
+      href: "#fact-decisions-law-and-diplomacy/most-disapprove-gallup"
+  verification:
+    status: verified
+    textHash: 17ebcd522852
+    checkedAt: 2026-11-20
+lead:
+  citations: []
+  verification:
+    status: verified
+    textHash: 267ca3d6516f
+    checkedAt: 2026-11-20
+cards:
+  - heading: Americans voted for a President who promised to stop wars, and most oppose this one
+    visual:
+      cite: "#fact-decisions-law-and-diplomacy/most-disapprove-gallup"
+      kind: compositionBar
+      title: Approval of the war, by party
+    citations:
+      - phrase: Most Americans disapprove of the war
+        href: "#fact-decisions-law-and-diplomacy/most-disapprove-gallup"
+      - phrase: the President said, "I'm not going to start a war. I'm going to stop wars."
+        href: "#fact-decisions-law-and-diplomacy/campaign-said-stop-wars"
+      - phrase: the same campaign called Iran "very close" to a nuclear weapon
+        href: "#fact-decisions-law-and-diplomacy/campaign-called-iran-very-close"
+    verification:
+      status: verified
+      textHash: 6ea7abd0c36f
+      checkedAt: 2026-11-20
+  - heading: US intelligence said Iran was not building a bomb, and its allies attacked troops nearby
+    visual:
+      cite: "#fact-iran-actions-abroad/attacks-on-us-forces-before-the-war"
+      kind: series
+      title: Attacks on US forces in Iraq and Syria
+    citations:
+      - phrase: Groups allied with Iran attacked US and coalition bases in Iraq and Syria more than 200 times in 2023 and 2024
+        href: "#fact-iran-actions-abroad/attacks-on-us-forces-before-the-war"
+      - phrase: In 2025, US intelligence judged that Iran was not building a nuclear weapon
+        href: "#fact-iran-nuclear-programme/ata-2025-not-building"
+      - phrase: Iran has plotted killings on US soil
+        href: "#fact-iran-actions-abroad/us-convictions-iran-directed-plots"
+      - phrase: none of the US cases led to a killing
+        href: "#fact-iran-actions-abroad/us-plots-were-foiled"
+      - phrase: in 2026 US intelligence said Iran had been intending to try to recover its nuclear infrastructure
+        href: "#fact-iran-nuclear-programme/ata-2026-silent"
+    verification:
+      status: verified
+      textHash: ca6c2f040676
+      checkedAt: 2026-11-20
+  - heading: The war is costing Americans billions, and the bill keeps growing
+    visual:
+      cite: "#fact-human-and-financial-costs-of-the-war/cost-38-to-47-billion"
+      kind: estimateRange
+      title: Estimates of the Iran war's cost
+    citations:
+      - phrase: The Pentagon's figure for the war's cost has nearly doubled since April
+        href: "#fact-human-and-financial-costs-of-the-war/cost-38-to-47-billion"
+      - phrase: each extra month of fighting adds billions more
+        href: "#fact-human-and-financial-costs-of-the-war/monthly-cost-going-forward"
+      - phrase: The Iraq war cost many times the White House's early estimates
+        href: "#fact-human-and-financial-costs-of-the-war/iraq-overran-estimates"
+      - phrase: experts say the war has used up many of the missiles that protect US troops and allies
+        href: "#fact-human-and-financial-costs-of-the-war/interceptor-stocks"
+    verification:
+      status: verified
+      textHash: e8ae8f7452ad
+      checkedAt: 2026-11-20
+  - heading: Families are paying for the war at the pump
+    visual:
+      cite: "#fact-oil-shipping-and-prices/pump-prices-up-by-half"
+      kind: series
+      title: US petrol (gasoline) prices
+    citations:
+      - phrase: Pump prices rose by about half once the war began, and have stayed high
+        href: "#fact-oil-shipping-and-prices/pump-prices-up-by-half"
+      - phrase: government budget experts now expect higher inflation than they did before the war
+        href: "#fact-oil-shipping-and-prices/cbo-inflation-attribution"
+      - phrase: oil prices, after allowing for inflation, have stayed below the peaks of 1981, 2008 and 2022
+        href: "#fact-oil-shipping-and-prices/below-earlier-real-peaks"
+    verification:
+      status: verified
+      textHash: a868aaed60c9
+      checkedAt: 2026-11-20
+  - heading: A smaller war than Iraq still has to be worth its cost
+    visual:
+      cite: "#fact-human-and-financial-costs-of-the-war/us-deaths-small-share-of-iraq"
+      kind: comparison
+      title: US military deaths
+    citations:
+      - phrase: Far fewer Americans have died than in the Iraq war
+        href: "#fact-human-and-financial-costs-of-the-war/us-deaths-small-share-of-iraq"
+      - phrase: half of the American deaths were not in combat
+        href: "#fact-human-and-financial-costs-of-the-war/half-of-deaths-non-hostile"
+    verification:
+      status: verified
+      textHash: 79a9c4150547
+      checkedAt: 2026-11-20
+  - heading: So the US should end the war and bring its troops home
+    citations:
+      - phrase: no inspector has seen Iran's most enriched uranium since June 2025
+        href: "#fact-iran-nuclear-programme/stock-unaccounted-for"
+    verification:
+      status: verified
+      textHash: 52b33a5e29ce
+      checkedAt: 2026-11-20

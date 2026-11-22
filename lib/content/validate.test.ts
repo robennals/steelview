@@ -1349,6 +1349,7 @@ function previewedTopic(): Topic {
   t.facts[0].comparisons = [{ id: 'shares', title: 'Shares', description: 'd', unit: 'percent', valueLabel: 'v', sources: [1], items: [{ label: 'a', value: 1 }, { label: 'b', value: 2 }] }];
   // A preview is a chart a viewpoint's card is made with: one cited in a card's line.
   t.viewpoints[0].body = '### A point\n\nSee [the shares](#fact-alpha/chart-shares).';
+  t.viewpoints[0].visuals = new Map([['A point', { cite: '#fact-alpha/chart-shares', kind: 'comparison', title: 'Shares' }]]);
   t.viewpoints[1].body = 'See [the shares](#fact-alpha).';
   t.previewCharts = [{ fact: 'alpha', chart: 'shares' }];
   return t;
@@ -1472,6 +1473,7 @@ function previewedFigures(previewCharts: Topic['previewCharts']): Topic {
   for (const v of t.viewpoints) v.body = 'See [the figures](#fact-figure-examples).';
   // Each preview is on a card of the first viewpoint, as validation requires.
   t.viewpoints[0].body = (previewCharts ?? []).map(({ chart }) => `### On ${chart}\n\nSee [it](#fact-figure-examples/chart-${chart}).`).join('\n\n');
+  t.viewpoints[0].visuals = new Map((previewCharts ?? []).map(({ chart }) => [`On ${chart}`, { cite: `#fact-figure-examples/chart-${chart}`, kind: '', title: '' }]));
   t.previewCharts = previewCharts;
   return t;
 }

@@ -1,0 +1,137 @@
+# The agent's half of this viewpoint: which phrase of the text cites which
+# data, the chart each card shows, and whether each passage has been checked
+# against its evidence. The text itself is in the .md file beside this one.
+# Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
+summary:
+  citations:
+    - phrase: in towns where gangs abused children while officials feared being called racist
+      href: "#fact-crime-terrorism-and-group-exploitation/officials-feared-being-called-racist"
+  verification:
+    status: verified
+    textHash: 4454a7c54777
+    checkedAt: 2026-11-20
+lead:
+  citations: []
+  verification:
+    status: verified
+    textHash: ec1aa7a5c886
+    checkedAt: 2026-11-20
+cards:
+  - heading: Newcomers take years to join in, and Britain has far more of them
+    visual:
+      cite: "#fact-integration-outcomes/foreign-born-share-quadrupled"
+      kind: series
+      title: Foreign-born share of the population
+    citations:
+      - phrase: The share of residents of England and Wales born abroad has roughly quadrupled since 1951, to one in six
+        href: "#fact-integration-outcomes/foreign-born-share-quadrupled"
+      - phrase: recent arrivals are the most likely to struggle with English
+        href: "#fact-integration-outcomes/recent-arrivals-struggle-with-english"
+      - phrase: residents from outside the EU who came decades ago are far more likely to give a UK-only national identity
+        href: "#fact-integration-outcomes/identity-rises-with-time"
+    verification:
+      status: verified
+      textHash: 045aae31fe91
+      checkedAt: 2026-11-20
+  - heading: Some communities hold values far from the majority's
+    visual:
+      cite: "#fact-integration-outcomes/muslim-attitudes-homosexuality"
+      kind: comparison
+      title: Views on outlawing homosexuality
+    citations:
+      - phrase: British Muslims are markedly more conservative than the public on homosexuality
+        href: "#fact-integration-outcomes/muslim-attitudes-homosexuality"
+      - phrase: the polls are few and each has a flaw
+        href: "#fact-integration-outcomes/attitude-survey-methods"
+    verification:
+      status: verified
+      textHash: d28b037464c3
+      checkedAt: 2026-11-20
+  - heading: Fear of seeming racist let gangs abuse children, and the state still does not count offenders
+    visual:
+      cite: "#fact-crime-terrorism-and-group-exploitation/ethnicity-unrecorded-nationally"
+      kind: barChart
+      title: Abuse suspects with no ethnicity recorded
+    citations:
+      - phrase: inquiries described the gangs who abused children as Asian men or men of Pakistani or southern Asian heritage
+        href: "#fact-crime-terrorism-and-group-exploitation/offenders-mostly-pakistani-heritage-in-places-investigated"
+      - phrase: official reports found that fear of seeming racist held officials back
+        href: "#fact-crime-terrorism-and-group-exploitation/officials-feared-being-called-racist"
+      - phrase: about 1,400 children were abused
+        href: "#fact-crime-terrorism-and-group-exploitation/rotherham-1400-children"
+      - phrase: some staff were told not to mention the offenders' ethnicity
+        href: "#fact-crime-terrorism-and-group-exploitation/rotherham-staff-told-not-to-identify-ethnicity"
+      - phrase: Ethnicity is still not recorded for about two-thirds of abuse suspects in England and Wales
+        href: "#fact-crime-terrorism-and-group-exploitation/ethnicity-unrecorded-nationally"
+      - phrase: most recorded child sexual abuse happens outside gangs
+        href: "#fact-crime-terrorism-and-group-exploitation/most-child-sexual-abuse-is-outside-groups"
+    verification:
+      status: verified
+      textHash: bd69b7738be0
+      checkedAt: 2026-11-20
+  - heading: Failure to integrate can grow, not fade, in the second generation
+    visual:
+      cite: "#fact-crime-terrorism-and-group-exploitation/danish-descendants-offend-more-than-parents"
+      kind: comparison
+      title: "Denmark: convictions by origin"
+    citations:
+      - phrase: men born to non-Western immigrants are convicted more often than the immigrants themselves
+        href: "#fact-crime-terrorism-and-group-exploitation/danish-descendants-offend-more-than-parents"
+      - phrase: Their conviction rate has fallen over time, and no comparable British figures exist
+        href: "#fact-crime-terrorism-and-group-exploitation/danish-rate-fallen-and-no-british-figures"
+      - phrase: Islamist extremists are the largest group of terrorist prisoners
+        href: "#fact-crime-terrorism-and-group-exploitation/islamists-largest-group-of-terrorist-prisoners-most-british"
+      - phrase: most terrorist prisoners give their nationality as British
+        href: "#fact-crime-terrorism-and-group-exploitation/most-terrorist-prisoners-british"
+    verification:
+      status: verified
+      textHash: b49a34aa8170
+      checkedAt: 2026-11-20
+  - heading: Outcomes differ widely by origin, so who is chosen matters
+    visual:
+      cite: "#fact-integration-outcomes/denmark-menapt-vs-western"
+      kind: series
+      title: "Denmark: net fiscal contribution by origin"
+    citations:
+      - phrase: immigrants from the Middle East, North Africa, Pakistan, Afghanistan and Turkey cost the public purse on average, while Western immigrants pay in
+        href: "#fact-integration-outcomes/denmark-menapt-vs-western"
+      - phrase: region of origin produces gaps as large as the reason for coming
+        href: "#fact-integration-outcomes/netherlands-by-region"
+      - phrase: for an intake that came especially for asylum or family reunion
+        href: "#fact-integration-outcomes/denmark-intake-asylum-and-family"
+    verification:
+      status: verified
+      textHash: 766dcc39f7bf
+      checkedAt: 2026-11-20
+  - heading: Where crime is counted by nationality, some groups stand far apart
+    visual:
+      cite: "#fact-crime-terrorism-and-group-exploitation/afghan-sex-offence-rate"
+      kind: estimateRange
+      title: Conviction rates by nationality
+    citations:
+      - phrase: after adjusting for age and sex, Afghan nationals were convicted of sex offences at seven times the British rate in 2020–22
+        href: "#fact-crime-terrorism-and-group-exploitation/afghan-sex-offence-rate"
+      - phrase: Albanian, Iraqi and Afghan citizens were cautioned or convicted of crimes far more often than British citizens
+        href: "#fact-crime-terrorism-and-group-exploitation/rates-vary-by-nationality"
+      - phrase: across all offences, foreign nationals are convicted at about the British rate
+        href: "#fact-crime-terrorism-and-group-exploitation/offence-types-differ"
+    verification:
+      status: verified
+      textHash: a1e1259668f1
+      checkedAt: 2026-11-20
+  - heading: So admit far fewer, choose for integration, and measure the results
+    citations:
+      - phrase: the Ministry of Justice is appealing an order to publish convictions by nationality and offence
+        href: "#fact-crime-terrorism-and-group-exploitation/detailed-figures-withheld"
+      - phrase: non-citizens are cautioned or convicted at about their share of adults
+        href: "#fact-crime-terrorism-and-group-exploitation/non-citizens-share-matches-population"
+      - phrase: most people say their area is one where people from different backgrounds get on
+        href: "#fact-integration-outcomes/cohesion-stable"
+      - phrase: segregation has fallen
+        href: "#fact-integration-outcomes/segregation-fell"
+      - phrase: most minority groups outscore White British pupils
+        href: "#fact-integration-outcomes/minority-pupils-outperform"
+    verification:
+      status: verified
+      textHash: 8b3e2971ff43
+      checkedAt: 2026-11-20

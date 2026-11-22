@@ -383,10 +383,18 @@ now costs one file; found later it costs every viewpoint that cites it.
 
 ## 6. Write the viewpoints
 
-**The agent drafts each viewpoint** from its outline and the observations
-that now exist, with every empirical assertion a pill to an observation,
-except one the card's own visual shows
-([Citations and data order](AUTHORING.md#citations-and-data-order)). A
+**The editor owns each viewpoint's text; the agent links and checks it**
+([A viewpoint's text and its links](AUTHORING.md#a-viewpoints-text-and-its-links)).
+The text file is plain prose; the agent never puts links in it. The editor
+writes it from the outline, or the agent drafts it first, marked `draft: ai`,
+for the editor to rewrite. Either way the agent then writes the links file:
+a citation for each empirical assertion, except one the card's own visual
+shows ([Citations and data order](AUTHORING.md#citations-and-data-order)),
+the visual each card is made with, and a verification of each passage, with
+notes to the editor on anything its evidence does not support or a holder
+would argue better. A claim with no data behind it becomes a note or a
+request to stage 5, never a quietly softened sentence. Any agent edit to the
+text sets `draft: ai` again, so the editor sees it. A
 viewpoint is read as a slideshow of cards, one per section
 ([Lead with the data](AUTHORING.md#lead-with-the-data)), so choose each card's
 visual before writing its text. Each viewpoint is a short lead, then one `###`
@@ -439,17 +447,16 @@ holder of that view would find it better argued than their own version
   ([Cruxes](AUTHORING.md#cruxes)).
 - **Order last.** Set each viewpoint's `order` so the sides alternate, and
   list the headline reports in `topic.md`'s `dataOrder` in the order a reader
-  should meet them. Viewpoint frontmatter is only `name`, `summary` and
-  `order` ([Citations and data order](AUTHORING.md#citations-and-data-order)):
-  what a viewpoint builds on, concedes or sets aside shows in its inline
-  observation links.
+  should meet them. What a viewpoint builds on, concedes or sets aside shows
+  in its citations ([Citations and data order](AUTHORING.md#citations-and-data-order)).
 
 **Gate: the human is happy with every viewpoint**, read side by side —
 first its headings alone, then stepped through on the page with each chart,
 opening each card's chart in full to check it carries its own context
 ([A Card's Chart Carries Its Own Context](AUTHORING.md#a-cards-chart-carries-its-own-context)):
 no page shows the collections' other charts. Check readability as for reports: look at each viewpoint rendered, and read it
-aloud for sentences that need a second reading.
+aloud for sentences that need a second reading. And `pnpm check:integrity`
+passes, so every passage is cited and verified as it now reads.
 
 ## 7. Publish
 
