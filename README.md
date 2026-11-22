@@ -93,7 +93,9 @@ each viewpoint ranks the facts it cites and then those it acknowledges, and
 the page interleaves those rankings round-robin, so no viewpoint's second
 fact appears before every viewpoint has had its first
 (`lib/content/rank-facts.ts`). **Viewpoint order is an explicit `order` field**
-on each viewpoint, chosen so the sides alternate rather than cluster.
+on each viewpoint, chosen so the sides alternate rather than cluster. The home
+page lists viewpoints in that order. A topic's page is built in it, then
+shuffles them once loaded, so that none is always read first.
 
 ## Content validation and publication checks
 

@@ -200,7 +200,8 @@ test.describe('without JavaScript', () => {
   });
 });
 
-test('each topic lists its viewpoints as its own page names them, in the same order', async ({ page }) => {
+// The topic page shuffles its viewpoints, so only the names must match, not their order.
+test('each topic lists its viewpoints as its own page names them', async ({ page }) => {
   await page.goto('/');
   const listed = await page.locator('.sv-row').evaluateAll(rows => rows.map(row => ({
     href: row.querySelector<HTMLAnchorElement>('.sv-row__cta')?.getAttribute('href'),
@@ -209,6 +210,8 @@ test('each topic lists its viewpoints as its own page names them, in the same or
   expect(listed.length).toBeGreaterThan(1);
   for (const { href, names } of listed) {
     await page.goto(href!);
-    await expect(page.locator('.sv-row--viewpoint .sv-row__title'), href!).toHaveText(names.map(name => name!));
+    const titles = page.locator('.sv-row--viewpoint .sv-row__title');
+    await expect(titles, href!).toHaveCount(names.length);
+    expect((await titles.allTextContents()).map(title => title.trim()).sort(), href!).toEqual(names.map(name => name!).sort());
   }
 });

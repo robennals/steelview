@@ -38,6 +38,42 @@ test('the topic page shows its viewpoints and then its cruxes, with no tabs', as
   expect(await precedes(page.locator('.sv-row--viewpoint').last())).toBe(true);
 });
 
+// No viewpoint is put first: they come in a random order, and Shuffle deals them again.
+test('the viewpoints are in random order, and Shuffle reorders them', async ({ page, browser }) => {
+  const idsOn = (on: typeof page) => on.locator('.sv-row--viewpoint').evaluateAll(rows => rows.map(row => row.id));
+  // Without JavaScript, the order the page was built in, and nothing to shuffle it with.
+  const unscripted = await browser.newContext({ javaScriptEnabled: false });
+  const builtPage = await unscripted.newPage();
+  await builtPage.goto(ASYLUM);
+  const built = await idsOn(builtPage);
+  await expect(builtPage.getByRole('button', { name: 'Shuffle' })).toHaveCount(0);
+  await unscripted.close();
+
+  // The button appears with the shuffled order. Chance can deal the built order, so load until it doesn't.
+  const shuffle = page.getByRole('button', { name: 'Shuffle' });
+  await expect.poll(async () => {
+    await page.goto(ASYLUM);
+    await expect(shuffle).toBeVisible();
+    return idsOn(page);
+  }, { timeout: 20_000 }).not.toEqual(built);
+
+  // An open row stays open at the card being read, wherever it moves to.
+  const row = await openViewpoint(page, 'refuge');
+  const strip = row.locator('.sv-deck__strip');
+  const card = () => strip.evaluate(el => Math.round(el.scrollLeft / el.clientWidth));
+  await row.locator('.sv-deck__outline-item').nth(2).click();
+  await expect.poll(card).toBe(2);
+  // Several times over, as a shuffle need not move this row.
+  for (let i = 0; i < 6; i++) {
+    const before = await idsOn(page);
+    await shuffle.click();
+    await expect.poll(() => idsOn(page)).not.toEqual(before);
+    expect([...(await idsOn(page))].sort()).toEqual([...built].sort());
+    await expect(row).toHaveAttribute('data-open', 'true');
+    expect(await card()).toBe(2);
+  }
+});
+
 test('a crux is plain text: it links to nothing', async ({ page }) => {
   await page.goto(TOPIC);
   const crux = page.locator('.sv-row--crux').first();
