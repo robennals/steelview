@@ -7,13 +7,13 @@ draft: ai
 ---
 Asylum is for people fleeing danger. It should not be a way to choose which country to live in. Yet a person who reaches Britain by boat and claims asylum can expect to stay, whatever the answer to their claim. Britain should end that. It should refuse the claims of people who enter illegally, remove them, and leave European human-rights law if it stands in the way.
 
-### More people are claiming asylum than Britain has ever seen
+### By 2025, Britain was seeing more asylum claims than ever before
 
 Asylum claims passed their 2002 peak and reached record levels in 2024 and 2025. In 2018, small boats carried a few hundred people across the Channel. They went on to carry tens of thousands a year. Housing and supporting the people who wait costs about £4 billion a year. Crossings fell sharply in 2026. But crossings into Europe fell too, and no one has shown what caused the fall. Britain cannot rely on a fall it cannot explain.
 
-### Some of the groups who come commit far more crime, and the state does not count it
+### Some of the groups who come commit far more crime
 
-Record numbers would matter less if the people arriving settled in and lived by Britain's laws. The figures that exist say some groups do not. Afghans, Iraqis and Iranians are among the nationalities that claim asylum. After adjusting for age and sex, Afghan nationals were convicted of sex offences at seven times the British rate. Across all offences, Iraqi, Afghan and Iranian citizens were convicted at four to six and a half times the British rate. People who leave countries where violence is common and the law is weak do not leave all of that behind at the border. While no statistics record whether those offenders had claimed asylum, that gap is the state's to fill, and the Ministry of Justice is appealing an order to publish more detailed figures. Britain cannot weigh the risk of whom it admits without counting it.
+Record numbers would matter less if the people arriving settled in and lived by Britain's laws. The figures that exist say some groups do not. Afghans, Iraqis and Iranians are among the nationalities that claim asylum. After adjusting for age and sex, Afghan nationals were convicted of sex offences at seven times the British rate. Across all offences, Iraqi, Afghan and Iranian citizens were convicted at four to six and a half times the British rate. People who grow up where violence is common and the law is weak can bring that with them. While no statistics record whether those offenders had claimed asylum, that gap is the state's to fill, and the Ministry of Justice is appealing an order to publish more detailed figures. Britain cannot weigh the risk of whom it admits without counting it.
 
 ### Everyone on a small boat has already reached a safe country
 
@@ -29,7 +29,7 @@ The Home Office itself says people use the right to family life, Article 8 of th
 
 ### Where the crossing stopped working, people stopped crossing
 
-From late 2013, Australia turned asylum boats back at sea, and arrivals fell to almost none. Months earlier it had banned boat arrivals from settling, and the boats had kept coming. The rule on paper changed nothing. The journey that failed did. Even the Kaldor Centre, a refugee-law institute that opposes offshore processing, ties the fall to turning boats back. Britain withdrew its own turnback policy as rarely safe in the Channel, so here the crossing has to fail on land, through removal. Albania points the same way: once nearly all Albanian claims were refused and returns to Albania rose sharply, Albanian asylum claims fell by every route.
+From late 2013, Australia turned asylum boats back at sea, and arrivals fell to almost none. Months earlier it had banned boat arrivals from settling, and the boats had kept coming. The rule on paper changed nothing. The journey that failed did. Even the Kaldor Centre, a refugee-law institute that opposes offshore processing, ties the fall to turning boats back. Britain withdrew its own turnback policy as rarely safe in the Channel, so here the crossing has to fail on land, through removal. Albania points the same way. In December 2022 Britain signed a returns deal with Albania, then began refusing nearly all Albanian claims and sending people home. Albanian claims stayed low, and by 2026 were the lowest since 2012. While the first fall in crossings came before the deal, the deal is plausibly a major reason the numbers stayed low.
 
 ### So Britain should bar these claims, remove those who come, and leave the ECHR
 

@@ -9,7 +9,7 @@ Britain has a duty to people fleeing war and persecution. That duty is owed to a
 
 ### Most refugees never get near a boat
 
-Most of the world's refugees stay in the countries next to the one they fled. They are the people without the money or the strength to go further. Reaching the Channel means paying smugglers thousands of pounds and travelling for months, and most of those who manage it are young men. So an asylum system that helps whoever arrives helps the people best able to travel. It does little for a widow with small children in a camp on Sudan's border, and her need is greater.
+Most of the world's refugees stay in the countries next to the one they fled. They are the people without the money or the strength to go further. Reaching the Channel means travelling thousands of miles and paying smugglers for the crossing, and most of those who manage it are young men. So an asylum system that helps whoever arrives helps the people best able to travel. It does little for a widow with small children in a camp on Sudan's border, and her need is greater.
 
 ### By the time someone reaches the Channel, the danger is behind them
 
@@ -17,11 +17,11 @@ The boats set off from France and Belgium. While most people who arrived by smal
 
 ### The same money would protect many more people near home
 
-Supporting asylum seekers in Britain costs about £4 billion a year. A hotel place cost between £127 and £148 per person per night. Sheltering and feeding a refugee in a country next to the conflict costs a small part of that. Yet a large share of Britain's overseas aid budget is now spent inside Britain, on housing asylum seekers. Every pound spent on a hotel here is a pound not spent where it would help several people instead of one.
+Supporting asylum seekers in Britain costs about £4 billion a year. A hotel place cost between £127 and £148 per person per night. Sheltering and feeding a refugee in a country next to the conflict costs a small part of that. Yet nearly a fifth of Britain's overseas aid is now spent inside Britain, on refugees and asylum seekers. Every pound spent on a hotel here is a pound not spent where it would help several people instead of one.
 
 ### Help that the public does not agree to will not last
 
-A country can only keep helping while its people are willing. Britain took in hundreds of thousands of Ukrainians and Hong Kongers on visas, and its people opened their homes to them. The boats are different. In one 2025 poll, 38% of adults wanted small-boat asylum seekers made to leave, against 16% for asylum seekers who came through the legal process. People are generous when their government chooses who comes, and stop being generous when it cannot. And a country that feels it has lost control helps no one: Britain has cut its aid budget while its asylum costs rose.
+A country can only keep helping while its people are willing. Britain took in hundreds of thousands of Ukrainians and Hong Kongers on visas, and its people opened their homes to them. The boats are different. In one 2025 poll, 38% of adults wanted recent small-boat arrivals made to leave, but only 16% said the same of asylum seekers who came through the legal process. People are generous when their government decides who comes.
 
 ### A country can end the boats and still protect refugees
 
@@ -33,4 +33,4 @@ People who cross from a safe country should be returned there, or have their cla
 
 Britain should then spend what it saves on the countries next to each conflict, which shelter most of the refugees, and on the diplomacy that ends wars. And each year it should bring in a fixed number of refugees itself, chosen with the United Nations from the camps: the sick, children alone and women at risk before young men with money.
 
-This asks two hard things. A safe country must agree to take back the people who cross, and Rwanda took no asylum seekers. And the number Britain resettles must be large. The government plans a few hundred places a year. At that scale, "help them there" is only a polite way of saying no.
+This asks two hard things. A safe country must agree to take back the people who cross, and Rwanda took no asylum seekers. And the number Britain resettles must be large. The government plans a few hundred places at first. At that scale, "help them there" is only a polite way of saying no.
