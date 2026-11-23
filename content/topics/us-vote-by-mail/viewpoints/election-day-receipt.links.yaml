@@ -47,7 +47,7 @@ cards:
       kind: comparison
       title: Grace periods for postmarked ballots
     citations:
-      - phrase: Ballots that arrive up to about three weeks late still count in Washington
+      - phrase: Ballots that arrive up to 20 days late still count in Washington
         href: "#fact-ballot-deadlines-and-counting-speed/grace-states-mixed"
       - phrase: fifteen states count some ballots that arrive after Election Day
         href: "#fact-ballot-deadlines-and-counting-speed/back-to-2016-level"
@@ -57,10 +57,10 @@ cards:
         href: "#fact-ballot-deadlines-and-counting-speed/pennsylvania-2020-late-ballots-litigated"
     verification:
       status: verified
-      textHash: 4e9c4dada3ce
+      textHash: 8d6cce351f6b
       checkedAt: 2026-11-23
       notes:
-        - Washington's window is 20 days for a general election. No national source counts late ballots that were counted inside a grace period.
+        - Washington's window runs to the day before certification, 21 days after a general election. No national source counts late ballots that were counted inside a grace period.
   - heading: Slow counts make people trust the result less
     visual:
       cite: "#fact-confidence-and-disputed-results/delay-lowers-trust"
@@ -69,16 +69,16 @@ cards:
     citations:
       - phrase: people told that a race took six days to call trusted the result less than people told nothing
         href: "#fact-confidence-and-disputed-results/delay-lowers-trust"
-      - phrase: in 2020, counts were slower where states let mail ballots arrive after Election Day
-        href: "#fact-ballot-deadlines-and-counting-speed/slow-states-not-only-mail"
+      - phrase: counts were slower where states let mail ballots arrive after Election Day
+        href: "#fact-ballot-deadlines-and-counting-speed/slowest-states-mostly-heavy-mail"
       - phrase: explaining the count in advance undid most of the drop
         href: "#fact-confidence-and-disputed-results/explaining-the-delay-limits-the-drop"
     verification:
       status: verified
-      textHash: 9410a848f725
+      textHash: 0dd6af457449
       checkedAt: 2026-11-23
       notes:
-        - The experiment tells respondents of a delay rather than watching voters after a real one. MIT's 2020 finding names late arrival alongside large mail volumes and bans on early processing; it does not separate them.
+        - The experiment tells respondents of a delay rather than watching voters after a real one. MIT's 2020 finding is an association that names late arrival alongside large mail volumes and bans on early processing; it does not separate them. Arizona, with no late window, was slowest in 2024.
   - heading: Most states already require ballots by Election Day, and more are returning to it
     visual:
       cite: "#fact-ballot-deadlines-and-counting-speed/back-to-2016-level"
@@ -103,15 +103,15 @@ cards:
       kind: series
       title: Late ballots among rejections
     citations:
-      - phrase: late arrival has caused between about one in eight and more than one in four rejected mail ballots in each election since 2016
+      - phrase: late arrival has caused between 12.1% and 26.9% of rejected mail ballots in each general election since 2016
         href: "#fact-ballot-deadlines-and-counting-speed/late-share-of-rejections"
       - phrase: late rejections rose in its 2026 primary, as they did in Wisconsin and Michigan
         href: "#fact-ballot-deadlines-and-counting-speed/late-rejections-rising-2026"
-      - phrase: late rejections were lowest in 2020, when the most states had grace periods, much else about voting changed that year
+      - phrase: late ballots were the smallest share of rejections in 2020, when the most states had grace periods, much else about voting changed that year
         href: "#fact-ballot-deadlines-and-counting-speed/2020-low"
     verification:
       status: verified
-      textHash: 586677d251e1
+      textHash: 59810fe0e3d0
       checkedAt: 2026-11-23
       notes:
         - Shares are of rejected ballots; rejections were 1.2% of returned mail ballots in 2024. That drop-boxes and early mailing reduce late ballots is argued, not measured here.
@@ -129,7 +129,7 @@ cards:
         href: "#fact-ballot-deadlines-and-counting-speed/prepare-early-still-slow"
     verification:
       status: verified
-      textHash: 9f8a1c290587
+      textHash: 1779acc919ca
       checkedAt: 2026-11-23
       notes:
         - These are unofficial reporting times, not the official canvass. MIT says the hours may be overstated by up to half an hour.
@@ -139,7 +139,7 @@ cards:
         href: "#fact-ballot-deadlines-and-counting-speed/preprocessing-speeds-first-hours"
     verification:
       status: verified
-      textHash: 1397a25b0972
+      textHash: 8f44e6b3a918
       checkedAt: 2026-11-23
       notes:
         - By 24 hours after polls closed the early-processing gap between states "had essentially disappeared".

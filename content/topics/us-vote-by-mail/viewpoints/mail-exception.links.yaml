@@ -81,7 +81,7 @@ cards:
       kind: comparison
       title: Voided elections, by what was found
     citations:
-      - phrase: about two-thirds of the elections thrown out or overturned involved absentee or mail ballots
+      - phrase: 21 of the 32 elections thrown out or overturned involved absentee or mail ballots
         href: "#fact-absentee-fraud-and-manipulation-of-the-count/most-voidings-absentee"
       - phrase: called absentee ballots "the largest source of potential voter fraud"
         href: "#fact-absentee-fraud-and-manipulation-of-the-count/carter-baker-largest-source"
@@ -91,14 +91,14 @@ cards:
         href: "#fact-absentee-fraud-and-manipulation-of-the-count/few-cases-against-ballots-cast"
       - phrase: they are only the ones that were caught
         href: "#fact-absentee-fraud-and-manipulation-of-the-count/detected-fraud-is-a-floor"
-      - phrase: an envelope signed by the voter's spouse passed
+      - phrase: an envelope the voter's spouse signed by mistake passed
         href: "#fact-mail-ballot-rejection-and-signature-checks/cobb-spouse-signature-passed"
     verification:
       status: verified
-      textHash: f082ad27c37f
+      textHash: 38c7351e2358
       checkedAt: 2026-11-23
       notes:
-        - The two-thirds is this report's hand count of 32 elections in a sample. The same commission found "little evidence of fraud in Oregon". In the Cobb case the voter had filled in the ballot; the spouse signed the envelope by mistake. Paterson's winner has not been convicted.
+        - The 21 are this report's hand count of 32 elections in a sample (16 mainly absentee, 5 absentee plus other illegal votes). The same commission found "little evidence of fraud in Oregon". In the Cobb case the voter had filled in the ballot; the spouse signed the envelope by mistake. Paterson's winner has not been convicted.
   - heading: Few democracies let everyone vote by post, and Britain found fraud when it did
     visual:
       cite: "#fact-secret-ballot-and-postal-voting-abroad/universal-postal-voting-is-rare"
@@ -107,9 +107,11 @@ cards:
     citations:
       - phrase: Only 11 countries let every voter vote by post from home
         href: "#fact-secret-ballot-and-postal-voting-abroad/universal-postal-voting-is-rare"
+      - phrase: Britain became one in 2001
+        href: "#fact-secret-ballot-and-postal-voting-abroad/uk-fraud-under-on-demand"
       - phrase: a judge found "literally thousands of votes" falsified in Birmingham
         href: "#fact-secret-ballot-and-postal-voting-abroad/uk-fraud-under-on-demand"
-      - phrase: an election court later held that postal voting for all had made voting in another person's name "once again viable"
+      - phrase: an election court later held that postal voting for all, with lax registration rules, had made voting in another person's name "once again viable"
         href: "#fact-secret-ballot-and-postal-voting-abroad/uk-fraud-under-on-demand"
       - phrase: ending postal voting in 1975 after every party condemned the serious fraud it brought
         href: "#fact-secret-ballot-and-postal-voting-abroad/france-abolished-over-fraud"
@@ -117,7 +119,7 @@ cards:
         href: "#fact-secret-ballot-and-postal-voting-abroad/uk-kept-on-demand-added-checks"
     verification:
       status: verified
-      textHash: c1c2ac86cd37
+      textHash: e972d2c8c99d
       checkedAt: 2026-11-23
       notes:
         - The 11 include the US, Britain, Germany, Switzerland and Canada, and 27% of OECD members allow it for all voters. The court's word is "personation". France widened proxy voting when it ended postal voting. Britain's Electoral Commission found no evidence of large-scale fraud in 2019–2023.
@@ -133,11 +135,11 @@ cards:
         href: "#fact-mail-voting-use-and-effects/eligibility-shifted-method"
       - phrase: in every Pew poll since 2020, fewer voters trusted the mail count than the in-person count
         href: "#fact-confidence-and-disputed-results/mail-below-in-person"
-      - phrase: fewer than half of Republican voters have ever been confident in it
+      - phrase: no more than 42% of Republican voters have been confident in it in any poll
         href: "#fact-confidence-and-disputed-results/mail-confidence-by-party"
     verification:
       status: verified
-      textHash: 6862872ce48e
+      textHash: 3e89b16b63ac
       checkedAt: 2026-11-23
       notes:
         - The turnout study covers California, Utah and Washington counties, 1996–2018, before the parties split over mail voting. "Republican voters" are Pew's supporters of Republican candidates, at most 42% confident in any reading. People who vote by mail trust the mail count most. No study tests whether limiting mail voting would raise losers' confidence.

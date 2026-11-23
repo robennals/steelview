@@ -8,13 +8,13 @@ summary:
       href: "#fact-federal-and-state-power-over-mail-voting/president-ordered-mail-rules"
     - phrase: the Constitution gives election rules to state lawmakers and to Congress, not the President
       href: "#fact-federal-and-state-power-over-mail-voting/elections-clause-text"
-    - phrase: their voters back the system they have
+    - phrase: support for mail voting is highest where states use it most
       href: "#fact-mail-voting-use-and-effects/support-higher-where-used"
     - phrase: each state can change course
       href: "#fact-mail-voting-use-and-effects/states-moved-both-ways"
   verification:
     status: verified
-    textHash: 92884a095986
+    textHash: d41bb0515764
     checkedAt: 2026-11-23
     notes:
       - The support survey cannot say whether using mail voting builds support or supportive states adopt it.
@@ -35,35 +35,37 @@ cards:
     citations:
       - phrase: The President has signed two orders setting rules for mail ballots
         href: "#fact-federal-and-state-power-over-mail-voting/two-orders"
-      - phrase: The other orders the Postal Service to carry ballots only for voters on a state's list
+      - phrase: The other orders a Postal Service rule under which it would carry ballots only for voters on a state's list
         href: "#fact-federal-and-state-power-over-mail-voting/federal-moves-to-narrow-mail"
       - phrase: A court ruled that the first order's deadline rules went beyond his power
         href: "#fact-federal-and-state-power-over-mail-voting/eo-14248-deadlines-enjoined"
-      - phrase: a court blocked the Postal Service rule for the November 2026 election
-        href: "#fact-federal-and-state-power-over-mail-voting/usps-rule-blocked"
-      - phrase: the Supreme Court let the second order go ahead
+      - phrase: The Supreme Court let the second order stand as an internal directive
         href: "#fact-federal-and-state-power-over-mail-voting/eo-14399-stands"
-      - phrase: it did not decide whether the order is lawful
+      - phrase: without deciding whether it is lawful
         href: "#fact-federal-and-state-power-over-mail-voting/no-merits-ruling"
+      - phrase: kept the Postal Service rule blocked for November 2026
+        href: "#fact-federal-and-state-power-over-mail-voting/usps-rule-blocked"
     verification:
       status: verified
-      textHash: c3a9521b048e
+      textHash: 04b4982425f0
       checkedAt: 2026-11-23
       notes:
         - The order directs a rule that would have the Postal Service carry ballots only for enrolled voters; the order itself binds only the executive branch. The deadline ruling is under appeal.
   - heading: The Constitution gives election rules to state lawmakers and Congress
     visual:
-      cite: "#fact-ballot-deadlines-and-counting-speed/watson-left-it-to-legislatures"
+      cite: "#fact-federal-and-state-power-over-mail-voting/constitution-names-legislatures-and-congress"
       kind: quotes
-      title: What did the Supreme Court say about ballot deadlines in Watson v. RNC?
+      title: Who does the Constitution let set the rules for federal elections?
     citations:
-      - phrase: gives the "manner of holding elections" to each state's legislature, and lets Congress "make or alter such regulations"
-        href: "#fact-federal-and-state-power-over-mail-voting/elections-clause-text"
+      - phrase: gives the "times, places and manner" of elections to each state's legislature, and lets Congress "make or alter such regulations"
+        href: "#fact-federal-and-state-power-over-mail-voting/constitution-names-legislatures-and-congress"
+      - phrase: The President's part is to sign or return the bills Congress passes
+        href: "#fact-federal-and-state-power-over-mail-voting/constitution-names-legislatures-and-congress"
       - phrase: it said arguments over them belong to lawmakers, not courts
         href: "#fact-ballot-deadlines-and-counting-speed/watson-left-it-to-legislatures"
     verification:
       status: verified
-      textHash: 03ed44d4b11d
+      textHash: 5700e85bfe02
       checkedAt: 2026-11-23
       notes:
         - State courts can review a legislature's election rules (Moore v. Harper), and Oregon's system came by citizen initiative, so "state lawmakers" is shorthand for each state's constitutional system.
@@ -85,45 +87,49 @@ cards:
       status: verified
       textHash: 5b01695b6a0e
       checkedAt: 2026-11-23
-  - heading: Voters back the system their own state has chosen
+  - heading: Support for mail voting is highest where states use it most
     visual:
       cite: "#fact-mail-voting-use-and-effects/support-higher-where-used"
       kind: barChart
       title: Support for mail voting, by state rule
     citations:
-      - phrase: Support for letting anyone vote by mail is highest in states that mail every voter a ballot and lowest in states that require an excuse, and that holds within each party
+      - phrase: "Support for letting any voter vote by mail is highest in states that mail every voter a ballot and lowest in states that require an excuse, and that holds within each party: 46% of Republicans favour it in states that mail every voter a ballot, against 22% in states that require an excuse"
         href: "#fact-mail-voting-use-and-effects/support-higher-where-used"
-      - phrase: Most voters in the West used mail even before the pandemic, while in the South mail stayed under a quarter of votes even in 2020
+      - phrase: Most voters in the West used mail even before the pandemic, while in the South most voters did not, even in 2020
         href: "#fact-mail-voting-use-and-effects/west-votes-by-mail"
     verification:
       status: verified
-      textHash: e80211b1c6ed
+      textHash: 61808a80e49b
       checkedAt: 2026-11-23
       notes:
-        - The survey cannot say whether using mail voting builds support or supportive states adopt it. Republicans in all-mail states are still under half in favour (46%).
-  - heading: Congress may set national rules, but has done so only where states cannot
+        - The survey cannot say whether using mail voting builds support or supportive states adopt it. Pew asked only about letting any voter vote by mail.
+  - heading: Congress may set national rules, but has mostly left mail voting to the states
     visual:
       cite: "#fact-federal-and-state-power-over-mail-voting/national-bills-stalled"
       kind: comparison
       title: Senate votes on national voting rules
     citations:
+      - phrase: A Democratic bill requiring mail voting for any voter and a Republican photo-ID bill have both failed in the Senate
+        href: "#fact-federal-and-state-power-over-mail-voting/national-bills-stalled"
       - phrase: Congress has strong power over federal elections
         href: "#fact-federal-and-state-power-over-mail-voting/congress-power-paramount"
-      - phrase: on mail voting it has used it only for voters no single state can serve. Federal law makes every state let service members and Americans abroad vote by mail
+      - phrase: Since 1970, every state must let voters who will be away on Election Day vote absentee for President
+        href: "#fact-federal-and-state-power-over-mail-voting/vra-1970-absentee"
+      - phrase: since 1986 it must let service members and Americans abroad vote by mail
+        href: "#fact-federal-and-state-power-over-mail-voting/congress-set-uocava-rules"
+      - phrase: Who else may vote by mail it has left to the states
         href: "#fact-federal-and-state-power-over-mail-voting/congress-set-uocava-rules"
       - phrase: Bills now in Congress would push mail voting in opposite directions
         href: "#fact-federal-and-state-power-over-mail-voting/bills-on-both-sides"
-      - phrase: national voting bills from both parties have failed in the Senate
-        href: "#fact-federal-and-state-power-over-mail-voting/national-bills-stalled"
     verification:
       status: verified
-      textHash: 4d334b6fcfc2
+      textHash: 84a23c3acc6a
       checkedAt: 2026-11-23
       notes:
-        - The Republican bill that failed (S. 5271) was a photo-ID bill, not a mail bill; the Democratic bills would have required no-excuse absentee voting. The House-passed SAVE America Act had had no Senate vote by the sources read.
+        - "The Democratic bill (Freedom to Vote: John R. Lewis Act, 2022) would have required no-excuse absentee voting in every state. The 1970 rule covers presidential elections only. The House-passed SAVE America Act had had no Senate vote by the sources read."
   - heading: So each state's voters, through their lawmakers, should set their mail rules
     citations: []
     verification:
       status: verified
-      textHash: ec9dfdfd9e31
+      textHash: b8275255df40
       checkedAt: 2026-11-23

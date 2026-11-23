@@ -8,11 +8,11 @@ summary:
       href: "#fact-mail-ballot-rejection-and-signature-checks/signatures-largest-reason"
     - phrase: It is a judgement call that varies from county to county
       href: "#fact-mail-ballot-rejection-and-signature-checks/county-strongest-predictor"
-    - phrase: in Washington it rejected Black voters' ballots at four times white voters' rate
+    - phrase: in Washington, Black voters' mail ballots were rejected at four times white voters' rate
       href: "#fact-mail-ballot-rejection-and-signature-checks/washington-race-gaps"
   verification:
     status: verified
-    textHash: bf16be35a0a9
+    textHash: 23db7d6886ba
     checkedAt: 2026-11-23
     notes:
       - The Washington racial rates count unsigned envelopes too, not only mismatches.
@@ -31,11 +31,11 @@ cards:
     citations:
       - phrase: A signature that an official judges not to match is now the most common reason given for rejecting a mail ballot. In 2024 it caused two in five rejections, more than twice as many as late arrival
         href: "#fact-mail-ballot-rejection-and-signature-checks/signatures-largest-reason"
-      - phrase: some states file signature rejections under "other"
+      - phrase: Some states also file signature rejections under "other", which this share leaves out
         href: "#fact-mail-ballot-rejection-and-signature-checks/signature-share-reporting"
     verification:
       status: verified
-      textHash: 7f62504347d9
+      textHash: e36906ffbb89
       checkedAt: 2026-11-23
       notes:
         - The 2024 category is "non-matching or incomplete" signatures. "Other" is larger than late arrival in 2024; signatures are the most common listed reason.
@@ -45,7 +45,7 @@ cards:
       kind: comparison
       title: "Washington: rejections by county"
     citations:
-      - phrase: In Washington in 2020, county rejection rates ran from 1.5% to under a tenth of a percent
+      - phrase: In Washington in 2020, county rates of rejection for any reason but lateness ran from 1.5% to under a tenth of a percent
         href: "#fact-mail-ballot-rejection-and-signature-checks/county-raw-range"
       - phrase: The state auditor called matching "inherently subjective", and its own reviewers disagreed about many signatures
         href: "#fact-mail-ballot-rejection-and-signature-checks/reviewers-disagree"
@@ -57,17 +57,17 @@ cards:
         href: "#fact-mail-ballot-rejection-and-signature-checks/no-evidence-of-bias"
     verification:
       status: verified
-      textHash: 5a203e112701
+      textHash: 8bdc8fbd6faa
       checkedAt: 2026-11-23
       notes:
         - The raw county rates cover every rejection except late ones; the 18-times figure is after controls for age, race, education and income. The auditor agreed with counties on more than 98% of re-checked signatures.
-  - heading: Signature checks reject young, first-time and Black voters far more often
+  - heading: Mail-ballot checks reject young, first-time and Black voters far more often
     visual:
       cite: "#fact-mail-ballot-rejection-and-signature-checks/washington-race-gaps"
       kind: comparison
       title: "Washington: rejections by race"
     citations:
-      - phrase: Black voters' ballots were rejected at four times white voters' rate, counting unsigned envelopes too
+      - phrase: Black voters' mail ballots were rejected at four times white voters' rate, counting unsigned envelopes too
         href: "#fact-mail-ballot-rejection-and-signature-checks/washington-race-gaps"
       - phrase: The youngest voters were rejected most
         href: "#fact-mail-ballot-rejection-and-signature-checks/washington-age-gaps"
@@ -79,7 +79,7 @@ cards:
         href: "#fact-mail-ballot-rejection-and-signature-checks/florida-young-and-inexperienced"
     verification:
       status: verified
-      textHash: 1ac9a8d5f081
+      textHash: ca21adda877d
       checkedAt: 2026-11-23
       notes:
         - Race is estimated from surname and address. After controls, Black voters were twice as likely as white voters to be rejected. The Florida findings come from the papers' abstracts.
@@ -101,37 +101,37 @@ cards:
       checkedAt: 2026-11-23
       notes:
         - Curing covers every fixable problem, including missing signatures, not only mismatches. Twelve of the 43 curing states did not report figures. The Fifth Circuit's ruling was at the stay stage.
-  - heading: The answer is a check that needs no judgement, not no check
+  - heading: The answer is a better check, not none
     visual:
       cite: "#fact-mail-ballot-rejection-and-signature-checks/georgia-fell-after-sb202"
       kind: series
       title: Texas and Georgia rejection rates
     citations:
-      - phrase: in Cobb County, Georgia, an envelope signed by the voter's spouse passed the signature check
+      - phrase: in Cobb County, Georgia, an envelope the voter's spouse signed by mistake passed the check
         href: "#fact-mail-ballot-rejection-and-signature-checks/cobb-spouse-signature-passed"
-      - phrase: Georgia replaced signature matching with an ID number in 2021, and its rejection rate has stayed below its 2016 and 2018 levels
+      - phrase: Georgia replaced signature matching with an ID number in 2021. Its rejection rate has been roughly half its 2018 level since, though it was above the national rate in 2024
         href: "#fact-mail-ballot-rejection-and-signature-checks/georgia-fell-after-sb202"
-      - phrase: Texas's rate rose when it added an ID number on top of signatures, and many voters missed the new field on the envelope
+      - phrase: the largest group of county officials surveyed said it had not cut rejections
+        href: "#fact-mail-ballot-rejection-and-signature-checks/georgia-fell-after-sb202"
+      - phrase: Texas's rate rose when it added an ID number on top of signatures, as many voters missed the new field on the envelope
         href: "#fact-mail-ballot-rejection-and-signature-checks/texas-rose-under-id-number"
       - phrase: Britain pairs the signature with something that needs no judgement, the voter's date of birth
         href: "#fact-secret-ballot-and-postal-voting-abroad/uk-checks-identifiers"
     verification:
       status: verified
-      textHash: 1aa56f189562
+      textHash: c70019e023e1
       checkedAt: 2026-11-23
       notes:
-        - Georgia's earlier rates count every reason, and are above its 0.4% of 2020; a plurality of county offices said the new check had not reduced rejections. No source here shows whether ID-number checks catch more fraud.
+        - Georgia's earlier rates count every reason; its 2020 rate (0.4%) is a floor, as its count was incomplete. The officials' survey reports a plurality, not a majority. No source here shows whether ID-number checks catch more fraud.
   - heading: So voters must be told of a problem and allowed to fix it
     citations:
       - phrase: as 35 states and DC must already
         href: "#fact-mail-ballot-rejection-and-signature-checks/most-states-cure"
       - phrase: have two reviewers from different parties check every mismatch, as Colorado does
         href: "#fact-mail-ballot-rejection-and-signature-checks/training-and-bipartisan-review"
-      - phrase: Pennsylvania's top court has already ruled that its election law does not allow rejecting ballots because signatures do not match
-        href: "#fact-mail-ballot-rejection-and-signature-checks/pennsylvania-no-signature-rejection"
     verification:
       status: verified
-      textHash: 3f47a6bd0150
+      textHash: e5d982b1bf7d
       checkedAt: 2026-11-23
       notes:
         - The 35 states include some that do not compare signatures, which can only cure missing ones.
