@@ -65,14 +65,14 @@ cards:
         href: "#fact-iran-actions-abroad/attacks-came-in-a-burst"
       - phrase: none of those plots led to a killing
         href: "#fact-iran-actions-abroad/us-plots-were-foiled"
-      - phrase: US courts have sentenced the men behind them
+      - phrase: US courts have sentenced the men hired for two of them
         href: "#fact-iran-actions-abroad/us-convictions-iran-directed-plots"
     verification:
       status: verified
-      textHash: 6c300e227131
+      textHash: a840cbb78b95
       checkedAt: 2026-11-23
       notes:
-        - The same 2025 assessment warned that pressure to build a bomb had "probably built". The attacks were on US and coalition forces, October 2023 to December 2024. "The men behind them" are those sentenced in the Alinejad plots; the other US cases are charges.
+        - The same 2025 assessment warned that pressure to build a bomb had "probably built". The attacks were on US and coalition forces, October 2023 to December 2024. Three men were sentenced for the two Alinejad plots; the other US cases are charges.
   - heading: The war is costing Americans billions, and the bill keeps growing
     visual:
       cite: "#fact-human-and-financial-costs-of-the-war/cost-38-to-47-billion"
@@ -87,14 +87,14 @@ cards:
         href: "#fact-human-and-financial-costs-of-the-war/cost-small-against-iraq"
       - phrase: it ended up costing more than thirteen times the White House's forecast
         href: "#fact-human-and-financial-costs-of-the-war/iraq-overran-estimates"
-      - phrase: The war has also drawn down the missiles that defend US troops and allies from attack, leaving them to take more risks with what is left
+      - phrase: The war has also drawn down the missiles that defend US troops and allies from attack, which may force them to take more risks with what is left
         href: "#fact-human-and-financial-costs-of-the-war/interceptor-stocks"
     verification:
       status: verified
-      textHash: 1b956ca90cf0
+      textHash: 201059dfb01f
       checkedAt: 2026-11-23
       notes:
-        - The interceptor figures are CSIS estimates; CSIS says lower stocks "may force" more risks.
+        - The interceptor figures are CSIS estimates.
   - heading: Families are paying for the war at the pump
     visual:
       cite: "#fact-oil-shipping-and-prices/pump-prices-up-by-half"

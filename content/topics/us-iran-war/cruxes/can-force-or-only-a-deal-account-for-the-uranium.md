@@ -11,5 +11,5 @@ positions:
   - viewpoint: nuclear
     holds: "The uranium must be accounted for either way, and no deal is worth signing without access to every site."
   - viewpoint: regime-change
-    holds: "No deal with these rulers will hold for long, because the danger is the rulers themselves."
+    holds: "Accounting for the uranium is not enough: a deal that lifts sanctions leaves the same rulers in charge, and richer."
 ---

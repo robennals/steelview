@@ -55,10 +55,10 @@ cards:
         href: "#fact-decisions-law-and-diplomacy/qatari-plan"
     verification:
       status: verified
-      textHash: 780d9b32ca4e
+      textHash: af82c5b8d18d
       checkedAt: 2026-11-23
       notes:
-        - No source here measures how much Iran wants the blockade lifted against its other aims; "what Iran most needs" is the viewpoint's judgment.
+        - Export figures are Vortexa's, for May. "Badly wants" is the viewpoint's reading of the collapse.
   - heading: Only inspectors can find the missing uranium, and Iran must let them in
     visual:
       cite: "#fact-iran-nuclear-programme/stock-unaccounted-for"
@@ -97,28 +97,30 @@ cards:
       checkedAt: 2026-11-23
       notes:
         - The memorandum's other terms, including any on inspections, are unpublished.
-  - heading: Every month of standoff risks a wider war and costs billions
+  - heading: Every month of standoff chokes the route for a fifth of the world's oil, and risks a wider war
     visual:
       cite: "#fact-oil-shipping-and-prices/hormuz-traffic-near-zero"
       kind: series
       title: Ships passing through the Strait of Hormuz
     citations:
-      - phrase: Tracked shipping through the Strait of Hormuz fell almost to nothing when the war began, and has stayed far below normal
+      - phrase: The Strait of Hormuz normally carries oil equal to about a fifth of what the world uses
         href: "#fact-oil-shipping-and-prices/hormuz-traffic-near-zero"
-      - phrase: other sources report far more ships than tracking shows
+      - phrase: Tracked shipping through it fell almost to nothing when the war began, and has stayed far below normal
+        href: "#fact-oil-shipping-and-prices/hormuz-traffic-near-zero"
+      - phrase: other sources report more ships than tracking shows
         href: "#fact-oil-shipping-and-prices/tracking-versus-other-reports"
-      - phrase: attacks on ships went on in October
+      - phrase: in October officials counted 23 attacks on ships near the strait
         href: "#fact-decisions-law-and-diplomacy/october-escalation"
-      - phrase: US forces are destroying ships to enforce the blockade
-        href: "#fact-oil-shipping-and-prices/us-also-destroying-vessels"
-      - phrase: each further month of fighting costs the US $2–3 billion
+      - phrase: the Houthis in Yemen fired missiles and drones at Saudi Arabia
+        href: "#fact-decisions-law-and-diplomacy/houthi-fire-on-saudi-arabia"
+      - phrase: Each further month of fighting also costs the US $2–3 billion
         href: "#fact-human-and-financial-costs-of-the-war/monthly-cost-going-forward"
     verification:
       status: verified
-      textHash: adfcfaa10914
+      textHash: c0e266cd1d6b
       checkedAt: 2026-11-23
       notes:
-        - "\"Could widen the war\" is the viewpoint's judgment, not a forecast in the reports. CENTCOM's destruction figures have no independent check."
+        - "\"Chokes\" rests on tracked transits and on EIA's estimate that oil flows fell by more than three-quarters by the second quarter; CENTCOM and Kpler report much more traffic, and EIA calls tracking signals \"especially unreliable\". The 23 attacks are officials speaking to Bloomberg, for the first two weeks of October; the Houthi fire is reported by ISW/CTP. \"Could widen the war\" is the viewpoint's judgment."
   - heading: So the US should trade its blockade for limits inspectors can check, now
     citations:
       - phrase: The June agreement broke down within three weeks
@@ -127,11 +129,11 @@ cards:
         href: "#fact-decisions-law-and-diplomacy/iran-reconstituting-missiles"
       - phrase: Ceasefires last longer when they come with strong terms, such as outside monitors and guarantees
         href: "#fact-outside-attempts-to-change-hostile-regimes/strong-ceasefire-agreements-hold"
-      - phrase: talks in October made no progress
+      - phrase: a meeting in Tehran in late October made no progress
         href: "#fact-decisions-law-and-diplomacy/talks-continue-in-october"
     verification:
       status: verified
-      textHash: 3f5c6dca433f
+      textHash: f9944d05e81c
       checkedAt: 2026-11-23
       notes:
         - Fortna names demilitarised zones, dispute commissions, peacekeeping and outside guarantees; "outside monitors" stands for peacekeeping and commissions. "Made no progress" is regional sources' account to ISW/CTP.

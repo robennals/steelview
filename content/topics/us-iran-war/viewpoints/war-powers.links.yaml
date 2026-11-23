@@ -45,24 +45,26 @@ cards:
       checkedAt: 2026-11-23
       notes:
         - The administration's not seeking approval rests on Lawfare's account. "Every vote" is the 20 floor votes found, March to September.
-  - heading: When Congress has voted, it has voted to end the war
+  - heading: Both chambers have now voted to end the war
     visual:
       cite: "#fact-decisions-law-and-diplomacy/house-passed-three-resolutions"
       kind: series
       title: House votes to end the war
     citations:
-      - phrase: After narrowly rejecting three resolutions to end the war, the House passed the next three
+      - phrase: After narrowly rejecting three resolutions to end it, the House passed the next three
         href: "#fact-decisions-law-and-diplomacy/house-passed-three-resolutions"
-      - phrase: In June the Senate passed one of them, 50 to 48
+      - phrase: Most Senate votes failed, but in June the Senate passed one of the House's resolutions, 50 to 48
+        href: "#fact-decisions-law-and-diplomacy/senate-adopted-one-resolution"
+      - phrase: The Senate's last vote, in September, failed by one
         href: "#fact-decisions-law-and-diplomacy/senate-adopted-one-resolution"
       - phrase: in March, most said the President should have asked Congress before acting
         href: "#fact-decisions-law-and-diplomacy/most-wanted-congress-asked"
     verification:
       status: verified
-      textHash: 5d5c68f20fac
+      textHash: acb3ccda3f75
       checkedAt: 2026-11-23
       notes:
-        - These are concurrent resolutions, which the President does not sign and which may not bind him; the conclusion says so. The Senate rejected the next House resolution by one vote in September.
+        - These are concurrent resolutions, which the President does not sign and which may not bind him; the conclusion says so. Twelve of the Senate's 14 votes failed, most of them procedural.
   - heading: The war has run past the law's 60-day limit, whatever the White House calls it
     visual:
       cite: "#fact-decisions-law-and-diplomacy/terminated-letter-then-new-strikes"

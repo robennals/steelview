@@ -4,7 +4,7 @@
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
   citations:
-    - phrase: In every check from 2017 to 2019, Iran's uranium stock stayed under the 2015 deal's limit
+    - phrase: In every check from 2017 until mid-2019, Iran's uranium stock stayed under the 2015 deal's limit
       href: "#fact-iran-nuclear-programme/deal-era-compliance"
     - phrase: Iran was not building a bomb
       href: "#fact-iran-nuclear-programme/ata-2025-not-building"
@@ -16,7 +16,7 @@ summary:
       href: "#fact-iran-nuclear-programme/verification-stopped"
   verification:
     status: verified
-    textHash: c501592ebc9b
+    textHash: 1eb9ae8f30cd
     checkedAt: 2026-11-23
     notes:
       - "\"Not building a bomb\" is US intelligence's 2025 judgment; the 2026 assessment is silent on it."
@@ -37,7 +37,7 @@ cards:
       kind: series
       title: Iran's enriched-uranium stock
     citations:
-      - phrase: In every inspection report from 2017 to 2019, Iran's uranium stock stayed under the 2015 deal's limit
+      - phrase: In every inspection report from 2017 until mid-2019, Iran's uranium stock stayed under the 2015 deal's limit
         href: "#fact-iran-nuclear-programme/deal-era-compliance"
       - phrase: The US left the deal in 2018, and about a year later Iran broke the limit
         href: "#fact-iran-nuclear-programme/breaches-after-us-exit"
@@ -45,7 +45,7 @@ cards:
         href: "#fact-iran-nuclear-programme/sixty-percent-growth"
     verification:
       status: verified
-      textHash: 904aa04aed06
+      textHash: c2b278bbcbe9
       checkedAt: 2026-11-23
       notes:
         - Reports from February 2017 to May 2019. Iran said in May 2019 it would no longer be bound by the limits; the deal's caps were for 10 to 15 years.
@@ -111,37 +111,37 @@ cards:
       checkedAt: 2026-11-23
       notes:
         - Hengaw counts most of the dead as military. The 3.2 million is a WHO estimate, with no figure for returns. The vetting share is for 2001–2021; in 2024 six of more than 80 were approved.
-  - heading: The war has blinded the inspectors, and bombs cannot do their job
+  - heading: Strikes since June 2025 have blinded the inspectors, and bombs cannot do their job
     visual:
       cite: "#fact-iran-nuclear-programme/verification-stopped"
       kind: timeline
       title: What IAEA inspectors could see in Iran
     citations:
-      - phrase: Since it began, inspectors have visited one site in Iran, a power plant
-        href: "#fact-iran-nuclear-programme/verification-stopped"
-      - phrase: No inspector has seen Iran's 60% uranium since June 2025, and the UN agency cannot say where it is
+      - phrase: Inspectors had checked almost all of Iran's 60% uranium before the first strikes in June 2025. No inspector has seen it since, and the UN agency cannot say where it is
         href: "#fact-iran-nuclear-programme/stock-unaccounted-for"
-      - phrase: inspectors' access had already narrowed from 2021
+      - phrase: Iran then suspended its cooperation by law
         href: "#fact-iran-nuclear-programme/access-narrowed-in-steps"
+      - phrase: by February 2026 inspectors were back at seven of the 13 sites that had not been struck
+        href: "#fact-iran-nuclear-programme/access-narrowed-in-steps"
+      - phrase: Since this war began, they have visited one, a power plant
+        href: "#fact-iran-nuclear-programme/verification-stopped"
       - phrase: Experts see no route for Iran to make bomb-grade uranium for now, but will not say for how long
         href: "#fact-iran-nuclear-programme/no-route-to-weapons-grade"
       - phrase: Past strikes on nuclear sites delayed programmes only modestly
         href: "#fact-outside-attempts-to-change-hostile-regimes/strikes-delay-modestly"
     verification:
       status: verified
-      textHash: 9575f23bd778
+      textHash: ccfc1c36fc9a
       checkedAt: 2026-11-23
       notes:
-        - Inspections stopped in June 2025 after the first strikes too, and access had narrowed from February 2021, before the war.
+        - Access had also narrowed from February 2021, when Iran ended complementary access, and Iran ended the Cairo inspection agreement in November 2025.
   - heading: So the US should stop bombing and go back to inspections
     citations:
       - phrase: Iran's economy grew in the deal's first year and shrank after the US left
         href: "#fact-iran-government-and-its-people/growth-in-deal-years"
-      - phrase: Britain, France and Germany did not take part in the strikes
-        href: "#fact-decisions-law-and-diplomacy/key-allies-did-not-join"
     verification:
       status: verified
-      textHash: 1b1142395db0
+      textHash: cf13a42b20ac
       checkedAt: 2026-11-23
       notes:
-        - The growth series do not separate sanctions from oil prices, hence "plausibly". The three leaders also condemned Iran's attacks on its neighbours.
+        - The growth series do not separate sanctions from oil prices, hence "plausibly". "A deal is how to get them back in" is the viewpoint's judgment.

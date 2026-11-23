@@ -57,7 +57,7 @@ cards:
       kind: comparison
       title: Executions per month, by Iran's president
     citations:
-      - phrase: The rate of executions rose under every recent president, and fastest under the moderate one elected in 2024
+      - phrase: The average execution rate was higher under each recent president than the one before, and more than doubled under the moderate elected in 2024
         href: "#fact-iran-government-and-its-people/execution-rate-by-president"
       - phrase: In 2025 Iran put more people to death than in any year since 1989
         href: "#fact-iran-government-and-its-people/executions-most-since-1989"
@@ -69,7 +69,7 @@ cards:
         href: "#fact-iran-government-and-its-people/hereditary-succession"
     verification:
       status: verified
-      textHash: c165b418d6f8
+      textHash: 8d5c2c715f3e
       checkedAt: 2026-11-23
       notes:
         - Amnesty's world count leaves out China, which it believes executed thousands. In 2024 six of more than 80 registrants were approved.
@@ -111,7 +111,7 @@ cards:
       checkedAt: 2026-11-23
       notes:
         - GAMAAN is an online survey; about a quarter chose no clear alternative. "Glad" is its "felt satisfaction".
-  - heading: Iranians must win this themselves, and America can help them hold out
+  - heading: Iranians must win this themselves, and America cannot do it for them
     visual:
       cite: "#fact-outside-attempts-to-change-hostile-regimes/nonviolent-campaigns-won-twice-as-often"
       kind: comparison
@@ -127,7 +127,7 @@ cards:
         href: "#fact-outside-attempts-to-change-hostile-regimes/imposed-regime-change-and-civil-war"
     verification:
       status: verified
-      textHash: 61b1502b74cb
+      textHash: bea9aac47d0b
       checkedAt: 2026-11-23
       notes:
         - Data run 1900–2006 and may miss campaigns crushed early. No study here tests the narrower help this viewpoint proposes (internet access, protecting exiles).
@@ -137,7 +137,7 @@ cards:
         href: "#fact-iran-government-and-its-people/growth-in-deal-years"
     verification:
       status: verified
-      textHash: eb48d9cc408a
+      textHash: 8646015185d1
       checkedAt: 2026-11-23
       notes:
-        - That lifting sanctions gives the government more money is the plain reading; the growth series do not separate sanctions from oil prices. No study here shows that the proposed help changes an uprising's outcome, which the text concedes.
+        - That lifting sanctions gives the government more money is the plain reading; the growth series do not separate sanctions from oil prices. The text concedes that no study shows the proposed help wins an uprising.

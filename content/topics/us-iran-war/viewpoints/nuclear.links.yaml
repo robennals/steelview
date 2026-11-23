@@ -127,15 +127,15 @@ cards:
         href: "#fact-iran-nuclear-programme/sixty-percent-growth"
       - phrase: sanctions have rarely stopped a nuclear programme once it has started
         href: "#fact-outside-attempts-to-change-hostile-regimes/nonproliferation-sanctions-three-of-22"
-      - phrase: US officials, Iran and an independent institute all say Iran's enrichment has stopped
+      - phrase: US and Iranian officials say Iran's enrichment has stopped
         href: "#fact-iran-nuclear-programme/strikes-halted-enrichment"
-      - phrase: that institute sees no route for Iran to make bomb-grade uranium
+      - phrase: an independent institute sees no route for Iran to make bomb-grade uranium
         href: "#fact-iran-nuclear-programme/no-route-to-weapons-grade"
       - phrase: past strikes on nuclear sites delayed programmes only modestly
         href: "#fact-outside-attempts-to-change-hostile-regimes/strikes-delay-modestly"
     verification:
       status: verified
-      textHash: 7157dfd2448c
+      textHash: 14fa0642db63
       checkedAt: 2026-11-23
       notes:
         - The deal held the stock under its limit until 2019, a year after the US left; "for long" leans on the 15-year cap. Three of 22 is for programmes already under way; the same reviewer notes sanctions deterred others from starting.
