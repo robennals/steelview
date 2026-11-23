@@ -2,17 +2,17 @@
 title: The US war with Iran
 subtitle: Whether the United States was right to go to war with Iran in February 2026, and what it should do now.
 firstPublished: 2026-10-29
-lastUpdated: 2026-10-29
+lastUpdated: 2026-11-23
 tags: [USA, Foreign policy]
 # The first chart shows how big the issue is; together they represent every
 # viewpoint with a strong chart it relies on. See AUTHORING.md, "Home-page preview charts".
 previewCharts:
   - fact: human-and-financial-costs-of-the-war
-    chart: us-deaths-earlier-wars
+    chart: cost-estimates
   - fact: iran-nuclear-programme
     chart: sixty-percent-stock
   - fact: iran-government-and-its-people
-    chart: ihrngo-executions-series
+    chart: executions-per-president
   - fact: decisions-law-and-diplomacy
     chart: series
 dataOrder:

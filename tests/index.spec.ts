@@ -93,12 +93,12 @@ test('on a phone an open row leaves out its viewpoints, and its carousel is only
 
 test('a preview chart opens its data in a sheet over the home page, which Back closes', async ({ page }) => {
   await page.goto('/');
-  const slide = page.locator('[data-preview]#human-and-financial-costs-of-the-war--chart-us-deaths-earlier-wars');
+  const slide = page.locator('[data-preview]#human-and-financial-costs-of-the-war--chart-cost-estimates');
   const row = rows(page).filter({ has: slide });
   if (await row.getAttribute('data-open') !== 'true') await row.locator('.sv-row__toggle').click({ position: { x: 400, y: 12 } });
   await slide.locator('.sv-graph-heading a').click();
   const sheet = page.locator('dialog[open]');
-  await expect(sheet.locator('[id="human-and-financial-costs-of-the-war--chart-us-deaths-earlier-wars"]')).toBeInViewport();
+  await expect(sheet.locator('[id="human-and-financial-costs-of-the-war--chart-cost-estimates"]')).toBeInViewport();
   await expectChartAlone(sheet);
   await expect(page).toHaveURL(/\/$/);
   await page.goBack();
@@ -133,7 +133,7 @@ test('every preview chart links to a chart its topic page opens alone', async ({
 test('a sheet fills a phone\'s screen', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
-  const slide = page.locator('[data-preview]#human-and-financial-costs-of-the-war--chart-us-deaths-earlier-wars');
+  const slide = page.locator('[data-preview]#human-and-financial-costs-of-the-war--chart-cost-estimates');
   const row = rows(page).filter({ has: slide });
   if (await row.getAttribute('data-open') !== 'true') await row.locator('.sv-row__toggle').click({ position: { x: 200, y: 12 } });
   await slide.locator('.sv-graph-heading a').click();

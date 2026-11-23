@@ -6,28 +6,26 @@ summary:
   citations:
     - phrase: The Constitution gives Congress the power to declare war
       href: "#fact-decisions-law-and-diplomacy/congress-declares-war"
-    - phrase: the administration did not seek its approval before the 60-day mark
+    - phrase: the administration did not ask for its approval before the War Powers law's 60-day mark
       href: "#fact-decisions-law-and-diplomacy/no-authorisation-sought"
-    - phrase: The House passed three resolutions to end it
-      href: "#fact-decisions-law-and-diplomacy/house-passed-three-resolutions"
-    - phrase: the Senate passed one of those votes
+    - phrase: Every vote Congress has held on the war was on ending it
+      href: "#fact-decisions-law-and-diplomacy/votes-all-to-end-the-war"
+    - phrase: both chambers passed one such resolution
       href: "#fact-decisions-law-and-diplomacy/senate-adopted-one-resolution"
-    - phrase: The President reported each new strike as a new action
-      href: "#fact-decisions-law-and-diplomacy/separate-actions"
   verification:
     status: verified
-    textHash: "164203644928"
-    checkedAt: 2026-11-20
+    textHash: 3291bef01888
+    checkedAt: 2026-11-23
 lead:
   citations:
-    - phrase: Congress has never voted to approve this war
+    - phrase: Congress has never voted for this one
       href: "#fact-decisions-law-and-diplomacy/votes-all-to-end-the-war"
   verification:
     status: verified
-    textHash: 2e2ca5c77ec1
-    checkedAt: 2026-11-20
+    textHash: 0ea6220d9df0
+    checkedAt: 2026-11-23
 cards:
-  - heading: Only Congress can declare war, and it has not approved this one
+  - heading: Only Congress can take the country to war, and it has not approved this one
     visual:
       cite: "#fact-decisions-law-and-diplomacy/congress-declares-war"
       kind: quotes
@@ -35,69 +33,83 @@ cards:
     citations:
       - phrase: The Constitution gives Congress, not the President, the power to declare war
         href: "#fact-decisions-law-and-diplomacy/congress-declares-war"
-      - phrase: Every vote Congress has held on the war, as far as the record shows, was on ending it
-        href: "#fact-decisions-law-and-diplomacy/votes-all-to-end-the-war"
-      - phrase: the administration did not seek Congress's approval before the 60-day mark
+      - phrase: The administration did not ask Congress for approval before the War Powers law's 60-day mark
         href: "#fact-decisions-law-and-diplomacy/no-authorisation-sought"
-      - phrase: The President says he acted as Commander in Chief, in defence of allies, and filed his reports "consistent with" the War Powers law
+      - phrase: every vote Congress has held on the war was on ending it
+        href: "#fact-decisions-law-and-diplomacy/votes-all-to-end-the-war"
+      - phrase: The President says he acted as Commander in Chief, to defend America's allies
         href: "#fact-decisions-law-and-diplomacy/president-cites-commander-in-chief"
     verification:
       status: verified
-      textHash: b01fc095f0b6
-      checkedAt: 2026-11-20
+      textHash: 720d5a0d9298
+      checkedAt: 2026-11-23
+      notes:
+        - The administration's not seeking approval rests on Lawfare's account. "Every vote" is the 20 floor votes found, March to September.
   - heading: When Congress has voted, it has voted to end the war
     visual:
       cite: "#fact-decisions-law-and-diplomacy/house-passed-three-resolutions"
       kind: series
       title: House votes to end the war
     citations:
-      - phrase: After narrowly rejecting three resolutions, the House passed three to end the war
+      - phrase: After narrowly rejecting three resolutions to end the war, the House passed the next three
         href: "#fact-decisions-law-and-diplomacy/house-passed-three-resolutions"
-      - phrase: the Senate passed one of those resolutions
+      - phrase: In June the Senate passed one of them, 50 to 48
         href: "#fact-decisions-law-and-diplomacy/senate-adopted-one-resolution"
-      - phrase: most said the President should have asked Congress first
+      - phrase: in March, most said the President should have asked Congress before acting
         href: "#fact-decisions-law-and-diplomacy/most-wanted-congress-asked"
     verification:
       status: verified
-      textHash: 59385a68182e
-      checkedAt: 2026-11-20
+      textHash: 5d5c68f20fac
+      checkedAt: 2026-11-23
+      notes:
+        - These are concurrent resolutions, which the President does not sign and which may not bind him; the conclusion says so. The Senate rejected the next House resolution by one vote in September.
   - heading: The war has run past the law's 60-day limit, whatever the White House calls it
     visual:
       cite: "#fact-decisions-law-and-diplomacy/terminated-letter-then-new-strikes"
       kind: timeline
       title: What the War Powers letters said
     citations:
-      - phrase: Two months in, the White House told Congress the fighting had ended. Then new strikes followed
-        href: "#fact-decisions-law-and-diplomacy/terminated-letter-then-new-strikes"
-      - phrase: the first blockade was still turning ships back weeks after that letter
-        href: "#fact-oil-shipping-and-prices/first-blockade-into-may"
-      - phrase: The War Powers law sets a 60-day limit on using force without Congress's approval
+      - phrase: The War Powers law gives a President 60 days of fighting without Congress's approval, then requires the troops to be withdrawn
         href: "#fact-decisions-law-and-diplomacy/sixty-day-requirement"
+      - phrase: Two months in, the White House told Congress the fighting had ended
+        href: "#fact-decisions-law-and-diplomacy/terminated-letter-then-new-strikes"
+      - phrase: its blockade was still turning ships back weeks after that letter
+        href: "#fact-oil-shipping-and-prices/first-blockade-into-may"
+      - phrase: It reported each new strike as a new action
+        href: "#fact-decisions-law-and-diplomacy/separate-actions"
     verification:
       status: verified
-      textHash: 24c9c35ee9c5
-      checkedAt: 2026-11-20
-  - heading: Presidents have long sidestepped this rule, which is why it must be enforced now
+      textHash: 72356ae6e74d
+      checkedAt: 2026-11-23
+      notes:
+        - The 1 May letter is known only through Lawfare's and Goldsmith's quotations. The law allows a further 30 days for withdrawal.
+  - heading: Presidents have long dodged this rule, which is why it must be enforced now
     visual:
       cite: "#fact-decisions-law-and-diplomacy/only-one-report-started-the-clock"
       kind: comparison
       title: War Powers reports to Congress
     citations:
-      - phrase: From 1975 to 2017, presidents almost never formally started the 60-day clock
+      - phrase: Of the 168 reports presidents sent Congress under the War Powers law from 1975 to 2017, only one started its 60-day clock
         href: "#fact-decisions-law-and-diplomacy/only-one-report-started-the-clock"
-      - phrase: presidents have used force abroad hundreds of times without a declaration of war
+      - phrase: Presidents have sent forces into conflict hundreds of times, against eleven declarations of war
         href: "#fact-decisions-law-and-diplomacy/declarations-and-instances"
     verification:
       status: verified
-      textHash: 9df81f7548b0
-      checkedAt: 2026-11-20
+      textHash: 8b0a286deee1
+      checkedAt: 2026-11-23
+      notes:
+        - CRS's count runs to March 2017; the one report was the 1975 Mayaguez seizure. CRS does not code the hundreds of uses of force by authorisation.
   - heading: So Congress should vote either to approve this war or to end it
     citations:
-      - phrase: the votes so far may not bind the President
+      - phrase: The resolutions passed so far may not bind the President, because he is not asked to sign them
         href: "#fact-decisions-law-and-diplomacy/concurrent-resolutions-not-binding"
-      - phrase: Research shows Congress shapes how far wars go and how long they last
+      - phrase: A binding vote would face a veto, which two-thirds of each chamber would have to override
+        href: "#fact-decisions-law-and-diplomacy/concurrent-resolutions-not-binding"
+      - phrase: research finds that Congress shapes how far wars go and how long they last
         href: "#fact-decisions-law-and-diplomacy/congress-as-constraint"
     verification:
       status: verified
-      textHash: 9662435e7d0b
-      checkedAt: 2026-11-20
+      textHash: 113c59f27bc3
+      checkedAt: 2026-11-23
+      notes:
+        - Kriner's finding is from the publisher's description, with no effect sizes.

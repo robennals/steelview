@@ -4,116 +4,144 @@
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
   citations:
-    - phrase: in every check from 2017 to 2019, its uranium stock stayed under the 2015 deal's limit
+    - phrase: In every check from 2017 to 2019, Iran's uranium stock stayed under the 2015 deal's limit
       href: "#fact-iran-nuclear-programme/deal-era-compliance"
-    - phrase: killed thousands of Iranians
+    - phrase: Iran was not building a bomb
+      href: "#fact-iran-nuclear-programme/ata-2025-not-building"
+    - phrase: talks were under way when the strikes began
+      href: "#fact-decisions-law-and-diplomacy/talks-under-way-when-strikes-came"
+    - phrase: The war has killed thousands of Iranians
       href: "#fact-human-and-financial-costs-of-the-war/deaths-in-the-thousands"
     - phrase: all but stopped inspections
       href: "#fact-iran-nuclear-programme/verification-stopped"
   verification:
     status: verified
-    textHash: effe2c7eeb2f
-    checkedAt: 2026-11-20
+    textHash: c501592ebc9b
+    checkedAt: 2026-11-23
+    notes:
+      - "\"Not building a bomb\" is US intelligence's 2025 judgment; the 2026 assessment is silent on it."
 lead:
-  citations: []
+  citations:
+    - phrase: inspectors and a deal had kept it in check before
+      href: "#fact-iran-nuclear-programme/deal-era-compliance"
+    - phrase: it has cost thousands of lives
+      href: "#fact-human-and-financial-costs-of-the-war/deaths-in-the-thousands"
   verification:
     status: verified
-    textHash: 491ff4a1f63b
-    checkedAt: 2026-11-20
+    textHash: 021b88d6687d
+    checkedAt: 2026-11-23
 cards:
+  - heading: The 2015 deal held Iran's uranium in check until the US walked away
+    visual:
+      cite: "#fact-iran-nuclear-programme/deal-era-compliance"
+      kind: series
+      title: Iran's enriched-uranium stock
+    citations:
+      - phrase: In every inspection report from 2017 to 2019, Iran's uranium stock stayed under the 2015 deal's limit
+        href: "#fact-iran-nuclear-programme/deal-era-compliance"
+      - phrase: The US left the deal in 2018, and about a year later Iran broke the limit
+        href: "#fact-iran-nuclear-programme/breaches-after-us-exit"
+      - phrase: it began making it in 2021
+        href: "#fact-iran-nuclear-programme/sixty-percent-growth"
+    verification:
+      status: verified
+      textHash: 904aa04aed06
+      checkedAt: 2026-11-23
+      notes:
+        - Reports from February 2017 to May 2019. Iran said in May 2019 it would no longer be bound by the limits; the deal's caps were for 10 to 15 years.
+  - heading: Iran was close to the material for a bomb, but was not building one
+    visual:
+      cite: "#fact-iran-nuclear-programme/no-ongoing-programme-2025"
+      kind: timeline
+      title: Official statements on weapons work
+    citations:
+      - phrase: In 2025 UN inspectors found no credible sign of an active weapons programme
+        href: "#fact-iran-nuclear-programme/no-ongoing-programme-2025"
+      - phrase: US intelligence judged that Iran was not building a bomb and that its leader had not ordered one
+        href: "#fact-iran-nuclear-programme/ata-2025-not-building"
+      - phrase: UN inspectors place Iran's organised weapons work before the end of 2003
+        href: "#fact-iran-nuclear-programme/past-weapons-work"
+      - phrase: Iran was the only country without nuclear weapons making 60% uranium
+        href: "#fact-iran-nuclear-programme/only-non-weapon-state-at-60"
+    verification:
+      status: verified
+      textHash: 3b8a8cd6d351
+      checkedAt: 2026-11-23
+      notes:
+        - The same 2025 IAEA report said it could not assure the programme was peaceful, and US intelligence said pressure to build had "probably built". "Had not ordered one" is "has not reauthorized" the programme halted in 2003.
+  - heading: Talks were under way when the bombs fell
+    visual:
+      cite: "#fact-decisions-law-and-diplomacy/talks-under-way-when-strikes-came"
+      kind: timeline
+      title: US–Iran negotiations and agreements
+    citations:
+      - phrase: US and Iranian negotiators held talks in Geneva two days before the strikes
+        href: "#fact-decisions-law-and-diplomacy/talks-under-way-when-strikes-came"
+      - phrase: Iran signed a promise never to make nuclear weapons
+        href: "#fact-decisions-law-and-diplomacy/mou-no-weapons-pledge"
+      - phrase: that agreement broke down within three weeks
+        href: "#fact-decisions-law-and-diplomacy/mou-broke-down"
+      - phrase: Countries give up nuclear programmes most often when threats come with face-saving rewards
+        href: "#fact-outside-attempts-to-change-hostile-regimes/threats-plus-rewards"
+    verification:
+      status: verified
+      textHash: 9d9b96b592a1
+      checkedAt: 2026-11-23
+      notes:
+        - The Geneva talks were indirect. Mehta's finding includes force "on the table" alongside threats of sanctions.
   - heading: The war has killed thousands of Iranians who had no say in it
     visual:
       cite: "#fact-human-and-financial-costs-of-the-war/civilian-minimum-by-april"
       kind: compositionBar
       title: Deaths in Iran from the war, by counter
     citations:
-      - phrase: One group counted at least 1,701 civilians killed by early April, at least 254 of them children
+      - phrase: at least 1,701 civilians were killed by the April ceasefire, at least 254 of them children
         href: "#fact-human-and-financial-costs-of-the-war/civilian-minimum-by-april"
-      - phrase: the outside counts stop in April
+      - phrase: Every count puts Iran's deaths in the thousands
+        href: "#fact-human-and-financial-costs-of-the-war/deaths-in-the-thousands"
+      - phrase: the independent counts stop in April
         href: "#fact-human-and-financial-costs-of-the-war/no-count-after-april"
-      - phrase: Millions more have been forced from their homes
+      - phrase: About 3.2 million people have been driven from their homes inside Iran
         href: "#fact-human-and-financial-costs-of-the-war/displaced-millions"
+      - phrase: very few of the people who register are allowed to run for president
+        href: "#fact-iran-government-and-its-people/vetting-approves-few"
     verification:
       status: verified
-      textHash: dba010487b7f
-      checkedAt: 2026-11-20
-  - heading: The 2015 deal kept Iran's uranium in check until the US walked away
-    visual:
-      cite: "#fact-iran-nuclear-programme/deal-era-compliance"
-      kind: series
-      title: Iran's enriched-uranium stock
-    citations:
-      - phrase: Iran's uranium stock stayed under the 2015 deal's limit until about a year after the US left the deal, then rose far above it
-        href: "#fact-iran-nuclear-programme/deal-era-compliance"
-      - phrase: it began building up uranium enriched to 60% in 2021
-        href: "#fact-iran-nuclear-programme/sixty-percent-growth"
-      - phrase: US–Iran talks were under way in Geneva two days before the strikes
-        href: "#fact-decisions-law-and-diplomacy/talks-under-way-when-strikes-came"
-    verification:
-      status: verified
-      textHash: c5756edfac7f
-      checkedAt: 2026-11-20
-  - heading: Iran was not about to build a bomb
-    visual:
-      cite: "#fact-iran-nuclear-programme/no-ongoing-programme-2025"
-      kind: timeline
-      title: Official statements on weapons work
-    citations:
-      - phrase: In 2025, UN nuclear inspectors found no credible sign of an active weapons programme
-        href: "#fact-iran-nuclear-programme/no-ongoing-programme-2025"
-      - phrase: US intelligence judged that Iran was not building a bomb
-        href: "#fact-iran-nuclear-programme/ata-2025-not-building"
-      - phrase: Iran was the only country without nuclear weapons making 60% uranium
-        href: "#fact-iran-nuclear-programme/only-non-weapon-state-at-60"
-    verification:
-      status: verified
-      textHash: b8078290e36a
-      checkedAt: 2026-11-20
+      textHash: 45881fcec6fa
+      checkedAt: 2026-11-23
+      notes:
+        - Hengaw counts most of the dead as military. The 3.2 million is a WHO estimate, with no figure for returns. The vetting share is for 2001–2021; in 2024 six of more than 80 were approved.
   - heading: The war has blinded the inspectors, and bombs cannot do their job
     visual:
       cite: "#fact-iran-nuclear-programme/verification-stopped"
       kind: timeline
       title: What IAEA inspectors could see in Iran
     citations:
-      - phrase: Since the war began, inspectors have visited only one site in Iran, a power plant
+      - phrase: Since it began, inspectors have visited one site in Iran, a power plant
         href: "#fact-iran-nuclear-programme/verification-stopped"
-      - phrase: no inspector has seen Iran's 60% uranium since June 2025
+      - phrase: No inspector has seen Iran's 60% uranium since June 2025, and the UN agency cannot say where it is
         href: "#fact-iran-nuclear-programme/stock-unaccounted-for"
-      - phrase: access had narrowed in steps since 2021
+      - phrase: inspectors' access had already narrowed from 2021
         href: "#fact-iran-nuclear-programme/access-narrowed-in-steps"
-      - phrase: Experts see no way for Iran to make bomb-grade uranium for now, but give no estimate of how long that will last
+      - phrase: Experts see no route for Iran to make bomb-grade uranium for now, but will not say for how long
         href: "#fact-iran-nuclear-programme/no-route-to-weapons-grade"
-      - phrase: past strikes on nuclear sites slowed programmes only a little
+      - phrase: Past strikes on nuclear sites delayed programmes only modestly
         href: "#fact-outside-attempts-to-change-hostile-regimes/strikes-delay-modestly"
     verification:
       status: verified
-      textHash: d1f753281b4e
-      checkedAt: 2026-11-20
-  - heading: Keeping Iran in check never needed Iran to become friendly
-    visual:
-      cite: "#fact-iran-government-and-its-people/earlier-openings-reversed"
-      kind: timeline
-      title: Openings and reversals in Iran
-    citations:
-      - phrase: Earlier openings in Iran were reversed
-        href: "#fact-iran-government-and-its-people/earlier-openings-reversed"
-      - phrase: executions rose fastest under the moderate president
-        href: "#fact-iran-government-and-its-people/execution-rate-by-president"
-      - phrase: in 2024 voters chose the one moderate candidate
-        href: "#fact-iran-government-and-its-people/reformist-backed-president-2024"
-      - phrase: a harsher headscarf law was put on hold, most likely with the Supreme Leader's consent
-        href: "#fact-iran-government-and-its-people/hijab-law-shelved"
-    verification:
-      status: verified
-      textHash: 760a078d30ef
-      checkedAt: 2026-11-20
+      textHash: 9575f23bd778
+      checkedAt: 2026-11-23
+      notes:
+        - Inspections stopped in June 2025 after the first strikes too, and access had narrowed from February 2021, before the war.
   - heading: So the US should stop bombing and go back to inspections
     citations:
-      - phrase: Oman's foreign minister said the UN never approved it
-        href: "#fact-decisions-law-and-diplomacy/no-un-authorisation-per-oman"
-      - phrase: Britain, France and Germany did not join the strikes
+      - phrase: Iran's economy grew in the deal's first year and shrank after the US left
+        href: "#fact-iran-government-and-its-people/growth-in-deal-years"
+      - phrase: Britain, France and Germany did not take part in the strikes
         href: "#fact-decisions-law-and-diplomacy/key-allies-did-not-join"
     verification:
       status: verified
-      textHash: 9814f4e3e657
-      checkedAt: 2026-11-20
+      textHash: 1b1142395db0
+      checkedAt: 2026-11-23
+      notes:
+        - The growth series do not separate sanctions from oil prices, hence "plausibly". The three leaders also condemned Iran's attacks on its neighbours.

@@ -4,43 +4,79 @@
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
   citations:
-    - phrase: no one has seen its most enriched uranium since June 2025
-      href: "#fact-iran-nuclear-programme/stock-unaccounted-for"
-    - phrase: In June, experts saw no way for Iran to make bomb-grade uranium
+    - phrase: set Iran's nuclear programme back further than at any time in 20 years
       href: "#fact-iran-nuclear-programme/no-route-to-weapons-grade"
+    - phrase: the US blockade has cut its oil exports to the lowest level since early 2020
+      href: "#fact-oil-shipping-and-prices/iranian-exports-collapsed"
+    - phrase: no one has seen Iran's most enriched uranium since June 2025
+      href: "#fact-iran-nuclear-programme/stock-unaccounted-for"
   verification:
     status: verified
-    textHash: 86855b35c54e
-    checkedAt: 2026-11-20
+    textHash: 336f29ded88e
+    checkedAt: 2026-11-23
+    notes:
+      - The 20-year comparison is ISIS's; no inspector has checked it.
 lead:
   citations: []
   verification:
     status: verified
-    textHash: e00e1adaf6ae
-    checkedAt: 2026-11-20
+    textHash: 98347dcc30ee
+    checkedAt: 2026-11-23
 cards:
-  - heading: The war has set Iran back, but the setback may not last
+  - heading: The war has set Iran back further than anything before it
+    visual:
+      cite: "#fact-iran-nuclear-programme/strikes-halted-enrichment"
+      kind: quotes
+      title: What did the strikes do to Iran's enriched uranium and nuclear industry?
     citations:
-      - phrase: For the first time in 20 years, a leading group of nuclear experts sees no way for Iran to make bomb-grade uranium, but cannot say how long that will last
+      - phrase: For the first time in 20 years, a leading group of nuclear experts sees no route for Iran to make bomb-grade uranium
         href: "#fact-iran-nuclear-programme/no-route-to-weapons-grade"
+      - phrase: Before the first strikes, US intelligence judged Iran under a week away
+        href: "#fact-iran-nuclear-programme/close-to-weapons-grade-before-strikes"
+      - phrase: US and Iranian officials both say Iran's enrichment has stopped
+        href: "#fact-iran-nuclear-programme/strikes-halted-enrichment"
+      - phrase: past strikes on nuclear sites have delayed programmes only modestly
+        href: "#fact-outside-attempts-to-change-hostile-regimes/strikes-delay-modestly"
     verification:
       status: verified
-      textHash: ff072d70c3ba
-      checkedAt: 2026-11-20
+      textHash: ee2801a760a2
+      checkedAt: 2026-11-23
+      notes:
+        - No inspector has checked these claims. The heading's "further than anything before it" rests on the 20-year comparison.
+  - heading: The blockade is what the US has to trade
+    visual:
+      cite: "#fact-oil-shipping-and-prices/iranian-exports-collapsed"
+      kind: comparison
+      title: Iran's oil exports
+    citations:
+      - phrase: Iran's oil exports collapsed after the US blockade began in April, to the lowest level since early 2020
+        href: "#fact-oil-shipping-and-prices/iranian-exports-collapsed"
+      - phrase: Qatar is pushing a plan in which Iran reopens the Strait of Hormuz and the US lifts its blockade
+        href: "#fact-decisions-law-and-diplomacy/qatari-plan"
+    verification:
+      status: verified
+      textHash: 780d9b32ca4e
+      checkedAt: 2026-11-23
+      notes:
+        - No source here measures how much Iran wants the blockade lifted against its other aims; "what Iran most needs" is the viewpoint's judgment.
   - heading: Only inspectors can find the missing uranium, and Iran must let them in
     visual:
       cite: "#fact-iran-nuclear-programme/stock-unaccounted-for"
       kind: timeline
       title: What IAEA inspectors could see in Iran
     citations:
-      - phrase: No inspector has seen Iran's 60% uranium since June 2025
+      - phrase: No inspector has seen Iran's 60% uranium since June 2025, and the UN agency cannot say how much is left or where it is
         href: "#fact-iran-nuclear-programme/stock-unaccounted-for"
-      - phrase: sanctions have rarely stopped a nuclear programme once it has started
+      - phrase: Iran says it is under rubble
+        href: "#fact-iran-nuclear-programme/iran-says-under-rubble"
+      - phrase: sanctions have stopped it in only 3 of 22 cases
         href: "#fact-outside-attempts-to-change-hostile-regimes/nonproliferation-sanctions-three-of-22"
     verification:
       status: verified
-      textHash: 6102c5dd034a
-      checkedAt: 2026-11-20
+      textHash: 15fc33dbdcbe
+      checkedAt: 2026-11-23
+      notes:
+        - The reviewer of the 3-of-22 study notes that sanctions deterred other states from starting a programme.
   - heading: Deals with inspectors have held programmes back before
     visual:
       cite: "#fact-iran-nuclear-programme/deal-era-compliance"
@@ -49,16 +85,18 @@ cards:
     citations:
       - phrase: Under the 2015 deal, Iran's uranium stock stayed under its limit until about a year after the US left
         href: "#fact-iran-nuclear-programme/deal-era-compliance"
-      - phrase: Libya gave up its nuclear programme and let inspectors in
+      - phrase: Libya gave up its programme in 2003 and let inspectors in
         href: "#fact-outside-attempts-to-change-hostile-regimes/libya-2003-with-inspections"
-      - phrase: countries are most likely to give up a programme when threatened sanctions come with face-saving rewards
+      - phrase: Countries give up a programme most often when they face sanctions, with force on the table, and are offered face-saving rewards
         href: "#fact-outside-attempts-to-change-hostile-regimes/threats-plus-rewards"
-      - phrase: In June 2026 Iran signed a promise not to make nuclear weapons
-        href: "#fact-iran-nuclear-programme/mou-no-weapons-clause"
+      - phrase: Iran signed a promise never to make nuclear weapons
+        href: "#fact-decisions-law-and-diplomacy/mou-no-weapons-pledge"
     verification:
       status: verified
-      textHash: aa7be4cb57b1
-      checkedAt: 2026-11-20
+      textHash: f3f78282344e
+      checkedAt: 2026-11-23
+      notes:
+        - The memorandum's other terms, including any on inspections, are unpublished.
   - heading: Every month of standoff risks a wider war and costs billions
     visual:
       cite: "#fact-oil-shipping-and-prices/hormuz-traffic-near-zero"
@@ -69,43 +107,31 @@ cards:
         href: "#fact-oil-shipping-and-prices/hormuz-traffic-near-zero"
       - phrase: other sources report far more ships than tracking shows
         href: "#fact-oil-shipping-and-prices/tracking-versus-other-reports"
-      - phrase: attacks on ships have continued
+      - phrase: attacks on ships went on in October
         href: "#fact-decisions-law-and-diplomacy/october-escalation"
       - phrase: US forces are destroying ships to enforce the blockade
         href: "#fact-oil-shipping-and-prices/us-also-destroying-vessels"
-      - phrase: each extra month of fighting costs billions of dollars
+      - phrase: each further month of fighting costs the US $2–3 billion
         href: "#fact-human-and-financial-costs-of-the-war/monthly-cost-going-forward"
     verification:
       status: verified
-      textHash: af4cf94907b8
-      checkedAt: 2026-11-20
-  - heading: A new deal must be checked step by step, not trusted
-    visual:
-      cite: "#fact-decisions-law-and-diplomacy/mou-broke-down"
-      kind: timeline
-      title: The US–Iran ceasefire record
-    citations:
-      - phrase: the June memorandum broke down within three weeks
-        href: "#fact-decisions-law-and-diplomacy/mou-broke-down"
-      - phrase: Experts say Iran used the ceasefire to rebuild its missiles and drones
-        href: "#fact-decisions-law-and-diplomacy/iran-reconstituting-missiles"
-    verification:
-      status: verified
-      textHash: 27c0e676c099
-      checkedAt: 2026-11-20
+      textHash: adfcfaa10914
+      checkedAt: 2026-11-23
+      notes:
+        - "\"Could widen the war\" is the viewpoint's judgment, not a forecast in the reports. CENTCOM's destruction figures have no independent check."
   - heading: So the US should trade its blockade for limits inspectors can check, now
-    visual:
-      cite: "#fact-decisions-law-and-diplomacy/qatari-plan"
-      kind: timeline
-      title: US–Iran negotiations and agreements
     citations:
-      - phrase: "Qatar is pushing a plan: Iran reopens the Strait of Hormuz and the US ends its blockade"
-        href: "#fact-decisions-law-and-diplomacy/qatari-plan"
-      - phrase: Iran's oil exports collapsed after the first blockade began
-        href: "#fact-oil-shipping-and-prices/iranian-exports-collapsed"
+      - phrase: The June agreement broke down within three weeks
+        href: "#fact-decisions-law-and-diplomacy/mou-broke-down"
+      - phrase: two US research groups judge that Iran worked through the ceasefire to rebuild its missiles and drones
+        href: "#fact-decisions-law-and-diplomacy/iran-reconstituting-missiles"
+      - phrase: Ceasefires last longer when they come with strong terms, such as outside monitors and guarantees
+        href: "#fact-outside-attempts-to-change-hostile-regimes/strong-ceasefire-agreements-hold"
       - phrase: talks in October made no progress
         href: "#fact-decisions-law-and-diplomacy/talks-continue-in-october"
     verification:
       status: verified
-      textHash: 0971ace621ce
-      checkedAt: 2026-11-20
+      textHash: 3f5c6dca433f
+      checkedAt: 2026-11-23
+      notes:
+        - Fortna names demilitarised zones, dispute commissions, peacekeeping and outside guarantees; "outside monitors" stands for peacekeeping and commissions. "Made no progress" is regional sources' account to ISW/CTP.

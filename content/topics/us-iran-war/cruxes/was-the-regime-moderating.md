@@ -5,7 +5,7 @@ kind: assumption
 divides: [lost-path, regime-change, nuclear]
 positions:
   - viewpoint: lost-path
-    holds: "The openings were small but real, and a watched, slowly changing Iran was worth more than a bombed one."
+    holds: "Whatever was changing inside Iran, a deal never needed it to become friendly, only to let inspectors watch."
   - viewpoint: regime-change
     holds: "Nothing important changed: executions rose and protests met mass killing, so this government has to go."
   - viewpoint: nuclear

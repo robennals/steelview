@@ -172,7 +172,7 @@ test('More shows the subtitle\'s description and sources over the chart, without
 });
 
 test('in a sheet, Escape closes the More panel first, and only then the sheet', async ({ page }) => {
-  const chart = await openChart(page, 'human-and-financial-costs-of-the-war', 'us-deaths-earlier-wars', '/topics/us-iran-war');
+  const chart = await openChart(page, 'decisions-law-and-diplomacy', 'war-powers-reports-1975-2017', '/topics/us-iran-war');
   const sheet = page.locator('dialog[open]');
   const about = chart.locator('.sv-chart__about').first();
   await about.locator('> summary').click();
