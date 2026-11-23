@@ -2458,7 +2458,7 @@ figures:
   id: crossing-risk-and-price
   title: Deaths and prices on the Channel route
   subtitle: Confirmed deaths and reported prices, 2018–2026
-  description: Confirmed deaths related to small-boat crossings, and reported prices that smugglers charge, as the Migration Observatory compiles them.
+  description: Confirmed deaths on small-boat crossings, and the prices smugglers are reported to charge, as compiled by the Migration Observatory.
   caption: One row per measure
   sources:
     - 37

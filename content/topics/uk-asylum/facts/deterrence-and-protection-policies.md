@@ -2059,7 +2059,7 @@ figures:
     id: what-stopped-australia
     title: What stopped Australia's boats
     subtitle: What researchers found, 2013 onwards
-    description: What the Kaldor Centre, a refugee-law institute that opposes offshore processing, found about Australia's settlement ban and turnbacks.
+    description: What the Kaldor Centre, a refugee-law institute opposed to offshore processing, found about Australia's ban and turnbacks.
     caption: One row per finding
     sources:
       - 7
