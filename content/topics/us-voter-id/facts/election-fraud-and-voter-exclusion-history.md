@@ -1069,7 +1069,7 @@ observationMarks:
   carter-baker-id-deters: {rows: ["Carter–Baker Commission: what ID could do"]}
   id-would-not-reach: {rows: ["Officials stuffing or miscounting ballots", "Absentee or mail ballot fraud", "Vote buying"]}
   checkers-complicit: {rows: ["Officials stuffing or miscounting ballots"]}
-  detected-is-a-floor: {whole: true}
+  detected-is-a-floor: {rows: ["Impersonation fraud at the polls"]}
   impersonation-rare-modern: {rows: ["In-person voter impersonation"]}
   modern-result-changing-cases-absentee: {rows: ["East Chicago, 2003 primary", "North Carolina 9th District, 2018", "Paterson, 2020 council election"]}
   louisiana-registration-collapse: {rows: ["1898, new constitution adopted", "1921–1944, under the interpretation test", "1944"]}
