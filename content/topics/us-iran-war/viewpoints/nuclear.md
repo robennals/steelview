@@ -25,7 +25,7 @@ An Iranian bomb would not stay the only one in the region. Saudi Arabia's crown 
 
 ### Deals and sanctions had not stopped Iran, and the strikes have, for now
 
-Before the strikes, nothing else had held Iran back for long. The 2015 deal capped Iran's enrichment for only 15 years. After the deal collapsed, Iran built up its 60% uranium for four years, and sanctions have rarely stopped a nuclear programme once it has started. Since the strikes, US officials, Iran and an independent institute all say Iran's enrichment has stopped. For the first time in 20 years, that institute sees no route for Iran to make bomb-grade uranium. No inspector has checked this, and past strikes on nuclear sites delayed programmes only modestly. But Iran has gone from a week away to no route at all.
+Before the strikes, nothing else had held Iran back for long. The 2015 deal capped Iran's enrichment for only 15 years. After the deal collapsed, Iran built up its 60% uranium for four years, and sanctions have rarely stopped a nuclear programme once it has started. Since the strikes, US and Iranian officials say Iran's enrichment has stopped. For the first time in 20 years, an independent institute sees no route for Iran to make bomb-grade uranium. No inspector has checked this, and past strikes on nuclear sites delayed programmes only modestly. But Iran has gone from a week away to no route at all.
 
 ### So the US was right to strike, and must not let Iran start again
 

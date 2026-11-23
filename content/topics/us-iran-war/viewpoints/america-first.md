@@ -13,11 +13,11 @@ Americans did not ask for this war. On election night in 2024 the President said
 
 ### Iran was not a danger that needed an American war
 
-Iran's threats to Americans were real, but none of them needed a war. In 2025 US intelligence judged that Iran was not building a nuclear weapon. Groups allied with Iran attacked US troops in Iraq and Syria more than 200 times, but four in five of those attacks came in four months, to January 2024. Those troops were in danger because they were stationed there. Iran has plotted killings on US soil, but none of those plots led to a killing, and US courts have sentenced the men behind them.
+Iran's threats to Americans were real, but none of them needed a war. In 2025 US intelligence judged that Iran was not building a nuclear weapon. Groups allied with Iran attacked US troops in Iraq and Syria more than 200 times, but four in five of those attacks came in four months, to January 2024. Those troops were in danger because they were stationed there. Iran has plotted killings on US soil, but none of those plots led to a killing, and US courts have sentenced the men hired for two of them.
 
 ### The war is costing Americans billions, and the bill keeps growing
 
-The war's price keeps rising. The Pentagon's figure for its cost has nearly doubled since April, and each further month of fighting adds $2–3 billion. While the war has cost far less than Iraq so far, Iraq too began with small estimates: it ended up costing more than thirteen times the White House's forecast. The war has also drawn down the missiles that defend US troops and allies from attack, leaving them to take more risks with what is left.
+The war's price keeps rising. The Pentagon's figure for its cost has nearly doubled since April, and each further month of fighting adds $2–3 billion. While the war has cost far less than Iraq so far, Iraq too began with small estimates: it ended up costing more than thirteen times the White House's forecast. The war has also drawn down the missiles that defend US troops and allies from attack, which may force them to take more risks with what is left.
 
 ### Families are paying for the war at the pump
 

@@ -13,7 +13,7 @@ The US holds the upper hand. For the first time in 20 years, a leading group of 
 
 ### The blockade is what the US has to trade
 
-The US also holds what Iran most needs. Iran's oil exports collapsed after the US blockade began in April, to the lowest level since early 2020. Qatar is pushing a plan in which Iran reopens the Strait of Hormuz and the US lifts its blockade. That trade is the opening for a deal, once nuclear limits are added to it.
+The US also holds something Iran badly wants: its oil sales. Iran's oil exports collapsed after the US blockade began in April, to the lowest level since early 2020. Qatar is pushing a plan in which Iran reopens the Strait of Hormuz and the US lifts its blockade. That trade is the opening for a deal, once nuclear limits are added to it.
 
 ### Only inspectors can find the missing uranium, and Iran must let them in
 
@@ -23,12 +23,12 @@ Bombs cannot finish this job. No inspector has seen Iran's 60% uranium since Jun
 
 A deal can work. Under the 2015 deal, Iran's uranium stock stayed under its limit until about a year after the US left. Libya gave up its programme in 2003 and let inspectors in. Countries give up a programme most often when they face sanctions, with force on the table, and are offered face-saving rewards. That is the position the US is in now. Even in June, in the middle of the war, Iran signed a promise never to make nuclear weapons.
 
-### Every month of standoff risks a wider war and costs billions
+### Every month of standoff chokes the route for a fifth of the world's oil, and risks a wider war
 
-Waiting is costly and dangerous. Tracked shipping through the Strait of Hormuz fell almost to nothing when the war began, and has stayed far below normal. While other sources report far more ships than tracking shows, attacks on ships went on in October, and US forces are destroying ships to enforce the blockade. Any of these clashes could widen the war, and each further month of fighting costs the US $2–3 billion.
+Waiting is costly and dangerous. The Strait of Hormuz normally carries oil equal to about a fifth of what the world uses. Tracked shipping through it fell almost to nothing when the war began, and has stayed far below normal. While other sources report more ships than tracking shows, the clashes go on: in October officials counted 23 attacks on ships near the strait, and the Houthis in Yemen fired missiles and drones at Saudi Arabia. Any of these clashes could widen the war. Each further month of fighting also costs the US $2–3 billion.
 
 ### So the US should trade its blockade for limits inspectors can check, now
 
 The US should lift the blockade step by step, as inspectors confirm that Iran has opened every site, shown where its uranium is and stopped enriching. Trust is not enough. The June agreement broke down within three weeks, and two US research groups judge that Iran worked through the ceasefire to rebuild its missiles and drones. That calls for checks at every step, not for giving up. Ceasefires last longer when they come with strong terms, such as outside monitors and guarantees.
 
-While talks in October made no progress, that is a reason to keep pressing while the US holds these cards. A deal that can be checked serves Americans better than a war without end.
+While a meeting in Tehran in late October made no progress, that is a reason to keep pressing while the US holds these cards. A deal that can be checked serves Americans better than a war without end.

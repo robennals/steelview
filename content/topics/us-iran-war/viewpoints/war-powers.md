@@ -11,9 +11,9 @@ In America, the people's representatives decide whether the country goes to war.
 
 The Constitution gives Congress, not the President, the power to declare war. That rule exists so that the people, through their representatives, decide when Americans are sent to kill and die. The administration did not ask Congress for approval before the War Powers law's 60-day mark, and every vote Congress has held on the war was on ending it. The President says he acted as Commander in Chief, to defend America's allies. But commanding the forces is not choosing war.
 
-### When Congress has voted, it has voted to end the war
+### Both chambers have now voted to end the war
 
-Congress has said no. After narrowly rejecting three resolutions to end the war, the House passed the next three. In June the Senate passed one of them, 50 to 48, so both chambers have voted to end the war. Voters wanted a say too: in March, most said the President should have asked Congress before acting.
+Congress has turned against the war. After narrowly rejecting three resolutions to end it, the House passed the next three. Most Senate votes failed, but in June the Senate passed one of the House's resolutions, 50 to 48, so both chambers have voted to end the war. The Senate's last vote, in September, failed by one. Voters wanted a say too: in March, most said the President should have asked Congress before acting.
 
 ### The war has run past the law's 60-day limit, whatever the White House calls it
 

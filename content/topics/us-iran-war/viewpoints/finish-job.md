@@ -13,7 +13,7 @@ The job is not done while Iran's best uranium is missing. When the first strikes
 
 ### Every pause has given Iran time to rearm
 
-A pause has not been an end. Both sides fired during the April ceasefire, and the agreement signed in June broke down within three weeks. Meanwhile, experts at two US research groups judge, Iran worked to rebuild its missiles and drones, and its new defence minister plans to rebuild them inside mountains. In October the top US intelligence official reportedly warned that Iran was in the advanced stages of planning attacks on US targets in the region.
+A pause has not been an end. Both sides fired during the April ceasefire, and the agreement signed in June broke down within three weeks. Meanwhile, experts at two US research groups judge, Iran worked to rebuild its missiles and drones, and its new defence minister plans to rebuild its arms factories inside mountains. In October the top US intelligence official reportedly warned that Iran was in the advanced stages of planning attacks on US targets in the region.
 
 ### The blockade is pressure Iran feels
 
