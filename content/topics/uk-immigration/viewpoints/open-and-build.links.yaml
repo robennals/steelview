@@ -4,20 +4,28 @@
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
   citations:
-    - phrase: pay far more into the public finances than they take out
+    - phrase: Skilled workers pay far more into the public finances than they take out
       href: "#fact-immigration-economy-and-public-finances/skilled-workers-large-net-gain"
-    - phrase: Immigration is a small part of why homes cost so much
+    - phrase: cutting migration would raise borrowing
+      href: "#fact-immigration-economy-and-public-finances/lower-migration-raises-borrowing"
+    - phrase: Britain is ageing
+      href: "#fact-immigration-against-the-long-run/migration-slows-ageing-but-does-not-stop-it"
+    - phrase: its hospitals depend on staff from abroad
+      href: "#fact-work-and-study-routes/fifth-of-nhs-staff"
+    - phrase: Immigration adds only a little to housing costs
       href: "#fact-immigration-housing-and-public-services/immigration-explains-4-6-percent-of-house-price-rise"
   verification:
     status: verified
-    textHash: 52d17e0dda9a
-    checkedAt: 2026-11-20
+    textHash: 4953b74f14ba
+    checkedAt: 2026-11-23
+    notes:
+      - '"Skilled workers" here means Skilled Worker main applicants outside health and care, the only group the advisers model at a large gain.'
 lead:
   citations: []
   verification:
     status: verified
-    textHash: abade47a0642
-    checkedAt: 2026-11-20
+    textHash: d8ecc9789f0b
+    checkedAt: 2026-11-23
 cards:
   - heading: Skilled migrants pay far more in than they take out
     visual:
@@ -25,85 +33,101 @@ cards:
       kind: comparison
       title: Lifetime fiscal contribution by visa route
     citations:
-      - phrase: Skilled workers outside health and care add hundreds of thousands of pounds each over their lives
+      - phrase: skilled workers outside health and care each add hundreds of thousands of pounds to the public purse over their lives
         href: "#fact-immigration-economy-and-public-finances/skilled-workers-large-net-gain"
-      - phrase: the government's migration advisers expect one year's skilled workers to add tens of billions of pounds to the public purse
-        href: "#fact-immigration-economy-and-public-finances/mac-cohort-adds-47bn"
-      - phrase: in the budget watchdog's scenarios, lower migration raises borrowing within five years
+      - phrase: lower migration raises borrowing within five years
         href: "#fact-immigration-economy-and-public-finances/lower-migration-raises-borrowing"
     verification:
       status: verified
-      textHash: de68c84d0013
-      checkedAt: 2026-11-20
-  - heading: Britain's hospitals and universities depend on people from abroad
+      textHash: 692f34e93e4a
+      checkedAt: 2026-11-23
+      notes:
+        - The borrowing scenario is for 200,000 fewer net migrants a year of all kinds, not skilled workers only.
+  - heading: An ageing Britain needs workers, and its hospitals already rely on them
     visual:
-      cite: "#fact-work-and-study-routes/fifth-of-nhs-staff"
+      cite: "#fact-immigration-against-the-long-run/migration-slows-ageing-but-does-not-stop-it"
       kind: series
-      title: NHS staff without British nationality
+      title: UK population projections
     citations:
-      - phrase: About a fifth of NHS staff in England are not British, and over a third of doctors
+      - phrase: Britain will age whatever happens, but fastest with no migration
+        href: "#fact-immigration-against-the-long-run/migration-slows-ageing-but-does-not-stop-it"
+      - phrase: about a fifth of NHS staff in England are not British, and over a third of doctors
         href: "#fact-work-and-study-routes/fifth-of-nhs-staff"
-      - phrase: Students from abroad pay close to half of university course fees
-        href: "#fact-immigration-economy-and-public-finances/non-uk-fee-share"
-      - phrase: over a third of English universities are already in deficit
-        href: "#fact-immigration-economy-and-public-finances/a-third-of-universities-in-deficit"
-      - phrase: with no net migration, there would be 641 people aged 65 or over for every 1,000 of working age by 2074, against 525 on the main projection
-        href: "#fact-immigration-against-the-long-run/old-age-ratio-2074"
-      - phrase: migrants grow old too, which reverses much of their early gain
-        href: "#fact-immigration-economy-and-public-finances/old-age-reverses-gains"
+      - phrase: migration delays the strain of ageing rather than ending it
+        href: "#fact-immigration-economy-and-public-finances/obr-delaying-not-resolving"
     verification:
       status: verified
-      textHash: 2b2ab0814369
-      checkedAt: 2026-11-20
-  - heading: Immigration adds a little to housing costs; cheap borrowing drove most of the rise
-    visual:
-      cite: "#fact-immigration-housing-and-public-services/rent-effects"
-      kind: barChart
-      title: Immigration and house prices and rents
-    citations:
-      - phrase: In countries like Britain, raising the immigrant share by one point raises house prices by under 1%, and rents by a little more
-        href: "#fact-immigration-housing-and-public-services/rent-effects"
-      - phrase: Bank of England economists find that falling interest rates more than account for the rise in house prices against incomes since 1985
-        href: "#fact-immigration-housing-and-public-services/falling-interest-rates-explain-price-rise"
-      - phrase: the government's advisers put immigration's share of the long rise at about 4–6%
-        href: "#fact-immigration-housing-and-public-services/immigration-explains-4-6-percent-of-house-price-rise"
-      - phrase: migration is just over half of expected household growth
-        href: "#fact-immigration-housing-and-public-services/migration-share-of-household-growth"
-    verification:
-      status: verified
-      textHash: 09db8c49158a
-      checkedAt: 2026-11-20
-  - heading: Building more homes needs migrant workers
-    citations:
-      - phrase: Immigration is more likely to raise prices where planning rules hold back building
-        href: "#fact-immigration-housing-and-public-services/local-versus-regional-effects"
-      - phrase: migrants are almost half of London's construction workers
-        href: "#fact-immigration-housing-and-public-services/migrants-in-london-construction"
-    verification:
-      status: verified
-      textHash: a9a04627a0d8
-      checkedAt: 2026-11-20
+      textHash: ee9cfa5ac556
+      checkedAt: 2026-11-23
+      notes:
+        - The ratios are projections on fixed ages (65+ per 1,000 aged 16–64), not forecasts.
   - heading: Immigration has moved wages, and output per person, by only a few percent
     visual:
       cite: "#fact-immigration-economy-and-public-finances/small-wage-effects"
       kind: comparison
       title: EU immigration and UK-born wages
     citations:
-      - phrase: The government's advisers estimate that 24 years of EU immigration cut the lowest wages by about 5%, and raised wages from the middle up
+      - phrase: Twenty-four years of EU immigration cut the lowest wages by about 5%, and raised wages from the middle up
         href: "#fact-immigration-economy-and-public-finances/small-wage-effects"
-      - phrase: The budget watchdog puts migration's effect on output per person at under 1%, up or down
+      - phrase: migration changes output per person by under 1%, up or down
         href: "#fact-immigration-economy-and-public-finances/obr-per-head-effect-small"
-      - phrase: output per person has barely grown since 2019, though Canada and Germany did worse
-        href: "#fact-immigration-economy-and-public-finances/g7-stalled-alike"
-      - phrase: in one count of a hundred fast-growing firms, over half had a founder born abroad
+      - phrase: 54 of Britain's 100 fastest-growing firms had a founder born abroad
         href: "#fact-immigration-economy-and-public-finances/foreign-born-founders"
     verification:
       status: verified
-      textHash: d9d2b4d69105
-      checkedAt: 2026-11-20
+      textHash: 07101e88d024
+      checkedAt: 2026-11-23
+      notes:
+        - The wage figures are short-run estimates for UK-born workers, 1993–2017; "the lowest wages" is the 5th percentile. The founders sample is 100 firms chosen on growth in 2024–25.
+  - heading: Immigration adds a little to housing costs, and building would meet it
+    visual:
+      cite: "#fact-immigration-housing-and-public-services/rent-effects"
+      kind: barChart
+      title: Immigration and house prices and rents
+    citations:
+      - phrase: In countries like Britain, a one-point rise in the immigrant share raises house prices by under 1%, and rents by a little more
+        href: "#fact-immigration-housing-and-public-services/rent-effects"
+      - phrase: Immigration explains only about 4–6% of the long rise in house prices
+        href: "#fact-immigration-housing-and-public-services/immigration-explains-4-6-percent-of-house-price-rise"
+      - phrase: Falling interest rates likely more than account for the rise in prices against incomes
+        href: "#fact-immigration-housing-and-public-services/falling-interest-rates-explain-price-rise"
+      - phrase: migration is just over half of England's expected household growth
+        href: "#fact-immigration-housing-and-public-services/migration-share-of-household-growth"
+      - phrase: Migrants are almost half of London's construction workers
+        href: "#fact-immigration-housing-and-public-services/migrants-in-london-construction"
+    verification:
+      status: verified
+      textHash: 74295d4f3db2
+      checkedAt: 2026-11-23
+      notes:
+        - The interest-rate finding is one Bank of England staff paper (the authors' view), on prices relative to incomes, 1985–2018; hence "likely".
+  - heading: The children of earlier migrants are doing well
+    visual:
+      cite: "#fact-integration-outcomes/minority-pupils-outperform"
+      kind: comparison
+      title: GCSE results by ethnic group
+    citations:
+      - phrase: Most minority groups outscore White British pupils at GCSE
+        href: "#fact-integration-outcomes/minority-pupils-outperform"
+      - phrase: minority pupils go to university at higher rates
+        href: "#fact-integration-outcomes/university-entry"
+      - phrase: Segregation between neighbourhoods fell for every ethnic group from 1991 to 2021
+        href: "#fact-integration-outcomes/segregation-fell"
+      - phrase: About four in five adults say people from different backgrounds get on well where they live
+        href: "#fact-integration-outcomes/cohesion-stable"
+      - phrase: recent arrivals are the most likely to struggle with English
+        href: "#fact-integration-outcomes/recent-arrivals-struggle-with-english"
+      - phrase: people who came long ago are far more likely to speak it as their main language
+        href: "#fact-integration-outcomes/english-rises-with-time"
+    verification:
+      status: verified
+      textHash: 9e15c6745f94
+      checkedAt: 2026-11-23
+      notes:
+        - The school figures are by ethnic group, mostly UK-born pupils in England; Black Caribbean, Gypsy and Roma, Irish traveller and Mixed White and Black Caribbean pupils score below White British. The English figures are one 2021 snapshot, not people followed over time.
   - heading: So keep the door open, and spend the gains on homes and services
     citations: []
     verification:
       status: verified
-      textHash: 8b09ed24387c
-      checkedAt: 2026-11-20
+      textHash: 64dc32af48d7
+      checkedAt: 2026-11-23

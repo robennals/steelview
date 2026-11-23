@@ -4,116 +4,126 @@
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
   citations:
-    - phrase: invested a smaller share of GDP than most rich countries for decades
+    - phrase: Britain invested a smaller share of its income than most rich countries for decades
       href: "#fact-immigration-housing-and-public-services/public-investment-low"
     - phrase: its investment does not grow when its population does
       href: "#fact-immigration-housing-and-public-services/investment-does-not-adjust"
-    - phrase: Falling interest rates, not immigration, explain most of the long rise in house prices
-      href: "#fact-immigration-housing-and-public-services/falling-interest-rates-explain-price-rise"
+    - phrase: Immigration explains only a small part of the long rise in house prices
+      href: "#fact-immigration-housing-and-public-services/immigration-explains-4-6-percent-of-house-price-rise"
   verification:
     status: verified
-    textHash: 363581582dd3
-    checkedAt: 2026-11-20
+    textHash: 240dcd48a40a
+    checkedAt: 2026-11-23
 lead:
   citations: []
   verification:
     status: verified
-    textHash: f997c15b29df
-    checkedAt: 2026-11-20
+    textHash: 1728ab181710
+    checkedAt: 2026-11-23
 cards:
-  - heading: Britain has long invested less than other rich countries, and investment does not follow population
+  - heading: Britain has invested less than other rich countries for decades
     visual:
       cite: "#fact-immigration-housing-and-public-services/public-investment-low"
       kind: series
       title: Government investment as a share of GDP
     citations:
-      - phrase: The UK government invested a smaller share of GDP than the typical rich country in every year for three decades
+      - phrase: The British government invested a smaller share of the economy than the typical rich country in every year from 1995 to 2024
         href: "#fact-immigration-housing-and-public-services/public-investment-low"
-      - phrase: much public investment is fixed years ahead, so it does not grow when the population does
+      - phrase: Much public investment is fixed for years at a time, so it does not grow when the population does
         href: "#fact-immigration-housing-and-public-services/investment-does-not-adjust"
       - phrase: migration is just over half of the extra households England expects
         href: "#fact-immigration-housing-and-public-services/migration-share-of-household-growth"
-      - phrase: health spending per person has almost doubled since 2000
+      - phrase: real health spending per person has almost doubled since 2000
         href: "#fact-immigration-housing-and-public-services/health-spending-per-person-doubled"
-      - phrase: Britain spends less than the average rich country on health buildings and equipment
+      - phrase: Britain still invests less than the average rich country in hospital buildings and equipment
         href: "#fact-immigration-housing-and-public-services/health-capital-below-average"
     verification:
       status: verified
-      textHash: 5902c7d918bd
-      checkedAt: 2026-11-20
+      textHash: 7938899bc21d
+      checkedAt: 2026-11-23
+      notes:
+        - '"The typical rich country" is the OECD median. Health capital is below the OECD average as a share of GDP.'
   - heading: Cheap borrowing, not immigration, drove most of the rise in house prices
     visual:
       cite: "#fact-immigration-housing-and-public-services/rent-effects"
       kind: barChart
       title: Immigration and house prices and rents
     citations:
-      - phrase: In countries like Britain, raising the immigrant share by one point raises house prices by under 1%, and rents by a little more
+      - phrase: In countries like Britain, a one-point rise in the immigrant share raises house prices by under 1%, and rents by a little more
         href: "#fact-immigration-housing-and-public-services/rent-effects"
-      - phrase: Bank of England economists find that falling interest rates more than account for the rise in house prices against incomes since 1985
+      - phrase: falling interest rates likely more than account for the rise in house prices against incomes since 1985
         href: "#fact-immigration-housing-and-public-services/falling-interest-rates-explain-price-rise"
-      - phrase: the government's advisers put immigration's share of the long rise at about 4–6%
+      - phrase: immigration explains only about 4–6% of the long rise
         href: "#fact-immigration-housing-and-public-services/immigration-explains-4-6-percent-of-house-price-rise"
-      - phrase: for over a decade, England has built fewer homes for social rent each year than in any year of the two decades before
+      - phrase: England has built fewer homes for social rent each year than in any year of the two decades before
         href: "#fact-immigration-housing-and-public-services/social-rent-building-fell-after-2010"
     verification:
       status: verified
-      textHash: fed11ee3a433
-      checkedAt: 2026-11-20
-  - heading: Migrants staff the NHS and care homes, and care is short because it is underfunded
+      textHash: 206ad1fd6cba
+      checkedAt: 2026-11-23
+      notes:
+        - The interest-rate finding is one Bank of England staff paper, covering 1985–2018, on prices relative to incomes. The social-rent comparison is with 1991-92 to 2012-13; total affordable completions held up as affordable rent replaced social rent.
+  - heading: Care is short of staff because it is underfunded, and migrants fill the gap
     visual:
-      cite: "#fact-work-and-study-routes/fifth-of-nhs-staff"
+      cite: "#fact-work-and-study-routes/care-pay-near-the-floor"
       kind: series
-      title: NHS staff without British nationality
+      title: Adult social care workforce
     citations:
-      - phrase: About a fifth of NHS staff in England are not British, and over a third of doctors
-        href: "#fact-work-and-study-routes/fifth-of-nhs-staff"
       - phrase: About 150,000 care jobs are done by people on health and care visas
         href: "#fact-work-and-study-routes/care-posts-on-visas"
       - phrase: the root cause of care's staff shortages is underfunding, which immigration could not solve alone
         href: "#fact-work-and-study-routes/mac-names-underfunding"
-      - phrase: care pay sits only about 5% above the legal minimum
+      - phrase: Care pay sits only about 5% above the legal minimum
         href: "#fact-work-and-study-routes/care-pay-near-the-floor"
+      - phrase: care vacancies have not risen as overseas recruitment ran down
+        href: "#fact-work-and-study-routes/vacancies-held-as-recruitment-fell"
+      - phrase: fewer British people are starting care jobs
+        href: "#fact-work-and-study-routes/british-held-posts-fell"
     verification:
       status: verified
-      textHash: a2a3c1c3bcef
-      checkedAt: 2026-11-20
+      textHash: ca354feb7884
+      checkedAt: 2026-11-23
   - heading: Checks meant for illegal migrants harmed people with every right to be here
     visual:
       cite: "#fact-settlement-and-migrant-status/windrush-compensation-paid"
       kind: series
       title: Windrush compensation paid
     citations:
-      - phrase: the state has since paid out well over a hundred million pounds in compensation
-        href: "#fact-settlement-and-migrant-status/windrush-compensation-paid"
-      - phrase: the state denied people with every right to be here work, homes and services, and detained or removed others
+      - phrase: the state removed and detained people who were here lawfully, and through those checks denied others work, homes and services
         href: "#fact-settlement-and-migrant-status/windrush-record"
+      - phrase: It has since paid well over a hundred million pounds in compensation
+        href: "#fact-settlement-and-migrant-status/windrush-compensation-paid"
     verification:
       status: verified
-      textHash: 56cc49f634c7
-      checkedAt: 2026-11-20
+      textHash: 871d93c8eb66
+      checkedAt: 2026-11-23
+      notes:
+        - The review describes "policies designed to combat illegal migration"; it does not use the phrase "hostile environment" in the quoted passage.
   - heading: Visas tied to one employer leave lawful workers open to exploitation
     visual:
       cite: "#fact-work-and-study-routes/revocations-at-a-record"
       kind: series
       title: UK sponsor licences revoked
     citations:
-      - phrase: Visas tied to one employer left care workers open to exploitation
-        href: "#fact-work-and-study-routes/visas-tied-to-one-employer"
-      - phrase: The Home Office cancelled a record number of employers' licences to hire migrants
+      - phrase: The Home Office cancelled a record number of employers' licences to hire migrants in the year to June 2025
         href: "#fact-work-and-study-routes/revocations-at-a-record"
+      - phrase: It gave reasons including underpaying workers and failing to give them the work they were promised
+        href: "#fact-work-and-study-routes/licence-revocation-reasons"
+      - phrase: visas tied to one employer left care workers open to exploitation
+        href: "#fact-work-and-study-routes/visas-tied-to-one-employer"
       - phrase: the fee for settlement is ten times what it costs the Home Office to process
         href: "#fact-settlement-and-migrant-status/ilr-fee-ten-times-cost"
-      - phrase: people on temporary visas are usually barred from most benefits
-        href: "#fact-settlement-and-migrant-status/nrpf-costs"
     verification:
       status: verified
-      textHash: e23734012671
-      checkedAt: 2026-11-20
+      textHash: 9318d7618578
+      checkedAt: 2026-11-23
+      notes:
+        - Revocations count employers, not exploited workers; no series counts those. As a share of licensed employers, revocations are back to their mid-2010s level, not a record.
   - heading: So invest in homes and services, and end the hostile environment
     citations:
-      - phrase: Councils are already building more affordable homes than at any time since records began in 1991-92, though only about one in six of the total
+      - phrase: Councils are already building more affordable homes than in any year since records began in 1991-92, though only about one in six of the total
         href: "#fact-immigration-housing-and-public-services/council-building-record"
     verification:
       status: verified
-      textHash: ec0762cebf78
-      checkedAt: 2026-11-20
+      textHash: 834f819240bb
+      checkedAt: 2026-11-23

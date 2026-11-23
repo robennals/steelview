@@ -6,18 +6,20 @@ summary:
   citations:
     - phrase: about 1.6 million people in five years
       href: "#fact-settlement-and-migrant-status/forecast-1-6-million"
-    - phrase: care workers, who cost the public money over a lifetime
-      href: "#fact-immigration-economy-and-public-finances/care-workers-net-cost"
+    - phrase: driven by visas issued since 2021
+      href: "#fact-settlement-and-migrant-status/forecast-drivers-in-detail"
+    - phrase: For lower earners, a temporary stay is better for the public purse than a permanent one
+      href: "#fact-immigration-economy-and-public-finances/temporary-better-for-lower-earners"
   verification:
     status: verified
-    textHash: c3346f05e335
-    checkedAt: 2026-11-20
+    textHash: a5713c4e92e0
+    checkedAt: 2026-11-23
 lead:
   citations: []
   verification:
     status: verified
-    textHash: 553b7eee0d7c
-    checkedAt: 2026-11-20
+    textHash: 12ee10dcbd0a
+    checkedAt: 2026-11-23
 cards:
   - heading: A wave of permanent settlement is about to arrive
     visual:
@@ -25,80 +27,86 @@ cards:
       kind: estimateRange
       title: People expected to settle
     citations:
-      - phrase: The Home Office expects about 1.6 million people to settle by 2030
+      - phrase: The Home Office expects about 1.6 million people to settle in 2026 to 2030
         href: "#fact-settlement-and-migrant-status/forecast-1-6-million"
-      - phrase: mostly from health and care, skilled-worker and Hong Kong visas issued since 2021
+      - phrase: The rise is driven by health and care, skilled-worker and Hong Kong visas issued since 2021
         href: "#fact-settlement-and-migrant-status/forecast-drivers-in-detail"
-      - phrase: Once settled, a person can claim most of the benefits that people on temporary visas cannot
+      - phrase: a person can claim benefits on the same terms as British citizens
         href: "#fact-settlement-and-migrant-status/settlement-unlocks-benefits"
     verification:
       status: verified
-      textHash: 8c3f64962a82
-      checkedAt: 2026-11-20
-  - heading: Settling low earners turns a working stay into a lifetime cost
+      textHash: 3a9d204e9aef
+      checkedAt: 2026-11-23
+      notes:
+        - The forecast range is 1.3–2.2 million, under current rules.
+  - heading: Settling lower earners turns a working stay into a lifetime cost
     visual:
       cite: "#fact-immigration-economy-and-public-finances/care-route-net-cost"
       kind: comparison
       title: Lifetime fiscal contribution by visa route
     citations:
-      - phrase: care workers, and the adult family members of health and care workers, cost more than they pay over a lifetime
+      - phrase: Care workers, and the adult family members of health and care workers, cost the public purse more than they pay over a lifetime
         href: "#fact-immigration-economy-and-public-finances/care-route-net-cost"
-      - phrase: for lower earners, a temporary stay is better for the public purse than a permanent one
+      - phrase: For lower earners, a temporary stay is better for the public purse than a permanent one
         href: "#fact-immigration-economy-and-public-finances/temporary-better-for-lower-earners"
-      - phrase: About half of adult skilled-worker dependants were not working, and so were a third of adults on family visas by their fifth year
-        href: "#fact-settlement-and-migrant-status/non-working-groups"
+      - phrase: About half of adult skilled-worker dependants were not working
+        href: "#fact-settlement-and-migrant-status/skilled-dependants-half-not-working"
     verification:
       status: verified
-      textHash: 486135cd00c5
-      checkedAt: 2026-11-20
-  - heading: Skilled workers were never promised settlement, and the rules have changed before
+      textHash: d8079886e525
+      checkedAt: 2026-11-23
+      notes:
+        - The advisers' finding is for temporary against permanent migration of lower earners; they did not model renewable visas.
+  - heading: No one was promised settlement, and the rules have changed before
+    visual:
+      cite: "#fact-settlement-and-migrant-status/guidance-said-may-be-able-to-apply"
+      kind: quotes
+      title: What were people on a path to settlement told, and what did a court make of it?
     citations:
-      - phrase: The official guidance said only that workers "may be able to apply"
+      - phrase: The skilled-worker guidance says only that after five years, a worker "may be able to apply" to settle
         href: "#fact-settlement-and-migrant-status/guidance-said-may-be-able-to-apply"
-      - phrase: Rule changes have been applied before to people already in Britain
+      - phrase: The Home Secretary says the rules that apply are those in force when a person applies, not when they arrived
+        href: "#fact-settlement-and-migrant-status/rules-at-point-of-application"
+      - phrase: MPs found precedent for changing the rules for people already here
         href: "#fact-settlement-and-migrant-status/transitional-protection-precedent"
-      - phrase: the family route's wait for settlement went from two years to five in 2012
+      - phrase: in 2012 the family route's wait went from two years to five
         href: "#fact-settlement-and-migrant-status/family-route-two-to-five-2012"
+      - phrase: the High Court struck down a change made part-way through one scheme in 2008
+        href: "#fact-settlement-and-migrant-status/high-court-struck-down-mid-route-change-2008"
     verification:
       status: verified
-      textHash: a8c6dfcf70f4
-      checkedAt: 2026-11-20
-  - heading: Taking settlement back would need a new law, passed openly by Parliament
-    citations:
-      - phrase: Today's law lets settlement be revoked only on individual grounds
-        href: "#fact-settlement-and-migrant-status/revocation-needs-new-law"
-      - phrase: people with settlement outside the EU scheme were 2.7% of those on Universal Credit
-        href: "#fact-settlement-and-migrant-status/no-official-data-on-ilr-holders-work-or-benefits"
-      - phrase: people with EU settled status far outnumber other holders
-        href: "#fact-settlement-and-migrant-status/euss-outnumber-non-eu-ilr"
-      - phrase: are outside the reforms under the Brexit treaty
-        href: "#fact-settlement-and-migrant-status/eu-status-out-of-scope"
-    verification:
-      status: verified
-      textHash: 372436d7a9fb
-      checkedAt: 2026-11-20
+      textHash: f4795d8125c0
+      checkedAt: 2026-11-23
+      notes:
+        - The same committee found transitional protection "common". The BN(O) statement says holders "will be able to apply", which is firmer than the skilled-worker guidance.
   - heading: Only more people leaving than arriving would undo the change
     visual:
       cite: "#fact-immigration-against-the-long-run/four-years-gross-and-net"
       kind: series
       title: UK migration
     citations:
-      - phrase: Net migration added about 2.5 million people in 2021–24
+      - phrase: Net migration added about 2.5 million people in 2021 to 2024
         href: "#fact-immigration-against-the-long-run/four-years-gross-and-net"
-      - phrase: England is adding fewer homes each year than the households it expects
-        href: "#fact-immigration-housing-and-public-services/building-below-household-growth"
+      - phrase: Britain had such years when arrivals were a fraction of today's
+        href: "#fact-immigration-against-the-long-run/negative-years-came-from-emigration"
       - phrase: British citizens already leave on net
         href: "#fact-immigration-against-the-long-run/british-net-emigration"
       - phrase: the population ages fastest with no net migration
         href: "#fact-immigration-against-the-long-run/migration-slows-ageing-but-does-not-stop-it"
-      - phrase: most people wanted immigration reduced
-        href: "#fact-immigration-against-the-long-run/public-preferences"
     verification:
       status: verified
-      textHash: 6b2a0e393414
-      checkedAt: 2026-11-20
-  - heading: So replace settlement with renewable visas and keep benefits for citizens
+      textHash: 5d80be45d54b
+      checkedAt: 2026-11-23
+      notes:
+        - The years of net emigration (1964–78 and some later years) had immigration below a third of its 2025 level.
+  - heading: So replace settlement with renewable visas, and keep benefits for citizens
     citations:
+      - phrase: Today's law lets settlement be taken away only on individual grounds
+        href: "#fact-settlement-and-migrant-status/revocation-needs-new-law"
+      - phrase: people with EU settled status, who far outnumber other holders
+        href: "#fact-settlement-and-migrant-status/euss-outnumber-non-eu-ilr"
+      - phrase: fall outside the reforms under the Brexit treaty
+        href: "#fact-settlement-and-migrant-status/eu-status-out-of-scope"
       - phrase: most people oppose taking settlement from those who hold it
         href: "#fact-settlement-and-migrant-status/revoking-opposed-58-29"
       - phrase: ending it for new arrivals already splits the country evenly
@@ -107,5 +115,8 @@ cards:
         href: "#fact-settlement-and-migrant-status/reform-voters-back-removal"
     verification:
       status: verified
-      textHash: a2b9e3eed413
-      checkedAt: 2026-11-20
+      textHash: 5e5318174d95
+      checkedAt: 2026-11-23
+      notes:
+        - How courts would treat a new Act removing settlement, including family-life claims, is untested.
+        - The polls are one YouGov survey, September 2025.

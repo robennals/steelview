@@ -298,7 +298,7 @@ test('a chart\'s sheet is the data: its chart opens nothing more, and has its co
 });
 
 // `work-and-study-routes/sponsor-revocations` has two readings, and is the
-// `blame-underinvestment` viewpoint's third card.
+// `blame-underinvestment` viewpoint's fifth card.
 test('a card\'s chart with several readings opens in full with its "Show as" switch', async ({ page }) => {
   await page.goto(TOPIC);
   const viewpoint = await openViewpoint(page, 'blame-underinvestment');
