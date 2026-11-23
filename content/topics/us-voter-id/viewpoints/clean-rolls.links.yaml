@@ -6,100 +6,124 @@ summary:
   citations:
     - phrase: Most fraud on record was done by officials or through the mail, where a polling-place ID check never reaches
       href: "#fact-election-fraud-and-voter-exclusion-history/id-would-not-reach"
-    - phrase: Most people taken off voter lists had moved, died, or not answered a notice
-      href: "#fact-voter-roll-maintenance/mostly-moves-deaths-nonresponse"
-    - phrase: reviews that give a cause trace non-citizens on the lists to mistakes
-      href: "#fact-non-citizens-on-voter-rolls/how-noncitizens-reach-rolls"
+    - phrase: some of it used the names of the dead and departed left on the lists
+      href: "#fact-election-fraud-and-voter-exclusion-history/stale-rolls-enabled-fraud"
+    - phrase: Non-citizens on the lists are found in government records
+      href: "#fact-non-citizens-on-voter-rolls/checks-rest-on-records"
   verification:
     status: verified
-    textHash: b19cd58bde36
-    checkedAt: 2026-11-20
+    textHash: ec7391078d67
+    checkedAt: 2026-11-23
 lead:
-  citations: []
+  citations:
+    - phrase: Fraud has used the names of the dead and departed left on the list
+      href: "#fact-election-fraud-and-voter-exclusion-history/stale-rolls-enabled-fraud"
+    - phrase: non-citizens show up in government files
+      href: "#fact-non-citizens-on-voter-rolls/checks-rest-on-records"
   verification:
     status: verified
-    textHash: 8e63f713c9fa
-    checkedAt: 2026-11-20
+    textHash: afbba68d0eab
+    checkedAt: 2026-11-23
 cards:
-  - heading: Voter lists hold many out-of-date names, and they stay for years
+  - heading: Voter lists hold many out-of-date names, and fraud has used them
     visual:
       cite: "#fact-voter-roll-maintenance/pew-only-direct-measure"
       kind: comparison
       title: Registrations that shouldn't be on the rolls
     citations:
-      - phrase: A national estimate, from data to March 2011, found about one record in eight wrong or out of date
+      - phrase: The only national estimate, from data to March 2011, found about one record in eight wrong or out of date, including dead people and people registered in two states
         href: "#fact-voter-roll-maintenance/pew-only-direct-measure"
       - phrase: removing someone for a move can take through two federal general elections
         href: "#fact-voter-roll-maintenance/removal-waits-two-elections"
+      - phrase: most wrong records belong to eligible voters with old details
+        href: "#fact-voter-roll-maintenance/pew-not-fraud"
       - phrase: Chicago's 1982 fraud cast ballots in the names of people who had died or moved
         href: "#fact-election-fraud-and-voter-exclusion-history/stale-rolls-enabled-fraud"
     verification:
       status: verified
-      textHash: c2a46b8a4a7a
-      checkedAt: 2026-11-20
-  - heading: Most fraud on record went through officials or the mail, where a poll ID check never reaches
+      textHash: 2af81c5f4bfe
+      checkedAt: 2026-11-23
+      notes:
+        - The estimate predates ERIC and the growth in removals since, so it is not today's size of the problem. The chart shows the dead and multiply registered; the one-in-eight total is in its source quote.
+  - heading: Most fraud on record went around the check at the polls
     visual:
       cite: "#fact-election-fraud-and-voter-exclusion-history/id-would-not-reach"
       kind: comparison
       title: Twenty fraud cases by method
     citations:
-      - phrase: In 14 of 20 recorded cases, a polling-place ID check would not have reached the fraud
+      - phrase: In 14 of 20 recorded cases, a polling-place ID check would not have reached it
         href: "#fact-election-fraud-and-voter-exclusion-history/id-would-not-reach"
+      - phrase: the officials checking were often part of it
+        href: "#fact-election-fraud-and-voter-exclusion-history/checkers-complicit"
     verification:
       status: verified
-      textHash: 3435d2a1402a
-      checkedAt: 2026-11-20
-  - heading: Non-citizens show up in government records, not at the polls
+      textHash: fcad560fc8bd
+      checkedAt: 2026-11-23
+      notes:
+        - The 20 are the cases the report lists, not a sample. Whether a photo rule would still have deterred the ghost voting is not measured.
+  - heading: Non-citizens are found in government records, not at the door
+    visual:
+      cite: "#fact-non-citizens-on-voter-rolls/found-on-rolls"
+      kind: comparison
+      title: Non-citizens found on voter rolls
     citations:
-      - phrase: Reviews that give a cause trace non-citizens on the lists to clerks' errors, wrong licence records and confusion about the rules
-        href: "#fact-non-citizens-on-voter-rolls/how-noncitizens-reach-rolls"
-      - phrase: transportation records and sworn jury excusals
+      - phrase: Georgia, Iowa, Louisiana, Ohio and Kansas each found non-citizens on their lists
+        href: "#fact-non-citizens-on-voter-rolls/found-on-rolls"
+      - phrase: transportation files, immigration records and sworn excusals from jury duty
         href: "#fact-non-citizens-on-voter-rolls/checks-rest-on-records"
-      - phrase: The government says the federal SAVE database has now checked more than 65 million voters in 26 states
-        href: "#fact-federal-and-state-power-over-voting-rules/save-whole-rolls"
-      - phrase: Georgia held back applicants it could not verify
+      - phrase: held back those its records could not verify
         href: "#fact-non-citizens-on-voter-rolls/georgia-2022-held-at-registration"
     verification:
       status: verified
-      textHash: 2dd723b6147c
-      checkedAt: 2026-11-20
+      textHash: 715eea46fdfd
+      checkedAt: 2026-11-23
+      notes:
+        - '"A photo ID shows who a voter is, not whether they are a citizen" is a general statement: some licences issued to non-citizens are marked as limited-term.'
   - heading: Matching must be careful, because it also flags eligible voters
+    visual:
+      cite: "#fact-non-citizens-on-voter-rolls/flag-lists-shrink"
+      kind: comparison
+      title: Flagged voters later shown to be citizens
     citations:
-      - phrase: Matching programs from Florida in 2000 to Alabama in 2024 and Texas in 2025–26 have flagged eligible voters
-        href: "#fact-voter-roll-maintenance/bulk-matching-errs"
+      - phrase: In every program with a published follow-up, a large share of those flagged turned out to be citizens
+        href: "#fact-non-citizens-on-voter-rolls/flag-lists-shrink"
       - phrase: Eleven voters flagged in Travis County, Texas, had already given the state licence agency proof of citizenship
         href: "#fact-non-citizens-on-voter-rolls/state-records-would-have-cleared"
-      - phrase: Challengers say the government has not released an error rate for SAVE
+      - phrase: Challengers say the government has not released an error rate for the federal SAVE database
         href: "#fact-federal-and-state-power-over-voting-rules/save-database-revived"
-      - phrase: In 2024, the biggest reason for removal was an unanswered notice and two missed federal elections
-        href: "#fact-voter-roll-maintenance/nonresponse-largest"
-      - phrase: In Ohio, more of those who replied said they had not moved than said they had
+      - phrase: in Ohio, more of those who answered a notice said they had not moved than said they had
         href: "#fact-voter-roll-maintenance/ohio-notice-replies"
     verification:
       status: verified
-      textHash: bcdf1cd153c5
-      checkedAt: 2026-11-20
-  - heading: Finding voters who moved needs states to share data, and nine have stopped
+      textHash: 6fbf26b3ac31
+      checkedAt: 2026-11-23
+  - heading: Finding voters who moved needs states to share records, and nine have stopped
     visual:
-      cite: "#fact-voter-roll-maintenance/eric-departures"
+      cite: "#fact-voter-roll-maintenance/eric-reports-fell"
       kind: series
       title: Out-of-date records flagged by ERIC
     citations:
+      - phrase: Moving is one of the main reasons names come off the lists
+        href: "#fact-voter-roll-maintenance/mostly-moves-deaths-nonresponse"
+      - phrase: ERIC is a group of states that share voter records to find such moves
+        href: "#fact-voter-roll-maintenance/eric-cross-state-movers"
       - phrase: By October 2023, nine Republican-led states had left it
         href: "#fact-voter-roll-maintenance/eric-departures"
-      - phrase: ERIC's leads on voters who moved peaked at about 3.5 million in 2021, and have been about 0.7 million a year or fewer since 2024
+      - phrase: ERIC's leads on voters who moved between states fell from about 3.5 million in 2021 to about 0.7 million a year or fewer since 2024
         href: "#fact-voter-roll-maintenance/eric-reports-fell"
+      - phrase: Iowa objected to its rules and Virginia cited data security
+        href: "#fact-voter-roll-maintenance/eric-departures"
     verification:
       status: verified
-      textHash: 7e03e7e9b62f
-      checkedAt: 2026-11-20
+      textHash: 3ede89b61f84
+      checkedAt: 2026-11-23
   - heading: So states should clean their lists early, carefully, and together
     citations:
-      - phrase: Federal law bars them in the 90 days before a federal election
+      - phrase: federal law bars them in the 90 days before a federal election
         href: "#fact-voter-roll-maintenance/ninety-day-limit"
       - phrase: courts have stopped late ones
         href: "#fact-voter-roll-maintenance/nvra-90-day-rule"
     verification:
       status: verified
-      textHash: d0077bc4af53
-      checkedAt: 2026-11-20
+      textHash: 2057d8d96463
+      checkedAt: 2026-11-23

@@ -11,41 +11,51 @@ summary:
   verification:
     status: verified
     textHash: 51f849c49c7e
-    checkedAt: 2026-11-20
+    checkedAt: 2026-11-23
 lead:
-  citations: []
+  citations:
+    - phrase: The Constitution gives that job to each state's legislature, and lets Congress change the rules
+      href: "#fact-federal-and-state-power-over-voting-rules/elections-clause-text"
   verification:
     status: verified
-    textHash: 73c0850fb264
-    checkedAt: 2026-11-20
+    textHash: 25167db386d5
+    checkedAt: 2026-11-23
 cards:
   - heading: The Constitution gives election rules to the states and Congress, not the President
+    visual:
+      cite: "#fact-federal-and-state-power-over-voting-rules/elections-clause-text"
+      kind: quotes
+      title: Who does the Constitution let set the rules for federal elections?
     citations:
       - phrase: Each state's legislature decides when, where and how congressional elections are run, and Congress may change those rules
         href: "#fact-federal-and-state-power-over-voting-rules/elections-clause-text"
-      - phrase: Congress's power covers how elections are held, not who may vote
-        href: "#fact-federal-and-state-power-over-voting-rules/not-who-may-vote"
+      - phrase: The Supreme Court has held that Congress's power covers how elections are held, not who may vote
+        href: "#fact-federal-and-state-power-over-voting-rules/court-reads-the-clause"
     verification:
       status: verified
-      textHash: 622ec8624595
-      checkedAt: 2026-11-20
-  - heading: A president has no power to set voting rules by order
+      textHash: ad2ce59d6610
+      checkedAt: 2026-11-23
+      notes:
+        - Voter qualifications follow the state's own rules under the Constitution; the Court also said it would raise "serious constitutional doubts" if federal law kept a state from the information needed to enforce them.
+  - heading: A president cannot set voting rules by order
+    visual:
+      cite: "#fact-federal-and-state-power-over-voting-rules/district-courts-blocked-the-2025-order"
+      kind: quotes
+      title: What have the courts said about the President's orders on election rules?
     citations:
-      - phrase: Two federal courts have permanently blocked the 2025 order's proof-of-citizenship rule
-        href: "#fact-federal-and-state-power-over-voting-rules/two-courts-blocked-2025-order"
-      - phrase: One held that it goes beyond a president's power
-        href: "#fact-federal-and-state-power-over-voting-rules/two-courts-blocked-2025-order"
-      - phrase: the Supreme Court let the 2026 order's citizenship lists go ahead
-        href: "#fact-federal-and-state-power-over-voting-rules/eo-14399-allowed"
-      - phrase: that order requires nothing of anyone outside the executive branch
-        href: "#fact-federal-and-state-power-over-voting-rules/order-binds-no-state"
-      - phrase: It did not rule on whether the order is lawful
+      - phrase: Two federal courts have permanently blocked the 2025 order's proof-of-citizenship rule, and one held that it went beyond a president's power
+        href: "#fact-federal-and-state-power-over-voting-rules/district-courts-blocked-the-2025-order"
+      - phrase: that order requires nothing of anyone outside the executive branch, and it did not rule on whether the order is lawful
+        href: "#fact-federal-and-state-power-over-voting-rules/supreme-court-left-lawfulness-open"
+      - phrase: The courts that have ruled on the question agree
         href: "#fact-federal-and-state-power-over-voting-rules/no-merits-ruling"
     verification:
       status: verified
-      textHash: b25dba05ff49
-      checkedAt: 2026-11-20
-  - heading: A state's ID rule binds no other state, and it can be undone
+      textHash: 73bf92df518f
+      checkedAt: 2026-11-23
+      notes:
+        - Both rulings are from district courts, and the government has appealed. The Massachusetts ruling is quoted from a law-school case summary.
+  - heading: Each state's rule binds only that state, and can be undone
     visual:
       cite: "#fact-voter-id-rules-in-the-us-and-abroad/rules-vary-widely"
       kind: map
@@ -55,43 +65,59 @@ cards:
         href: "#fact-voter-id-rules-in-the-us-and-abroad/rules-vary-widely"
       - phrase: the number of strict photo-ID states fell as courts and legislatures eased laws, then rose again as others tightened theirs
         href: "#fact-voter-id-rules-in-the-us-and-abroad/strict-count-fell-then-rose"
-      - phrase: state courts can review a state's election rules
+      - phrase: State courts can review a state's election rules
         href: "#fact-federal-and-state-power-over-voting-rules/moore-state-courts"
     verification:
       status: verified
-      textHash: f7a9cf13afa2
-      checkedAt: 2026-11-20
-  - heading: National bills from either party would take away the states' choice
+      textHash: abc41f148b8c
+      checkedAt: 2026-11-23
+      notes:
+        - Some state rules were eased or blocked by federal courts, not only by the states themselves.
+  - heading: National bills from either party would force one side's choice on every state
+    visual:
+      cite: "#fact-federal-and-state-power-over-voting-rules/national-bills-stalled"
+      kind: comparison
+      title: Senate votes on national voting rules
     citations:
-      - phrase: The Republican bill would require proof of citizenship and photo ID
+      - phrase: The Republican bill would require proof of citizenship to register and photo ID to vote
         href: "#fact-federal-and-state-power-over-voting-rules/save-america-act-provisions"
       - phrase: The Democratic one would have required early voting and made ID states accept alternatives
         href: "#fact-federal-and-state-power-over-voting-rules/freedom-to-vote-act-provisions"
-      - phrase: Both stalled short of the 60 votes needed in the Senate
-        href: "#fact-federal-and-state-power-over-voting-rules/national-bills-stalled"
-      - phrase: The Democrats' bill got 49 votes, and a photo-ID version of the Republicans' got 52
+      - phrase: Both stalled short of the 60 votes needed to end debate in the Senate
         href: "#fact-federal-and-state-power-over-voting-rules/national-bills-stalled"
     verification:
       status: verified
-      textHash: b507996c2687
-      checkedAt: 2026-11-20
-  - heading: So Congress should step in only where states shut voters out, and leave ID to the states
+      textHash: ddf6cc67ce8f
+      checkedAt: 2026-11-23
+      notes:
+        - The 2026 Senate vote was on a photo-ID-only version of the Republican bill.
+  - heading: National rules were needed where states shut voters out, and ID rules have not done that
     visual:
       cite: "#fact-election-fraud-and-voter-exclusion-history/pre-vra-stagnation"
       kind: barChart
       title: Black voter registration before 1965
     citations:
-      - phrase: before the Voting Rights Act, Black registration in three Deep South states rose about five points or less
+      - phrase: Before the Voting Rights Act, Black registration in three Deep South states rose about five points or less in a decade
         href: "#fact-election-fraud-and-voter-exclusion-history/pre-vra-stagnation"
+      - phrase: by 2004 the gaps had closed or nearly closed
+        href: "#fact-election-fraud-and-voter-exclusion-history/registration-gap-closed"
       - phrase: a national study found strict ID laws had no clear effect on registration or turnout
         href: "#fact-burdens-of-id-and-citizenship-rules/national-panel-no-turnout-effect"
-      - phrase: it cannot rule out drops like those in Kansas and Tennessee
+      - phrase: it cannot rule out drops like those of a few points in Kansas and Tennessee
         href: "#fact-burdens-of-id-and-citizenship-rules/burden-without-turnout-effect"
+    verification:
+      status: verified
+      textHash: cc4ef5beca9d
+      checkedAt: 2026-11-23
+      notes:
+        - GAO's Kansas and Tennessee drops were 2 to 3 points, largest among young, new and Black registrants. The national study covers ID at the polls, not proof of citizenship.
+  - heading: So Congress should protect the right to vote, and leave ID to each state's voters
+    citations:
       - phrase: The Supreme Court calls Congress's power over elections "paramount"
         href: "#fact-federal-and-state-power-over-voting-rules/congress-power-paramount"
-      - phrase: none of the three national laws in force requires ID or proof of citizenship of every voter
+      - phrase: none of them requires ID or proof of citizenship of every voter
         href: "#fact-federal-and-state-power-over-voting-rules/laws-require-no-id-for-all"
     verification:
       status: verified
-      textHash: 0844548f706a
-      checkedAt: 2026-11-20
+      textHash: 4357e5f988a0
+      checkedAt: 2026-11-23

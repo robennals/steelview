@@ -4,28 +4,26 @@
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
   citations:
-    - phrase: Voting as someone else at the polls made up 10 of the 2,068 alleged fraud cases News21 collected
+    - phrase: made up 10 of the 2,068 alleged fraud cases News21 collected
       href: "#fact-election-fraud-and-voter-exclusion-history/impersonation-rare-modern"
     - phrase: non-citizens' votes are found at about 1 to 22 per million ballots
       href: "#fact-non-citizens-on-voter-rolls/votes-per-ballots"
-    - phrase: Kansas's citizenship-document rule blocked tens of thousands of applicants
+    - phrase: Kansas's citizenship-document rule blocked 31,089 applicants
       href: "#fact-burdens-of-id-and-citizenship-rules/kansas-blocked-vs-noncitizens"
     - phrase: Texas's ID-number rule rejected one mail ballot in eight in its first primary
       href: "#fact-burdens-of-id-and-citizenship-rules/texas-march-2022-spike"
   verification:
     status: verified
-    textHash: 03c649bd2ef4
-    checkedAt: 2026-11-20
+    textHash: 10f530bdaaee
+    checkedAt: 2026-11-23
 lead:
-  citations:
-    - phrase: proof-of-citizenship
-      href: "#glossary-documentary-proof-of-citizenship"
+  citations: []
   verification:
     status: verified
-    textHash: 1e72f5f03408
-    checkedAt: 2026-11-20
+    textHash: d6622180417a
+    checkedAt: 2026-11-23
 cards:
-  - heading: ID checks at the polls aim at a kind of fraud that is almost never found
+  - heading: Photo ID stops a kind of fraud that is almost never found
     visual:
       cite: "#fact-election-fraud-and-voter-exclusion-history/impersonation-rare-modern"
       kind: comparison
@@ -33,61 +31,69 @@ cards:
     citations:
       - phrase: In one count of alleged fraud since 2000, that was 10 of 2,068 cases
         href: "#fact-election-fraud-and-voter-exclusion-history/impersonation-rare-modern"
-      - phrase: another found about 31 incidents among more than 1 billion ballots
+      - phrase: Another found about 31 incidents among more than 1 billion ballots
         href: "#fact-election-fraud-and-voter-exclusion-history/two-counts-rare"
-      - phrase: a national study found strict ID had no effect on fraud, actual or perceived
-        href: "#fact-opinion-and-confidence-in-elections/studies-find-no-effect"
       - phrase: the record held no evidence of such fraud in Indiana's whole history
         href: "#fact-federal-and-state-power-over-voting-rules/crawford-record"
-      - phrase: in 14 of 20 recorded cases, an ID check would not have reached the fraud
+      - phrase: cases caught are only a floor
+        href: "#fact-election-fraud-and-voter-exclusion-history/detected-is-a-floor"
+      - phrase: a national study found strict ID had no effect on fraud, actual or perceived
+        href: "#fact-opinion-and-confidence-in-elections/studies-find-no-effect"
+      - phrase: in 14 of 20 recorded cases, the fraud was done by officials or by mail, or by selling votes
         href: "#fact-election-fraud-and-voter-exclusion-history/id-would-not-reach"
     verification:
       status: verified
-      textHash: 99567aaeeeac
-      checkedAt: 2026-11-20
+      textHash: c4e813413b90
+      checkedAt: 2026-11-23
+      notes:
+        - The Supreme Court upheld Indiana's law anyway, citing cases elsewhere. One other study finds strict ID raises confidence.
   - heading: Non-citizens' votes are too rare to justify demanding papers from every citizen
     visual:
       cite: "#fact-non-citizens-on-voter-rolls/votes-per-ballots"
       kind: comparison
       title: Non-citizen votes found
     citations:
-      - phrase: The votes by non-citizens that reviews have found are between about 1 and 22 per million ballots
+      - phrase: between about 1 and 22 per million ballots
         href: "#fact-non-citizens-on-voter-rolls/votes-per-ballots"
       - phrase: far fewer than the margins in recent close races
         href: "#fact-non-citizens-on-voter-rolls/below-margins"
-      - phrase: The reviews that give a cause trace non-citizens on the lists to mistakes
+      - phrase: The reviews that give a cause trace non-citizens on the lists to mistakes, such as a clerk registering someone who had ticked "not a citizen"
         href: "#fact-non-citizens-on-voter-rolls/how-noncitizens-reach-rolls"
     verification:
       status: verified
-      textHash: c6847faf153d
-      checkedAt: 2026-11-20
-  - heading: In Kansas, demanding citizenship papers blocked far more citizens than non-citizens
+      textHash: e4c20634baa1
+      checkedAt: 2026-11-23
+      notes:
+        - Every count rests on government records, so it cannot rule out non-citizens no record shows as such.
+  - heading: In Kansas, demanding papers blocked far more citizens than non-citizens
     visual:
       cite: "#fact-burdens-of-id-and-citizenship-rules/kansas-blocked-vs-noncitizens"
       kind: barChart
       title: "Kansas: blocked applicants and non-citizens"
     citations:
-      - phrase: Kansas blocked 31,089 applicants who did not show citizenship documents in time
+      - phrase: blocked 31,089 applicants who did not show them in time
         href: "#fact-burdens-of-id-and-citizenship-rules/kansas-blocked-vs-noncitizens"
-      - phrase: Even the state's own expert's figures suggested nearly all those on its suspense list were citizens
+      - phrase: Even the state's own expert's figures implied that more than 99% of those still held back were citizens
         href: "#fact-burdens-of-id-and-citizenship-rules/kansas-expert-citizens"
-      - phrase: the court did not know how many actually lacked a document
+      - phrase: the court did not know how many of them lacked a document
         href: "#fact-burdens-of-id-and-citizenship-rules/kansas-dpoc-possession-unknown"
-      - phrase: about one adult citizen in ten cannot quickly produce proof of citizenship
+      - phrase: about one adult citizen in ten cannot readily produce proof of citizenship
         href: "#fact-burdens-of-id-and-citizenship-rules/dpoc-not-readily-available"
     verification:
       status: verified
-      textHash: 59ac6428253d
-      checkedAt: 2026-11-20
+      textHash: 695b210b9f3a
+      checkedAt: 2026-11-23
+      notes:
+        - The expert's estimate covers the 14,770 still suspended in March 2016, not all 31,089. The one-in-ten survey was commissioned by voting-access groups.
   - heading: Texas's ID-number rule for mail ballots cost thousands of voters their vote
     visual:
       cite: "#fact-burdens-of-id-and-citizenship-rules/texas-march-2022-spike"
       kind: barChart
       title: Texas primary mail ballots rejected
     citations:
-      - phrase: In the first primary under its new rule, Texas rejected 12.38% of mail ballots
+      - phrase: Texas rejected 12.38% of mail ballots, mostly for a missing or mismatched ID number
         href: "#fact-burdens-of-id-and-citizenship-rules/texas-march-2022-spike"
-      - phrase: about 90% of the voters rejected did not vote another way
+      - phrase: About 90% of the voters rejected did not vote another way, though most had voted in every general election from 2016 to 2020
         href: "#fact-burdens-of-id-and-citizenship-rules/rejected-texans-did-not-vote"
       - phrase: the rate fell sharply after that first primary
         href: "#fact-burdens-of-id-and-citizenship-rules/texas-rate-fell-after-primary"
@@ -95,9 +101,11 @@ cards:
         href: "#fact-burdens-of-id-and-citizenship-rules/texas-still-above-baseline"
     verification:
       status: verified
-      textHash: 68e117d24b22
-      checkedAt: 2026-11-20
-  - heading: Records checks flag many citizens, so a flag must start a check, not end a registration
+      textHash: 7b54a9facd5b
+      checkedAt: 2026-11-23
+      notes:
+        - The 90% covers one primary; Texas mail voting is limited to groups such as over-65s. Later rejection figures are not split by reason.
+  - heading: Records checks flag many citizens, so a flag must start a question, not end a registration
     visual:
       cite: "#fact-non-citizens-on-voter-rolls/alabama-2024"
       kind: comparison
@@ -105,43 +113,51 @@ cards:
     citations:
       - phrase: Most people Alabama made inactive as non-citizens in 2024 were citizens
         href: "#fact-non-citizens-on-voter-rolls/alabama-2024"
-      - phrase: In Texas and Alabama, more citizens were wrongly flagged than people were referred or removed
+      - phrase: In every program with a published follow-up, a large share of those flagged turned out to be citizens
+        href: "#fact-non-citizens-on-voter-rolls/flag-lists-shrink"
+      - phrase: in Texas and Alabama more citizens were wrongly flagged than people were referred or removed
         href: "#fact-non-citizens-on-voter-rolls/both-errors-side-by-side"
-      - phrase: Louisiana cut Black voters from about 44% of registered voters to under 1%
+      - phrase: Checks that let officials decide who passes have shut voters out before
+        href: "#fact-election-fraud-and-voter-exclusion-history/jim-crow-tools-discretionary"
+      - phrase: Black voters fell from about 44% of its registered voters to under 1%
         href: "#fact-election-fraud-and-voter-exclusion-history/louisiana-registration-collapse"
     verification:
       status: verified
-      textHash: 96ef287bcc73
-      checkedAt: 2026-11-20
+      textHash: a000d8cf9bc5
+      checkedAt: 2026-11-23
+      notes:
+        - Louisiana's fall came under a grandfather clause (1898) and then an interpretation test (from 1921); the report says whether a uniform, free ID resembles those tools is a judgement the sources do not settle.
   - heading: The burden falls hardest on young, poor, Black and Hispanic citizens
     visual:
       cite: "#fact-burdens-of-id-and-citizenship-rules/licence-by-age-income"
       kind: comparison
       title: Licence problems by age and income
     citations:
-      - phrase: The young and poor are most likely to lack an up-to-date licence
+      - phrase: The young and the poor are the most likely to lack a licence with current details
         href: "#fact-burdens-of-id-and-citizenship-rules/licence-by-age-income"
-      - phrase: Black and Hispanic citizens are at least three times as likely as white citizens to have no licence
+      - phrase: Black and Hispanic citizens are at least three times as likely as white citizens to have no licence at all
         href: "#fact-burdens-of-id-and-citizenship-rules/no-licence-by-race-party"
       - phrase: a national study found no clear fall in turnout
         href: "#fact-burdens-of-id-and-citizenship-rules/national-panel-no-turnout-effect"
       - phrase: it cannot rule out drops like those in Kansas and Tennessee
         href: "#fact-burdens-of-id-and-citizenship-rules/burden-without-turnout-effect"
-      - phrase: were biggest among young, newly registered and Black voters
+      - phrase: were largest among young, newly registered and Black voters
         href: "#fact-burdens-of-id-and-citizenship-rules/gao-larger-drops-young-new-black"
       - phrase: Campaigns contacted more non-white voters
         href: "#fact-burdens-of-id-and-citizenship-rules/mobilisation-may-offset"
     verification:
       status: verified
-      textHash: ebacfc0b2d18
-      checkedAt: 2026-11-20
-  - heading: So keep the sworn promise of citizenship, and back it with records checks that give notice
+      textHash: 52fac2125086
+      checkedAt: 2026-11-23
+      notes:
+        - A missing licence is not missing photo ID; the survey does not break photo ID down by group. The national study finds no extra effect on non-white voters.
+  - heading: So keep the sworn statement of citizenship, and back it with records checks that give notice
     citations:
       - phrase: the federal form's sworn statement of citizenship, made under penalty of perjury
         href: "#fact-federal-and-state-power-over-voting-rules/federal-form-sworn-citizenship"
-      - phrase: would require proof of citizenship to register
+      - phrase: which would require proof of citizenship to register
         href: "#fact-federal-and-state-power-over-voting-rules/save-america-act-provisions"
     verification:
       status: verified
-      textHash: 5d2f0c3c0f27
-      checkedAt: 2026-11-20
+      textHash: 409d400a8fe5
+      checkedAt: 2026-11-23
