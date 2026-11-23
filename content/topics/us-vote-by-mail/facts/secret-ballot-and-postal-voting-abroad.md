@@ -1088,7 +1088,7 @@ figures:
     description: >-
       What voters reported about privacy as they filled in their ballot, from
       one national survey fielded in December 2010. The mail rows are shares
-      of mail voters; the in-person rows are shares of Election Day voters.
+      of mail voters; the in-person rows are shares of voters who voted in person.
     valueLabel: '% of voters'
     categoryLabel: What voters reported
     format: { unit: percent, decimals: 1 }
@@ -1469,7 +1469,7 @@ In the strongest survey, over 23 percent of mail voters had someone else in the 
 
 ### In the same survey, 22% of in-person voters had no curtain or privacy screen {#secret-ballot-and-postal-voting-abroad--in-person-no-screen}
 
-Election Day voters were asked about privacy where they voted. "22 percent said there was no curtain or privacy screen around their voting space and over 20 percent said that someone walking by could see who they were voting for". [21](#source-secret-ballot-and-postal-voting-abroad-21) Only 3% said someone at the polling place asked whom they were voting for.
+Voters who voted in person were asked about privacy where they voted. "22 percent said there was no curtain or privacy screen around their voting space and over 20 percent said that someone walking by could see who they were voting for". [21](#source-secret-ballot-and-postal-voting-abroad-21) Only 3% said someone at the polling place asked whom they were voting for.
 
 ## Observations {#secret-ballot-and-postal-voting-abroad--observations-privacy-surveys}
 

@@ -444,6 +444,22 @@ sources:
     url: https://www.ncsl.org/elections-and-campaigns/evolution-of-absentee-mail-voting-laws-2016-2026
     publisher: National Conference of State Legislatures
     date: '2026-08-26'
+  # 34
+  - stance: complicates
+    quote: >-
+      each State shall provide by law for the casting of absentee ballots for
+      the choice of electors for President and Vice President, or for
+      President and Vice President, by all duly qualified residents of such
+      State who may be absent from their election district or unit in such
+      State on the day such election is held and who have applied therefor
+      not later than seven days immediately prior to such election and have
+      returned such ballots to the appropriate election official of such
+      State not later than the time of closing of the polls in such State on
+      the day of such election.
+    title: '52 U.S.C. 10502(d), from the Voting Rights Act Amendments of 1970'
+    url: https://www.govinfo.gov/content/pkg/USCODE-2023-title52/html/USCODE-2023-title52-subtitleI-chap105-sec10502.htm
+    publisher: 'US Government Publishing Office (United States Code, 2023 edition)'
+    date: '2024'
 comparisons:
   - id: senate-votes
     title: Senate votes on national voting rules
@@ -515,9 +531,9 @@ figures:
       - { date: '2021-10', title: Freedom to Vote Act fails cloture, description: It would have required every state to offer no-excuse absentee voting., category: congress, source: 10 }
       - { date: '2022-01', title: 'Freedom to Vote: John R. Lewis Act fails cloture, 49–51', category: congress, source: 11 }
       - { date: '2025', title: 'North Dakota, Ohio and Utah end grace periods', category: state, source: 30 }
-      - { date: '2025-03', title: Executive Order 14248, description: 'Among other things it addresses deadlines for returning mail ballots; a federal court in Massachusetts permanently enjoined that part in July 2026.', category: president, source: 29 }
+      - { date: '2025-03', title: Executive Order 14248, description: 'Among other things it addresses deadlines for returning mail ballots; a federal court in Massachusetts permanently enjoined that part in July 2026.', category: president, sources: [29, 16] }
       - { date: '2026-02', title: 'House passes SAVE America Act, 218–213', category: congress, source: 12 }
-      - { date: '2026-03', title: Executive Order 14399 orders a Postal Service ballot rule, category: president, source: 17 }
+      - { date: '2026-03', title: Executive Order 14399 orders a Postal Service ballot rule, category: president, sources: [17, 16] }
       - { date: '2026-06', title: 'Watson v. RNC: federal law allows late-arriving ballots', category: court, source: 24 }
       - { date: '2026-07', title: 'House passes SAVE America Act again, with the defence bill', category: congress, source: 13 }
       - { date: '2026-07', title: Kansas court blocks end of grace period, category: state, source: 30 }
@@ -549,6 +565,13 @@ figures:
         label: Status on 29 Oct 2026
         sortable: false
     rows:
+      - year: '1970'
+        measure: Voting Rights Act Amendments of 1970 (52 U.S.C. 10502)
+        does:
+          value: States must let voters who are away from home on Election Day vote absentee in presidential elections
+          sources:
+            - 34
+        status: In force
       - year: '1986'
         measure: Uniformed and Overseas Citizens Absentee Voting Act (UOCAVA)
         does:
@@ -651,6 +674,21 @@ figures:
           sources:
             - 16
         status: Introduced
+  - kind: quoteComparison
+    id: who-sets-the-rules
+    question: Who does the Constitution let set the rules for federal elections?
+    description: 'The Elections Clause, and the clause that gives the President his part in making laws.'
+    quotes:
+      - text: The times, places and manner of holding elections for Senators and Representatives, shall be prescribed in each state by the legislature thereof; but the Congress may at any time by law make or alter such regulations
+        speaker: US Constitution, Elections Clause
+        context: Article I, Section 4
+        date: '1788'
+        source: 1
+      - text: Every bill which shall have passed the House of Representatives and the Senate, shall, before it become a law, be presented to the President of the United States; if he approve he shall sign it, but if not he shall return it
+        speaker: US Constitution, Presentment Clause
+        context: Article I, Section 7
+        date: '1788'
+        source: 2
   - kind: dataTable
     id: holdings
     title: Who may set mail-voting rules
@@ -785,6 +823,8 @@ observationMarks:
   eo-14399-stands: {rows: ["Trump v. California lets EO 14399 proceed"]}
   two-orders: {rows: ["Executive Order 14248", "Executive Order 14399 orders a Postal Service ballot rule"]}
   receipt-deadlines-swung-back: {rows: ["North Dakota, Ohio and Utah end grace periods"]}
+  vra-1970-absentee: {rows: ["Voting Rights Act Amendments of 1970 (52 U.S.C. 10502)"]}
+  constitution-names-legislatures-and-congress: {rows: ["US Constitution, Elections Clause", "US Constitution, Presentment Clause"]}
   congress-set-uocava-rules: {rows: ["Uniformed and Overseas Citizens Absentee Voting Act (UOCAVA)", "MOVE Act (amending UOCAVA)"]}
   congress-power-paramount: {rows: ["Arizona v. Inter Tribal Council"]}
   watson-leaves-it-to-legislatures: {rows: ["Watson v. RNC (5–4)"]}
@@ -810,7 +850,7 @@ North Dakota, Ohio and Utah ended their [grace periods](#glossary-grace-period) 
 
 ### The President signed orders on mail ballots in March 2025 and March 2026 {#federal-and-state-power-over-mail-voting--two-orders}
 
-Executive Order 14248, in March 2025, addresses among other things the deadlines for returning mail ballots. [29](#source-federal-and-state-power-over-mail-voting-29) Executive Order 14399, in March 2026, orders the Postal Service to write a rule for mail-ballot envelopes and a list of enrolled mail voters. [17](#source-federal-and-state-power-over-mail-voting-17)
+Executive Order 14248, in March 2025, addresses among other things the deadlines for returning mail ballots, and Executive Order 14399, in March 2026, the design and transmission of mail-ballot materials. [16](#source-federal-and-state-power-over-mail-voting-16) The second directs the Postal Service to propose a rule under which it would carry ballots only for voters on a state's list. [17](#source-federal-and-state-power-over-mail-voting-17)
 
 ### The Supreme Court let the March 2026 order go ahead {#federal-and-state-power-over-mail-voting--eo-14399-stands}
 
@@ -827,6 +867,10 @@ The Democrats' Freedom to Vote Act, which would have required every state to off
 In August 2026 a Republican photo-ID bill, S. 5271, also failed to reach 60 votes (chart). [14](#source-federal-and-state-power-over-mail-voting-14) Bills that would require or restrict mail voting nationally have been introduced on both sides in the current Congress. [16](#source-federal-and-state-power-over-mail-voting-16)
 
 ## Observations {#federal-and-state-power-over-mail-voting--observations-federal-laws}
+
+### Since 1970, states must let voters away from home vote absentee for President {#federal-and-state-power-over-mail-voting--vra-1970-absentee}
+
+The Voting Rights Act Amendments of 1970 require every state to "provide by law for the casting of absentee ballots" in presidential elections by residents "who may be absent from their election district" on the day, if they apply at least seven days before. [34](#source-federal-and-state-power-over-mail-voting-34) This covers presidential elections only, and voters who will be away, not every voter.
 
 ### Congress has already set national mail-ballot rules for military and overseas voters {#federal-and-state-power-over-mail-voting--congress-set-uocava-rules}
 
@@ -855,6 +899,12 @@ The MEGA Act and the Mail Ballot Integrity Act would stop states sending ballots
 ### No Senate vote on the SAVE America Act had been held by the time of the sources read {#federal-and-state-power-over-mail-voting--save-america-status}
 
 Republicans looked to budget reconciliation, which cannot be filibustered, as a route for the bill; a budget plan was paused in August when President Trump intervened. [15](#source-federal-and-state-power-over-mail-voting-15) The photo-ID bill rejected on 8 August was a separate measure, S. 5271. [14](#source-federal-and-state-power-over-mail-voting-14)
+
+## Observations {#federal-and-state-power-over-mail-voting--observations-who-sets-the-rules}
+
+### The Constitution gives election rules to state legislatures and Congress; the President signs or vetoes {#federal-and-state-power-over-mail-voting--constitution-names-legislatures-and-congress}
+
+The Elections Clause puts the "times, places and manner" of congressional elections with each state's legislature, and lets Congress "make or alter such regulations". [1](#source-federal-and-state-power-over-mail-voting-1) The President's part in a law is to sign or return a bill Congress has passed. [2](#source-federal-and-state-power-over-mail-voting-2)
 
 ## Observations {#federal-and-state-power-over-mail-voting--observations-holdings}
 
