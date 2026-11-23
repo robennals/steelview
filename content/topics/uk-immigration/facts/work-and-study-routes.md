@@ -2611,6 +2611,7 @@ observationMarks:
   vacancies-held-as-recruitment-fell: {lines: ["All job roles"], from: "2024", to: "2026"}
   care-vacancies-fell: {lines: ["All job roles"], from: "2017", to: "2026", at: "2026"}
   visa-holders-two-in-five-claims: {lines: ["Held a visa or other leave", "Illegal entry routes", "Other or unmatched"], at: "2025"}
+  visa-share-of-claims-rose: {lines: ["Held a visa or other leave", "Illegal entry routes", "Other or unmatched"], from: "2021", to: "2025"}
   graduate-claims-doubled: {lines: ["Graduate", "Study"], from: "2024", to: "2025"}
   talent-routes-are-small: {lines: ["Talent, innovator and entrepreneur", "All work visas"]}
   work-visas-rose-and-fell: {lines: ["All work visas"], from: "2021", to: "2025", at: "2023"}
@@ -2833,11 +2834,15 @@ In June 2025, 21.3% of hospital and community health staff with a recorded natio
 
 Of 85,891 people who claimed asylum in the year to June 2026, 41% (34,999) had held a visa or other leave, slightly more than the 40% (33,949) who arrived by small boat. [50](#source-work-and-study-routes-50) [51](#source-work-and-study-routes-51) [52](#source-work-and-study-routes-52) The Home Office notes the rise coincided with the rise in visa grants up to 2023, and that a claim can come long after the visa was granted, during or after the period of leave. [53](#source-work-and-study-routes-53)
 
+### Almost two in five people claiming asylum in 2025 had held a visa, up from about one in eight in 2021 {#work-and-study-routes--visa-share-of-claims-rose}
+
+In 2025, 39,238 of the 101,911 people who claimed asylum (38.5%) had held a visa or other leave, against 7,363 of 57,942 (12.7%) in 2021. Claims by people who came by an illegal entry route, including small boats, were 54,018 in 2025. [66](#source-work-and-study-routes-66)
+
 ## Observations {#work-and-study-routes--observations-visa-route}
 
 ### Graduate visa claims more than doubled as study-visa claims fell {#work-and-study-routes--graduate-claims-doubled}
 
-In the year to June 2026, claims from people who last held a study visa fell 35% and claims from work-visa holders rose 16%; Graduate visa holders' claims more than doubled to 5,130. [54](#source-work-and-study-routes-54) Each route's claims are a small fraction of the visas it issued. The dataset records the last leave held, not how the person first entered.
+In the year to June 2026, claims from people who last held a study visa fell 35% and claims from work-visa holders rose 16%; Graduate visa holders' claims more than doubled to 5,130. [54](#source-work-and-study-routes-54) The dataset records the last leave held, not how the person first entered.
 
 ## Subtleties {#work-and-study-routes--subtleties-visa-route}
 

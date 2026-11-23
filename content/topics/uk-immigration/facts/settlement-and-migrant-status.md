@@ -1573,8 +1573,8 @@ figures:
       source: 42
     - text: "I do not accept that those who receive a grant of leave in a category have a legitimate expectation that the rules for further grants of leave within that category which existed at the time of their first grant of leave will apply to them for the rest of the time that they spend in the UK."
       speaker: Home Office minister
-      context: Quoted in R (HSMP Forum Ltd) v Secretary of State for the Home Department, 2008
-      date: '2008-04-08'
+      context: Letter of 24 November 2006, quoted in R (HSMP Forum Ltd) v Secretary of State for the Home Department, 2008
+      date: '2006-11-24'
       source: 49
     - text: "a clear representation, made by the defendant, that once a migrant had embarked on the scheme he would enjoy the benefits of the scheme according to the terms prevailing at the date he joined"
       speaker: High Court
@@ -1738,6 +1738,7 @@ observationMarks:
   eu-status-out-of-scope: {rows: ["Who is out of scope"]}
   status-of-earned-settlement: {whole: true}
   dependants-ten-year-route: {rows: ["Standard wait"]}
+  fifteen-years-below-degree: {rows: ["Longer baselines"]}
   ten-year-baseline-outlier: {rows: ["Most high-income countries"]}
   behaviour-evidence-limited: {rows: ["Evidence on longer waits"]}
   reform-voters-back-removal: {rows: ["Reform UK voters"]}
@@ -1952,7 +1953,7 @@ The qualifying period for family settlement rose from two to five years in 2012.
 
 ### The government called the Hong Kong BN(O) route a "historic and moral commitment" {#settlement-and-migrant-status--bno-historic-and-moral-commitment}
 
-The BN(O) policy statement says the route reflects "the UK's historic and moral commitment to BN(O) citizens". It is the most explicit of the texts on this route.
+The BN(O) policy statement says the route reflects "the UK's historic and moral commitment to BN(O) citizens". [43](#source-settlement-and-migrant-status-43) It also says that after five years, holders who meet the conditions "will be able to apply for settled status", the firmest promise of settlement in any of the texts here. [44](#source-settlement-and-migrant-status-44)
 
 ### Skilled Worker guidance says "you may be able to apply" {#settlement-and-migrant-status--guidance-said-may-be-able-to-apply}
 
@@ -1990,6 +1991,10 @@ In September 2026 the Home Secretary said the new settlement policy, "as well as
 In September 2026 the Home Secretary told MPs that "the rules that apply to you are the rules in force at the point of your application, not when you arrived in the country". [64](#source-settlement-and-migrant-status-64)
 
 ## Observations {#settlement-and-migrant-status--observations-proposal}
+
+### Skilled workers in jobs below degree level, including care, would wait fifteen years {#settlement-and-migrant-status--fifteen-years-below-degree}
+
+The proposal would make Skilled Workers in jobs below degree level (RQF 6), including care, wait fifteen years before applying for settlement, and refugees twenty. [57](#source-settlement-and-migrant-status-57)
 
 ### A year on, the core changes are not in the rules {#settlement-and-migrant-status--status-of-earned-settlement}
 
