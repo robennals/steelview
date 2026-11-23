@@ -12,7 +12,7 @@ summary:
       href: "#fact-mail-voting-use-and-effects/disabled-voters-find-mail-easier"
   verification:
     status: verified
-    textHash: 8d6e80c29b41
+    textHash: 3c4cd609589d
     checkedAt: 2026-11-23
     notes:
       - '"Without stolen elections" means no voided election in the Heritage database is in Colorado, Oregon, Utah or Washington; detected fraud is a floor.'
@@ -23,7 +23,7 @@ lead:
     textHash: 2e40a8d09a9b
     checkedAt: 2026-11-23
 cards:
-  - heading: Washington is moving to cut mail voting back
+  - heading: The federal government is moving to cut mail voting back
     visual:
       cite: "#fact-federal-and-state-power-over-mail-voting/two-orders"
       kind: timeline
@@ -43,7 +43,7 @@ cards:
         href: "#fact-federal-and-state-power-over-mail-voting/usps-rule-blocked"
     verification:
       status: verified
-      textHash: ca11ad5c2c38
+      textHash: 25acd8d7eb2d
       checkedAt: 2026-11-23
       notes:
         - The Supreme Court did not decide whether the order is lawful. Neither bill has passed. Utah's change takes effect in 2029. The legal record was read up to 29 October 2026.

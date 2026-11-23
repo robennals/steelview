@@ -25,7 +25,7 @@ Support for letting anyone vote by mail is highest in states that mail every vot
 
 ### Congress may set national rules, but has done so only where states cannot
 
-Congress has strong power over federal elections, but on mail voting it has used it only for voters no single state can serve. Federal law makes every state let service members and Americans abroad vote by mail. Bills now in Congress would push mail voting in opposite directions, and national voting bills from both parties have failed in the Senate. If Congress set one rule for everyone, it could swing each time control of Washington changed.
+Congress has strong power over federal elections, but on mail voting it has used it only for voters no single state can serve. Federal law makes every state let service members and Americans abroad vote by mail. Bills now in Congress would push mail voting in opposite directions, and national voting bills from both parties have failed in the Senate. If Congress set one rule for everyone, it could swing each time control of Congress changed.
 
 ### So each state's voters, through their lawmakers, should set their mail rules
 

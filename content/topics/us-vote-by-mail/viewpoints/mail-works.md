@@ -1,13 +1,13 @@
 ---
 name: Voting by mail works, and the states that do it prove it
 shortName: Mail works
-summary: Every voter should be able to vote by mail. States that mail every voter a ballot have done it for years without the stolen elections critics fear, every mail ballot is checked before it counts, and voting at home helps the voters polling places fail most. Washington should not take that choice away.
+summary: Every voter should be able to vote by mail. States that mail every voter a ballot have done it for years without the stolen elections critics fear, every mail ballot is checked before it counts, and voting at home helps the voters polling places fail most. Congress and the President should not take that choice away.
 order: 2
 draft: ai
 ---
 Voting should be easy for every citizen, as long as it is honest. The states that mail every voter a ballot show that it can be both.
 
-### Washington is moving to cut mail voting back
+### The federal government is moving to cut mail voting back
 
 The President has signed two orders on mail ballots. The second would have the Postal Service carry ballots only for voters on a state's list, and the Supreme Court let it go ahead. Two bills in Congress would stop states mailing ballots to voters who have not asked for one. Utah, after years of mailing every voter a ballot, is moving to send them only on request. While a court blocked the Postal Service rule for the November 2026 election, the rule could return for later ones.
 
