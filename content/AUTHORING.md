@@ -1861,8 +1861,27 @@ dispute. "The numbers speak for themselves" does not.
 
 **Give scale by comparison.** One comparison does more than three totals:
 "Small boats have brought between 29,000 and 46,000 people a year. In 2022
-alone, Britain gave more than 270,000 people a safe route." Cut a figure that
+alone, Britain gave a safe route to six times as many people as came by boat." Cut a figure that
 repeats a point the section has already made.
+
+**No weasel words.** State what is true, plainly. If a claim turns out false,
+cut it or replace it with the true claim; never soften it into something vague
+that leaves the false reading open. Match the wording to the strength of the
+evidence, and let the citation show who judges it rather than naming the source
+in the sentence:
+
+- **No qualifier** where the evidence is strong. Nothing is certain, and
+  hedging a well-supported claim misleads as much as overstating a weak one.
+- **"Likely"** where credible sources judge it more probable than not
+  ("turning boats back was likely the main reason Australia's boats stopped").
+- **"Plausibly"** where a credible source says it is possible, or the evidence
+  fits it but does not settle it ("the deal is plausibly a major reason the
+  numbers stayed low").
+
+Below that, leave the claim out. When checking links, check that the qualifier
+matches its citation: "likely" needs a source that judges it probable, not one
+that only calls it possible. Put events in the order they happened, causes
+before what followed.
 
 **Answer every caveat, or cut it.** A fact that cuts against the case, left
 standing with no reply, reads as the author losing the thread. Give the reply
@@ -1870,7 +1889,7 @@ in the same sentence
 ([Concessions and an independent voice](#concessions-and-an-independent-voice)).
 If the viewpoint has no honest reply, the caveat is a real weakness: say so
 once, in the conclusion, with what would have to be true for the case to hold.
-"The government plans a few hundred places a year. At that scale, 'help them
+"The government plans a few hundred places at first. At that scale, 'help them
 there' is only a polite way of saying no."
 
 **Argue for the remedy; do not assume it.** A viewpoint that says a route
@@ -1884,8 +1903,8 @@ carry an argument about how a refugee reaches Britain.
 something happened, ask what a thoughtful holder of the view would say caused
 it, then check the order of events in the reports. "Boats rose because Britain
 closed its safe routes" fails if the routes closed after the boats rose. The
-true story is often the stronger one: boats rising with wars abroad also shows
-that the people in them are fleeing real danger.
+true story is often the stronger one: asylum claims rising with wars abroad
+also shows that the people making them are fleeing real danger.
 
 **Meet the other viewpoints' best points without naming them.** List the two
 or three strongest claims each rival viewpoint makes. For each, the text should
@@ -1893,7 +1912,7 @@ either grant it and say why the conclusion stands, or give the fact that
 answers it. Against "everyone on a boat has already reached a safe country",
 the reply is "few refugees can reach an island without crossing another country
 first. If each had to stop in the first safe country they reached, Britain
-would protect almost no one." The sentence stands alone; a reader who has seen
+would protect almost no one who came overland." The sentence stands alone; a reader who has seen
 the other viewpoint recognises what it answers. Where there is nothing sourced
 to answer with, stay silent and tell the editor, rather than assert.
 
