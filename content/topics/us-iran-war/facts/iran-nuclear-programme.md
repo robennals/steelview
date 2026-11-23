@@ -843,6 +843,7 @@ figures:
       - { key: "means", label: "What it means", sortable: false }
     rows:
       - { level: "3.67%", means: { value: "Cap under the 2015 deal, for 15 years", sources: [10] } }
+      - { level: "Under 5%", means: { value: "Fuel for nuclear power reactors \"typically contains less than 5% u-235\"", sources: [3] } }
       - { level: "60%", means: { value: "Iran is \"the only non-nuclear-weapon State in the world that is producing and accumulating uranium enriched to 60%\"", sources: [6] } }
       - { level: "From 60% to weapons grade", means: { value: "\"relatively little additional effort would be necessary\"", sources: [3] } }
       - { level: "About 90%", means: { value: "Uranium used in nuclear weapons \"typically contains about 90%\"", sources: [3] } }
@@ -959,6 +960,8 @@ figures:
 observationMarks:
   sixty-is-not-ninety: {rows: ["From 60% to weapons grade", "About 90%"]}
   only-non-weapon-state-at-60: {rows: ["60%"]}
+  power-reactors-need-under-five: {rows: ["Under 5%", "About 90%"]}
+  deal-cap-was-temporary: {rows: ["3.67%"]}
   sixty-percent-growth: {lines: ["60% stock (IAEA estimate)"], from: "2021-05-22", to: "2025-06-13"}
   stock-unaccounted-for: {rows: ["Strikes on Iran's nuclear sites; verification stops and inspectors leave", "Inspections at 7 of 13 facilities not struck in 2025, none of the 8 struck", "No information on the size, composition or location of the enriched stock"]}
   deal-era-compliance: {lines: ["Enriched stock (IAEA)", "Limit under the 2015 deal"], from: "2017-02-18", to: "2025-06-13"}
@@ -1019,6 +1022,14 @@ Iran began enriching to 60% in April 2021 and built the stock slowly for three y
 ### Iran is the only state without nuclear weapons making 60% uranium {#iran-nuclear-programme--only-non-weapon-state-at-60}
 
 In May 2025 the IAEA called Iran "the only non-nuclear-weapon State in the world that is producing and accumulating uranium enriched to 60%", which it said "remains a matter of serious concern". [6](#source-iran-nuclear-programme-6) It repeated the point in June 2026. [2](#source-iran-nuclear-programme-2)
+
+### Power reactors need under 5%; weapons about 90% {#iran-nuclear-programme--power-reactors-need-under-five}
+
+CRS says fuel for nuclear power reactors "typically contains less than 5% u-235", while uranium for nuclear weapons "typically contains about 90%". [3](#source-iran-nuclear-programme-3) Research reactors can use 20%.
+
+### The 2015 deal capped enrichment at 3.67% for 15 years {#iran-nuclear-programme--deal-cap-was-temporary}
+
+The deal capped enrichment at 3.67% for 15 years, not for good, and kept the stock under 300 kg for the same period. [10](#source-iran-nuclear-programme-10) Other limits, such as the cut in operating centrifuges, ran for ten.
 
 ### Bombs need about 90%, and little extra work gets there from 60% {#iran-nuclear-programme--sixty-is-not-ninety}
 

@@ -404,6 +404,25 @@ comparisons:
       Counts as quoted from the article by Reason; the article itself is
       paywalled. Reason's summary of the success definition is "when a target
       changes its behavior as demanded without being attacked".
+  - id: uprising-outcomes
+    title: How often uprisings won
+    subtitle: Major campaigns against governments, 1900–2006, as counted by Stephan and Chenoweth
+    description: >-
+      The share of major campaigns of resistance that succeeded, for
+      campaigns that stayed nonviolent and for armed ones, in Stephan and
+      Chenoweth's data from 1900 to 2006.
+    unit: percent
+    valueLabel: Campaigns that succeeded
+    domainMax: 100
+    sources: [25]
+    items:
+      - label: Nonviolent campaigns
+        value: 53
+      - label: Violent campaigns
+        value: 26
+    note: >-
+      The authors warn that campaigns crushed in their infancy cannot be in
+      the data, which would flatter the success rates.
 relatedFacts:
   - iran-nuclear-programme
   - iran-government-and-its-people
@@ -636,6 +655,8 @@ figures:
       values: {all: 40.8, known: 56}
   - kind: "comparison"
     id: "air-power"
+  - kind: "comparison"
+    id: "uprising-outcomes"
   - kind: "dataTable"
     id: "regime-change"
     title: "Studies of outside regime change"
@@ -744,6 +765,7 @@ observationMarks:
   covert-attempts-failed: {rows: ["O'Rourke, Covert Regime Change"]}
   outside-backing-did-not-help-nonviolent-campaigns: {rows: ["Stephan & Chenoweth (2008)"]}
   security-force-defections-decide: {rows: ["Stephan & Chenoweth (2008)"]}
+  nonviolent-campaigns-won-twice-as-often: {rows: ["Nonviolent campaigns", "Violent campaigns"]}
   sanctions-success-depends-on-definition: {rows: ["Strict: target gives in fully or partly", "Relaxed: adds negotiated settlements"]}
   gsdb-range: {rows: ["Strict: target gives in fully or partly", "Relaxed: adds negotiated settlements"]}
   military-vulnerability: {rows: ["Horowitz & Reiter (2001)"]}
@@ -802,6 +824,12 @@ The Global Sanctions Data Base, the largest set here, scores each imposed sancti
 ### About a third of air-power coercion attempts succeeded {#outside-attempts-to-change-hostile-regimes--air-coercion-about-a-third}
 
 Horowitz and Reiter count 19 successes in 53 attempts from 1917 to 1999. [17](#source-outside-attempts-to-change-hostile-regimes-17) Success was likelier when the target's military was vulnerable; how exposed its civilians were made no difference. [16](#source-outside-attempts-to-change-hostile-regimes-16)
+
+## Observations {#outside-attempts-to-change-hostile-regimes--observations-uprising-outcomes}
+
+### Nonviolent uprisings won about twice as often as armed ones {#outside-attempts-to-change-hostile-regimes--nonviolent-campaigns-won-twice-as-often}
+
+Stephan and Chenoweth find that major nonviolent campaigns succeeded 53% of the time from 1900 to 2006, against 26% for violent ones (chart). [25](#source-outside-attempts-to-change-hostile-regimes-25) Campaigns crushed early may be missing from their data, which would flatter both rates. [25](#source-outside-attempts-to-change-hostile-regimes-25)
 
 ## Observations {#outside-attempts-to-change-hostile-regimes--observations-regime-change}
 
