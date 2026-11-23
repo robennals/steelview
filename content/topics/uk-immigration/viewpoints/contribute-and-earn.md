@@ -1,7 +1,7 @@
 ---
 name: Choose migrants for what they contribute, and make settlement something they earn
 shortName: Contribute and earn
-summary: The largest gain from immigration comes from skilled workers outside health and care, while care workers and the adult family members of health and care workers cost the public purse. Select for contribution, police each route for its purpose, and make settlement something people earn by working and paying in.
+summary: Of the routes studied, skilled workers outside health and care add by far the most to the public purse, while care workers and the adult family members of health and care workers cost it. Select for contribution, police each route for its purpose, and make settlement something people earn by working and paying in.
 order: 7
 draft: ai
 ---
@@ -13,15 +13,15 @@ On average, skilled workers outside health and care each add hundreds of thousan
 
 ### When Britain loosened the rules, low-paid visas surged
 
-In 2020 the skill bar for a work visa was cut to A-level standard, and in 2022 care workers were added. Work visas more than doubled in two years, and at the peak, health and care visas went to more family members than workers. The Home Office then cancelled a record number of employers' licences to hire migrants, with adult social care among the worst sectors. While cancellations, as a share of employers with licences, are only back to their mid-2010s level, that is because the number of those employers roughly quadrupled.
+In 2020 the skill bar for a work visa was cut to A-level standard, and in 2022 care workers were added. Work visas more than doubled in two years, and at the peak, health and care visas went to more family members than workers. The Home Office then cancelled a record number of employers' licences to hire migrants, with adult social care among the worst sectors. The record is in numbers: with four times as many licensed employers, the share cancelled is back to its mid-2010s level.
 
-### Care has coped without overseas recruits so far
+### Care has coped as overseas recruitment fell, so far
 
 Since overseas recruitment ran down, care vacancies have not risen, and the vacancy rate is the lowest in ten years. That is even though care-worker visas collapsed in late 2023, once officials checked employers more closely. While the British share of care jobs is still falling, and care pay sits just above the legal minimum, the answer is to raise pay and recruit at home, not to reopen the route.
 
 ### Every route must be used for its purpose
 
-In the year to June 2026, about two in five people claiming asylum had held a visa, slightly more than came by small boat. Claims from people on the graduate visa more than doubled in a year. While each route's claims are a small share of the visas it grants, a visa granted to study or work should be used to study or work.
+In 2025, almost two in five people claiming asylum had held a visa, up from about one in eight in 2021. Claims from people on the graduate visa more than doubled in a year. A visa granted to study or work should be used to study or work.
 
 ### Settlement should follow contribution
 

@@ -39,7 +39,7 @@ cards:
       checkedAt: 2026-11-23
       notes:
         - The forecast range is 1.3–2.2 million, under current rules.
-  - heading: Settling lower earners turns a working stay into a lifetime cost
+  - heading: Settling lower earners costs the public purse more than a temporary stay
     visual:
       cite: "#fact-immigration-economy-and-public-finances/care-route-net-cost"
       kind: comparison
@@ -53,11 +53,11 @@ cards:
         href: "#fact-settlement-and-migrant-status/skilled-dependants-half-not-working"
     verification:
       status: verified
-      textHash: d8079886e525
+      textHash: 85995ed09511
       checkedAt: 2026-11-23
       notes:
         - The advisers' finding is for temporary against permanent migration of lower earners; they did not model renewable visas.
-  - heading: No one was promised settlement, and the rules have changed before
+  - heading: Skilled workers were not promised settlement, and the rules have changed before
     visual:
       cite: "#fact-settlement-and-migrant-status/guidance-said-may-be-able-to-apply"
       kind: quotes
@@ -75,7 +75,7 @@ cards:
         href: "#fact-settlement-and-migrant-status/high-court-struck-down-mid-route-change-2008"
     verification:
       status: verified
-      textHash: f4795d8125c0
+      textHash: 754b4cd41afa
       checkedAt: 2026-11-23
       notes:
         - The same committee found transitional protection "common". The BN(O) statement says holders "will be able to apply", which is firmer than the skilled-worker guidance.
@@ -89,13 +89,13 @@ cards:
         href: "#fact-immigration-against-the-long-run/four-years-gross-and-net"
       - phrase: Britain had such years when arrivals were a fraction of today's
         href: "#fact-immigration-against-the-long-run/negative-years-came-from-emigration"
-      - phrase: British citizens already leave on net
+      - phrase: British citizens already leave on net, by about 136,000 in 2025
         href: "#fact-immigration-against-the-long-run/british-net-emigration"
       - phrase: the population ages fastest with no net migration
         href: "#fact-immigration-against-the-long-run/migration-slows-ageing-but-does-not-stop-it"
     verification:
       status: verified
-      textHash: 5d80be45d54b
+      textHash: 1a535b997bb4
       checkedAt: 2026-11-23
       notes:
         - The years of net emigration (1964–78 and some later years) had immigration below a third of its 2025 level.
@@ -109,13 +109,13 @@ cards:
         href: "#fact-settlement-and-migrant-status/eu-status-out-of-scope"
       - phrase: most people oppose taking settlement from those who hold it
         href: "#fact-settlement-and-migrant-status/revoking-opposed-58-29"
-      - phrase: ending it for new arrivals already splits the country evenly
+      - phrase: ending new grants already splits the country evenly
         href: "#fact-settlement-and-migrant-status/ending-for-new-arrivals-splits"
       - phrase: most Reform UK voters back taking it from those who hold it
         href: "#fact-settlement-and-migrant-status/reform-voters-back-removal"
     verification:
       status: verified
-      textHash: 5e5318174d95
+      textHash: a4120f4dae9e
       checkedAt: 2026-11-23
       notes:
         - How courts would treat a new Act removing settlement, including family-life claims, is untested.

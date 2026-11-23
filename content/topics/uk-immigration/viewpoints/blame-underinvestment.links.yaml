@@ -6,13 +6,13 @@ summary:
   citations:
     - phrase: Britain invested a smaller share of its income than most rich countries for decades
       href: "#fact-immigration-housing-and-public-services/public-investment-low"
-    - phrase: its investment does not grow when its population does
+    - phrase: its investment does not grow straight away when its population does
       href: "#fact-immigration-housing-and-public-services/investment-does-not-adjust"
     - phrase: Immigration explains only a small part of the long rise in house prices
       href: "#fact-immigration-housing-and-public-services/immigration-explains-4-6-percent-of-house-price-rise"
   verification:
     status: verified
-    textHash: 240dcd48a40a
+    textHash: e8623d0688de
     checkedAt: 2026-11-23
 lead:
   citations: []
@@ -29,7 +29,7 @@ cards:
     citations:
       - phrase: The British government invested a smaller share of the economy than the typical rich country in every year from 1995 to 2024
         href: "#fact-immigration-housing-and-public-services/public-investment-low"
-      - phrase: Much public investment is fixed for years at a time, so it does not grow when the population does
+      - phrase: Much public investment is fixed for years at a time, so it does not grow straight away when the population does
         href: "#fact-immigration-housing-and-public-services/investment-does-not-adjust"
       - phrase: migration is just over half of the extra households England expects
         href: "#fact-immigration-housing-and-public-services/migration-share-of-household-growth"
@@ -39,11 +39,11 @@ cards:
         href: "#fact-immigration-housing-and-public-services/health-capital-below-average"
     verification:
       status: verified
-      textHash: 7938899bc21d
+      textHash: 0393e07b2be1
       checkedAt: 2026-11-23
       notes:
         - '"The typical rich country" is the OECD median. Health capital is below the OECD average as a share of GDP.'
-  - heading: Cheap borrowing, not immigration, drove most of the rise in house prices
+  - heading: Cheap borrowing, not immigration, likely drove most of the rise in house prices
     visual:
       cite: "#fact-immigration-housing-and-public-services/rent-effects"
       kind: barChart
@@ -59,7 +59,7 @@ cards:
         href: "#fact-immigration-housing-and-public-services/social-rent-building-fell-after-2010"
     verification:
       status: verified
-      textHash: 206ad1fd6cba
+      textHash: 0d356ccf542b
       checkedAt: 2026-11-23
       notes:
         - The interest-rate finding is one Bank of England staff paper, covering 1985–2018, on prices relative to incomes. The social-rent comparison is with 1991-92 to 2012-13; total affordable completions held up as affordable rent replaced social rent.
@@ -111,19 +111,21 @@ cards:
         href: "#fact-work-and-study-routes/licence-revocation-reasons"
       - phrase: visas tied to one employer left care workers open to exploitation
         href: "#fact-work-and-study-routes/visas-tied-to-one-employer"
-      - phrase: the fee for settlement is ten times what it costs the Home Office to process
-        href: "#fact-settlement-and-migrant-status/ilr-fee-ten-times-cost"
     verification:
       status: verified
-      textHash: 9318d7618578
+      textHash: 0ff0e81da8ad
       checkedAt: 2026-11-23
       notes:
         - Revocations count employers, not exploited workers; no series counts those. As a share of licensed employers, revocations are back to their mid-2010s level, not a record.
   - heading: So invest in homes and services, and end the hostile environment
     citations:
-      - phrase: Councils are already building more affordable homes than in any year since records began in 1991-92, though only about one in six of the total
+      - phrase: Councils are already building more affordable homes than in any year since records began in 1991-92, though that is only about one in six of all affordable homes
         href: "#fact-immigration-housing-and-public-services/council-building-record"
+      - phrase: stop barring families with children from public support
+        href: "#fact-settlement-and-migrant-status/nrpf-costs"
+      - phrase: the fee for settlement is ten times what it costs the Home Office to process
+        href: "#fact-settlement-and-migrant-status/ilr-fee-ten-times-cost"
     verification:
       status: verified
-      textHash: 834f819240bb
+      textHash: 0829a88c6013
       checkedAt: 2026-11-23

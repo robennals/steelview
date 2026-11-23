@@ -6,11 +6,11 @@ summary:
   citations:
     - phrase: About 2.2 million people came on a five-year path to settlement
       href: "#fact-settlement-and-migrant-status/path-2-2-million"
-    - phrase: the government proposes making them wait longer, part-way through
+    - phrase: the government proposes making many of them wait longer, part-way through
       href: "#fact-settlement-and-migrant-status/proposal-covers-people-already-here"
   verification:
     status: verified
-    textHash: cc86cfdba5fc
+    textHash: 7de6e276018b
     checkedAt: 2026-11-23
 lead:
   citations: []
@@ -29,11 +29,9 @@ cards:
         href: "#fact-settlement-and-migrant-status/path-2-2-million"
       - phrase: Most came to work, or came with someone who did
         href: "#fact-settlement-and-migrant-status/most-on-a-path-came-to-work"
-      - phrase: 430,000 to 520,000 of them are children
-        href: "#fact-settlement-and-migrant-status/children-on-a-path"
     verification:
       status: verified
-      textHash: 724d7aa1b9be
+      textHash: e0dcd77b48a9
       checkedAt: 2026-11-23
       notes:
         - Worker main applicants and their dependants are about 1.4 million of the 2.2 million; the worker count includes some visas that do not lead to settlement. Not everyone on a path will apply.
@@ -45,25 +43,26 @@ cards:
     citations:
       - phrase: the High Court ruled in 2008 that this was "conspicuous unfairness and an abuse of power"
         href: "#fact-settlement-and-migrant-status/high-court-struck-down-mid-route-change-2008"
-      - phrase: it called the Hong Kong route a "historic and moral commitment"
+      - phrase: it told Hong Kong's British Nationals (Overseas) that after five years they "will be able to apply for settled status"
         href: "#fact-settlement-and-migrant-status/bno-historic-and-moral-commitment"
       - phrase: the skilled-worker guidance says only that people "may be able to apply"
         href: "#fact-settlement-and-migrant-status/guidance-said-may-be-able-to-apply"
     verification:
       status: verified
-      textHash: 8c4c7681fe28
+      textHash: f3d97a6f4670
       checkedAt: 2026-11-23
       notes:
         - The 2008 ruling turned on what that scheme's documents promised; whether a court would read today's "may be able to apply" the same way is untested.
-  - heading: The government now proposes to make them wait longer, part-way through
+        - BN(O) holders would keep a five-year route under the proposal; the quote shows how the state words its terms.
+  - heading: The government now proposes to make many of them wait longer, part-way through
     visual:
       cite: "#fact-settlement-and-migrant-status/proposal-covers-people-already-here"
       kind: quotes
       title: Should a longer wait for settlement apply to people already on the path?
     citations:
-      - phrase: The government proposes applying a longer wait to everyone here who has not yet settled
+      - phrase: The government proposes applying its new rules
         href: "#fact-settlement-and-migrant-status/proposal-covers-people-already-here"
-      - phrase: Most adult dependants of skilled workers earn too little for the five-year route
+      - phrase: including a ten-year standard wait
         href: "#fact-settlement-and-migrant-status/dependants-ten-year-route"
       - phrase: MPs found it "common" for the Home Office to protect people already on a route, though there is precedent for not doing so
         href: "#fact-settlement-and-migrant-status/transitional-protection-precedent"
@@ -71,30 +70,32 @@ cards:
         href: "#fact-settlement-and-migrant-status/transitional-arrangements-undecided"
     verification:
       status: verified
-      textHash: e06f0278b921
+      textHash: b20e15a2b281
       checkedAt: 2026-11-23
       notes:
-        - The dependants' figure is median earnings of those in work (£30,200) against the £50,270 income that would earn a five-year route.
-  - heading: Many on the path are well-paid workers, worth more to Britain if they stay
+        - "The ten-year standard has exceptions: five years for BN(O) holders and partners of British citizens, and five years off for income of at least £50,270."
+  - heading: The longer wait would fall on the lower-paid workers and families Britain recruited
     visual:
-      cite: "#fact-immigration-economy-and-public-finances/earnings-by-route"
+      cite: "#fact-immigration-economy-and-public-finances/health-and-care-earnings"
       kind: comparison
       title: Median earnings by visa route
     citations:
-      - phrase: Skilled workers on the main visa earn a median of £56,600 a year
-        href: "#fact-immigration-economy-and-public-finances/earnings-by-route"
-      - phrase: Skilled workers who stay are worth far more to the public purse than those who leave
-        href: "#fact-immigration-economy-and-public-finances/stayers-worth-more"
-      - phrase: the evidence on whether longer waits drive people away is limited
-        href: "#fact-settlement-and-migrant-status/behaviour-evidence-limited"
+      - phrase: Health and care workers on the main visa earn a median of £30,900 a year, and care workers £23,100
+        href: "#fact-immigration-economy-and-public-finances/health-and-care-earnings"
+      - phrase: the £50,270 a year that would keep a five-year route
+        href: "#fact-settlement-and-migrant-status/dependants-ten-year-route"
+      - phrase: Care workers, in jobs below degree level, would wait fifteen years
+        href: "#fact-settlement-and-migrant-status/fifteen-years-below-degree"
+      - phrase: Most skilled workers' dependants earn too little as well
+        href: "#fact-settlement-and-migrant-status/dependants-ten-year-route"
       - phrase: about half of adult skilled-worker dependants were not working
         href: "#fact-settlement-and-migrant-status/skilled-dependants-half-not-working"
     verification:
       status: verified
-      textHash: b83047903264
+      textHash: 31538c6fc31c
       checkedAt: 2026-11-23
       notes:
-        - The stayers figure is for main applicants outside health and care. The earnings are 2023/24 medians of those with PAYE earnings.
+        - Earnings are 2023/24 medians of those with PAYE earnings. Skilled Worker main applicants' median, £56,600, is above £50,270, so the typical one would keep a five-year route.
   - heading: A longer wait would cost these families more, for years longer
     visual:
       cite: "#fact-settlement-and-migrant-status/uk-settlement-fee-high-in-europe"
@@ -105,7 +106,9 @@ cards:
         href: "#fact-settlement-and-migrant-status/uk-settlement-fee-high-in-europe"
       - phrase: its fee is ten times what it costs the Home Office to process
         href: "#fact-settlement-and-migrant-status/ilr-fee-ten-times-cost"
-      - phrase: A single skilled worker pays about £9,900 in fees before settling after five years, and would pay £16,900 over ten
+      - phrase: A single skilled worker pays about £9,900 in fees before settling after five years
+        href: "#fact-settlement-and-migrant-status/skilled-worker-route-costs"
+      - phrase: would pay £16,900
         href: "#fact-settlement-and-migrant-status/skilled-worker-route-costs"
       - phrase: they are barred from most benefits
         href: "#fact-settlement-and-migrant-status/nrpf-costs"
@@ -113,7 +116,7 @@ cards:
         href: "#fact-settlement-and-migrant-status/ten-year-baseline-outlier"
     verification:
       status: verified
-      textHash: 62130a5f4bce
+      textHash: a34d12f1ad73
       checkedAt: 2026-11-23
       notes:
         - Switzerland and Japan have ten-year routes.
@@ -123,13 +126,11 @@ cards:
       kind: comparison
       title: Polling on indefinite leave
     citations:
-      - phrase: Most people oppose taking settlement from those who hold it
+      - phrase: most people oppose taking settlement from those who hold it
         href: "#fact-settlement-and-migrant-status/revoking-opposed-58-29"
-      - phrase: majorities want to keep it for full-time workers and NHS staff
+      - phrase: majorities want permanent residence to stay open to full-time workers and NHS staff
         href: "#fact-settlement-and-migrant-status/majorities-keep-for-workers"
     verification:
       status: verified
-      textHash: cd7e2e388654
+      textHash: 2ff56318a1f6
       checkedAt: 2026-11-23
-      notes:
-        - The poll asked about removing settlement already held, not about people still on the path.

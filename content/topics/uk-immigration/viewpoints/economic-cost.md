@@ -13,7 +13,7 @@ More people moved to Britain in each year from 2021 to 2024 than in any earlier 
 
 ### The extra people made the economy bigger, but not the people richer
 
-Since 2019, output per person has barely moved, even as the economy grew. Extra migrants add to the size of the economy. But in the budget watchdog's scenarios, they change output per person by under 1%, up or down. If buildings and equipment do not keep up, extra migrants leave it lower, and public investment does not grow straight away when the population does. While Canada and Germany did worse, which shows migration is not the only cause, a bigger economy is still not a richer people.
+Since 2019, output per person has barely moved, even as the economy grew. Extra migrants add to the size of the economy. But in the budget watchdog's scenarios, they change output per person by under 1%, up or down. If buildings and equipment do not keep up, extra migrants leave it lower, and public investment does not grow straight away when the population does. While Canada and Germany did worse, so the stall is not Britain's alone, a bigger economy is still not a richer people.
 
 ### Homes have not kept up with the extra households
 
@@ -25,7 +25,7 @@ Care workers, and the adult family members of health and care workers, cost the 
 
 ### The fall in numbers rests on rules a future government can undo
 
-Net migration has fallen by about four-fifths from its peak, as the rules for work and study visas tightened. A future minister can loosen those rules again. Promises have failed before: since the 2010 pledge of "tens of thousands", net migration has fallen below 100,000 only in 2020, during Covid. Later Conservative and Labour pledges named no number at all.
+Net migration has fallen by about four-fifths from its peak, as the rules for work and study visas tightened. A future minister can loosen those rules again. Promises have failed before: since the 2010 pledge of "tens of thousands", net migration has fallen below 100,000 only in 2020, during Covid. Since 2019, Conservative and Labour pledges have named no number.
 
 ### So Parliament should set a binding cap and lengthen the wait to settle
 

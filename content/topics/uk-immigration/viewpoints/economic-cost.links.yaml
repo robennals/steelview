@@ -65,7 +65,7 @@ cards:
         href: "#fact-immigration-economy-and-public-finances/g7-stalled-alike"
     verification:
       status: verified
-      textHash: f220df8329a6
+      textHash: e2c0b5b886c8
       checkedAt: 2026-11-23
       notes:
         - No study attributes the post-2019 stall among its causes; the card claims only that a bigger economy has not meant higher output per person.
@@ -125,15 +125,15 @@ cards:
         href: "#fact-immigration-against-the-long-run/why-immigration-fell"
       - phrase: net migration has fallen below 100,000 only in 2020, during Covid
         href: "#fact-immigration-against-the-long-run/tens-of-thousands-met-only-in-covid"
-      - phrase: Later Conservative and Labour pledges named no number at all
+      - phrase: Since 2019, Conservative and Labour pledges have named no number
         href: "#fact-immigration-against-the-long-run/later-pledges-unquantified"
     verification:
       status: verified
-      textHash: 6eae90814347
+      textHash: f608b9dbbb13
       checkedAt: 2026-11-23
       notes:
         - The fall in work visas began before the 2024 rule changes, with closer scrutiny of employers; both are policy a later government could reverse.
-        - In 2024 the Conservatives proposed a cap but named no level.
+        - The 2015 and 2017 Conservative manifestos repeated "tens of thousands"; in 2024 the Conservatives proposed a cap but named no level.
   - heading: So Parliament should set a binding cap and lengthen the wait to settle
     visual:
       cite: "#fact-immigration-against-the-long-run/public-preferences"

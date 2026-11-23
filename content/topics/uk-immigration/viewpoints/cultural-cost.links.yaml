@@ -4,17 +4,17 @@
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
   citations:
-    - phrase: Newcomers join in slowly
-      href: "#fact-integration-outcomes/identity-rises-with-time"
-    - phrase: Britain now has far more of them
+    - phrase: Britain now has far more newcomers
       href: "#fact-integration-outcomes/foreign-born-share-quadrupled"
+    - phrase: recent arrivals are the least likely to have English as their main language or give only a UK identity
+      href: "#fact-integration-outcomes/english-rises-with-time"
     - phrase: Some communities hold values far from the majority's
       href: "#fact-integration-outcomes/muslim-attitudes-homosexuality"
     - phrase: in several towns gangs abused children while officials feared being called racist
       href: "#fact-crime-terrorism-and-group-exploitation/officials-feared-being-called-racist"
   verification:
     status: verified
-    textHash: 16b49552b90d
+    textHash: 3008ecfa2f3d
     checkedAt: 2026-11-23
 lead:
   citations: []
@@ -23,7 +23,7 @@ lead:
     textHash: 33cd27ba5a4a
     checkedAt: 2026-11-23
 cards:
-  - heading: Newcomers take years to join in, and Britain has far more of them
+  - heading: Britain has far more newcomers, and recent arrivals share least of its language and identity
     visual:
       cite: "#fact-integration-outcomes/foreign-born-share-quadrupled"
       kind: series
@@ -31,16 +31,16 @@ cards:
     citations:
       - phrase: One resident of England and Wales in six was born abroad in 2021, roughly four times the share in 1951
         href: "#fact-integration-outcomes/foreign-born-share-quadrupled"
-      - phrase: Recent arrivals are the most likely to struggle with English
-        href: "#fact-integration-outcomes/recent-arrivals-struggle-with-english"
-      - phrase: those who came long ago are far more likely than recent arrivals to give only a UK national identity
+      - phrase: Those who came long ago are far more likely to have English as their main language
+        href: "#fact-integration-outcomes/english-rises-with-time"
+      - phrase: to give only a UK national identity
         href: "#fact-integration-outcomes/identity-rises-with-time"
     verification:
       status: verified
-      textHash: 3b325dca310a
+      textHash: 2f14562dadd9
       checkedAt: 2026-11-23
       notes:
-        - The language and identity figures are one 2021 snapshot by arrival period, not people followed over time.
+        - The language and identity figures are one 2021 snapshot by arrival period, not people followed over time. The identity figures are for residents born outside the EU.
   - heading: Some communities hold values far from the majority's
     visual:
       cite: "#fact-integration-outcomes/muslim-attitudes-homosexuality"
@@ -55,35 +55,33 @@ cards:
         href: "#fact-integration-outcomes/attitude-survey-methods"
       - phrase: the evidence on younger generations is thin and mixed
         href: "#fact-integration-outcomes/attitudes-generations"
-      - phrase: no repeated survey shows the gap closing
+      - phrase: no survey has tracked whether the gap is closing
         href: "#fact-integration-outcomes/attitudes-generations"
     verification:
       status: verified
-      textHash: 25388b8daafb
+      textHash: c637d374a099
       checkedAt: 2026-11-23
-      notes:
-        - No repeated survey tracks these attitudes at all, so none could show the gap closing or widening.
   - heading: Fear of seeming racist held back the response to gangs abusing children
     visual:
-      cite: "#fact-crime-terrorism-and-group-exploitation/ethnicity-unrecorded-nationally"
-      kind: barChart
-      title: Abuse suspects with no ethnicity recorded
+      cite: "#fact-crime-terrorism-and-group-exploitation/officials-feared-being-called-racist"
+      kind: quotes
+      title: What did inquiries find about fear of seeming racist?
     citations:
       - phrase: Inquiries in four towns described the gangs who abused children as Asian men or men of Pakistani or southern Asian heritage
         href: "#fact-crime-terrorism-and-group-exploitation/offenders-mostly-pakistani-heritage-in-places-investigated"
-      - phrase: fear of seeming racist held officials back
+      - phrase: The inquiries found that fear of seeming racist held officials back
         href: "#fact-crime-terrorism-and-group-exploitation/officials-feared-being-called-racist"
       - phrase: In Rotherham, about 1,400 children were abused
         href: "#fact-crime-terrorism-and-group-exploitation/rotherham-1400-children"
       - phrase: some staff were told not to mention the offenders' ethnicity
         href: "#fact-crime-terrorism-and-group-exploitation/rotherham-staff-told-not-to-identify-ethnicity"
-      - phrase: Police still do not record ethnicity for about two-thirds of abuse suspects
+      - phrase: Police still do not record ethnicity for about two-thirds of abuse suspects, so no one can tell whether any group is over-represented
         href: "#fact-crime-terrorism-and-group-exploitation/ethnicity-unrecorded-nationally"
       - phrase: most recorded child sexual abuse happens outside gangs
         href: "#fact-crime-terrorism-and-group-exploitation/most-child-sexual-abuse-is-outside-groups"
     verification:
       status: verified
-      textHash: cb389fe4287a
+      textHash: 8ed98cb3b5ea
       checkedAt: 2026-11-23
       notes:
         - The inquiries describe ethnicity or heritage, not nationality or immigration status. The recording figure is for national police datasets in 2023.
@@ -96,25 +94,21 @@ cards:
     citations:
       - phrase: In Denmark, men born to non-Western immigrants are convicted more often than the immigrants themselves, after allowing for age
         href: "#fact-crime-terrorism-and-group-exploitation/danish-descendants-offend-more-than-parents"
-      - phrase: that group's conviction rate has fallen over time, Britain publishes no such figures
+      - phrase: that group's conviction rate has fallen over time
         href: "#fact-crime-terrorism-and-group-exploitation/danish-rate-fallen-and-no-british-figures"
-      - phrase: Islamist extremists are the largest group of terrorist prisoners
-        href: "#fact-crime-terrorism-and-group-exploitation/islamists-largest-group-of-terrorist-prisoners-most-british"
-      - phrase: most terrorist prisoners are British
-        href: "#fact-crime-terrorism-and-group-exploitation/most-terrorist-prisoners-british"
     verification:
       status: verified
-      textHash: e64db23064ef
+      textHash: c5de94452ba4
       checkedAt: 2026-11-23
       notes:
-        - Terrorist prisoners' nationality is self-declared, and country of birth is not recorded. The extreme right-wing share of terrorist prisoners has risen since 2021.
+        - "The index is age-corrected: 262 for descendants of non-Western immigrants, 158 for non-Western immigrants and 88 for men of Danish origin, in 2023."
   - heading: Outcomes differ widely by origin, so whom Britain chooses matters
     visual:
       cite: "#fact-crime-terrorism-and-group-exploitation/afghan-sex-offence-rate"
       kind: estimateRange
       title: Conviction rates by nationality
     citations:
-      - phrase: After adjusting for age and sex, Afghan nationals in Britain were convicted of sex offences at seven times the British rate
+      - phrase: After adjusting for age and sex, Afghan nationals in Britain were cautioned or convicted of sex offences at an estimated seven times the British rate
         href: "#fact-crime-terrorism-and-group-exploitation/afghan-sex-offence-rate"
       - phrase: immigrants from the Middle East, north Africa, Pakistan, Afghanistan and Turkey cost the public purse on average, while Western immigrants pay in
         href: "#fact-integration-outcomes/denmark-menapt-vs-western"
@@ -122,10 +116,10 @@ cards:
         href: "#fact-crime-terrorism-and-group-exploitation/offence-types-differ"
     verification:
       status: verified
-      textHash: b54643e91f32
+      textHash: 6d0ed0f48599
       checkedAt: 2026-11-23
       notes:
-        - The sex-offence rates are for 2020–22 and by nationality, not heritage. The Danish figures are one year's accounts (2019), for an intake that came mainly for asylum or family reunion; the average cost fell by about a third from 2014.
+        - "The analysis behind the sex-offence rates calls them \"still uncertain\": a few serial offenders could skew them. They are for 2020–22 and by nationality, not heritage. The Danish figures are one year's accounts (2019), for an intake that came mainly for asylum or family reunion; the average cost fell by about a third from 2014."
         - The all-offences comparison counts cautions and convictions per head, not adjusted for age.
   - heading: So admit far fewer, choose for integration, and measure the results
     citations:

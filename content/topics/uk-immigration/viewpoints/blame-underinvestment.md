@@ -1,7 +1,7 @@
 ---
 name: Underinvestment, not immigration, broke Britain's homes and services; end the hostile environment
 shortName: Invest, don't blame
-summary: Britain invested a smaller share of its income than most rich countries for decades, and its investment does not grow when its population does. Immigration explains only a small part of the long rise in house prices. Invest in homes and services for the population Britain has, and stop making migrants' lives deliberately hard.
+summary: Britain invested a smaller share of its income than most rich countries for decades, and its investment does not grow straight away when its population does. Immigration explains only a small part of the long rise in house prices. Invest in homes and services for the population Britain has, and stop making migrants' lives deliberately hard.
 order: 6
 draft: ai
 ---
@@ -9,9 +9,9 @@ More people need more homes, hospitals and care. Britain's shortages come from f
 
 ### Britain has invested less than other rich countries for decades
 
-The British government invested a smaller share of the economy than the typical rich country in every year from 1995 to 2024. Much public investment is fixed for years at a time, so it does not grow when the population does. That matters, because migration is just over half of the extra households England expects. While real health spending per person has almost doubled since 2000, Britain still invests less than the average rich country in hospital buildings and equipment.
+The British government invested a smaller share of the economy than the typical rich country in every year from 1995 to 2024. Much public investment is fixed for years at a time, so it does not grow straight away when the population does. That matters, because migration is just over half of the extra households England expects. While real health spending per person has almost doubled since 2000, Britain still invests less than the average rich country in hospital buildings and equipment.
 
-### Cheap borrowing, not immigration, drove most of the rise in house prices
+### Cheap borrowing, not immigration, likely drove most of the rise in house prices
 
 In countries like Britain, a one-point rise in the immigrant share raises house prices by under 1%, and rents by a little more. So more people do push housing costs up, a little. But falling interest rates likely more than account for the rise in house prices against incomes since 1985, and immigration explains only about 4–6% of the long rise. Building fell short too: for over a decade, England has built fewer homes for social rent each year than in any year of the two decades before.
 
@@ -25,10 +25,10 @@ The hostile environment is the set of checks on work, homes and services meant t
 
 ### Visas tied to one employer leave lawful workers open to exploitation
 
-The Home Office cancelled a record number of employers' licences to hire migrants in the year to June 2025. It gave reasons including underpaying workers and failing to give them the work they were promised. The government's migration advisers found that visas tied to one employer left care workers open to exploitation. Lawful migrants also pay heavily: the fee for settlement is ten times what it costs the Home Office to process.
+The Home Office cancelled a record number of employers' licences to hire migrants in the year to June 2025. It gave reasons including underpaying workers and failing to give them the work they were promised. The government's migration advisers found that visas tied to one employer left care workers open to exploitation.
 
 ### So invest in homes and services, and end the hostile environment
 
-Britain should plan investment for the population it actually has, and build social homes, hospitals and care. Councils are already building more affordable homes than in any year since records began in 1991-92, though only about one in six of the total. Britain should fund care so it can pay a living wage, untie visas from single employers, cut fees to cost, and stop barring families with children from public support.
+Britain should plan investment for the population it actually has, and build social homes, hospitals and care. Councils are already building more affordable homes than in any year since records began in 1991-92, though that is only about one in six of all affordable homes. Britain should fund care so it can pay a living wage, untie visas from single employers, and stop barring families with children from public support. It should cut fees to cost: the fee for settlement is ten times what it costs the Home Office to process.
 
 A decent society gives priority to the worst off, and rules must mean what they say for people who came lawfully.
