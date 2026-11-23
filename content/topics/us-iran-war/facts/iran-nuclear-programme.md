@@ -969,7 +969,7 @@ observationMarks:
   board-referral-with-abstentions: {rows: ["GOV/2026/40, 10 June 2026", "GOV/2026/61, 9 September 2026 (referral to the UN)"]}
   close-to-weapons-grade-before-strikes: {rows: ["\"Probably less than one week\""]}
   no-route-to-weapons-grade: {rows: ["\"More than a year\"; \"no identifiable route\" to weapons-grade uranium"]}
-  access-narrowed-in-steps: {rows: ["Iran stops applying the Additional Protocol, ending complementary access", "Inspections at 7 of 13 facilities not struck in 2025, none of the 8 struck"]}
+  access-narrowed-in-steps: {rows: ["Iran stops applying the Additional Protocol, ending complementary access", "Iranian law suspends cooperation with the IAEA", "Cairo agreement on inspection procedures, then ended by Iran", "Inspections at 7 of 13 facilities not struck in 2025, none of the 8 struck"]}
   verification-stopped: {rows: ["US and Israeli strikes; verification stops again", "One inspection, at the Bushehr power plant"]}
   ata-2025-not-building: {rows: ["\"Iran is not building a nuclear weapon\""]}
   no-ongoing-programme-2025: {rows: ["\"no credible indications of an ongoing, undeclared structured nuclear programme\""]}
@@ -1025,11 +1025,11 @@ In May 2025 the IAEA called Iran "the only non-nuclear-weapon State in the world
 
 ### Power reactors need under 5%; weapons about 90% {#iran-nuclear-programme--power-reactors-need-under-five}
 
-CRS says fuel for nuclear power reactors "typically contains less than 5% u-235", while uranium for nuclear weapons "typically contains about 90%". [3](#source-iran-nuclear-programme-3) Research reactors can use 20%.
+CRS says fuel for nuclear power reactors "typically contains less than 5% u-235", while uranium for nuclear weapons "typically contains about 90%". [3](#source-iran-nuclear-programme-3)
 
 ### The 2015 deal capped enrichment at 3.67% for 15 years {#iran-nuclear-programme--deal-cap-was-temporary}
 
-The deal capped enrichment at 3.67% for 15 years, not for good, and kept the stock under 300 kg for the same period. [10](#source-iran-nuclear-programme-10) Other limits, such as the cut in operating centrifuges, ran for ten.
+The deal capped enrichment at 3.67% for 15 years, not for good. [10](#source-iran-nuclear-programme-10)
 
 ### Bombs need about 90%, and little extra work gets there from 60% {#iran-nuclear-programme--sixty-is-not-ninety}
 
@@ -1053,7 +1053,7 @@ Grossi said after the June 2025 strikes that most of it, "but less than 70 perce
 
 ### Inspectors' access narrowed in steps, long before the war {#iran-nuclear-programme--access-narrowed-in-steps}
 
-Complementary access ended in February 2021 and has not resumed. [1](#source-iran-nuclear-programme-1) By February 2026 the IAEA had inspected about half the facilities not hit in June 2025, and none of those that were. [2](#source-iran-nuclear-programme-2)
+Complementary access ended in February 2021 and has not resumed. [1](#source-iran-nuclear-programme-1) After the June 2025 strikes an Iranian law suspended cooperation with the IAEA, and Iran ended a September agreement on inspection procedures in November. [1](#source-iran-nuclear-programme-1) By February 2026 the IAEA had inspected about half the facilities not hit in June 2025, and none of those that were. [2](#source-iran-nuclear-programme-2)
 
 ### In February 2021 Iran ended complementary access visits {#iran-nuclear-programme--complementary-access-ended}
 

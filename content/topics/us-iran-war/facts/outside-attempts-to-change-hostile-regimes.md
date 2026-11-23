@@ -421,8 +421,8 @@ comparisons:
       - label: Violent campaigns
         value: 26
     note: >-
-      The authors warn that campaigns crushed in their infancy cannot be in
-      the data, which would flatter the success rates.
+      The authors warn that nonviolent campaigns crushed in their infancy
+      cannot be in the data, so the nonviolent rate may be flattered.
 relatedFacts:
   - iran-nuclear-programme
   - iran-government-and-its-people
@@ -829,7 +829,7 @@ Horowitz and Reiter count 19 successes in 53 attempts from 1917 to 1999. [17](#s
 
 ### Nonviolent uprisings won about twice as often as armed ones {#outside-attempts-to-change-hostile-regimes--nonviolent-campaigns-won-twice-as-often}
 
-Stephan and Chenoweth find that major nonviolent campaigns succeeded 53% of the time from 1900 to 2006, against 26% for violent ones (chart). [25](#source-outside-attempts-to-change-hostile-regimes-25) Campaigns crushed early may be missing from their data, which would flatter both rates. [25](#source-outside-attempts-to-change-hostile-regimes-25)
+Stephan and Chenoweth find that major nonviolent campaigns succeeded 53% of the time from 1900 to 2006, against 26% for violent ones (chart). [25](#source-outside-attempts-to-change-hostile-regimes-25) Nonviolent campaigns crushed early cannot be in the data, so the nonviolent rate may be flattered. [25](#source-outside-attempts-to-change-hostile-regimes-25)
 
 ## Observations {#outside-attempts-to-change-hostile-regimes--observations-regime-change}
 
