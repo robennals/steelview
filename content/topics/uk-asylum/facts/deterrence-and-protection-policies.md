@@ -676,6 +676,25 @@ sources:
     url: https://questions-statements.parliament.uk/written-questions/detail/2022-11-18/90882
     publisher: UK Parliament (Home Office answer)
     date: '2022-11-28'
+  - stance: supports
+    quote: Those who claim asylum in the UK are not normally allowed to work whilst their claim is being considered. They are instead provided with accommodation and support to meet their essential living needs if they would otherwise be destitute. The policy outlining when permission to work will be granted to those who claim asylum is set out in the Immigration Rules. This makes clear that the Home Office may grant permission to work to asylum seekers whose claim has been outstanding for more than 12 months through no fault of their own. Under this policy, those who are granted permission to work and have submitted an application on or before 26 March 2026 are restricted to jobs on the Immigration Salary List published by the Home Office. Any applications submitted on or after 26 March 2026, who are granted, are restricted to jobs on the Appendix Skilled Occupations at RQF level 6 or above.
+    title: Permission to work and volunteering for asylum seekers
+    url: https://www.gov.uk/government/publications/handling-applications-for-permission-to-take-employment-instruction/permission-to-work-and-volunteering-for-asylum-seekers-accessible
+    publisher: Home Office
+    date: 2026-03-26
+  - stance: supports
+    quote: This only applies to UKVI decisions. Where a decision has been made within 12 months but an appeal against that decision is still pending an individual will not be granted permission to work.
+    title: Permission to work and volunteering for asylum seekers
+    url: https://www.gov.uk/government/publications/handling-applications-for-permission-to-take-employment-instruction/permission-to-work-and-volunteering-for-asylum-seekers-accessible
+    publisher: Home Office
+    date: 2026-03-26
+  - stance: supports
+    quote: "The rate of employment reached around 45% after 2 years and then increased more slowly to 48% for those who had refugee status for 8 years.\n\nThe wider UK employment rate for those aged 16 to 64 years given by the ONS Labour Market Statistics Time Series was between 73% and 74% over this period.\n\nFrom 2 years after being granted refugee status onwards, the employment rate of asylum refugees remained stable between 48% and 51%.\n\nRefugees who arrived on resettlement schemes were selected for resettlement on the basis of need and vulnerability, so it may be expected that they were not as able to enter the labour market as asylum refugees."
+    title: "Refugee Integration Outcomes: how many refugees are in employment?"
+    url: https://www.gov.uk/government/publications/refugee-integration-outcomes-rio-employment-from-2015-to-2023/how-many-refugees-are-in-employment
+    publisher: Home Office
+    date: 2025-11-27
+    fileUrl: https://assets.publishing.service.gov.uk/media/6917394c9d50fc2fe8161819/how-many-refugees-are-in-employment-2015-to-2023-data-tables.ods
 series:
   title: 'Australia: asylum-seeker boat arrivals'
   subtitle: 'People arriving by boat each year, 1976–2016'
@@ -1409,6 +1428,309 @@ additionalSeries:
                 value: 53.4
               - period: '2025'
                 value: 32
+  - id: resettlement-australia-uk
+    title: "Refugees resettled: Australia and the UK"
+    subtitle: People resettled from abroad each year, 1976–2025
+    description: Refugees each government brought in from another country, as reported to the UN refugee agency. It does not count people who claimed asylum after arriving.
+    periodLabel: Year
+    coverage:
+      from: "1976"
+      to: "2025"
+      note: The whole of UNHCR's data for both countries. The UK figures begin in 1979, and none are published for 1997 to 2003. The UK query is the same as Australia's with coa=GBR.
+    breaks: []
+    events: []
+    source:
+      stance: supports
+      quote: |-
+        year | coa_name | resettlement
+        1976 | Australia | 4374
+        1977 | Australia | 8124
+        1978 | Australia | 9597
+        1979 | Australia | 13450
+        1980 | Australia | 19954
+        1981 | Australia | 21847
+        1982 | Australia | 21917
+        1983 | Australia | 17054
+        1984 | Australia | 14769
+        1985 | Australia | 14850
+        1986 | Australia | 11840
+        1987 | Australia | 11101
+        1988 | Australia | 11076
+        1989 | Australia | 10887
+        1990 | Australia | 11948
+        1991 | Australia | 7745
+        1992 | Australia | 9981
+        1993 | Australia | 10930
+        1994 | Australia | 13554
+        1995 | Australia | 15407
+        1996 | Australia | 11099
+        1997 | Australia | 7815
+        1998 | Australia | 12559
+        1999 | Australia | 8403
+        2000 | Australia | 7327
+        2001 | Australia | 6657
+        2002 | Australia | 9172
+        2003 | Australia | 11854
+        2004 | Australia | 15967
+        2005 | Australia | 11638
+        2006 | Australia | 13436
+        2007 | Australia | 9622
+        2008 | Australia | 11005
+        2009 | Australia | 11080
+        2010 | Australia | 8516
+        2011 | Australia | 9226
+        2012 | Australia | 5933
+        2013 | Australia | 13169
+        2014 | Australia | 11573
+        2015 | Australia | 9386
+        2016 | Australia | 10586
+        2017 | Australia | 15115
+        2018 | Australia | 12706
+        2019 | Australia | 18240
+        2020 | Australia | 3687
+        2021 | Australia | 3343
+        2022 | Australia | 17327
+        2023 | Australia | 15223
+        2024 | Australia | 17211
+        2025 | Australia | 18806
+        1979 | United Kingdom of Great Britain and Northern Ireland | 2900
+        1980 | United Kingdom of Great Britain and Northern Ireland | 6850
+        1981 | United Kingdom of Great Britain and Northern Ireland | 2750
+        1982 | United Kingdom of Great Britain and Northern Ireland | 807
+        1983 | United Kingdom of Great Britain and Northern Ireland | 1222
+        1984 | United Kingdom of Great Britain and Northern Ireland | 803
+        1985 | United Kingdom of Great Britain and Northern Ireland | 529
+        1986 | United Kingdom of Great Britain and Northern Ireland | 833
+        1987 | United Kingdom of Great Britain and Northern Ireland | 435
+        1988 | United Kingdom of Great Britain and Northern Ireland | 715
+        1989 | United Kingdom of Great Britain and Northern Ireland | 723
+        1990 | United Kingdom of Great Britain and Northern Ireland | 650
+        1991 | United Kingdom of Great Britain and Northern Ireland | 490
+        1992 | United Kingdom of Great Britain and Northern Ireland | 620
+        1993 | United Kingdom of Great Britain and Northern Ireland | 510
+        1994 | United Kingdom of Great Britain and Northern Ireland | 260
+        1995 | United Kingdom of Great Britain and Northern Ireland | 70
+        1996 | United Kingdom of Great Britain and Northern Ireland | 20
+        2004 | United Kingdom of Great Britain and Northern Ireland | 150
+        2005 | United Kingdom of Great Britain and Northern Ireland | 175
+        2006 | United Kingdom of Great Britain and Northern Ireland | 379
+        2007 | United Kingdom of Great Britain and Northern Ireland | 511
+        2008 | United Kingdom of Great Britain and Northern Ireland | 722
+        2009 | United Kingdom of Great Britain and Northern Ireland | 955
+        2010 | United Kingdom of Great Britain and Northern Ireland | 715
+        2011 | United Kingdom of Great Britain and Northern Ireland | 454
+        2012 | United Kingdom of Great Britain and Northern Ireland | 1037
+        2013 | United Kingdom of Great Britain and Northern Ireland | 964
+        2014 | United Kingdom of Great Britain and Northern Ireland | 787
+        2015 | United Kingdom of Great Britain and Northern Ireland | 1865
+        2016 | United Kingdom of Great Britain and Northern Ireland | 5177
+        2017 | United Kingdom of Great Britain and Northern Ireland | 6210
+        2018 | United Kingdom of Great Britain and Northern Ireland | 5802
+        2019 | United Kingdom of Great Britain and Northern Ireland | 5612
+        2020 | United Kingdom of Great Britain and Northern Ireland | 823
+        2021 | United Kingdom of Great Britain and Northern Ireland | 1591
+        2022 | United Kingdom of Great Britain and Northern Ireland | 1188
+        2023 | United Kingdom of Great Britain and Northern Ireland | 732
+        2024 | United Kingdom of Great Britain and Northern Ireland | 1855
+        2025 | United Kingdom of Great Britain and Northern Ireland | 952
+      title: "Refugee Data Finder: solutions (year, country and resettlement fields)"
+      url: https://www.unhcr.org/refugee-statistics/download
+      publisher: UNHCR
+      date: 2026-06
+      fileUrl: https://api.unhcr.org/population/v1/solutions/?yearFrom=1951&yearTo=2025&coa=AUL&limit=200
+    readings:
+      - id: resettled-people
+        label: People
+        unit: count
+        valueLabel: Refugees resettled that year
+        lines:
+          - name: Australia
+            points:
+              - period: "1976"
+                value: 4374
+              - period: "1977"
+                value: 8124
+              - period: "1978"
+                value: 9597
+              - period: "1979"
+                value: 13450
+              - period: "1980"
+                value: 19954
+              - period: "1981"
+                value: 21847
+              - period: "1982"
+                value: 21917
+              - period: "1983"
+                value: 17054
+              - period: "1984"
+                value: 14769
+              - period: "1985"
+                value: 14850
+              - period: "1986"
+                value: 11840
+              - period: "1987"
+                value: 11101
+              - period: "1988"
+                value: 11076
+              - period: "1989"
+                value: 10887
+              - period: "1990"
+                value: 11948
+              - period: "1991"
+                value: 7745
+              - period: "1992"
+                value: 9981
+              - period: "1993"
+                value: 10930
+              - period: "1994"
+                value: 13554
+              - period: "1995"
+                value: 15407
+              - period: "1996"
+                value: 11099
+              - period: "1997"
+                value: 7815
+              - period: "1998"
+                value: 12559
+              - period: "1999"
+                value: 8403
+              - period: "2000"
+                value: 7327
+              - period: "2001"
+                value: 6657
+              - period: "2002"
+                value: 9172
+              - period: "2003"
+                value: 11854
+              - period: "2004"
+                value: 15967
+              - period: "2005"
+                value: 11638
+              - period: "2006"
+                value: 13436
+              - period: "2007"
+                value: 9622
+              - period: "2008"
+                value: 11005
+              - period: "2009"
+                value: 11080
+              - period: "2010"
+                value: 8516
+              - period: "2011"
+                value: 9226
+              - period: "2012"
+                value: 5933
+              - period: "2013"
+                value: 13169
+              - period: "2014"
+                value: 11573
+              - period: "2015"
+                value: 9386
+              - period: "2016"
+                value: 10586
+              - period: "2017"
+                value: 15115
+              - period: "2018"
+                value: 12706
+              - period: "2019"
+                value: 18240
+              - period: "2020"
+                value: 3687
+              - period: "2021"
+                value: 3343
+              - period: "2022"
+                value: 17327
+              - period: "2023"
+                value: 15223
+              - period: "2024"
+                value: 17211
+              - period: "2025"
+                value: 18806
+          - name: United Kingdom
+            coverage:
+              from: "1979"
+              to: "2025"
+            points:
+              - period: "1979"
+                value: 2900
+              - period: "1980"
+                value: 6850
+              - period: "1981"
+                value: 2750
+              - period: "1982"
+                value: 807
+              - period: "1983"
+                value: 1222
+              - period: "1984"
+                value: 803
+              - period: "1985"
+                value: 529
+              - period: "1986"
+                value: 833
+              - period: "1987"
+                value: 435
+              - period: "1988"
+                value: 715
+              - period: "1989"
+                value: 723
+              - period: "1990"
+                value: 650
+              - period: "1991"
+                value: 490
+              - period: "1992"
+                value: 620
+              - period: "1993"
+                value: 510
+              - period: "1994"
+                value: 260
+              - period: "1995"
+                value: 70
+              - period: "1996"
+                value: 20
+              - period: "2004"
+                value: 150
+              - period: "2005"
+                value: 175
+              - period: "2006"
+                value: 379
+              - period: "2007"
+                value: 511
+              - period: "2008"
+                value: 722
+              - period: "2009"
+                value: 955
+              - period: "2010"
+                value: 715
+              - period: "2011"
+                value: 454
+              - period: "2012"
+                value: 1037
+              - period: "2013"
+                value: 964
+              - period: "2014"
+                value: 787
+              - period: "2015"
+                value: 1865
+              - period: "2016"
+                value: 5177
+              - period: "2017"
+                value: 6210
+              - period: "2018"
+                value: 5802
+              - period: "2019"
+                value: 5612
+              - period: "2020"
+                value: 823
+              - period: "2021"
+                value: 1591
+              - period: "2022"
+                value: 1188
+              - period: "2023"
+                value: 732
+              - period: "2024"
+                value: 1855
+              - period: "2025"
+                value: 952
 comparisons:
   - id: australia-outcomes
     title: 'Australia: people sent offshore'
@@ -1579,7 +1901,7 @@ figures:
     id: work-rights
     title: 'Work rights while waiting on a claim'
     subtitle: 'Four European studies of work bans and waiting times'
-    description: Four European studies of work bans and waiting times. In the UK, a person waiting on an asylum claim may ask for permission to work after 12 months, and only in jobs on the Immigration Salary List.
+    description: Four European studies of work bans and waiting times. In the UK, a person waiting on an asylum claim may ask for permission to work after 12 months without a first decision and, since 26 March 2026, only in graduate-level jobs.
     caption: One card per study
     layout: cards
     leadColumn: finding
@@ -1631,6 +1953,141 @@ figures:
       - measure: 'Repayment of asylum support by refugees who can afford it, suggested at around £10,000'
         applies-to: Adults who received support
         status: { value: In the Bill; amount set by regulations, sources: [57, 59] }
+  - kind: series
+    id: resettlement-australia-uk
+  - kind: dataTable
+    id: uk-work-rules
+    title: When asylum seekers may work in the UK
+    subtitle: Home Office rules from 26 March 2026
+    description: When the Home Office lets a person who is waiting on an asylum claim take a job, and which jobs.
+    caption: One row per situation
+    sources:
+      - 61
+      - 62
+    columns:
+      - key: case
+        label: Situation
+        rowHeader: true
+      - key: rule
+        label: Rule
+        sortable: false
+    rows:
+      - case: Waiting under 12 months
+        rule:
+          value: Not normally allowed to work
+          sources:
+            - 61
+      - case: Waiting over 12 months for a first decision, not at fault
+        rule:
+          value: May be allowed, in graduate-level (RQF level 6 or above) occupations only
+          sources:
+            - 61
+      - case: Decided within 12 months, appeal pending
+        rule:
+          value: Not granted permission to work
+          sources:
+            - 62
+  - kind: barChart
+    id: refugee-employment
+    title: Refugees' employment in England and Wales
+    subtitle: Share of 16 to 64s in work, by years since status, 2015–2023 grants
+    description: Refugees in employment by years since they were granted status. Across the UK, between 73% and 74% of everyone aged 16 to 64 was in work, on a different measure. These figures count payroll jobs, so leave out self-employment.
+    valueLabel: Share in employment
+    categoryLabel: Years since status
+    format:
+      unit: percent
+      decimals: 1
+    sort: none
+    domainMax: 100
+    sources:
+      - 63
+    valuesFrom: Home Office RIO employment data tables, Table_D and Table_E
+    series:
+      - key: all
+        label: All refugees
+      - key: asylum
+        label: Came through asylum
+      - key: resettled
+        label: Resettled
+    items:
+      - label: Year of grant
+        values:
+          all: 24.2
+          asylum: 25.8
+          resettled: 2.7
+      - label: 1 year
+        values:
+          all: 39.5
+          asylum: 42.4
+          resettled: 8.7
+      - label: 2 years
+        values:
+          all: 44.4
+          asylum: 47.6
+          resettled: 13.5
+      - label: 3 years
+        values:
+          all: 45.6
+          asylum: 48.8
+          resettled: 16.8
+      - label: 4 years
+        values:
+          all: 45.9
+          asylum: 49.3
+          resettled: 19.2
+      - label: 5 years
+        values:
+          all: 45.3
+          asylum: 48.6
+          resettled: 20.9
+      - label: 6 years
+        values:
+          all: 47.4
+          asylum: 50.3
+          resettled: 23.3
+      - label: 7 years
+        values:
+          all: 48.6
+          asylum: 50.8
+          resettled: 24.4
+      - label: 8 years
+        values:
+          all: 48.4
+          asylum: 49.2
+          resettled: 21.8
+  - kind: dataTable
+    id: what-stopped-australia
+    title: What stopped Australia's boats
+    subtitle: What researchers found, 2013 onwards
+    description: What the Kaldor Centre, a refugee-law institute that opposes offshore processing, found about Australia's settlement ban and turnbacks.
+    caption: One row per finding
+    sources:
+      - 7
+      - 9
+      - 19
+    columns:
+      - key: what
+        label: Finding
+        rowHeader: true
+      - key: says
+        label: What the source says
+        sortable: false
+    rows:
+      - what: After the settlement ban of July 2013
+        says:
+          value: More than 1,500 people on at least 21 boats arrived in the first 16 days
+          sources:
+            - 7
+      - what: What the Kaldor Centre credits
+        says:
+          value: '"changes in Australia’s engagement with vessels at sea (turnbacks and takebacks)"'
+          sources:
+            - 9
+      - what: The Refugee Convention
+        says:
+          value: Australia has ratified it; the Kaldor Centre says it has violated many of its obligations
+          sources:
+            - 19
 observationMarks:
   australia-arrivals-fell-after-turnbacks: {lines: ["People arriving by boat"], from: "2013", to: "2016"}
   rwanda-cost-and-relocations: {rows: ["Home Office spend on the partnership and the Illegal Migration Act"]}
@@ -1666,6 +2123,13 @@ observationMarks:
   eighteen-had-died: {rows: ["Died"]}
   authors-say-bans-not-a-strong-deterrent: {rows: ["Di Iasio and Wahba (working paper, 2023)"]}
   thirty-month-protection: {rows: ["30-month protection, renewed at review only if return is still unsafe"]}
+  australia-kept-resettling: {"lines":["Australia"],"from":"2013","to":"2025"}
+  uk-work-ban: {rows: ["Waiting under 12 months","Waiting over 12 months for a first decision, not at fault"]}
+  about-half-of-refugees-work: {"rows":["2 years","3 years","4 years","5 years","6 years","7 years","8 years"]}
+  resettled-refugees-work-less: {"whole":true}
+  settlement-ban-first-16-days: {"rows":["After the settlement ban of July 2013"]}
+  kaldor-credits-turnbacks: {"rows":["What the Kaldor Centre credits"]}
+  ratified-but-criticised: {"rows":["The Refugee Convention"]}
 ---
 ## Observations {#deterrence-and-protection-policies--observations-arrivals}
 
@@ -1763,11 +2227,11 @@ During more than two years of the policy, only four volunteers and no asylum see
 
 ### Denmark's intake is now among the lowest per head in Europe {#deterrence-and-protection-policies--denmark-intake-low}
 
-Denmark had 1,835 first-time asylum applicants in 2025, 3.1 per 10,000 residents, against 14.9 across the EU27. The UK received 15 per 10,000 in 2025 on the Migration Observatory's count of all applicants. [33](#source-deterrence-and-protection-policies-33) [64](#source-deterrence-and-protection-policies-64) [35](#source-deterrence-and-protection-policies-35)
+Denmark had 1,835 first-time asylum applicants in 2025, 3.1 per 10,000 residents, against 14.9 across the EU27. The UK received 15 per 10,000 in 2025 on the Migration Observatory's count of all applicants. [33](#source-deterrence-and-protection-policies-33) [67](#source-deterrence-and-protection-policies-67) [35](#source-deterrence-and-protection-policies-35)
 
 ### Denmark ranks 23rd of 31 EU+ countries per head {#deterrence-and-protection-policies--denmark-rank-2025}
 
-On first-time applicants per 10,000 residents in 2025, Denmark sits in the [bottom third of the 31 EU and EFTA countries](#fact-asylum-claims-and-decisions/chart-per-head-2025), below Sweden and well below Germany, which is close to the EU27 average. [63](#source-deterrence-and-protection-policies-63) [64](#source-deterrence-and-protection-policies-64)
+On first-time applicants per 10,000 residents in 2025, Denmark sits in the [bottom third of the 31 EU and EFTA countries](#fact-asylum-claims-and-decisions/chart-per-head-2025), below Sweden and well below Germany, which is close to the EU27 average. [66](#source-deterrence-and-protection-policies-66) [67](#source-deterrence-and-protection-policies-67)
 
 ### Denmark's 2016 fall was shared with Sweden, which also tightened {#deterrence-and-protection-policies--denmark-2016-fall-matched-sweden}
 
@@ -1836,3 +2300,39 @@ The March 2026 statement calls the reset "inspired by Denmark’s success" and a
 ### The Bill is not yet law {#deterrence-and-protection-policies--bill-not-law}
 
 The Immigration and Asylum Bill was introduced on 30 June 2026 and was still progressing through Parliament in July 2026. The 30-month rule already applies through the Immigration Rules. [58](#source-deterrence-and-protection-policies-58) [59](#source-deterrence-and-protection-policies-59) [51](#source-deterrence-and-protection-policies-51)
+
+## Observations {#deterrence-and-protection-policies--observations-resettled-people}
+
+### Australia went on resettling refugees after it began turning boats back {#deterrence-and-protection-policies--australia-kept-resettling}
+
+It resettled thousands in every year after 2013, with a dip in 2020 and 2021. In most years that was several times the UK number. [70](#source-deterrence-and-protection-policies-70)
+
+## Observations {#deterrence-and-protection-policies--observations-uk-work-rules}
+
+### Asylum seekers are not normally allowed to work {#deterrence-and-protection-policies--uk-work-ban}
+
+After 12 months without a first decision they may get permission, for graduate-level jobs only. Waiting on an appeal does not qualify if the decision came within 12 months. [61](#source-deterrence-and-protection-policies-61) [62](#source-deterrence-and-protection-policies-62)
+
+## Observations {#deterrence-and-protection-policies--observations-refugee-employment}
+
+### About half of refugees who came through asylum are in work two or more years after status {#deterrence-and-protection-policies--about-half-of-refugees-work}
+
+Their rate stays between 48% and 51% from two years on. That is below the UK rate of 73% to 74%. [63](#source-deterrence-and-protection-policies-63)
+
+### Resettled refugees are less often in work {#deterrence-and-protection-policies--resettled-refugees-work-less}
+
+They are below refugees who came through asylum in every year since status. Resettlement selects people by need and vulnerability. [63](#source-deterrence-and-protection-policies-63)
+
+## Observations {#deterrence-and-protection-policies--observations-what-stopped-australia}
+
+### Boats kept arriving in the first 16 days of the settlement ban {#deterrence-and-protection-policies--settlement-ban-first-16-days}
+
+More than 1,500 people arrived on at least 21 boats. [7](#source-deterrence-and-protection-policies-7)
+
+### The Kaldor Centre credits turnbacks and takebacks {#deterrence-and-protection-policies--kaldor-credits-turnbacks}
+
+The Australian government credited a wider chain of measures, including offshore processing. [9](#source-deterrence-and-protection-policies-9)
+
+### Australia stayed in the Refugee Convention, and is accused of breaching it {#deterrence-and-protection-policies--ratified-but-criticised}
+
+The Kaldor Centre says it has violated many of its obligations. [19](#source-deterrence-and-protection-policies-19)

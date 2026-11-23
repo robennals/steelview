@@ -476,6 +476,12 @@ sources:
     localFile: datasets/assets.publishing.service.gov.uk/asylum-claims-datasets-jun-2026.xlsx
     publisher: Home Office
     date: '2026-08-27'
+  - stance: supports
+    quote: The only major migration category where net migration did not decrease was asylum. Long-term immigration of asylum seekers was 96,000 in the year ending June 2025, making up 11% of all immigration—double the 5% share in 2019. Relatively few asylum migrants emigrate, so net migration of people seeking asylum was 90,000 in the same period, equivalent 44% of total net migration. This share was also around double the pre-Brexit figure of 22% in 2019.
+    title: "Net migration falls 78% in two years returning to pre-Brexit levels: every major immigration category except asylum declines"
+    url: https://migrationobservatory.ox.ac.uk/press/net-migration-falls-78-in-two-years-returning-to-pre-brexit-levels-every-major-immigration-category-except-asylum-declines/
+    publisher: Migration Observatory, University of Oxford
+    date: 2025-11-27
 series:
   title: 'People claiming asylum in the UK'
   subtitle: '2001–2025'
@@ -1498,9 +1504,9 @@ comparisons:
     unit: count
     valueLabel: 'Applicants per 1,000 residents'
     sources:
-      - 40
       - 41
-      - 39
+      - 42
+      - 40
     items:
       - label: Greece
         value: 5.339
@@ -1584,8 +1590,8 @@ comparisons:
     unit: count
     valueLabel: 'First-time applicants (UK: people claiming asylum)'
     sources:
+      - 41
       - 40
-      - 39
     items:
       - label: Spain
         value: 141055
@@ -1667,7 +1673,7 @@ comparisons:
     valueLabel: Initial grant rate
     domainMax: 100
     sources:
-      - 42
+      - 43
     items:
       - label: Actual 2022
         value: 75.9
@@ -1697,7 +1703,7 @@ comparisons:
     domainMax: 100
     sources:
       - 35
-      - 42
+      - 43
     items:
       - label: Liechtenstein
         value: 100.0
@@ -1811,6 +1817,13 @@ observationMarks:
   rank-depends-on-measure: {rows: ["United Kingdom"]}
   sudanese-and-eritreans-mostly-granted: {rows: ["Sudan", "Eritrea"]}
   syrian-grant-rate-fell: {rows: ["Year to June 2025", "Year to June 2026"]}
+  asylum-small-share-of-immigration: {"rows":["All immigration, year to June 2025"]}
+  asylum-large-share-of-net-migration: {"rows":["Net migration, 2019","Net migration, year to June 2025"]}
+  record-year-to-september-2025: {"rows":["Highest year, to September 2025"]}
+  latest-year-fell: {"rows":["Latest year, to June 2026"]}
+  rise-linked-to-conflict: {"rows":["What shaped the rise from 2022"]}
+  denmark-fifth-of-uk: {"rows":["United Kingdom","Denmark"]}
+  denmark-grant-near-eu: {"rows":["Denmark","EU27 as a whole"]}
 figures:
   - kind: series
   - kind: series
@@ -1836,7 +1849,7 @@ figures:
     categoryLabel: Nationality
     format: { unit: percent, decimals: 1 }
     domainMax: 100
-    sources: [42, 14]
+    sources: [43, 14]
     style: dumbbell
     series:
       - { key: y2022, label: '2022' }
@@ -1905,7 +1918,7 @@ figures:
     categoryLabel: Nationality
     format: { unit: percent, decimals: 1 }
     domainMax: 100
-    sources: [35, 42]
+    sources: [35, 43]
     series:
       - { key: uk, label: UK }
       - { key: eu27, label: EU27 }
@@ -1925,6 +1938,61 @@ figures:
       Eurostat migr_asydcfsta for the EU27; Asy_D02 (main applicants and
       dependants) for the UK. Both count positive first-instance decisions
       over all first-instance decisions, excluding withdrawals.
+  - kind: barChart
+    id: asylum-share-of-migration
+    title: Asylum's share of migration to the UK
+    subtitle: Share of immigration and of net migration, 2019 and year to June 2025
+    description: People seeking asylum as a share of everyone moving to the UK long term, and of net migration, which is arrivals minus departures. These are provisional estimates as published in November 2025, since revised.
+    valueLabel: Share that is people seeking asylum
+    categoryLabel: Measure
+    format:
+      unit: percent
+    sort: none
+    sources:
+      - 39
+    items:
+      - label: All immigration, 2019
+        value: 5
+      - label: All immigration, year to June 2025
+        value: 11
+        highlight: true
+      - label: Net migration, 2019
+        value: 22
+      - label: Net migration, year to June 2025
+        value: 44
+  - kind: dataTable
+    id: latest-claims
+    title: The latest asylum claims, and the rise
+    subtitle: UK, to the year to June 2026
+    description: Asylum claims in the peak and latest years, and what researchers link the rise since 2022 to.
+    caption: One row per finding
+    sources:
+      - 1
+      - 2
+      - 4
+    columns:
+      - key: what
+        label: Finding
+        rowHeader: true
+      - key: says
+        label: What the source says
+        sortable: false
+    rows:
+      - what: Highest year, to September 2025
+        says:
+          value: 109,662 claims, above the 2002 peak
+          sources:
+            - 2
+      - what: Latest year, to June 2026
+        says:
+          value: 85,891 claims, 21% fewer than the year before
+          sources:
+            - 1
+      - what: What shaped the rise from 2022
+        says:
+          value: Global events, "including ongoing conflicts in the Middle East and rising instability in the Horn of Africa and South Asia"
+          sources:
+            - 4
 ---
 ## Observations {#asylum-claims-and-decisions--observations-people}
 
@@ -1996,7 +2064,7 @@ In the year to June 2026, 92% of Sudanese and 84% of Eritrean claims decided wer
 
 ### Most Sudanese and Eritrean claims were granted in 2025 {#asylum-claims-and-decisions--sudanese-and-eritreans-mostly-granted}
 
-Sudan and Eritrea had the highest initial grant rates of the main nationalities in the chart in 2025, and again in the year to June 2026, at 92% and 84%. [13](#source-asylum-claims-and-decisions-13) [42](#source-asylum-claims-and-decisions-42)
+Sudan and Eritrea had the highest initial grant rates of the main nationalities in the chart in 2025, and again in the year to June 2026, at 92% and 84%. [13](#source-asylum-claims-and-decisions-13) [43](#source-asylum-claims-and-decisions-43)
 
 ### Rates fell within most nationalities, steeply for some {#asylum-claims-and-decisions--within-nationality-falls}
 
@@ -2032,6 +2100,10 @@ For people who arrived in 2023 and 2024, refusals slightly outnumbered grants at
 
 39% of first-instance decisions across the EU were positive in 2025, and 21% of final decisions after appeal or review. [31](#source-asylum-claims-and-decisions-31) The UK rate on the same people-based measure was similar. In 2024 the UK's rate was 47% against the EU's 51%; the Migration Observatory notes that overall rates mostly reflect which nationalities claim where. [34](#source-asylum-claims-and-decisions-34)
 
+### Denmark's grant rate is close to the EU's {#asylum-claims-and-decisions--denmark-grant-near-eu}
+
+The chart sets out the share of decisions that were positive in 2025, for each country and for the EU27 as a whole. [35](#source-asylum-claims-and-decisions-35)
+
 ## Observations {#asylum-claims-and-decisions--observations-recognition-by-nationality}
 
 ### For the same nationality, UK and EU rates differ in both directions {#asylum-claims-and-decisions--uk-and-eu-by-nationality}
@@ -2043,6 +2115,36 @@ The UK has granted higher rates than the EU for most of its main nationalities s
 ### The UK's European rank depends on what is counted {#asylum-claims-and-decisions--rank-depends-on-measure}
 
 The UK ranks thirteenth of 32 on first-time applicants per head in 2025 in the chart above. The Migration Observatory puts it twelfth for 2025; [10](#source-asylum-claims-and-decisions-10) the Home Office puts it sixteenth for the year to March 2026, counting all applicants in other countries, including repeat applications. [9](#source-asylum-claims-and-decisions-9) By total number the UK is fifth on every measure. [9](#source-asylum-claims-and-decisions-9) [10](#source-asylum-claims-and-decisions-10)
+
+## Observations {#asylum-claims-and-decisions--observations-asylum-share-of-migration}
+
+### People seeking asylum were about one in nine of those moving to the UK {#asylum-claims-and-decisions--asylum-small-share-of-immigration}
+
+They were 11% of all long-term immigration in the year to June 2025, up from 5% in 2019. [39](#source-asylum-claims-and-decisions-39)
+
+### They were a much larger share of net migration {#asylum-claims-and-decisions--asylum-large-share-of-net-migration}
+
+They were 44% of net migration in the year to June 2025, up from 22% in 2019. Few of them emigrate, and total net migration had also fallen steeply. [39](#source-asylum-claims-and-decisions-39)
+
+## Observations {#asylum-claims-and-decisions--observations-latest-claims}
+
+### Claims reached a record in the year to September 2025 {#asylum-claims-and-decisions--record-year-to-september-2025}
+
+There were 109,662, above the 2002 peak. [2](#source-asylum-claims-and-decisions-2)
+
+### Claims fell in the year to June 2026 {#asylum-claims-and-decisions--latest-year-fell}
+
+There were 85,891, 21% fewer than the year before. [1](#source-asylum-claims-and-decisions-1)
+
+### The Migration Observatory links the rise to conflict and instability abroad {#asylum-claims-and-decisions--rise-linked-to-conflict}
+
+It names the Middle East, the Horn of Africa and South Asia, and notes that not everyone from such countries qualifies for asylum. [4](#source-asylum-claims-and-decisions-4)
+
+## Observations {#asylum-claims-and-decisions--observations-per-head-2025}
+
+### Denmark's claims per head are about a fifth of Britain's {#asylum-claims-and-decisions--denmark-fifth-of-uk}
+
+The chart sets out first-time applicants per head in 2025 for each country. [41](#source-asylum-claims-and-decisions-41) [42](#source-asylum-claims-and-decisions-42)
 
 ## More {#asylum-claims-and-decisions--more-people}
 

@@ -424,6 +424,31 @@ sources:
   localFile: datasets/assets.publishing.service.gov.uk/asylum-claims-datasets-jun-2026.xlsx
   publisher: Home Office
   date: '2026-08-27'
+- stance: supports
+  quote: The majority of those arriving in small boats are men over the age of 18 – around 76% of 2025 arrivals for whom this information was recorded. A further 12% of arrivals that year were children under 18. These proportions have been relatively stable over time. One reason for the higher share of men is the danger associated with unauthorised migration. In many cases, female and minor children join later through family reunification routes.
+  title: People crossing the English Channel in small boats
+  url: https://migrationobservatory.ox.ac.uk/resources/briefings/people-crossing-the-english-channel-in-small-boats/
+  publisher: Migration Observatory, University of Oxford
+  date: 2026-06-05
+- stance: supports
+  quote: In 2025, there were 24 confirmed deaths related to Channel crossings, down from 73 the year before. A total of 162 people died in the Channel between 2018 and 2025. This rises to 257 when considering other deaths related to migration in the area, such as accidents involving people who try to board lorries bound for the UK. These figures may understate the true toll, as not all incidents are reported.
+  title: People crossing the English Channel in small boats
+  url: https://migrationobservatory.ox.ac.uk/resources/briefings/people-crossing-the-english-channel-in-small-boats/
+  publisher: Migration Observatory, University of Oxford
+  date: 2026-06-05
+- stance: supports
+  quote: There is some evidence that the price of crossing the Channel declined over time, although estimates are uncertain and can vary significantly. According to some sources, prices had fallen from around €14,000 in 2018 to well under €4,000 by 2024. Media investigations indicated prices of around €1,500 in early 2026.
+  title: People crossing the English Channel in small boats
+  url: https://migrationobservatory.ox.ac.uk/resources/briefings/people-crossing-the-english-channel-in-small-boats/
+  publisher: Migration Observatory, University of Oxford
+  date: 2026-06-05
+- stance: supports
+  quote: "IER_D01: Number of detected arrivals via illegal routes to the UK, 2018 Q1 to 2026 Q2"
+  title: Illegal entry routes to the UK detailed datasets, year ending June 2026
+  url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+  publisher: Home Office
+  date: 2026-08-27
+  localFile: datasets/assets.publishing.service.gov.uk/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
 series:
   title: 'Small-boat crossings of the Channel'
   subtitle: 'People and boats detected arriving, 2018–2026'
@@ -2183,7 +2208,7 @@ comparisons:
   unit: percent
   valueLabel: Change on the same months of 2025 (%)
   sources:
-  - 39
+  - 43
   - 35
   note: >-
     EU routes from Frontex's monthly file (January–August, as the file ends in August).
@@ -2322,6 +2347,187 @@ figures:
       says: { value: '"overall returns to the country increased sharply following the signing of a returns agreement".', sources: [33] }
 - kind: comparison
   id: europe-change
+- kind: compositionBar
+  id: who-crosses
+  title: Who crosses by small boat
+  subtitle: Arrivals by age and sex, UK, 2018 to June 2026
+  description: People detected arriving by small boat each year, by age and sex. Each bar is that year's total.
+  rowLabel: Year
+  showCounts: true
+  sources:
+    - 39
+    - 36
+  valuesFrom: Home Office table Data_IER_D01, small boat arrivals summed by year, sex and age group
+  note: "The last category is each year's total minus the others: adults whose sex was not recorded and people with neither age nor sex recorded."
+  categories:
+    - key: menyoung
+      label: Men 18–24
+    - key: menmid
+      label: Men 25–39
+    - key: menold
+      label: Men 40 and over
+    - key: women
+      label: Women
+    - key: children
+      label: Under 18
+    - key: unknown
+      label: Not recorded
+  rows:
+    - label: "2018"
+      total: 299
+      values:
+        menyoung: 39
+        menmid: 185
+        menold: 33
+        women: 17
+        children: 25
+        unknown: 0
+    - label: "2019"
+      total: 1843
+      values:
+        menyoung: 264
+        menmid: 919
+        menold: 164
+        women: 188
+        children: 308
+        unknown: 0
+    - label: "2020"
+      total: 8466
+      values:
+        menyoung: 1785
+        menmid: 3840
+        menold: 669
+        women: 723
+        children: 1449
+        unknown: 0
+    - label: "2021"
+      total: 28526
+      values:
+        menyoung: 9035
+        menmid: 11059
+        menold: 1448
+        women: 2054
+        children: 4321
+        unknown: 609
+    - label: "2022"
+      total: 45774
+      values:
+        menyoung: 14774
+        menmid: 15993
+        menold: 2767
+        women: 3750
+        children: 8161
+        unknown: 329
+    - label: "2023"
+      total: 29437
+      values:
+        menyoung: 9067
+        menmid: 9727
+        menold: 1725
+        women: 2610
+        children: 5253
+        unknown: 1055
+    - label: "2024"
+      total: 36816
+      values:
+        menyoung: 11252
+        menmid: 13593
+        menold: 2204
+        women: 3597
+        children: 5430
+        unknown: 740
+    - label: "2025"
+      total: 41472
+      values:
+        menyoung: 11226
+        menmid: 16315
+        menold: 2557
+        women: 4867
+        children: 5629
+        unknown: 878
+    - label: 2026, January to June
+      total: 11884
+      values:
+        menyoung: 3254
+        menmid: 4244
+        menold: 648
+        women: 1492
+        children: 1730
+        unknown: 516
+- kind: dataTable
+  id: crossing-risk-and-price
+  title: Deaths and prices on the Channel route
+  subtitle: Confirmed deaths and reported prices, 2018–2026
+  description: Confirmed deaths related to small-boat crossings, and reported prices that smugglers charge, as the Migration Observatory compiles them.
+  caption: One row per measure
+  sources:
+    - 37
+    - 38
+  columns:
+    - key: measure
+      label: Measure
+      rowHeader: true
+    - key: value
+      label: Figure
+      sortable: false
+  rows:
+    - measure: Deaths, 2024
+      value:
+        value: "73"
+        sources:
+          - 37
+    - measure: Deaths, 2025
+      value:
+        value: "24"
+        sources:
+          - 37
+    - measure: Deaths, 2018–2025
+      value:
+        value: "162"
+        sources:
+          - 37
+    - measure: Price, 2018
+      value:
+        value: Around €14,000
+        sources:
+          - 38
+    - measure: Price, 2024
+      value:
+        value: Well under €4,000
+        sources:
+          - 38
+    - measure: Price, early 2026 (media investigations)
+      value:
+        value: Around €1,500
+        sources:
+          - 38
+- kind: dataTable
+  id: latest-year-and-cause
+  title: The latest year of crossings
+  subtitle: Year to June 2026, and what explains the fall
+  description: How many people arrived by small boat in the latest year, and what researchers can say about why fewer came.
+  caption: One row per finding
+  sources:
+    - 2
+    - 5
+  columns:
+    - key: what
+      label: Finding
+      rowHeader: true
+    - key: says
+      label: What the source says
+      sortable: false
+  rows:
+    - what: Arrivals, year to June 2026
+      says:
+        value: 33,374, which is 23% lower than the year before
+        sources:
+          - 2
+    - what: Why arrivals fell
+      says:
+        value: Policy and other factors are both likely, "but it is difficult to isolate the effect of each factor"
+        sources:
+          - 5
 observationMarks:
   crossings-since-2018: {lines: ["Whole year (2026: to 22 October)"], from: "2018", to: "2026"}
   albanian-arrivals-have-stayed-low: {lines: ["Albanian nationals"], from: "2023-03", to: "2026-06"}
@@ -2349,6 +2555,11 @@ observationMarks:
   returns-to-albania-rose: {rows: ["Returns"]}
   albanian-claims-fell-by-every-route: {lines: ["Albanian nationals, every route"], from: "2022-09", to: "2026-06"}
   albanian-claims-are-not-every-entry: {lines: ["Albanian nationals, every route"]}
+  most-arrivals-are-young-men: {"rows":["2018","2019","2020","2021","2022","2023","2024","2025","2026, January to June"]}
+  people-die-crossing: {"rows":["Deaths, 2024","Deaths, 2025","Deaths, 2018–2025"]}
+  smugglers-prices: {"rows":["Price, 2018","Price, 2024","Price, early 2026 (media investigations)"]}
+  latest-year-total: {"rows":["Arrivals, year to June 2026"]}
+  fall-cause-not-isolated: {"rows":["Why arrivals fell"]}
 ---
 ## Observations {#channel-crossings-and-irregular-arrivals--observations-arrivals}
 
@@ -2492,3 +2703,29 @@ Almost half of [initial decisions](#glossary-initial-decision) on Albanian claim
 ### Returns to Albania rose sharply {#channel-crossings-and-irregular-arrivals--returns-to-albania-rose}
 
 Overall returns to Albania increased sharply following the returns agreement, and 76% of all returns of small-boat arrivals have been to Albania. [33](#source-channel-crossings-and-irregular-arrivals-33)
+
+## Observations {#channel-crossings-and-irregular-arrivals--observations-who-crosses}
+
+### Most people who cross are men aged 18 to 39 {#channel-crossings-and-irregular-arrivals--most-arrivals-are-young-men}
+
+Men aged 18 to 39 are the majority in every year, and children are the next largest group in most. The Migration Observatory says women and children in many cases join later by family reunion. [39](#source-channel-crossings-and-irregular-arrivals-39) [36](#source-channel-crossings-and-irregular-arrivals-36)
+
+## Observations {#channel-crossings-and-irregular-arrivals--observations-crossing-risk-and-price}
+
+### 162 people died in the Channel from 2018 to 2025 {#channel-crossings-and-irregular-arrivals--people-die-crossing}
+
+There were 73 confirmed deaths in 2024 and 24 in 2025. These figures may understate the toll, as not every incident is reported. [37](#source-channel-crossings-and-irregular-arrivals-37)
+
+### Media investigations put the price of a crossing at around €1,500 in early 2026 {#channel-crossings-and-irregular-arrivals--smugglers-prices}
+
+By some accounts it was around €14,000 in 2018 and well under €4,000 by 2024. The Migration Observatory says estimates are uncertain. [38](#source-channel-crossings-and-irregular-arrivals-38)
+
+## Observations {#channel-crossings-and-irregular-arrivals--observations-latest-year-and-cause}
+
+### 33,374 people crossed in the year to June 2026 {#channel-crossings-and-irregular-arrivals--latest-year-total}
+
+That was 23% fewer than the year before. [2](#source-channel-crossings-and-irregular-arrivals-2)
+
+### No one has isolated what caused the fall {#channel-crossings-and-irregular-arrivals--fall-cause-not-isolated}
+
+The Migration Observatory says UK policy and other factors probably both contributed. [5](#source-channel-crossings-and-irregular-arrivals-5)

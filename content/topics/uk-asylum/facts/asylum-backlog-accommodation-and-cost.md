@@ -575,6 +575,37 @@ sources:
       https://www.gov.uk/government/statistics/immigration-system-statistics-year-ending-june-2026/how-many-people-are-in-the-uk-asylum-system
     publisher: Home Office
     date: '2026-08-27'
+  - stance: supports
+    quote: "The UK spent 0.7 per cent of its GNI on ODA between 2013 to 2020. In 2020, the previous UK government announced a temporary reduction to ODA spend from 0.7 per cent to 0.5 per cent of UK GNI from 2021, citing the impact of the COVID-19 pandemic on the economy and, as a result, the public finances. The ODA:GNI ratio temporarily increased to 0.51 and 0.58 per cent in 2022 and 2023 respectively as a result of additional ODA made available to respond to increased levels of in-donor refugee costs. In February 2025, the UK government took the decision to reduce ODA spending to 0.3 per cent of GNI by 2027 to fund an increase in defence spending and has stated its commitment to restoring ODA spending at the level of 0.7 per cent of GNI as soon as fiscal circumstances allow."
+    title: "Statistics on International Development: Final UK ODA Spend 2025"
+    url: https://www.gov.uk/government/statistics/statistics-on-international-development-final-uk-oda-spend-2025
+    publisher: Foreign, Commonwealth & Development Office
+    date: 2026-09-17
+  - stance: supports
+    quote: "The ‘Refugees in Donor Countries’ sector covers “costs incurred in donor countries for providing basic assistance to asylum seekers and refugees from developing countries during the first 12 months of their stay” (Source: OECD Statistical Reporting Directives). … In 2025, the ‘Refugees in donor countries’ sector received the largest amount of UK ODA (£2,403 million) for the fourth consecutive year, which was a decrease of £424 million (15.0 per cent) compared to 2024 (Figure 11). This sector comprised 18.4 per cent of total UK ODA and 22.9 per cent of UK bilateral ODA."
+    title: "Statistics on International Development: Final UK ODA Spend 2025"
+    url: https://www.gov.uk/government/statistics/statistics-on-international-development-final-uk-oda-spend-2025
+    publisher: Foreign, Commonwealth & Development Office
+    date: 2026-09-17
+  - stance: supports
+    quote: "Donor | Total IDRC (£ million) | IDRC % of Total ODA\nUnited States | 4,203 | 19.13%\nGermany | 3,684 | 16.69%\nUnited Kingdom[Note 1] | 2,403 | 18.35%\nCanada | 1,301 | 23.66%\nItaly | 1,139 | 20.61%\nFrance | 857 | 7.77%\nNetherlands | 804 | 13.78%\nSwitzerland | 782 | 22.53%\nSpain | 554 | 14.20%\nIreland | 454 | 28.53%\nNorway | 214 | 4.97%\nBelgium | 207 | 10.02%\nFinland | 175 | 16.36%\nPoland | 167 | 13.57%\nSweden | 144 | 3.18%\nDenmark | 135 | 5.17%\nAustria | 85 | 6.13%\nGreece | 38 | 14.09%\nJapan | 27 | 0.22%\nLatvia | 16 | 24.05%\nLithuania | 13 | 8.94%\nNew Zealand | 10 | 1.98%\nPortugal | 7 | 1.56%\nSlovenia | 6 | 4.52%\nIceland | 5 | 5.32%\nHungary | 3 | 1.32%\nEstonia | 2 | 2.79%\nCzechia | 2 | 0.51%\nRomania | 2 | 0.36%\nKorea | 1 | 0.03%\nSlovak Republic | 1 | 0.50%\nLuxembourg | 0 | 0.01%\nAustralia | 0 | 0.00%"
+    title: Statistics on International Development chart tables, Table C15
+    url: https://www.gov.uk/government/statistics/statistics-on-international-development-final-uk-oda-spend-2025
+    publisher: Foreign, Commonwealth & Development Office
+    date: 2026-10-28
+    fileUrl: https://assets.publishing.service.gov.uk/media/6adf3aadd798ae11e9bc5cd5/Chart-tables-Statistics-on-International-Development-final-UK-ODA-spend-2025.ods
+  - stance: supports
+    quote: In 2026, the Regional Refugee Response Plan calls for USD 1.6 billion to support 5.9 million refugees and their host communities across the Central African Republic, Chad, Egypt, Ethiopia, Libya, South Sudan, and Uganda.
+    title: 2026 Sudan Regional Refugee Response Plan
+    url: https://data.unhcr.org/fr/documents/download/121204
+    publisher: UNHCR and partners
+    date: 2026-02
+  - stance: supports
+    quote: In 2024/25, the average daily cost of housing an asylum seeker in a hotel can be estimated at £170 per person, compared to £27 for other types of accommodation— over six times more expensive.
+    title: Asylum accommodation in the UK
+    url: https://migrationobservatory.ox.ac.uk/resources/briefings/asylum-accommodation-in-the-uk/
+    publisher: Migration Observatory, University of Oxford
+    date: 2026-05-27
 series:
   title: 'Waiting for an asylum decision or appeal'
   subtitle: 'Initial decisions and open tribunal appeals, UK, 2015–2026'
@@ -1377,6 +1408,197 @@ additionalSeries:
                 value: 3866
               - period: '2026-06'
                 value: 4204
+  - id: aid-at-home
+    title: UK aid spent on refugees in the UK
+    subtitle: Share of the overseas aid budget, 2021–2025
+    description: Aid rules let a donor count the first 12 months of basic support for asylum seekers and refugees at home.
+    periodLabel: Year
+    coverage:
+      from: "2021"
+      to: "2025"
+      note: Table C11 begins in 2021.
+    breaks: []
+    source:
+      stance: supports
+      quote: |-
+        Year | Total IDRC ODA(£ millions) | % of total ODA
+        2021 | 1,052 | 9.21
+        2022 | 3,690 | 28.86
+        2023 | 4,273 | 27.85
+        2024 | 2,827 | 20.08
+        2025[Note 1] | 2,403 | 18.35
+      title: Statistics on International Development chart tables, Table C11
+      url: https://www.gov.uk/government/statistics/statistics-on-international-development-final-uk-oda-spend-2025
+      publisher: Foreign, Commonwealth & Development Office
+      date: 2026-10-28
+      fileUrl: https://assets.publishing.service.gov.uk/media/6adf3aadd798ae11e9bc5cd5/Chart-tables-Statistics-on-International-Development-final-UK-ODA-spend-2025.ods
+      quoteUnit: "%"
+    readings:
+      - id: aid-at-home-share
+        valuesFrom: FCDO, Statistics on International Development 2025 chart tables, Table C11
+        label: Share of aid
+        unit: percent
+        valueLabel: Share of UK aid spent on refugees and asylum seekers in the UK
+        lines:
+          - name: Spent in the UK
+            points:
+              - period: "2021"
+                value: 9.21
+              - period: "2022"
+                value: 28.86
+              - period: "2023"
+                value: 27.85
+              - period: "2024"
+                value: 20.08
+              - period: "2025"
+                value: 18.35
+  - id: aid-level
+    title: The UK overseas aid budget
+    subtitle: Aid as a share of national income, UK, 1970–2025
+    description: Official development assistance, the UK's overseas aid, as a percentage of gross national income.
+    periodLabel: Year
+    coverage:
+      from: "1970"
+      to: "2025"
+      note: The whole of Table C1.
+    breaks: []
+    source:
+      stance: supports
+      quote: "Year | Total ODA(£ million) | ODA:GNI ratio (%)Current methodology in given year\n1970 | 186 | 0.36\n1971 | 231 | 0.40\n1972 | 243 | 0.38\n1973 | 246 | 0.34\n1974 | 307 | 0.40\n1975 | 388 | 0.39\n1976 | 487 | 0.39\n1977 | 638 | 0.44\n1978 | 763 | 0.46\n1979 | 1,016 | 0.51\n1980 | 797 | 0.35\n1981 | 1,081 | 0.43\n1982 | 1,028 | 0.37\n1983 | 1,061 | 0.35\n1984 | 1,070 | 0.33\n1985 | 1,180 | 0.33\n1986 | 1,185 | 0.31\n1987 | 1,142 | 0.28\n1988 | 1,485 | 0.32\n1989 | 1,578 | 0.31\n1990 | 1,485 | 0.27\n1991 | 1,815 | 0.32\n1992 | 1,848 | 0.31\n1993 | 1,945 | 0.31\n1994 | 2,089 | 0.31\n1995 | 2,029 | 0.29\n1996 | 2,050 | 0.27\n1997 | 2,096 | 0.26\n1998 | 2,332 | 0.27\n1999 | 2,118 | 0.24\n2000 | 2,974 | 0.32\n2001 | 3,179 | 0.32\n2002 | 3,281 | 0.31\n2003 | 3,847 | 0.34\n2004 | 4,302 | 0.36\n2005 | 5,926 | 0.47\n2006 | 6,770 | 0.51\n2007 | 4,921 | 0.36\n2008 | 6,356 | 0.43\n2009 | 7,301 | 0.51\n2010 | 8,529 | 0.57\n2011 | 8,629 | 0.56\n2012 | 8,802 | 0.56\n2013 | 11,407 | 0.70\n2014 | 11,700 | 0.70\n2015 | 12,136 | 0.70\n2016 | 13,377 | 0.70\n2017 | 14,051 | 0.70\n2018 | 14,542 | 0.70\n2019 | 15,176 | 0.70\n2020 | 14,477 | 0.70\n2021 | 11,423 | 0.50\n2022 | 12,786 | 0.51\n2023 | 15,344 | 0.58\n2024 | 14,082 | 0.50\n2025 | 13,095 | 0.44"
+      title: Statistics on International Development chart tables, Table C1
+      url: https://www.gov.uk/government/statistics/statistics-on-international-development-final-uk-oda-spend-2025
+      publisher: Foreign, Commonwealth & Development Office
+      date: 2026-09-17
+      fileUrl: https://assets.publishing.service.gov.uk/media/6adf3aadd798ae11e9bc5cd5/Chart-tables-Statistics-on-International-Development-final-UK-ODA-spend-2025.ods
+      quoteUnit: "%"
+    readings:
+      - id: aid-share-of-income
+        valuesFrom: FCDO, Statistics on International Development 2025 chart tables, Table C1
+        label: Share of national income
+        unit: percent
+        valueLabel: Aid as a percentage of gross national income
+        lines:
+          - name: UK aid
+            points:
+              - period: "1970"
+                value: 0.36
+              - period: "1971"
+                value: 0.4
+              - period: "1972"
+                value: 0.38
+              - period: "1973"
+                value: 0.34
+              - period: "1974"
+                value: 0.4
+              - period: "1975"
+                value: 0.39
+              - period: "1976"
+                value: 0.39
+              - period: "1977"
+                value: 0.44
+              - period: "1978"
+                value: 0.46
+              - period: "1979"
+                value: 0.51
+              - period: "1980"
+                value: 0.35
+              - period: "1981"
+                value: 0.43
+              - period: "1982"
+                value: 0.37
+              - period: "1983"
+                value: 0.35
+              - period: "1984"
+                value: 0.33
+              - period: "1985"
+                value: 0.33
+              - period: "1986"
+                value: 0.31
+              - period: "1987"
+                value: 0.28
+              - period: "1988"
+                value: 0.32
+              - period: "1989"
+                value: 0.31
+              - period: "1990"
+                value: 0.27
+              - period: "1991"
+                value: 0.32
+              - period: "1992"
+                value: 0.31
+              - period: "1993"
+                value: 0.31
+              - period: "1994"
+                value: 0.31
+              - period: "1995"
+                value: 0.29
+              - period: "1996"
+                value: 0.27
+              - period: "1997"
+                value: 0.26
+              - period: "1998"
+                value: 0.27
+              - period: "1999"
+                value: 0.24
+              - period: "2000"
+                value: 0.32
+              - period: "2001"
+                value: 0.32
+              - period: "2002"
+                value: 0.31
+              - period: "2003"
+                value: 0.34
+              - period: "2004"
+                value: 0.36
+              - period: "2005"
+                value: 0.47
+              - period: "2006"
+                value: 0.51
+              - period: "2007"
+                value: 0.36
+              - period: "2008"
+                value: 0.43
+              - period: "2009"
+                value: 0.51
+              - period: "2010"
+                value: 0.57
+              - period: "2011"
+                value: 0.56
+              - period: "2012"
+                value: 0.56
+              - period: "2013"
+                value: 0.7
+              - period: "2014"
+                value: 0.7
+              - period: "2015"
+                value: 0.7
+              - period: "2016"
+                value: 0.7
+              - period: "2017"
+                value: 0.7
+              - period: "2018"
+                value: 0.7
+              - period: "2019"
+                value: 0.7
+              - period: "2020"
+                value: 0.7
+              - period: "2021"
+                value: 0.5
+              - period: "2022"
+                value: 0.51
+              - period: "2023"
+                value: 0.58
+              - period: "2024"
+                value: 0.5
+              - period: "2025"
+                value: 0.44
+    events:
+      - period: "2021"
+        label: Cut to 0.5%, citing the pandemic
+        source: 51
+      - period: "2025"
+        label: Cut to 0.3% by 2027 announced, to fund defence
+        source: 51
 comparisons:
   - id: support-spending
     title: 'Spending on asylum support'
@@ -1590,6 +1812,130 @@ figures:
       - site: MOD Linton-on-Ouse, North Yorkshire
         status: { value: Discussions under way, sources: [39] }
         people: Not given per site
+  - kind: series
+    id: aid-at-home
+  - kind: series
+    id: aid-level
+  - kind: barChart
+    id: aid-at-home-by-donor
+    title: Aid spent on refugees at home, by donor
+    subtitle: Share of each donor's aid, provisional, 2025
+    description: The share of each donor country's overseas aid spent on refugees and asylum seekers inside that country.
+    valueLabel: Share of aid spent at home on refugees
+    categoryLabel: Donor
+    format:
+      unit: percent
+      decimals: 2
+    sort: value
+    sources:
+      - 53
+    items:
+      - label: United States
+        value: 19.13
+      - label: Germany
+        value: 16.69
+      - label: United Kingdom
+        value: 18.35
+        highlight: true
+      - label: Canada
+        value: 23.66
+      - label: Italy
+        value: 20.61
+      - label: France
+        value: 7.77
+      - label: Netherlands
+        value: 13.78
+      - label: Switzerland
+        value: 22.53
+      - label: Spain
+        value: 14.2
+      - label: Ireland
+        value: 28.53
+      - label: Norway
+        value: 4.97
+      - label: Belgium
+        value: 10.02
+      - label: Finland
+        value: 16.36
+      - label: Poland
+        value: 13.57
+      - label: Sweden
+        value: 3.18
+      - label: Denmark
+        value: 5.17
+      - label: Austria
+        value: 6.13
+      - label: Greece
+        value: 14.09
+      - label: Japan
+        value: 0.22
+      - label: Latvia
+        value: 24.05
+      - label: Lithuania
+        value: 8.94
+      - label: New Zealand
+        value: 1.98
+      - label: Portugal
+        value: 1.56
+      - label: Slovenia
+        value: 4.52
+      - label: Iceland
+        value: 5.32
+      - label: Hungary
+        value: 1.32
+      - label: Estonia
+        value: 2.79
+      - label: Czechia
+        value: 0.51
+      - label: Romania
+        value: 0.36
+      - label: Korea
+        value: 0.03
+      - label: Slovak Republic
+        value: 0.5
+      - label: Luxembourg
+        value: 0.01
+      - label: Australia
+        value: 0
+  - kind: dataTable
+    id: cost-here-and-near
+    title: Support in Britain and near Sudan
+    subtitle: A UK hotel place, and the UN plan for Sudan's region
+    description: "What an asylum hotel place cost in Britain, and what the UN asks donors for to support Sudan's refugees in neighbouring countries. The plan is an appeal: it leaves out what host governments pay."
+    caption: One row per kind of support
+    sources:
+      - 34
+      - 54
+      - 55
+    columns:
+      - key: what
+        label: What
+        rowHeader: true
+      - key: cost
+        label: Cost
+        sortable: false
+      - key: covers
+        label: Covers
+        sortable: false
+    rows:
+      - what: Asylum hotel in Britain, April 2023 to January 2024
+        cost:
+          value: Around £127 to £148
+          sources:
+            - 34
+        covers: One person for one night
+      - what: Asylum hotel in Britain, 2024/25
+        cost:
+          value: £170 on average
+          sources:
+            - 55
+        covers: One person for one day
+      - what: UN plan for Sudan's region, 2026
+        cost:
+          value: USD 1.6 billion
+          sources:
+            - 54
+        covers: 5.9 million refugees and people in host communities for a year
 observationMarks:
   queue-moved-to-appeals: {lines: ["People awaiting an initial decision", "Asylum and protection appeals open at the tribunal"], from: "2022-06", to: "2026-06"}
   support-costs-about-4bn-a-year: {rows: ["2024-25"]}
@@ -1612,6 +1958,10 @@ observationMarks:
   hotel-shares-date-from-2024: {rows: ["Share of people in asylum accommodation", "Share of the contracts' cost"]}
   appeals-queue-fourteen-times: {lines: ["Asylum and protection appeals open at the tribunal"], from: "2022-06", to: "2026-06"}
   asylum-appeal-takes-72-weeks: {rows: ["Asylum and protection"]}
+  aid-spent-in-britain: {"from":"2021","to":"2025"}
+  aid-budget-cut: {"from":"2020","to":"2025"}
+  uk-among-high-donors: {"rows":["United Kingdom"]}
+  support-near-home-costs-less: {"rows":["Asylum hotel in Britain, April 2023 to January 2024","Asylum hotel in Britain, 2024/25","UN plan for Sudan's region, 2026"]}
 ---
 ## Observations {#asylum-backlog-accommodation-and-cost--observations-queue}
 
@@ -1726,3 +2076,27 @@ In March 2024 the NAO reported the Home Office's own analysis that, including su
 ### Other European countries also house asylum seekers in large sites {#asylum-backlog-accommodation-and-cost--europe-uses-large-sites-too}
 
 In the NAO's comparison countries, Germany houses asylum seekers in initial reception centres for up to 18 months before collective centres, and most people entitled to asylum accommodation in the Netherlands in early 2025 stayed in emergency sites such as halls, ships and tents. The NAO compared how these systems work, not what they cost per person, so there is no like-for-like cost comparison with the UK here. [46](#source-asylum-backlog-accommodation-and-cost-46) [47](#source-asylum-backlog-accommodation-and-cost-47)
+
+## Observations {#asylum-backlog-accommodation-and-cost--observations-aid-at-home-share}
+
+### Nearly a fifth of Britain's aid was spent on refugees and asylum seekers in Britain in 2025 {#asylum-backlog-accommodation-and-cost--aid-spent-in-britain}
+
+The share was 18.4% in 2025, down from more than a quarter in 2022 and 2023. It counts only the first 12 months of support. [52](#source-asylum-backlog-accommodation-and-cost-52) [60](#source-asylum-backlog-accommodation-and-cost-60)
+
+## Observations {#asylum-backlog-accommodation-and-cost--observations-aid-share-of-income}
+
+### Aid fell from 0.7% of national income to 0.5% in 2021, and lower in 2025 {#asylum-backlog-accommodation-and-cost--aid-budget-cut}
+
+The 2021 cut cited the pandemic. Aid rose in 2022 and 2023 to meet refugee costs at home. The cut announced in 2025 is to fund defence, with a stated aim of restoring 0.7% when finances allow. [51](#source-asylum-backlog-accommodation-and-cost-51) [61](#source-asylum-backlog-accommodation-and-cost-61)
+
+## Observations {#asylum-backlog-accommodation-and-cost--observations-aid-at-home-by-donor}
+
+### Britain spends a larger share of its aid on refugees at home than most donors {#asylum-backlog-accommodation-and-cost--uk-among-high-donors}
+
+Its share ranked seventh among the donors in 2025, below Ireland, Latvia, Canada, Switzerland, Italy and the United States. [53](#source-asylum-backlog-accommodation-and-cost-53)
+
+## Observations {#asylum-backlog-accommodation-and-cost--observations-cost-here-and-near}
+
+### The UN's plan for Sudan's refugees asks USD 1.6 billion to support 5.9 million people for a year {#asylum-backlog-accommodation-and-cost--support-near-home-costs-less}
+
+A hotel place in Britain cost £170 a person a day in 2024/25. The plan is an appeal that counts host communities, so it is not the full cost of keeping a refugee. [54](#source-asylum-backlog-accommodation-and-cost-54) [34](#source-asylum-backlog-accommodation-and-cost-34) [55](#source-asylum-backlog-accommodation-and-cost-55)

@@ -488,6 +488,42 @@ sources:
     localFile: datasets/assets.publishing.service.gov.uk/family-reunion-visa-grants-datasets-jun-2026.xlsx
     publisher: Home Office
     date: '2026-08-27'
+  - stance: supports
+    quote: To claim asylum in the UK, a person must be in the UK. It is usually not possible to apply from outside the country, such as at a UK embassy abroad. A recent (and limited) exception to this has been the UK’s one-in-one-out returns deal with France, which since July 2025 has enabled some people who arrived in the UK by small boat to be returned to France, in exchange for the UK receiving an equal number of migrants from France, who may apply to come to the UK legally where they can then apply for asylum.
+    title: Asylum in the UK
+    url: https://migrationobservatory.ox.ac.uk/resources/briefings/asylum-in-the-uk/
+    publisher: Migration Observatory, University of Oxford
+    date: 2026-07-14
+  - stance: supports
+    quote: Since March 2022, 131,000 Ukrainians have arrived in the UK through the Homes for Ukraine scheme (the scheme). The scheme is uncapped in terms of arrivals. Neither the Home Office nor the Department for Levelling Up, Housing & Communities (DLUHC) formally forecast the number of arrivals the UK could expect under the scheme before launching it.
+    title: "Investigation into the Homes for Ukraine scheme: summary"
+    url: https://www.nao.org.uk/wp-content/uploads/2023/10/investigation-into-the-homes-for-ukraine-scheme-summary.pdf
+    publisher: National Audit Office
+    date: 2023-10
+  - stance: supports
+    quote: Around half (48%) of Homes for Ukraine scheme sponsors were providing accommodation at the time of the survey, and around half of those (48%) had been providing accommodation for 12 months or more.
+    title: "Experiences of Homes for Ukraine scheme sponsors, UK: 10 to 21 August 2023"
+    url: https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/internationalmigration/bulletins/experiencesofhomesforukraineschemesponsorsuk/10to21august2023
+    publisher: Office for National Statistics
+    date: 2023-10-04
+  - stance: supports
+    quote: Most sponsors (60%) said they would consider hosting people from other countries if there was a future refugee crisis.
+    title: "Experiences of Homes for Ukraine scheme sponsors, UK: 10 to 21 August 2023"
+    url: https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/internationalmigration/bulletins/experiencesofhomesforukraineschemesponsorsuk/10to21august2023
+    publisher: Office for National Statistics
+    date: 2023-10-04
+  - stance: supports
+    quote: Who are the refugees? And where are they? 36 percent of the world's refugees are hosted by just six countries, Colombia, Germany, Turkey, Uganda, Iran, and Chad. Nearly two-thirds live in countries neighbouring their own. More than a quarter are hosted in the world's lowest, least developed countries. 39 percent of refugees are children, a proportion far exceeding their share of the world population as a whole.
+    title: "UNHCR / Refugees Global Trends Report"
+    url: https://media.un.org/unifeed/en/asset/d358/d3585989
+    publisher: United Nations UNifeed
+    date: 2026-06-10
+  - stance: supports
+    quote: "Country | Refugee Population as of Dec 2025 (pre & post 2023 refugees)\nCentral African Republic | 40,814\nChad | 1,312,633\nEgypt | 1,560,779\nEthiopia | 94,082\nLibya | 538,000\nSouth Sudan | 711,497\nUganda | 91,963\nTOTAL | 4,349,768"
+    title: "2026 Sudan Regional Refugee Response Plan, Population Planning Figures (country and refugee population columns)"
+    url: https://data.unhcr.org/fr/documents/download/121204
+    publisher: UNHCR and partners
+    date: 2026-02
 series:
   title: 'People offered a safe and legal route'
   subtitle: 'Granted from outside the UK, by route, 2010–2025'
@@ -1042,7 +1078,7 @@ figures:
       - { id: planned, label: Planned }
     events:
       - { date: '2021-01-31', title: BN(O) route opens for Hong Kong BN(O) passport holders, category: opened, source: 8 }
-      - { date: '2021-02', title: UK Resettlement Scheme starts, category: opened, source: 45 }
+      - { date: '2021-02', title: UK Resettlement Scheme starts, category: opened, source: 51 }
       - { date: '2022-03', title: Ukraine Family and Sponsorship Schemes open, category: opened, source: 3 }
       - { date: '2024-02-19', title: Ukraine Family Scheme closes to new applications, category: closed, source: 7 }
       - { date: '2025-07', title: Afghan schemes close to new applicants and referrals, category: closed, source: 12 }
@@ -1051,6 +1087,125 @@ figures:
       - { date: '2026-09-28', title: 'Arrivals expected "to number in the hundreds at first", then "into the low thousands"', category: planned, source: 26 }
       - { date: '2026-09-28', title: 'UK Resettlement Scheme reopens for new referrals, with a yearly cap', category: opened, significance: major, source: 24 }
       - { date: '2027', title: First arrivals expected in autumn on new community and student sponsorship routes, category: planned, source: 28 }
+  - kind: barChart
+    id: where-refugees-live
+    title: Where Sudan's refugees live
+    subtitle: Refugees from Sudan by host country, December 2025
+    description: Refugees from Sudan in the seven countries in the UN's regional response plan, including those who fled before 2023. All but Uganda border Sudan.
+    valueLabel: Sudanese refugees
+    categoryLabel: Host country
+    format:
+      unit: count
+    sort: value
+    sources:
+      - 49
+    items:
+      - label: Central African Republic
+        value: 40814
+      - label: Chad
+        value: 1312633
+      - label: Egypt
+        value: 1560779
+      - label: Ethiopia
+        value: 94082
+      - label: Libya
+        value: 538000
+      - label: South Sudan
+        value: 711497
+      - label: Uganda
+        value: 91963
+  - kind: dataTable
+    id: route-rules
+    title: Who can use a route, and any limit
+    subtitle: UK rules on numbers and where a person applies
+    description: Where a person must be to claim asylum, and whether the number of people on two humanitarian routes is limited.
+    caption: One row per route
+    sources:
+      - 44
+      - 45
+      - 26
+    columns:
+      - key: route
+        label: Route
+        rowHeader: true
+      - key: rule
+        label: Rule
+        sortable: false
+    rows:
+      - route: Asylum claim
+        rule:
+          value: A person must be in the UK; applying from abroad is usually not possible
+          sources:
+            - 44
+      - route: Homes for Ukraine
+        rule:
+          value: Uncapped in terms of arrivals
+          sources:
+            - 45
+      - route: UK Resettlement Scheme, from September 2026
+        rule:
+          value: A cap set each year
+          sources:
+            - 26
+      - route: UK Resettlement Scheme, 2021 to June 2026
+        rule:
+          value: 4,589 refugees resettled; no quota for new referrals in 2025/26
+          sources:
+            - 51
+            - 22
+  - kind: dataTable
+    id: ukraine-hosts
+    title: Hosts in Homes for Ukraine
+    subtitle: Survey of registered sponsors, UK, August 2023
+    description: Homes for Ukraine lets people in the UK sponsor and house Ukrainians. What registered sponsors told the ONS.
+    caption: One row per finding
+    sources:
+      - 46
+      - 47
+    columns:
+      - key: finding
+        label: Finding
+        rowHeader: true
+      - key: share
+        label: Share of sponsors
+        sortable: false
+    rows:
+      - finding: Housing guests at the time of the survey
+        share:
+          value: 48%
+          sources:
+            - 46
+      - finding: Would consider hosting people from other countries
+        share:
+          value: 60%
+          sources:
+            - 47
+  - kind: dataTable
+    id: refugees-worldwide
+    title: Where refugees live, worldwide
+    subtitle: End of 2025, as the UN refugee agency reports
+    description: Where the world's refugees live, as the UN High Commissioner for Refugees summed it up in June 2026.
+    caption: One row per finding
+    sources:
+      - 48
+    columns:
+      - key: what
+        label: Finding
+        rowHeader: true
+      - key: says
+        label: What the source says
+        sortable: false
+    rows:
+      - what: In countries neighbouring their own
+        says:
+          value: Nearly two-thirds
+          sources:
+            - 48
+      - what: In the least developed countries
+        says:
+          value: More than a quarter
+          sources:
+            - 48
 observationMarks:
   nationalities-with-safe-routes-rarely-came-by-boat: {rows: ["Ukraine", "Hong Kong"]}
   family-reunion-was-the-main-route-for-boat-nationalities: {rows: ["Eritrea", "Sudan", "Iran"]}
@@ -1069,6 +1224,13 @@ observationMarks:
   small-boat-counts-miss-some-people: {rows: ["All other nationalities, stateless and not recorded"]}
   afghans-large-route-still-crossed: {rows: ["Afghanistan"]}
   eritreans-and-sudanese-largest-boat-groups: {rows: ["Eritrea", "Sudan"]}
+  most-refugees-live-next-door: {"rows":["In countries neighbouring their own"]}
+  sudanese-refugees-next-door: {"rows":["Egypt","Chad"]}
+  claim-must-be-made-in-uk: {"rows":["Asylum claim"]}
+  ukraine-scheme-uncapped: {"rows":["Homes for Ukraine"]}
+  britons-housed-ukrainians: {"rows":["Housing guests at the time of the survey"]}
+  hosts-would-take-others: {"rows":["Would consider hosting people from other countries"]}
+  ukrs-total-and-quota: {"rows":["UK Resettlement Scheme, 2021 to June 2026"]}
 ---
 ## Observations {#safe-and-legal-routes--observations-all-routes}
 
@@ -1134,7 +1296,7 @@ it as "closed to new applications pending a review"
 
 The UK Resettlement Scheme began in February 2021 and has resettled 4,589
 refugees, from 1,269 in its first year to 537 in 2025
-[45](#source-safe-and-legal-routes-45)
+[51](#source-safe-and-legal-routes-51)
 [13](#source-safe-and-legal-routes-13)
 [39](#source-safe-and-legal-routes-39). In September 2025 the Home Office
 confirmed "there is currently no 2025/2026 quota for new referrals to the
@@ -1147,7 +1309,7 @@ UKRS", with arrivals continuing only for people already accepted
 
 In 2018 to 2020 there were 10,608 small-boat arrivals in total; from 2021 the
 yearly figure has been between 29,000 and 46,000
-[47](#source-safe-and-legal-routes-47). Out-of-country safe-route grants were
+[53](#source-safe-and-legal-routes-53). Out-of-country safe-route grants were
 above that every year from 2021, peaking at 273,413 in 2022
 [38](#source-safe-and-legal-routes-38). By 2025 the two were close, as the
 Ukraine and BN(O) schemes shrank. Most of the grants went to nationalities
@@ -1277,6 +1439,42 @@ small-boat arrivals and 12,888 family reunion grants in the year to June 2026
 [29](#source-safe-and-legal-routes-29)
 [16](#source-safe-and-legal-routes-16). Family reunion remains closed
 [20](#source-safe-and-legal-routes-20).
+
+## Observations {#safe-and-legal-routes--observations-where-refugees-live}
+
+### In all, 4,349,768 Sudanese refugees live in seven countries nearby {#safe-and-legal-routes--sudanese-refugees-next-door}
+
+The largest numbers are in Egypt and Chad. Six of the seven border Sudan; Uganda does not. The count is for December 2025. [49](#source-safe-and-legal-routes-49)
+
+## Observations {#safe-and-legal-routes--observations-route-rules}
+
+### A person must be in the UK to claim asylum {#safe-and-legal-routes--claim-must-be-made-in-uk}
+
+It is usually not possible to apply from abroad. The pilot with France has been a limited exception. [44](#source-safe-and-legal-routes-44)
+
+### Homes for Ukraine had no cap on arrivals {#safe-and-legal-routes--ukraine-scheme-uncapped}
+
+The National Audit Office found the scheme uncapped, with no formal forecast of arrivals made before its launch. [45](#source-safe-and-legal-routes-45)
+
+### The UK Resettlement Scheme has resettled 4,589 refugees since 2021 {#safe-and-legal-routes--ukrs-total-and-quota}
+
+It had no quota for new referrals in 2025/26, and reopened in September 2026. [51](#source-safe-and-legal-routes-51) [22](#source-safe-and-legal-routes-22)
+
+## Observations {#safe-and-legal-routes--observations-ukraine-hosts}
+
+### About half of registered sponsors were housing Ukrainians in August 2023 {#safe-and-legal-routes--britons-housed-ukrainians}
+
+In the ONS survey, 48% of registered Homes for Ukraine sponsors were providing accommodation at the time. [46](#source-safe-and-legal-routes-46)
+
+### Most sponsors would consider hosting people from other countries {#safe-and-legal-routes--hosts-would-take-others}
+
+60% said they would consider it in a future refugee crisis. [47](#source-safe-and-legal-routes-47)
+
+## Observations {#safe-and-legal-routes--observations-refugees-worldwide}
+
+### Nearly two-thirds of the world's refugees live in countries next to their own {#safe-and-legal-routes--most-refugees-live-next-door}
+
+More than a quarter live in the least developed countries, the UN High Commissioner for Refugees said in June 2026. [48](#source-safe-and-legal-routes-48)
 
 ## More {#safe-and-legal-routes--more-all-routes}
 

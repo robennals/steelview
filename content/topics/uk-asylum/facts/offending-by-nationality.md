@@ -103,6 +103,12 @@ sources:
       https://migrationobservatory.ox.ac.uk/resources/briefings/migrants-and-crime-in-the-uk/
     publisher: 'The Migration Observatory, University of Oxford'
     date: '2026-08-18'
+  - stance: supports
+    quote: We study empirically how past exposure to conflict in origin countries makes migrants more violence-prone in their host country, focusing on asylum seekers in Switzerland. We exploit a novel and unique dataset on all crimes reported in Switzerland by the nationalities of perpetrators and of victims over 2009–2016. Our baseline result is that cohorts exposed to civil conflict/mass killing during childhood are 35 percent more prone to violent crime than the average cohort. This effect is particularly strong for early childhood exposure and is mostly confined to co-nationals, consistent with inter-group hostility persisting over time. We exploit cross-region heterogeneity in public policies within Switzerland to document which integration policies are best able to mitigate the detrimental effect of past conflict exposure on violent criminality. We find that offering labor market access to asylum seekers eliminates two-thirds of the effect.
+    title: "The Violent Legacy of Conflict: Evidence on Asylum Seekers, Crime, and Public Policy in Switzerland"
+    url: https://www.aeaweb.org/articles?id=10.1257/aer.20170263
+    publisher: American Economic Review
+    date: 2019-12
 figures:
   - kind: estimateRange
     id: conviction-rates-asylum-nationalities
@@ -263,12 +269,65 @@ figures:
       high: 1.2
       year: "2021"
       sources: [4]
+  - kind: dataTable
+    id: conflict-exposure
+    title: Childhood war and later violent crime
+    subtitle: Asylum seekers in Switzerland, 2009–2016
+    description: What a study of crimes reported in Switzerland found about asylum seekers who lived through war or mass killing as children.
+    caption: One row per finding
+    sources:
+      - 9
+    columns:
+      - key: finding
+        label: Finding
+        rowHeader: true
+      - key: result
+        label: Result
+        sortable: false
+    rows:
+      - finding: Exposed to war or mass killing in childhood
+        result: 35% more prone to violent crime than the average cohort
+      - finding: Whom the effect falls on
+        result: Mostly confined to co-nationals
+      - finding: With access to the labour market
+        result: Two-thirds of the effect is eliminated
+  - kind: dataTable
+    id: what-is-recorded
+    title: What crime statistics record
+    subtitle: England and Wales, 2026
+    description: Whether published crime statistics say who had claimed asylum, and whether detailed figures by nationality are published.
+    caption: One row per finding
+    sources:
+      - 5
+      - 7
+    columns:
+      - key: what
+        label: Finding
+        rowHeader: true
+      - key: says
+        label: What the source says
+        sortable: false
+    rows:
+      - what: An offender's immigration status
+        says:
+          value: No published data, including on whether they had claimed asylum
+          sources:
+            - 5
+      - what: Detailed convictions by nationality
+        says:
+          value: The Ministry of Justice is appealing an order on their release
+          sources:
+            - 7
 observationMarks:
   no-asylum-status-data: {rows: ["Afghanistan", "Iraq", "Iran"]}
   afghan-sex-offence-rate: {rows: ["Afghanistan", "Middle East and north Africa", "Sub-Saharan Africa"]}
   asylum-nationalities-all-offences: {rows: ["Iraq", "Afghanistan", "Iran", "Syria"]}
   nationality-is-not-status: {whole: true}
   detailed-figures-withheld: {rows: ["Afghanistan", "Iraq", "Iran", "Syria"]}
+  war-exposure-raises-violent-crime: {"rows":["Exposed to war or mass killing in childhood","Whom the effect falls on"]}
+  work-access-offsets-war-effect: {"rows":["With access to the labour market"]}
+  status-not-recorded: {"rows":["An offender's immigration status"]}
+  release-under-appeal: {"rows":["Detailed convictions by nationality"]}
 ---
 ## Observations {#offending-by-nationality--observations-conviction-rates-asylum-nationalities}
 
@@ -293,3 +352,23 @@ Naturalised citizens are recorded as British, and country of birth is not record
 ### The detailed figures are withheld, and the Ministry is appealing an order to publish them {#offending-by-nationality--detailed-figures-withheld}
 
 The Ministry of Justice refused a request for convictions by nationality and offence group; in June 2026 the Information Commissioner ruled that it must release them, withholding only counts under five. [6](#source-offending-by-nationality-6) The Ministry has appealed the ruling to a tribunal; it says it already publishes a "range of statistical breakdowns" on foreign offenders. [7](#source-offending-by-nationality-7)
+
+## Observations {#offending-by-nationality--observations-conflict-exposure}
+
+### In Switzerland, asylum seekers who lived through war as children were more prone to violent crime {#offending-by-nationality--war-exposure-raises-violent-crime}
+
+Those cohorts were 35% more prone to violent crime than average. The extra violence was mostly confined to co-nationals. [9](#source-offending-by-nationality-9)
+
+### Letting asylum seekers work removed two-thirds of that effect {#offending-by-nationality--work-access-offsets-war-effect}
+
+The study compared Swiss regions with different policies on labour market access. [9](#source-offending-by-nationality-9)
+
+## Observations {#offending-by-nationality--observations-what-is-recorded}
+
+### No published statistics show whether an offender had claimed asylum {#offending-by-nationality--status-not-recorded}
+
+There is no published data on the immigration status of people who are convicted. [5](#source-offending-by-nationality-5)
+
+### The Ministry of Justice is appealing an order on detailed figures {#offending-by-nationality--release-under-appeal}
+
+The Ministry says it already publishes a range of breakdowns. [7](#source-offending-by-nationality-7)
