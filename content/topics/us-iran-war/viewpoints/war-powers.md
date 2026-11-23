@@ -1,30 +1,30 @@
 ---
 name: Congress has never voted to approve this war, so it is against the law
 shortName: Congress decides
-summary: The Constitution gives Congress the power to declare war, and the administration did not seek its approval before the 60-day mark. The House passed three resolutions to end it, and the Senate passed one of those votes. The President reported each new strike as a new action.
+summary: The Constitution gives Congress the power to declare war, and the administration did not ask for its approval before the War Powers law's 60-day mark. Every vote Congress has held on the war was on ending it, and both chambers passed one such resolution. The war should stop unless Congress votes for it.
 order: 4
 draft: ai
 ---
-Under the Constitution, a President cannot take the country to war alone. Congress has never voted to approve this war, so it is against the law. It should stop unless Congress votes for it.
+In America, the people's representatives decide whether the country goes to war. Congress has never voted for this one. The President should stop it unless Congress votes to approve it.
 
-### Only Congress can declare war, and it has not approved this one
+### Only Congress can take the country to war, and it has not approved this one
 
-The Constitution gives Congress, not the President, the power to declare war. Every vote Congress has held on the war, as far as the record shows, was on ending it, and the administration did not seek Congress's approval before the 60-day mark. The President says he acted as Commander in Chief, in defence of allies, and filed his reports "consistent with" the War Powers law. But commanding the forces is not choosing war. The rule exists so that the people, through their representatives, decide whether Americans are sent to kill and die.
+The Constitution gives Congress, not the President, the power to declare war. That rule exists so that the people, through their representatives, decide when Americans are sent to kill and die. The administration did not ask Congress for approval before the War Powers law's 60-day mark, and every vote Congress has held on the war was on ending it. The President says he acted as Commander in Chief, to defend America's allies. But commanding the forces is not choosing war.
 
 ### When Congress has voted, it has voted to end the war
 
-After narrowly rejecting three resolutions, the House passed three to end the war, and the Senate passed one of those resolutions. So both chambers have voted to end it. Voters wanted a say too: most said the President should have asked Congress first.
+Congress has said no. After narrowly rejecting three resolutions to end the war, the House passed the next three. In June the Senate passed one of them, 50 to 48, so both chambers have voted to end the war. Voters wanted a say too: in March, most said the President should have asked Congress before acting.
 
 ### The war has run past the law's 60-day limit, whatever the White House calls it
 
-Two months in, the White House told Congress the fighting had ended. Then new strikes followed. It reported each new strike as a new action, yet the first blockade was still turning ships back weeks after that letter. The War Powers law sets a 60-day limit on using force without Congress's approval, and one war does not become many by giving each strike a new start date.
+The War Powers law gives a President 60 days of fighting without Congress's approval, then requires the troops to be withdrawn. Two months in, the White House told Congress the fighting had ended. Yet its blockade was still turning ships back weeks after that letter, and from June it reported new strikes. It reported each new strike as a new action. But one war does not become many by giving each strike its own start date.
 
-### Presidents have long sidestepped this rule, which is why it must be enforced now
+### Presidents have long dodged this rule, which is why it must be enforced now
 
-From 1975 to 2017, presidents almost never formally started the 60-day clock. While presidents have used force abroad hundreds of times without a declaration of war, that does not make it lawful. A rule still counts when it is often broken: rules should mean what they say.
+This is not the first time a President has gone around Congress. Of the 168 reports presidents sent Congress under the War Powers law from 1975 to 2017, only one started its 60-day clock. Presidents have sent forces into conflict hundreds of times, against eleven declarations of war. While presidents of both parties have acted first, a rule does not lapse because it is often broken. A real danger is a reason to ask Congress quickly, not to skip it.
 
 ### So Congress should vote either to approve this war or to end it
 
-Congress should hold a vote that counts. It should either approve the war, with clear goals and limits, or end it. Members who support the war should be willing to vote for it. Until they do, the war has no legal basis.
+Congress should hold a vote that counts. It should either approve the war, with clear goals and limits, or end it by law. The resolutions passed so far may not bind the President, because he is not asked to sign them. A binding vote would face a veto, which two-thirds of each chamber would have to override. That is hard. But it puts every member on the record, and members who support the war should be willing to vote for it.
 
-While the votes so far may not bind the President, they still matter. Research shows Congress shapes how far wars go and how long they last.
+Even votes that do not bind still matter: research finds that Congress shapes how far wars go and how long they last.

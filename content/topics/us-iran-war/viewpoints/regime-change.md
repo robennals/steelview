@@ -1,32 +1,34 @@
 ---
-name: Iran's government kills its own people, and America should stand with Iranians while they bring it down
+name: The danger is Iran's government itself, and America should stand with the Iranians who want it gone
 shortName: Stand with Iranians
-summary: Iran's government killed thousands of protesters in the crackdown of winter 2025–26 and put more people to death in 2025 than in any year since 1989. Few Iranians in one online survey want it. Iranians must end it themselves, and the US should stand with them.
+summary: Iran's government killed thousands of protesters in the winter of 2025–26, and in 2025 it put more people to death than in any year since 1989. The same rulers plot against their opponents abroad and control the nuclear programme. Few Iranians in one large survey want them. America should make no deal that rescues them, and stand with Iranians while they end this government themselves.
 order: 5
 draft: ai
 ---
-Iran's government kills its own people by the thousands. It has no right to be left alone. Iranians must bring it down themselves, and the US should stand with them while they do.
+Iran's government kills its own people, hunts its critics abroad and controls the nuclear programme. Every one of these dangers comes from the same rulers. America should make no deal that rescues them, and should stand with the Iranians who want them gone.
 
-### The government kills people who protest
+### The government answers protest with mass killing
 
-In the crackdown of winter 2025–26, thousands of people were killed, most of them protesters, and the authorities arrested more than 50,000. A UN team found crimes against humanity. This is not a single bad year: each of the last three waves of protest was crushed with deadly force.
+Iran's rulers kill people who protest. In the crackdown of winter 2025–26, at least 7,007 people were confirmed killed, most of them protesters, and more than 50,000 were arrested. A UN team found crimes against humanity. This was not a single bad year: each of the last three waves of protest, in 2019, 2022 and 2026, was put down with lethal force.
 
 ### The killing goes on between protests, whoever wins elections
 
-In 2025, Iran put more people to death than in any year since 1989, and executions rose under every recent president, fastest under the moderate one. So voting in a new president has not stopped the killing. Iran carried out most of the world's known executions in 2025, and it goes after critics abroad too: most recent Iranian plots in Europe targeted opponents of the government.
+Voting has not changed this government. The rate of executions rose under every recent president, and fastest under the moderate one elected in 2024. In 2025 Iran put more people to death than in any year since 1989, and carried out most of the executions recorded anywhere in the world. Elections offer no way out: up to 2021, about one in a hundred or fewer of those who registered to run for president were allowed on the ballot, and the new Supreme Leader is the old one's son.
+
+### The same rulers threaten people far beyond Iran
+
+The danger abroad comes from the same people. Britain's security service says it tracked more than twenty potentially lethal Iran-backed plots in a single year. Most recent Iranian plots in Europe targeted the government's own critics. And whether Iran builds a bomb is the Supreme Leader's decision. A deal that limits uranium leaves the people who make these choices in charge.
 
 ### Iranians are turning away from their government
 
-Turnout in the last two presidential elections was the lowest since the revolution. In one online survey, few Iranians said they want the current system of government, and most said they were glad to see it weakened during the war. Nor do Iranians choose their top leader: the new Supreme Leader is the son of the old one.
+Iranians appear to want something else. In one large online survey, only about one in eight chose the Islamic Republic as the system they prefer, and about three in five said they were glad to see it weakened during the war. Turnout in the last two presidential elections was the lowest since the revolution. While about as many Iranians called the strikes an attack on Iran as called them help, that is a reason for America to back Iranians, not to fight for them.
 
-### Iranians must win this themselves, and outsiders can only stand with them
+### Iranians must win this themselves, and America can help them hold out
 
-Peaceful uprisings have won far more often when the security forces turned against the government. Outside backing has made no difference to whether peaceful uprisings win. And overthrowing a government from outside more than doubles the risk of civil war.
+Change has to come from inside Iran. Peaceful uprisings have won about twice as often as armed ones, and far more often where the security forces turned against the rulers. Outside backing has made no difference to whether peaceful uprisings win, and governments imposed from outside more than double the risk of civil war. So America should not try to install a government. Its part is to keep the rulers weak and the people heard.
 
-So America cannot win this for Iranians, and should not try to impose a government. Democracy has followed only where conditions helped it. In one survey, about as many Iranians called the strikes an attack on Iran as called them humanitarian help, and more than 20,000 people were arrested after the June 2025 war.
+### So America should make no deal that props up Iran's rulers, and stand with Iranians until they are free
 
-### So America should stand with Iranians while they end this government themselves
+A nuclear deal that lifts sanctions would give the same rulers more money to spend: Iran's economy grew in the first year of the last deal. America should refuse any deal that strengthens the security forces that kill protesters. It should protect the government's critics abroad, and help Iranians get online and talk to each other.
 
-We have a duty to help people in danger, even when help cannot decide the outcome. America can protect the government's critics abroad, help Iranians get online and talk to each other, and refuse any deal that props up the security forces that kill them.
-
-None of this has been shown to win an uprising. But Iranians have risked their lives for a better government. They want a government chosen by its people, and America should stand with them until they get it.
+None of this decides the outcome. Iranians must. But they have risked their lives for a government of their own choosing, and America should stand with them until they get it.
