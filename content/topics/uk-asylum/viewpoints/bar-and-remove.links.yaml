@@ -4,140 +4,50 @@
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
   citations:
-    - phrase: Asylum claims reached record levels in 2024 and 2025
-      href: "#fact-asylum-claims-and-decisions/claims-over-time"
-    - phrase: few people whose claims fail are recorded leaving
+    - phrase: Most people who claim asylum in Britain stay, even when their claim is refused
       href: "#fact-removals-and-what-stops-them/fewer-refused-recorded-leaving"
-    - phrase: Lord Wolfson judged that limits written within the ECHR would likely fail in court
-      href: "#fact-asylum-law-and-the-echr/wolfson-limits-inside-the-echr-likely-fail"
   verification:
     status: verified
-    textHash: f691830068d0
-    checkedAt: 2026-11-20
+    textHash: 4c40b8dc0762
+    checkedAt: 2026-11-22
+    notes:
+      - '"Stay" rests on not being recorded as leaving, which the report calls an upper bound on staying.'
 lead:
-  citations: []
+  citations:
+    - phrase: can expect to stay, whatever the answer to their claim
+      href: "#fact-removals-and-what-stops-them/fewer-refused-recorded-leaving"
   verification:
     status: verified
-    textHash: cdaac4935119
-    checkedAt: 2026-11-20
+    textHash: 27e9294eae14
+    checkedAt: 2026-11-22
 cards:
-  - heading: Far more people now claim asylum than Britain can absorb
+  - heading: By 2025, Britain was seeing more asylum claims than ever before
     visual:
       cite: "#fact-asylum-claims-and-decisions/claims-over-time"
       kind: series
       title: People claiming asylum in the UK
     citations:
-      - phrase: Asylum claims passed their 2002 peak to reach record levels in 2024 and 2025
+      - phrase: Asylum claims passed their 2002 peak
         href: "#fact-asylum-claims-and-decisions/claims-over-time"
-      - phrase: Small-boat crossings went from a few hundred in 2018 to tens of thousands a year
+      - phrase: reached record levels in 2024 and 2025
+        href: "#fact-asylum-claims-and-decisions/record-year-to-september-2025"
+      - phrase: small boats carried a few hundred people across the Channel. They went on to carry tens of thousands a year
         href: "#fact-channel-crossings-and-irregular-arrivals/crossings-since-2018"
-      - phrase: housing and supporting asylum seekers costs about £4 billion a year
+      - phrase: costs about £4 billion a year
         href: "#fact-asylum-backlog-accommodation-and-cost/support-costs-about-4bn-a-year"
-      - phrase: crossings fell sharply in 2026
+      - phrase: Crossings fell sharply in 2026
         href: "#fact-channel-crossings-and-irregular-arrivals/arrivals-fell-sharply-in-2026"
-      - phrase: no one has settled what caused the fall
-        href: "#fact-channel-crossings-and-irregular-arrivals/what-caused-the-2026-fall-is-not-settled"
       - phrase: crossings into Europe fell too
         href: "#fact-channel-crossings-and-irregular-arrivals/crossings-into-the-eu-have-also-fallen"
+      - phrase: no one has shown what caused the fall
+        href: "#fact-channel-crossings-and-irregular-arrivals/fall-cause-not-isolated"
     verification:
       status: verified
-      textHash: b92540fa7668
-      checkedAt: 2026-11-20
-  - heading: People crossing the Channel have already passed through safe countries
-    visual:
-      cite: "#fact-channel-crossings-and-irregular-arrivals/boats-leave-from-france-and-belgium"
-      kind: map
-      title: Where the small boats leave from
-    citations:
-      - phrase: The boats leave from France and Belgium
-        href: "#fact-channel-crossings-and-irregular-arrivals/boats-leave-from-france-and-belgium"
-      - phrase: few refugees can reach Britain without passing through one
-        href: "#fact-asylum-law-and-the-echr/few-reach-the-uk-without-passing-through-another-state"
-      - phrase: British law expects a refugee who stopped in another country to have sought protection there
-        href: "#fact-asylum-law-and-the-echr/uk-law-ties-article-31-to-the-first-safe-country"
-      - phrase: forbids sending a refugee back to danger
-        href: "#fact-asylum-law-and-the-echr/article-33-forbids-return"
-      - phrase: bars penalties for entering illegally
-        href: "#fact-asylum-law-and-the-echr/article-31-is-about-penalties"
-    verification:
-      status: verified
-      textHash: c304d880dffa
-      checkedAt: 2026-11-20
-  - heading: People who claim asylum can expect to stay, even if they are refused
-    visual:
-      cite: "#fact-removals-and-what-stops-them/fewer-refused-recorded-leaving"
-      kind: series
-      title: Asylum claims and later returns
-    citations:
-      - phrase: Up to 2013, over a quarter of each year's asylum claims ended with the person recorded as returned. Since 2015, under one in seven have
-        href: "#fact-removals-and-what-stops-them/fewer-refused-recorded-leaving"
-      - phrase: In 2021–2025, refusals far outran returns
-        href: "#fact-removals-and-what-stops-them/refusals-outrun-returns"
-      - phrase: in 2019 the commonest challenge from people held for removal was a fresh asylum claim
-        href: "#fact-removals-and-what-stops-them/asylum-claims-commonest-in-detention"
-      - phrase: an asylum appeal takes over a year on average
-        href: "#fact-asylum-backlog-accommodation-and-cost/asylum-appeal-takes-72-weeks"
-      - phrase: In 2017, most challenges failed
-        href: "#fact-removals-and-what-stops-them/most-issues-refused"
-    verification:
-      status: verified
-      textHash: c2c605cbddfb
-      checkedAt: 2026-11-20
-  - heading: Human-rights claims stop removals, the Home Office says
-    visual:
-      cite: "#fact-removals-and-what-stops-them/home-office-says-rights-claims-stop-removals"
-      kind: quotes
-      title: What do the Home Office and others say human-rights law does to removals?
-    citations:
-      - phrase: The Home Office says people use the right to family life, Article 8, to stop removals. It says 86% of people who made a human-rights claim while held for removal in 2022 were released
-        href: "#fact-removals-and-what-stops-them/home-office-says-rights-claims-stop-removals"
-      - phrase: foreign offenders who won on human-rights grounds alone equalled about 3% of those deported
-        href: "#fact-removals-and-what-stops-them/human-rights-wins-about-3-percent"
-      - phrase: that count misses claims of danger made inside asylum cases
-        href: "#fact-removals-and-what-stops-them/counts-miss-article-3-in-asylum-claims"
-      - phrase: no published figure counts the removals the ECHR stops
-        href: "#fact-removals-and-what-stops-them/echr-share-not-measured"
-      - phrase: The Strasbourg court itself seldom orders a removal paused
-        href: "#fact-removals-and-what-stops-them/strasbourg-rarely-stops-uk-removals"
-    verification:
-      status: verified
-      textHash: 7caad6b97d9b
-      checkedAt: 2026-11-20
-  - heading: Limits written inside the ECHR would likely fail, so Britain should leave it
-    citations:
-      - phrase: Lord Wolfson, advising the Conservative leader, judged that new limits written within the ECHR would likely fail in court
-        href: "#fact-asylum-law-and-the-echr/wolfson-limits-inside-the-echr-likely-fail"
-      - phrase: He also advised that Britain can lawfully leave, and keep the Refugee Convention
-        href: "#fact-asylum-law-and-the-echr/wolfson-withdrawal-possible-refugee-convention-unnecessary"
-      - phrase: When the Supreme Court stopped the Rwanda plan, it relied on Acts that give effect to the Refugee Convention, not only the Human Rights Act
-        href: "#fact-asylum-law-and-the-echr/refugee-convention-ban-on-return-remains"
-    verification:
-      status: verified
-      textHash: d2b3ecce94cb
-      checkedAt: 2026-11-20
-  - heading: Where crossing reliably failed, people stopped coming
-    visual:
-      cite: "#fact-deterrence-and-protection-policies/australia-arrivals-fell-after-turnbacks"
-      kind: series
-      title: "Australia: asylum-seeker boat arrivals"
-    citations:
-      - phrase: From late 2013, Australia turned asylum boats back at sea, and arrivals fell to almost none
-        href: "#fact-deterrence-and-protection-policies/australia-arrivals-fell-after-turnbacks"
-      - phrase: The Kaldor Centre, a refugee-law institute that opposes offshore processing, also ties the fall to turning boats back
-        href: "#fact-deterrence-and-protection-policies/australia-cause"
-      - phrase: Britain withdrew its own turnback policy as rarely safe in the Channel
-        href: "#fact-deterrence-and-protection-policies/uk-turnbacks-withdrawn"
-      - phrase: nearly all Albanian claims came to be refused
-        href: "#fact-channel-crossings-and-irregular-arrivals/albanian-claims-nearly-all-refused"
-      - phrase: returns to Albania rose sharply
-        href: "#fact-channel-crossings-and-irregular-arrivals/returns-to-albania-rose"
-      - phrase: Albanian asylum claims by every route fell
-        href: "#fact-channel-crossings-and-irregular-arrivals/albanian-claims-fell-by-every-route"
-    verification:
-      status: verified
-      textHash: 1f4bbe1d3237
-      checkedAt: 2026-11-20
-  - heading: Nationalities that claim asylum are convicted more often, and the state does not count who claimed it
+      textHash: 621747bfdc5f
+      checkedAt: 2026-11-22
+      notes:
+        - 2025 is a record for the year to September 2025 (109,662). The 2025 calendar total, 101,911, is just under 2002's 103,081.
+  - heading: Some of the groups who come commit far more crime
     visual:
       cite: "#fact-offending-by-nationality/afghan-sex-offence-rate"
       kind: estimateRange
@@ -145,27 +55,131 @@ cards:
     citations:
       - phrase: After adjusting for age and sex, Afghan nationals were convicted of sex offences at seven times the British rate
         href: "#fact-offending-by-nationality/afghan-sex-offence-rate"
-      - phrase: Iraqi, Afghan and Iranian citizens were convicted of crimes at four to six and a half times the British rate
+      - phrase: Iraqi, Afghan and Iranian citizens were convicted at four to six and a half times the British rate
         href: "#fact-offending-by-nationality/asylum-nationalities-all-offences"
-      - phrase: No statistics record whether those offenders had claimed asylum
-        href: "#fact-offending-by-nationality/no-asylum-status-data"
+      - phrase: can bring that with them
+        href: "#fact-offending-by-nationality/war-exposure-raises-violent-crime"
+      - phrase: no statistics record whether those offenders had claimed asylum
+        href: "#fact-offending-by-nationality/status-not-recorded"
       - phrase: the Ministry of Justice is appealing an order to publish more detailed figures
-        href: "#fact-offending-by-nationality/detailed-figures-withheld"
+        href: "#fact-offending-by-nationality/release-under-appeal"
     verification:
       status: verified
-      textHash: 95d24245e8fa
-      checkedAt: 2026-11-20
+      textHash: 77add65099f3
+      checkedAt: 2026-11-22
+      notes:
+        - The all-offences multiples are not adjusted for age and sex, unlike the sex-offence figure, and count cautions as well as convictions. The Economist calls the sex-offence figure "still uncertain".
+        - The Swiss study behind "can bring that with them" covers childhood exposure to war or mass killing. It finds the effect falls mostly on co-nationals, and that work access removes two-thirds of it. No report covers "where the law is weak".
+  - heading: Everyone on a small boat has already reached a safe country
+    visual:
+      cite: "#fact-channel-crossings-and-irregular-arrivals/boats-leave-from-france-and-belgium"
+      kind: map
+      title: Where the small boats leave from
+    citations:
+      - phrase: The boats set off from France and Belgium
+        href: "#fact-channel-crossings-and-irregular-arrivals/boats-leave-from-france-and-belgium"
+      - phrase: British law already expects a refugee who stopped in another country to seek protection there
+        href: "#fact-asylum-law-and-the-echr/uk-law-ties-article-31-to-the-first-safe-country"
+      - phrase: do not send a refugee back to danger
+        href: "#fact-asylum-law-and-the-echr/article-33-forbids-return"
+      - phrase: do not punish one for entering illegally
+        href: "#fact-asylum-law-and-the-echr/article-31-is-about-penalties"
+      - phrase: few refugees could reach Britain without passing through another country
+        href: "#fact-asylum-law-and-the-echr/few-reach-the-uk-without-passing-through-another-state"
+    verification:
+      status: verified
+      textHash: cbe02eed78b4
+      checkedAt: 2026-11-22
+      notes:
+        - The 2022 rule governs the defence against penalties for illegal entry, and asks whether the refugee could reasonably have claimed elsewhere.
+  - heading: Claiming asylum means staying, even for people who are refused
+    visual:
+      cite: "#fact-removals-and-what-stops-them/fewer-refused-recorded-leaving"
+      kind: series
+      title: Asylum claims and later returns
+    citations:
+      - phrase: over a quarter of each year's asylum claims ended with the person recorded as returned
+        href: "#fact-removals-and-what-stops-them/fewer-refused-recorded-leaving"
+      - phrase: An asylum appeal takes over a year on average
+        href: "#fact-asylum-backlog-accommodation-and-cost/asylum-appeal-takes-72-weeks"
+      - phrase: most challenges failed in 2017
+        href: "#fact-removals-and-what-stops-them/most-issues-refused"
+    verification:
+      status: verified
+      textHash: fcc30d693ca9
+      checkedAt: 2026-11-22
+      notes:
+        - '"Usually" holds for refused and withdrawn claims together (under a third returned since 2015). Against refusals alone, the share was 34–55% for 2015–22 claims.'
+        - The 2017 figure covers issues raised in detention. Not every challenge suspends a removal.
+  - heading: Human-rights law stops removals, and it cannot be fixed from inside
+    visual:
+      cite: "#fact-removals-and-what-stops-them/home-office-says-rights-claims-stop-removals"
+      kind: quotes
+      title: What do the Home Office and others say human-rights law does to removals?
+    citations:
+      - phrase: 86% of people who made a human-rights claim while held for removal in 2022 were released
+        href: "#fact-removals-and-what-stops-them/home-office-says-rights-claims-stop-removals"
+      - phrase: foreign offenders who won on human-rights grounds alone equal to about 3% of those deported
+        href: "#fact-removals-and-what-stops-them/human-rights-wins-about-3-percent"
+      - phrase: they leave out claims of danger made inside asylum cases
+        href: "#fact-removals-and-what-stops-them/counts-miss-article-3-in-asylum-claims"
+      - phrase: no published figure counts the removals the ECHR stops
+        href: "#fact-removals-and-what-stops-them/echr-share-not-measured"
+      - phrase: judged that such limits would likely fail in court
+        href: "#fact-asylum-law-and-the-echr/wolfson-limits-inside-the-echr-likely-fail"
+      - phrase: Britain can lawfully leave and still keep the Refugee Convention
+        href: "#fact-asylum-law-and-the-echr/wolfson-withdrawal-possible-refugee-convention-unnecessary"
+    verification:
+      status: verified
+      textHash: 478e39a7cee3
+      checkedAt: 2026-11-22
+      notes:
+        - The 86% is of people who raised "rights-based applications" in January to September 2022. The Home Office says it cannot tell that they were released because of the claim.
+  - heading: Where the crossing stopped working, people stopped crossing
+    visual:
+      cite: "#fact-deterrence-and-protection-policies/australia-arrivals-fell-after-turnbacks"
+      kind: series
+      title: "Australia: asylum-seeker boat arrivals"
+    citations:
+      - phrase: From late 2013, Australia turned asylum boats back at sea, and arrivals fell to almost none
+        href: "#fact-deterrence-and-protection-policies/australia-arrivals-fell-after-turnbacks"
+      - phrase: Months earlier it had banned boat arrivals from settling, and the boats had kept coming
+        href: "#fact-deterrence-and-protection-policies/settlement-ban-first-16-days"
+      - phrase: ties the fall to turning boats back
+        href: "#fact-deterrence-and-protection-policies/kaldor-credits-turnbacks"
+      - phrase: Britain withdrew its own turnback policy as rarely safe in the Channel
+        href: "#fact-deterrence-and-protection-policies/uk-turnbacks-withdrawn"
+      - phrase: signed a returns deal with Albania
+        href: "#fact-channel-crossings-and-irregular-arrivals/albanian-arrivals-collapsed-before-the-deal"
+      - phrase: began refusing nearly all Albanian claims
+        href: "#fact-channel-crossings-and-irregular-arrivals/albanian-claims-nearly-all-refused"
+      - phrase: sending people home
+        href: "#fact-channel-crossings-and-irregular-arrivals/returns-to-albania-rose"
+      - phrase: Albanian claims stayed low, and by 2026 were the lowest since 2012
+        href: "#fact-channel-crossings-and-irregular-arrivals/albanian-claims-fell-by-every-route"
+      - phrase: the first fall in crossings came before the deal
+        href: "#fact-channel-crossings-and-irregular-arrivals/albanian-arrivals-collapsed-before-the-deal"
+      - phrase: the deal is plausibly a major reason the numbers stayed low
+        href: "#fact-channel-crossings-and-irregular-arrivals/deal-could-be-a-major-driver"
+    verification:
+      status: verified
+      textHash: 43d416e16700
+      checkedAt: 2026-11-22
+      notes:
+        - "The evidence that boats \"kept coming\" after the settlement ban covers its first 16 days. Which measure ended Australia's arrivals is disputed: the Kaldor Centre credits turnbacks, the government a chain of measures."
   - heading: So Britain should bar these claims, remove those who come, and leave the ECHR
     citations:
       - phrase: Rwanda took no asylum seekers
         href: "#fact-deterrence-and-protection-policies/no-asylum-seekers-sent"
-      - phrase: The Conservatives' pledge of 150,000 removals a year would be about 15 times today's enforced returns
+      - phrase: 150,000 removals a year is about 15 times today's enforced returns
         href: "#fact-removals-and-what-stops-them/150000-about-15-times-enforced-returns"
       - phrase: most returns are already voluntary
         href: "#fact-removals-and-what-stops-them/most-returns-are-voluntary"
       - phrase: those cost far less
         href: "#fact-removals-and-what-stops-them/voluntary-returns-far-cheaper"
+      - phrase: the Supreme Court relied on those too when it stopped the Rwanda plan
+        href: "#fact-asylum-law-and-the-echr/refugee-convention-ban-on-return-remains"
     verification:
       status: verified
-      textHash: dac0b8d39673
-      checkedAt: 2026-11-20
+      textHash: 2710c6578667
+      checkedAt: 2026-11-22

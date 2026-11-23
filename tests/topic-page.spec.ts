@@ -173,8 +173,8 @@ test('a viewpoint loads its cards\' charts only when its row opens', async ({ pa
 test('a card\'s "Explore this data" opens its chart alone, at the observation it cites', async ({ page }) => {
   await page.goto(ASYLUM);
   const viewpoint = await openViewpoint(page, 'bar-and-remove');
-  await viewpoint.locator('.sv-deck__outline-item').nth(2).click();
-  const card = viewpoint.locator('.sv-deck__card').nth(2);
+  await viewpoint.locator('.sv-deck__outline-item').nth(3).click();
+  const card = viewpoint.locator('.sv-deck__card').nth(3);
   await expect(card).toBeInViewport();
   await expect(card.locator('.sv-chart').first()).toBeVisible();
   // On a card the link shows only to the keyboard; a pointer clicks the chart.
@@ -325,7 +325,7 @@ test('a card\'s chart with several readings opens in full with its "Show as" swi
 
 test('a pop-up closes around its chart, a graph keeping a wide shape, in the middle of the screen', async ({ page }) => {
   await page.setViewportSize({ width: 1400, height: 900 });
-  await page.goto(`${ASYLUM}#asylum-claims-and-decisions--chart-appeals-series`);
+  await page.goto(`${ASYLUM}#asylum-claims-and-decisions--chart-series`);
   const sheet = page.locator('dialog[open] .sv-modal__panel');
   const bottom = async (locator: Locator) => { const box = (await locator.boundingBox())!; return box.y + box.height; };
   // A sheet is shown only once its chart has arrived, and so has its final size.
@@ -404,7 +404,7 @@ const SLIDES_VIEWPOINT = '#viewpoint-refuge';
 test('a source\'s quote picks out the passage the claim rests on', async ({ page }) => {
   await page.goto(ASYLUM);
   const viewpoint = await openViewpoint(page, 'bar-and-remove');
-  await viewpoint.locator('.sv-deck__card').nth(1).locator('.sv-deck__reasoning a.sv-source-marker').first().click();
+  await viewpoint.locator('.sv-deck__card').nth(2).locator('.sv-deck__reasoning a.sv-source-marker').first().click();
   const popup = page.locator('dialog[open]');
   await expect(popup.locator('blockquote mark').filter({ hasText: 'more small boats leaving from Belgium' })).toBeVisible();
   // The highlight ends at its words, not the space after them.
@@ -420,8 +420,8 @@ test.describe('a slideshow viewpoint on a phone', () => {
     const deck = page.locator(`${SLIDES_VIEWPOINT} .sv-deck`);
     await expect(deck.locator('.sv-deck__outline')).toBeHidden();
     const card = deck.locator('.sv-deck__card').first();
-    await expect(card.locator('.sv-deck__heading')).toHaveText('Most people crossing the Channel have been found to need protection');
-    await expect(card.locator('.sv-deck__reasoning')).toContainText('most would face danger if sent back');
+    await expect(card.locator('.sv-deck__heading')).toContainText('fleeing real danger');
+    await expect(card.locator('.sv-deck__reasoning')).toContainText('would face danger if sent back');
     // One graph a card: a phone has room for no more.
     await expect(card.locator('.sv-chart')).toHaveCount(1);
     await expect(card.locator('.sv-chart__caption')).toContainText('Initial decisions on small-boat arrivals');
@@ -497,9 +497,9 @@ test.describe('a slideshow viewpoint on a phone', () => {
     await page.goto(SLIDES_TOPIC);
     const row = page.locator('#viewpoint-bar-and-remove');
     await row.locator('.sv-row__toggle').click(headCorner);
-    await row.getByRole('button', { name: /^Point 3:/ }).click();
-    const card = row.locator('.sv-deck__card').nth(2);
-    await expect(card.locator('.sv-deck__heading')).toHaveText('People who claim asylum can expect to stay, even if they are refused');
+    await row.getByRole('button', { name: /^Point 4:/ }).click();
+    const card = row.locator('.sv-deck__card').nth(3);
+    await expect(card.locator('.sv-deck__heading')).toContainText('Claiming asylum');
     await expect(card.locator('.sv-chart__caption')).toContainText('Asylum claims and later returns');
     // The share each year, as lines, from the first year of claims to the last.
     const graph = card.locator('.sv-chart__variant[data-variant="preview-portrait"]');
@@ -522,17 +522,17 @@ test('a slideshow viewpoint on a wide screen lists its points down the left, a p
   await expect(page.locator(`${SLIDES_VIEWPOINT} .sv-deck__points`)).toBeHidden();
   // One card per step of the argument, the last its conclusion. Readers' suggestions are outside that list.
   await expect(outline.locator('li')).toHaveCount(7);
-  await expect(outline.locator('li').last()).toContainText('So Britain should open capped safe routes, decide claims fairly, and let people work');
+  await expect(outline.locator('li').last()).toContainText('So Britain should open safe routes, decide claims fairly, and let people work');
   await expect(outline.locator('.sv-deck__afterword')).toHaveText('Readers’ suggestions');
-  const deterrence = outline.getByRole('button', { name: /deterrent that sent no asylum seekers/ });
-  await deterrence.click();
-  await expect(deterrence).toHaveAttribute('aria-current', 'step');
+  const conclusion = outline.getByRole('button', { name: /So Britain should open safe routes/ });
+  await conclusion.click();
+  await expect(conclusion).toHaveAttribute('aria-current', 'step');
   // Its line cites a table, which reads as more text, so the card gives its evidence in full.
-  const card = page.locator(`${SLIDES_VIEWPOINT} .sv-deck__card`).nth(4);
+  const card = page.locator(`${SLIDES_VIEWPOINT} .sv-deck__card`).nth(6);
   await expect(card).toBeInViewport();
   await expect(card.locator('.sv-chart')).toHaveCount(0);
-  await expect(card.locator('.sv-deck__reasoning')).toContainText('£715 million');
-  await expect(card.locator('.sv-deck__prose')).toContainText("Australia's offshore camps cost billions");
+  await expect(card.locator('.sv-deck__reasoning')).toContainText('set resettlement numbers');
+  await expect(card.locator('.sv-deck__prose')).toContainText('would still apply');
 });
 
 // The browser tests run with no database (playwright.config.ts), so feedback
@@ -592,22 +592,22 @@ test('a closed slideshow viewpoint previews its graphs, and a graph opens the ro
   await page.setViewportSize({ width: 1400, height: 900 });
   await page.goto(SLIDES_TOPIC);
   const row = page.locator(SLIDES_VIEWPOINT);
-  // A graph on each of its first four cards; the rest are cards of text.
+  // A graph on each of its first six cards; its conclusion is a card of text.
   const thumbs = row.locator('.sv-walk__thumb');
-  await expect(thumbs).toHaveCount(4);
-  await expect(thumbs.nth(2)).toContainText('3. A safe route lets Britain choose how many it protects; a boat does not');
-  await thumbs.nth(2).click();
-  await expect(row.locator('.sv-deck__outline-item[aria-current]')).toContainText('A safe route lets Britain choose how many it protects; a boat does not');
-  await expect(row.locator('.sv-deck__card').nth(2)).toBeInViewport();
+  await expect(thumbs).toHaveCount(6);
+  await expect(thumbs.nth(3)).toContainText('4. A safe route lets Britain choose who comes');
+  await thumbs.nth(3).click();
+  await expect(row.locator('.sv-deck__outline-item[aria-current]')).toContainText('A safe route lets Britain choose who comes');
+  await expect(row.locator('.sv-deck__card').nth(3)).toBeInViewport();
 });
 
 test('a slideshow card can be made with a map of where the boats leave from', async ({ page }) => {
   await page.goto(SLIDES_TOPIC);
   const row = page.locator('#viewpoint-bar-and-remove');
   await row.locator('.sv-row__toggle').click(headCorner);
-  await row.locator('.sv-deck__outline-item').nth(1).click();
-  const card = row.locator('.sv-deck__card').nth(1);
-  await expect(card.locator('.sv-deck__heading')).toHaveText('People crossing the Channel have already passed through safe countries');
+  await row.locator('.sv-deck__outline-item').nth(2).click();
+  const card = row.locator('.sv-deck__card').nth(2);
+  await expect(card.locator('.sv-deck__heading')).toContainText('already reached a safe country');
   await expect(card.locator('.sv-chart__caption')).toContainText('Where the small boats leave from');
   // An arrow from each coast the boats leave from, each named, to Kent.
   await expect(card.locator('.sv-geo-map__flow')).toHaveCount(2);
@@ -622,9 +622,9 @@ test('a slideshow card can be made with quotes: those its point rests on, and th
   await page.goto(SLIDES_TOPIC);
   const row = page.locator('#viewpoint-bar-and-remove');
   await row.locator('.sv-row__toggle').click(headCorner);
-  await row.locator('.sv-deck__outline-item').nth(3).click();
-  const card = row.locator('.sv-deck__card').nth(3);
-  await expect(card.locator('.sv-deck__heading')).toHaveText('Human-rights claims stop removals, the Home Office says');
+  await row.locator('.sv-deck__outline-item').nth(4).click();
+  const card = row.locator('.sv-deck__card').nth(4);
+  await expect(card.locator('.sv-deck__heading')).toContainText('Human-rights law stops removals');
   const quotes = card.locator('.sv-card-quotes');
   await expect(quotes.locator('.sv-chart__caption')).toContainText('What do the Home Office and others say human-rights law does to removals?');
   // The Home Office's two quotes, stacked, and no slideshow within the slideshow.
