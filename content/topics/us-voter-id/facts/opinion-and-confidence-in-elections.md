@@ -1266,6 +1266,25 @@ figures:
       - { label: 'Worried about colleagues’ safety', value: 52 }
       - { label: 'Threatened, harassed or abused', detail: 'Have experienced threats, harassment or abuse because of their job', value: 32 }
       - { label: 'Worried about being assaulted', detail: 'Concerned about being assaulted at home or at work', value: 23 }
+  - kind: barChart
+    id: id-and-early-voting-2025
+    title: Support for photo ID and two weeks of early voting
+    subtitle: 'US adults and each party (Pew), August 2025'
+    description: 'Share of US adults who favour requiring all voters to show government-issued photo identification, and who favour making early, in-person voting available for at least two weeks before the election, asked in the same Pew survey in August 2025.'
+    valueLabel: '% who favor'
+    categoryLabel: Group
+    format: { unit: percent }
+    domainMax: 100
+    sort: none
+    sources: [1]
+    note: 'Republicans and Democrats include independents who lean to each party. Pew does not publish how many favour both policies.'
+    series:
+      - { key: photo-id, label: Photo ID to vote }
+      - { key: early-voting, label: Two weeks of early in-person voting }
+    items:
+      - { label: All adults, values: { photo-id: 83, early-voting: 80 } }
+      - { label: Rep/lean Rep, values: { photo-id: 95, early-voting: 71 } }
+      - { label: Dem/lean Dem, values: { photo-id: 71, early-voting: 89 } }
   - kind: series
     id: spae-nationwide
   - kind: series
@@ -1314,6 +1333,7 @@ figures:
         measure: 'Confidence in results'
         finding: { value: 'Voters trust results less under procedures they oppose; effects largest for voter ID', sources: [21] }
 observationMarks:
+  both-policies-have-majorities: {rows: ["All adults", "Rep/lean Rep", "Dem/lean Dem"]}
   photo-id-majorities: {lines: ["Rep/lean Rep", "Dem/lean Dem"], at: "2025-08"}
   photo-id-across-races: {rows: ["Every racial and ethnic group (Pew, 2025)"]}
   democrats-moved-toward-id: {lines: ["Dem/lean Dem"], from: "2018-10", to: "2025-08"}
@@ -1388,6 +1408,12 @@ Gallup's differently worded item runs the other way over a longer period: Republ
 ### 80% of adults favoured two weeks of early voting in August 2025; how many back both this and photo ID is not published {#opinion-and-confidence-in-elections--overlap-not-published}
 
 Photo ID (83%) and two weeks of early voting (80%) were asked of the same half-sample in August 2025. [1](#source-opinion-and-confidence-in-elections-1) [2](#source-opinion-and-confidence-in-elections-2) Pew does not publish how many respondents favoured both. The two shares alone guarantee that a large majority backed both, but not the exact size of that group; see What we don't know yet.
+
+## Observations {#opinion-and-confidence-in-elections--observations-id-and-early-voting-2025}
+
+### Photo ID and two weeks of early voting each have majorities in both parties {#opinion-and-confidence-in-elections--both-policies-have-majorities}
+
+In August 2025, 83% of adults favoured photo ID and 80% two weeks of early voting. Republicans backed photo ID more (95% against 71% of Democrats), and Democrats backed early voting more (89% against 71% of Republicans), but each policy had a majority in both parties. [1](#source-opinion-and-confidence-in-elections-1)
 
 ## Observations {#opinion-and-confidence-in-elections--observations-gallup-photo-id}
 

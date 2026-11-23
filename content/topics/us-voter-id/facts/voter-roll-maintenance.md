@@ -1483,7 +1483,7 @@ A cross-state match needs both states in the compact, so fewer members means few
 
 NPR reported in October 2023 that "Nine states — all Republican-led — have now withdrawn from ERIC" without a replacement. [25](#source-voter-roll-maintenance-25) In order of departure they were Louisiana, Alabama, Missouri, Florida, West Virginia, Iowa, Ohio, Virginia and Texas. [26](#source-voter-roll-maintenance-26) The chart marks the report, Hawaii's joining and Virginia's order to rejoin.
 
-Iowa objected to ERIC's bylaws, including its requirement that members contact eligible but unregistered people; Virginia cited data security. [26](#source-voter-roll-maintenance-26) ERIC's current list has 27 states and the District of Columbia. [24](#source-voter-roll-maintenance-24)
+Iowa objected to ERIC's bylaws, including its requirement that members contact eligible but unregistered people; Virginia cited data security. [26](#source-voter-roll-maintenance-26) ERIC's current list has 27 states and the District of Columbia, Virginia among them, so eight of the nine that left are still out. [24](#source-voter-roll-maintenance-24)
 
 ## Observations {#voter-roll-maintenance--observations-pew-2011-baseline}
 
