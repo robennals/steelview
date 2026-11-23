@@ -5,30 +5,28 @@ summary: The Constitution's Elections Clause lets each state's legislature set t
 order: 5
 draft: ai
 ---
-The Constitution settles who writes election rules. Each state's voters should choose their own ID and registration rules, and presidents should stay out.
+Election rules should be made by people voters can vote out, as close to home as possible. The Constitution gives that job to each state's legislature, and lets Congress change the rules. It gives none to the President.
 
 ### The Constitution gives election rules to the states and Congress, not the President
 
-Each state's legislature decides when, where and how congressional elections are run, and Congress may change those rules. The clause names no role for the President. Congress's power covers how elections are held, not who may vote.
+The Constitution says who writes the rules. Each state's legislature decides when, where and how congressional elections are run, and Congress may change those rules. The President's part is only to sign or veto a bill Congress has passed. The Supreme Court has held that Congress's power covers how elections are held, not who may vote. So who may vote, including the rule that voters be citizens, is for the states.
 
-So who may vote, including the citizenship rule, is set by the states. That keeps decisions close to the people who live with them. If a state's voters dislike its ID rule, they can elect lawmakers who will change it. That is democratic consent where it counts most.
+### A president cannot set voting rules by order
 
-### A president has no power to set voting rules by order
+The courts that have ruled on the question agree. Two federal courts have permanently blocked the 2025 order's proof-of-citizenship rule, and one held that it went beyond a president's power. While the Supreme Court let the 2026 order's citizenship lists go ahead, it did so because that order requires nothing of anyone outside the executive branch, and it did not rule on whether the order is lawful. A rule one president can impose by order, the next can cancel.
 
-Two federal courts have permanently blocked the 2025 order's proof-of-citizenship rule. One held that it goes beyond a president's power. That is right, whatever one thinks of the rule. A rule one president can impose by order, the next can cancel.
+### Each state's rule binds only that state, and can be undone
 
-While the Supreme Court let the 2026 order's citizenship lists go ahead, that order requires nothing of anyone outside the executive branch. It did not rule on whether the order is lawful. If states can ignore the lists, the choice stays theirs.
+Leaving rules to the states keeps a mistake small and fixable. States differ on whether ID must have a photo, and on what happens to a voter without it, so a bad rule in one state is forced on no other. Nor is it stuck in place: the number of strict photo-ID states fell as courts and legislatures eased laws, then rose again as others tightened theirs. State courts can review a state's election rules too, so voters have a check close to home.
 
-### A state's ID rule binds no other state, and it can be undone
+### National bills from either party would force one side's choice on every state
 
-States differ on whether ID must have a photo, and on what happens to a voter without it, so a bad rule in one state is not forced on any other. Nor is it stuck in place: the number of strict photo-ID states fell as courts and legislatures eased laws, then rose again as others tightened theirs. And state courts can review a state's election rules, so voters there have a check close to home.
+Both parties have tried to set the rules for everyone. The Republican bill would require proof of citizenship to register and photo ID to vote. The Democratic one would have required early voting and made ID states accept alternatives. Each would force one side's choice on every state, and the next majority could force its own. Both stalled short of the 60 votes needed to end debate in the Senate.
 
-### National bills from either party would take away the states' choice
+### National rules were needed where states shut voters out, and ID rules have not done that
 
-The Republican bill would require proof of citizenship and photo ID. The Democratic one would have required early voting and made ID states accept alternatives. Either would force one side's choice on every state, and the next majority would force its own.
+Congress has stepped in before, and it was right to. Before the Voting Rights Act, Black registration in three Deep South states rose about five points or less in a decade, and by 2004 the gaps had closed or nearly closed. ID rules have not done anything like that: a national study found strict ID laws had no clear effect on registration or turnout. While it cannot rule out drops like those of a few points in Kansas and Tennessee, those were two states, not a region shut out.
 
-Both stalled short of the 60 votes needed in the Senate. The Democrats' bill got 49 votes, and a photo-ID version of the Republicans' got 52.
+### So Congress should protect the right to vote, and leave ID to each state's voters
 
-### So Congress should step in only where states shut voters out, and leave ID to the states
-
-National rules were needed where states shut voters out on a large scale: before the Voting Rights Act, Black registration in three Deep South states rose about five points or less. ID rules have not done that: a national study found strict ID laws had no clear effect on registration or turnout. While it cannot rule out drops like those in Kansas and Tennessee, those were two states, not a region shut out. The Supreme Court calls Congress's power over elections "paramount", but none of the three national laws in force requires ID or proof of citizenship of every voter. Congress should keep to rules that protect the right to vote, and leave ID to each state's voters.
+The Supreme Court calls Congress's power over elections "paramount", so the question is whether to use it, not whether it exists. Congress should keep to rules that protect the right to vote, as the three national laws in force do, and none of them requires ID or proof of citizenship of every voter. It should leave the choice of ID to each state's voters, and presidents should stay out of it.
