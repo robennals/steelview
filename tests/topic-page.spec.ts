@@ -656,16 +656,17 @@ test('a slideshow card can be made with quotes: those its point rests on, and th
   await expect(sheet.locator('.sv-quote-browser__item[data-highlighted]')).toHaveCount(1);
 });
 
-// us-vote-by-mail quotes in two reports: the Supreme Court in Watson v. RNC, and
-// research on whether rule changes move trust in results. The Watson quotes
-// are the `election-day-receipt` viewpoint's first card.
+// us-vote-by-mail quotes in three reports: the Supreme Court in Watson v. RNC,
+// research on whether rule changes move trust in results, and why the secret
+// ballot was brought in. The Watson quotes are the `election-day-receipt`
+// viewpoint's first card.
 test('a quotes chart opened in full lists every quote on its topic, which a reader can narrow to one question', async ({ page }) => {
   await openChart(page, 'ballot-deadlines-and-counting-speed', 'watson', '/topics/us-vote-by-mail');
   const quotes = page.locator('dialog[open] .sv-quote-browser');
   await expect(quotes.locator('.sv-graph-heading')).toHaveText('Every quote on this topic');
-  await expect(quotes.locator('.sv-control__status')).toHaveText('Showing 5 of 5 quotes');
+  await expect(quotes.locator('.sv-control__status')).toHaveText('Showing 8 of 8 quotes');
   // Each question is a line of the Question dropdown.
   await quotes.getByRole('button', { name: 'Question: All' }).click();
   await quotes.locator('.sv-bar__pop:popover-open').getByRole('button', { name: /Watson v\. RNC/ }).click();
-  await expect(quotes.locator('.sv-control__status')).toHaveText('Showing 3 of 5 quotes');
+  await expect(quotes.locator('.sv-control__status')).toHaveText('Showing 3 of 8 quotes');
 });
