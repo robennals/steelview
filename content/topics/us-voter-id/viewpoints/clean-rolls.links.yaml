@@ -31,7 +31,7 @@ cards:
       kind: comparison
       title: Registrations that shouldn't be on the rolls
     citations:
-      - phrase: The only national estimate, from data to March 2011, found about one record in eight wrong or out of date, including dead people and people registered in two states
+      - phrase: The only national estimate, from data to March 2011, found more than 1.8 million dead people still registered, and about 2.75 million people registered in more than one state
         href: "#fact-voter-roll-maintenance/pew-only-direct-measure"
       - phrase: removing someone for a move can take through two federal general elections
         href: "#fact-voter-roll-maintenance/removal-waits-two-elections"
@@ -41,10 +41,10 @@ cards:
         href: "#fact-election-fraud-and-voter-exclusion-history/stale-rolls-enabled-fraud"
     verification:
       status: verified
-      textHash: 2af81c5f4bfe
+      textHash: 5fb3f937e9d4
       checkedAt: 2026-11-23
       notes:
-        - The estimate predates ERIC and the growth in removals since, so it is not today's size of the problem. The chart shows the dead and multiply registered; the one-in-eight total is in its source quote.
+        - The estimate predates ERIC and the growth in removals since, so it is not today's size of the problem. Registering in two states, often after a move, is not itself illegal.
   - heading: Most fraud on record went around the check at the polls
     visual:
       cite: "#fact-election-fraud-and-voter-exclusion-history/id-would-not-reach"
@@ -55,9 +55,11 @@ cards:
         href: "#fact-election-fraud-and-voter-exclusion-history/id-would-not-reach"
       - phrase: the officials checking were often part of it
         href: "#fact-election-fraud-and-voter-exclusion-history/checkers-complicit"
+      - phrase: a precinct captain padded the roll with about 150 "ghosts and sleepers" and stuffed the box in their names
+        href: "#fact-election-fraud-and-voter-exclusion-history/kansas-city-no-repeaters"
     verification:
       status: verified
-      textHash: fcad560fc8bd
+      textHash: e7ba19884424
       checkedAt: 2026-11-23
       notes:
         - The 20 are the cases the report lists, not a sample. Whether a photo rule would still have deterred the ghost voting is not measured.
@@ -97,7 +99,7 @@ cards:
       status: verified
       textHash: 6fbf26b3ac31
       checkedAt: 2026-11-23
-  - heading: Finding voters who moved needs states to share records, and nine have stopped
+  - heading: Finding voters who moved needs states to share records, and eight states are out
     visual:
       cite: "#fact-voter-roll-maintenance/eric-reports-fell"
       kind: series
@@ -107,15 +109,15 @@ cards:
         href: "#fact-voter-roll-maintenance/mostly-moves-deaths-nonresponse"
       - phrase: ERIC is a group of states that share voter records to find such moves
         href: "#fact-voter-roll-maintenance/eric-cross-state-movers"
-      - phrase: By October 2023, nine Republican-led states had left it
+      - phrase: By October 2023, nine Republican-led states had left it, and eight are still out
         href: "#fact-voter-roll-maintenance/eric-departures"
       - phrase: ERIC's leads on voters who moved between states fell from about 3.5 million in 2021 to about 0.7 million a year or fewer since 2024
         href: "#fact-voter-roll-maintenance/eric-reports-fell"
-      - phrase: Iowa objected to its rules and Virginia cited data security
+      - phrase: Iowa objected to its rules
         href: "#fact-voter-roll-maintenance/eric-departures"
     verification:
       status: verified
-      textHash: 3ede89b61f84
+      textHash: 4b80bd5c6e41
       checkedAt: 2026-11-23
   - heading: So states should clean their lists early, carefully, and together
     citations:
@@ -125,5 +127,5 @@ cards:
         href: "#fact-voter-roll-maintenance/nvra-90-day-rule"
     verification:
       status: verified
-      textHash: 2057d8d96463
+      textHash: 5b44eaa20721
       checkedAt: 2026-11-23

@@ -6,11 +6,11 @@ summary:
   citations:
     - phrase: The Constitution's Elections Clause lets each state's legislature set the rules for electing Congress, lets Congress change them, and names no role for the President
       href: "#fact-federal-and-state-power-over-voting-rules/elections-clause-text"
-    - phrase: States have tightened and eased their own ID laws as they judged best
+    - phrase: States' ID laws have been tightened and eased, by their legislatures and by courts
       href: "#fact-voter-id-rules-in-the-us-and-abroad/strict-count-fell-then-rose"
   verification:
     status: verified
-    textHash: 51f849c49c7e
+    textHash: 3b13d377df77
     checkedAt: 2026-11-23
 lead:
   citations:
@@ -83,14 +83,14 @@ cards:
         href: "#fact-federal-and-state-power-over-voting-rules/save-america-act-provisions"
       - phrase: The Democratic one would have required early voting and made ID states accept alternatives
         href: "#fact-federal-and-state-power-over-voting-rules/freedom-to-vote-act-provisions"
-      - phrase: Both stalled short of the 60 votes needed to end debate in the Senate
+      - phrase: The Democratic bill fell short of the 60 votes needed to end debate in the Senate, and so did a photo-ID-only version of the Republican one
         href: "#fact-federal-and-state-power-over-voting-rules/national-bills-stalled"
     verification:
       status: verified
-      textHash: ddf6cc67ce8f
+      textHash: 87746ffc0ff2
       checkedAt: 2026-11-23
       notes:
-        - The 2026 Senate vote was on a photo-ID-only version of the Republican bill.
+        - The SAVE America Act itself, with proof of citizenship, has had no Senate cloture vote.
   - heading: National rules were needed where states shut voters out, and ID rules have not done that
     visual:
       cite: "#fact-election-fraud-and-voter-exclusion-history/pre-vra-stagnation"

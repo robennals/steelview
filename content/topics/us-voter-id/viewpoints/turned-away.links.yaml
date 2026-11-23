@@ -117,16 +117,12 @@ cards:
         href: "#fact-non-citizens-on-voter-rolls/flag-lists-shrink"
       - phrase: in Texas and Alabama more citizens were wrongly flagged than people were referred or removed
         href: "#fact-non-citizens-on-voter-rolls/both-errors-side-by-side"
-      - phrase: Checks that let officials decide who passes have shut voters out before
-        href: "#fact-election-fraud-and-voter-exclusion-history/jim-crow-tools-discretionary"
-      - phrase: Black voters fell from about 44% of its registered voters to under 1%
-        href: "#fact-election-fraud-and-voter-exclusion-history/louisiana-registration-collapse"
     verification:
       status: verified
-      textHash: a000d8cf9bc5
+      textHash: 63ee27ebd05f
       checkedAt: 2026-11-23
       notes:
-        - Louisiana's fall came under a grandfather clause (1898) and then an interpretation test (from 1921); the report says whether a uniform, free ID resembles those tools is a judgement the sources do not settle.
+        - Alabama's "most" is about 2,000 of 3,251 shown to be citizens; at least 159 were removed.
   - heading: The burden falls hardest on young, poor, Black and Hispanic citizens
     visual:
       cite: "#fact-burdens-of-id-and-citizenship-rules/licence-by-age-income"

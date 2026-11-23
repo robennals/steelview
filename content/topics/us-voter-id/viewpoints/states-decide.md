@@ -1,7 +1,7 @@
 ---
-name: Election rules belong to the states, and presidents have no say in them
+name: Election rules belong to the states, and presidents cannot set them by order
 shortName: States decide
-summary: The Constitution's Elections Clause lets each state's legislature set the rules for electing Congress, lets Congress change them, and names no role for the President. States have tightened and eased their own ID laws as they judged best. Each state's voters should choose their own ID and registration rules, and presidential orders that try to set them should fail.
+summary: The Constitution's Elections Clause lets each state's legislature set the rules for electing Congress, lets Congress change them, and names no role for the President. States' ID laws have been tightened and eased, by their legislatures and by courts. Each state's voters should choose their own ID and registration rules, and presidential orders that try to set them should fail.
 order: 5
 draft: ai
 ---
@@ -21,7 +21,7 @@ Leaving rules to the states keeps a mistake small and fixable. States differ on 
 
 ### National bills from either party would force one side's choice on every state
 
-Both parties have tried to set the rules for everyone. The Republican bill would require proof of citizenship to register and photo ID to vote. The Democratic one would have required early voting and made ID states accept alternatives. Each would force one side's choice on every state, and the next majority could force its own. Both stalled short of the 60 votes needed to end debate in the Senate.
+Both parties have tried to set the rules for everyone. The Republican bill would require proof of citizenship to register and photo ID to vote. The Democratic one would have required early voting and made ID states accept alternatives. Each would force one side's choice on every state, and the next majority could force its own. The Democratic bill fell short of the 60 votes needed to end debate in the Senate, and so did a photo-ID-only version of the Republican one.
 
 ### National rules were needed where states shut voters out, and ID rules have not done that
 

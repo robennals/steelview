@@ -37,7 +37,7 @@ cards:
       status: verified
       textHash: 9bd22167e8c6
       checkedAt: 2026-11-23
-  - heading: That doubt now falls on the people who run elections
+  - heading: The people who run elections face threats and harassment
     visual:
       cite: "#fact-opinion-and-confidence-in-elections/officials-threatened"
       kind: barChart
@@ -45,12 +45,14 @@ cards:
     citations:
       - phrase: About a third of local election officials report threats, harassment or abuse because of their job, and almost a quarter worry about being assaulted
         href: "#fact-opinion-and-confidence-in-elections/officials-threatened"
-      - phrase: Three in four worry that false information about elections makes their job harder or more dangerous
+      - phrase: three in four worry that false information about elections makes their job harder or more dangerous
         href: "#fact-opinion-and-confidence-in-elections/officials-blame-false-information"
     verification:
       status: verified
-      textHash: 81b2f35b81be
+      textHash: 7e1b34e1a43f
       checkedAt: 2026-11-23
+      notes:
+        - "The share reporting threats was 36% in 2024, 38% in 2025 and 32% in 2026: high, not rising. No survey measures what caused any threat."
   - heading: Each side fears a different failure, and nearly everyone wants both prevented
     visual:
       cite: "#fact-opinion-and-confidence-in-elections/eligibility-confidence-2026"
@@ -89,14 +91,12 @@ cards:
         - Clinton's finding is "particularly large" for voter ID among Republicans and independents. Four House Democrats voted for the 2025 SAVE Act.
   - heading: Most Americans back both photo ID and early voting
     visual:
-      cite: "#fact-opinion-and-confidence-in-elections/photo-id-83-percent"
-      kind: series
-      title: Support for photo ID and automatic registration
+      cite: "#fact-opinion-and-confidence-in-elections/both-policies-have-majorities"
+      kind: barChart
+      title: Support for photo ID and two weeks of early voting
     citations:
-      - phrase: 83% of adults back photo ID
-        href: "#fact-opinion-and-confidence-in-elections/photo-id-83-percent"
-      - phrase: 80% back two weeks of early voting
-        href: "#fact-opinion-and-confidence-in-elections/overlap-not-published"
+      - phrase: 83% of adults back photo ID, and 80% back two weeks of early voting
+        href: "#fact-opinion-and-confidence-in-elections/both-policies-have-majorities"
       - phrase: Large majorities in both parties back photo ID
         href: "#fact-opinion-and-confidence-in-elections/photo-id-majorities"
       - phrase: Democratic support is higher than when Pew first asked in 2018

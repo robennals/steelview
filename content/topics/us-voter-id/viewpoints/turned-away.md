@@ -25,7 +25,7 @@ The ID rules already in force show the cost. In the first primary under its new 
 
 ### Records checks flag many citizens, so a flag must start a question, not end a registration
 
-Checking records is better than demanding papers, but records are often wrong. Most people Alabama made inactive as non-citizens in 2024 were citizens. In every program with a published follow-up, a large share of those flagged turned out to be citizens, and in Texas and Alabama more citizens were wrongly flagged than people were referred or removed. Checks that let officials decide who passes have shut voters out before: under Louisiana's, Black voters fell from about 44% of its registered voters to under 1%.
+Checking records is better than demanding papers, but records are often wrong. Most people Alabama made inactive as non-citizens in 2024 were citizens. In every program with a published follow-up, a large share of those flagged turned out to be citizens, and in Texas and Alabama more citizens were wrongly flagged than people were referred or removed.
 
 ### The burden falls hardest on young, poor, Black and Hispanic citizens
 

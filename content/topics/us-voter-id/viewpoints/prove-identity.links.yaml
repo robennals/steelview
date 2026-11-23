@@ -35,18 +35,18 @@ cards:
         href: "#fact-election-fraud-and-voter-exclusion-history/machine-fraud-real-and-prosecuted"
       - phrase: Modern counts find few cases
         href: "#fact-election-fraud-and-voter-exclusion-history/two-counts-rare"
-      - phrase: a vote cast in a stranger's name leaves no one to complain, so the cases caught are only a floor
+      - phrase: the counts are of detected cases only
         href: "#fact-election-fraud-and-voter-exclusion-history/detected-is-a-floor"
       - phrase: most frauds on record were done by officials or by mail
         href: "#fact-election-fraud-and-voter-exclusion-history/officials-or-mail"
     verification:
       status: verified
-      textHash: ad316c9b05a9
+      textHash: 3df51c733d76
       checkedAt: 2026-11-23
       notes:
         - '"Hundreds of convictions" is Kansas City 1936 (hundreds) and Chicago 1982 (dozens) together.'
         - The 20 cases are the ones the report lists, not a sample of all US fraud.
-  - heading: Where impersonation was organised, photo ID stopped it without lowering turnout
+  - heading: Where impersonation was organised, ID checks all but ended it, without lowering turnout
     visual:
       cite: "#fact-voter-id-rules-in-the-us-and-abroad/ni-fraud-declined-sharply"
       kind: quotes
@@ -62,11 +62,11 @@ cards:
         href: "#fact-voter-id-rules-in-the-us-and-abroad/ni-impact-never-measured"
     verification:
       status: verified
-      textHash: 73ce12016ed6
+      textHash: 080f9b075bec
       checkedAt: 2026-11-23
       notes:
-        - The Electoral Commission says the impact of Northern Ireland's measures cannot be assessed accurately because fraud's extent was never quantified; "the trace of it all but vanished" rests on tendered ballots alone, and the 2002 Act also changed registration rules.
-  - heading: Non-citizens get onto the voter lists, because the form takes their word
+        - The 94% fall from 1983 to 2005 spans ID (1985), the 2002 registration changes and photo ID (2003). The Electoral Commission says the impact of the measures cannot be assessed accurately because fraud's extent was never quantified; "the trace of it all but vanished" rests on tendered ballots alone.
+  - heading: Non-citizens get onto the voter lists, and a sworn statement does not stop them
     visual:
       cite: "#fact-non-citizens-on-voter-rolls/found-on-rolls"
       kind: comparison
@@ -84,12 +84,12 @@ cards:
         href: "#fact-non-citizens-on-voter-rolls/checks-rest-on-records"
     verification:
       status: verified
-      textHash: 0f3c4ec331fd
+      textHash: e16f8b0951d0
       checkedAt: 2026-11-23
       notes:
         - Louisiana's Secretary of State also said fraud was not systemic, and did not say any non-citizen vote affected a local race.
         - '"A sworn statement does not catch a mistake" is argument, not data.'
-  - heading: Few citizens lack photo ID, and the laws have not cut turnout
+  - heading: Few citizens lack photo ID, and the laws have not measurably cut turnout nationwide
     visual:
       cite: "#fact-burdens-of-id-and-citizenship-rules/no-id-versus-outdated-id"
       kind: comparison
@@ -105,7 +105,7 @@ cards:
         href: "#fact-burdens-of-id-and-citizenship-rules/two-states-opposite"
     verification:
       status: verified
-      textHash: 7729ba823359
+      textHash: 07805785396f
       checkedAt: 2026-11-23
       notes:
         - The ID survey was commissioned by voting-access groups. The national study covers ID at the polls, 2008–2018, and cannot rule out drops of a few points in particular states.
@@ -125,7 +125,7 @@ cards:
         href: "#fact-non-citizens-on-voter-rolls/flag-lists-shrink"
     verification:
       status: verified
-      textHash: 1b3a1362c047
+      textHash: 2ecd44159251
       checkedAt: 2026-11-23
       notes:
         - "\"Not verified\" by SAVE is not confirmed: Georgia's office called the 1,634 non-citizens, but SAVE misses some citizens. The SAVE count is the government's, unaudited, with no published error rate."

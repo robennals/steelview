@@ -12,7 +12,7 @@ previewCharts:
   - fact: burdens-of-id-and-citizenship-rules
     chart: documents-held
   - fact: opinion-and-confidence-in-elections
-    chart: series
+    chart: id-and-early-voting-2025
   - fact: voter-id-rules-in-the-us-and-abroad
     chart: us-rules-2026
 dataOrder:

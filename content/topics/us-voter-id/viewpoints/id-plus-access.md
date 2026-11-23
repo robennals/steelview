@@ -11,9 +11,9 @@ An election settles a contest only if the losing side accepts the result. Each s
 
 A growing share of Americans do not trust the count. The share with no confidence at all in the vote has roughly tripled in 20 years, to about one in five. Most are still confident, but in 2024 the gap between the parties hit a record 56 points. After each presidential election the winning side grows more confident and the losing side less, so at any time much of one side doubts the result.
 
-### That doubt now falls on the people who run elections
+### The people who run elections face threats and harassment
 
-Doubt about the count is not harmless. About a third of local election officials report threats, harassment or abuse because of their job, and almost a quarter worry about being assaulted. Three in four worry that false information about elections makes their job harder or more dangerous. No survey measures what caused any threat. But the people who run a count that many doubt now face that doubt in person.
+The people who run the count work under threat. About a third of local election officials report threats, harassment or abuse because of their job, and almost a quarter worry about being assaulted. In their own view, false claims make this worse: three in four worry that false information about elections makes their job harder or more dangerous.
 
 ### Each side fears a different failure, and nearly everyone wants both prevented
 
