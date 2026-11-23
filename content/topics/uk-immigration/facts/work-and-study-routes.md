@@ -2836,7 +2836,7 @@ Of 85,891 people who claimed asylum in the year to June 2026, 41% (34,999) had h
 
 ### Almost two in five people claiming asylum in 2025 had held a visa, up from about one in eight in 2021 {#work-and-study-routes--visa-share-of-claims-rose}
 
-In 2025, 39,238 of the 101,911 people who claimed asylum (38.5%) had held a visa or other leave, against 7,363 of 57,942 (12.7%) in 2021. Claims by people who came by an illegal entry route, including small boats, were 54,018 in 2025. [66](#source-work-and-study-routes-66)
+The chart shows that almost two in five people who claimed asylum in 2025 had held a visa or other leave, against about one in eight in 2021. More still came by an illegal entry route, which includes small boats. [66](#source-work-and-study-routes-66)
 
 ## Observations {#work-and-study-routes--observations-visa-route}
 
