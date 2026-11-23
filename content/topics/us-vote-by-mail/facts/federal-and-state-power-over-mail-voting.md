@@ -783,6 +783,7 @@ observationMarks:
   usps-rule-blocked: {rows: ["EO 14399, Section 3 (31 Mar 2026)", "Postal Service final rule (published 26 Aug 2026)"]}
   eo-14248-deadlines-enjoined: {rows: ["California v. Trump (D. Mass.)"]}
   eo-14399-stands: {rows: ["Trump v. California lets EO 14399 proceed"]}
+  two-orders: {rows: ["Executive Order 14248", "Executive Order 14399 orders a Postal Service ballot rule"]}
   receipt-deadlines-swung-back: {rows: ["North Dakota, Ohio and Utah end grace periods"]}
   congress-set-uocava-rules: {rows: ["Uniformed and Overseas Citizens Absentee Voting Act (UOCAVA)", "MOVE Act (amending UOCAVA)"]}
   congress-power-paramount: {rows: ["Arizona v. Inter Tribal Council"]}
@@ -806,6 +807,10 @@ observationMarks:
 More states counted late-arriving mailed ballots in 2020; by November 2026 NCSL expects the count of states requiring Election Day receipt to be "roughly the same as it was in November 2016" ([chart in the report on ballot deadlines](#fact-ballot-deadlines-and-counting-speed/chart-receipt-deadline-states)). [33](#source-federal-and-state-power-over-mail-voting-33)
 
 North Dakota, Ohio and Utah ended their [grace periods](#glossary-grace-period) in 2025. Kansas legislated an end too, but a district court in Kansas blocked it in July 2026, so Kansas still counts ballots arriving within three days. [30](#source-federal-and-state-power-over-mail-voting-30) Detail by state is in [the report on ballot deadlines](#fact-ballot-deadlines-and-counting-speed).
+
+### The President signed orders on mail ballots in March 2025 and March 2026 {#federal-and-state-power-over-mail-voting--two-orders}
+
+Executive Order 14248, in March 2025, addresses among other things the deadlines for returning mail ballots. [29](#source-federal-and-state-power-over-mail-voting-29) Executive Order 14399, in March 2026, orders the Postal Service to write a rule for mail-ballot envelopes and a list of enrolled mail voters. [17](#source-federal-and-state-power-over-mail-voting-17)
 
 ### The Supreme Court let the March 2026 order go ahead {#federal-and-state-power-over-mail-voting--eo-14399-stands}
 

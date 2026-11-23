@@ -1004,6 +1004,26 @@ figures:
           value: 'Lapsed: "Cette proposition de loi organique est caduque"'
           sources:
             - 7
+  - kind: quoteComparison
+    id: secret-ballot-reasons
+    question: Why was the secret ballot brought in?
+    description: 'What the Supreme Court recorded of the case reformers made for the secret ballot in the United States, and what economists found when Chile adopted it in 1958.'
+    quotes:
+      - text: the vote buyer could simply place a ballot in the hands of the bribed voter and watch until he placed it in the polling box
+        speaker: US Supreme Court, Burson v. Freeman
+        context: On US elections before the secret ballot
+        date: 1992-05
+        source: 1
+      - text: it would protect the weak and dependent against intimidation and coercion by employers and creditors
+        speaker: US Supreme Court, Burson v. Freeman
+        context: On the reformers' case for the secret ballot
+        date: 1992-05
+        source: 1
+      - text: After the reform, however, this difference across localities completely disappeared.
+        speaker: Baland and Robinson, economists
+        context: On places with strong landlord patronage, which had voted far more for the right before Chile's 1958 secret ballot
+        date: 2008-12
+        source: 2
   - kind: dataTable
     id: secret-ballot
     title: 'Adoption of the secret ballot'
@@ -1061,6 +1081,31 @@ figures:
           value: The right's stronger vote in landlord-patronage areas "completely disappeared"
           sources:
             - 2
+  - kind: barChart
+    id: privacy-2010
+    title: Privacy when voting, by method
+    subtitle: 'Share of mail voters and of in-person voters, US national survey, December 2010'
+    description: >-
+      What voters reported about privacy as they filled in their ballot, from
+      one national survey fielded in December 2010. The mail rows are shares
+      of mail voters; the in-person rows are shares of Election Day voters.
+    valueLabel: '% of voters'
+    categoryLabel: What voters reported
+    format: { unit: percent, decimals: 1 }
+    sort: none
+    domainMax: 100
+    sources: [21]
+    note: >-
+      Dowling, Doherty, Hill, Gerber and Huber, PLOS ONE (2019), from a
+      YouGov/Polimetrix sample matched to approximate a random sample. Mail
+      voters were a few hundred respondents. The survey asked who was
+      present and what was seen, not whether anyone was pressured.
+    items:
+      - { label: 'Mail: someone else was in the room', value: { value: 23, qualifier: over, asPublished: over 23 percent } }
+      - { label: 'Mail: discussed their vote with someone in the room', value: { value: 17.8, asPublished: 17.8 percent } }
+      - { label: 'Mail: showed their ballot to someone', value: { value: 6, qualifier: more than, asPublished: More than six percent } }
+      - { label: 'In person: no curtain or privacy screen', value: { value: 22, asPublished: 22 percent } }
+      - { label: 'In person: someone walking by could see their vote', value: { value: 20, qualifier: over, asPublished: over 20 percent } }
   - kind: dataTable
     id: privacy-surveys
     title: How private is a mail ballot?
@@ -1329,9 +1374,10 @@ figures:
           sources:
             - 20
 observationMarks:
-  secret-ballot-against-watching: {rows: ["US states before the secret ballot"]}
-  chile-secret-ballot-effect: {rows: ["Chile"]}
-  mail-voters-often-not-alone: {rows: ["Dowling et al., December 2010 (published 2019)"]}
+  secret-ballot-against-watching: {rows: ["US Supreme Court, Burson v. Freeman"]}
+  chile-secret-ballot-effect: {rows: ["Baland and Robinson, economists"]}
+  mail-voters-often-not-alone: {rows: ["Mail: someone else was in the room", "Mail: showed their ballot to someone"]}
+  in-person-no-screen: {rows: ["In person: no curtain or privacy screen"]}
   german-court-reduced-control: {rows: ["Germany's Constitutional Court, 2013"]}
   universal-postal-voting-is-rare: {rows: ["CA", "DE", "IS", "KR", "LI", "LU", "NZ", "PL", "CH", "GB", "US"]}
   france-abolished-over-fraud: {rows: ["Law of 31 December 1975", "International IDEA's account"]}
@@ -1399,7 +1445,7 @@ IDEA notes that letting voters correct an invalid ballot, as many US states do, 
 
 Abstention fell at presidential, municipal and cantonal elections and rose at legislative ones, which the ministry put down to low turnout in June 1988. [5](#source-secret-ballot-and-postal-voting-abroad-5) These are a government's own averages, not a test of cause.
 
-## Observations {#secret-ballot-and-postal-voting-abroad--observations-secret-ballot}
+## Observations {#secret-ballot-and-postal-voting-abroad--observations-secret-ballot-reasons}
 
 ### Before the secret ballot, a vote buyer could hand over a ballot and watch it cast {#secret-ballot-and-postal-voting-abroad--secret-ballot-against-watching}
 
@@ -1409,15 +1455,23 @@ Before it, "the vote buyer could simply place a ballot in the hands of the bribe
 
 Before Chile's 1958 reform, places with more patron-client ties voted more strongly for the right; afterwards "this difference across localities completely disappeared". [2](#source-secret-ballot-and-postal-voting-abroad-2) The abstract gives no figures.
 
+## Observations {#secret-ballot-and-postal-voting-abroad--observations-secret-ballot}
+
 ### The secrecy record is about polling places, not mail {#secret-ballot-and-postal-voting-abroad--secrecy-evidence-is-polling-place}
 
 These reforms secured secrecy inside a polling booth. No study read here measures vote buying or coercion among mail voters, so whether mail voting revives them is not shown either way. [1](#source-secret-ballot-and-postal-voting-abroad-1) [2](#source-secret-ballot-and-postal-voting-abroad-2)
 
-## Observations {#secret-ballot-and-postal-voting-abroad--observations-privacy-surveys}
+## Observations {#secret-ballot-and-postal-voting-abroad--observations-privacy-2010}
 
 ### Nearly a quarter of mail voters had someone else in the room {#secret-ballot-and-postal-voting-abroad--mail-voters-often-not-alone}
 
 In the strongest survey, over 23 percent of mail voters had someone else in the room and more than six percent showed their ballot. [21](#source-secret-ballot-and-postal-voting-abroad-21)
+
+### In the same survey, 22% of in-person voters had no curtain or privacy screen {#secret-ballot-and-postal-voting-abroad--in-person-no-screen}
+
+Election Day voters were asked about privacy where they voted. "22 percent said there was no curtain or privacy screen around their voting space and over 20 percent said that someone walking by could see who they were voting for". [21](#source-secret-ballot-and-postal-voting-abroad-21) Only 3% said someone at the polling place asked whom they were voting for.
+
+## Observations {#secret-ballot-and-postal-voting-abroad--observations-privacy-surveys}
 
 ### Doubts about secrecy change behaviour {#secret-ballot-and-postal-voting-abroad--secrecy-doubts-matter}
 
