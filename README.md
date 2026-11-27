@@ -97,10 +97,9 @@ Neither facts nor file order decide reading order. **Fact order is derived**:
 each viewpoint ranks the facts it cites and then those it acknowledges, and
 the page interleaves those rankings round-robin, so no viewpoint's second
 fact appears before every viewpoint has had its first
-(`lib/content/rank-facts.ts`). **Viewpoint order is an explicit `order` field**
-on each viewpoint, chosen so the sides alternate rather than cluster. The home
-page lists viewpoints in that order. A topic's page is built in it, then
-shuffles them once loaded, so that none is always read first.
+(`lib/content/rank-facts.ts`). **Viewpoints have no order.** A topic's page
+shuffles them once loaded, so that none is always read first; the home page,
+and a topic's page before it loads, list them by name.
 
 ## Content validation and publication checks
 
@@ -163,9 +162,10 @@ to license and carries its own terms.
 
 ### Viewpoint format
 
-A viewpoint is a short lead, then four to six `###` sections, read on the topic
-page as a walkthrough with one chart per section. Each heading is one claim, and
-read alone the headings make the whole case for the title; two or three short
+A viewpoint's file is its `name` in frontmatter, a one-sentence summary, then
+four to six `###` sections, read on the topic page as a walkthrough with one
+chart per section. Each heading is one claim, and read alone the headings make
+the whole case for the summary; two or three short
 sentences under each say what to notice in the chart, whose choice follows from
 the section's first citation. It is written for a middle-school
 reader: short sentences, everyday words, citation text that states the point

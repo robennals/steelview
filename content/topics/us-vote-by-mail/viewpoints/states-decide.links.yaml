@@ -3,17 +3,10 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations: []
   verification:
     status: verified
-    textHash: af457bae99ee
-    checkedAt: 2026-11-20
-lead:
-  citations: []
-  verification:
-    status: verified
-    textHash: 0101ca44f7bc
-    checkedAt: 2026-11-20
+    textHash: 4ec0cc4710df
+    checkedAt: 2026-11-26
 cards:
   - heading: The President has ordered new rules for mail ballots
     citations:

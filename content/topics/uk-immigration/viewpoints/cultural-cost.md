@@ -1,11 +1,8 @@
 ---
-name: Large-scale immigration from very different cultures is eroding Britain's shared way of life
-shortName: Protect shared culture
-summary: A country can absorb newcomers who come to share its way of life, but it must apply its rules to everyone, and it has not always done so, as in towns where gangs abused children while officials feared being called racist. Admit fewer people, choose them with integration in mind, and measure how each group fares.
-order: 5
+name: Protect shared culture
 draft: ai
 ---
-A country is more than an economy. It is a shared way of life: a language, laws applied equally to everyone, and values that people expect to hand on. Immigration on today's scale, from very different cultures, is wearing that away.
+Large-scale immigration from very different cultures is eroding Britain's shared way of life.
 
 ### Newcomers take years to join in, and Britain has far more of them
 

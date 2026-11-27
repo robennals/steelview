@@ -3,27 +3,10 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations:
-    - phrase: Voting as someone else at the polls made up 10 of the 2,068 alleged fraud cases News21 collected
-      href: "#fact-election-fraud-and-voter-exclusion-history/impersonation-rare-modern"
-    - phrase: non-citizens' votes are found at about 1 to 22 per million ballots
-      href: "#fact-non-citizens-on-voter-rolls/votes-per-ballots"
-    - phrase: Kansas's citizenship-document rule blocked tens of thousands of applicants
-      href: "#fact-burdens-of-id-and-citizenship-rules/kansas-blocked-vs-noncitizens"
-    - phrase: Texas's ID-number rule rejected one mail ballot in eight in its first primary
-      href: "#fact-burdens-of-id-and-citizenship-rules/texas-march-2022-spike"
   verification:
     status: verified
-    textHash: 03c649bd2ef4
-    checkedAt: 2026-11-20
-lead:
-  citations:
-    - phrase: proof-of-citizenship
-      href: "#glossary-documentary-proof-of-citizenship"
-  verification:
-    status: verified
-    textHash: 1e72f5f03408
-    checkedAt: 2026-11-20
+    textHash: 5e5db7972956
+    checkedAt: 2026-11-26
 cards:
   - heading: ID checks at the polls aim at a kind of fraud that is almost never found
     visual:

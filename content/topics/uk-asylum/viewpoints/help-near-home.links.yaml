@@ -3,21 +3,10 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations:
-    - phrase: most of them never get near a boat
-      href: "#fact-safe-and-legal-routes/most-refugees-live-next-door"
-    - phrase: would protect many more people close to home
-      href: "#fact-asylum-backlog-accommodation-and-cost/support-near-home-costs-less"
   verification:
     status: verified
-    textHash: 196b0c1fbf74
-    checkedAt: 2026-11-22
-lead:
-  citations: []
-  verification:
-    status: verified
-    textHash: 37861049194f
-    checkedAt: 2026-11-22
+    textHash: d56f42f75f1d
+    checkedAt: 2026-11-26
 cards:
   - heading: Most refugees never get near a boat
     visual:

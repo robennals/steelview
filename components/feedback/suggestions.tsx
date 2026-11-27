@@ -44,7 +44,7 @@ function useSuggestions(viewpointId: string): Suggestion[] | null {
 type SuggestionsSlideProps = {
   viewpointId: string;
   /** The viewpoint's short name, for the full view's title. */
-  shortName: string;
+  name: string;
   /** The viewpoint's card headings, which a suggestion can be about. */
   headings: string[];
 };
@@ -56,7 +56,7 @@ type SuggestionsSlideProps = {
  * the page. The preview holds only open suggestions: an incorporated one is
  * already in the argument the reader has just read.
  */
-export function SuggestionsSlide({ viewpointId, shortName, headings }: SuggestionsSlideProps) {
+export function SuggestionsSlide({ viewpointId, name, headings }: SuggestionsSlideProps) {
   const suggestions = useSuggestions(viewpointId);
   const [trigger, setTrigger] = useState<HTMLElement | null>(null);
   const close = useCallback(() => setTrigger(null), []);
@@ -97,7 +97,7 @@ export function SuggestionsSlide({ viewpointId, shortName, headings }: Suggestio
         </button>
         {openCount > 0 && <span className="sv-feedback__count">{count(openCount, 'open suggestion')}</span>}
       </div>
-      {trigger && <SuggestionsSheet viewpointId={viewpointId} shortName={shortName} headings={headings} trigger={trigger} onClose={close} />}
+      {trigger && <SuggestionsSheet viewpointId={viewpointId} name={name} headings={headings} trigger={trigger} onClose={close} />}
     </div>
   );
 }
@@ -108,7 +108,7 @@ type SuggestionsSheetProps = SuggestionsSlideProps & {
 };
 
 /** Every suggestion for a viewpoint, by outcome, and the box to add one. */
-function SuggestionsSheet({ viewpointId, shortName, headings, trigger, onClose }: SuggestionsSheetProps) {
+function SuggestionsSheet({ viewpointId, name, headings, trigger, onClose }: SuggestionsSheetProps) {
   const titleId = useId();
   const { slug, state, write } = useFeedback();
   const suggestions = useSuggestions(viewpointId) ?? [];
@@ -134,7 +134,7 @@ function SuggestionsSheet({ viewpointId, shortName, headings, trigger, onClose }
   return (
     <InfoSheet eyebrow={SUGGESTIONS_HEADING} labelledBy={titleId} trigger={trigger} onClose={onClose}>
       <div className="sv-feedback-sheet">
-        <h2 id={titleId} className="sv-feedback-sheet__title">Make “{shortName}” stronger</h2>
+        <h2 id={titleId} className="sv-feedback-sheet__title">Make “{name}” stronger</h2>
         <p className="sv-feedback-sheet__rule">
           This isn’t a place for debate. It’s for making this argument as strong as it can be.
           Disagree with it? Strengthen an opposing viewpoint, or debate a crux.

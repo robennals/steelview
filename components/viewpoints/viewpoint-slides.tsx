@@ -79,8 +79,8 @@ export function ViewpointSlides({ slug, viewpoints, walkthroughs, sources }: Vie
               slug={viewpoint.id}
               anchor={anchorFor('viewpoint', viewpoint.id)}
               className="sv-row--walk sv-row--deck sv-row--viewpoint"
-              title={viewpoint.shortName}
-              subtitle={viewpoint.name}
+              title={viewpoint.name}
+              subtitle={viewpoint.summary}
               meta={viewpoint.draft === 'ai' ? <p key="meta" className="sv-row__meta"><span className="sv-tag">AI draft</span></p> : null}
               thumbs={
                 // Without a key, React's development build reports this strip as an
@@ -106,7 +106,7 @@ export function ViewpointSlides({ slug, viewpoints, walkthroughs, sources }: Vie
               <LazyCharts load={rowCharts.bind(null, slug, 'viewpoint', viewpoint.id)}>
                 <Slideshow name={viewpoint.name} headings={steps.map(step => step.heading)} afterword={{
                   heading: SUGGESTIONS_HEADING,
-                  slide: <SuggestionsSlide viewpointId={viewpoint.id} shortName={viewpoint.shortName} headings={steps.map(step => step.heading)} />,
+                  slide: <SuggestionsSlide viewpointId={viewpoint.id} name={viewpoint.name} headings={steps.map(step => step.heading)} />,
                 }}>
                   {steps.map((step, i) => <StepCard key={i} step={step} index={i} />)}
                 </Slideshow>

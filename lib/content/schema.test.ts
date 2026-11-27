@@ -148,20 +148,19 @@ test('lastUpdated given as a JS Date (YAML-coerced) normalizes to YYYY-MM-DD', (
 test.skip('a viewpoint defaults all three reference lists to empty arrays', () => {
   const parsed = viewpointFrontmatterSchema.parse({
     name: 'Control first',
-    summary: 'One line.',
-    order: 1,
   });
   assert.deepEqual(parsed.citesFacts, []);
   assert.deepEqual(parsed.acknowledges, []);
   assert.deepEqual(parsed.setsAside, []);
 });
 
-test('a viewpoint without an explicit order is rejected', () => {
-  // Sorting viewpoints by id let a retitle silently reorder the sides; the
-  // position each viewpoint holds in the section is now an editorial choice
-  // that has to be written down.
-  const parsed = viewpointFrontmatterSchema.safeParse({ name: 'Control first', summary: 'One line.' });
-  assert.equal(parsed.success, false);
+test('a viewpoint\'s frontmatter is its name: a summary, short name or order is rejected', () => {
+  // The summary is the text before the first card, and the topic page
+  // shuffles viewpoints, so these fields would be read by nothing.
+  assert.equal(viewpointFrontmatterSchema.safeParse({ name: 'Control first' }).success, true);
+  for (const field of [{ summary: 'One line.' }, { shortName: 'Control' }, { order: 1 }]) {
+    assert.equal(viewpointFrontmatterSchema.safeParse({ name: 'Control first', ...field }).success, false);
+  }
 });
 
 test('a fact may not carry an order — the field was removed, not renamed', () => {

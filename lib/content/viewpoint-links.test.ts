@@ -27,34 +27,48 @@ test('overlapping citations are reported, not nested', () => {
   assert.deepEqual(errors, ['cites "two three", which overlaps another citation']);
 });
 
-test('splitPassages keeps every character, so joining rebuilds the body', () => {
-  const body = 'Lead.\n\n### First\n\nOne.\n\n### Second\nTwo.';
+test('the text before the first card is the summary, and the cards are the body', () => {
+  const body = 'Summary.\n\n### First\n\nOne.\n\n### Second\nTwo.';
   const passages = splitPassages(body);
-  assert.equal(passages.lead, 'Lead.\n\n');
+  assert.equal(passages.summary, 'Summary.\n\n');
   assert.deepEqual(passages.cards.map((c) => c.heading), ['First', 'Second']);
-  const { body: joined } = joinViewpoint(body, 'Summary.', viewpointLinksSchema.parse({ cards: [{ heading: 'First' }, { heading: 'Second' }] }));
-  assert.equal(joined, body);
+  const joined = joinViewpoint(body, viewpointLinksSchema.parse({ cards: [{ heading: 'First' }, { heading: 'Second' }] }));
+  assert.equal(joined.summary, 'Summary.');
+  assert.equal(joined.body, '### First\n\nOne.\n\n### Second\nTwo.');
+  assert.deepEqual(joined.linkErrors, []);
+});
+
+test('a viewpoint with no text before its first card is reported as having no summary', () => {
+  const { linkErrors } = joinViewpoint('### First\n\nOne.', viewpointLinksSchema.parse({ cards: [{ heading: 'First' }] }));
+  assert.deepEqual(linkErrors, ['has no summary: write it before the first ### heading']);
+});
+
+test('the summary takes no citations, and the links file no lead', () => {
+  assert.equal(viewpointLinksSchema.safeParse({ summary: { citations: [{ phrase: 'S', href: '#fact-a/x' }] } }).success, false);
+  assert.equal(viewpointLinksSchema.safeParse({ lead: {} }).success, false);
 });
 
 test('a passage is verified only for the text it was checked on', () => {
-  const body = 'Lead.\n\n### First\n\nOne in eight records is out of date.';
+  const body = 'Summary.\n\n### First\n\nOne in eight records is out of date.';
   const card = splitPassages(body).cards[0];
   const links = viewpointLinksSchema.parse({
     summary: { verification: { status: 'verified', textHash: passageHash('Summary.') } },
-    lead: { verification: { status: 'verified', textHash: passageHash('Lead.') } },
     cards: [{ heading: 'First', citations: [{ phrase: 'One in eight', href: '#fact-a/x' }], verification: { status: 'verified', textHash: passageHash(cardText(card)) } }],
   });
-  const checked = joinViewpoint(body, 'Summary.', links);
+  const checked = joinViewpoint(body, links);
   assert.deepEqual(checked.unverified, []);
-  assert.equal(checked.body, 'Lead.\n\n### First\n\n[One in eight](#fact-a/x) records is out of date.');
+  assert.equal(checked.body, '### First\n\n[One in eight](#fact-a/x) records is out of date.');
 
-  const edited = joinViewpoint(body.replace('out of date', 'wrong'), 'Summary.', links);
-  assert.deepEqual(edited.unverified, ['card "First" has changed since it was checked against its evidence']);
+  const edited = joinViewpoint(body.replace('out of date', 'wrong').replace('Summary.', 'A summary.'), links);
+  assert.deepEqual(edited.unverified, [
+    'the summary has changed since it was checked against its evidence',
+    'card "First" has changed since it was checked against its evidence',
+  ]);
 });
 
 test('cards and links-file entries that do not match by heading are reported', () => {
   const links = viewpointLinksSchema.parse({ cards: [{ heading: 'Old heading' }] });
-  const { linkErrors } = joinViewpoint('Lead.\n\n### New heading\n\nText.', 'Summary.', links);
+  const { linkErrors } = joinViewpoint('Summary.\n\n### New heading\n\nText.', links);
   assert.deepEqual(linkErrors, [
     'card "New heading" has no entry in the links file',
     'the links file has an entry for "Old heading", which is no card\'s heading',

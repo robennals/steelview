@@ -45,7 +45,8 @@ test('frontmatter and body are both loaded', async () => {
   const one = topic.viewpoints.find((v) => v.id === 'one');
   assert.equal(one?.name, 'One');
   assert.equal(one?.citesFacts, undefined);
-  assert.equal(one?.body, 'The full argument for viewpoint one.');
+  assert.equal(one?.summary, 'The first viewpoint, in a line.');
+  assert.equal(one?.body, '### The argument\n\nThe full argument for viewpoint one.');
 });
 
 test('an item with no body loads with an empty string body', async () => {
@@ -80,14 +81,15 @@ test('bad frontmatter throws ContentError naming the file and the field', async 
 test('a viewpoint joins its text with its links file, and reports a link left in the text', async () => {
   const root = await fixtureCopy();
   const dir = path.join(root, 'example', 'viewpoints');
-  await writeFile(path.join(dir, 'one.md'), '---\nname: One\nshortName: s\nsummary: s\norder: 1\ndraft: ai\n---\nLead.\n\n### A card\n\nAlpha is cited. [Beta](#fact-beta) is not.\n');
+  await writeFile(path.join(dir, 'one.md'), '---\nname: One\ndraft: ai\n---\nLead.\n\n### A card\n\nAlpha is cited. [Beta](#fact-beta) is not.\n');
   await writeFile(
     path.join(dir, 'one.links.yaml'),
     'cards:\n  - heading: A card\n    citations:\n      - phrase: Alpha\n        href: "#fact-alpha"\n'
   );
   const one = (await loadTopic('example', root)).viewpoints.find((v) => v.id === 'one')!;
   assert.equal(one.draft, 'ai');
-  assert.equal(one.body, 'Lead.\n\n### A card\n\n[Alpha](#fact-alpha) is cited. [Beta](#fact-beta) is not.');
+  assert.equal(one.summary, 'Lead.');
+  assert.equal(one.body, '### A card\n\n[Alpha](#fact-alpha) is cited. [Beta](#fact-beta) is not.');
   assert.deepEqual(one.linkErrors, ['the text links [Beta](#fact-beta); citations go in one.links.yaml']);
 });
 
@@ -95,7 +97,7 @@ test('cross-reference integrity is deferred until the publication check', async 
   const root = await fixtureCopy();
   await writeFile(
     path.join(root, 'example', 'viewpoints', 'one.md'),
-    '---\nname: One\nshortName: s\nsummary: s\norder: 1\n---\n[Claim](#fact-ghost).\n'
+    '---\nname: One\n---\n[Claim](#fact-ghost).\n'
   );
   await assert.doesNotReject(() => loadTopic('example', root));
   await assert.rejects(() => loadTopic('example', root, { validateIntegrity: true }), (e: Error) => {
@@ -120,12 +122,12 @@ test('a topic with no cruxes directory loads with an empty cruxes array', async 
   );
   await writeFile(
     path.join(dir, 'viewpoints', 'v.md'),
-    '---\nname: V\nshortName: s\nsummary: s\norder: 1\nacknowledges: [a]\n---\nBody.\n'
+    '---\nname: V\nacknowledges: [a]\n---\nBody.\n'
   );
   // Rule 9 needs at least two viewpoints.
   await writeFile(
     path.join(dir, 'viewpoints', 'v2.md'),
-    '---\nname: V2\nshortName: s\nsummary: s\norder: 2\nacknowledges: [a]\n---\nBody.\n'
+    '---\nname: V2\nacknowledges: [a]\n---\nBody.\n'
   );
   const topic = await loadTopic('bare', root);
   assert.deepEqual(topic.cruxes, []);
@@ -168,12 +170,12 @@ test('unquoted YAML dates in source frontmatter normalize to strings, not Date o
   );
   await writeFile(
     path.join(dir, 'viewpoints', 'v.md'),
-    '---\nname: V\nshortName: s\nsummary: s\norder: 1\nacknowledges: [a]\n---\nBody.\n'
+    '---\nname: V\nacknowledges: [a]\n---\nBody.\n'
   );
   // Rule 9 needs at least two viewpoints.
   await writeFile(
     path.join(dir, 'viewpoints', 'v2.md'),
-    '---\nname: V2\nshortName: s\nsummary: s\norder: 2\nacknowledges: [a]\n---\nBody.\n'
+    '---\nname: V2\nacknowledges: [a]\n---\nBody.\n'
   );
   const topic = await loadTopic('dates', root);
   const fact = topic.facts[0];
@@ -219,10 +221,10 @@ async function loadOrdered(
   );
 
   await Promise.all(
-    Object.entries(viewpoints).map(([id, spec], i) =>
+    Object.entries(viewpoints).map(([id, spec]) =>
       writeFile(
         path.join(dir, 'viewpoints', `${id}.md`),
-        `---\nname: ${id}\nshortName: s\nsummary: s\norder: ${i + 1}\ncitesFacts: [${spec.cites ?? []}]\nacknowledges: [${spec.acknowledges ?? []}]\nsetsAside: [${spec.setsAside ?? []}]\n---\nBody.\n`
+        `---\nname: ${id}\ncitesFacts: [${spec.cites ?? []}]\nacknowledges: [${spec.acknowledges ?? []}]\nsetsAside: [${spec.setsAside ?? []}]\n---\nBody.\n`
       )
     )
   );
@@ -259,17 +261,16 @@ test.skip('facts nothing ranks fall to a tail in status order', async () => {
   );
 });
 
-test('viewpoints render in their explicit order, not in id order', async () => {
+test('viewpoints are built in order of name, not of id', async () => {
   const root = await fixtureCopy();
-  // `one` is order 1 and `two` order 2 in the fixture; swap them and the
-  // section must swap too, even though the ids sort the other way.
-  for (const [file, order] of [
-    ['one.md', 2],
-    ['two.md', 1],
+  // Renamed so the names sort the other way from the ids.
+  for (const [file, name] of [
+    ['one.md', 'Zed'],
+    ['two.md', 'Alpha'],
   ] as const) {
     const p = path.join(root, 'example', 'viewpoints', file);
     const text = await readFile(p, 'utf8');
-    await writeFile(p, text.replace(/^order: \d+$/m, `order: ${order}`));
+    await writeFile(p, text.replace(/^name: .*$/m, `name: ${name}`));
   }
   const topic = await loadTopic('example', root);
   assert.deepEqual(
@@ -278,11 +279,11 @@ test('viewpoints render in their explicit order, not in id order', async () => {
   );
 });
 
-test('a viewpoint with no order is rejected', async () => {
+test('a viewpoint carrying a field the format has dropped is rejected', async () => {
   const root = await fixtureCopy();
   const p = path.join(root, 'example', 'viewpoints', 'one.md');
   const text = await readFile(p, 'utf8');
-  await writeFile(p, text.replace(/^order: \d+\n/m, ''));
+  await writeFile(p, text.replace(/^name: .*$/m, '$&\norder: 1'));
   await assert.rejects(() => loadTopic('example', root), (e: Error) => {
     assert.ok(e instanceof ContentError);
     assert.match(e.message, /one\.md/);

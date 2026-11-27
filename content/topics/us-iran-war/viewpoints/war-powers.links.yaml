@@ -3,29 +3,10 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations:
-    - phrase: The Constitution gives Congress the power to declare war
-      href: "#fact-decisions-law-and-diplomacy/congress-declares-war"
-    - phrase: the administration did not seek its approval before the 60-day mark
-      href: "#fact-decisions-law-and-diplomacy/no-authorisation-sought"
-    - phrase: The House passed three resolutions to end it
-      href: "#fact-decisions-law-and-diplomacy/house-passed-three-resolutions"
-    - phrase: the Senate passed one of those votes
-      href: "#fact-decisions-law-and-diplomacy/senate-adopted-one-resolution"
-    - phrase: The President reported each new strike as a new action
-      href: "#fact-decisions-law-and-diplomacy/separate-actions"
   verification:
     status: verified
-    textHash: "164203644928"
-    checkedAt: 2026-11-20
-lead:
-  citations:
-    - phrase: Congress has never voted to approve this war
-      href: "#fact-decisions-law-and-diplomacy/votes-all-to-end-the-war"
-  verification:
-    status: verified
-    textHash: 2e2ca5c77ec1
-    checkedAt: 2026-11-20
+    textHash: 985449481ca6
+    checkedAt: 2026-11-26
 cards:
   - heading: Only Congress can declare war, and it has not approved this one
     visual:

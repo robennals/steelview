@@ -3,23 +3,12 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations:
-    - phrase: a bigger economy
-      href: "#fact-immigration-economy-and-public-finances/total-gdp-grew"
-    - phrase: almost no rise in output per person
-      href: "#fact-immigration-economy-and-public-finances/gdp-per-head-barely-grew"
-    - phrase: England's households are projected to grow faster than it is building homes
-      href: "#fact-immigration-housing-and-public-services/building-below-household-growth"
   verification:
     status: verified
-    textHash: 59ba5ab27316
-    checkedAt: 2026-11-20
-lead:
-  citations: []
-  verification:
-    status: verified
-    textHash: 39fca6865d0b
-    checkedAt: 2026-11-20
+    textHash: 4a476d42b808
+    checkedAt: 2026-11-26
+    notes:
+      - "\"No richer per head\" is a little stronger than its card, which says output per person \"has barely moved\" since 2019 and that migration is not the only cause."
 cards:
   - heading: Britain has just had the biggest wave of immigration on record
     visual:

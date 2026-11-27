@@ -1,11 +1,8 @@
 ---
-name: Voters should prove who they are, and that they are citizens
-shortName: Prove identity
-summary: An election is only honest if only eligible people vote. People have voted in other people's names, and state reviews keep finding non-citizens on voter lists. Where photo ID came in after organised fraud, suspected personation fell, and very few citizens have no photo ID at all. So states should ask for free photo ID at the polls and check citizenship before anyone is added to the list.
-order: 1
+name: Prove identity
 draft: ai
 ---
-An election should be decided by the people allowed to vote, each voting once. That needs a check before the ballot goes in, because a secret ballot cannot be taken back out. That is what verifiably honest elections means.
+Voters should prove who they are, and that they are citizens.
 
 ### Fraud at the polls has happened, and when it works it leaves no trace
 

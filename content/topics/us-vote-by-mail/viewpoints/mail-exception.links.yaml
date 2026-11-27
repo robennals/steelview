@@ -3,17 +3,10 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations: []
   verification:
     status: verified
-    textHash: "6697296374e7"
-    checkedAt: 2026-11-20
-lead:
-  citations: []
-  verification:
-    status: verified
-    textHash: 4d4c9015a130
-    checkedAt: 2026-11-20
+    textHash: 15cd7d02b9e4
+    checkedAt: 2026-11-26
 cards:
   - heading: Mail voting for everyone has spread since 2016
     visual:

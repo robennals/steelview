@@ -3,23 +3,10 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations:
-    - phrase: in every check from 2017 to 2019, its uranium stock stayed under the 2015 deal's limit
-      href: "#fact-iran-nuclear-programme/deal-era-compliance"
-    - phrase: killed thousands of Iranians
-      href: "#fact-human-and-financial-costs-of-the-war/deaths-in-the-thousands"
-    - phrase: all but stopped inspections
-      href: "#fact-iran-nuclear-programme/verification-stopped"
   verification:
     status: verified
-    textHash: effe2c7eeb2f
-    checkedAt: 2026-11-20
-lead:
-  citations: []
-  verification:
-    status: verified
-    textHash: 491ff4a1f63b
-    checkedAt: 2026-11-20
+    textHash: e6ea900344c4
+    checkedAt: 2026-11-26
 cards:
   - heading: The war has killed thousands of Iranians who had no say in it
     visual:

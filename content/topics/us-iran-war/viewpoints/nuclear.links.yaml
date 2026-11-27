@@ -3,21 +3,10 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations:
-    - phrase: no inspector has seen its most enriched uranium since June 2025
-      href: "#fact-iran-nuclear-programme/stock-unaccounted-for"
-    - phrase: Iran has backed deadly attacks abroad
-      href: "#fact-iran-actions-abroad/argentine-court-buenos-aires-bombings"
   verification:
     status: verified
-    textHash: 82f67dcd3d52
-    checkedAt: 2026-11-20
-lead:
-  citations: []
-  verification:
-    status: verified
-    textHash: 467d59c33f81
-    checkedAt: 2026-11-20
+    textHash: 77c11e7e58d5
+    checkedAt: 2026-11-26
 cards:
   - heading: Iran was close to having enough uranium for a bomb
     visual:

@@ -3,23 +3,10 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations:
-    - phrase: Most fraud on record was done by officials or through the mail, where a polling-place ID check never reaches
-      href: "#fact-election-fraud-and-voter-exclusion-history/id-would-not-reach"
-    - phrase: Most people taken off voter lists had moved, died, or not answered a notice
-      href: "#fact-voter-roll-maintenance/mostly-moves-deaths-nonresponse"
-    - phrase: reviews that give a cause trace non-citizens on the lists to mistakes
-      href: "#fact-non-citizens-on-voter-rolls/how-noncitizens-reach-rolls"
   verification:
     status: verified
-    textHash: b19cd58bde36
-    checkedAt: 2026-11-20
-lead:
-  citations: []
-  verification:
-    status: verified
-    textHash: 8e63f713c9fa
-    checkedAt: 2026-11-20
+    textHash: 3d8b025e5572
+    checkedAt: 2026-11-26
 cards:
   - heading: Voter lists hold many out-of-date names, and they stay for years
     visual:

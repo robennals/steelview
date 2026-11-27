@@ -3,36 +3,10 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations:
-    - phrase: Most people who cross the Channel and get a decision are granted protection
-      href: "#fact-asylum-claims-and-decisions/small-boat-claims-mostly-granted"
-    - phrase: war drove them out
-      href: "#fact-asylum-claims-and-decisions/rise-linked-to-conflict"
-    - phrase: Britain offers refugees almost no safe way in
-      href: "#fact-safe-and-legal-routes/claim-must-be-made-in-uk"
-    - phrase: Britain welcomed hundreds of thousands of Ukrainians and Hong Kongers
-      href: "#fact-safe-and-legal-routes/nationalities-with-safe-routes-rarely-came-by-boat"
-    - phrase: cost £715 million
-      href: "#fact-deterrence-and-protection-policies/rwanda-cost-and-relocations"
-    - phrase: sent no asylum seekers
-      href: "#fact-deterrence-and-protection-policies/no-asylum-seekers-sent"
   verification:
     status: verified
-    textHash: d508cf275335
-    checkedAt: 2026-11-22
-    notes:
-      - Eritreans, the largest group crossing, are mostly fleeing a dictatorship rather than a war. "Persecution" would cover them.
-      - The £715 million includes the Illegal Migration Act as well as the Rwanda partnership.
-lead:
-  citations:
-    - phrase: Britain offers them no safe way to come
-      href: "#fact-safe-and-legal-routes/claim-must-be-made-in-uk"
-  verification:
-    status: verified
-    textHash: 3443e70c677b
-    checkedAt: 2026-11-22
-    notes:
-      - A claim must be made inside Britain; the routes that do exist are resettlement, family reunion (paused) and country schemes.
+    textHash: 3e4b2ae22dc8
+    checkedAt: 2026-11-26
 cards:
   - heading: Most people in the boats are fleeing real danger, by Britain's own judgment
     visual:

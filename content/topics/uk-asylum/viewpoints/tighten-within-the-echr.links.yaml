@@ -3,31 +3,10 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations:
-    - phrase: too few whose claims fail leave
-      href: "#fact-removals-and-what-stops-them/fewer-refused-recorded-leaving"
-    - phrase: most of what stops them leaving is British law and delay
-      href: "#fact-removals-and-what-stops-them/late-claims-not-human-rights-claims"
-    - phrase: Albanian claims stayed low once Britain refused and returned them
-      href: "#fact-channel-crossings-and-irregular-arrivals/albanian-claims-fell-by-every-route"
-    - phrase: the European cooperation that depends on it
-      href: "#fact-asylum-law-and-the-echr/part-three-rests-on-the-echr"
   verification:
     status: verified
-    textHash: e7be4cfb14c5
-    checkedAt: 2026-11-22
-    notes:
-      - No source divides failed removals by cause. The detention data show what people raised, and some asylum claims also rest on Article 3 of the ECHR.
-lead:
-  citations:
-    - phrase: too few of those who are refused ever leave
-      href: "#fact-removals-and-what-stops-them/fewer-refused-recorded-leaving"
-    - phrase: most of the causes lie in British law and British delay
-      href: "#fact-removals-and-what-stops-them/late-claims-not-human-rights-claims"
-  verification:
-    status: verified
-    textHash: 8f78e6dcccd8
-    checkedAt: 2026-11-22
+    textHash: acd0d802491f
+    checkedAt: 2026-11-26
 cards:
   - heading: Too many people claim asylum, and too few who are refused leave
     visual:

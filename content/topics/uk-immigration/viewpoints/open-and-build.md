@@ -1,11 +1,8 @@
 ---
-name: Britain needs the people who come to work here; build the homes and services, rather than shut the door
-shortName: Open and build
-summary: Skilled workers pay far more into the public finances than they take out, and Britain needs more of them, not fewer. Immigration is a small part of why homes cost so much; the answer to the extra demand it adds is to build.
-order: 2
+name: Open and build
 draft: ai
 ---
-Britain needs the people who come here to work, and skilled workers among them put far more in than they take out. It should keep welcoming them, and build the homes and services a growing country needs.
+Britain needs the people who come to work here; build the homes and services, rather than shut the door.
 
 ### Skilled migrants pay far more in than they take out
 

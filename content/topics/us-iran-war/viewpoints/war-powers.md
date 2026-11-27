@@ -1,11 +1,8 @@
 ---
-name: Congress has never voted to approve this war, so it is against the law
-shortName: Congress decides
-summary: The Constitution gives Congress the power to declare war, and the administration did not seek its approval before the 60-day mark. The House passed three resolutions to end it, and the Senate passed one of those votes. The President reported each new strike as a new action.
-order: 4
+name: Congress decides
 draft: ai
 ---
-Under the Constitution, a President cannot take the country to war alone. Congress has never voted to approve this war, so it is against the law. It should stop unless Congress votes for it.
+Congress has never voted to approve this war, so it is against the law.
 
 ### Only Congress can declare war, and it has not approved this one
 

@@ -3,17 +3,10 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations: []
   verification:
     status: verified
-    textHash: "772747492079"
-    checkedAt: 2026-11-20
-lead:
-  citations: []
-  verification:
-    status: verified
-    textHash: b4426cf4f1a8
-    checkedAt: 2026-11-20
+    textHash: 930a318cfaa2
+    checkedAt: 2026-11-26
 cards:
   - heading: Election Day should be the last day a ballot can arrive
     visual:

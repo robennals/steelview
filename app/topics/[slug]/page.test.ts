@@ -22,9 +22,7 @@ test('a section with no items renders no heading for that section', () => {
       {
         id: 'one',
         name: 'One',
-        shortName: 'S',
         summary: 's',
-        order: 1,
         citesFacts: [],
         acknowledges: ['a'],
         setsAside: [],
@@ -33,9 +31,7 @@ test('a section with no items renders no heading for that section', () => {
       {
         id: 'two',
         name: 'Two',
-        shortName: 'S',
         summary: 's',
-        order: 2,
         citesFacts: [],
         acknowledges: ['a'],
         setsAside: [],
@@ -63,9 +59,7 @@ test('a section with items renders its heading', () => {
       {
         id: 'one',
         name: 'One',
-        shortName: 'S',
         summary: 's',
-        order: 1,
         citesFacts: [],
         acknowledges: ['a'],
         setsAside: [],
@@ -74,9 +68,7 @@ test('a section with items renders its heading', () => {
       {
         id: 'two',
         name: 'Two',
-        shortName: 'S',
         summary: 's',
-        order: 2,
         citesFacts: [],
         acknowledges: ['a'],
         setsAside: [],
@@ -106,13 +98,13 @@ test('a section with items renders its heading', () => {
 
 test('the page has no tabs: the cruxes follow the viewpoints', () => {
   const viewpoint = {
-    id: 'one', name: 'One view', shortName: 'One', summary: 's', order: 1,
+    id: 'one', name: 'One view', summary: 's',
     citesFacts: [], acknowledges: ['a'], setsAside: [], body: '',
   };
   const topic: Topic = {
     slug: 'crux', title: 'Crux', subtitle: 'Sub', lastUpdated: '2026-08-18', firstPublished: '2026-08-18', intro: '',
     facts: [{ id: 'a', claim: 'A claim', status: 'well-supported', sources: [], body: '' }],
-    viewpoints: [viewpoint, { ...viewpoint, id: 'two', name: 'Two view', order: 2 }],
+    viewpoints: [viewpoint, { ...viewpoint, id: 'two', name: 'Two view' }],
     cruxes: [{ id: 'timing', title: 'When?', tension: 'Soon or late.', kind: 'prediction', divides: ['one', 'two'], positions: [{ viewpoint: 'one', holds: 'Soon.' }, { viewpoint: 'two', holds: 'Later.' }], body: '' }],
   };
   const html = renderToStaticMarkup(TopicSections({ topic, walkthroughs: new Map(), featured: new Map() }));
@@ -120,7 +112,7 @@ test('the page has no tabs: the cruxes follow the viewpoints', () => {
   assert.ok(html.indexOf('>Viewpoints</h2>') < html.indexOf('>Cruxes</h2>'), html);
 });
 
-test('a crux is a row: its tension closed, and what each side holds under its short name', () => {
+test('a crux is a row: its tension closed, and what each side holds under its name', () => {
   const viewpoint = {
     citesFacts: [], acknowledges: ['a'], setsAside: [], body: '', summary: 'A summary.',
   };
@@ -128,8 +120,8 @@ test('a crux is a row: its tension closed, and what each side holds under its sh
     slug: 't', title: 'T', subtitle: 'S', lastUpdated: '2026-08-18', firstPublished: '2026-08-18',
     intro: '', tags: [], facts: [],
     viewpoints: [
-      { ...viewpoint, id: 'one', name: 'A whole sentence naming one view', shortName: 'One view', order: 1 },
-      { ...viewpoint, id: 'two', name: 'A whole sentence naming two', shortName: 'Two view', order: 2 },
+      { ...viewpoint, id: 'one', name: 'One view' },
+      { ...viewpoint, id: 'two', name: 'Two view' },
     ],
     cruxes: [
       {
@@ -156,20 +148,20 @@ test('a crux is a row: its tension closed, and what each side holds under its sh
   assert.match(html, /<dd>Soon\.<\/dd>/);
 });
 
-test('the viewpoints\' header is the name alone', () => {
+test('a viewpoint\'s row is titled with its name, its summary under it', () => {
   const viewpoint = {
-    id: 'one', name: 'One', shortName: 'One', summary: 'A one-line summary.', order: 1,
+    id: 'one', name: 'One', summary: 'A one-line summary.',
     citesFacts: [], acknowledges: ['a'], setsAside: [], body: '',
   };
   const topic: Topic = {
     slug: 'ordered', title: 'Ordered', subtitle: 'Sub', lastUpdated: '2026-08-18', firstPublished: '2026-08-18', intro: '',
     facts: [{ id: 'a', claim: 'A', status: 'well-supported', sources: [], body: '' }],
-    viewpoints: [viewpoint, { ...viewpoint, id: 'two', name: 'Two', order: 2 }],
+    viewpoints: [viewpoint, { ...viewpoint, id: 'two', name: 'Two' }],
     cruxes: [],
   };
   const html = renderToStaticMarkup(TopicSections({ topic, walkthroughs: new Map(), featured: new Map() }));
   assert.match(html, />Viewpoints<\/h2>/);
-  assert.doesNotMatch(html, /A one-line summary/);
+  assert.match(html, /sv-row__title">One<\/h2><p class="sv-row__subtitle">A one-line summary\.<\/p>/);
 });
 
 /**
@@ -179,13 +171,13 @@ test('the viewpoints\' header is the name alone', () => {
  */
 test('a data collection has no row on the topic page', () => {
   const viewpoint = {
-    id: 'one', name: 'One', shortName: 'One', summary: 's', order: 1,
+    id: 'one', name: 'One', summary: 's',
     citesFacts: [], acknowledges: ['a'], setsAside: [], body: '',
   };
   const topic: Topic = {
     slug: 'bare', title: 'Bare', subtitle: 'Sub', lastUpdated: '2026-08-18', firstPublished: '2026-08-18', intro: '',
     facts: [{ id: 'a', claim: 'Claim a', status: 'well-supported', sources: [], body: '' }],
-    viewpoints: [viewpoint, { ...viewpoint, id: 'two', name: 'Two', order: 2 }],
+    viewpoints: [viewpoint, { ...viewpoint, id: 'two', name: 'Two' }],
     cruxes: [],
   };
   const html = renderToStaticMarkup(TopicSections({ topic, walkthroughs: new Map(), featured: new Map() }));

@@ -3,21 +3,12 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations:
-    - phrase: uranium inspectors cannot locate
-      href: "#fact-iran-nuclear-programme/stock-unaccounted-for"
-    - phrase: missiles that experts say it is rebuilding
-      href: "#fact-decisions-law-and-diplomacy/iran-reconstituting-missiles"
   verification:
     status: verified
-    textHash: 981e886556fb
-    checkedAt: 2026-11-20
-lead:
-  citations: []
-  verification:
-    status: verified
-    textHash: b54d5662c425
-    checkedAt: 2026-11-20
+    textHash: 2c7962f168f4
+    checkedAt: 2026-11-26
+    notes:
+      - "No card cites \"The US started this war\". The Iran data backs it: Hengaw, quoted in fact-oil-shipping-and-prices, says the war began with airstrikes by U.S. and Israeli forces on February 28, 2026."
 cards:
   - heading: Stopping now would leave Iran's most dangerous uranium out of sight
     visual:

@@ -1,11 +1,8 @@
 ---
-name: Cut asylum claims and make refusals stick by changing British law, without leaving the ECHR
-shortName: Tighten within the ECHR
-summary: Too many people claim asylum in Britain and too few whose claims fail leave, but most of what stops them leaving is British law and delay, which Parliament can change. Albanian claims stayed low once Britain refused and returned them, all while Britain stayed in the ECHR. Britain should decide claims fast, refuse weak ones, rewrite its appeals and family-life rules, and keep the Convention and the European cooperation that depends on it.
-order: 3
+name: Tighten within the ECHR
 draft: ai
 ---
-Britain's asylum system has a real problem. Too many people claim, and too few of those who are refused ever leave. A refusal should mean leaving, or rules do not mean what they say. But most of the causes lie in British law and British delay, and Parliament can fix both. It does not need to leave the European Convention on Human Rights (ECHR) to do it.
+Cut asylum claims and make refusals stick by changing British law, without leaving the ECHR.
 
 ### Too many people claim asylum, and too few who are refused leave
 

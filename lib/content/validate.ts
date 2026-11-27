@@ -1122,7 +1122,7 @@ function citationErrors(topic: Topic, factById: Map<string, Fact>): string[] {
   check('topic intro', topic.intro);
   for (const f of topic.facts) check(`fact ${f.id}`, f.body);
 
-  for (const v of topic.viewpoints) check(`viewpoint ${v.id}`, v.body + '\n' + v.summary);
+  for (const v of topic.viewpoints) check(`viewpoint ${v.id}`, v.body);
 
   return errors;
 }
@@ -1144,7 +1144,7 @@ export function evidenceErrors(topic: Topic): string[] {
 function citationTargetErrors(topic: Topic, factById: Map<string, Fact>): string[] {
   const texts: [string, string][] = [
     ['topic intro', topic.intro],
-    ...topic.viewpoints.map((v): [string, string] => [`viewpoint ${v.id}`, `${v.body}\n${v.summary}`]),
+    ...topic.viewpoints.map((v): [string, string] => [`viewpoint ${v.id}`, v.body]),
     ...topic.cruxes.map((c): [string, string] => [`crux ${c.id}`, [c.body, ...c.positions.map(p => p.holds)].join('\n')]),
   ];
   return texts.flatMap(([what, body]) => citedFactTargets(body).flatMap(({ id, section }) => {
@@ -1181,7 +1181,7 @@ function unmarkedObservationErrors(f: Fact): string[] {
 function researchNeededErrors(topic: Topic): string[] {
   const errors: string[] = [];
   for (const v of topic.viewpoints) {
-    const marked = new Set(neededClaims(v.body + '\n' + v.summary));
+    const marked = new Set(neededClaims(v.body));
     const listed = new Set(v.researchNeeded ?? []);
     for (const claim of marked) {
       if (!listed.has(claim)) errors.push(`viewpoint ${v.id}: "${claim}" is marked #needed but missing from researchNeeded`);

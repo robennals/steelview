@@ -3,25 +3,10 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations:
-    - phrase: promised no new wars
-      href: "#fact-decisions-law-and-diplomacy/campaign-said-stop-wars"
-    - phrase: costing tens of billions of dollars
-      href: "#fact-human-and-financial-costs-of-the-war/cost-38-to-47-billion"
-    - phrase: pushing up prices at the pump
-      href: "#fact-oil-shipping-and-prices/pump-prices-up-by-half"
-    - phrase: most Americans oppose it
-      href: "#fact-decisions-law-and-diplomacy/most-disapprove-gallup"
   verification:
     status: verified
-    textHash: 17ebcd522852
-    checkedAt: 2026-11-20
-lead:
-  citations: []
-  verification:
-    status: verified
-    textHash: 267ca3d6516f
-    checkedAt: 2026-11-20
+    textHash: e6e2bb797ddc
+    checkedAt: 2026-11-26
 cards:
   - heading: Americans voted for a President who promised to stop wars, and most oppose this one
     visual:

@@ -1,11 +1,8 @@
 ---
-name: Choose migrants for what they contribute, and make settlement something they earn
-shortName: Contribute and earn
-summary: The biggest gain from immigration comes from skilled workers outside health and care; care workers and adult dependants on the health and care route cost the public finances. Select for contribution, police each route for its purpose, and make permanent settlement something people earn by working and paying in.
-order: 7
+name: Contribute and earn
 draft: ai
 ---
-Immigration is not good or bad in bulk. It depends on who comes and what they do. Britain should choose people for what they contribute, and make the right to stay for good something they earn.
+Choose migrants for what they contribute, and make settlement something they earn.
 
 ### The biggest gain comes from skilled workers outside health and care
 

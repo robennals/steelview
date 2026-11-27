@@ -1,11 +1,8 @@
 ---
-name: Iran must never get a nuclear weapon, and its past shows why
-shortName: No Iranian bomb
-summary: Iran was close to having enough material for a bomb, and no inspector has seen its most enriched uranium since June 2025. Iran has backed deadly attacks abroad. The strikes have stopped its enrichment for now, and stopping it from getting a bomb was worth a war.
-order: 1
+name: No Iranian bomb
 draft: ai
 ---
-An Iran with nuclear weapons would be far more dangerous than Iran today. Stopping it was worth a war, because keeping people safe from the worst dangers comes first.
+Iran must never get a nuclear weapon, and its past shows why.
 
 ### Iran was close to having enough uranium for a bomb
 

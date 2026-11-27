@@ -1,11 +1,8 @@
 ---
-name: Voting by mail works, and the states that do it prove it
-shortName: Mail works
-summary: Every voter should be able to vote by mail. Bills in Congress and a presidential order would cut it back, yet states that mail every voter a ballot have done it for years without the fraud critics fear. Mail ballots have checks a polling place lacks, and mailing everyone a ballot helps the voters who find polling places hardest to reach.
-order: 2
+name: Mail works
 draft: ai
 ---
-Every voter should be able to vote by mail. The states that mail every voter a ballot show it can be done honestly.
+Voting by mail works, and the states that do it prove it.
 
 ### Bills in Congress and a presidential order would cut mail voting back
 

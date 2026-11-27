@@ -51,11 +51,12 @@ For each viewpoint, the outline gives:
 - **A short stable id** — `nuclear`, `regime-change`, `war-powers` — used in
   every draft file instead of a number, so references survive reordering and
   redrafting. It normally becomes the viewpoint's filename in stage 6.
-- **Title**: a proposition someone would say aloud
-  ([Titles](AUTHORING.md#titles)).
+- **A name**, a few words its holders would accept
+  ([Names](AUTHORING.md#names)), and **a summary**: a proposition someone
+  would say aloud ([Summaries](AUTHORING.md#summaries)).
 - **Its arguments**, usually four to six, each as its holder would make it, in a
   sentence or two. Each opens with a one-line claim that becomes a section
-  heading in stage 6, so the claims read alone should add up to the title
+  heading in stage 6, so the claims read alone should add up to the summary
   ([Write an argument someone can follow](AUTHORING.md#write-an-argument-someone-can-follow)).
 - **The empirical claims under each argument**: what would have to be true
   about the world for the argument to work. These become the questions the
@@ -219,7 +220,7 @@ evidence than the outline asked for. Because every viewpoint is a steelman,
   ([Concessions](AUTHORING.md#concessions-and-an-independent-voice)).
 - **Re-check that the arguments still add up.** Each argument's one-line claim
   becomes a section heading in stage 6, so read the claims alone: if they no
-  longer establish the title, fix the argument now, or the title.
+  longer establish the summary, fix the argument now, or the summary.
 - **Re-check the balance.** If one viewpoint has lost most of its empirical
   support, say so plainly; it may rest on values the data cannot touch, which
   is a legitimate position, but its outline should then argue from those
@@ -397,8 +398,8 @@ request to stage 5, never a quietly softened sentence. Any agent edit to the
 text sets `draft: ai` again, so the editor sees it. A
 viewpoint is read as a slideshow of cards, one per section
 ([Lead with the data](AUTHORING.md#lead-with-the-data)), so choose each card's
-visual before writing its text. Each viewpoint is a short lead, then one `###`
-section per outline argument. Each section is a card:
+visual before writing its text. Each viewpoint is a one-sentence summary, then
+one `###` section per outline argument. Each section is a card:
 
 - **the heading**, the argument's point in one sentence;
 - **the line**, the section's first paragraph: one to three sentences, about 25
@@ -420,7 +421,7 @@ holder of that view would find it better argued than their own version
 ([The bar](AUTHORING.md#the-bar)).
 
 - **Review the headings first.** Read each viewpoint's headings alone before
-  its text: if they do not add up to the title, fix the argument before the
+  its text: if they do not add up to the summary, fix the argument before the
   prose. A heading that could be a chart's title reports a finding; rewrite it
   as what the finding shows for the argument.
 - **Then the lines.** Read heading and line, card after card: they should flow
@@ -452,9 +453,9 @@ holder of that view would find it better argued than their own version
   where the viewpoints actually ended up disagreeing. Each names a tension and
   stops, without arguing the evidence or resolving it
   ([Cruxes](AUTHORING.md#cruxes)).
-- **Order last.** Set each viewpoint's `order` so the sides alternate, and
-  list the headline reports in `topic.md`'s `dataOrder` in the order a reader
-  should meet them. What a viewpoint builds on, concedes or sets aside shows
+- **Order last.** List the headline reports in `topic.md`'s `dataOrder` in
+  the order a reader should meet them. Viewpoints need no order: the topic
+  page shuffles them. What a viewpoint builds on, concedes or sets aside shows
   in its citations ([Citations and data order](AUTHORING.md#citations-and-data-order)).
 
 **Gate: the human is happy with every viewpoint**, read side by side —

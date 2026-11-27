@@ -1,11 +1,8 @@
 ---
-name: "Mass immigration has left Britain no richer per head and short of homes: cut it hard and keep it down"
-shortName: Cut the numbers
-summary: Recent immigration came with a bigger economy but almost no rise in output per person, and England's households are projected to grow faster than it is building homes. The fall in numbers rests on rules a future government could undo, so Parliament should set a binding cap and lengthen the wait to settle.
-order: 1
+name: Cut the numbers
 draft: ai
 ---
-Britain has taken in more people than it can house, and its people are no richer for it. A government's first duty is to its own people. Parliament should cut immigration hard and make sure it stays down.
+Mass immigration has left Britain no richer per head and short of homes: cut it hard and keep it down.
 
 ### Britain has just had the biggest wave of immigration on record
 

@@ -1,11 +1,8 @@
 ---
-name: Clean up the voter lists, instead of making voters prove themselves at the polls
-shortName: Clean the rolls
-summary: Most fraud on record was done by officials or through the mail, where a polling-place ID check never reaches. Most people taken off voter lists had moved, died, or not answered a notice, and reviews that give a cause trace non-citizens on the lists to mistakes. States should find these names in their records before Election Day, using careful, checked matching and giving voters time to answer.
-order: 3
+name: Clean the rolls
 draft: ai
 ---
-The weak point in American elections is the voter list, not the line at the polls. Most fraud on record went through officials or the mail, which an ID check at the door never sees. A clean list takes away the names of the dead and departed that such fraud has used.
+Clean up the voter lists, instead of making voters prove themselves at the polls.
 
 ### Voter lists hold many out-of-date names, and they stay for years
 

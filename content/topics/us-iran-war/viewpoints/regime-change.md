@@ -1,11 +1,8 @@
 ---
-name: Iran's government kills its own people, and America should stand with Iranians while they bring it down
-shortName: Stand with Iranians
-summary: Iran's government killed thousands of protesters in the crackdown of winter 2025–26 and put more people to death in 2025 than in any year since 1989. Few Iranians in one online survey want it. Iranians must end it themselves, and the US should stand with them.
-order: 5
+name: Stand with Iranians
 draft: ai
 ---
-Iran's government kills its own people by the thousands. It has no right to be left alone. Iranians must bring it down themselves, and the US should stand with them while they do.
+Iran's government kills its own people, and America should stand with Iranians while they bring it down.
 
 ### The government kills people who protest
 

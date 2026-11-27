@@ -71,10 +71,12 @@ export type Fact = Item<z.infer<typeof factFrontmatterSchema>>;
 export type ObservationMark = z.infer<typeof observationMarkSchema>;
 /**
  * A viewpoint as the site reads it: its text joined with its links file
- * (`viewpoint-links.ts`), so `body` and `summary` carry the citations as
- * inline links.
+ * (`viewpoint-links.ts`), so `body` carries the citations as inline links.
+ * `body` is the cards alone: the text before them is `summary`.
  */
 export type Viewpoint = Item<z.infer<typeof viewpointFrontmatterSchema>> & {
+  /** Shown as plain text under the name; the cards cite what it claims. */
+  summary: string;
   /** Every claim the text cites as `#needed`, quoted exactly: the research queue. */
   researchNeeded?: string[];
   /** Each card's graph or quotes, by heading, as the links file names it. A card without one is text. */

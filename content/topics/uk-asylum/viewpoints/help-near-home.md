@@ -1,11 +1,8 @@
 ---
-name: Britain can protect far more refugees near the countries they fled than by housing the few who reach its shores
-shortName: Help them there
-summary: Britain has a real duty to refugees, but most of them never get near a boat, and the money Britain spends housing those who do would protect many more people close to home. Britain should stop granting asylum to people who cross from safe countries, spend what it saves on refugees in the countries next to the conflict, and itself bring in a fixed number of the most vulnerable each year.
-order: 4
+name: Help them there
 draft: ai
 ---
-Britain has a duty to people fleeing war and persecution. That duty is owed to all of them, and not only to the few who can reach the English coast. Britain helps the most people, and keeps the strength to go on helping, when it protects refugees close to the countries they fled and chooses for itself whom to bring here.
+Britain can protect far more refugees near the countries they fled than by housing the few who reach its shores.
 
 ### Most refugees never get near a boat
 

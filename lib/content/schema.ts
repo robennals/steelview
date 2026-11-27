@@ -1199,18 +1199,12 @@ export const factFrontmatterSchema = z.object({
 });
 
 export const viewpointFrontmatterSchema = z.object({
-  name: z.string().min(1),
-  /** A few words naming the viewpoint where its full `name` will not fit, as above a crux column. */
-  shortName: z.string().min(1),
-  summary: z.string().min(1),
   /**
-   * Where this viewpoint sits in the Viewpoints section. Required and
-   * explicit, because the alternative — sorting by id — let a retitle
-   * silently reorder the sides and decide which viewpoint the section opens
-   * on. The editorial rule for choosing it (alternate across the spectrum,
-   * never group one side together) is in the design spec.
-  */
-  order: z.number().int(),
+   * What the viewpoint is called wherever it is named: its row's title, a
+   * crux column, the home page. A few words its holders would accept. Its
+   * summary is the text before the body's first `###` heading.
+   */
+  name: z.string().min(1),
   /**
    * `ai` while the text is an agent's draft, which the topic page labels as
    * one. An editor takes a viewpoint over by rewriting its text and deleting
@@ -1223,7 +1217,9 @@ export const viewpointFrontmatterSchema = z.object({
   citesFacts: z.array(z.string()).optional(),
   acknowledges: z.array(z.string()).optional(),
   setsAside: z.array(z.string()).optional(),
-});
+  // Strict, so a field this format has dropped (`shortName`, `summary`,
+  // `order`) is reported rather than silently ignored.
+}).strict();
 
 export const cruxPositionSchema = z.object({
   viewpoint: z.string().min(1),

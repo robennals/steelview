@@ -1,11 +1,8 @@
 ---
-name: Use what the war has won to make a deal now
-shortName: Deal now
-summary: The war has set Iran's nuclear programme back, but no one has seen its most enriched uranium since June 2025. In June, experts saw no way for Iran to make bomb-grade uranium. The US should end its blockade in return for strict limits that inspectors can check, while it still has the upper hand.
-order: 7
+name: Deal now
 draft: ai
 ---
-Whatever you think of the war, it has given the US the upper hand over Iran. The US should use it now to get a nuclear deal that inspectors can check, before that advantage fades.
+Use what the war has won to make a deal now.
 
 ### The war has set Iran back, but the setback may not last
 
