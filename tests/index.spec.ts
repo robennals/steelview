@@ -200,7 +200,26 @@ test.describe('without JavaScript', () => {
   });
 });
 
-// The topic page shuffles its viewpoints, so only the names must match, not their order.
+// Both pages shuffle their viewpoints, so only the names must match, not their order.
+// No viewpoint is always listed first: a row deals its viewpoints again each time it opens.
+test('an open row lists its viewpoints in a new order each time it opens', async ({ page }) => {
+  await page.goto('/');
+  const row = rows(page).first();
+  const names = () => row.locator('.sv-row__viewpoints li').allTextContents();
+  await expect(row).toHaveAttribute('data-open', 'true');
+  const all = [...(await names())].sort();
+  expect(all.length).toBeGreaterThan(1);
+  for (let i = 0; i < 4; i++) {
+    const before = await names();
+    await toggle(page, 0).click({ position: { x: 400, y: 12 } });
+    await expect(row).not.toHaveAttribute('data-open', 'true');
+    await toggle(page, 0).click({ position: { x: 400, y: 12 } });
+    await expect(row).toHaveAttribute('data-open', 'true');
+    await expect.poll(names).not.toEqual(before);
+    expect([...(await names())].sort()).toEqual(all);
+  }
+});
+
 test('each topic lists its viewpoints as its own page names them', async ({ page }) => {
   await page.goto('/');
   const listed = await page.locator('.sv-row').evaluateAll(rows => rows.map(row => ({
