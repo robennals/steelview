@@ -6,6 +6,7 @@ import { ChartThumb } from '@/components/topic/chart-thumb';
 import { SlideChart } from '@/components/topic/slide-chart';
 import { PreviewCarousel } from './preview-carousel';
 import { PreviewChart, PreviewSheets } from './preview-sheet';
+import { ShuffledViewpointList } from './shuffled-viewpoint-list';
 import { TopicAccordion, TopicRow } from './topic-accordion';
 
 /** How many chart silhouettes a closed row shows. */
@@ -16,7 +17,7 @@ const updated = (date: string) =>
 
 const plural = (n: number, word: string, words = `${word}s`) => `${n} ${n === 1 ? word : words}`;
 
-/** An open row's body: the topic's chart carousel beside its viewpoints and the report link. */
+/** An open row's body: the topic's chart carousel beside its viewpoints, shuffled (`ShuffledViewpointList`), and the report link. */
 function RowPreview({ topic, slides }: { topic: Topic; slides: PreviewSlide[] }) {
   return (
     <div className="sv-row__columns">
@@ -29,14 +30,7 @@ function RowPreview({ topic, slides }: { topic: Topic; slides: PreviewSlide[] })
       </PreviewCarousel>
       <div className="sv-row__side">
         <h3 className="sv-row__side-head">{plural(topic.viewpoints.length, 'viewpoint')}</h3>
-        <ul className="sv-row__viewpoints">
-          {topic.viewpoints.map((v, i) => (
-            <li key={v.id}>
-              <i className="sv-row__marker" style={{ background: `var(--sv-series-${(i % 8) + 1})` }} />
-              <span>{v.name}</span>
-            </li>
-          ))}
-        </ul>
+        <ShuffledViewpointList viewpoints={topic.viewpoints.map(({ id, name }) => ({ id, name }))} />
         <Link className="sv-row__cta" href={topicPath(topic.slug)}>Read the full report <span aria-hidden="true">→</span></Link>
         <p className="sv-row__counts">
           {plural(topic.viewpoints.length, 'viewpoint')} · {plural(topic.cruxes.length, 'crux', 'cruxes')}
