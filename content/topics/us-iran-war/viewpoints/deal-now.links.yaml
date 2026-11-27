@@ -3,21 +3,10 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations:
-    - phrase: no one has seen its most enriched uranium since June 2025
-      href: "#fact-iran-nuclear-programme/stock-unaccounted-for"
-    - phrase: In June, experts saw no way for Iran to make bomb-grade uranium
-      href: "#fact-iran-nuclear-programme/no-route-to-weapons-grade"
   verification:
     status: verified
-    textHash: 86855b35c54e
-    checkedAt: 2026-11-20
-lead:
-  citations: []
-  verification:
-    status: verified
-    textHash: e00e1adaf6ae
-    checkedAt: 2026-11-20
+    textHash: f475919c0800
+    checkedAt: 2026-11-26
 cards:
   - heading: The war has set Iran back, but the setback may not last
     citations:

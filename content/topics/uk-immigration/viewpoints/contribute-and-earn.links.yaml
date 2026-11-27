@@ -3,21 +3,10 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations:
-    - phrase: comes from skilled workers outside health and care
-      href: "#fact-immigration-economy-and-public-finances/skilled-workers-large-net-gain"
-    - phrase: care workers and adult dependants on the health and care route cost the public finances
-      href: "#fact-immigration-economy-and-public-finances/care-route-net-cost"
   verification:
     status: verified
-    textHash: a95486d5506f
-    checkedAt: 2026-11-20
-lead:
-  citations: []
-  verification:
-    status: verified
-    textHash: 845805778fab
-    checkedAt: 2026-11-20
+    textHash: 3da6238d2bf8
+    checkedAt: 2026-11-26
 cards:
   - heading: The biggest gain comes from skilled workers outside health and care
     visual:

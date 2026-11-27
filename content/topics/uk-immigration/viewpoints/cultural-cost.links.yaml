@@ -3,19 +3,10 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations:
-    - phrase: in towns where gangs abused children while officials feared being called racist
-      href: "#fact-crime-terrorism-and-group-exploitation/officials-feared-being-called-racist"
   verification:
     status: verified
-    textHash: 4454a7c54777
-    checkedAt: 2026-11-20
-lead:
-  citations: []
-  verification:
-    status: verified
-    textHash: ec1aa7a5c886
-    checkedAt: 2026-11-20
+    textHash: 42fc9996e539
+    checkedAt: 2026-11-26
 cards:
   - heading: Newcomers take years to join in, and Britain has far more of them
     visual:

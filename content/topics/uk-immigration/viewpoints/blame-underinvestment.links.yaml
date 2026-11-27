@@ -3,23 +3,10 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations:
-    - phrase: invested a smaller share of GDP than most rich countries for decades
-      href: "#fact-immigration-housing-and-public-services/public-investment-low"
-    - phrase: its investment does not grow when its population does
-      href: "#fact-immigration-housing-and-public-services/investment-does-not-adjust"
-    - phrase: Falling interest rates, not immigration, explain most of the long rise in house prices
-      href: "#fact-immigration-housing-and-public-services/falling-interest-rates-explain-price-rise"
   verification:
     status: verified
-    textHash: 363581582dd3
-    checkedAt: 2026-11-20
-lead:
-  citations: []
-  verification:
-    status: verified
-    textHash: f997c15b29df
-    checkedAt: 2026-11-20
+    textHash: 870a00339272
+    checkedAt: 2026-11-26
 cards:
   - heading: Britain has long invested less than other rich countries, and investment does not follow population
     visual:

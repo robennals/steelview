@@ -3,25 +3,10 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations:
-    - phrase: People have voted in other people's names
-      href: "#fact-election-fraud-and-voter-exclusion-history/in-person-ghost-voting"
-    - phrase: state reviews keep finding non-citizens on voter lists
-      href: "#fact-non-citizens-on-voter-rolls/found-on-rolls"
-    - phrase: Where photo ID came in after organised fraud, suspected personation fell
-      href: "#fact-voter-id-rules-in-the-us-and-abroad/ni-personation-fell"
-    - phrase: very few citizens have no photo ID at all
-      href: "#fact-burdens-of-id-and-citizenship-rules/no-id-versus-outdated-id"
   verification:
     status: verified
-    textHash: eeda2b6c3525
-    checkedAt: 2026-11-20
-lead:
-  citations: []
-  verification:
-    status: verified
-    textHash: ec2f76c5fa7b
-    checkedAt: 2026-11-20
+    textHash: 05794b3a191b
+    checkedAt: 2026-11-26
 cards:
   - heading: Fraud at the polls has happened, and when it works it leaves no trace
     visual:

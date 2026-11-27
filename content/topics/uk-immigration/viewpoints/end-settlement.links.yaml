@@ -3,21 +3,10 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations:
-    - phrase: about 1.6 million people in five years
-      href: "#fact-settlement-and-migrant-status/forecast-1-6-million"
-    - phrase: care workers, who cost the public money over a lifetime
-      href: "#fact-immigration-economy-and-public-finances/care-workers-net-cost"
   verification:
     status: verified
-    textHash: c3346f05e335
-    checkedAt: 2026-11-20
-lead:
-  citations: []
-  verification:
-    status: verified
-    textHash: 553b7eee0d7c
-    checkedAt: 2026-11-20
+    textHash: abaae91ac321
+    checkedAt: 2026-11-26
 cards:
   - heading: A wave of permanent settlement is about to arrive
     visual:

@@ -3,7 +3,7 @@ import { z } from 'zod';
 
 /**
  * A viewpoint is two files. `<id>.md` is its text: plain prose an editor can
- * own, with no links in it. `<id>.links.yaml` is the agent's: which phrase of
+ * own, with no links in it — its summary, then one `###` section per card. `<id>.links.yaml` is the agent's: which phrase of
  * the text cites which data, which chart each card shows, and whether the
  * agent has checked each passage against the evidence. The loader joins them
  * into the linked markdown the rest of the site reads.
@@ -49,8 +49,12 @@ export const cardVisualSchema = z.object({
 });
 
 export const viewpointLinksSchema = z.object({
-  summary: z.object(passageFields).default({ citations: [], verification: { status: 'unverified' } }),
-  lead: z.object(passageFields).default({ citations: [], verification: { status: 'unverified' } }),
+  /**
+   * The summary is shown as plain text under the viewpoint's name, in a row
+   * head a reader clicks to open, so it carries no citations: the cards cite
+   * what it claims. Its check records that they do.
+   */
+  summary: z.object({ verification: passageFields.verification }).strict().default({ verification: { status: 'unverified' } }),
   cards: z.array(z.object({ heading: z.string().min(1), visual: cardVisualSchema.optional(), ...passageFields })).default([]),
   /**
    * Every claim the text needs data for and no report has yet, cited as
@@ -58,7 +62,8 @@ export const viewpointLinksSchema = z.object({
    * queue, kept in step with the `#needed` citations by `pnpm check:integrity`.
    */
   researchNeeded: z.array(z.string().min(1)).optional(),
-});
+  // Strict, so a key this format has dropped (`lead`) is reported rather than ignored.
+}).strict();
 
 export type Citation = z.infer<typeof citationSchema>;
 export type Verification = z.infer<typeof verificationSchema>;
@@ -70,8 +75,8 @@ export function passageHash(text: string): string {
   return createHash('sha256').update(text.trim()).digest('hex').slice(0, 12);
 }
 
-/** A viewpoint body's passages: the lead, then each `###` card's heading and the text under it. */
-export type Passages = { lead: string; cards: Array<{ heading: string; text: string }> };
+/** A viewpoint body's passages: the summary before its first `###` heading, then each card's heading and the text under it. */
+export type Passages = { summary: string; cards: Array<{ heading: string; text: string }> };
 
 /**
  * Split a body at its `###` headings. Each card's `text` is everything after
@@ -79,9 +84,10 @@ export type Passages = { lead: string; cards: Array<{ heading: string; text: str
  * exactly.
  */
 export function splitPassages(body: string): Passages {
-  const [lead, ...chunks] = body.split(/^(?=### )/m);
+  // `split` drops the empty text before a heading on the first line, so a body that opens with one is given an empty summary.
+  const [summary, ...chunks] = body.startsWith('### ') ? ['', ...body.split(/^(?=### )/m)] : body.split(/^(?=### )/m);
   return {
-    lead,
+    summary,
     cards: chunks.map((chunk) => {
       const newline = chunk.indexOf('\n');
       const line = newline === -1 ? chunk : chunk.slice(0, newline);
@@ -90,8 +96,8 @@ export function splitPassages(body: string): Passages {
   };
 }
 
-export function joinPassages({ lead, cards }: Passages): string {
-  return lead + cards.map(({ heading, text }) => `### ${heading}${text}`).join('');
+export function joinPassages({ summary, cards }: Passages): string {
+  return summary + cards.map(({ heading, text }) => `### ${heading}${text}`).join('');
 }
 
 /** The text a card's verification is recorded against: its heading and its text. */
@@ -165,7 +171,9 @@ export function verificationProblem(verification: Verification, text: string): s
 }
 
 export type JoinedViewpoint = {
+  /** The cards, linked; the summary is not part of it. */
   body: string;
+  /** The text before the first card, as plain text. */
   summary: string;
   /** Each card's visual, by heading, where the links file names one. */
   visuals: Map<string, CardVisualRef>;
@@ -175,8 +183,8 @@ export type JoinedViewpoint = {
   unverified: string[];
 };
 
-/** Join a viewpoint's plain text and summary with its links file. */
-export function joinViewpoint(text: string, summary: string, links: ViewpointLinks): JoinedViewpoint {
+/** Join a viewpoint's plain text with its links file. */
+export function joinViewpoint(text: string, links: ViewpointLinks): JoinedViewpoint {
   const linkErrors: string[] = [];
   const unverified: string[] = [];
   /** Link one passage's text, noting what does not line up and whether its check still holds for `checkedText`. */
@@ -189,8 +197,10 @@ export function joinViewpoint(text: string, summary: string, links: ViewpointLin
   };
 
   const passages = splitPassages(text);
-  const linkedSummary = linkPassage('the summary', links.summary, summary);
-  const lead = linkPassage('the lead', links.lead, passages.lead);
+  const summary = passages.summary.trim();
+  if (!summary) linkErrors.push('has no summary: write it before the first ### heading');
+  const summaryProblem = verificationProblem(links.summary.verification, summary);
+  if (summaryProblem) unverified.push(`the summary ${summaryProblem}`);
   const entries = new Map(links.cards.map((card) => [card.heading, card]));
   const visuals = new Map<string, CardVisualRef>();
   const cards = passages.cards.map((card) => {
@@ -206,5 +216,5 @@ export function joinViewpoint(text: string, summary: string, links: ViewpointLin
   });
   for (const heading of entries.keys()) linkErrors.push(`the links file has an entry for "${heading}", which is no card's heading`);
 
-  return { body: joinPassages({ lead, cards }), summary: linkedSummary, visuals, linkErrors, unverified };
+  return { body: joinPassages({ summary: '', cards }).trim(), summary, visuals, linkErrors, unverified };
 }

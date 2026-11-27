@@ -3,21 +3,10 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations:
-    - phrase: The Constitution's Elections Clause lets each state's legislature set the rules for electing Congress, lets Congress change them, and names no role for the President
-      href: "#fact-federal-and-state-power-over-voting-rules/elections-clause-text"
-    - phrase: States have tightened and eased their own ID laws as they judged best
-      href: "#fact-voter-id-rules-in-the-us-and-abroad/strict-count-fell-then-rose"
   verification:
     status: verified
-    textHash: 51f849c49c7e
-    checkedAt: 2026-11-20
-lead:
-  citations: []
-  verification:
-    status: verified
-    textHash: 73c0850fb264
-    checkedAt: 2026-11-20
+    textHash: 143fc9970f3d
+    checkedAt: 2026-11-26
 cards:
   - heading: The Constitution gives election rules to the states and Congress, not the President
     citations:

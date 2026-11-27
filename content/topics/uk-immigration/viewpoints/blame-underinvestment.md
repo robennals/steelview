@@ -1,11 +1,8 @@
 ---
-name: Underinvestment, not immigration, broke Britain's homes and services; end the hostile environment
-shortName: Invest, don't blame
-summary: Britain invested a smaller share of GDP than most rich countries for decades, and its investment does not grow when its population does. Falling interest rates, not immigration, explain most of the long rise in house prices. Invest in homes and services for the population Britain has, and stop making migrants' lives deliberately hard.
-order: 6
+name: Invest, don't blame
 draft: ai
 ---
-More people need more homes, hospitals and schools. Britain's shortages come from failing to build them, for decades and for every newcomer, not from the newcomers themselves. Britain should invest for the population it has, and stop making migrants' lives deliberately hard.
+Underinvestment, not immigration, broke Britain's homes and services; end the hostile environment.
 
 ### Britain has long invested less than other rich countries, and investment does not follow population
 

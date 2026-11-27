@@ -25,8 +25,6 @@ export type WalkthroughStep = {
 };
 
 export type Walkthrough = {
-  /** The markdown before the first section: the belief being defended. */
-  lead: string;
   steps: WalkthroughStep[];
 };
 
@@ -169,7 +167,8 @@ function chartsCitedIn(topic: Topic, groups: Map<string, Map<string, string>>, m
  * not derived, so an editor rewording a line cannot swap its card's chart.
  */
 export function viewpointWalkthrough(topic: Topic, viewpoint: Viewpoint): Walkthrough {
-  const [lead, ...sections] = viewpoint.body.split(/^### /m);
+  // Anything before the first card is not a step: the loader has already taken the summary out.
+  const [, ...sections] = viewpoint.body.split(/^### /m);
   const groups = new Map(topic.facts.map(fact => [fact.id, observationGroups(fact)]));
   const steps = sections.map(section => {
     const [rawHeading, ...rest] = section.split('\n');
@@ -182,7 +181,7 @@ export function viewpointWalkthrough(topic: Topic, viewpoint: Viewpoint): Walkth
     const visual = named && chartsCitedIn(topic, groups, `[visual](${named.cite})`).find(({ chart }) => isCardVisual(chart));
     return { heading, markdown, ...first, cardVisual: visual && cardVisual(visual, inLine) };
   });
-  return { lead: lead.trim(), steps };
+  return { steps };
 }
 
 /**
@@ -360,7 +359,7 @@ export type RenderedStep = {
   evidenceHtml: string;
 };
 
-export type RenderedWalkthrough = { lead: string; steps: RenderedStep[] };
+export type RenderedWalkthrough = { steps: RenderedStep[] };
 
 /**
  * Every viewpoint's walkthrough with its prose rendered, keyed by viewpoint id.
@@ -371,9 +370,8 @@ export async function renderWalkthroughs(topic: Topic): Promise<Map<string, Rend
   const rendered = new Map<string, RenderedWalkthrough>();
   const sources = citedSources(topic);
   for (const viewpoint of topic.viewpoints) {
-    const { lead, steps } = viewpointWalkthrough(topic, viewpoint);
+    const { steps } = viewpointWalkthrough(topic, viewpoint);
     rendered.set(viewpoint.id, {
-      lead,
       steps: await Promise.all(steps.map(async ({ heading, markdown, cardVisual }) => {
         // A card numbers its markers from 1, a finding cited twice keeping its number.
         const numbers = new Map<string, number>();

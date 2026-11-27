@@ -3,21 +3,10 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations:
-    - phrase: About 2.2 million people
-      href: "#fact-settlement-and-migrant-status/path-2-2-million"
-    - phrase: the government proposes making them wait longer
-      href: "#fact-settlement-and-migrant-status/proposal-covers-people-already-here"
   verification:
     status: verified
-    textHash: c9b7dcf9a33f
-    checkedAt: 2026-11-20
-lead:
-  citations: []
-  verification:
-    status: verified
-    textHash: 638ad58559d2
-    checkedAt: 2026-11-20
+    textHash: 259276932a41
+    checkedAt: 2026-11-26
 cards:
   - heading: About 2.2 million people built their lives around a path the state set out
     visual:

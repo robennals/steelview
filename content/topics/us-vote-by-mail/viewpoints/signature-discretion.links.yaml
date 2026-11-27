@@ -3,17 +3,10 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations: []
   verification:
     status: verified
-    textHash: a05df902b76f
-    checkedAt: 2026-11-20
-lead:
-  citations: []
-  verification:
-    status: verified
-    textHash: 879fda6edf32
-    checkedAt: 2026-11-20
+    textHash: 0bc0bd741f21
+    checkedAt: 2026-11-26
 cards:
   - heading: Matching signatures is a judgement call, yet it is the top reason ballots are rejected
     visual:

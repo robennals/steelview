@@ -1,11 +1,8 @@
 ---
-name: The US started this war, and now it has to finish the job
-shortName: Finish the job
-summary: If the US stops now, it leaves an angry, weakened Iran with uranium inspectors cannot locate and missiles that experts say it is rebuilding. The US should finish the job with clear, limited goals, and then keep inspectors in place.
-order: 3
+name: Finish the job
 draft: ai
 ---
-The US is already at war with Iran. If it stops halfway, it leaves an angry Iran with its uranium out of sight and its missiles being rebuilt. The US should keep up the pressure until inspectors confirm nothing is left.
+The US started this war, and now it has to finish the job.
 
 ### Stopping now would leave Iran's most dangerous uranium out of sight
 

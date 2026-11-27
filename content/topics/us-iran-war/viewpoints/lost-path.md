@@ -1,11 +1,8 @@
 ---
-name: The war killed Iranians and threw away a slower plan that had worked
-shortName: The slower path
-summary: Iran was dangerous, but in every check from 2017 to 2019, its uranium stock stayed under the 2015 deal's limit. The war has killed thousands of Iranians, all but stopped inspections and thrown away the plan that had kept Iran in check.
-order: 2
+name: The slower path
 draft: ai
 ---
-Iran was dangerous, but talks and inspections had kept it in check before. Choosing war instead was a mistake. War should be the last resort, and this one was not.
+The war killed Iranians and threw away a slower plan that had worked.
 
 ### The war has killed thousands of Iranians who had no say in it
 

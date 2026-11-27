@@ -1,7 +1,8 @@
 ---
 name: Two
-shortName: Two
-summary: The second viewpoint, in a line.
-order: 2
 ---
+The second viewpoint, in a line.
+
+### The argument
+
 The full argument for viewpoint two.

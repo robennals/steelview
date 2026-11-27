@@ -33,7 +33,7 @@ function RowPreview({ topic, slides }: { topic: Topic; slides: PreviewSlide[] })
           {topic.viewpoints.map((v, i) => (
             <li key={v.id}>
               <i className="sv-row__marker" style={{ background: `var(--sv-series-${(i % 8) + 1})` }} />
-              <span>{v.shortName}</span>
+              <span>{v.name}</span>
             </li>
           ))}
         </ul>

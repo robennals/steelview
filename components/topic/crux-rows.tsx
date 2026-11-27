@@ -42,7 +42,7 @@ export function CruxRows({ cruxes, viewpointsById }: CruxRowsProps) {
           <dl className="sv-positions">
             {crux.positions.map((position) => (
               <div key={position.viewpoint} className="sv-position">
-                <dt>{viewpointsById.get(position.viewpoint)?.shortName ?? position.viewpoint}</dt>
+                <dt>{viewpointsById.get(position.viewpoint)?.name ?? position.viewpoint}</dt>
                 <dd>{position.holds}</dd>
               </div>
             ))}

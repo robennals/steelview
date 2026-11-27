@@ -96,9 +96,9 @@ async function readViewpoints(dir: string): Promise<Viewpoint[]> {
         if (!(err instanceof Error && 'code' in err && err.code === 'ENOENT')) throw err;
         links = viewpointLinksSchema.parse({});
       }
-      const joined = joinViewpoint(item.body, item.summary, links);
+      const joined = joinViewpoint(item.body, links);
       // The text is the editor's; a link in it is a citation in the wrong file.
-      const inText = [...`${item.summary}\n${item.body}`.matchAll(/\[[^\]]+\]\(#[^)\s]+\)/g)].map(
+      const inText = [...item.body.matchAll(/\[[^\]]+\]\(#[^)\s]+\)/g)].map(
         ([link]) => `the text links ${link}; citations go in ${item.id}.links.yaml`
       );
       return {

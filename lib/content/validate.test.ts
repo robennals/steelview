@@ -28,9 +28,7 @@ function fact(over: Partial<Fact> & { id: string }): Fact {
 function viewpoint(over: Partial<Viewpoint> & { id: string }): Viewpoint {
   return {
     name: 'A viewpoint',
-    shortName: 'A view',
     summary: 'One line.',
-    order: 1,
     body: 'The argument.',
     ...over,
   };
@@ -583,12 +581,12 @@ test('rule 14: mixed period granularity orders the way a reader would order it',
   assert.deepEqual(validateTopic(t), []);
 });
 
-test('evidence targets and source footnotes must resolve, including summaries', () => {
+test('evidence targets and source footnotes must resolve', () => {
   const topic = soundTopic();
   topic.facts[0].body = '### Context {#alpha--context}\n\nMeasured. [1](#source-alpha-1)';
-  topic.viewpoints[0].summary = '[finding](#fact-alpha/context)';
+  topic.viewpoints[0].body = '### A step\n\n[finding](#fact-alpha/context)';
   assert.deepEqual(validateTopic(topic), []);
-  topic.viewpoints[0].summary = '[finding](#fact-alpha/missing)';
+  topic.viewpoints[0].body = '### A step\n\n[finding](#fact-alpha/missing)';
   assert.ok(validateTopic(topic).some(error => error.includes('unknown section')));
   topic.facts[0].claimSources = [9];
   topic.facts[0].body += '\n[9](#source-alpha-9)';

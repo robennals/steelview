@@ -3,23 +3,10 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations:
-    - phrase: The share of Americans with no confidence at all in the count has roughly tripled in 20 years
-      href: "#fact-opinion-and-confidence-in-elections/no-confidence-tripled"
-    - phrase: about a third of local election officials now report threats, harassment or abuse
-      href: "#fact-opinion-and-confidence-in-elections/officials-threatened"
-    - phrase: Voters trust results less under rules they oppose
-      href: "#fact-opinion-and-confidence-in-elections/procedures-they-oppose"
   verification:
     status: verified
-    textHash: cca4f709ef0d
-    checkedAt: 2026-11-20
-lead:
-  citations: []
-  verification:
-    status: verified
-    textHash: 2892b91549f6
-    checkedAt: 2026-11-20
+    textHash: d2af95c50dfe
+    checkedAt: 2026-11-26
 cards:
   - heading: Distrust in the count is growing, and splits by party
     visual:

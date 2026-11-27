@@ -1,11 +1,8 @@
 ---
-name: "Britain owes refuge to people fleeing persecution: safe routes, fair hearings and the right to work"
-shortName: Offer refuge
-summary: Most people who cross the Channel and get a decision are granted protection. They come by boat because war drove them out and Britain offers refugees almost no safe way in. Britain welcomed hundreds of thousands of Ukrainians and Hong Kongers in an orderly way. It should do the same for other refugees, with safe routes in numbers it chooses, fair decisions and the right to work, rather than pay for deterrents like the Rwanda scheme, which cost £715 million and sent no asylum seekers.
-order: 2
+name: Offer refuge
 draft: ai
 ---
-A person running from a war or a prison cell matters as much as anyone else, wherever they were born. When that person asks Britain for safety, Britain should give it. And it can. The numbers are manageable, and people come by boat because Britain offers them no safe way to come.
+Britain owes refuge to people fleeing persecution: safe routes, fair hearings and the right to work.
 
 ### Most people in the boats are fleeing real danger, by Britain's own judgment
 

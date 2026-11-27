@@ -1,11 +1,8 @@
 ---
-name: "No one who enters illegally should be allowed to stay: bar their asylum claims, remove them, and leave the ECHR to make it possible"
-shortName: Bar and remove
-summary: Most people who claim asylum in Britain stay, even when their claim is refused, and a journey that ends in staying is worth paying a smuggler for. Britain should refuse asylum to anyone who enters illegally, remove them, and leave the ECHR so that the courts cannot undo it.
-order: 1
+name: Bar and remove
 draft: ai
 ---
-Asylum is for people fleeing danger. It should not be a way to choose which country to live in. Yet a person who reaches Britain by boat and claims asylum can expect to stay, whatever the answer to their claim. Britain should end that. It should refuse the claims of people who enter illegally, remove them, and leave European human-rights law if it stands in the way.
+No one who enters illegally should be allowed to stay: bar their asylum claims, remove them, and leave the ECHR to make it possible.
 
 ### By 2025, Britain was seeing more asylum claims than ever before
 

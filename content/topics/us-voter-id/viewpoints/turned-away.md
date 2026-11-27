@@ -1,11 +1,8 @@
 ---
-name: These rules keep eligible citizens from voting, to stop fraud that is rarely found
-shortName: Don't turn voters away
-summary: Voting as someone else at the polls made up 10 of the 2,068 alleged fraud cases News21 collected, and non-citizens' votes are found at about 1 to 22 per million ballots. But Kansas's citizenship-document rule blocked tens of thousands of applicants, and Texas's ID-number rule rejected one mail ballot in eight in its first primary. A sworn promise of citizenship, backed by careful records checks, protects the voter list without shutting citizens out.
-order: 2
+name: Don't turn voters away
 draft: ai
 ---
-Every citizen should have an equal voice. A rule that makes voting harder for some citizens must prevent enough harm to be worth it. Photo-ID and proof-of-citizenship rules aim at fraud that is rarely found, and their cost falls on people who can least afford it.
+These rules keep eligible citizens from voting, to stop fraud that is rarely found.
 
 ### ID checks at the polls aim at a kind of fraud that is almost never found
 

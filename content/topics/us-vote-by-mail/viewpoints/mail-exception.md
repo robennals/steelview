@@ -1,11 +1,8 @@
 ---
-name: Most people should vote in person, with mail ballots kept for those who need them
-shortName: Mail as the exception
-summary: Voting should normally happen in a booth where no one can watch. Mail voting for everyone has spread since 2016. Mail ballots should stay open to people who cannot get to the polls, but mailing a ballot to everyone gives up the secret ballot and risks fraud that is hard to spot, for little gain in turnout.
-order: 1
+name: Mail as the exception
 draft: ai
 ---
-Voting should normally happen in a polling booth, where no one can see how you vote. Mail ballots should stay open to people who cannot get there, such as the sick, the disabled and people away from home. But they should not be sent to everyone.
+Most people should vote in person, with mail ballots kept for those who need them.
 
 ### Mail voting for everyone has spread since 2016
 

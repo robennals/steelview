@@ -1,11 +1,8 @@
 ---
-name: People who came lawfully on a path to settlement should be allowed to finish it
-shortName: Keep our word
-summary: About 2.2 million people built their lives around a five-year path to settlement that the state set out, and the government proposes making them wait longer. Change the terms for people who have not yet come, but let those already on the path finish it.
-order: 4
+name: Keep our word
 draft: ai
 ---
-People who came to Britain lawfully, on a path the state set out, should be allowed to finish it. Parliament can change the rules for people who have not yet come.
+People who came lawfully on a path to settlement should be allowed to finish it.
 
 ### About 2.2 million people built their lives around a path the state set out
 

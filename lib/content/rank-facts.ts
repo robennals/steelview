@@ -109,11 +109,10 @@ export function rankFacts(
 }
 
 /**
- * Sort viewpoints by their explicit `order`, id as tie-break. Trivial, but it
- * lives beside `rankFacts` because it answers the same question — what does
- * the reader meet first — and because the two must not drift apart into
- * "one section is derived, the other is whatever the filenames happen to be".
+ * Sort viewpoints by name, id as tie-break. This is only the order a page
+ * is built in: the topic page shuffles its viewpoints once loaded, so that
+ * none is always read first, and no viewpoint carries a rank of its own.
  */
-export function sortViewpoints(viewpoints: Array<{ id: string; order: number }>): void {
-  viewpoints.sort((a, b) => a.order - b.order || byId(a.id, b.id));
+export function sortViewpoints(viewpoints: Array<{ id: string; name: string }>): void {
+  viewpoints.sort((a, b) => a.name.localeCompare(b.name, 'en') || byId(a.id, b.id));
 }

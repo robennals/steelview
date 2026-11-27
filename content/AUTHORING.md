@@ -81,8 +81,9 @@ Renaming a file or a section breaks every inbound link from outside the repo,
 so a rename needs a redirect, not just a find-and-replace.
 
 Reading order is not yours to set. Fact order is derived from the viewpoints'
-own rankings by `lib/content/rank-facts.ts`; viewpoint order is the explicit
-`order` field. Neither responds to file order.
+own rankings by `lib/content/rank-facts.ts`. Viewpoints come in a random
+order on the topic page, so none is always read first, and are otherwise
+listed by name. Neither responds to file order.
 
 ---
 
@@ -1499,22 +1500,25 @@ must cover every point, and `highlight` names point ids.
 
 ## Viewpoints
 
-### Short names
+### Names
 
-Every viewpoint has a `shortName`: a few words its holders would
-accept, used where the full title will not fit, such as above a crux column.
-Keep it in the viewpoint's own spirit: "Keep our word", not "Pro-migrant".
+Every viewpoint has a `name`: a few words its holders would accept, shown
+wherever the viewpoint is named — its row on the topic page, the home page, a
+crux column, readers' suggestions. It is often the file's id in words, but
+need not be. Keep it in the viewpoint's own spirit: "Keep our word", not
+"Pro-migrant".
 
-### Titles
+### Summaries
 
-A viewpoint title is a one-line proposition someone would actually say, not a
+A viewpoint's summary is the text before its first `###` heading, shown under
+its name. It is a one-line proposition someone would actually say, not a
 keyword label. "Open and welcoming" is a label. "Immigration makes Britain
 better off, and we should welcome it" is a claim.
 
 **The set should match what people actually argue**, not an analyst's
 taxonomy of why they argue it. The question is not "what are the possible
 positions in this space" but "what does someone say, at length, when they are
-making this case". If no real person would say the title out loud, the
+making this case". If no real person would say the summary out loud, the
 viewpoint is a category rather than a view.
 
 ### The bar
@@ -1671,15 +1675,14 @@ A viewpoint is a short persuasive argument in plain English. Its job is to make
 the opening proposition compelling. The data report holds the detailed evidence;
 the viewpoint explains why that evidence gives someone a reason to act.
 
-**A viewpoint is a tree: a lead, then a sequence of headed sections whose
-headings add up to the title.** Open with one or two sentences stating the
-belief or choice being defended, and the principle behind it where one does the
-work. Then give usually four to six sections, each headed with an `###` heading. Each
+**A viewpoint is a tree: a summary, then a sequence of headed sections whose
+headings add up to it.** The summary states the belief or choice being
+defended, in one sentence. Then give usually four to six sections, each headed with an `###` heading. Each
 heading is one claim in the argument, stated as a sentence the holder would say
 — "Iran had brought itself within reach of a bomb", not "The nuclear
 programme". Read in order without the text beneath them, the headings should
 make the whole case: someone who accepted every heading should accept the
-title. A reader skimming the headings gets the argument; a reader who doubts
+summary. A reader skimming the headings gets the argument; a reader who doubts
 one reads the section beneath it.
 
 **Test each heading: could it be a chart's title?** "Australia's boat arrivals
@@ -1829,17 +1832,6 @@ with no section is a missing step. The step most often dropped is "why is that
 bad?": "record numbers are arriving" is not a problem until the argument says
 what harm follows.
 
-**The lead gives the reason, not the title again.** Open with the value or the
-plain observation the whole case rests on, in words the holder would use.
-
-> Before: Anyone who enters Britain illegally should not be allowed to stay.
-> Britain should refuse their claims, remove them, and leave European
-> human-rights law if it stands in the way.
->
-> After: Asylum is for people fleeing danger. It should not be a way to choose
-> which country to live in. Yet a person who reaches Britain by boat and claims
-> asylum can expect to stay, whatever the answer to their claim.
-
 **Open each section with its point in plain words, then give the figures.** The
 first sentence says what the section will show, so the reader knows what each
 number is for.
@@ -1979,13 +1971,13 @@ Use this sequence when asked to create or improve viewpoints on any topic:
 
 1. **Define the real disagreement.** Identify propositions people would actually
    defend. Give each a distinct central reason, not merely different adjectives
-   for the same conclusion. Check that titles do not promise an unsupported
+   for the same conclusion. Check that summaries do not promise an unsupported
    historical or causal claim.
 2. **Sketch the argument as headings.** For each proposition, write the four
    to six claims that together establish it: central value → factual premises
    → why those premises matter → strongest relevant cost or objection →
    response → conclusion. Each claim becomes a section heading. Read the
-   headings alone: do they add up to the title? Name the values that actually
+   headings alone: do they add up to the summary? Name the values that actually
    do work. Do not force every value into every essay.
 3. **Draft for reading.** Under each heading, write a short prose paragraph or
    two using the best available evidence, with qualitative factual phrases
@@ -1993,11 +1985,11 @@ Use this sequence when asked to create or improve viewpoints on any topic:
    make a coherent, persuasive case? Remove any section whose deletion makes no
    difference to the conclusion.
 4. **Revise for force and honesty.** Check that each section supports its
-   heading, each heading supports the title, and concessions lead somewhere.
+   heading, each heading supports the summary, and concessions lead somewhere.
    Read aloud for jargon, cumbersome sentences, repeated caveats and statistics
    that interrupt the thought. Revise the summary after the body.
 5. **Audit the evidence.** Inventory every empirical premise, including those
-   in the title and summary. Map each to a specific **Observation** in a neutral
+   in the summary. Map each to a specific **Observation** in a neutral
    data report, or mark it `#needed` for the research queue. Check each
    observation against real, credible sources.
    Prefer official statistics, primary research and authoritative legal texts
@@ -2027,19 +2019,22 @@ premise in a chart or leave it supported only by an external link.
 
 A viewpoint is two files beside each other in `viewpoints/`:
 
-- **`<id>.md` is the text**, and the editor's: frontmatter of `name`,
-  `shortName`, `summary` and `order`, then the lead and one `###` section per
-  card, as plain prose with no links in it. While the text is an agent's draft
+- **`<id>.md` is the text**, and the editor's: frontmatter of `name` alone,
+  then the summary and one `###` section per card, as plain prose with no
+  links in it. While the text is an agent's draft
   its frontmatter has `draft: ai`, and the topic page labels it "AI draft".
   The editor takes a viewpoint over by rewriting the text and deleting that
   line. **Any agent edit to the text, however small, puts `draft: ai` back.**
-- **`<id>.links.yaml` is the agent's**: for the summary, the lead and each
-  card (matched by its heading), the citations, each a phrase of the text and
-  the target it links to; each card's `visual`, the graph or quotes it is made
+- **`<id>.links.yaml` is the agent's**: for each card (matched by its
+  heading), the citations, each a phrase of the text and the target it links
+  to; each card's `visual`, the graph or quotes it is made
   with, named by a citation target with its `kind` and `title`; and a
-  `verification` recording whether the agent has checked that passage's claims
-  against what they cite, against a hash of the text it checked, with `notes`
-  to the editor. The format is in `lib/content/viewpoint-links.ts`.
+  `verification`, for the summary and each card, recording whether the agent
+  has checked that passage's claims against what they cite, against a hash of
+  the text it checked, with `notes` to the editor. The summary has no
+  citations: it is shown in the row's head, which a reader clicks to open, so
+  the cards cite what it claims and its check records that they do. The
+  format is in `lib/content/viewpoint-links.ts`.
 
 The loader joins the two, so the rest of this guide's "pills" and "links" are
 the citations in the links file, shown on the page as before. A citation whose
@@ -2075,8 +2070,8 @@ as plain prose. Cite only what the visual does not show: another chart's data,
 a figure from a source the visual does not draw, or a premise from elsewhere.
 The visual must really show the claim, by the standard of
 [Every link shows its fact on a chart](#lead-with-the-data): the same place,
-period and measure, and matching numbers. A summary, and a card of text, has no
-visual, so every empirical claim in it is still a pill.
+period and measure, and matching numbers. A card of text has no visual, so
+every empirical claim in it is still a pill.
 
 **Keep pill text to the point the argument needs.** The chart and the report
 hold the exact figures, dates, sources and method, so the pill does not need to
@@ -2155,14 +2150,6 @@ must explain how the value applies. Where two viewpoints weigh the same values
 differently, that is a crux ([Cruxes](#cruxes)), not a sentence in either
 viewpoint.
 
-### Order
-
-`order` is an explicit integer. **It must not group one side of the argument
-together.** Alternate across the spectrum, so a reader scrolling meets
-disagreement rather than a bloc: a topic whose viewpoints run from
-restrictive to open does not put its restrictive ones first and its open ones
-last.
-
 ---
 
 ## Cruxes
@@ -2225,7 +2212,7 @@ and every one of them needs a `position`; the build enforces both, and that no
 position is given for a viewpoint not in `divides`. A viewpoint may reject the
 framing, and its position says so: "Income per head turns on who comes, so the
 number alone decides little." Each position is headed by its viewpoint's
-`shortName`.
+`name`.
 
 **A prediction or missing-data crux still does not argue the facts.** Say why the
 doubt matters to people, and name what is unknown without weighing the evidence.
@@ -2474,13 +2461,13 @@ Run this before opening a pull request.
 
 **Every viewpoint**
 
-- [ ] Title is a proposition someone would say aloud, not a keyword label.
+- [ ] Summary is a proposition someone would say aloud, not a keyword label.
 - [ ] A partisan would find it better argued than their own version, and
       would recognise themselves in it.
 - [ ] It has real argumentative force. It is not merely inoffensive.
-- [ ] A one- or two-sentence lead, then usually four to six `###` sections, and more
+- [ ] A one-sentence summary, then usually four to six `###` sections, and more
       only where each is a step the argument needs; the headings alone add up
-      to the title, and the last states the conclusion.
+      to the summary, and the last states the conclusion.
 - [ ] Each section is two or three short sentences, not a bullet list, and
       advances the argument for its heading.
 - [ ] Read on the topic page, every step's chart shows that step's claim, and

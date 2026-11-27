@@ -1,11 +1,8 @@
 ---
-name: Election rules belong to the states, and presidents have no say in them
-shortName: States decide
-summary: The Constitution's Elections Clause lets each state's legislature set the rules for electing Congress, lets Congress change them, and names no role for the President. States have tightened and eased their own ID laws as they judged best. Each state's voters should choose their own ID and registration rules, and presidential orders that try to set them should fail.
-order: 5
+name: States decide
 draft: ai
 ---
-The Constitution settles who writes election rules. Each state's voters should choose their own ID and registration rules, and presidents should stay out.
+Election rules belong to the states, and presidents have no say in them.
 
 ### The Constitution gives election rules to the states and Congress, not the President
 

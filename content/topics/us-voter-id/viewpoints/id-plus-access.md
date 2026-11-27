@@ -1,11 +1,8 @@
 ---
-name: Require ID and guarantee easy voting, so both sides trust the result
-shortName: ID plus access
-summary: The share of Americans with no confidence at all in the count has roughly tripled in 20 years, and about a third of local election officials now report threats, harassment or abuse. Voters trust results less under rules they oppose. Free photo ID plus guaranteed early voting, passed by both parties, would give each side the protection it fears losing.
-order: 4
+name: ID plus access
 draft: ai
 ---
-Democracy works only if the losing side accepts defeat and waits for the next election. It will do that only if it trusts the result. That is why results the losers can accept matter more than any one rule.
+Require ID and guarantee easy voting, so both sides trust the result.
 
 ### Distrust in the count is growing, and splits by party
 

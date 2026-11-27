@@ -1,11 +1,8 @@
 ---
-name: The states make mail-voting rules, and presidents have no say in them
-shortName: States decide
-summary: The President has ordered new rules for mail ballots. But the Constitution gives election rules to state lawmakers, and lets Congress change them; it gives the President no part. States have tried different mail systems and changed course when their voters wanted. A national rule would override those choices.
-order: 5
+name: States decide
 draft: ai
 ---
-The Constitution lets each state's lawmakers set the rules for elections, and lets Congress change them. It gives the President no part beyond signing or vetoing bills. The states should keep making these choices, and presidents should stay out.
+The states make mail-voting rules, and presidents have no say in them.
 
 ### The President has ordered new rules for mail ballots
 

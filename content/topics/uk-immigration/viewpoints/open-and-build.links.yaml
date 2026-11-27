@@ -3,21 +3,10 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations:
-    - phrase: pay far more into the public finances than they take out
-      href: "#fact-immigration-economy-and-public-finances/skilled-workers-large-net-gain"
-    - phrase: Immigration is a small part of why homes cost so much
-      href: "#fact-immigration-housing-and-public-services/immigration-explains-4-6-percent-of-house-price-rise"
   verification:
     status: verified
-    textHash: 52d17e0dda9a
-    checkedAt: 2026-11-20
-lead:
-  citations: []
-  verification:
-    status: verified
-    textHash: abade47a0642
-    checkedAt: 2026-11-20
+    textHash: 4fb151b9d7da
+    checkedAt: 2026-11-26
 cards:
   - heading: Skilled migrants pay far more in than they take out
     visual:

@@ -3,23 +3,10 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations:
-    - phrase: killed thousands of protesters in the crackdown of winter 2025–26
-      href: "#fact-iran-government-and-its-people/january-2026-crackdown-toll"
-    - phrase: put more people to death in 2025 than in any year since 1989
-      href: "#fact-iran-government-and-its-people/executions-most-since-1989"
-    - phrase: Few Iranians in one online survey want it
-      href: "#fact-iran-government-and-its-people/few-prefer-islamic-republic"
   verification:
     status: verified
-    textHash: f7afe84cdaf9
-    checkedAt: 2026-11-20
-lead:
-  citations: []
-  verification:
-    status: verified
-    textHash: dcf5f5bc4a51
-    checkedAt: 2026-11-20
+    textHash: b51e3ae403ff
+    checkedAt: 2026-11-26
 cards:
   - heading: The government kills people who protest
     visual:

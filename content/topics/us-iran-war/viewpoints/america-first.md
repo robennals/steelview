@@ -1,11 +1,8 @@
 ---
-name: America First means staying out of another war in the Middle East
-shortName: America First
-summary: Americans were promised no new wars and got one. It is costing tens of billions of dollars and pushing up prices at the pump, and most Americans oppose it. The US should bring it to an end.
-order: 6
+name: America First
 draft: ai
 ---
-A government's first duty is to its own people. This war is costing Americans money and lives, and it was not needed to keep America safe. The US should end it.
+America First means staying out of another war in the Middle East.
 
 ### Americans voted for a President who promised to stop wars, and most oppose this one
 

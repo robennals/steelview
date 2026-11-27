@@ -3,17 +3,10 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations: []
   verification:
     status: verified
-    textHash: b94b92e9c368
-    checkedAt: 2026-11-20
-lead:
-  citations: []
-  verification:
-    status: verified
-    textHash: 3dbd413edda2
-    checkedAt: 2026-11-20
+    textHash: 809f1ffce5ff
+    checkedAt: 2026-11-26
 cards:
   - heading: Bills in Congress and a presidential order would cut mail voting back
     citations:

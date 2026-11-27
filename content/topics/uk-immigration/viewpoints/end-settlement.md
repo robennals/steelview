@@ -1,11 +1,8 @@
 ---
-name: Abolish permanent settlement, even for people who already have it, and aim for more people leaving than arriving
-shortName: End settlement
-summary: Britain is about to grant permanence to about 1.6 million people in five years, including care workers, who cost the public money over a lifetime. Replace settlement with renewable visas, keep benefits for citizens, and for a time let more people leave than arrive.
-order: 3
+name: End settlement
 draft: ai
 ---
-Britain should stop giving migrants the right to stay for good. People who already have it should move onto visas that must be renewed. And for a time, more people should leave Britain than arrive.
+Abolish permanent settlement, even for people who already have it, and aim for more people leaving than arriving.
 
 ### A wave of permanent settlement is about to arrive
 

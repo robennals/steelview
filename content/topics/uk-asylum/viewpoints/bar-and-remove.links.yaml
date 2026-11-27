@@ -3,23 +3,10 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations:
-    - phrase: Most people who claim asylum in Britain stay, even when their claim is refused
-      href: "#fact-removals-and-what-stops-them/fewer-refused-recorded-leaving"
   verification:
     status: verified
-    textHash: 4c40b8dc0762
-    checkedAt: 2026-11-22
-    notes:
-      - '"Stay" rests on not being recorded as leaving, which the report calls an upper bound on staying.'
-lead:
-  citations:
-    - phrase: can expect to stay, whatever the answer to their claim
-      href: "#fact-removals-and-what-stops-them/fewer-refused-recorded-leaving"
-  verification:
-    status: verified
-    textHash: 27e9294eae14
-    checkedAt: 2026-11-22
+    textHash: a4e8bba7aee6
+    checkedAt: 2026-11-26
 cards:
   - heading: By 2025, Britain was seeing more asylum claims than ever before
     visual:
