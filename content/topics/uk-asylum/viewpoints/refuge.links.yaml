@@ -4,132 +4,205 @@
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
   citations:
-    - phrase: Most people who cross the Channel and receive a decision are granted protection
+    - phrase: Most people who cross the Channel and get a decision are granted protection
       href: "#fact-asylum-claims-and-decisions/small-boat-claims-mostly-granted"
-    - phrase: Britain paused family reunion, the largest safe route open to them
-      href: "#fact-safe-and-legal-routes/family-reunion-paused"
-    - phrase: sent no asylum seekers at all
+    - phrase: war drove them out
+      href: "#fact-asylum-claims-and-decisions/rise-linked-to-conflict"
+    - phrase: Britain offers refugees almost no safe way in
+      href: "#fact-safe-and-legal-routes/claim-must-be-made-in-uk"
+    - phrase: Britain welcomed hundreds of thousands of Ukrainians and Hong Kongers
+      href: "#fact-safe-and-legal-routes/nationalities-with-safe-routes-rarely-came-by-boat"
+    - phrase: cost £715 million
+      href: "#fact-deterrence-and-protection-policies/rwanda-cost-and-relocations"
+    - phrase: sent no asylum seekers
       href: "#fact-deterrence-and-protection-policies/no-asylum-seekers-sent"
   verification:
     status: verified
-    textHash: 1b2076f26c07
-    checkedAt: 2026-11-20
+    textHash: d508cf275335
+    checkedAt: 2026-11-22
+    notes:
+      - Eritreans, the largest group crossing, are mostly fleeing a dictatorship rather than a war. "Persecution" would cover them.
+      - The £715 million includes the Illegal Migration Act as well as the Rwanda partnership.
 lead:
-  citations: []
+  citations:
+    - phrase: Britain offers them no safe way to come
+      href: "#fact-safe-and-legal-routes/claim-must-be-made-in-uk"
   verification:
     status: verified
-    textHash: 208152c3f41c
-    checkedAt: 2026-11-20
+    textHash: 3443e70c677b
+    checkedAt: 2026-11-22
+    notes:
+      - A claim must be made inside Britain; the routes that do exist are resettlement, family reunion (paused) and country schemes.
 cards:
-  - heading: Most people crossing the Channel have been found to need protection
+  - heading: Most people in the boats are fleeing real danger, by Britain's own judgment
     visual:
       cite: "#fact-asylum-claims-and-decisions/small-boat-claims-mostly-granted"
       kind: barChart
       title: Initial decisions on small-boat arrivals
     citations:
-      - phrase: Of small-boat arrivals since 2018 who got a decision, most were granted protection
+      - phrase: Of the people who arrived by small boat since 2018 and got a decision, most were granted protection
         href: "#fact-asylum-claims-and-decisions/small-boat-claims-mostly-granted"
-      - phrase: arrivals in 2023 and 2024 were refused slightly more often than granted
-        href: "#fact-asylum-claims-and-decisions/2023-2024-arrivals-granted-under-half"
-      - phrase: Most Eritreans and Sudanese were granted in 2025
-        href: "#fact-asylum-claims-and-decisions/sudanese-and-eritreans-mostly-granted"
-      - phrase: they are now the largest groups crossing
+      - phrase: Eritreans and Sudanese are now the largest groups crossing
         href: "#fact-safe-and-legal-routes/eritreans-and-sudanese-largest-boat-groups"
+      - phrase: most of them were granted protection in 2025
+        href: "#fact-asylum-claims-and-decisions/sudanese-and-eritreans-mostly-granted"
+      - phrase: people who arrived in 2023 and 2024 were refused slightly more often than granted
+        href: "#fact-asylum-claims-and-decisions/2023-2024-arrivals-granted-under-half"
       - phrase: after Syria's government fell, Syrians' grant rate dropped from 98% to 10% in a year
         href: "#fact-asylum-claims-and-decisions/syrian-grant-rate-fell"
     verification:
       status: verified
-      textHash: 7fa63ff5c9c9
-      checkedAt: 2026-11-20
-  - heading: Britain has closed the safe routes most of them could use
+      textHash: 99b65c8ffb32
+      checkedAt: 2026-11-22
+      notes:
+        - 60% of decided claims were granted; with withdrawals counted, 44.5% of everyone who claimed. The heading's "most people in the boats" rests on the decided claims.
+  - heading: Britain is asked to do its share, and it has managed far more
     visual:
-      cite: "#fact-safe-and-legal-routes/family-reunion-paused"
+      cite: "#fact-asylum-claims-and-decisions/uk-per-head-now-at-eu-average"
       kind: series
-      title: People offered a safe and legal route
+      title: Asylum claims per 1,000 residents
     citations:
-      - phrase: Family reunion, joining a refugee already here, became the largest route open to any nationality, and was then paused
-        href: "#fact-safe-and-legal-routes/family-reunion-paused"
-      - phrase: For Eritreans, Sudanese and Iranians, family reunion had been the main safe route
-        href: "#fact-safe-and-legal-routes/family-reunion-was-the-main-route-for-boat-nationalities"
-      - phrase: in the year to June 2026, boat arrivals far exceeded safe-route grants for all three
-        href: "#fact-safe-and-legal-routes/after-the-pause"
-      - phrase: Some of the largest groups who cross had almost no safe route at all
-        href: "#fact-safe-and-legal-routes/some-boat-nationalities-had-no-route"
+      - phrase: about 15 asylum claims a year for every 10,000 people who live here. That is the same rate as the European Union as a whole, and in every year from 2014 to 2024 Britain's rate was lower
+        href: "#fact-asylum-claims-and-decisions/uk-per-head-now-at-eu-average"
+      - phrase: Britain ranked thirteenth of 32 European countries for claims per head
+        href: "#fact-asylum-claims-and-decisions/rank-depends-on-measure"
+      - phrase: they stay in the poorer countries next to the ones they fled
+        href: "#fact-safe-and-legal-routes/most-refugees-live-next-door"
+      - phrase: Few refugees can reach an island without crossing another country first
+        href: "#fact-asylum-law-and-the-echr/few-reach-the-uk-without-passing-through-another-state"
+      - phrase: Small boats have brought between 29,000 and 46,000 people a year since 2021
+        href: "#fact-safe-and-legal-routes/routes-against-boats-over-time"
+      - phrase: Britain gave a safe route to six times as many people as came by boat
+        href: "#fact-safe-and-legal-routes/routes-against-boats-over-time"
+      - phrase: most of them from Ukraine and Hong Kong
+        href: "#fact-safe-and-legal-routes/two-country-schemes-dominate"
+      - phrase: Asylum seekers are a small part of all the people who move to Britain
+        href: "#fact-asylum-claims-and-decisions/asylum-small-share-of-immigration"
+      - phrase: about half of them within two years
+        href: "#fact-deterrence-and-protection-policies/about-half-of-refugees-work"
     verification:
       status: verified
-      textHash: 81c6e71c735a
-      checkedAt: 2026-11-20
-  - heading: A safe route lets Britain choose how many it protects; a boat does not
+      textHash: 485d65980093
+      checkedAt: 2026-11-22
+      notes:
+        - People seeking asylum were 11% of immigration in the year to June 2025, but 44% of net migration.
+        - The UN figure says nearly two-thirds of refugees live next door; it does not say "never reach Europe", and some neighbouring countries are European.
+        - '"Safe route" counts visas and resettlement granted, not arrivals.'
+  - heading: People come by boat because war drove them out and there is no safe way in
+    visual:
+      cite: "#fact-safe-and-legal-routes/after-the-pause"
+      kind: compositionBar
+      title: How each nationality came, latest year
+    citations:
+      - phrase: link the rise in asylum claims since 2022 to conflict in the Middle East and instability in the Horn of Africa and South Asia
+        href: "#fact-asylum-claims-and-decisions/rise-linked-to-conflict"
+      - phrase: Eritreans, Sudanese and Somalis are now among the largest groups crossing, and Syrian arrivals fell by two-thirds after Assad's government fell
+        href: "#fact-channel-crossings-and-irregular-arrivals/the-mix-has-shifted"
+      - phrase: older ways of arriving, such as hiding in lorries, which were detected less and less as the boats grew
+        href: "#fact-channel-crossings-and-irregular-arrivals/boats-did-not-simply-replace-lorries"
+      - phrase: What a refugee cannot do is come safely
+        href: "#fact-safe-and-legal-routes/claim-must-be-made-in-uk"
+      - phrase: has resettled 4,589 people since 2021. It took no new referrals in 2025/26
+        href: "#fact-safe-and-legal-routes/ukrs-total-and-quota"
+      - phrase: reopening at a few hundred places at first
+        href: "#fact-safe-and-legal-routes/planned-scale"
+      - phrase: 33,374 people who came by boat in the year to June 2026
+        href: "#fact-channel-crossings-and-irregular-arrivals/latest-year-total"
+    verification:
+      status: verified
+      textHash: dc2b1d9d7981
+      checkedAt: 2026-11-22
+      notes:
+        - '"The one route meant for refugees is resettlement": the Afghan schemes and family reunion were also routes for refugees, and Afghans crossed despite the largest of them.'
+        - "Boats only partly replaced lorries: total detections more than tripled."
+  - heading: A safe route lets Britain choose who comes and how many
     visual:
       cite: "#fact-safe-and-legal-routes/nationalities-with-safe-routes-rarely-came-by-boat"
       kind: compositionBar
       title: How each nationality came to the UK
     citations:
-      - phrase: Hundreds of thousands of Ukrainians and Hong Kongers came on visas, and almost none came by boat
+      - phrase: Hundreds of thousands of Ukrainians and Hong Kongers came to Britain on visas
         href: "#fact-safe-and-legal-routes/nationalities-with-safe-routes-rarely-came-by-boat"
-      - phrase: The reopened resettlement scheme has a yearly cap
+      - phrase: The resettlement scheme, now reopened, has a yearly cap
         href: "#fact-safe-and-legal-routes/resettlement-is-reopening"
-      - phrase: comparing routes with boats side by side is not a test of cause
-        href: "#fact-safe-and-legal-routes/not-a-test-of-cause"
+      - phrase: Afghans had the largest resettlement route and still crossed
+        href: "#fact-safe-and-legal-routes/afghans-large-route-still-crossed"
     verification:
       status: verified
-      textHash: 86b89fee9927
-      checkedAt: 2026-11-20
-  - heading: Many refusals are overturned on appeal, so appeals must stay fair
+      textHash: c01dcfd6e8b2
+      checkedAt: 2026-11-22
+      notes:
+        - The heading's "and how many" holds for capped routes such as resettlement; Homes for Ukraine had no cap.
+  - heading: Deterrence has cost a fortune and achieved little
     visual:
-      cite: "#fact-asylum-claims-and-decisions/two-in-five-appeals-allowed"
-      kind: series
-      title: Asylum appeals decided and allowed
+      cite: "#fact-deterrence-and-protection-policies/rwanda-untested"
+      kind: comparison
+      title: Spending on the Rwanda partnership
     citations:
-      - phrase: Since 2007, between a quarter and a half of asylum appeals each year have succeeded
-        href: "#fact-asylum-claims-and-decisions/two-in-five-appeals-allowed"
-      - phrase: Counting appeals and second decisions, final grant rates rose by 20 points on average for claims made in 2007–2022
-        href: "#fact-asylum-claims-and-decisions/final-outcomes-after-appeal"
-      - phrase: a 2022 law raised the standard of proof
-        href: "#fact-asylum-claims-and-decisions/standard-of-proof"
-      - phrase: ministers plan a new appeals body whose decision-makers need not be lawyers, chaired by a Home Secretary appointee
-        href: "#fact-asylum-law-and-the-echr/bill-replaces-the-tribunal"
-    verification:
-      status: verified
-      textHash: 34370ad1e59e
-      checkedAt: 2026-11-20
-  - heading: Britain paid £715 million for a deterrent that sent no asylum seekers
-    citations:
-      - phrase: Britain spent £715 million on the Rwanda scheme and a related law
+      - phrase: Britain spent £715 million on the Rwanda scheme and a law to support it
         href: "#fact-deterrence-and-protection-policies/rwanda-cost-and-relocations"
       - phrase: sent no asylum seekers there
         href: "#fact-deterrence-and-protection-policies/no-asylum-seekers-sent"
-      - phrase: Australia's offshore camps cost billions
+      - phrase: more than 1,500 people arrived in the next 16 days
+        href: "#fact-deterrence-and-protection-policies/settlement-ban-first-16-days"
+      - phrase: have cost billions
         href: "#fact-deterrence-and-protection-policies/offshore-cost-per-year"
-      - phrase: 18 people sent there had died by 2021
+      - phrase: 18 people sent to them had died by 2021
         href: "#fact-deterrence-and-protection-policies/eighteen-had-died"
-      - phrase: Australia's arrivals fell to almost none after it turned boats back
+      - phrase: Australia's arrivals did fall to almost none once it turned boats back at sea
         href: "#fact-deterrence-and-protection-policies/australia-arrivals-fell-after-turnbacks"
-      - phrase: handing people back at sea needs the country they left from to take them
+      - phrase: that means handing people back to the country they left
         href: "#fact-deterrence-and-protection-policies/turnbacks-need-departure-country"
+      - phrase: Britain dropped its own turnback policy because it is rarely safe in the Channel
+        href: "#fact-deterrence-and-protection-policies/uk-turnbacks-withdrawn"
+      - phrase: likely the main reason Australia's boats stopped
+        href: "#fact-deterrence-and-protection-policies/kaldor-credits-turnbacks"
     verification:
       status: verified
-      textHash: da0d74f04a5b
-      checkedAt: 2026-11-20
-  - heading: Work bans hurt refugees and do little to deter claims
+      textHash: 9afb426a5456
+      checkedAt: 2026-11-22
+      notes:
+        - Australia's costs are in Australian dollars.
+  - heading: Britain pays most for keeping people waiting and idle
+    visual:
+      cite: "#fact-asylum-backlog-accommodation-and-cost/hotels-third-of-people-three-quarters-of-cost"
+      kind: barChart
+      title: Hotels' share of people and cost
     citations:
-      - phrase: Studies across Europe find that work bans leave refugees less likely to have a job for years afterwards
+      - phrase: Asylum support costs about £4 billion a year
+        href: "#fact-asylum-backlog-accommodation-and-cost/support-costs-about-4bn-a-year"
+      - phrase: hotels housed about a third of the people in asylum accommodation and took about three-quarters of its cost
+        href: "#fact-asylum-backlog-accommodation-and-cost/hotels-third-of-people-three-quarters-of-cost"
+      - phrase: between a quarter and a half of asylum appeals have succeeded
+        href: "#fact-asylum-claims-and-decisions/two-in-five-appeals-allowed"
+      - phrase: an appeal takes over a year on average
+        href: "#fact-asylum-backlog-accommodation-and-cost/asylum-appeal-takes-72-weeks"
+      - phrase: most are kept from working
+        href: "#fact-deterrence-and-protection-policies/uk-work-ban"
+      - phrase: work bans leave refugees less likely to have a job for years afterwards
         href: "#fact-deterrence-and-protection-policies/work-bans-reduce-employment"
-      - phrase: The one study of where people choose to claim finds that bans are not a strong deterrent
+      - phrase: bans are not a strong deterrent
         href: "#fact-deterrence-and-protection-policies/authors-say-bans-not-a-strong-deterrent"
-      - phrase: shorter bans are linked to slightly more claims
-        href: "#fact-deterrence-and-protection-policies/work-rights-modest-association"
+      - phrase: ministers plan a new appeals body whose decision-makers need not be lawyers
+        href: "#fact-asylum-law-and-the-echr/bill-replaces-the-tribunal"
     verification:
       status: verified
-      textHash: c352198649cb
-      checkedAt: 2026-11-20
-  - heading: So Britain should open capped safe routes, decide claims fairly, and let people work
+      textHash: fcad61ca650d
+      checkedAt: 2026-11-22
+      notes:
+        - Hotel use has fallen 71% from its peak since these 2024 shares.
+        - First decisions are now fast; most of the wait is for appeals.
+  - heading: So Britain should open safe routes, decide claims fairly, and let people work
     citations:
-      - phrase: would not remove the Refugee Convention's ban on sending refugees back to danger
+      - phrase: The Refugee Convention's ban on sending refugees back to danger would still apply
         href: "#fact-asylum-law-and-the-echr/refugee-convention-ban-on-return-remains"
-      - phrase: could cost Britain police cooperation with the EU
+      - phrase: leaving could cost Britain its police cooperation with the EU
         href: "#fact-asylum-law-and-the-echr/eu-may-end-law-enforcement-cooperation-on-denunciation"
+      - phrase: took in hundreds of thousands of Ukrainians and Hong Kongers, on terms it chose, and almost none came by boat
+        href: "#fact-safe-and-legal-routes/nationalities-with-safe-routes-rarely-came-by-boat"
+      - phrase: far smaller number who now come by boat
+        href: "#fact-channel-crossings-and-irregular-arrivals/latest-year-total"
     verification:
       status: verified
-      textHash: f0f96e3803a6
-      checkedAt: 2026-11-20
+      textHash: 911e892c8658
+      checkedAt: 2026-11-22

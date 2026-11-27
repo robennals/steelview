@@ -53,7 +53,7 @@ For each viewpoint, the outline gives:
   redrafting. It normally becomes the viewpoint's filename in stage 6.
 - **Title**: a proposition someone would say aloud
   ([Titles](AUTHORING.md#titles)).
-- **Its arguments**, four to six, each as its holder would make it, in a
+- **Its arguments**, usually four to six, each as its holder would make it, in a
   sentence or two. Each opens with a one-line claim that becomes a section
   heading in stage 6, so the claims read alone should add up to the title
   ([Write an argument someone can follow](AUTHORING.md#write-an-argument-someone-can-follow)).
@@ -425,6 +425,13 @@ holder of that view would find it better argued than their own version
   as what the finding shows for the argument.
 - **Then the lines.** Read heading and line, card after card: they should flow
   as one argument, with nothing in the evidence needed to follow it.
+- **Make it read as one argument.** A draft that follows every rule can still
+  read as a list of facts with caveats. Work through
+  [Make it read as one argument](AUTHORING.md#make-it-read-as-one-argument):
+  each section answers the question the last raised, opens with its point and
+  answers its caveats; the text meets the other viewpoints' best points
+  without naming them; and nothing follows the conclusion. Use the facts the
+  reports hold, and list for the editor any premise that has none.
 - **Review each card's visual.** Step through each viewpoint on the topic page.
   A visual that does not show its card's point means reordering the citations
   in the line, choosing another observation, or going back to stage 5 for the

@@ -1,0 +1,139 @@
+# The agent's half of this viewpoint: which phrase of the text cites which
+# data, the chart each card shows, and whether each passage has been checked
+# against its evidence. The text itself is in the .md file beside this one.
+# Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
+summary:
+  citations:
+    - phrase: most of them never get near a boat
+      href: "#fact-safe-and-legal-routes/most-refugees-live-next-door"
+    - phrase: would protect many more people close to home
+      href: "#fact-asylum-backlog-accommodation-and-cost/support-near-home-costs-less"
+  verification:
+    status: verified
+    textHash: 196b0c1fbf74
+    checkedAt: 2026-11-22
+lead:
+  citations: []
+  verification:
+    status: verified
+    textHash: 37861049194f
+    checkedAt: 2026-11-22
+cards:
+  - heading: Most refugees never get near a boat
+    visual:
+      cite: "#fact-safe-and-legal-routes/sudanese-refugees-next-door"
+      kind: barChart
+      title: Where Sudan's refugees live
+    citations:
+      - phrase: Most of the world's refugees stay in the countries next to the one they fled
+        href: "#fact-safe-and-legal-routes/most-refugees-live-next-door"
+      - phrase: paying smugglers for the crossing
+        href: "#fact-channel-crossings-and-irregular-arrivals/smugglers-prices"
+      - phrase: most of those who manage it are young men
+        href: "#fact-channel-crossings-and-irregular-arrivals/most-arrivals-are-young-men"
+      - phrase: a camp on Sudan's border
+        href: "#fact-safe-and-legal-routes/sudanese-refugees-next-door"
+    verification:
+      status: verified
+      textHash: 8c2da85971bc
+      checkedAt: 2026-11-22
+      notes:
+        - No source says why refugees stay next door ("the people without the money or the strength to go further"); many may choose to.
+        - Most adult men crossing are aged 18 to 39.
+  - heading: By the time someone reaches the Channel, the danger is behind them
+    visual:
+      cite: "#fact-channel-crossings-and-irregular-arrivals/boats-leave-from-france-and-belgium"
+      kind: map
+      title: Where the small boats leave from
+    citations:
+      - phrase: The boats set off from France and Belgium
+        href: "#fact-channel-crossings-and-irregular-arrivals/boats-leave-from-france-and-belgium"
+      - phrase: most people who arrived by small boat and got a decision were granted protection
+        href: "#fact-asylum-claims-and-decisions/small-boat-claims-mostly-granted"
+      - phrase: people drown in the Channel
+        href: "#fact-channel-crossings-and-irregular-arrivals/people-die-crossing"
+      - phrase: the strongest pull to a country is people from home who are already there
+        href: "#fact-deterrence-and-protection-policies/networks-strongest-pull"
+    verification:
+      status: verified
+      textHash: 85f4874b3acf
+      checkedAt: 2026-11-22
+      notes:
+        - The study finds an association across EU countries; "each arrival makes the next more likely" is its plain reading, not a measured effect of one arrival.
+  - heading: The same money would protect many more people near home
+    visual:
+      cite: "#fact-asylum-backlog-accommodation-and-cost/aid-spent-in-britain"
+      kind: series
+      title: UK aid spent on refugees in the UK
+    citations:
+      - phrase: Supporting asylum seekers in Britain costs about £4 billion a year
+        href: "#fact-asylum-backlog-accommodation-and-cost/support-costs-about-4bn-a-year"
+      - phrase: A hotel place cost between £127 and £148 per person per night
+        href: "#fact-asylum-backlog-accommodation-and-cost/support-near-home-costs-less"
+      - phrase: Sheltering and feeding a refugee in a country next to the conflict costs a small part of that
+        href: "#fact-asylum-backlog-accommodation-and-cost/support-near-home-costs-less"
+      - phrase: nearly a fifth of Britain's overseas aid is now spent inside Britain
+        href: "#fact-asylum-backlog-accommodation-and-cost/aid-spent-in-britain"
+    verification:
+      status: verified
+      textHash: 0a5d785bccf6
+      checkedAt: 2026-11-22
+      notes:
+        - "The comparison rests on the UN's appeal for Sudan's region: USD 1.6 billion for 5.9 million people a year. That is an appeal, not the full cost of shelter and food, and the hotel cost was £170 a day by 2024/25."
+        - Only the first 12 months of support count as aid, so not every hotel pound comes out of the aid budget.
+  - heading: Help that the public does not agree to will not last
+    visual:
+      cite: "#fact-public-opinion-on-asylum-and-the-echr/removal-differs-by-route"
+      kind: barChart
+      title: Who people would require to leave
+    citations:
+      - phrase: Britain took in hundreds of thousands of Ukrainians and Hong Kongers on visas
+        href: "#fact-safe-and-legal-routes/nationalities-with-safe-routes-rarely-came-by-boat"
+      - phrase: its people opened their homes to them
+        href: "#fact-safe-and-legal-routes/britons-housed-ukrainians"
+      - phrase: 38% of adults wanted recent small-boat arrivals made to leave, but only 16% said the same of asylum seekers who came through the legal process
+        href: "#fact-public-opinion-on-asylum-and-the-echr/removal-differs-by-route"
+    verification:
+      status: verified
+      textHash: 9d7123ebcb5d
+      checkedAt: 2026-11-22
+      notes:
+        - Homes for Ukraine was for Ukrainians only. 60% of its sponsors said they would consider hosting people from other countries.
+  - heading: A country can end the boats and still protect refugees
+    visual:
+      cite: "#fact-deterrence-and-protection-policies/australia-arrivals-fell-after-turnbacks"
+      kind: series
+      title: "Australia: asylum-seeker boat arrivals"
+    citations:
+      - phrase: Australia turned asylum boats back at sea from late 2013, and arrivals fell to almost none
+        href: "#fact-deterrence-and-protection-policies/australia-arrivals-fell-after-turnbacks"
+      - phrase: staying in the Refugee Convention
+        href: "#fact-deterrence-and-protection-policies/ratified-but-criticised"
+      - phrase: it went on bringing in refugees it had chosen from camps abroad
+        href: "#fact-deterrence-and-protection-policies/australia-kept-resettling"
+      - phrase: Denmark now receives about a fifth as many asylum claims per head as Britain
+        href: "#fact-asylum-claims-and-decisions/denmark-fifth-of-uk"
+      - phrase: it grants protection at about the same rate as the rest of the EU
+        href: "#fact-asylum-claims-and-decisions/denmark-grant-near-eu"
+      - phrase: Britain dropped its own turnback policy as rarely safe in the Channel
+        href: "#fact-deterrence-and-protection-policies/uk-turnbacks-withdrawn"
+      - phrase: Denmark changed several rules at once
+        href: "#fact-deterrence-and-protection-policies/denmark-several-changes"
+    verification:
+      status: verified
+      textHash: b08f8eccde91
+      checkedAt: 2026-11-22
+      notes:
+        - The resettlement data do not say Australia's refugees came from camps. Denmark's changes came over several years from 2015.
+  - heading: So Britain should stop granting asylum to those who cross, and spend the savings where the refugees are
+    citations:
+      - phrase: which shelter most of the refugees
+        href: "#fact-safe-and-legal-routes/most-refugees-live-next-door"
+      - phrase: Rwanda took no asylum seekers
+        href: "#fact-deterrence-and-protection-policies/no-asylum-seekers-sent"
+      - phrase: The government plans a few hundred places at first
+        href: "#fact-safe-and-legal-routes/planned-scale"
+    verification:
+      status: verified
+      textHash: 979285fd6790
+      checkedAt: 2026-11-22

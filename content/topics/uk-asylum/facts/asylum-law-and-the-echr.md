@@ -638,11 +638,25 @@ figures:
       - { key: says, label: What it says, sortable: false }
     rows:
       - provision: Article 33(1)
-        says: { value: 'No contracting state may "expel or return (‘refouler’) a refugee in any manner whatsoever to the frontiers of territories where his life or freedom would be threatened".', sources: [40] }
+        says:
+          value: No contracting state may "expel or return (‘refouler’) a refugee in any manner whatsoever to the frontiers of territories where his life or freedom would be threatened".
+          sources:
+            - 40
       - provision: Article 31(1)
-        says: { value: '"Contracting States shall not impose penalties, on account of their illegal entry or presence, on refugees".', sources: [42] }
+        says:
+          value: '"Contracting States shall not impose penalties, on account of their illegal entry or presence, on refugees".'
+          sources:
+            - 42
       - provision: If the UK left the ECHR
-        says: { value: 'Wolfson: "a stringent regime could be pursued outside of the ECHR, while remaining within the Refugee Convention".', sources: [10] }
+        says:
+          value: 'Wolfson: "a stringent regime could be pursued outside of the ECHR, while remaining within the Refugee Convention".'
+          sources:
+            - 10
+      - provision: The Supreme Court on the Rwanda plan, 2023
+        says:
+          value: Asylum seekers are protected "not only by the Human Rights Act" but also by Acts through which "Parliament has given effect to the Refugee Convention as well as the ECHR".
+          sources:
+            - 47
   - kind: dataTable
     id: wolfson-review
     title: 'The Wolfson review''s ECHR advice'
@@ -759,7 +773,7 @@ observationMarks:
   article-31-is-about-penalties: {rows: ["Article 31(1)"]}
   wolfson-withdrawal-possible-refugee-convention-unnecessary: {rows: ["Can the UK leave?", "Must the UK also leave the Refugee Convention?"]}
   eu-may-end-law-enforcement-cooperation-on-denunciation: {rows: ["What Part Three covers", "Article 692(2)", "How both sides read it"]}
-  refugee-convention-ban-on-return-remains: {rows: ["Article 33(1)", "If the UK left the ECHR"]}
+  refugee-convention-ban-on-return-remains: {"rows":["Article 33(1)","If the UK left the ECHR","The Supreme Court on the Rwanda plan, 2023"]}
   the-bill-sets-no-target: {rows: ["Impact assessment: refusals"]}
   the-declaration-is-non-binding: {rows: ["Status"]}
   good-friday-agreement-is-disputed: {rows: ["Conclusion", "What the UK promised"]}

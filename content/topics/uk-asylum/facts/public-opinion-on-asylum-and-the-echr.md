@@ -272,8 +272,26 @@ figures:
         result: { value: 'Immediate removal 38%, case by case 43%', sources: [9] }
       - poll: YouGov, August 2025
         question: 'Support "admitting no more new migrants, and requiring large numbers of migrants who came to the UK in recent years to leave"'
-        result: { value: Support 45%, sources: [11] }
+        result: {"value":"Support 45%. Of all adults, 38% supported it and included small-boat asylum seekers; 16% included asylum seekers following the legal process","sources":[11,12]}
+  - kind: barChart
+    id: removal-by-group
+    title: 'Who people would require to leave'
+    subtitle: 'Share of all adults, by group, YouGov, Britain, August 2025'
+    description: >-
+      Adults who backed requiring large numbers of recent migrants to leave and
+      included each group, as a share of all adults. 45% backed the policy in all.
+    valueLabel: Share of all adults
+    categoryLabel: Group
+    format: { unit: percent }
+    sort: value
+    sources: [12]
+    items:
+      - { label: Small-boat asylum seekers, value: 38 }
+      - { label: People coming to claim benefits, value: 38 }
+      - { label: People working unskilled jobs without work visas, value: 36 }
+      - { label: Asylum seekers following the legal process, value: 16, highlight: true }
 observationMarks:
+  removal-differs-by-route: {rows: ["Small-boat asylum seekers", "Asylum seekers following the legal process"]}
   remain-has-led-since-2016: {lines: ["Should remain a member", "Should withdraw"], from: "2016", to: "2025-10"}
   wording-moves-the-answer: {rows: ["Whitestone Insights for the New Conservatives, 2023", "Survey reviewed by The Conversation, 2024"]}
   conservative-and-reform-voters-lean-to-leaving: {lines: ["Should withdraw"], from: "2025-06", to: "2025-10"}
@@ -327,6 +345,12 @@ leave. Counted across all adults, that came to 38% who included small-boat
 asylum seekers and 16% who included asylum seekers who came through the
 legal process. [11](#source-public-opinion-on-asylum-and-the-echr-11)
 [12](#source-public-opinion-on-asylum-and-the-echr-12)
+
+## Observations {#public-opinion-on-asylum-and-the-echr--observations-removal-by-group}
+
+### Far more adults would remove small-boat arrivals than asylum seekers who came legally {#public-opinion-on-asylum-and-the-echr--removal-differs-by-route}
+
+Counted across all adults, 38% backed requiring recent migrants to leave and included small-boat asylum seekers; 16% included asylum seekers following the legal process. [12](#source-public-opinion-on-asylum-and-the-echr-12)
 
 ## More {#public-opinion-on-asylum-and-the-echr--more-echr-membership}
 

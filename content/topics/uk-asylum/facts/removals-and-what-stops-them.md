@@ -2186,7 +2186,7 @@ figures:
       - measure: Removals stopped by the ECHR
         shows: { value: No published source counts them, sources: [17] }
       - measure: Emergency orders from the Strasbourg court pausing a UK removal
-        shows: { value: '1 granted out of 346 UK requests in 2023 to 2025, 300 of which were outside what the court decides', sources: [74] }
+        shows: { value: '1 granted out of 346 requests against the UK, of any kind, in 2023 to 2025, 300 of which were outside what the court decides', sources: [74] }
         leaves-out: An order only pauses a removal while a case is heard; claims decided by UK courts and tribunals under the Human Rights Act do not appear
       - measure: Human-rights applications raised in detention, 2019
         shows: { value: '5% of detentions, against 47% for asylum claims', sources: [21, 22] }
