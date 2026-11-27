@@ -594,14 +594,63 @@ dataStillNeeded:
       Circuit appeals and any certiorari petition will settle whether the
       district courts' view holds.
 figures:
-  - kind: pullQuote
+  - kind: quotes
     id: elections-clause
-    description: The Elections Clause of the US Constitution, the source of state and congressional power over election rules.
-    quote:
-      text: The times, places and manner of holding elections for Senators and Representatives, shall be prescribed in each state by the legislature thereof; but the Congress may at any time by law make or alter such regulations, except as to the places of choosing Senators.
-      speaker: U.S. Constitution
-      context: Article I, Section 4, Clause 1
-      source: 1
+    question: Who does the Constitution let set the rules for federal elections?
+    description: >-
+      The Elections Clause and the presentment clause of the US Constitution,
+      and the Supreme Court's reading of the Elections Clause in Arizona v.
+      Inter Tribal Council (2013), the sources of state and congressional
+      power over election rules.
+    quotes:
+      - text: The times, places and manner of holding elections for Senators and Representatives, shall be prescribed in each state by the legislature thereof; but the Congress may at any time by law make or alter such regulations, except as to the places of choosing Senators.
+        speaker: U.S. Constitution
+        context: Article I, Section 4, Clause 1 (the Elections Clause)
+        date: '1788'
+        source: 1
+      - text: Every bill which shall have passed the House of Representatives and the Senate, shall, before it become a law, be presented to the President of the United States; if he approve he shall sign it, but if not he shall return it
+        speaker: U.S. Constitution
+        context: Article I, Section 7, Clause 2 (presentment)
+        date: '1788'
+        source: 2
+      - text: the Elections Clause empowers Congress to regulate how federal elections are held, but not who may vote in them.
+        speaker: Supreme Court of the United States
+        context: Arizona v. Inter Tribal Council of Arizona (2013)
+        date: '2013-06-17'
+        source: 4
+      - text: The power of Congress over the “Times, Places and Manner” of congressional elections “is paramount, and may be exercised at any time, and to any extent which it deems expedient
+        speaker: Supreme Court of the United States
+        context: Arizona v. Inter Tribal Council of Arizona (2013), quoting Ex parte Siebold (1880)
+        date: '2013-06-17'
+        source: 3
+  - kind: quotes
+    id: orders-in-court
+    question: What have the courts said about the President's orders on election rules?
+    description: >-
+      What the district courts said about the proof-of-citizenship section of
+      the March 2025 order (EO 14248), and what the Supreme Court said when it
+      let the March 2026 order (EO 14399) proceed, in date order.
+    quotes:
+      - text: are PERMANENTLY ENJOINED from taking any action to implement or give effect to Section 2(a) of Executive Order No. 14,248
+        speaker: U.S. District Court for the District of Columbia
+        context: LULAC v. Executive Office of the President, on the 2025 order
+        date: '2025-10-31'
+        source: 30
+      - text: the court concluded that the challenged EO sections exceeded the President's constitutional authority, violated the separation of powers, and conflicted with federal statutes such as the NVRA, the UOCAVA, and the HAVA.
+        speaker: Civil Rights Litigation Clearinghouse
+        context: Summary of California v. Trump (D. Mass.), on the 2025 order
+        date: '2026-10-23'
+        source: 31
+      - text: The Order is an internal directive from the President to his subordinates mandating that certain agencies pursue certain policies. It neither requires nor forbids anything of anyone outside the Executive Branch.
+        speaker: Supreme Court of the United States
+        context: Trump v. California, on the 2026 order
+        date: '2026-08-24'
+        source: 34
+      - text: The Court’s disposition of this application does not mean that any measure taken by the Government to implement the Order will necessarily be lawful. On that score, time will tell.
+        speaker: Supreme Court of the United States
+        context: Trump v. California, on the 2026 order
+        date: '2026-08-24'
+        source: 35
   - kind: dataTable
     id: holdings
     title: Court rulings on who sets voting rules
@@ -709,6 +758,10 @@ figures:
         does: { value: 'DHS citizenship checks of whole voter rolls against linked Social Security records. The government reports more than 65 million voters verified in 26 states and 28,635 flagged as potential non-citizens; its challengers say it "had not yet released the system’s error rate"', sources: [39, 38] }
         status: { value: 'Blocked by a district judge in June 2026; that order stayed by the Supreme Court, 25 Sep 2026', sources: [37, 39] }
 observationMarks:
+  elections-clause-text: {rows: ["U.S. Constitution"]}
+  court-reads-the-clause: {rows: ["Supreme Court of the United States"]}
+  district-courts-blocked-the-2025-order: {rows: ["U.S. District Court for the District of Columbia", "Civil Rights Litigation Clearinghouse"]}
+  supreme-court-left-lawfulness-open: {rows: ["Supreme Court of the United States"]}
   federal-form-sworn-citizenship: {rows: ["National Voter Registration Act (NVRA)"]}
   freedom-to-vote-act-provisions: {rows: ["Freedom to Vote Act (Democratic)"]}
   congress-has-set-national-floors: {rows: ["Voting Rights Act", "National Voter Registration Act (NVRA)", "Help America Vote Act (HAVA)"]}
@@ -744,6 +797,20 @@ observationMarks:
 The clause says the times, places and manner of congressional elections "shall be prescribed in each state by the legislature thereof; but the Congress may at any time by law make or alter such regulations". [1](#source-federal-and-state-power-over-voting-rules-1)
 
 The President's part is the ordinary one for any law: every bill is presented to him to sign or veto. [2](#source-federal-and-state-power-over-voting-rules-2) The clause gives him no power to set election rules by order.
+
+### The Supreme Court calls Congress's power over how elections are held "paramount", but not a power over who may vote {#federal-and-state-power-over-voting-rules--court-reads-the-clause}
+
+In *Arizona v. Inter Tribal Council* (2013) the Court called Congress's power over the times, places and manner of congressional elections "paramount", and held that the Elections Clause "empowers Congress to regulate how federal elections are held, but not who may vote in them". [3](#source-federal-and-state-power-over-voting-rules-3) [4](#source-federal-and-state-power-over-voting-rules-4)
+
+## Observations {#federal-and-state-power-over-voting-rules--observations-orders-in-court}
+
+### Two district courts permanently blocked the 2025 order's proof-of-citizenship section, one holding it beyond the President's authority {#federal-and-state-power-over-voting-rules--district-courts-blocked-the-2025-order}
+
+The federal court in Washington, D.C. permanently barred officials from implementing the section of Executive Order 14248 that would have required documentary proof of citizenship on the federal form. The federal court in Massachusetts held that the challenged sections "exceeded the President's constitutional authority". The government has appealed. [30](#source-federal-and-state-power-over-voting-rules-30) [31](#source-federal-and-state-power-over-voting-rules-31) [32](#source-federal-and-state-power-over-voting-rules-32)
+
+### The Supreme Court let the 2026 order proceed because it binds no one outside the executive branch, and did not rule on its lawfulness {#federal-and-state-power-over-voting-rules--supreme-court-left-lawfulness-open}
+
+The Court called Executive Order 14399 "an internal directive" that "neither requires nor forbids anything of anyone outside the Executive Branch", and said its ruling "does not mean that any measure taken by the Government to implement the Order will necessarily be lawful". [34](#source-federal-and-state-power-over-voting-rules-34) [35](#source-federal-and-state-power-over-voting-rules-35)
 
 ## Observations {#federal-and-state-power-over-voting-rules--observations-senate-votes}
 

@@ -9,5 +9,5 @@ positions:
   - viewpoint: nuclear
     holds: "The danger of an Iranian bomb did not wait on a vote, and presidents of both parties have acted first."
   - viewpoint: finish-job
-    holds: "Congress has funded and tolerated the war, so the question now is how to end it well."
+    holds: "However the war began, it has begun, and the question now is how to end it well."
 ---

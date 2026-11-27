@@ -298,7 +298,7 @@ test('a chart\'s sheet is the data: its chart opens nothing more, and has its co
 });
 
 // `work-and-study-routes/sponsor-revocations` has two readings, and is the
-// `blame-underinvestment` viewpoint's third card.
+// `blame-underinvestment` viewpoint's fifth card.
 test('a card\'s chart with several readings opens in full with its "Show as" switch', async ({ page }) => {
   await page.goto(TOPIC);
   const viewpoint = await openViewpoint(page, 'blame-underinvestment');
@@ -656,16 +656,17 @@ test('a slideshow card can be made with quotes: those its point rests on, and th
   await expect(sheet.locator('.sv-quote-browser__item[data-highlighted]')).toHaveCount(1);
 });
 
-// us-vote-by-mail quotes in two reports: the Supreme Court in Watson v. RNC, and
-// research on whether rule changes move trust in results. The Watson quotes
-// are the `election-day-receipt` viewpoint's first card.
+// us-vote-by-mail quotes in four reports: the Supreme Court in Watson v. RNC,
+// research on whether rule changes move trust in results, why the secret
+// ballot was brought in, and the Constitution on who sets election rules. The
+// Watson quotes are the `election-day-receipt` viewpoint's first card.
 test('a quotes chart opened in full lists every quote on its topic, which a reader can narrow to one question', async ({ page }) => {
   await openChart(page, 'ballot-deadlines-and-counting-speed', 'watson', '/topics/us-vote-by-mail');
   const quotes = page.locator('dialog[open] .sv-quote-browser');
   await expect(quotes.locator('.sv-graph-heading')).toHaveText('Every quote on this topic');
-  await expect(quotes.locator('.sv-control__status')).toHaveText('Showing 5 of 5 quotes');
+  await expect(quotes.locator('.sv-control__status')).toHaveText('Showing 10 of 10 quotes');
   // Each question is a line of the Question dropdown.
   await quotes.getByRole('button', { name: 'Question: All' }).click();
   await quotes.locator('.sv-bar__pop:popover-open').getByRole('button', { name: /Watson v\. RNC/ }).click();
-  await expect(quotes.locator('.sv-control__status')).toHaveText('Showing 3 of 5 quotes');
+  await expect(quotes.locator('.sv-control__status')).toHaveText('Showing 3 of 10 quotes');
 });

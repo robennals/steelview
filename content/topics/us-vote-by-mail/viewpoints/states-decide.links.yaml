@@ -3,97 +3,133 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations: []
+  citations:
+    - phrase: The President has ordered new rules for mail ballots
+      href: "#fact-federal-and-state-power-over-mail-voting/president-ordered-mail-rules"
+    - phrase: the Constitution gives election rules to state lawmakers and to Congress, not the President
+      href: "#fact-federal-and-state-power-over-mail-voting/elections-clause-text"
+    - phrase: support for mail voting is highest where states use it most
+      href: "#fact-mail-voting-use-and-effects/support-higher-where-used"
+    - phrase: each state can change course
+      href: "#fact-mail-voting-use-and-effects/states-moved-both-ways"
   verification:
     status: verified
-    textHash: af457bae99ee
-    checkedAt: 2026-11-20
+    textHash: d41bb0515764
+    checkedAt: 2026-11-23
+    notes:
+      - The support survey cannot say whether using mail voting builds support or supportive states adopt it.
 lead:
-  citations: []
+  citations:
+    - phrase: The Constitution gives those rules to state lawmakers and to Congress
+      href: "#fact-federal-and-state-power-over-mail-voting/elections-clause-text"
   verification:
     status: verified
-    textHash: 0101ca44f7bc
-    checkedAt: 2026-11-20
+    textHash: 31b74810ae8c
+    checkedAt: 2026-11-23
 cards:
-  - heading: The President has ordered new rules for mail ballots
+  - heading: The President is trying to set mail-ballot rules himself
+    visual:
+      cite: "#fact-federal-and-state-power-over-mail-voting/two-orders"
+      kind: timeline
+      title: Federal moves on mail voting
     citations:
-      - phrase: "The President has signed two orders setting rules for mail ballots: one on return deadlines, one on a Postal Service ballot rule"
-        href: "#fact-federal-and-state-power-over-mail-voting/president-ordered-mail-rules"
-      - phrase: A court ruled that the 2025 order's deadline rules went beyond his power
+      - phrase: The President has signed two orders setting rules for mail ballots
+        href: "#fact-federal-and-state-power-over-mail-voting/two-orders"
+      - phrase: The other orders a Postal Service rule under which it would carry ballots only for voters on a state's list
+        href: "#fact-federal-and-state-power-over-mail-voting/federal-moves-to-narrow-mail"
+      - phrase: A court ruled that the first order's deadline rules went beyond his power
         href: "#fact-federal-and-state-power-over-mail-voting/eo-14248-deadlines-enjoined"
-      - phrase: A court has blocked the Postal Service rule he ordered, for November 2026
+      - phrase: The Supreme Court let the second order stand as an internal directive
+        href: "#fact-federal-and-state-power-over-mail-voting/eo-14399-stands"
+      - phrase: without deciding whether it is lawful
+        href: "#fact-federal-and-state-power-over-mail-voting/no-merits-ruling"
+      - phrase: kept the Postal Service rule blocked for November 2026
         href: "#fact-federal-and-state-power-over-mail-voting/usps-rule-blocked"
     verification:
       status: verified
-      textHash: 86b9743a4a0c
-      checkedAt: 2026-11-20
-  - heading: The Constitution names state legislatures and Congress, not the President
+      textHash: 04b4982425f0
+      checkedAt: 2026-11-23
+      notes:
+        - The order directs a rule that would have the Postal Service carry ballots only for enrolled voters; the order itself binds only the executive branch. The deadline ruling is under appeal.
+  - heading: The Constitution gives election rules to state lawmakers and Congress
+    visual:
+      cite: "#fact-federal-and-state-power-over-mail-voting/constitution-names-legislatures-and-congress"
+      kind: quotes
+      title: Who does the Constitution let set the rules for federal elections?
     citations:
-      - phrase: The Constitution's Elections Clause names state legislatures and Congress, not the President
-        href: "#fact-federal-and-state-power-over-mail-voting/elections-clause-text"
-      - phrase: the Supreme Court let the March 2026 order go ahead
-        href: "#fact-federal-and-state-power-over-mail-voting/eo-14399-stands"
-      - phrase: it did not decide whether the order was lawful
-        href: "#fact-federal-and-state-power-over-mail-voting/no-merits-ruling"
+      - phrase: gives the "times, places and manner" of elections to each state's legislature, and lets Congress "make or alter such regulations"
+        href: "#fact-federal-and-state-power-over-mail-voting/constitution-names-legislatures-and-congress"
+      - phrase: The President's part is to sign or return the bills Congress passes
+        href: "#fact-federal-and-state-power-over-mail-voting/constitution-names-legislatures-and-congress"
+      - phrase: it said arguments over them belong to lawmakers, not courts
+        href: "#fact-ballot-deadlines-and-counting-speed/watson-left-it-to-legislatures"
     verification:
       status: verified
-      textHash: 753d3679bdb6
-      checkedAt: 2026-11-20
-  - heading: Each state has set its own mail rules, and changed them when it chose
+      textHash: 5700e85bfe02
+      checkedAt: 2026-11-23
+      notes:
+        - State courts can review a legislature's election rules (Moore v. Harper), and Oregon's system came by citizen initiative, so "state lawmakers" is shorthand for each state's constitutional system.
+  - heading: Each state has chosen its own mail system, and changed it when it chose
     visual:
       cite: "#fact-mail-voting-use-and-effects/states-moved-both-ways"
       kind: series
       title: State rules on who may vote by mail
     citations:
-      - phrase: States have changed their mail-voting rules in both directions
+      - phrase: The number offering mail voting to every voter rose from 30 in 2016 to 38 in 2020, fell to 35 in 2022, and is expected to reach 37 in 2026
         href: "#fact-mail-voting-use-and-effects/states-moved-both-ways"
-      - phrase: Oregon's all-mail system came from its own voters, who voted for it directly
+      - phrase: Oregon's all-mail system came from its own voters, through a ballot initiative
         href: "#fact-mail-voting-use-and-effects/oregon-by-initiative"
       - phrase: Utah, after years of mailing every voter a ballot, is moving to mail ballots only on request
         href: "#fact-mail-voting-use-and-effects/utah-all-mail-and-opt-in"
-      - phrase: three states ended their extra days for late ballots in 2025
+      - phrase: Three states ended their extra days for late ballots in 2025
         href: "#fact-federal-and-state-power-over-mail-voting/receipt-deadlines-swung-back"
     verification:
       status: verified
-      textHash: 5135e8b41d68
-      checkedAt: 2026-11-20
-  - heading: A national rule would override very different choices each region has made
+      textHash: 5b01695b6a0e
+      checkedAt: 2026-11-23
+  - heading: Support for mail voting is highest where states use it most
     visual:
-      cite: "#fact-mail-voting-use-and-effects/west-votes-by-mail"
-      kind: series
-      title: How voters say they voted
+      cite: "#fact-mail-voting-use-and-effects/support-higher-where-used"
+      kind: barChart
+      title: Support for mail voting, by state rule
     citations:
-      - phrase: Mail voting is mainly a Western practice
+      - phrase: "Support for letting any voter vote by mail is highest in states that mail every voter a ballot and lowest in states that require an excuse, and that holds within each party: 46% of Republicans favour it in states that mail every voter a ballot, against 22% in states that require an excuse"
+        href: "#fact-mail-voting-use-and-effects/support-higher-where-used"
+      - phrase: Most voters in the West used mail even before the pandemic, while in the South most voters did not, even in 2020
         href: "#fact-mail-voting-use-and-effects/west-votes-by-mail"
-      - phrase: In much of the South, mail ballots are a small share of the vote
-        href: "#fact-mail-voting-use-and-effects/low-mail-states"
     verification:
       status: verified
-      textHash: d872df00c910
-      checkedAt: 2026-11-20
-  - heading: Congress may set rules, but should do so only where states cannot
+      textHash: 61808a80e49b
+      checkedAt: 2026-11-23
+      notes:
+        - The survey cannot say whether using mail voting builds support or supportive states adopt it. Pew asked only about letting any voter vote by mail.
+  - heading: Congress may set national rules, but has mostly left mail voting to the states
+    visual:
+      cite: "#fact-federal-and-state-power-over-mail-voting/national-bills-stalled"
+      kind: comparison
+      title: Senate votes on national voting rules
     citations:
-      - phrase: Congress already sets mail-ballot rules for military and overseas voters
-        href: "#fact-federal-and-state-power-over-mail-voting/congress-set-uocava-rules"
+      - phrase: A Democratic bill requiring mail voting for any voter and a Republican photo-ID bill have both failed in the Senate
+        href: "#fact-federal-and-state-power-over-mail-voting/national-bills-stalled"
       - phrase: Congress has strong power over federal elections
         href: "#fact-federal-and-state-power-over-mail-voting/congress-power-paramount"
+      - phrase: Since 1970, every state must let voters who will be away on Election Day vote absentee for President
+        href: "#fact-federal-and-state-power-over-mail-voting/vra-1970-absentee"
+      - phrase: since 1986 it must let service members and Americans abroad vote by mail
+        href: "#fact-federal-and-state-power-over-mail-voting/congress-set-uocava-rules"
+      - phrase: Who else may vote by mail it has left to the states
+        href: "#fact-federal-and-state-power-over-mail-voting/congress-set-uocava-rules"
       - phrase: Bills now in Congress would push mail voting in opposite directions
         href: "#fact-federal-and-state-power-over-mail-voting/bills-on-both-sides"
-      - phrase: national bills from both parties have stalled in the Senate
-        href: "#fact-federal-and-state-power-over-mail-voting/national-bills-stalled"
     verification:
       status: verified
-      textHash: fd193d916198
-      checkedAt: 2026-11-20
-  - heading: So each state's voters, not the White House, should set their mail rules
-    visual:
-      cite: "#fact-ballot-deadlines-and-counting-speed/watson-left-it-to-legislatures"
-      kind: quotes
-      title: What did the Supreme Court say about ballot deadlines in Watson v. RNC?
-    citations:
-      - phrase: belong to lawmakers, not courts
-        href: "#fact-ballot-deadlines-and-counting-speed/watson-left-it-to-legislatures"
+      textHash: 84a23c3acc6a
+      checkedAt: 2026-11-23
+      notes:
+        - "The Democratic bill (Freedom to Vote: John R. Lewis Act, 2022) would have required no-excuse absentee voting in every state. The 1970 rule covers presidential elections only. The House-passed SAVE America Act had had no Senate vote by the sources read."
+  - heading: So each state's voters, through their lawmakers, should set their mail rules
+    citations: []
     verification:
       status: verified
-      textHash: 7de8a9a41db2
-      checkedAt: 2026-11-20
+      textHash: b8275255df40
+      checkedAt: 2026-11-23

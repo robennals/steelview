@@ -1410,9 +1410,34 @@ figures:
         figure: { value: '66%', sources: [27] }
       - measure: 'Electors thinking at least some fraud took place, 2017'
         figure: { value: '28%', sources: [27] }
+  - kind: quotes
+    id: ni-photo-id-said
+    question: What happened to voting in other people's names once Northern Ireland required ID?
+    description: >-
+      What the House of Commons Library and the Electoral Commission say about
+      personation in Northern Ireland before and after it required ID (1985)
+      and photo ID (2003).
+    quotes:
+      - text: The then Chief Electoral Officer of Northern Ireland reported that in the early 1980s personation was taking place on a “planned and well organised basis”. Concerns about the level of voter fraud in Northern Ireland culminated in 1983 when 149 arrests were made for personation during the June 1983 General Election.
+        speaker: House of Commons Library
+        context: 'Voter ID (Research Briefing CBP 9187), on the early 1980s'
+        date: '2025-08-06'
+        source: 27
+      - text: There was no evidence to suggest a fall in turnout, but there was plenty of evidence that fraud declined sharply. At the 2005 UK General Election, just 55 tendered ballots were issued in Northern Ireland, a 94% reduction compared to 1983. There has been just one conviction for personation in Northern Ireland since 2002.
+        speaker: House of Commons Library
+        context: 'Voter ID (Research Briefing CBP 9187), on the years after photo ID'
+        date: '2025-08-06'
+        source: 27
+      - text: the precise extent of electoral fraud in Northern Ireland has never been quantified and therefore it is not possible to assess accurately the impact of the measures put in place to prevent it.
+        speaker: Electoral Commission
+        context: Assessment of the Electoral Fraud (Northern Ireland) Act 2002
+        date: '2003-12'
+        source: 31
   - kind: series
     id: canada-nonvoters
 observationMarks:
+  ni-fraud-declined-sharply: {rows: ["House of Commons Library"]}
+  ni-impact-never-measured: {rows: ["Electoral Commission"]}
   northern-ireland-after-personation: {rows: ["Northern Ireland"]}
   britain-precaution-not-fraud: {rows: ["Great Britain"]}
   ni-after-photo-id: {rows: ["Turnout"]}
@@ -1634,6 +1659,16 @@ Researcher Stuart Wilks-Heeg, quoted by the Commons Library, found "no evidence 
 ### After photo ID, Northern Ireland recorded much less suspected personation {#voter-id-rules-in-the-us-and-abroad--ni-personation-fell}
 
 Tendered ballots, issued when someone has already voted in a person's name, fell sharply, and there has been one personation conviction since 2002. The share of electors who thought fraud took place fell too, though the two surveys asked different questions. [27](#source-voter-id-rules-in-the-us-and-abroad-27)
+
+## Observations {#voter-id-rules-in-the-us-and-abroad--observations-ni-photo-id-said}
+
+### Organised personation in Northern Ireland fell sharply once ID was required, with no sign of lower turnout {#voter-id-rules-in-the-us-and-abroad--ni-fraud-declined-sharply}
+
+The House of Commons Library reports that personation in the early 1980s was "planned and well organised", with 149 arrests at the 1983 general election. By the 2005 general election, tendered ballots, which are issued when someone has already voted in a person's name, were down 94% on 1983, and there was "no evidence to suggest a fall in turnout". [27](#source-voter-id-rules-in-the-us-and-abroad-27)
+
+### The scale of the fraud, and so of the fall, was never measured {#voter-id-rules-in-the-us-and-abroad--ni-impact-never-measured}
+
+The Electoral Commission wrote that the extent of fraud in Northern Ireland "has never been quantified", so the impact of the measures could not be assessed accurately. [31](#source-voter-id-rules-in-the-us-and-abroad-31)
 
 ## Observations {#voter-id-rules-in-the-us-and-abroad--observations-canada-process-reasons}
 

@@ -4,98 +4,140 @@
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
   citations:
-    - phrase: killed thousands of protesters in the crackdown of winter 2025–26
+    - phrase: Iran's government killed thousands of protesters in the winter of 2025–26
       href: "#fact-iran-government-and-its-people/january-2026-crackdown-toll"
-    - phrase: put more people to death in 2025 than in any year since 1989
+    - phrase: in 2025 it put more people to death than in any year since 1989
       href: "#fact-iran-government-and-its-people/executions-most-since-1989"
-    - phrase: Few Iranians in one online survey want it
+    - phrase: plot against their opponents abroad
+      href: "#fact-iran-actions-abroad/plots-mostly-target-opponents"
+    - phrase: control the nuclear programme
+      href: "#fact-iran-nuclear-programme/ata-2025-not-building"
+    - phrase: Few Iranians in one large survey want them
       href: "#fact-iran-government-and-its-people/few-prefer-islamic-republic"
   verification:
     status: verified
-    textHash: f7afe84cdaf9
-    checkedAt: 2026-11-20
+    textHash: ec1d40a04cd6
+    checkedAt: 2026-11-23
+    notes:
+      - The survey is GAMAAN's online sample, weighted to literate adults inside Iran.
 lead:
-  citations: []
+  citations:
+    - phrase: kills its own people
+      href: "#fact-iran-government-and-its-people/january-2026-crackdown-toll"
+    - phrase: hunts its critics abroad
+      href: "#fact-iran-actions-abroad/plots-mostly-target-opponents"
   verification:
     status: verified
-    textHash: dcf5f5bc4a51
-    checkedAt: 2026-11-20
+    textHash: b7b12ade0b06
+    checkedAt: 2026-11-23
 cards:
-  - heading: The government kills people who protest
+  - heading: The government answers protest with mass killing
     visual:
       cite: "#fact-iran-government-and-its-people/january-2026-crackdown-toll"
       kind: comparison
       title: Deaths in Iran's 2025–26 protests
     citations:
-      - phrase: In the crackdown of winter 2025–26, thousands of people were killed, most of them protesters
+      - phrase: at least 7,007 people were confirmed killed, most of them protesters
         href: "#fact-iran-government-and-its-people/january-2026-crackdown-toll"
-      - phrase: the authorities arrested more than 50,000
+      - phrase: more than 50,000 were arrested
         href: "#fact-iran-government-and-its-people/arrests-january-2026"
       - phrase: A UN team found crimes against humanity
         href: "#fact-iran-government-and-its-people/un-crimes-against-humanity"
-      - phrase: each of the last three waves of protest was crushed with deadly force
+      - phrase: each of the last three waves of protest, in 2019, 2022 and 2026, was put down with lethal force
         href: "#fact-iran-government-and-its-people/crackdowns-2019-2022-2026"
     verification:
       status: verified
-      textHash: 9301d9172034
-      checkedAt: 2026-11-20
+      textHash: e0d3c6004865
+      checkedAt: 2026-11-23
+      notes:
+        - HRANA's 7,007 is a floor, with 11,744 cases under review; the government counted 3,117.
   - heading: The killing goes on between protests, whoever wins elections
     visual:
-      cite: "#fact-iran-government-and-its-people/executions-most-since-1989"
-      kind: series
-      title: Executions per year in Iran
+      cite: "#fact-iran-government-and-its-people/execution-rate-by-president"
+      kind: comparison
+      title: Executions per month, by Iran's president
     citations:
-      - phrase: In 2025, Iran put more people to death than in any year since 1989
-        href: "#fact-iran-government-and-its-people/executions-most-since-1989"
-      - phrase: executions rose under every recent president, fastest under the moderate one
+      - phrase: The average execution rate was higher under each recent president than the one before, and more than doubled under the moderate elected in 2024
         href: "#fact-iran-government-and-its-people/execution-rate-by-president"
-      - phrase: Iran carried out most of the world's known executions in 2025
+      - phrase: In 2025 Iran put more people to death than in any year since 1989
+        href: "#fact-iran-government-and-its-people/executions-most-since-1989"
+      - phrase: carried out most of the executions recorded anywhere in the world
         href: "#fact-iran-government-and-its-people/iran-top-recorded-executioner"
-      - phrase: most recent Iranian plots in Europe targeted opponents of the government
-        href: "#fact-iran-actions-abroad/plots-mostly-target-opponents"
-    verification:
-      status: verified
-      textHash: d6d8671026b1
-      checkedAt: 2026-11-20
-  - heading: Iranians are turning away from their government
-    visual:
-      cite: "#fact-iran-government-and-its-people/turnout-record-lows"
-      kind: series
-      title: Turnout in Iran's presidential elections
-    citations:
-      - phrase: Turnout in the last two presidential elections was the lowest since the revolution
-        href: "#fact-iran-government-and-its-people/turnout-record-lows"
-      - phrase: In one online survey, few Iranians said they want the current system of government
-        href: "#fact-iran-government-and-its-people/few-prefer-islamic-republic"
-      - phrase: most said they were glad to see it weakened during the war
-        href: "#fact-iran-government-and-its-people/satisfaction-at-weakening"
-      - phrase: the new Supreme Leader is the son of the old one
+      - phrase: up to 2021, about one in a hundred or fewer of those who registered to run for president were allowed on the ballot
+        href: "#fact-iran-government-and-its-people/vetting-approves-few"
+      - phrase: the new Supreme Leader is the old one's son
         href: "#fact-iran-government-and-its-people/hereditary-succession"
     verification:
       status: verified
-      textHash: c4e240f3155c
-      checkedAt: 2026-11-20
-  - heading: Iranians must win this themselves, and outsiders can only stand with them
+      textHash: 8d5c2c715f3e
+      checkedAt: 2026-11-23
+      notes:
+        - Amnesty's world count leaves out China, which it believes executed thousands. In 2024 six of more than 80 registrants were approved.
+  - heading: The same rulers threaten people far beyond Iran
+    visual:
+      cite: "#fact-iran-actions-abroad/mi5-uk-plots-and-arrests"
+      kind: keyFigures
+      title: MI5 on Iran-backed plots in the UK
     citations:
-      - phrase: Peaceful uprisings have won far more often when the security forces turned against the government
+      - phrase: Britain's security service says it tracked more than twenty potentially lethal Iran-backed plots in a single year
+        href: "#fact-iran-actions-abroad/mi5-uk-plots-and-arrests"
+      - phrase: Most recent Iranian plots in Europe targeted the government's own critics
+        href: "#fact-iran-actions-abroad/plots-mostly-target-opponents"
+      - phrase: whether Iran builds a bomb is the Supreme Leader's decision
+        href: "#fact-iran-nuclear-programme/ata-2025-not-building"
+    verification:
+      status: verified
+      textHash: 8c8949789f82
+      checkedAt: 2026-11-23
+      notes:
+        - MI5's count is unaudited. The plots-in-Europe counts are one author's, at a think tank that generally favours a hard line. The Supreme Leader point rests on US intelligence saying Khamenei had not reauthorized the programme.
+  - heading: Iranians are turning away from their government
+    visual:
+      cite: "#fact-iran-government-and-its-people/few-prefer-islamic-republic"
+      kind: comparison
+      title: Preferred political system in Iran
+    citations:
+      - phrase: only about one in eight chose the Islamic Republic as the system they prefer
+        href: "#fact-iran-government-and-its-people/few-prefer-islamic-republic"
+      - phrase: about three in five said they were glad to see it weakened during the war
+        href: "#fact-iran-government-and-its-people/satisfaction-at-weakening"
+      - phrase: Turnout in the last two presidential elections was the lowest since the revolution
+        href: "#fact-iran-government-and-its-people/turnout-record-lows"
+      - phrase: about as many Iranians called the strikes an attack on Iran as called them help
+        href: "#fact-iran-government-and-its-people/strikes-seen-as-aggression"
+    verification:
+      status: verified
+      textHash: fdf528bfe974
+      checkedAt: 2026-11-23
+      notes:
+        - GAMAAN is an online survey; about a quarter chose no clear alternative. "Glad" is its "felt satisfaction".
+  - heading: Iranians must win this themselves, and America cannot do it for them
+    visual:
+      cite: "#fact-outside-attempts-to-change-hostile-regimes/nonviolent-campaigns-won-twice-as-often"
+      kind: comparison
+      title: How often uprisings won
+    citations:
+      - phrase: Peaceful uprisings have won about twice as often as armed ones
+        href: "#fact-outside-attempts-to-change-hostile-regimes/nonviolent-campaigns-won-twice-as-often"
+      - phrase: far more often where the security forces turned against the rulers
         href: "#fact-outside-attempts-to-change-hostile-regimes/security-force-defections-decide"
       - phrase: Outside backing has made no difference to whether peaceful uprisings win
         href: "#fact-outside-attempts-to-change-hostile-regimes/outside-backing-did-not-help-nonviolent-campaigns"
-      - phrase: overthrowing a government from outside more than doubles the risk of civil war
+      - phrase: governments imposed from outside more than double the risk of civil war
         href: "#fact-outside-attempts-to-change-hostile-regimes/imposed-regime-change-and-civil-war"
-      - phrase: Democracy has followed only where conditions helped it
-        href: "#fact-outside-attempts-to-change-hostile-regimes/democracy-only-in-favourable-conditions"
-      - phrase: In one survey, about as many Iranians called the strikes an attack on Iran as called them humanitarian help
-        href: "#fact-iran-government-and-its-people/strikes-seen-as-aggression"
-      - phrase: more than 20,000 people were arrested after the June 2025 war
-        href: "#fact-iran-government-and-its-people/arrests-after-june-2025"
     verification:
       status: verified
-      textHash: 02c018a9e7e5
-      checkedAt: 2026-11-20
-  - heading: So America should stand with Iranians while they end this government themselves
-    citations: []
+      textHash: bea9aac47d0b
+      checkedAt: 2026-11-23
+      notes:
+        - Data run 1900–2006 and may miss campaigns crushed early. No study here tests the narrower help this viewpoint proposes (internet access, protecting exiles).
+  - heading: So America should make no deal that props up Iran's rulers, and stand with Iranians until they are free
+    citations:
+      - phrase: Iran's economy grew in the first year of the last deal
+        href: "#fact-iran-government-and-its-people/growth-in-deal-years"
     verification:
       status: verified
-      textHash: fe3e241426c5
-      checkedAt: 2026-11-20
+      textHash: 8646015185d1
+      checkedAt: 2026-11-23
+      notes:
+        - That lifting sanctions gives the government more money is the plain reading; the growth series do not separate sanctions from oil prices. The text concedes that no study shows the proposed help wins an uprising.

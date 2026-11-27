@@ -3,91 +3,125 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations: []
+  citations:
+    - phrase: keep the count open for days or weeks
+      href: "#fact-ballot-deadlines-and-counting-speed/grace-states-mixed"
+    - phrase: have been fought over up to the Supreme Court
+      href: "#fact-ballot-deadlines-and-counting-speed/pennsylvania-2020-late-ballots-litigated"
+    - phrase: slow counts make people trust the result less
+      href: "#fact-confidence-and-disputed-results/delay-lowers-trust"
   verification:
     status: verified
-    textHash: "772747492079"
-    checkedAt: 2026-11-20
+    textHash: 229cc8a050a7
+    checkedAt: 2026-11-23
+    notes:
+      - The trust finding is a survey experiment that tells people of a delay; it does not observe voters after a real one.
 lead:
   citations: []
   verification:
     status: verified
-    textHash: b4426cf4f1a8
-    checkedAt: 2026-11-20
+    textHash: a54684ac42c3
+    checkedAt: 2026-11-23
 cards:
-  - heading: Election Day should be the last day a ballot can arrive
+  - heading: A ballot should be in by the time the polls close
     visual:
       cite: "#fact-ballot-deadlines-and-counting-speed/watson-left-it-to-legislatures"
       kind: quotes
       title: What did the Supreme Court say about ballot deadlines in Watson v. RNC?
     citations:
-      - phrase: The Supreme Court left the choice of deadline to lawmakers
+      - phrase: The Supreme Court left the deadline to lawmakers
         href: "#fact-ballot-deadlines-and-counting-speed/watson-left-it-to-legislatures"
+      - phrase: it "avoids the appearance of fraud from late-arriving ballots"
+        href: "#fact-ballot-deadlines-and-counting-speed/watson-appearance-of-fraud"
+      - phrase: Since 2024 the Postal Service has stamped mail when it reaches a regional centre, not when it is posted, and that has hit states that count by postmark hardest
+        href: "#fact-ballot-deadlines-and-counting-speed/postal-delays-and-postmarks"
     verification:
       status: verified
-      textHash: 3dca00e07209
-      checkedAt: 2026-11-20
-  - heading: Ballots that arrive late become something to fight over
+      textHash: 31c93c71a927
+      checkedAt: 2026-11-23
+      notes:
+        - The Court did not decide whether an Election Day deadline is a good idea, only that legislatures may choose it. The postmark finding is from press reporting; the Postal Service says more than 95% of mail ballots arrived on time in recent elections.
+  - heading: Late ballots keep the count open, and become something to fight over
+    visual:
+      cite: "#fact-ballot-deadlines-and-counting-speed/grace-states-mixed"
+      kind: comparison
+      title: Grace periods for postmarked ballots
     citations:
-      - phrase: Pennsylvania's late-arriving ballots were kept apart on a Supreme Court justice's order, left out of the certified count, and fought over until 2021
+      - phrase: Ballots that arrive up to 20 days late still count in Washington
+        href: "#fact-ballot-deadlines-and-counting-speed/grace-states-mixed"
+      - phrase: fifteen states count some ballots that arrive after Election Day
+        href: "#fact-ballot-deadlines-and-counting-speed/back-to-2016-level"
+      - phrase: In 2020, Pennsylvania's top court extended the deadline by three days. The 10,097 ballots that came in late were kept apart on a Supreme Court justice's order, left out of the certified count, and fought over into 2021
+        href: "#fact-ballot-deadlines-and-counting-speed/pennsylvania-2020-late-ballots-litigated"
+      - phrase: They were far fewer than the winning margin
         href: "#fact-ballot-deadlines-and-counting-speed/pennsylvania-2020-late-ballots-litigated"
     verification:
       status: verified
-      textHash: 0a44e949a6cf
-      checkedAt: 2026-11-20
+      textHash: 8d6cce351f6b
+      checkedAt: 2026-11-23
+      notes:
+        - Washington's window runs to the day before certification, 21 days after a general election. No national source counts late ballots that were counted inside a grace period.
   - heading: Slow counts make people trust the result less
     visual:
       cite: "#fact-confidence-and-disputed-results/delay-lowers-trust"
       kind: comparison
       title: Trust after a slow count, in an experiment
     citations:
-      - phrase: In a survey experiment, people told that a race took six days to call trusted the result less than people told nothing
+      - phrase: people told that a race took six days to call trusted the result less than people told nothing
         href: "#fact-confidence-and-disputed-results/delay-lowers-trust"
-      - phrase: MIT found counts were slower where states let mail ballots arrive after Election Day
+      - phrase: counts were slower where states let mail ballots arrive after Election Day
         href: "#fact-ballot-deadlines-and-counting-speed/slowest-states-mostly-heavy-mail"
-      - phrase: the 2020 fall in Republican trust cannot be separated from losing
-        href: "#fact-confidence-and-disputed-results/count-length-not-separated"
+      - phrase: explaining the count in advance undid most of the drop
+        href: "#fact-confidence-and-disputed-results/explaining-the-delay-limits-the-drop"
     verification:
       status: verified
-      textHash: 0367d9038803
-      checkedAt: 2026-11-20
+      textHash: 0dd6af457449
+      checkedAt: 2026-11-23
+      notes:
+        - The experiment tells respondents of a delay rather than watching voters after a real one. MIT's 2020 finding is an association that names late arrival alongside large mail volumes and bans on early processing; it does not separate them. Arizona, with no late window, was slowest in 2024.
   - heading: Most states already require ballots by Election Day, and more are returning to it
     visual:
       cite: "#fact-ballot-deadlines-and-counting-speed/back-to-2016-level"
       kind: series
       title: Deadlines for mail ballots to arrive
     citations:
-      - phrase: The number of states counting ballots that arrive late peaked at 21 in 2020. It is down to 15, against 13 in 2016
+      - phrase: The number of states counting late ballots peaked at 21 in 2020 and is down to 15, against 13 in 2016
         href: "#fact-ballot-deadlines-and-counting-speed/back-to-2016-level"
-      - phrase: states still counting late ballots include Texas, Alaska and Mississippi, as well as California and New York
+      - phrase: North Dakota, Ohio and Utah went back to an Election Day deadline in 2025
+        href: "#fact-federal-and-state-power-over-mail-voting/receipt-deadlines-swung-back"
+      - phrase: the states still counting late ballots include Texas, Alaska and Mississippi as well as California and New York
         href: "#fact-ballot-deadlines-and-counting-speed/grace-states-mixed"
     verification:
       status: verified
-      textHash: 24e1214aeab7
-      checkedAt: 2026-11-20
-  - heading: Some voters miss a deadline, so states should help them meet it
+      textHash: 7d7ca426d201
+      checkedAt: 2026-11-23
+      notes:
+        - Kansas legislated the same change, but a court has blocked it. Counting military and overseas ballots, about 30 states accept some late ballots.
+  - heading: Some voters miss the deadline, so states should help them meet it
     visual:
       cite: "#fact-ballot-deadlines-and-counting-speed/late-share-of-rejections"
       kind: series
       title: Late ballots among rejections
     citations:
-      - phrase: late arrival has caused 12.1% to 26.9% of rejected mail ballots since 2016, depending on the election
+      - phrase: late arrival has caused between 12.1% and 26.9% of rejected mail ballots in each general election since 2016
         href: "#fact-ballot-deadlines-and-counting-speed/late-share-of-rejections"
-      - phrase: Washington counts ballots that arrive weeks after Election Day
-        href: "#fact-ballot-deadlines-and-counting-speed/fifteen-versus-thirty"
       - phrase: late rejections rose in its 2026 primary, as they did in Wisconsin and Michigan
         href: "#fact-ballot-deadlines-and-counting-speed/late-rejections-rising-2026"
+      - phrase: late ballots were the smallest share of rejections in 2020, when the most states had grace periods, much else about voting changed that year
+        href: "#fact-ballot-deadlines-and-counting-speed/2020-low"
     verification:
       status: verified
-      textHash: d5f03afdf862
-      checkedAt: 2026-11-20
-  - heading: Big states show a count can finish within a day
+      textHash: 59810fe0e3d0
+      checkedAt: 2026-11-23
+      notes:
+        - Shares are of rejected ballots; rejections were 1.2% of returned mail ballots in 2024. That drop-boxes and early mailing reduce late ballots is argued, not measured here.
+  - heading: Big states show a count can finish within hours
     visual:
       cite: "#fact-ballot-deadlines-and-counting-speed/most-votes-counted-within-hours"
       kind: barChart
       title: How long the count took
     citations:
-      - phrase: In 2024, most swing states counted nearly all their votes within hours
+      - phrase: five of the seven swing states counted 95% of their vote within nine hours of polls closing
         href: "#fact-ballot-deadlines-and-counting-speed/most-votes-counted-within-hours"
       - phrase: Texas and Florida each counted more than ten million votes in about a day
         href: "#fact-ballot-deadlines-and-counting-speed/texas-florida-counted-fast"
@@ -95,17 +129,17 @@ cards:
         href: "#fact-ballot-deadlines-and-counting-speed/prepare-early-still-slow"
     verification:
       status: verified
-      textHash: 38907f0035a4
-      checkedAt: 2026-11-20
+      textHash: 1779acc919ca
+      checkedAt: 2026-11-23
+      notes:
+        - These are unofficial reporting times, not the official canvass. MIT says the hours may be overstated by up to half an hour.
   - heading: So every state should require ballots by poll close, and count fast
-    visual:
-      cite: "#fact-ballot-deadlines-and-counting-speed/preprocessing-speeds-first-hours"
-      kind: comparison
-      title: Early processing and count speed
     citations:
-      - phrase: Letting officials prepare mail ballots before Election Day speeds up the first hours of the count
+      - phrase: which speeds the first hours of the count
         href: "#fact-ballot-deadlines-and-counting-speed/preprocessing-speeds-first-hours"
     verification:
       status: verified
-      textHash: 1446fa2b4a43
-      checkedAt: 2026-11-20
+      textHash: 8f44e6b3a918
+      checkedAt: 2026-11-23
+      notes:
+        - By 24 hours after polls closed the early-processing gap between states "had essentially disappeared".

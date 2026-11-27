@@ -4,20 +4,26 @@
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
   citations:
-    - phrase: uranium inspectors cannot locate
+    - phrase: uranium no inspector can find
       href: "#fact-iran-nuclear-programme/stock-unaccounted-for"
-    - phrase: missiles that experts say it is rebuilding
+    - phrase: missiles it is rebuilding
       href: "#fact-decisions-law-and-diplomacy/iran-reconstituting-missiles"
   verification:
     status: verified
-    textHash: 981e886556fb
-    checkedAt: 2026-11-20
+    textHash: 36512194e4b5
+    checkedAt: 2026-11-23
+    notes:
+      - Rebuilding is ISW/CTP's assessment.
 lead:
-  citations: []
+  citations:
+    - phrase: its best uranium hidden
+      href: "#fact-iran-nuclear-programme/stock-unaccounted-for"
+    - phrase: its missiles being rebuilt
+      href: "#fact-decisions-law-and-diplomacy/iran-reconstituting-missiles"
   verification:
     status: verified
-    textHash: b54d5662c425
-    checkedAt: 2026-11-20
+    textHash: c3e5cc14cd51
+    checkedAt: 2026-11-23
 cards:
   - heading: Stopping now would leave Iran's most dangerous uranium out of sight
     visual:
@@ -25,85 +31,103 @@ cards:
       kind: timeline
       title: What IAEA inspectors could see in Iran
     citations:
-      - phrase: No inspector has seen Iran's 60% uranium since June 2025
+      - phrase: Iran held 440.9 kg of uranium enriched to 60%. No inspector has seen it since, and the UN agency cannot say how much is left or where it is
         href: "#fact-iran-nuclear-programme/stock-unaccounted-for"
       - phrase: Iran says it is buried under rubble
         href: "#fact-iran-nuclear-programme/iran-says-under-rubble"
-      - phrase: Iran has hidden nuclear weapons work before
+      - phrase: Iran has hidden weapons work before
         href: "#fact-iran-nuclear-programme/past-weapons-work"
     verification:
       status: verified
-      textHash: 61f3e73a825a
-      checkedAt: 2026-11-20
-  - heading: A pause gives Iran time to rebuild its weapons
+      textHash: 4eaaca7a41f6
+      checkedAt: 2026-11-23
+      notes:
+        - 440.9 kg is the IAEA's estimate for 13 June 2025, of which it had verified 432.9 kg.
+  - heading: Every pause has given Iran time to rearm
     visual:
       cite: "#fact-decisions-law-and-diplomacy/iran-reconstituting-missiles"
       kind: timeline
       title: The latest events in the war
     citations:
-      - phrase: Experts at two US research groups say Iran has been rebuilding its missiles and drones since the April ceasefire
+      - phrase: Both sides fired during the April ceasefire
+        href: "#fact-decisions-law-and-diplomacy/both-sides-fired"
+      - phrase: the agreement signed in June broke down within three weeks
+        href: "#fact-decisions-law-and-diplomacy/mou-broke-down"
+      - phrase: Iran worked to rebuild its missiles and drones
         href: "#fact-decisions-law-and-diplomacy/iran-reconstituting-missiles"
-      - phrase: The top US intelligence official reportedly warned that Iran is planning attacks on US targets
+      - phrase: In October the top US intelligence official reportedly warned that Iran was in the advanced stages of planning attacks on US targets in the region
         href: "#fact-decisions-law-and-diplomacy/dni-warning-as-reported"
     verification:
       status: verified
-      textHash: 77b7c75fb47a
-      checkedAt: 2026-11-20
-  - heading: Pressure has opened countries to inspectors before, when it was kept up and came with a way out
+      textHash: dc8e9a06ca06
+      checkedAt: 2026-11-23
+      notes:
+        - The ceasefire record comes from the President's letters, in each of which US strikes answer an Iranian attack. The defence minister's plan is ISW/CTP's reading of his appointment; the DNI memo is known only through ISW/CTP.
+  - heading: The blockade is pressure Iran feels
+    visual:
+      cite: "#fact-oil-shipping-and-prices/iranian-exports-collapsed"
+      kind: comparison
+      title: Iran's oil exports
+    citations:
+      - phrase: Iran's oil exports collapsed after the US blockade began in April, to the lowest level since early 2020
+        href: "#fact-oil-shipping-and-prices/iranian-exports-collapsed"
+      - phrase: the last agreement lasted three weeks
+        href: "#fact-decisions-law-and-diplomacy/mou-broke-down"
+    verification:
+      status: verified
+      textHash: b7b411777494
+      checkedAt: 2026-11-23
+      notes:
+        - Export figures are Vortexa's, for May. ISW/CTP judges the spring blockade had "a limited but notable effect" on Iran's willingness to keep fighting.
+  - heading: Pressure has ended nuclear programmes when it was kept up and came with a way out
     visual:
       cite: "#fact-outside-attempts-to-change-hostile-regimes/iraq-ended-after-war-and-inspection"
       kind: periodTimeline
       title: States that explored nuclear weapons
     citations:
-      - phrase: Iraq's nuclear programme ended only after a war and years of close inspection
+      - phrase: Iraq's ended only after a war and years of close inspection
         href: "#fact-outside-attempts-to-change-hostile-regimes/iraq-ended-after-war-and-inspection"
-      - phrase: Libya gave up its programme and let inspectors in
+      - phrase: Libya gave up its programme in 2003 and let inspectors in
         href: "#fact-outside-attempts-to-change-hostile-regimes/libya-2003-with-inspections"
-      - phrase: Countries give up a programme most often when threatened with sanctions, with force on the table, and offered face-saving rewards
+      - phrase: Countries give up a programme most often when they face sanctions, with force on the table, and are offered face-saving rewards
         href: "#fact-outside-attempts-to-change-hostile-regimes/threats-plus-rewards"
-      - phrase: Bombing alone makes a country give in only about a third of the time
+      - phrase: bombing alone has forced a country to give in only about a third of the time
         href: "#fact-outside-attempts-to-change-hostile-regimes/air-coercion-about-a-third"
     verification:
       status: verified
-      textHash: ce7a75752e95
-      checkedAt: 2026-11-20
+      textHash: 0aaf4bcda967
+      checkedAt: 2026-11-23
+      notes:
+        - Libya's reversal came after more than 20 years of sanctions. The air-power count covers 1917–1999.
   - heading: Backing down now could make Iran and its allies bolder
     visual:
       cite: "#fact-outside-attempts-to-change-hostile-regimes/credibility-split"
       kind: quotes
       title: Does backing down cost credibility?
     citations:
-      - phrase: Researchers disagree on whether backing down makes enemies bolder
+      - phrase: Researchers disagree on whether backing down invites new challenges, but some find that what a country did in the past is closely connected to the challenges it faces later
         href: "#fact-outside-attempts-to-change-hostile-regimes/credibility-split"
-      - phrase: the Houthis in Yemen fired missiles and drones at Saudi Arabia in October
+      - phrase: in October the Houthis in Yemen fired missiles and drones at Saudi Arabia
         href: "#fact-decisions-law-and-diplomacy/houthi-fire-on-saudi-arabia"
     verification:
       status: verified
-      textHash: 0a8777ec0da1
-      checkedAt: 2026-11-20
-  - heading: Finishing the job means limited goals, not overthrowing Iran's government
-    citations:
-      - phrase: When outsiders overthrow a government, the risk of civil war more than doubles
-        href: "#fact-outside-attempts-to-change-hostile-regimes/imposed-regime-change-and-civil-war"
-      - phrase: Demanding new leaders makes bombing less likely to work
-        href: "#fact-outside-attempts-to-change-hostile-regimes/leadership-demands-lower-success"
-    verification:
-      status: verified
-      textHash: 63e6befe6920
-      checkedAt: 2026-11-20
+      textHash: 24dc1d4aea65
+      checkedAt: 2026-11-23
+      notes:
+        - Press found leaders who backed down were "still taken seriously". The Houthi fire is reported by ISW/CTP.
   - heading: So the US should keep up the pressure until inspectors confirm nothing is left
-    visual:
-      cite: "#fact-decisions-law-and-diplomacy/both-sides-fired"
-      kind: timeline
-      title: The US–Iran ceasefire record
     citations:
-      - phrase: Both sides fired during the ceasefire
-        href: "#fact-decisions-law-and-diplomacy/both-sides-fired"
-      - phrase: researchers said in 2011 that Iran lacked the conditions of past successful strikes
-        href: "#fact-outside-attempts-to-change-hostile-regimes/past-success-conditions-absent-for-iran"
+      - phrase: when outsiders impose a new government, the risk of civil war more than doubles
+        href: "#fact-outside-attempts-to-change-hostile-regimes/imposed-regime-change-and-civil-war"
+      - phrase: demanding a change of leader makes bombing less likely to work
+        href: "#fact-outside-attempts-to-change-hostile-regimes/leadership-demands-lower-success"
+      - phrase: The cost so far is a small part of the Iraq war's
+        href: "#fact-human-and-financial-costs-of-the-war/cost-small-against-iraq"
       - phrase: most Americans disapprove of the war
         href: "#fact-decisions-law-and-diplomacy/most-disapprove-gallup"
     verification:
       status: verified
-      textHash: 7830c3f47224
-      checkedAt: 2026-11-20
+      textHash: 15406509b2e5
+      checkedAt: 2026-11-23
+      notes:
+        - "The cost comparison is of totals: Iraq ran 13 years, this war eight months."

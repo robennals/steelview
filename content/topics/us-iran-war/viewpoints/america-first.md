@@ -1,34 +1,34 @@
 ---
-name: America First means staying out of another war in the Middle East
+name: America First means ending this war and staying out of the Middle East's fights
 shortName: America First
-summary: Americans were promised no new wars and got one. It is costing tens of billions of dollars and pushing up prices at the pump, and most Americans oppose it. The US should bring it to an end.
+summary: Americans were promised no new wars and got one. US intelligence judged that Iran was not building a bomb, yet the war is costing tens of billions of dollars and has pushed up prices at the pump, and most Americans oppose it. The US should end it and bring its troops home.
 order: 6
 draft: ai
 ---
-A government's first duty is to its own people. This war is costing Americans money and lives, and it was not needed to keep America safe. The US should end it.
+A US government's first duty is to Americans. This war was not needed to keep them safe, it is costing them at the pump and in taxes, and most of them never wanted it. The US should end it.
 
 ### Americans voted for a President who promised to stop wars, and most oppose this one
 
-Most Americans disapprove of the war. On election night in 2024, the President said, "I'm not going to start a war. I'm going to stop wars." Voters who believed him had a right to expect him to keep that promise. While the same campaign called Iran "very close" to a nuclear weapon, warning of a danger is not a promise to go to war over it.
+Americans did not ask for this war. On election night in 2024 the President said, "I'm not going to start a war. I'm going to stop wars." Now nearly two in three Americans disapprove of the war, and independents oppose it by more than two to one. While the same campaign warned that Iran was "very close" to a nuclear weapon, warning of a danger is not a promise to go to war over it.
 
-### US intelligence said Iran was not building a bomb, and its allies attacked troops nearby
+### Iran was not a danger that needed an American war
 
-Groups allied with Iran attacked US and coalition bases in Iraq and Syria more than 200 times in 2023 and 2024: those Americans were in danger because they were stationed there. In 2025, US intelligence judged that Iran was not building a nuclear weapon. While Iran has plotted killings on US soil, none of the US cases led to a killing, and that is work for police and courts. And while in 2026 US intelligence said Iran had been intending to try to recover its nuclear infrastructure, that is a reason for inspectors, not for a war.
+Iran's threats to Americans were real, but none of them needed a war. In 2025 US intelligence judged that Iran was not building a nuclear weapon. Groups allied with Iran attacked US troops in Iraq and Syria more than 200 times, but four in five of those attacks came in four months, to January 2024. Those troops were in danger because they were stationed there. Iran has plotted killings on US soil, but none of those plots led to a killing, and US courts have sentenced the men hired for two of them.
 
 ### The war is costing Americans billions, and the bill keeps growing
 
-The Pentagon's figure for the war's cost has nearly doubled since April, and each extra month of fighting adds billions more. The Iraq war cost many times the White House's early estimates, so this war's estimates deserve little trust. And experts say the war has used up many of the missiles that protect US troops and allies, which a war that matters more could need.
+The war's price keeps rising. The Pentagon's figure for its cost has nearly doubled since April, and each further month of fighting adds $2–3 billion. While the war has cost far less than Iraq so far, Iraq too began with small estimates: it ended up costing more than thirteen times the White House's forecast. The war has also drawn down the missiles that defend US troops and allies from attack, which may force them to take more risks with what is left.
 
 ### Families are paying for the war at the pump
 
-Pump prices rose by about half once the war began, and have stayed high, and government budget experts now expect higher inflation than they did before the war. While oil prices, after allowing for inflation, have stayed below the peaks of 1981, 2008 and 2022, families have paid more at the pump since the war began.
+Every family pays for this war when it fills up. The average price of a gallon of regular petrol rose by about half after the war began, and has fallen only a little since. Petrol cost a third more in September than a year before, and government budget experts now expect inflation about half a point higher than they did before the war. While oil, after allowing for inflation, is still below its 1981, 2008 and 2022 peaks, that is little comfort to a family paying more than a dollar extra a gallon.
 
-### A smaller war than Iraq still has to be worth its cost
+### Americans are dying in a war they did not need
 
-Far fewer Americans have died than in the Iraq war. But being cheaper than Iraq does not make a war worth fighting: every dollar and every life still has to be justified. While half of the American deaths were not in combat, those people still died serving in this war.
+The heaviest cost is paid by soldiers and their families. Twenty-two US service members have died in the war, half of them not in combat, and hundreds have been wounded. While that is a small fraction of the Americans who died in Iraq, each of those lives was spent on a war against a country US intelligence judged was not building a bomb.
 
 ### So the US should end the war and bring its troops home
 
-War should be the last resort, for when Americans are in danger and nothing else will work. US intelligence judged that Iran was not building a bomb, and the troops its allies attacked would be safest at home. The US should stop new strikes, end the war, and let the region settle its own fights.
+War should be the last resort, for when Americans are in danger and nothing else will work. The US should stop new strikes, end the blockade in a deal that reopens the Strait of Hormuz, and bring home the troops that Iran's allies can reach. The region's fights are not America's to settle.
 
-While no inspector has seen Iran's most enriched uranium since June 2025, finding it is a job for inspectors and a deal, not for more American lives.
+While no inspector has seen Iran's most enriched uranium since June 2025, finding it is a job for inspectors, not for more American lives.

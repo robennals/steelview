@@ -1429,6 +1429,7 @@ observationMarks:
   highest-rates-other-rules: {rows: ["Arkansas", "Delaware", "Oklahoma", "Texas"]}
   race-gaps-not-mismatch-only: {rows: ["Black", "White"]}
   men-and-non-english-ballots: {whole: true}
+  county-raw-range: {rows: ["Franklin", "Columbia"]}
   low-rejection-counties-cure-more: {rows: ["Whitman", "Lincoln", "Clallam", "Skagit", "Pierce", "Pacific", "Lewis", "Island", "Thurston", "Grant", "Klickitat", "Cowlitz", "Whatcom", "Spokane", "Grays Harbor", "Mason", "Skamania", "Walla Walla", "Yakima", "Jefferson", "Chelan", "Garfield", "Stevens", "Ferry", "San Juan", "Douglas", "Pend Oreille", "Columbia"]}
   cure-coverage: {rows: ["Set aside for curing"]}
   texas-cure-share: {rows: ["Set aside for curing"]}
@@ -1552,6 +1553,10 @@ Men were 42 percent more likely than women to have a ballot rejected. In King Co
 After controls, the youngest voters were almost three times as likely as the oldest to be rejected, and this held for mismatched signatures alone. [19](#source-mail-ballot-rejection-and-signature-checks-19)
 
 ## Observations {#mail-ballot-rejection-and-signature-checks--observations-washington-counties}
+
+### County rates ran from 1.5% in Franklin to 0.04% in Columbia {#mail-ballot-rejection-and-signature-checks--county-raw-range}
+
+Before any adjustment for who votes there, Washington's county rejection rates in 2020 "ranged from less than one-tenth of a percent to about 1.5 percent of ballots cast", against 0.72% statewide. [18](#source-mail-ballot-rejection-and-signature-checks-18) Late ballots are left out.
 
 ### Low-rejection counties also cured more ballots {#mail-ballot-rejection-and-signature-checks--low-rejection-counties-cure-more}
 

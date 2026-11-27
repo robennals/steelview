@@ -2,7 +2,7 @@
 title: Voting by mail in the US
 subtitle: Whether mail voting should be open to everyone or kept for those who need it, how mail ballots should be checked, when they must arrive, and who sets the rules.
 firstPublished: 2026-10-29
-lastUpdated: 2026-10-29
+lastUpdated: 2026-11-23
 tags: [USA, Voting]
 # The first chart shows how big the issue is; together they represent every
 # viewpoint with a strong chart it relies on. See AUTHORING.md, "Home-page preview charts".

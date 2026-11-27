@@ -2014,7 +2014,7 @@ In 2021–2024 the UK invested 0.4–0.5% of GDP a year in health capital, below
 
 The OBR projects real day-to-day departmental spending per person to reach its highest level in two decades outside the pandemic, around £7,800 in 2028-29. It attributes the rise from about £7,700 in the June 2025 Spending Review plans to a lower population forecast, "largely due to lower projected net migration". [44](#source-immigration-housing-and-public-services-44)
 
-### Councils completed more affordable homes in 2024-25 than in any year since 1991-92, 16% of the total {#immigration-housing-and-public-services--council-building-record}
+### Councils completed more affordable homes in 2024-25 than in any year since 1991-92, 16% of all affordable homes completed {#immigration-housing-and-public-services--council-building-record}
 
 Local authorities completed 10,480 affordable homes in 2024-25, the most since the series began in 1991-92. [37](#source-immigration-housing-and-public-services-37) The release described 12,198 social rent homes as the most since 2012-13; the June 2026 revision puts the figure at 12,267. [38](#source-immigration-housing-and-public-services-38) [36](#source-immigration-housing-and-public-services-36)
 

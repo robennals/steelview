@@ -949,7 +949,7 @@ figures:
       not registration rates like those in the charts that follow.
     items:
       - { label: '1898, new constitution adopted', value: { value: 44, qualifier: about, asPublished: approximately 44% } }
-      - { label: '1921–1944, under the interpretation test', detail: 'The test gave registrars "a virtually uncontrolled discretion as to who should vote and who should not"', value: { value: 1, qualifier: at most, asPublished: never exceeded one percent } }
+      - { label: '1921–1944, under the white primary', detail: 'The court says the white primary barred Black voters so effectively that the 1921 interpretation test was "ignored over the years"', value: { value: 1, qualifier: at most, asPublished: never exceeded one percent } }
       - { label: '1944', value: { value: 0.2, asPublished: two-tenths of one percent } }
       - { label: 'March 1956', value: { value: 15, qualifier: about, asPublished: approximately 15% } }
   - kind: barChart
@@ -1069,11 +1069,11 @@ observationMarks:
   carter-baker-id-deters: {rows: ["Carter–Baker Commission: what ID could do"]}
   id-would-not-reach: {rows: ["Officials stuffing or miscounting ballots", "Absentee or mail ballot fraud", "Vote buying"]}
   checkers-complicit: {rows: ["Officials stuffing or miscounting ballots"]}
-  detected-is-a-floor: {whole: true}
+  detected-is-a-floor: {rows: ["Impersonation fraud at the polls"]}
   impersonation-rare-modern: {rows: ["In-person voter impersonation"]}
   modern-result-changing-cases-absentee: {rows: ["East Chicago, 2003 primary", "North Carolina 9th District, 2018", "Paterson, 2020 council election"]}
-  louisiana-registration-collapse: {rows: ["1898, new constitution adopted", "1921–1944, under the interpretation test", "1944"]}
-  jim-crow-tools-discretionary: {rows: ["1921–1944, under the interpretation test"]}
+  louisiana-registration-collapse: {rows: ["1898, new constitution adopted", "1921–1944, under the white primary", "1944"]}
+  jim-crow-tools-discretionary: {rows: ["March 1956"]}
   pre-vra-stagnation: {rows: ["Alabama", "Louisiana", "Mississippi"]}
   registration-gap-closed: {rows: ["Georgia", "Mississippi", "Virginia"]}
   officials-did-the-fraud: {rows: ["Officials stuffing or miscounting ballots"]}
@@ -1224,13 +1224,13 @@ News21 found 10 cases among the 2,068 alleged cases it collected. [31](#source-e
 
 ### Louisiana: from 44% of registrants to under 1% {#election-fraud-and-voter-exclusion-history--louisiana-registration-collapse}
 
-As the Supreme Court recounted in Louisiana v. United States (1965), Black voters were about 44% of Louisiana's registered voters when the state adopted its 1898 constitution. Under a "grandfather clause" and, from 1921, an "interpretation test", their share "never exceeded one percent" until 1944. By 1956 it was about 15%. [36](#source-election-fraud-and-voter-exclusion-history-36)
+As the Supreme Court recounted in Louisiana v. United States (1965), Black voters were about 44% of Louisiana's registered voters when the state adopted its 1898 constitution. The fall began under that constitution's "grandfather clause". From 1921 to 1944 their share "never exceeded one percent": the court says the white primary barred Black voters so effectively that the 1921 "interpretation test" was ignored. In the dozen years after 1944 their share rose to about 15%. [36](#source-election-fraud-and-voter-exclusion-history-36)
 
 After 1956 a legislative committee and the Citizens Councils challenged Black voters on the rolls, and "thousands of Negroes, but virtually no whites, were purged". [36](#source-election-fraud-and-voter-exclusion-history-36)
 
 ### The tools turned on officials' discretion {#election-fraud-and-voter-exclusion-history--jim-crow-tools-discretionary}
 
-The courts found that Louisiana's interpretation test gave registrars "a virtually uncontrolled discretion as to who should vote and who should not", and that registrars in 21 parishes used it against Black applicants. [36](#source-election-fraud-and-voter-exclusion-history-36)
+After 1956, as the Black share of voters rose, the state tried "new devices to keep the white citizens in control". The courts found that the interpretation test gave registrars "a virtually uncontrolled discretion as to who should vote and who should not", and that registrars in 21 parishes used it against Black applicants. [36](#source-election-fraud-and-voter-exclusion-history-36)
 
 The other main tool, the poll tax, was a charge for voting; the Supreme Court struck it down for state elections in 1966. [40](#source-election-fraud-and-voter-exclusion-history-40) Whether a uniform, free photo ID resembles these tools is a judgement the sources do not settle.
 

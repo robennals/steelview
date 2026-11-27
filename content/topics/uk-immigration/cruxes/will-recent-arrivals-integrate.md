@@ -5,7 +5,7 @@ kind: prediction
 divides: [cultural-cost, open-and-build]
 positions:
   - viewpoint: cultural-cost
-    holds: "Newcomers join in slowly, and where numbers outrun that, integration can fail, so fewer should come and be chosen with it in mind."
+    holds: "Recent arrivals share least of the language and identity; where numbers outrun integration it can fail, so fewer should come, chosen with that in mind."
   - viewpoint: open-and-build
     holds: "Earlier migrants' children have done well, and a country that builds the homes and services integration needs can expect the same."
 ---

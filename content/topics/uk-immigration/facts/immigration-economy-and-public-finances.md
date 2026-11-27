@@ -2173,7 +2173,7 @@ comparisons:
   unit: percent
   valueLabel: '% change in GDP per head, 2019–2025'
   sources:
-  - 81
+  - 82
   note: "Derived from the World Bank series charted above: 2025 value divided by 2019 value, minus one. Not published as a growth rate by the World Bank. Net migration per head over the same years is not shown here."
   items:
   - label: United States
@@ -2488,6 +2488,7 @@ observationMarks:
   small-wage-effects: {rows: ["5th percentile (lowest paid)", "Median", "75th percentile", "90th percentile", "95th percentile (highest paid)"]}
   gain-from-top-earners-and-stayers: {rows: ["Top earners"]}
   earnings-by-route: {rows: ["Skilled Worker main applicants"]}
+  health-and-care-earnings: {rows: ["Health and Care main applicants", "Care workers and home carers"]}
   gdp-per-head-barely-grew: {lines: ["UK GDP per head"], from: "2019", to: "2025", at: "2025"}
   timing-not-cause: {lines: ["UK GDP per head"], from: "2019", to: "2025", at: "2020"}
   g7-levels: {lines: ["United Kingdom"], from: "2019", to: "2025"}
@@ -2551,19 +2552,19 @@ Total GDP rose from 2,673,465 to 2,817,414 (£ million, 2023 prices) between 201
 
 ### Read changes within each country, not levels across them {#immigration-economy-and-public-finances--g7-levels}
 
-The World Bank series uses market exchange rates, so the gaps between countries' levels move with currencies. The ranking of growth since 2019 is in the bar chart below. [81](#source-immigration-economy-and-public-finances-81)
+The World Bank series uses market exchange rates, so the gaps between countries' levels move with currencies. The ranking of growth since 2019 is in the bar chart below. [82](#source-immigration-economy-and-public-finances-82)
 
 ## Observations {#immigration-economy-and-public-finances--observations-g7-growth}
 
 ### The UK was fifth of the seven G7 countries for growth in GDP per head after 2019, and Canada and Germany did worse {#immigration-economy-and-public-finances--g7-stalled-alike}
 
-On the World Bank series, GDP per head rose more between 2019 and 2025 in the United States, Italy, Japan and France than in the UK; Canada grew less and Germany shrank slightly. The UK's stall was shared by other large economies, so on its own it is not evidence about migration. [81](#source-immigration-economy-and-public-finances-81)
+On the World Bank series, GDP per head rose more between 2019 and 2025 in the United States, Italy, Japan and France than in the UK; Canada grew less and Germany shrank slightly. The UK's stall was shared by other large economies, so on its own it is not evidence about migration. [82](#source-immigration-economy-and-public-finances-82)
 
 ## Subtleties {#immigration-economy-and-public-finances--subtleties-g7-growth}
 
 ### Net migration is not shown here {#immigration-economy-and-public-finances--g7-net-migration-not-shown}
 
-Net migration per head for these countries over the same years is not shown here (see What we don't know yet). [81](#source-immigration-economy-and-public-finances-81)
+Net migration per head for these countries over the same years is not shown here (see What we don't know yet). [82](#source-immigration-economy-and-public-finances-82)
 
 ## Observations {#immigration-economy-and-public-finances--observations-obr-gdp-per-person}
 
@@ -2694,6 +2695,10 @@ In 2023/24 median annual earnings were £56,600 for Skilled Worker main applican
 ### Recent non-EU cohorts caught up quickly; the 2024 and 2025 cohorts started lower {#immigration-economy-and-public-finances--earnings-catch-up}
 
 HMRC payroll data show each non-EU cohort from 2021 to 2023 earning around 95% of the UK median after one full year, falling to 90% for the 2024 cohort. The 2021 and 2023 entrants passed the overall median within two years; 2015 entrants took about six. The Migration Observatory says faster catch-up may reflect lower earners leaving the payroll. [44](#source-immigration-economy-and-public-finances-44) [45](#source-immigration-economy-and-public-finances-45) [46](#source-immigration-economy-and-public-finances-46) [47](#source-immigration-economy-and-public-finances-47)
+
+### Health and Care main applicants had median earnings of £30,900, and care workers £23,100 {#immigration-economy-and-public-finances--health-and-care-earnings}
+
+In 2023/24, Health and Care main applicants had median annual earnings of £30,900, and care workers and home carers £23,100. [38](#source-immigration-economy-and-public-finances-38) [39](#source-immigration-economy-and-public-finances-39) [40](#source-immigration-economy-and-public-finances-40) [43](#source-immigration-economy-and-public-finances-43)
 
 ## Subtleties {#immigration-economy-and-public-finances--subtleties-earnings-by-route}
 

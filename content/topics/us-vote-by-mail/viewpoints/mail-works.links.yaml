@@ -3,135 +3,171 @@
 # against its evidence. The text itself is in the .md file beside this one.
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
-  citations: []
+  citations:
+    - phrase: States that mail every voter a ballot have done it for years without the stolen elections critics fear
+      href: "#fact-absentee-fraud-and-manipulation-of-the-count/no-voidings-in-all-mail-states"
+    - phrase: every mail ballot is checked before it counts
+      href: "#fact-mail-ballot-rejection-and-signature-checks/checks-differ-by-state"
+    - phrase: voting at home helps the voters polling places fail most
+      href: "#fact-mail-voting-use-and-effects/disabled-voters-find-mail-easier"
   verification:
     status: verified
-    textHash: b94b92e9c368
-    checkedAt: 2026-11-20
+    textHash: 3c4cd609589d
+    checkedAt: 2026-11-23
+    notes:
+      - '"Without stolen elections" means no voided election in the Heritage database is in Colorado, Oregon, Utah or Washington; detected fraud is a floor.'
 lead:
   citations: []
   verification:
     status: verified
-    textHash: 3dbd413edda2
-    checkedAt: 2026-11-20
+    textHash: 2e40a8d09a9b
+    checkedAt: 2026-11-23
 cards:
-  - heading: Bills in Congress and a presidential order would cut mail voting back
+  - heading: The federal government is moving to cut mail voting back
+    visual:
+      cite: "#fact-federal-and-state-power-over-mail-voting/two-orders"
+      kind: timeline
+      title: Federal moves on mail voting
     citations:
-      - phrase: Two bills would stop states mailing ballots except on request, and an order would have the Postal Service carry ballots only for voters on a state list
+      - phrase: The President has signed two orders on mail ballots
+        href: "#fact-federal-and-state-power-over-mail-voting/two-orders"
+      - phrase: The second orders a Postal Service rule under which it would carry ballots only for voters on a state's list
         href: "#fact-federal-and-state-power-over-mail-voting/federal-moves-to-narrow-mail"
-      - phrase: Utah, after years of mailing every voter a ballot, is moving to mail ballots only on request
-        href: "#fact-mail-voting-use-and-effects/utah-all-mail-and-opt-in"
-      - phrase: the Postal Service rule written under the order is blocked for November 2026
-        href: "#fact-federal-and-state-power-over-mail-voting/usps-rule-blocked"
-      - phrase: the Supreme Court let the order itself go ahead
+      - phrase: Two bills in Congress would stop states mailing ballots to voters who have not asked for one
+        href: "#fact-federal-and-state-power-over-mail-voting/federal-moves-to-narrow-mail"
+      - phrase: The Supreme Court let the order stand as an internal directive
         href: "#fact-federal-and-state-power-over-mail-voting/eo-14399-stands"
+      - phrase: kept the Postal Service rule blocked for November 2026
+        href: "#fact-federal-and-state-power-over-mail-voting/usps-rule-blocked"
+      - phrase: The rule could return for later elections
+        href: "#fact-federal-and-state-power-over-mail-voting/usps-rule-blocked"
     verification:
       status: verified
-      textHash: 34c7f3b92dec
-      checkedAt: 2026-11-20
-  - heading: In the all-mail states, no known fraud has overturned an election
+      textHash: 44649ea925d3
+      checkedAt: 2026-11-23
+      notes:
+        - The Supreme Court did not decide whether the order is lawful. Neither bill has passed. The legal record was read up to 29 October 2026.
+  - heading: States that mail every voter a ballot have done it for years without stolen elections
     visual:
       cite: "#fact-mail-voting-use-and-effects/all-mail-states-lead"
       kind: comparison
       title: Mail ballots as a share of turnout
     citations:
-      - phrase: Oregon, Washington, Utah and Colorado cast more than nine in ten ballots by mail
+      - phrase: Oregon, Washington, Hawaii, Utah and Colorado cast over 90% of their ballots by mail
         href: "#fact-mail-voting-use-and-effects/all-mail-states-lead"
-      - phrase: none of the elections thrown out for fraud in the Heritage Foundation's list was in one of them
+      - phrase: none of the elections thrown out for fraud in the Heritage Foundation's database was in Colorado, Oregon, Utah or Washington
         href: "#fact-absentee-fraud-and-manipulation-of-the-count/no-voidings-in-all-mail-states"
-      - phrase: found "little evidence of fraud in Oregon"
+      - phrase: found "little evidence of fraud in Oregon, where the entire state votes by mail"
         href: "#fact-absentee-fraud-and-manipulation-of-the-count/carter-baker-oregon"
-      - phrase: in 2024, all-mail states fell on both sides of the national rate of rejected mail ballots
+      - phrase: all-mail states fall on both sides of the national rate of rejected mail ballots
         href: "#fact-mail-ballot-rejection-and-signature-checks/all-mail-states-not-different"
     verification:
       status: verified
-      textHash: 042a0c3639fe
-      checkedAt: 2026-11-20
-  - heading: Every mail ballot is checked before it counts, and known schemes were caught
+      textHash: ceb029c9e4e3
+      checkedAt: 2026-11-23
+      notes:
+        - No chart shows the voided elections by state; that list is a table in the fraud report. Hawaii is not among the four states the Heritage count covers. Those states' Heritage entries are individuals, often casting a dead or absent relative's ballot.
+  - heading: Every mail ballot is checked, and the schemes we know of were caught
     visual:
       cite: "#fact-mail-ballot-rejection-and-signature-checks/checks-differ-by-state"
       kind: map
       title: How states check mail ballots
     citations:
-      - phrase: Every state checks returned envelopes before the ballot counts, though the checks differ
+      - phrase: Every state checks the returned envelope before the ballot counts, though the checks differ
         href: "#fact-mail-ballot-rejection-and-signature-checks/checks-differ-by-state"
-      - phrase: known schemes that overturned elections were exposed, and most of those elections were rerun
+      - phrase: The schemes that did overturn elections were exposed by an investigation, an election challenge or a paper trail, and most of those elections were rerun
         href: "#fact-absentee-fraud-and-manipulation-of-the-count/each-case-caught-and-rerun"
-      - phrase: in Paterson's 2020 council election, postal inspectors found bundled ballots and nearly a quarter of the ward's mail ballots were rejected
+      - phrase: in Paterson's 2020 council election, postal inspectors found bundled ballots, and 24% of the ward's mail ballots were rejected
         href: "#fact-absentee-fraud-and-manipulation-of-the-count/paterson-was-all-mail"
-      - phrase: more than half the ballots set aside were corrected and counted
-        href: "#fact-mail-ballot-rejection-and-signature-checks/more-than-half-cured"
+      - phrase: North Carolina's 2018 scheme came to light through its lopsided mail vote
+        href: "#fact-absentee-fraud-and-manipulation-of-the-count/each-case-caught-and-rerun"
     verification:
       status: verified
-      textHash: ca5e882b8aa5
-      checkedAt: 2026-11-20
-  - heading: Mail helps voters who struggle at polling places, and mailing everyone a ballot adds voters
+      textHash: f7fc816fd7a8
+      checkedAt: 2026-11-23
+      notes:
+        - Nine states and DC check only that the envelope is signed. The record covers schemes that were found; no source measures what was not. Paterson's winner has not been convicted.
+  - heading: Mail helps the voters polling places fail most
     visual:
       cite: "#fact-mail-voting-use-and-effects/disabled-voters-find-mail-easier"
       kind: barChart
       title: Difficulty voting with a disability
     citations:
-      - phrase: Voters with disabilities report far less difficulty by mail than at the polling place
+      - phrase: Voters with disabilities who voted by mail were far less likely to report difficulty than those who voted at a polling place
         href: "#fact-mail-voting-use-and-effects/disabled-voters-find-mail-easier"
       - phrase: older voters use mail most
         href: "#fact-mail-voting-use-and-effects/older-voters-use-mail-most"
-      - phrase: sending every voter a ballot raised turnout by about two points
+      - phrase: turnout rose by about two points
         href: "#fact-mail-voting-use-and-effects/universal-mail-raised-turnout-modestly"
-      - phrase: Texans newly able to vote by mail without an excuse switched how they voted, not whether
-        href: "#fact-mail-voting-use-and-effects/eligibility-shifted-method"
-      - phrase: it moved the Democratic share of turnout by only 0.1 points
+      - phrase: the Democratic share of turnout barely moved
         href: "#fact-mail-voting-use-and-effects/no-partisan-tilt"
     verification:
       status: verified
-      textHash: 496bf31b1b32
-      checkedAt: 2026-11-20
-  - heading: Other democracies vote heavily by post, and Britain fixed its fraud without ending it
+      textHash: 48708c03dc01
+      checkedAt: 2026-11-23
+      notes:
+        - The turnout and party-share estimates come from years before 2020, when the parties split over mail voting.
+  - heading: Big democracies vote by post, and Britain tackled its fraud without ending it
     visual:
       cite: "#fact-secret-ballot-and-postal-voting-abroad/germany-postal-share-rose"
       kind: series
       title: "Germany: postal voting"
     citations:
-      - phrase: Germany cast almost half its 2021 vote by post
+      - phrase: Germany cast 47% of its 2021 vote by post and 37% in 2025
         href: "#fact-secret-ballot-and-postal-voting-abroad/germany-postal-share-rose"
       - phrase: Switzerland votes about 90% by post
         href: "#fact-secret-ballot-and-postal-voting-abroad/switzerland-about-90-percent"
-      - phrase: after it let anyone vote by post, a court found thousands of postal votes falsified
+      - phrase: they include the United States, Britain, Germany, Switzerland and Canada
+        href: "#fact-secret-ballot-and-postal-voting-abroad/large-democracies-vote-by-post"
+      - phrase: Britain let anyone vote by post in 2001, and in 2005 a court found thousands of postal votes falsified in Birmingham
         href: "#fact-secret-ballot-and-postal-voting-abroad/uk-fraud-under-on-demand"
-      - phrase: It added identity checks and banned campaigners from handling postal votes
+      - phrase: Britain added signature and birth-date checks in 2006
         href: "#fact-secret-ballot-and-postal-voting-abroad/uk-kept-on-demand-added-checks"
-      - phrase: in recent years its Electoral Commission has found no evidence of large-scale fraud
+      - phrase: Courts still voided elections over fraud in Woking in 2013 and Tower Hamlets in 2015
+        href: "#fact-secret-ballot-and-postal-voting-abroad/uk-election-courts"
+      - phrase: in 2022 Britain banned campaigners from handling postal votes
+        href: "#fact-secret-ballot-and-postal-voting-abroad/uk-kept-on-demand-added-checks"
+      - phrase: its election watchdog found no evidence of large-scale fraud
         href: "#fact-secret-ballot-and-postal-voting-abroad/uk-no-large-scale-fraud"
     verification:
       status: verified
-      textHash: 8410af15b5f8
-      checkedAt: 2026-11-20
+      textHash: ead482ae5790
+      checkedAt: 2026-11-23
+      notes:
+        - Germany's share fell back in 2025. Switzerland has had occasional proven cases. Britain's figure (11 convictions from 1,462 allegations) is detected fraud, a floor.
   - heading: Voting at home rarely means voting under pressure
-    citations:
-      - phrase: nearly a quarter of mail voters have someone else in the room
-        href: "#fact-secret-ballot-and-postal-voting-abroad/mail-voters-often-not-alone"
-      - phrase: in Oregon surveys 1% or fewer felt pressured by someone else's presence
-        href: "#fact-secret-ballot-and-postal-voting-abroad/pressure-rarely-reported"
-      - phrase: in one Oregon pilot about 5% said others had marked their ballots
-        href: "#fact-secret-ballot-and-postal-voting-abroad/pressure-may-be-underreported"
-      - phrase: "polling places are not fully private either: in the same national survey, more than one in five in-person voters had no privacy screen"
-        href: "#fact-secret-ballot-and-postal-voting-abroad/in-person-not-fully-private"
-    verification:
-      status: verified
-      textHash: c2d851d6f445
-      checkedAt: 2026-11-20
-  - heading: So every voter should get the choice, under rules both parties can trust
     visual:
-      cite: "#fact-mail-voting-use-and-effects/democrats-use-mail-more"
-      kind: comparison
-      title: Who voted by mail, by party
+      cite: "#fact-secret-ballot-and-postal-voting-abroad/mail-voters-often-not-alone"
+      kind: barChart
+      title: Privacy when voting, by method
     citations:
-      - phrase: Democrats now use mail far more than Republicans
-        href: "#fact-mail-voting-use-and-effects/democrats-use-mail-more"
-      - phrase: voters of the president's party are usually the more confident in the count
-        href: "#fact-confidence-and-disputed-results/confidence-follows-power"
-      - phrase: people who vote by mail trust the mail count
-        href: "#fact-confidence-and-disputed-results/mail-voters-trust-mail"
+      - phrase: over 23% of mail voters had someone else in the room
+        href: "#fact-secret-ballot-and-postal-voting-abroad/mail-voters-often-not-alone"
+      - phrase: in Oregon surveys 1% or fewer felt pressured by another person being there
+        href: "#fact-secret-ballot-and-postal-voting-abroad/pressure-rarely-reported"
+      - phrase: An Oregon researcher found no sign that bribes or threats had been a problem
+        href: "#fact-secret-ballot-and-postal-voting-abroad/pressure-rarely-reported"
+      - phrase: 22% of in-person voters had no curtain or privacy screen
+        href: "#fact-secret-ballot-and-postal-voting-abroad/in-person-no-screen"
     verification:
       status: verified
-      textHash: 3dc6a94201f2
-      checkedAt: 2026-11-20
+      textHash: 00ebbeda2856
+      checkedAt: 2026-11-23
+      notes:
+        - '"Little evidence" is fair: no study measures coercion of mail voters directly. The Oregon figures are second-hand, from a 1996 special election, and an Oregon pilot found about 5% said others had marked their ballots.'
+  - heading: So every voter should get the choice, under rules both parties can trust
+    citations:
+      - phrase: Democrats now vote by mail far more than Republicans
+        href: "#fact-mail-voting-use-and-effects/democrats-use-mail-more"
+      - phrase: a ban on campaigners handling ballots, as a bipartisan commission urged
+        href: "#fact-absentee-fraud-and-manipulation-of-the-count/carter-baker-largest-source"
+      - phrase: The people who vote by mail trust the mail count most
+        href: "#fact-confidence-and-disputed-results/mail-voters-trust-mail"
+      - phrase: each party's voters have usually trusted the count more when their side holds the White House
+        href: "#fact-confidence-and-disputed-results/confidence-follows-power"
+    verification:
+      status: verified
+      textHash: 5b73d958cc4c
+      checkedAt: 2026-11-23
+      notes:
+        - The commission urged stopping candidates and party workers from handling absentee ballots. Under Trump in 2020, Republicans were not the more confident party.

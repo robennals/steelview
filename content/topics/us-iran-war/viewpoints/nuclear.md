@@ -1,34 +1,34 @@
 ---
-name: Iran must never get a nuclear weapon, and its past shows why
+name: Iran must never get a nuclear weapon, and stopping it was worth a war
 shortName: No Iranian bomb
-summary: Iran was close to having enough material for a bomb, and no inspector has seen its most enriched uranium since June 2025. Iran has backed deadly attacks abroad. The strikes have stopped its enrichment for now, and stopping it from getting a bomb was worth a war.
+summary: By 2025 Iran was making uranium close to what a bomb needs, and US intelligence judged it under a week from enough for one bomb. Its government has backed bombings and murder plots abroad. The strikes have stopped its enrichment for now, and the US must not let it start again.
 order: 1
 draft: ai
 ---
-An Iran with nuclear weapons would be far more dangerous than Iran today. Stopping it was worth a war, because keeping people safe from the worst dangers comes first.
+A government that backs bombings and murder abroad must never have a weapon that would make it safe from punishment. By 2025 Iran was one short step from the material for that weapon, and once the 2015 deal collapsed, nothing short of force held it back.
 
-### Iran was close to having enough uranium for a bomb
+### Iran was one short step from enough uranium for a bomb
 
-Iran built up its uranium enriched to 60% for four years, and fastest just before the June 2025 strikes. The hardest step in building a nuclear bomb is enriching uranium, which means making it purer. Bombs need about 90%, and little extra work gets there from 60%. Nuclear power plants need uranium enriched to only a few percent. In May 2025, US intelligence judged Iran probably under a week from enough bomb-grade uranium for one bomb. Iran is the only country without nuclear weapons making 60% uranium.
+Iran was making uranium close to what a bomb needs, and making it fast. Its stock of uranium enriched to 60% more than doubled in the eight months before the June 2025 strikes. Bombs use uranium enriched to about 90%, and little extra work gets from 60% to there. Nuclear power plants need less than 5%. No other country without nuclear weapons makes 60% uranium. In May 2025, US intelligence judged Iran probably under a week from enough bomb-grade uranium for one bomb.
 
-### Inspectors could not vouch that Iran's programme was peaceful
+### Iran had hidden weapons work before, and inspectors could no longer vouch for it
 
-In 2025, UN inspectors said they could not assure the world that Iran's programme was peaceful. Iran once ran a secret programme to develop weapons technology, and hid the evidence, and in 2021 it stopped the inspectors' extra visits. The inspectors' board later found it in breach of its obligations. While US intelligence judged in 2025 that Iran was not building a bomb, it warned that pressure on Iran's leader to build one was growing. With uranium so close to bomb grade, one decision could start the last short step.
+Iran's word could not settle what the uranium was for. Before 2004 it ran a secret programme of weapons-related work, and it later hid the evidence. In 2021 it ended the inspectors' extra visits. In 2025 UN inspectors said they could not assure the world that its programme was peaceful, and their board later found Iran in breach of its obligations. While US intelligence judged in 2025 that Iran was not building a bomb, it warned that pressure on Iran's leader to build one had probably grown. With uranium this close to bomb grade, Iran's leaders were one decision away from the material for a bomb.
 
-### Iran already attacks its enemies, and a bomb would let it do so more freely
+### Iran already attacks its enemies, and a bomb would let it do so without fear
 
-A court in Argentina held Iran-backed Hezbollah responsible for two bombings in Buenos Aires. Men hired by Iran's Revolutionary Guards plotted to kill a journalist in America, and US courts have sentenced them. Groups allied with Iran attacked US and coalition forces more than 200 times in 2023 and 2024. Today Iran must fear being hit back. With a bomb, other countries would fear using force against it, so it could attack more freely.
+Iran's government already uses violence abroad. An Argentine court held Iran-backed Hezbollah responsible for two bombings in Buenos Aires. US courts have sentenced men hired for Iran's Revolutionary Guards to kill a journalist on American soil. Groups allied with Iran attacked US and coalition forces more than 200 times in 2023 and 2024. Today Iran must fear being hit back. With a bomb, other countries would fear hitting it, so it could attack more freely, and it might one day use the bomb.
 
-### An Iranian bomb could lead others in the region to build their own
+### An Iranian bomb could set off a race for bombs across the region
 
-Saudi Arabia's crown prince has said his country would build a bomb if Iran did. A Middle East with several nuclear powers would be more dangerous still. While past fears that bombs would spread quickly mostly proved wrong, the risk is too grave to bet that they will prove wrong again.
+An Iranian bomb would not stay the only one in the region. Saudi Arabia's crown prince has said that if Iran built one, his country would follow as soon as possible. While past predictions that bombs would spread quickly mostly did not come true, this warning comes from the ruler who would decide. A region of rival nuclear powers is not a risk worth taking.
 
-### The strikes have stopped Iran making bomb-grade uranium, for now
+### Deals and sanctions had not stopped Iran, and the strikes have, for now
 
-US officials, Iran and an independent institute all say Iran's enrichment has stopped. For the first time in 20 years, that institute sees no way for Iran to make bomb-grade uranium, where before the first strikes US intelligence judged it under a week away. No inspector has checked these claims, no one can say where Iran's most enriched uranium is, and past strikes on nuclear sites delayed programmes only modestly. On the accounts we have, Iran has been set back, though perhaps not for long.
+Before the strikes, nothing else had held Iran back for long. The 2015 deal capped Iran's enrichment for only 15 years. After the deal collapsed, Iran built up its 60% uranium for four years, and sanctions have rarely stopped a nuclear programme once it has started. Since the strikes, US and Iranian officials say Iran's enrichment has stopped. For the first time in 20 years, an independent institute sees no route for Iran to make bomb-grade uranium. No inspector has checked this, and past strikes on nuclear sites delayed programmes only modestly. But Iran has gone from a week away to no route at all.
 
-### So the US was right to strike, and must not let Iran rebuild
+### So the US was right to strike, and must not let Iran start again
 
-Sanctions have rarely stopped a nuclear programme once it has started. So the choice was never between war and a peaceful Iran. It was between striking and leaving Iran one short step from a bomb.
+The choice was never between war and a peaceful Iran. It was between striking, and leaving a government that has hidden weapons work one decision from the material for a bomb. A war is a terrible cost. A nuclear-armed Iran would be a worse one, and a lasting one.
 
-While talks were under way when the strikes began, Iran had spent four years adding to its 60% uranium before the first strikes, and nothing had stopped it. Waiting would have meant trusting a government that has hidden weapons work before. A war is a terrible cost. A nuclear-armed Iran would be a worse one, so the US must not let Iran rebuild what the strikes set back.
+So the US must not let Iran start again. No one has seen Iran's most enriched uranium since June 2025. Until inspectors account for it, the US should keep Iran from enriching, by force if it must.

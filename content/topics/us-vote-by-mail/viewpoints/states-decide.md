@@ -1,38 +1,32 @@
 ---
 name: The states make mail-voting rules, and presidents have no say in them
 shortName: States decide
-summary: The President has ordered new rules for mail ballots. But the Constitution gives election rules to state lawmakers, and lets Congress change them; it gives the President no part. States have tried different mail systems and changed course when their voters wanted. A national rule would override those choices.
+summary: The President has ordered new rules for mail ballots, but the Constitution gives election rules to state lawmakers and to Congress, not the President. States have chosen very different mail systems, support for mail voting is highest where states use it most, and each state can change course. The states should keep setting these rules.
 order: 5
 draft: ai
 ---
-The Constitution lets each state's lawmakers set the rules for elections, and lets Congress change them. It gives the President no part beyond signing or vetoing bills. The states should keep making these choices, and presidents should stay out.
+People should have a say in the rules that govern them, and each state's rules for voting are made closest to its own voters. The Constitution gives those rules to state lawmakers and to Congress. It gives the President no part beyond signing or vetoing bills.
 
-### The President has ordered new rules for mail ballots
+### The President is trying to set mail-ballot rules himself
 
-The President has signed two orders setting rules for mail ballots: one on return deadlines, one on a Postal Service ballot rule. Neither came from a state legislature or from Congress.
+The President has signed two orders setting rules for mail ballots. One addresses when ballots must arrive. The other orders a Postal Service rule under which it would carry ballots only for voters on a state's list. Neither came from a state legislature or from Congress. A court ruled that the first order's deadline rules went beyond his power. The Supreme Court let the second order stand as an internal directive, without deciding whether it is lawful, but kept the Postal Service rule blocked for November 2026.
 
-Courts have pushed back. A court ruled that the 2025 order's deadline rules went beyond his power, and that ruling is now under appeal. A court has blocked the Postal Service rule he ordered, for November 2026.
+### The Constitution gives election rules to state lawmakers and Congress
 
-### The Constitution names state legislatures and Congress, not the President
+The Constitution's Elections Clause gives the "times, places and manner" of elections to each state's legislature, and lets Congress "make or alter such regulations". The President's part is to sign or return the bills Congress passes. When the Supreme Court ruled on ballot deadlines in 2026, it said arguments over them belong to lawmakers, not courts. So a President who writes election rules by order takes a power the Constitution gave to others.
 
-The Constitution's Elections Clause names state legislatures and Congress, not the President. A President's part is to sign or veto what Congress passes.
+### Each state has chosen its own mail system, and changed it when it chose
 
-While the Supreme Court let the March 2026 order go ahead, it did not decide whether the order was lawful. So the principle should be stated clearly now.
+States have moved both ways. The number offering mail voting to every voter rose from 30 in 2016 to 38 in 2020, fell to 35 in 2022, and is expected to reach 37 in 2026. Oregon's all-mail system came from its own voters, through a ballot initiative. Utah, after years of mailing every voter a ballot, is moving to mail ballots only on request. Three states ended their extra days for late ballots in 2025. Each state can change course when its voters want.
 
-### Each state has set its own mail rules, and changed them when it chose
+### Support for mail voting is highest where states use it most
 
-States have changed their mail-voting rules in both directions. Oregon's all-mail system came from its own voters, who voted for it directly, and Utah, after years of mailing every voter a ballot, is moving to mail ballots only on request. Deadlines have moved too: three states ended their extra days for late ballots in 2025. Each state can change course when its voters want.
+Support for letting any voter vote by mail is highest in states that mail every voter a ballot and lowest in states that require an excuse, and that holds within each party: 46% of Republicans favour it in states that mail every voter a ballot, against 22% in states that require an excuse. The country is also split by region. Most voters in the West used mail even before the pandemic, while in the South most voters did not, even in 2020. Any one national rule, for more mail or for less, would override what one region or the other has chosen.
 
-### A national rule would override very different choices each region has made
+### Congress may set national rules, but has mostly left mail voting to the states
 
-Mail voting is mainly a Western practice, and the gap is not new: most Western voters used mail even before the pandemic, while in the South mail stayed under a quarter of votes even in 2020. In much of the South, mail ballots are a small share of the vote. Any one national rule, for more mail or for less, would overturn what one region or the other has chosen. Decisions made closest to the people can fit each place's own voters.
+Congress has strong power over federal elections, but it has used it on mail voting only for voters away from home. Since 1970, every state must let voters who will be away on Election Day vote absentee for President, and since 1986 it must let service members and Americans abroad vote by mail. Who else may vote by mail it has left to the states. Bills now in Congress would push mail voting in opposite directions. A Democratic bill requiring mail voting for any voter and a Republican photo-ID bill have both failed in the Senate. If Congress set one rule for everyone, it could swing each time control of Congress changed.
 
-### Congress may set rules, but should do so only where states cannot
+### So each state's voters, through their lawmakers, should set their mail rules
 
-Congress already sets mail-ballot rules for military and overseas voters. Those voters are serving in the forces or living abroad, so no single state can serve them all, and one rule for all of them makes sense. It sets a minimum, and does not take over.
-
-While Congress has strong power over federal elections, it should hold back. Bills now in Congress would push mail voting in opposite directions. A national rule would then depend on which party controls Washington. So far, national bills from both parties have stalled in the Senate.
-
-### So each state's voters, not the White House, should set their mail rules
-
-People should have a say in the rules that govern them, and fifty states, each able to change its own rules, give voters more say than one national rule. The Supreme Court said arguments over deadlines belong to lawmakers, not courts. The Constitution names those lawmakers: each state's legislature, and Congress. It does not name the White House.
+Fifty states, each able to change its own rules, give voters more say than one national rule. Congress should step in only for voters a state's own rules could leave out, as it has for those away from home. And the President should leave election rules to the lawmakers the Constitution names.

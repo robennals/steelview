@@ -1738,8 +1738,8 @@ observationMarks:
   trust-lower-than-2013: {lines: ["Many people in the neighbourhood can be trusted"], at: "2024"}
   trust-tracks-deprivation: {lines: ["Many people in the neighbourhood can be trusted"]}
   diversity-and-trust-research: {lines: ["Many people in the neighbourhood can be trusted"]}
-  muslim-belonging: {rows: ["British Muslims"]}
-  attitudes-generations: {rows: ["British Muslims"]}
+  muslim-belonging: {rows: ["British Muslims", "National average"]}
+  attitudes-generations: {rows: ["Faith Matters survey, 2009"]}
   non-eu-led-places: {rows: ["Hillingdon", "Dartford", "Swindon", "Sandwell", "Sutton"]}
   census-origins-by-continent: {rows: ["Hillingdon", "Swindon", "Sandwell", "Leicester", "Dartford", "Salford"]}
   snapshot-not-cohort: {whole: true}
@@ -1799,6 +1799,21 @@ figures:
   id: fastest-changing-areas
 - kind: comparison
   id: english-proficiency
+- kind: barChart
+  id: belonging-to-britain
+  title: 'Sense of belonging to Britain'
+  subtitle: 'British Muslims and the national average, one 2015 poll'
+  description: "The share of British Muslims, and of a national control sample, who said they felt a strong sense of belonging to Britain, in ICM's 2015 poll for Channel 4."
+  valueLabel: "Share with a strong sense of belonging (%)"
+  categoryLabel: "Group"
+  format: {"unit": "percent", "decimals": 0}
+  domainMax: 100
+  sort: none
+  sources: [57]
+  note: "Muslims were interviewed face to face, only in areas at least 20% Muslim; the national control sample was interviewed by telephone, so the two methods differ."
+  items:
+    - {"label": "British Muslims", "value": 86}
+    - {"label": "National average", "value": 83}
 - kind: barChart
   id: identity-by-arrival
   title: 'UK-only national identity by arrival'
@@ -2098,15 +2113,14 @@ A 2017 analysis of 2011–16 school census data counted a school as segregated w
 
 In a 2024 poll, 28% of British Muslims said it would be undesirable to outlaw homosexuality, against 62% of the public. In a 2015 poll in areas where at least a fifth of residents were Muslim, 52% of Muslims disagreed that homosexuality should be legal and 18% agreed; 39% agreed that wives should always obey their husbands. [59](#source-integration-outcomes-59) [55](#source-integration-outcomes-55) [56](#source-integration-outcomes-56)
 
-### The same polls find belonging to Britain as high as the public's {#integration-outcomes--muslim-belonging}
+## Subtleties {#integration-outcomes--subtleties-attitudes-homosexuality}
+
+## Observations {#integration-outcomes--observations-belonging-to-britain}
+
+### A 2015 poll found belonging to Britain as high among Muslims as the national average {#integration-outcomes--muslim-belonging}
 
 In the 2015 poll, 86% of Muslims felt a strong sense of belonging to Britain, against 83% of the national control sample. [57](#source-integration-outcomes-57)
 
-### The evidence on generations is thin and mixed {#integration-outcomes--attitudes-generations}
-
-The one academic study comparing generations, from 2009, found young Muslims more liberal than their elders on gay marriage, with 74 percent supporting same-sex marriage or civil unions, but the most conservative of any group on the morality of homosexuality. No repeated survey tracks these attitudes across generations. [61](#source-integration-outcomes-61) [62](#source-integration-outcomes-62)
-
-## Subtleties {#integration-outcomes--subtleties-attitudes-homosexuality}
 
 ## More {#integration-outcomes--more-foreign-born-share}
 
@@ -2142,6 +2156,11 @@ On the standard measure, the index of dissimilarity across neighbourhoods, segre
 
 No British Social Attitudes or European Social Survey series of these attitudes by religion and generation was found.
 
+
+
+### The evidence on generations is thin and mixed {#integration-outcomes--attitudes-generations}
+
+The one academic study comparing generations, from 2009, found young Muslims more liberal than their elders on gay marriage, with 74 percent supporting same-sex marriage or civil unions, but the most conservative of any group on the morality of homosexuality. No repeated survey tracks these attitudes across generations. [61](#source-integration-outcomes-61) [62](#source-integration-outcomes-62)
 
 ## Observations {#integration-outcomes--observations-denmark-who-came}
 

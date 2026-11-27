@@ -1548,6 +1548,87 @@ figures:
     - { date: "Nov 2025", text: "A Fairer Pathway to Settlement (CP 1448)", says: { value: "Proposes applying the changes \"to everyone in the country today who has not already received indefinite leave to remain\", and says the government \"would never\" take away settled status already granted.", sources: [53, 54] } }
     - { date: "Mar 2026", text: "Home Affairs Committee report", says: { value: "Finds it \"common\" for the Home Office to apply transitional protections, \"but there is also precedent\" for applying rule changes to people already in the UK. Calls applying these changes to people already here \"not unprecedented\", but sees no justification for applying them to pre-2021 arrivals.", sources: [50, 51, 61] } }
     - { date: "Sep 2026", text: "Home Secretary to the Home Affairs Committee", says: { value: "The new policy, including any transitional arrangements, will be set out \"later this year\"; a large group who arrived in 2022 would otherwise qualify in February 2027.", sources: [64] } }
+- kind: quotes
+  id: what-people-were-told
+  question: What were people on a path to settlement told, and what did a court make of it?
+  description: >-
+    What the government's own texts told people coming on a five-year path to
+    settlement, and how the High Court ruled in 2008 when ministers changed a
+    scheme part-way through.
+  quotes:
+    - text: "the UK’s historic and moral commitment to BN(O) citizens"
+      speaker: Hong Kong BN(O) policy statement
+      context: Home Office, on the new route for British Nationals (Overseas)
+      date: '2020-07-22'
+      source: 43
+    - text: "After 5 years in the UK and, provided they have stayed free of criminality, have supported themselves financially and otherwise complied with the terms of the visa, they will be able to apply for settled status"
+      speaker: Hong Kong BN(O) policy statement
+      context: Home Office, on the new route for British Nationals (Overseas)
+      date: '2020-07-22'
+      source: 44
+    - text: "After 5 years, you may be able to apply to settle permanently in the UK"
+      speaker: Skilled Worker visa guidance
+      context: GOV.UK, UK Visas and Immigration
+      date: '2026-10-29'
+      source: 42
+    - text: "I do not accept that those who receive a grant of leave in a category have a legitimate expectation that the rules for further grants of leave within that category which existed at the time of their first grant of leave will apply to them for the rest of the time that they spend in the UK."
+      speaker: Home Office minister
+      context: Letter of 24 November 2006, quoted in R (HSMP Forum Ltd) v Secretary of State for the Home Department, 2008
+      date: '2006-11-24'
+      source: 49
+    - text: "a clear representation, made by the defendant, that once a migrant had embarked on the scheme he would enjoy the benefits of the scheme according to the terms prevailing at the date he joined"
+      speaker: High Court
+      context: R (HSMP Forum Ltd) v Secretary of State for the Home Department, 2008
+      date: '2008-04-08'
+      source: 47
+    - text: "Not to restrain the impact of the changes would, in my judgment, give rise to conspicuous unfairness and an abuse of power."
+      speaker: High Court
+      context: R (HSMP Forum Ltd) v Secretary of State for the Home Department, 2008
+      date: '2008-04-08'
+      source: 48
+- kind: quotes
+  id: changing-the-path
+  question: Should a longer wait for settlement apply to people already on the path?
+  description: >-
+    What the government proposed in November 2025, what MPs on the Home
+    Affairs Committee found in March 2026, and what the Home Secretary said in
+    September 2026, about applying a longer wait to people already in the UK.
+  quotes:
+    - text: "we propose to apply these changes to everyone in the country today who has not already received indefinite leave to remain"
+      speaker: Home Office
+      context: A Fairer Pathway to Settlement (CP 1448)
+      date: '2025-11-20'
+      source: 53
+    - text: "We will not, and would never, take away settled status from those who have already been granted it."
+      speaker: Home Office
+      context: A Fairer Pathway to Settlement (CP 1448)
+      date: '2025-11-20'
+      source: 54
+    - text: "It is common for the Home Office to apply transitional protections when making changes to the Immigration Rules—so that immigrants are covered by the rules that were in place at the time they received their visa, with regards to both settlement and other aspects of immigration policy—but there is also precedent for changes to Immigration Rules being applied to people already in the UK."
+      speaker: Home Affairs Committee
+      context: 'Earned Settlement: Examining the Government''s proposed reforms'
+      date: '2026-03-13'
+      source: 50
+    - text: "extending routes to settlement for at least some people already in the UK is essential for the Government to be able to meet its objective of reducing the impact of the large number of immigrants who arrived to the UK in recent years"
+      speaker: Home Affairs Committee
+      context: 'Earned Settlement: Examining the Government''s proposed reforms'
+      date: '2026-03-13'
+      source: 62
+    - text: "it is difficult to see a justification for applying the changes to this cohort"
+      speaker: Home Affairs Committee
+      context: 'Earned Settlement: Examining the Government''s proposed reforms, on people who arrived before 2021'
+      date: '2026-03-13'
+      source: 61
+    - text: "It remains the case that the rules that apply to you are the rules in force at the point of your application, not when you arrived in the country."
+      speaker: Home Secretary
+      context: To the Home Affairs Committee, reported by the Electronic Immigration Network
+      date: '2026-09-24'
+      source: 64
+    - text: "Later this year we will set out the new policy on settlement, taking into account all the consultation responses we have had, as well as any transitional arrangements we might decide to implement."
+      speaker: Home Secretary
+      context: To the Home Affairs Committee, reported by the Electronic Immigration Network
+      date: '2026-09-24'
+      source: 64
 - kind: dataTable
   id: proposal
   replaces: ["proposal"]
@@ -1627,6 +1708,7 @@ observationMarks:
   non-eu-ilr-lower-figure: {rows: ["Non-EU citizens holding indefinite leave"]}
   children-on-a-path: {rows: ["On a five-year path to settlement"]}
   bno-adults-not-working: {rows: ["Hong Kong BN(O) visa holders"]}
+  most-on-a-path-came-to-work: {rows: ["Worker visa main applicants", "Dependants of worker visa holders"]}
   protection-cohort-settles: {rows: ["Asylum"]}
   command-paper-213000: {rows: ["Indefinite leave to remain"]}
   no-reliable-claim-rate: {rows: ["Indefinite leave to remain"]}
@@ -1645,16 +1727,18 @@ observationMarks:
   hundreds-of-thousands-would-fail: {rows: ["Everyone on the path"]}
   skilled-worker-route-costs: {rows: ["Fees before settlement, single Skilled Worker", "Yearly health charge"]}
   guidance-said-may-be-able-to-apply: {rows: ["Skilled Worker visa guidance"]}
-  high-court-struck-down-mid-route-change-2008: {rows: ["R (HSMP Forum Ltd) v Secretary of State (High Court)"]}
-  transitional-protection-precedent: {rows: ["Home Affairs Committee report"]}
+  high-court-struck-down-mid-route-change-2008: {rows: ["High Court"]}
+  transitional-protection-precedent: {rows: ["Home Affairs Committee"]}
   revocation-needs-new-law: {rows: ["Nationality, Immigration and Asylum Act 2002, s.76"]}
   bno-historic-and-moral-commitment: {rows: ["Hong Kong BN(O) policy statement"]}
   family-route-two-to-five-2012: {rows: ["Family route change"]}
-  proposal-covers-people-already-here: {rows: ["A Fairer Pathway to Settlement (CP 1448)"]}
-  transitional-arrangements-undecided: {rows: ["Home Secretary to the Home Affairs Committee"]}
+  proposal-covers-people-already-here: {rows: ["Home Office"]}
+  transitional-arrangements-undecided: {rows: ["Home Secretary"]}
+  rules-at-point-of-application: {rows: ["Home Secretary"]}
   eu-status-out-of-scope: {rows: ["Who is out of scope"]}
   status-of-earned-settlement: {whole: true}
   dependants-ten-year-route: {rows: ["Standard wait"]}
+  fifteen-years-below-degree: {rows: ["Longer baselines"]}
   ten-year-baseline-outlier: {rows: ["Most high-income countries"]}
   behaviour-evidence-limited: {rows: ["Evidence on longer waits"]}
   reform-voters-back-removal: {rows: ["Reform UK voters"]}
@@ -1772,6 +1856,10 @@ The Migration Observatory puts the number of children on a path at 430,000 to 52
 
 ## Observations {#settlement-and-migrant-status--observations-path-by-group}
 
+### Most people on a path came on a work visa or with someone who did {#settlement-and-migrant-status--most-on-a-path-came-to-work}
+
+Worker visa main applicants (756,000) and their dependants (645,000) were about 1.4 million of the roughly 2.2 million people on a five-year path at the end of 2024. [20](#source-settlement-and-migrant-status-20) [19](#source-settlement-and-migrant-status-19) The worker figure includes some people on visas that do not lead to settlement, such as intra-company transfers.
+
 ## Subtleties {#settlement-and-migrant-status--subtleties-path-by-group}
 
 ### Adult BN(O) visa holders {#settlement-and-migrant-status--bno-adults-not-working}
@@ -1850,12 +1938,27 @@ cannot be compared with those estimates.
 
 ## Observations {#settlement-and-migrant-status--observations-rules}
 
+### The law lets indefinite leave be revoked only on individual grounds {#settlement-and-migrant-status--revocation-needs-new-law}
+
+Section 76 allows revocation only on the individual grounds in the record of rules.
+[45](#source-settlement-and-migrant-status-45) [46](#source-settlement-and-migrant-status-46) No court has ruled on a general removal of settled status, because
+none has been attempted; how courts would treat a new Act, including claims to private and
+family life, is a prediction.
+
+### The family route went from two years to five in 2012 {#settlement-and-migrant-status--family-route-two-to-five-2012}
+
+The qualifying period for family settlement rose from two to five years in 2012. [11](#source-settlement-and-migrant-status-11) [52](#source-settlement-and-migrant-status-52)
+
+## Observations {#settlement-and-migrant-status--observations-what-people-were-told}
+
+### The government called the Hong Kong BN(O) route a "historic and moral commitment" {#settlement-and-migrant-status--bno-historic-and-moral-commitment}
+
+The BN(O) policy statement says the route reflects "the UK's historic and moral commitment to BN(O) citizens". [43](#source-settlement-and-migrant-status-43) It also says that after five years, holders who meet the conditions "will be able to apply for settled status", the firmest promise of settlement in any of the texts here. [44](#source-settlement-and-migrant-status-44)
+
 ### Skilled Worker guidance says "you may be able to apply" {#settlement-and-migrant-status--guidance-said-may-be-able-to-apply}
 
 The Skilled Worker guidance says "After 5 years, you may be able to apply to settle
-permanently", subject to the other requirements. [42](#source-settlement-and-migrant-status-42) The BN(O) policy
-statement is the most explicit, framing the route as a "historic and moral commitment".
-[43](#source-settlement-and-migrant-status-43) [44](#source-settlement-and-migrant-status-44)
+permanently", subject to the other requirements. [42](#source-settlement-and-migrant-status-42)
 
 ### In 2008 the High Court ruled a mid-route change "conspicuous unfairness and an abuse of power" {#settlement-and-migrant-status--high-court-struck-down-mid-route-change-2008}
 
@@ -1866,6 +1969,12 @@ in force when they joined, and found no public interest outweighing the unfairne
 [47](#source-settlement-and-migrant-status-47) [48](#source-settlement-and-migrant-status-48) The ruling turned on what that scheme's documents said; whether
 a court would read today's "may be able to apply" the same way has not been tested.
 
+## Observations {#settlement-and-migrant-status--observations-changing-the-path}
+
+### The government proposes applying the longer wait to everyone not yet settled {#settlement-and-migrant-status--proposal-covers-people-already-here}
+
+The November 2025 command paper proposes applying the changes "to everyone in the country today who has not already received indefinite leave to remain", so people due to settle "in the coming months and years" would face the new requirements. It says the government "would never" take settlement from those who already hold it. [53](#source-settlement-and-migrant-status-53) [54](#source-settlement-and-migrant-status-54) In September 2026 the Home Secretary said transitional arrangements were still to be decided. [64](#source-settlement-and-migrant-status-64)
+
 ### MPs found it "common" to protect people already on a route, "but there is also precedent" for changing the rules for them {#settlement-and-migrant-status--transitional-protection-precedent}
 
 The Home Affairs Committee found it "common" for the Home Office to give transitional
@@ -1873,30 +1982,19 @@ protection, "but there is also precedent" for applying rule changes to people al
 the UK. [50](#source-settlement-and-migrant-status-50) It accepted that extending routes for at least some people
 already here is "essential" to the government's aim. [62](#source-settlement-and-migrant-status-62)
 
-### The law lets indefinite leave be revoked only on individual grounds {#settlement-and-migrant-status--revocation-needs-new-law}
-
-Section 76 allows revocation only on the individual grounds in the record of rules.
-[45](#source-settlement-and-migrant-status-45) [46](#source-settlement-and-migrant-status-46) No court has ruled on a general removal of settled status, because
-none has been attempted; how courts would treat a new Act, including claims to private and
-family life, is a prediction.
-
-### The government called the Hong Kong BN(O) route a "historic and moral commitment" {#settlement-and-migrant-status--bno-historic-and-moral-commitment}
-
-The BN(O) policy statement says the route reflects "the UK's historic and moral commitment to BN(O) citizens". It is the most explicit of the texts on this route.
-
-### The family route went from two years to five in 2012 {#settlement-and-migrant-status--family-route-two-to-five-2012}
-
-The qualifying period for family settlement rose from two to five years in 2012. [11](#source-settlement-and-migrant-status-11) [52](#source-settlement-and-migrant-status-52)
-
-### The government proposes applying the longer wait to everyone not yet settled {#settlement-and-migrant-status--proposal-covers-people-already-here}
-
-The November 2025 command paper proposes applying the changes "to everyone in the country today who has not already received indefinite leave to remain", so people due to settle "in the coming months and years" would face the new requirements. It says the government "would never" take settlement from those who already hold it. [53](#source-settlement-and-migrant-status-53) [54](#source-settlement-and-migrant-status-54) In September 2026 the Home Secretary said transitional arrangements were still to be decided. [64](#source-settlement-and-migrant-status-64)
-
 ### Protection for people already on the path is still undecided {#settlement-and-migrant-status--transitional-arrangements-undecided}
 
 In September 2026 the Home Secretary said the new settlement policy, "as well as any transitional arrangements we might decide to implement", would be set out later in the year, noting that a large group who arrived in 2022 would otherwise qualify in February 2027. [64](#source-settlement-and-migrant-status-64)
 
+### The Home Secretary says the rules that apply are those in force when a person applies {#settlement-and-migrant-status--rules-at-point-of-application}
+
+In September 2026 the Home Secretary told MPs that "the rules that apply to you are the rules in force at the point of your application, not when you arrived in the country". [64](#source-settlement-and-migrant-status-64)
+
 ## Observations {#settlement-and-migrant-status--observations-proposal}
+
+### Skilled workers in jobs below degree level, including care, would wait fifteen years {#settlement-and-migrant-status--fifteen-years-below-degree}
+
+The proposal would make Skilled Workers in jobs below degree level (RQF 6), including care, wait fifteen years before applying for settlement, and refugees twenty. [57](#source-settlement-and-migrant-status-57)
 
 ### A year on, the core changes are not in the rules {#settlement-and-migrant-status--status-of-earned-settlement}
 

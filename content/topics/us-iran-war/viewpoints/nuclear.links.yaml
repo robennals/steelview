@@ -4,127 +4,146 @@
 # Format: lib/content/viewpoint-links.ts. Process: content/WORKFLOW.md, stage 6.
 summary:
   citations:
-    - phrase: no inspector has seen its most enriched uranium since June 2025
-      href: "#fact-iran-nuclear-programme/stock-unaccounted-for"
-    - phrase: Iran has backed deadly attacks abroad
+    - phrase: making uranium close to what a bomb needs
+      href: "#fact-iran-nuclear-programme/sixty-is-not-ninety"
+    - phrase: US intelligence judged it under a week from enough for one bomb
+      href: "#fact-iran-nuclear-programme/close-to-weapons-grade-before-strikes"
+    - phrase: Its government has backed bombings
       href: "#fact-iran-actions-abroad/argentine-court-buenos-aires-bombings"
+    - phrase: murder plots abroad
+      href: "#fact-iran-actions-abroad/us-convictions-iran-directed-plots"
+    - phrase: The strikes have stopped its enrichment for now
+      href: "#fact-iran-nuclear-programme/strikes-halted-enrichment"
   verification:
     status: verified
-    textHash: 82f67dcd3d52
-    checkedAt: 2026-11-20
+    textHash: dfafdd36160d
+    checkedAt: 2026-11-23
+    notes:
+      - That enrichment has stopped rests on US and Iranian officials and one institute; no inspector has confirmed it.
 lead:
-  citations: []
+  citations:
+    - phrase: backs bombings and murder abroad
+      href: "#fact-iran-actions-abroad/argentine-court-buenos-aires-bombings"
+    - phrase: one short step from the material for that weapon
+      href: "#fact-iran-nuclear-programme/close-to-weapons-grade-before-strikes"
+    - phrase: once the 2015 deal collapsed, nothing short of force held it back
+      href: "#fact-iran-nuclear-programme/sixty-percent-growth"
   verification:
     status: verified
-    textHash: 467d59c33f81
-    checkedAt: 2026-11-20
+    textHash: a131aa818f3f
+    checkedAt: 2026-11-23
+    notes:
+      - '"Nothing short of force held it back" reads from the 60% stock growing from 2021 until the June 2025 strikes; the 2015 deal did hold the stock under its limit until 2019.'
 cards:
-  - heading: Iran was close to having enough uranium for a bomb
+  - heading: Iran was one short step from enough uranium for a bomb
     visual:
       cite: "#fact-iran-nuclear-programme/sixty-percent-growth"
       kind: series
       title: Iran's uranium enriched to 60%
     citations:
-      - phrase: Iran built up its uranium enriched to 60% for four years, and fastest just before the June 2025 strikes
+      - phrase: Its stock of uranium enriched to 60% more than doubled in the eight months before the June 2025 strikes
         href: "#fact-iran-nuclear-programme/sixty-percent-growth"
-      - phrase: The hardest step in building a nuclear bomb is enriching uranium, which means making it purer
-        href: "#needed"
-      - phrase: Bombs need about 90%, and little extra work gets there from 60%
+      - phrase: Bombs use uranium enriched to about 90%, and little extra work gets from 60% to there
         href: "#fact-iran-nuclear-programme/sixty-is-not-ninety"
-      - phrase: Nuclear power plants need uranium enriched to only a few percent
-        href: "#needed"
-      - phrase: In May 2025, US intelligence judged Iran probably under a week from enough bomb-grade uranium for one bomb
-        href: "#fact-iran-nuclear-programme/close-to-weapons-grade-before-strikes"
-      - phrase: Iran is the only country without nuclear weapons making 60% uranium
+      - phrase: Nuclear power plants need less than 5%
+        href: "#fact-iran-nuclear-programme/power-reactors-need-under-five"
+      - phrase: No other country without nuclear weapons makes 60% uranium
         href: "#fact-iran-nuclear-programme/only-non-weapon-state-at-60"
+      - phrase: US intelligence judged Iran probably under a week from enough bomb-grade uranium for one bomb
+        href: "#fact-iran-nuclear-programme/close-to-weapons-grade-before-strikes"
     verification:
       status: verified
-      textHash: 34a09222fd1c
-      checkedAt: 2026-11-20
-  - heading: Inspectors could not vouch that Iran's programme was peaceful
+      textHash: 871efcb3ecbf
+      checkedAt: 2026-11-23
+      notes:
+        - From 182.3 kg in October 2024 to 440.9 kg on 13 June 2025, an IAEA estimate. Under a week is to enough weapons-grade uranium, not to a usable weapon; CRS gives about a year for the other weapon-making steps.
+  - heading: Iran had hidden weapons work before, and inspectors could no longer vouch for it
     visual:
-      cite: "#fact-iran-nuclear-programme/no-assurance-peaceful"
+      cite: "#fact-iran-nuclear-programme/past-weapons-work"
       kind: timeline
       title: Official statements on weapons work
     citations:
-      - phrase: In 2025, UN inspectors said they could not assure the world that Iran's programme was peaceful
-        href: "#fact-iran-nuclear-programme/no-assurance-peaceful"
-      - phrase: Iran once ran a secret programme to develop weapons technology, and hid the evidence
+      - phrase: Before 2004 it ran a secret programme of weapons-related work, and it later hid the evidence
         href: "#fact-iran-nuclear-programme/past-weapons-work"
-      - phrase: in 2021 it stopped the inspectors' extra visits
+      - phrase: In 2021 it ended the inspectors' extra visits
         href: "#fact-iran-nuclear-programme/complementary-access-ended"
-      - phrase: The inspectors' board later found it in breach of its obligations
+      - phrase: UN inspectors said they could not assure the world that its programme was peaceful
+        href: "#fact-iran-nuclear-programme/no-assurance-peaceful"
+      - phrase: their board later found Iran in breach of its obligations
         href: "#fact-iran-nuclear-programme/board-non-compliance"
       - phrase: US intelligence judged in 2025 that Iran was not building a bomb
         href: "#fact-iran-nuclear-programme/ata-2025-not-building"
-      - phrase: it warned that pressure on Iran's leader to build one was growing
+      - phrase: pressure on Iran's leader to build one had probably grown
         href: "#fact-iran-nuclear-programme/ata-2025-not-building"
     verification:
       status: verified
-      textHash: 96374d547789
-      checkedAt: 2026-11-20
-  - heading: Iran already attacks its enemies, and a bomb would let it do so more freely
+      textHash: 8a2499bf6454
+      checkedAt: 2026-11-23
+      notes:
+        - "\"Hid the evidence\" is the IAEA's \"sanitised locations\". The same May 2025 report found no credible sign of an ongoing structured programme."
+  - heading: Iran already attacks its enemies, and a bomb would let it do so without fear
     visual:
       cite: "#fact-iran-actions-abroad/argentine-court-buenos-aires-bombings"
       kind: timeline
       title: Court cases over Iran-linked plots
     citations:
-      - phrase: A court in Argentina held Iran-backed Hezbollah responsible for two bombings in Buenos Aires
+      - phrase: An Argentine court held Iran-backed Hezbollah responsible for two bombings in Buenos Aires
         href: "#fact-iran-actions-abroad/argentine-court-buenos-aires-bombings"
-      - phrase: Men hired by Iran's Revolutionary Guards plotted to kill a journalist in America, and US courts have sentenced them
+      - phrase: US courts have sentenced men hired for Iran's Revolutionary Guards to kill a journalist on American soil
         href: "#fact-iran-actions-abroad/us-convictions-iran-directed-plots"
       - phrase: Groups allied with Iran attacked US and coalition forces more than 200 times in 2023 and 2024
         href: "#fact-iran-actions-abroad/attacks-on-us-forces-before-the-war"
     verification:
       status: verified
-      textHash: 6ce5e50fef4a
-      checkedAt: 2026-11-20
-  - heading: An Iranian bomb could lead others in the region to build their own
+      textHash: 44b749826a58
+      checkedAt: 2026-11-23
+      notes:
+        - Iran denies the Buenos Aires bombings and no one has been tried in person. The US cases are plots; none led to a killing.
+  - heading: An Iranian bomb could set off a race for bombs across the region
     visual:
       cite: "#fact-outside-attempts-to-change-hostile-regimes/saudi-2018-pledge"
       kind: quotes
       title: Would an Iranian bomb set off others?
     citations:
-      - phrase: Saudi Arabia's crown prince has said his country would build a bomb if Iran did
+      - phrase: Saudi Arabia's crown prince has said that if Iran built one, his country would follow as soon as possible
         href: "#fact-outside-attempts-to-change-hostile-regimes/saudi-2018-pledge"
-      - phrase: past fears that bombs would spread quickly mostly proved wrong
+      - phrase: past predictions that bombs would spread quickly mostly did not come true
         href: "#fact-outside-attempts-to-change-hostile-regimes/predicted-cascades-did-not-happen"
     verification:
       status: verified
-      textHash: 2e290eda6c03
-      checkedAt: 2026-11-20
-  - heading: The strikes have stopped Iran making bomb-grade uranium, for now
+      textHash: 09fb39339dfd
+      checkedAt: 2026-11-23
+      notes:
+        - The pledge dates from 2018.
+  - heading: Deals and sanctions had not stopped Iran, and the strikes have, for now
     visual:
       cite: "#fact-iran-nuclear-programme/strikes-halted-enrichment"
       kind: quotes
       title: What did the strikes do to Iran's enriched uranium and nuclear industry?
     citations:
-      - phrase: US officials, Iran and an independent institute all say Iran's enrichment has stopped
+      - phrase: The 2015 deal capped Iran's enrichment for only 15 years
+        href: "#fact-iran-nuclear-programme/deal-cap-was-temporary"
+      - phrase: Iran built up its 60% uranium for four years
+        href: "#fact-iran-nuclear-programme/sixty-percent-growth"
+      - phrase: sanctions have rarely stopped a nuclear programme once it has started
+        href: "#fact-outside-attempts-to-change-hostile-regimes/nonproliferation-sanctions-three-of-22"
+      - phrase: US and Iranian officials say Iran's enrichment has stopped
         href: "#fact-iran-nuclear-programme/strikes-halted-enrichment"
-      - phrase: For the first time in 20 years, that institute sees no way for Iran to make bomb-grade uranium
+      - phrase: an independent institute sees no route for Iran to make bomb-grade uranium
         href: "#fact-iran-nuclear-programme/no-route-to-weapons-grade"
-      - phrase: before the first strikes US intelligence judged it under a week away
-        href: "#fact-iran-nuclear-programme/close-to-weapons-grade-before-strikes"
-      - phrase: no one can say where Iran's most enriched uranium is
-        href: "#fact-iran-nuclear-programme/stock-unaccounted-for"
       - phrase: past strikes on nuclear sites delayed programmes only modestly
         href: "#fact-outside-attempts-to-change-hostile-regimes/strikes-delay-modestly"
     verification:
       status: verified
-      textHash: 6ce01a83ea60
-      checkedAt: 2026-11-20
-  - heading: So the US was right to strike, and must not let Iran rebuild
+      textHash: 14fa0642db63
+      checkedAt: 2026-11-23
+      notes:
+        - The deal held the stock under its limit until 2019, a year after the US left; "for long" leans on the 15-year cap. Three of 22 is for programmes already under way; the same reviewer notes sanctions deterred others from starting.
+  - heading: So the US was right to strike, and must not let Iran start again
     citations:
-      - phrase: Sanctions have rarely stopped a nuclear programme once it has started
-        href: "#fact-outside-attempts-to-change-hostile-regimes/nonproliferation-sanctions-three-of-22"
-      - phrase: talks were under way when the strikes began
-        href: "#fact-decisions-law-and-diplomacy/talks-under-way-when-strikes-came"
-      - phrase: Iran had spent four years adding to its 60% uranium before the first strikes
-        href: "#fact-iran-nuclear-programme/sixty-percent-growth"
+      - phrase: No one has seen Iran's most enriched uranium since June 2025
+        href: "#fact-iran-nuclear-programme/stock-unaccounted-for"
     verification:
       status: verified
-      textHash: 3efeebfa7ca6
-      checkedAt: 2026-11-20
-researchNeeded:
-  - The hardest step in building a nuclear bomb is enriching uranium, which means making it purer
-  - Nuclear power plants need uranium enriched to only a few percent
+      textHash: 43a15097c1d4
+      checkedAt: 2026-11-23
