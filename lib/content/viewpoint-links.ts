@@ -183,6 +183,11 @@ export type JoinedViewpoint = {
   unverified: string[];
 };
 
+/** Each value that appears more than once, once. */
+function repeated(values: string[]): string[] {
+  return [...new Set(values.filter((value, i) => values.indexOf(value) !== i))];
+}
+
 /** Join a viewpoint's plain text with its links file. */
 export function joinViewpoint(text: string, links: ViewpointLinks): JoinedViewpoint {
   const linkErrors: string[] = [];
@@ -201,6 +206,9 @@ export function joinViewpoint(text: string, links: ViewpointLinks): JoinedViewpo
   if (!summary) linkErrors.push('has no summary: write it before the first ### heading');
   const summaryProblem = verificationProblem(links.summary.verification, summary);
   if (summaryProblem) unverified.push(`the summary ${summaryProblem}`);
+  // Cards and their entries are matched by heading, so a heading used twice on either side would lose one silently.
+  for (const heading of repeated(passages.cards.map((card) => card.heading))) linkErrors.push(`has two cards headed "${heading}": give each card its own heading`);
+  for (const heading of repeated(links.cards.map((card) => card.heading))) linkErrors.push(`the links file has two entries for "${heading}"`);
   const entries = new Map(links.cards.map((card) => [card.heading, card]));
   const visuals = new Map<string, CardVisualRef>();
   const cards = passages.cards.map((card) => {

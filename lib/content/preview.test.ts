@@ -5,7 +5,7 @@ import { citedFactTargets } from './markdown';
 import { figureExamplesFact, figureExamplesTopic } from './__fixtures__/figure-examples';
 import { PREVIEW_FIGURE_KINDS, factSlides, previewTarget, reportChartPath, resolvePreviews, slideGroups } from './preview';
 import { isComponentFigure } from './types';
-import { chartMore, chartSteps, citedSources, observationGroups, observationsByChart, renderFeaturedCharts, renderWalkthroughs, repeatedCardVisualErrors, cardParagraphErrors, slideCitations, viewpointWalkthrough } from './walkthrough';
+import { cardVisualErrors, chartMore, chartSteps, citedSources, observationGroups, observationsByChart, renderFeaturedCharts, renderWalkthroughs, repeatedCardVisualErrors, cardParagraphErrors, slideCitations, viewpointWalkthrough } from './walkthrough';
 
 test('resolvePreviews returns the UK slides in authored order, each linked to its chart on the topic page', async () => {
   const slides = resolvePreviews(await loadTopic('uk-immigration'));
@@ -152,10 +152,11 @@ test('a chart\'s sources are what it draws and what its text cites', () => {
 });
 
 test('an observation\'s heading is rendered, not shown as markdown', async () => {
-  const topic = await loadTopic('uk-asylum');
-  const fact = topic.facts.find(f => f.id === 'asylum-law-and-the-echr')!;
+  const topic = figureExamplesTopic();
+  const fact = topic.facts[0];
+  fact.body = fact.body.replace('### The record is mostly older law', '### The record is *mostly* older law');
   const headings = (await chartSteps(topic, fact, factSlides(topic.slug, fact))).flatMap(s => s.observations).map(o => o.heading);
-  assert.ok(headings.includes('The international reading is still <em>Adimi</em>\'s'), headings.join('\n'));
+  assert.ok(headings.includes('The record is <em>mostly</em> older law'), headings.join('\n'));
 });
 
 test('every card\'s graph opens in full over its topic page, at the finding its line cites', async () => {
@@ -174,18 +175,20 @@ test('every card\'s graph opens in full over its topic page, at the finding its 
 });
 
 test('a card\'s claims carry footnote markers, not links, and its graph opens in full at the finding its line cites', async () => {
-  const topic = await loadTopic('uk-immigration');
-  const fact = topic.facts.find(f => f.id === 'immigration-housing-and-public-services')!;
-  const [first, second] = [...observationGroups(fact)].filter(([, key], i, all) => all.findIndex(([, k]) => k === key) === i);
+  const topic = figureExamplesTopic();
+  const fact = topic.facts[0];
+  // Findings about two charts: a bar chart, which the card is made with, and a table.
+  const [first, second] = ['before-controls', 'older-law'];
+  assert.deepEqual([observationGroups(fact).get(first), observationGroups(fact).get(second)], ['wa-by-race', 'federal-laws']);
   const viewpoint = topic.viewpoints[0];
-  const body = `### A step\n\n[This](#fact-${fact.id}/${first[0]}) and [that](#fact-${fact.id}/${second[0]}).\n\n[More evidence](#fact-${fact.id}/${second[0]}).`;
-  const visuals = new Map([['A step', { cite: `#fact-${fact.id}/${first[0]}`, kind: '', title: '' }]]);
+  const body = `### A step\n\n[This](#fact-${fact.id}/${first}) and [that](#fact-${fact.id}/${second}).\n\n[More evidence](#fact-${fact.id}/${second}).`;
+  const visuals = new Map([['A step', { cite: `#fact-${fact.id}/${first}`, kind: '', title: '' }]]);
   const [step] = (await renderWalkthroughs({ ...topic, viewpoints: [{ ...viewpoint, body, visuals }] })).get(viewpoint.id)!.steps;
   // One number per finding across the card: the evidence's citation of the second is marked 2 again.
   assert.match(step.reasoningHtml, /^This<a [^>]*data-sources="[^"]+"[^>]*>1<\/a> and that<a [^>]*>2<\/a>\.$/);
   assert.match(step.evidenceHtml, /^<p>More evidence<a [^>]*data-sources="[^"]+"[^>]*>2<\/a>\.<\/p>$/);
   assert.doesNotMatch(step.reasoningHtml + step.evidenceHtml, /sv-cite/);
-  assert.deepEqual(step.cardVisual?.panel, { fact: fact.id, observation: `${fact.id}--${first[0]}` });
+  assert.deepEqual(step.cardVisual?.panel, { fact: fact.id, observation: `${fact.id}--${first}` });
 });
 
 test('resolvePreviews resolves figure ids to the figure, its title and its DOM id on the topic page', () => {
@@ -243,15 +246,36 @@ test('a card made with a graph is one paragraph; a card of text may have more', 
   assert.deepEqual(cardParagraphErrors({ ...topic, viewpoints: [{ ...viewpoint, body: `Lead.\n\n### With a graph\n\n${graph}\n` }] }), []);
 });
 
-test('a card whose line cites two findings about one timeline picks out the events of both', async () => {
-  const topic = await loadTopic('us-iran-war');
-  const viewpoint = topic.viewpoints.find(v => v.id === 'nuclear')!;
-  const step = viewpointWalkthrough(topic, viewpoint).steps.find(s => s.heading.startsWith('Iran already attacks'))!;
+test('a card whose line cites two findings about one timeline picks out the events of both', () => {
+  const topic = figureExamplesTopic();
+  const fact = topic.facts[0];
+  fact.body += '\n\n## Observations {#figure-examples--observations-court-record}\n\n### Assadi {#figure-examples--assadi}\n\nA.\n\n### Shakeri {#figure-examples--shakeri}\n\nS.';
+  fact.observationMarks = { ...fact.observationMarks, assadi: { rows: ['Assadi convicted in Antwerp'] }, shakeri: { rows: ['Shakeri charged in New York'] } };
+  const visuals = new Map([['A step', { cite: '#fact-figure-examples/assadi', kind: 'timeline', title: '' }]]);
+  const viewpoint = { ...topic.viewpoints[0], body: '### A step\n\n[Assadi](#fact-figure-examples/assadi) and [Shakeri](#fact-figure-examples/shakeri).', visuals };
+  const [step] = viewpointWalkthrough(topic, viewpoint).steps;
   assert.equal(step.cardVisual?.chart.chart, 'court-record');
-  assert.deepEqual(step.cardVisual?.picked, [
-    '1992 Israeli Embassy bombing (29 dead) and 1994 AMIA bombing (85 dead), Buenos Aires',
-    'Plot to kill journalist Masih Alinejad in New York',
-    'Second plot against Alinejad, organised by Farhad Shakeri',
+  assert.deepEqual(step.cardVisual?.picked, ['Assadi convicted in Antwerp', 'Shakeri charged in New York']);
+});
+
+test('a card\'s visual in its links file must be a graph or quotes, of the kind and title it says', () => {
+  const topic = figureExamplesTopic();
+  const named = (cite: string, kind: string, title: string) => {
+    const viewpoint = { ...topic.viewpoints[0], body: '### A step\n\nText.', visuals: new Map([['A step', { cite, kind, title }]]) };
+    return cardVisualErrors({ ...topic, viewpoints: [viewpoint] });
+  };
+  const title = 'Mail ballots rejected in Washington, by race, 2020';
+  assert.deepEqual(named('#fact-figure-examples/chart-wa-by-race', 'barChart', title), []);
+  assert.deepEqual(named('#fact-figure-examples/before-controls', 'barChart', title), [], 'an observation names the chart it is about');
+  assert.deepEqual(named('#fact-figure-examples/chart-wa-by-race', 'series', 'Another title'), [
+    'viewpoint one: "A step"\'s visual is a barChart, but its links file says series',
+    `viewpoint one: "A step"'s visual is titled "${title}", but its links file says "Another title"`,
+  ]);
+  assert.deepEqual(named('#fact-figure-examples/older-law', 'dataTable', 'Federal laws'), [
+    'viewpoint one: "A step" names visual #fact-figure-examples/older-law, which is a table or text figure, not a graph or quotes',
+  ]);
+  assert.deepEqual(named('#fact-figure-examples/nothing-here', 'barChart', title), [
+    'viewpoint one: "A step" names visual #fact-figure-examples/nothing-here, which is no chart',
   ]);
 });
 

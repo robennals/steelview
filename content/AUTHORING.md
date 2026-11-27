@@ -2315,27 +2315,23 @@ them.
 | Rule | Where |
 | --- | --- |
 | Frontmatter shape, field types, URL and date formats | `lib/content/schema.ts` |
-| Every cross-referenced id resolves to a real item | `lib/content/validate.ts:40` and throughout |
-| `citesFacts` only `well-supported` or `contested` | `lib/content/validate.ts:55` |
-| `acknowledges` only `well-supported` | `lib/content/validate.ts:62` |
-| A fact appears in at most one of the three lists per viewpoint | `lib/content/validate.ts:46` |
-| Every fact has at least one source, whatever its status | `lib/content/validate.ts:87` |
-| Every fact has a non-empty body | `lib/content/validate.ts:94` |
-| A `contested` fact has both a `supports` and a `contests` source | `lib/content/validate.ts:117` |
-| Fact hierarchy is exactly one level deep; no self-support | `lib/content/validate.ts:97` |
-| Every viewpoint's `acknowledges` is non-empty | `lib/content/validate.ts:71` |
-| Every crux divides ≥2 viewpoints and positions each one | `lib/content/validate.ts:169` |
+| Every cross-referenced id resolves to a real item | `lib/content/validate.ts` (`validateTopic`) |
+| `dataOrder`, when given, lists every headline fact once and nothing else | `lib/content/validate.ts` (`validateTopic`) |
+| Every fact has at least one source, whatever its status | `lib/content/validate.ts` (`validateTopic`) |
+| Every fact has a non-empty body | `lib/content/validate.ts` (`validateTopic`) |
+| A `contested` fact has both a `supports` and a `contests` source | `lib/content/validate.ts` (`validateTopic`) |
+| Fact hierarchy is exactly one level deep; no self-support | `lib/content/validate.ts` (`validateTopic`) |
+| Every crux divides ≥2 viewpoints and positions each one | `lib/content/schema.ts`, `lib/content/validate.ts` (`validateTopic`) |
 | A crux has a tension and no body; its tension is ≤45 words with no figures or links; each position is ≤25 words | `lib/content/validate.ts`, `tensionErrors` |
-| No orphan headline facts | `lib/content/validate.ts:193` |
 | No body links to `#principle-…`: values are stated in prose and weighed in cruxes | `lib/content/validate.ts`, `citationErrors` |
-| Topic has ≥1 fact and ≥2 viewpoints | `lib/content/validate.ts:183` |
+| Topic has ≥1 fact and ≥2 viewpoints | `lib/content/validate.ts` (`validateTopic`) |
 | Series lines span the declared coverage (or the line's own `coverage`) exactly, end to end; the series coverage is the union of its lines' | `lib/content/validate.ts`, `seriesErrors` |
-| Series points strictly ascending, no repeats | `lib/content/validate.ts:267` |
-| Series breaks fall inside the declared coverage | `lib/content/validate.ts:296` |
+| Series points strictly ascending, no repeats | `lib/content/validate.ts`, `seriesErrors` |
+| Series breaks fall inside the declared coverage | `lib/content/validate.ts`, `seriesErrors` |
 | Forecast points are each line's tail, and need a `coverage.note` | `lib/content/validate.ts`, `seriesErrors` |
 | A series `focus` lies inside the coverage, runs forwards and holds two points of some line | `lib/content/validate.ts`, `seriesErrors` |
 | A `notMeasuredSince` band ends after the last point and not after `lastUpdated`, and cites a real source | `lib/content/validate.ts`, `seriesErrors` |
-| Inline `#fact-` citations resolve, and a viewpoint only cites facts it lists | `lib/content/validate.ts:325` |
+| Inline `#fact-` citations resolve to a fact in the topic, and any section to one on that fact | `lib/content/validate.ts`, `citationErrors` |
 | Figure shapes: known `kind`, slug ids, `currency` only with unit `currency`, ≥2 table columns, a map's `data` and `valueLabel` (or its categories), a known `preset` and `default` view; `tileMap` and `geoMap` read as `map` | `lib/content/schema.ts` (`figureSchema`) |
 | Qualified numbers: a known `qualifier`, ranges with `low` ≤ `high` and no `value`, no unknown keys, no range on a scatter point | `lib/content/schema.ts` (`figureNumberSchema`) |
 | A key figure gives its qualifier in its `value` or beside it, not both | `lib/content/validate.ts` (F8) |
@@ -2344,7 +2340,7 @@ them.
 | A series event's `sources` are the fact's numbered sources | `lib/content/validate.ts`, `seriesErrors` |
 | Once present, `figures` places every series, comparison and featured chart exactly once, and names nothing that does not exist | `lib/content/validate.ts` (F3) |
 | A `section` figure names an h2 or h3 in the body, not an item under Observations or Subtleties | `lib/content/validate.ts` (F4) |
-| An Observations or Subtleties group addressed to an id names a reading, comparison, figure or `section` entry, unless its id is plainly not meant for one | `lib/content/validate.ts` (`observationGroupErrors`) |
+| An Observations or Subtleties group addressed to an id names a reading, comparison, figure or `section` entry, unless its id is plainly not meant for one | `lib/content/validate.ts` (`bodyPlacementErrors`) |
 | Table columns, rows, sort and highlight agree; numeric columns hold numbers | `lib/content/validate.ts` (F6) |
 | Timeline categories exist and periods run forwards (an approximate date counted at its placement); period-timeline events fall on its axis | `lib/content/validate.ts` (F7) |
 | A timeline date is a partial date, a decade or a circa year | `lib/content/schema.ts` |
@@ -2367,6 +2363,8 @@ them.
 | Chart values (advisory): a qualified value by its `asPublished`, both ends of a range, against any of the item's sources | `scripts/check-figures.ts`, `lib/content/figure-text.ts` |
 | A viewpoint shows each graph or collection of quotes on one card only (M4) | `lib/content/walkthrough.ts` (`repeatedCardVisualErrors`), run by `pnpm check:integrity` |
 | A card made with a graph or quotes is one paragraph (M5) | `lib/content/walkthrough.ts` (`cardParagraphErrors`), run by `pnpm check:integrity` |
+| A card's `visual` in the links file resolves to a graph or quotes, and its `kind` and `title` are that chart's | `lib/content/walkthrough.ts` (`cardVisualErrors`), run by `pnpm check:integrity` |
+| A viewpoint's cards and its links-file entries match one to one by heading, no heading used twice; every cited phrase is in the text, and every passage is verified as it now reads | `lib/content/viewpoint-links.ts` (`joinViewpoint`), run by `pnpm check:integrity` |
 
 **Everything else in this document is editorial judgement with no safety net.**
 Nothing checks that a status is correct under the 90% test, that a claim is

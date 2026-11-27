@@ -77,53 +77,51 @@ test('a sound topic produces no errors', () => {
   assert.deepEqual(validateTopic(soundTopic()), []);
 });
 
-test('rule 1: a crux position may not reference an unknown viewpoint', () => {
+test('a crux position may not reference an unknown viewpoint', () => {
   const t = soundTopic();
   t.cruxes[0].positions[0].viewpoint = 'nope';
   const errors = validateTopic(t);
   assert.ok(errors.some((e) => e.includes('nope') && e.includes('position')), errors.join('\n'));
 });
 
-test('rule 3: a well-supported fact needs at least one source', () => {
+test('a well-supported fact needs at least one source', () => {
   const t = soundTopic();
   t.facts[0].sources = [];
   assert.ok(validateTopic(t).some((e) => e.includes('alpha') && e.includes('source')));
 });
 
-test('rule 3: a complicated fact needs a source too — every status does', () => {
+test('a complicated fact needs a source too — every status does', () => {
   // The old rule only covered well-supported and not-supported, so a
   // `complicated` or `unknown` fact could ship as a bare assertion in a badge.
   const t = soundTopic();
   t.facts.push(fact({ id: 'delta', status: 'complicated', sources: [] }));
-  t.viewpoints[0].setsAside = ['delta'];
   const errors = validateTopic(t);
   assert.ok(errors.some((e) => e.includes('delta') && e.includes('source')), errors.join('\n'));
 });
 
-test('rule 4: every fact needs a body, whatever its status', () => {
+test('every fact needs a body, whatever its status', () => {
   const t = soundTopic();
   t.facts[0].body = '   ';
   const errors = validateTopic(t);
   assert.ok(errors.some((e) => e.includes('alpha') && e.includes('body')), errors.join('\n'));
 });
 
-test('rule 4: a well-supported fact with no body is rejected, not waved through', () => {
+test('a well-supported fact with no body is rejected, not waved through', () => {
   const t = soundTopic();
   t.facts.push(fact({ id: 'delta', body: '' }));
   const errors = validateTopic(t);
   assert.ok(errors.some((e) => e.includes('delta') && e.includes('body')), errors.join('\n'));
 });
 
-test('rule 5: a contested fact needs sources on both sides', () => {
+test('a contested fact needs sources on both sides', () => {
   const t = soundTopic();
   t.facts.push(fact({ id: 'delta', status: 'contested', body: '' }));
-  t.viewpoints[0].setsAside = ['delta'];
   const errors = validateTopic(t);
   assert.ok(errors.some((e) => e.includes('delta') && e.includes('contests')), errors.join('\n'));
   assert.ok(errors.some((e) => e.includes('delta') && e.includes('body')), errors.join('\n'));
 });
 
-test('rule 7: a crux must give a position for every viewpoint it divides', () => {
+test('a crux must give a position for every viewpoint it divides', () => {
   const t = soundTopic();
   t.cruxes[0].positions = [{ viewpoint: 'one', holds: 'Soon.' }];
   assert.ok(validateTopic(t).some((e) => e.includes('timing') && e.includes('two')));
@@ -151,71 +149,37 @@ test('a position in a crux stays short', () => {
   assert.ok(validateTopic(t).some((e) => e.includes('is over 25 words')));
 });
 
-test('rule 7: a crux may not divide an unknown viewpoint', () => {
+test('a crux may not divide an unknown viewpoint', () => {
   const t = soundTopic();
   t.cruxes[0].divides = ['one', 'nope'];
   assert.ok(validateTopic(t).some((e) => e.includes('nope')));
 });
 
-test('rule 7: a crux may not give a position for a viewpoint it does not divide', () => {
+test('a crux may not give a position for a viewpoint it does not divide', () => {
   const t = soundTopic();
   t.cruxes[0].divides = ['one', 'two'];
   t.cruxes[0].positions.push({ viewpoint: 'three', holds: 'A third position.' });
-  t.viewpoints.push(
-    viewpoint({ id: 'three', citesFacts: ['alpha'], acknowledges: ['gamma'] })
-  );
+  t.viewpoints.push(viewpoint({ id: 'three' }));
   const errors = validateTopic(t);
   assert.ok(errors.some((e) => e.includes('three') && e.includes('divides')), errors.join('\n'));
 });
 
-test.skip('rule 8: a fact no viewpoint references is an orphan', () => {
-  const t = soundTopic();
-  t.facts.push(fact({ id: 'lonely' }));
-  assert.ok(validateTopic(t).some((e) => e.includes('lonely') && e.includes('orphan')));
-});
-
-test('rule 8: setsAside is enough to keep a fact from being an orphan', () => {
-  const t = soundTopic();
-  t.facts.push(fact({ id: 'sidelined', status: 'complicated' }));
-  t.viewpoints[0].setsAside = ['sidelined'];
-  assert.deepEqual(validateTopic(t), []);
-});
-
-test('rule 8: a supporting fact is exempt from the orphan rule', () => {
-  // Its parent is what justifies it being on the page, and it is read inside
-  // that parent — so no viewpoint has to name it.
-  const t = soundTopic();
-  t.facts.push(fact({ id: 'detail', supports: 'alpha' }));
-  assert.deepEqual(validateTopic(t), []);
-});
-
-test.skip('rule 8: a headline fact is still an orphan if nothing references it', () => {
-  const t = soundTopic();
-  t.facts.push(fact({ id: 'lonely-headline' }));
-  t.facts.push(fact({ id: 'detail', supports: 'lonely-headline' }));
-  assert.ok(
-    validateTopic(t).some((e) => e.includes('lonely-headline') && e.includes('orphan')),
-    'a headline fact no viewpoint uses does no work on the page'
-  );
-});
-
-test('rule 11: supports must resolve to a fact in the same topic', () => {
+test('supports must resolve to a fact in the same topic', () => {
   const t = soundTopic();
   t.facts.push(fact({ id: 'detail', supports: 'no-such-fact' }));
-  t.viewpoints[0].setsAside = ['detail'];
   assert.ok(
     validateTopic(t).some((e) => e.includes('detail') && e.includes('no-such-fact')),
     validateTopic(t).join('\n')
   );
 });
 
-test('rule 11: a fact may not support itself', () => {
+test('a fact may not support itself', () => {
   const t = soundTopic();
   t.facts.push(fact({ id: 'detail', supports: 'detail' }));
   assert.ok(validateTopic(t).some((e) => e.includes('detail') && e.includes('supports itself')));
 });
 
-test('rule 11: the hierarchy is exactly one level deep — no chains', () => {
+test('the hierarchy is exactly one level deep — no chains', () => {
   // `grandchild -> child -> alpha`. Arbitrary nesting would produce a tree
   // nobody can hold in their head, so the chain is rejected rather than
   // silently flattened onto `alpha`.
@@ -227,7 +191,7 @@ test('rule 11: the hierarchy is exactly one level deep — no chains', () => {
   assert.ok(errors[0].includes('grandchild') && errors[0].includes('one level deep'), errors[0]);
 });
 
-test('rule 11: a two-fact cycle is rejected from both ends', () => {
+test('a two-fact cycle is rejected from both ends', () => {
   const t = soundTopic();
   t.facts = [fact({ id: 'alpha', supports: 'gamma' }), fact({ id: 'gamma', supports: 'alpha' })];
   const errors = validateTopic(t);
@@ -235,24 +199,13 @@ test('rule 11: a two-fact cycle is rejected from both ends', () => {
   assert.ok(errors.some((e) => e.startsWith('fact gamma:')), errors.join('\n'));
 });
 
-test('rule 9: a topic needs at least 1 fact', () => {
+test('a topic needs at least 1 fact', () => {
   const t = soundTopic();
   t.facts = [];
-  // Emptying facts also empties every viewpoint's fact lists, so no fact
-  // rule fires — only rule 9 should be left.
-  t.viewpoints.forEach((v) => {
-    v.citesFacts = [];
-    v.acknowledges = [];
-    v.setsAside = [];
-  });
-  const errors = validateTopic(t);
-  assert.ok(
-    errors.some((e) => e.includes('at least 1 fact')),
-    errors.join('\n')
-  );
+  assert.deepEqual(validateTopic(t), ['topic: needs at least 1 fact — add a fact under facts/']);
 });
 
-test('rule 9: a topic needs at least 2 viewpoints', () => {
+test('a topic needs at least 2 viewpoints', () => {
   const t = soundTopic();
   t.viewpoints = [t.viewpoints[0]];
   t.cruxes = [];
@@ -263,13 +216,63 @@ test('rule 9: a topic needs at least 2 viewpoints', () => {
   );
 });
 
-test('every error message names the offending item', () => {
+test('a dataOrder listing every headline fact once is accepted', () => {
   const t = soundTopic();
-  t.viewpoints[0].citesFacts = ['nope'];
-  for (const error of validateTopic(t)) assert.match(error, /viewpoint |fact |crux /);
+  t.facts.push(fact({ id: 'detail', supports: 'alpha' }));
+  t.dataOrder = ['gamma', 'alpha'];
+  assert.deepEqual(validateTopic(t), []);
 });
 
-test('rule 12: a body linking to a fact that does not exist is reported', () => {
+test('a dataOrder naming data the topic does not have is reported once', () => {
+  const t = soundTopic();
+  t.dataOrder = ['alpha', 'gamma', 'nope'];
+  assert.deepEqual(validateTopic(t), ['topic: dataOrder references unknown data "nope"']);
+});
+
+test('a dataOrder may not name supporting data, which follows its headline', () => {
+  const t = soundTopic();
+  t.facts.push(fact({ id: 'detail', supports: 'alpha' }));
+  t.dataOrder = ['alpha', 'detail', 'gamma'];
+  assert.deepEqual(validateTopic(t), ['topic: dataOrder may only name headline data, not supporting data "detail"']);
+});
+
+test('a dataOrder may not name a fact twice', () => {
+  const t = soundTopic();
+  t.dataOrder = ['alpha', 'gamma', 'alpha'];
+  assert.deepEqual(validateTopic(t), ['topic: dataOrder contains "alpha" more than once']);
+});
+
+test('a dataOrder must list every headline fact', () => {
+  const t = soundTopic();
+  t.dataOrder = ['alpha'];
+  assert.deepEqual(validateTopic(t), ['topic: dataOrder is missing headline data "gamma"']);
+});
+
+test('a topic with no dataOrder is not held to one', () => {
+  const t = soundTopic();
+  t.dataOrder = [];
+  assert.deepEqual(validateTopic(t), []);
+});
+
+test('a fact body may not give two sections the same id', () => {
+  const t = soundTopic();
+  t.facts[0].body = '## Observations {#alpha--observations-shares}\n\n### One {#alpha--same}\n\nA.\n\n### Two {#alpha--same}\n\nB.';
+  t.facts[0].comparisons = [{ id: 'shares', title: 'Shares', description: 'd', unit: 'percent', valueLabel: 'Share', sources: [1], items: [{ label: 'A', value: 1 }] }];
+  assert.deepEqual(validateTopic(t), ['fact alpha: duplicate section id']);
+});
+
+test('every error message names the offending item', () => {
+  const t = soundTopic();
+  t.viewpoints[0].body = 'As [shown](#fact-nope).';
+  t.facts[0].sources = [];
+  t.cruxes[0].positions[0].viewpoint = 'nope';
+  t.dataOrder = ['alpha', 'nope'];
+  const errors = validateTopic(t);
+  assert.ok(errors.length >= 4, errors.join('\n'));
+  for (const error of errors) assert.match(error, /^(viewpoint|fact|crux) [a-z-]+: |^topic: /);
+});
+
+test('a body linking to a fact that does not exist is reported', () => {
   const t = soundTopic();
   t.viewpoints[0].body = 'As [shown here](#fact-nope), the sides differ.';
   const errors = validateTopic(t);
@@ -279,13 +282,13 @@ test('rule 12: a body linking to a fact that does not exist is reported', () => 
   );
 });
 
-test('rule 12: a dead citation in a fact body is reported too', () => {
+test('a dead citation in a fact body is reported too', () => {
   const t = soundTopic();
   t.facts[0].body = 'Compare [this](#fact-nope).';
   assert.ok(validateTopic(t).some((e) => e.includes('fact alpha') && e.includes('#fact-nope')));
 });
 
-test('rule 12: a citation of a real fact is accepted', () => {
+test('a citation of a real fact is accepted', () => {
   const t = soundTopic();
   t.intro = 'See [alpha](#fact-alpha).';
   assert.deepEqual(validateTopic(t), []);
@@ -323,59 +326,13 @@ test('a researchNeeded claim with no #needed mark is reported', () => {
   ]);
 });
 
-test('rule 13: a viewpoint may cite a fact it lists', () => {
-  const t = soundTopic();
-  t.viewpoints[0].body = 'It rests on [alpha](#fact-alpha) and concedes [gamma](#fact-gamma).';
-  assert.deepEqual(validateTopic(t), []);
-});
-
-test('rule 13: a viewpoint may cite a fact it only sets aside', () => {
-  const t = soundTopic();
-  t.facts.push(fact({ id: 'delta', status: 'complicated' }));
-  t.viewpoints[0].setsAside = ['delta'];
-  t.viewpoints[0].body = 'It does not lean on [delta](#fact-delta).';
-  assert.deepEqual(validateTopic(t), []);
-});
-
-test.skip('rule 13: a viewpoint may not cite a fact missing from all three lists', () => {
-  const t = soundTopic();
-  t.facts.push(fact({ id: 'delta' }));
-  t.viewpoints[1].setsAside = ['delta']; // referenced somewhere, so not an orphan
-  t.viewpoints[0].body = 'It leans on [delta](#fact-delta).';
-  const errors = validateTopic(t);
-  assert.ok(
-    errors.some((e) => e.includes('viewpoint one') && e.includes('delta') && e.includes('citesFacts')),
-    errors.join('\n')
-  );
-});
-
-test('rule 13: citing a supporting fact counts when its parent is listed', () => {
-  const t = soundTopic();
-  t.facts.push(fact({ id: 'alpha-detail', supports: 'alpha' }));
-  t.viewpoints[0].body = 'The detail is [here](#fact-alpha-detail).';
-  assert.deepEqual(validateTopic(t), []);
-});
-
-test.skip('rule 13: citing a supporting fact whose parent is unlisted is reported', () => {
-  const t = soundTopic();
-  t.facts.push(fact({ id: 'delta' }));
-  t.facts.push(fact({ id: 'delta-detail', supports: 'delta' }));
-  t.viewpoints[1].setsAside = ['delta'];
-  t.viewpoints[0].body = 'The detail is [here](#fact-delta-detail).';
-  const errors = validateTopic(t);
-  assert.ok(
-    errors.some((e) => e.includes('viewpoint one') && e.includes('delta-detail') && e.includes('"delta"')),
-    errors.join('\n')
-  );
-});
-
-test('rule 13 does not apply to fact bodies', () => {
+test('a fact body may cite another fact', () => {
   const t = soundTopic();
   t.facts[0].body = 'Compare [gamma](#fact-gamma).';
   assert.deepEqual(validateTopic(t), []);
 });
 
-/* ------------------------------------------------------- rule 14: series */
+/* ------------------------------------------------------------- series */
 
 function series(over: Partial<Series> = {}): Series {
   return {
@@ -422,11 +379,11 @@ function topicWithSeries(over: Partial<Series> = {}): Topic {
   return t;
 }
 
-test('rule 14: a full-coverage series produces no errors', () => {
+test('a full-coverage series produces no errors', () => {
   assert.deepEqual(validateTopic(topicWithSeries()), []);
 });
 
-test('rule 14: a series trimmed to a window inside its declared coverage fails', () => {
+test('a series trimmed to a window inside its declared coverage fails', () => {
   const t = topicWithSeries();
   t.facts[0].series!.readings[0].lines[0].points.shift();
   const errors = validateTopic(t);
@@ -436,7 +393,7 @@ test('rule 14: a series trimmed to a window inside its declared coverage fails',
   );
 });
 
-test('rule 14: a series that stops short of its declared coverage fails', () => {
+test('a series that stops short of its declared coverage fails', () => {
   const t = topicWithSeries();
   t.facts[0].series!.readings[0].lines[0].points.pop();
   const errors = validateTopic(t);
@@ -446,7 +403,7 @@ test('rule 14: a series that stops short of its declared coverage fails', () => 
   );
 });
 
-test('rule 14: every line of every reading is checked against the coverage', () => {
+test('every line of every reading is checked against the coverage', () => {
   const t = topicWithSeries();
   const reading = t.facts[0].series!.readings[0];
   reading.lines.push({
@@ -463,7 +420,7 @@ test('rule 14: every line of every reading is checked against the coverage', () 
   );
 });
 
-test('rule 14: out-of-order and repeated points are reported', () => {
+test('out-of-order and repeated points are reported', () => {
   const t = topicWithSeries();
   t.facts[0].series!.readings[0].lines[0].points[2].period = '1990';
   const errors = validateTopic(t);
@@ -473,13 +430,13 @@ test('rule 14: out-of-order and repeated points are reported', () => {
   );
 });
 
-test('rule 14: backwards coverage is reported', () => {
+test('backwards coverage is reported', () => {
   const t = topicWithSeries({ coverage: { from: '1993', to: '1990' } });
   const errors = validateTopic(t);
   assert.ok(errors.some((e) => e.includes('coverage runs backwards')), errors.join('\n'));
 });
 
-test('rule 14: an event marked outside the coverage is reported', () => {
+test('an event marked outside the coverage is reported', () => {
   const t = topicWithSeries({
     events: [{ period: '2001', label: 'law takes effect', sources: [] }],
   });
@@ -490,7 +447,7 @@ test('rule 14: an event marked outside the coverage is reported', () => {
   );
 });
 
-test('rule 14: an event inside the final year of a year-precision coverage is accepted', () => {
+test('an event inside the final year of a year-precision coverage is accepted', () => {
   const t = topicWithSeries({
     events: [{ period: '1993-03', label: 'law takes effect', sources: [] }],
   });
@@ -498,7 +455,7 @@ test('rule 14: an event inside the final year of a year-precision coverage is ac
   assert.ok(!errors.some((e) => e.includes('event at')), errors.join('\n'));
 });
 
-test('rule 14: a break annotated outside the coverage is reported', () => {
+test('a break annotated outside the coverage is reported', () => {
   const t = topicWithSeries({
     breaks: [{ period: '2001', label: 'method change', note: 'the source changed basis' }],
   });
@@ -548,7 +505,7 @@ test('a stacked reading adds up: counts, two or more lines on the same periods, 
   assert.ok(stack(s => { s.focus = { from: '1992', label: 'Recent' }; }).some(e => e.includes('focus window')));
 });
 
-test('rule 14: two readings may not share an id', () => {
+test('two readings may not share an id', () => {
   const t = topicWithSeries();
   const s = t.facts[0].series!;
   s.readings.push({ ...s.readings[0] });
@@ -556,7 +513,7 @@ test('rule 14: two readings may not share an id', () => {
   assert.ok(errors.some((e) => e.includes('two readings with id "people"')), errors.join('\n'));
 });
 
-test('rule 14: mixed period granularity orders the way a reader would order it', () => {
+test('mixed period granularity orders the way a reader would order it', () => {
   const t = topicWithSeries({
     coverage: { from: '1990', to: '1993-06' },
     readings: [

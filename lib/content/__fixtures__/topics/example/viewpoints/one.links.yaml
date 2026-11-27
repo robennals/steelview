@@ -1,0 +1,19 @@
+# The agent's half of this viewpoint, in the format of every real one
+# (lib/content/viewpoint-links.ts): its citations, its card's chart, and the
+# check of each passage, against the text in one.md.
+summary:
+  verification:
+    status: verified
+    textHash: b25adb136b78
+cards:
+  - heading: The argument
+    visual:
+      cite: "#fact-alpha/first-group-higher"
+      kind: comparison
+      title: Alpha by group
+    citations:
+      - phrase: Alpha is higher in the first group
+        href: "#fact-alpha/first-group-higher"
+    verification:
+      status: verified
+      textHash: 6ca7ab2e1b2f

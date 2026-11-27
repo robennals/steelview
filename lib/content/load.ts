@@ -87,15 +87,7 @@ async function readViewpoints(dir: string): Promise<Viewpoint[]> {
   return Promise.all(
     items.map(async (item) => {
       const file = path.join(dir, `${item.id}.links.yaml`);
-      let links: ViewpointLinks;
-      try {
-        const parsed = viewpointLinksSchema.safeParse(parseYaml(await readFile(file, 'utf8')));
-        if (!parsed.success) throw new ContentError(`${file}: ${formatIssues(parsed.error)}`);
-        links = parsed.data;
-      } catch (err) {
-        if (!(err instanceof Error && 'code' in err && err.code === 'ENOENT')) throw err;
-        links = viewpointLinksSchema.parse({});
-      }
+      const links = await readLinks(file);
       const joined = joinViewpoint(item.body, links);
       // The text is the editor's; a link in it is a citation in the wrong file.
       const inText = [...item.body.matchAll(/\[[^\]]+\]\(#[^)\s]+\)/g)].map(
@@ -112,6 +104,26 @@ async function readViewpoints(dir: string): Promise<Viewpoint[]> {
       };
     })
   );
+}
+
+/** A viewpoint's links file, or an empty one if there is none; a file that does not parse is a ContentError naming it. */
+async function readLinks(file: string): Promise<ViewpointLinks> {
+  let raw: string;
+  try {
+    raw = await readFile(file, 'utf8');
+  } catch (err) {
+    if (err instanceof Error && 'code' in err && err.code === 'ENOENT') return viewpointLinksSchema.parse({});
+    throw err;
+  }
+  let data: unknown;
+  try {
+    data = parseYaml(raw);
+  } catch (err) {
+    throw new ContentError(`${file}: ${err instanceof Error ? err.message : String(err)}`);
+  }
+  const parsed = viewpointLinksSchema.safeParse(data);
+  if (!parsed.success) throw new ContentError(`${file}: ${formatIssues(parsed.error)}`);
+  return parsed.data;
 }
 
 export type LoadTopicOptions = {
@@ -148,8 +160,8 @@ export async function loadTopic(
     ...parsed.data,
     slug,
     intro: content.trim(),
-    // Fact order is derived from what the viewpoints rank, so it can only be
-    // computed once both are loaded. See rank-facts.ts.
+    // Headline facts in the topic's dataOrder, each followed by the facts
+    // supporting it. See rank-facts.ts.
     facts: rankFacts(facts, parsed.data.dataOrder),
     viewpoints,
     cruxes: await readItems(path.join(dir, 'cruxes'), cruxFrontmatterSchema),

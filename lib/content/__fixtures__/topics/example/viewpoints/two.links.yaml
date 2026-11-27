@@ -1,0 +1,17 @@
+# The agent's half of this viewpoint; see one.links.yaml.
+summary:
+  verification:
+    status: verified
+    textHash: 7bd9e0986bdf
+cards:
+  - heading: The argument
+    visual:
+      cite: "#fact-alpha/second-group-share"
+      kind: comparison
+      title: Alpha by group
+    citations:
+      - phrase: The second group still holds two in five
+        href: "#fact-alpha/second-group-share"
+    verification:
+      status: verified
+      textHash: 42ecbb72b633
