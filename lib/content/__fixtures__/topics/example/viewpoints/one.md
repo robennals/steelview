@@ -5,4 +5,4 @@ The first viewpoint, in a line.
 
 ### The argument
 
-The full argument for viewpoint one.
+Alpha is higher in the first group, which is why it matters now.

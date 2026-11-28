@@ -1,5 +1,6 @@
 import { test, expect } from './hydrated-test';
 import { expectChartAlone } from './topic-rows';
+import { listTopicSlugs, loadTopic } from '../lib/content/load';
 
 const rows = (page: import('@playwright/test').Page) => page.locator('.sv-row');
 const toggle = (page: import('@playwright/test').Page, n: number) => rows(page).nth(n).locator('.sv-row__toggle');
@@ -48,12 +49,14 @@ test('a short bar chart preview spreads its rows a little, and a wrapped label k
   expect(content).toBeLessThanOrEqual(height);
 });
 
-test('the UK topics come after every other topic', async ({ page }) => {
+test('the topics are listed newest first', async ({ page }) => {
+  const topics = await Promise.all((await listTopicSlugs()).map(slug => loadTopic(slug)));
+  const published = new Map(topics.map(topic => [`/topics/${topic.slug}`, topic.firstPublished]));
   await page.goto('/');
-  const firstTags = await rows(page).locator('.sv-tag:first-child').allTextContents();
-  const firstUk = firstTags.indexOf('UK');
-  expect(firstUk).toBeGreaterThan(0);
-  expect(firstTags.slice(firstUk).every(tag => tag === 'UK')).toBe(true);
+  const dates = (await rows(page).locator('.sv-row__link').evaluateAll(links => links.map(link => link.getAttribute('href'))))
+    .map(href => published.get(href ?? ''));
+  expect(dates).toHaveLength(topics.length);
+  expect(dates).toEqual([...dates].sort().reverse());
 });
 
 test('the first topic starts open and its carousel steps through the charts', async ({ page }) => {
@@ -207,6 +210,10 @@ test('an open row lists its viewpoints in a new order each time it opens', async
   const row = rows(page).first();
   const names = () => row.locator('.sv-row__viewpoints li').allTextContents();
   await expect(row).toHaveAttribute('data-open', 'true');
+  // Each viewpoint keeps its marker's colour wherever it moves.
+  const colours = () => row.locator('.sv-row__viewpoints li').evaluateAll(items =>
+    Object.fromEntries(items.map(li => [li.textContent, li.querySelector('i')!.getAttribute('style')])));
+  const first = await colours();
   const all = [...(await names())].sort();
   expect(all.length).toBeGreaterThan(1);
   for (let i = 0; i < 4; i++) {
@@ -217,6 +224,7 @@ test('an open row lists its viewpoints in a new order each time it opens', async
     await expect(row).toHaveAttribute('data-open', 'true');
     await expect.poll(names).not.toEqual(before);
     expect([...(await names())].sort()).toEqual(all);
+    expect(await colours()).toEqual(first);
   }
 });
 

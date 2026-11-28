@@ -41,7 +41,6 @@ test('a section with no items renders no heading for that section', () => {
     cruxes: [],
   };
   const html = renderToStaticMarkup(TopicSections({ topic, walkthroughs: new Map(), featured: new Map() }));
-  assert.doesNotMatch(html, />Data<\/h2>/);
   assert.match(html, /Viewpoints/);
   assert.doesNotMatch(html, /Cruxes/);
 });

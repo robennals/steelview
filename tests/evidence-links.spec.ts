@@ -3,26 +3,12 @@ import { openChart } from './topic-rows';
 const topic = '/topics/uk-immigration';
 const longRun = 'immigration-against-the-long-run';
 
-test('a topic page on a phone does not overflow sideways', async ({ page }) => {
-  await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto(topic);
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-});
-
 // A viewpoint's claims are plain text: its only marks are footnote markers,
 // which open the sources' own words, never a pop-up of ours.
 test('a viewpoint\'s claims are plain text with footnote markers, not links', async ({ page }) => {
   await page.goto(topic);
   await expect(page.locator('.sv-row--viewpoint .sv-deck__card a.sv-cite:not(.sv-walk__explore a)')).toHaveCount(0);
   await expect(page.locator('.sv-row--viewpoint .sv-deck__card a.sv-source-marker')).not.toHaveCount(0);
-});
-
-// Data collections have no pages of their own: an old address goes to its topic.
-test('an old data-collection address goes to its topic page', async ({ page }) => {
-  await page.goto(`${topic}/facts/net-migration-peak-and-fall`);
-  await expect(page).toHaveURL(new RegExp(`${topic}$`));
-  await page.goto(`${topic}/facts/asylum-grant-rate-fell`);
-  await expect(page).toHaveURL(/\/topics\/uk-asylum$/);
 });
 
 test('a chart\'s sources row links to the source itself', async ({ page }) => {

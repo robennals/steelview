@@ -93,11 +93,10 @@ so renaming a file breaks every link and cross-reference to it. Each file is YAM
 frontmatter (the structured fields — claim, status, sources, cross-references
 to other items) plus a markdown body (the prose).
 
-Neither facts nor file order decide reading order. **Fact order is derived**:
-each viewpoint ranks the facts it cites and then those it acknowledges, and
-the page interleaves those rankings round-robin, so no viewpoint's second
-fact appears before every viewpoint has had its first
-(`lib/content/rank-facts.ts`). **Viewpoints have no order.** A topic's page
+File order does not decide reading order. **Fact order is the topic's
+`dataOrder`**, a list of the headline facts in `topic.md`; each supporting
+fact follows the headline it supports (`lib/content/rank-facts.ts`).
+**Viewpoints have no order.** A topic's page
 shuffles them once loaded, so that none is always read first; the home page,
 and a topic's page before it loads, list them by name.
 
@@ -109,25 +108,25 @@ with `pnpm check:integrity`, so a dev server and ordinary CI remain useful
 while a report is part-way through an edit. Run that command before publishing. Beyond
 the zod schema shape, it enforces and unit-tests these rules:
 
-1. Every id referenced in `citesFacts`, `acknowledges`, `setsAside`,
-   `divides`, and `positions[].viewpoint` must
-   resolve to a real item.
-2. `citesFacts` may only contain `well-supported` or `contested` facts;
-   `acknowledges` may only contain `well-supported` facts; a fact can appear
-   at most once across those three lists on any one viewpoint.
-3. Every fact needs at least one source, whatever its status — nothing is
-   presented as a fact without a quoted source.
-4. Every fact needs a non-empty body giving its context.
-5. A `contested` fact needs at least one `supports` source and at least one
-   `contests` source.
-6. Every viewpoint's `acknowledges` list is non-empty.
-7. Every crux `divides` at least two viewpoints and gives a position for
-   each one. A crux has a tension and no body, and stays within the limits in
-   `content/AUTHORING.md`.
-8. No orphan headline facts — each must appear in some viewpoint's
-   `citesFacts`, `acknowledges`, or `setsAside`.
-9. A topic needs at least 1 fact and at least 2 viewpoints.
-10. No body links to `#principle-…`: principles are not linked items.
+- Every id referenced in `supports`, `divides`, `positions[].viewpoint` and
+  an inline `#fact-…` citation must resolve to a real item.
+- `dataOrder`, when given, lists every headline fact once and nothing else.
+- Every fact needs at least one source, whatever its status — nothing is
+  presented as a fact without a quoted source.
+- Every fact needs a non-empty body giving its context.
+- A `contested` fact needs at least one `supports` source and at least one
+  `contests` source.
+- A supporting fact supports a headline fact: the hierarchy is one level deep.
+- Every crux `divides` at least two viewpoints and gives a position for
+  each one. A crux has a tension and no body, and stays within the limits in
+  `content/AUTHORING.md`.
+- A topic needs at least 1 fact and at least 2 viewpoints.
+- No body links to `#principle-…`: principles are not linked items.
+- A viewpoint's text and its `.links.yaml` agree, and every passage has been
+  checked against its evidence as it now reads.
+
+The full list, with charts and figures, is the table in
+`content/AUTHORING.md`, "What the build enforces".
 
 `pnpm check:figures` extends the sourcing rule to prose: a money, percentage
 or thousands figure asserted in any markdown body must appear in a quoted

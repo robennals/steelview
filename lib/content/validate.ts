@@ -11,14 +11,6 @@ import type { ComponentFigure, Crux, Fact, Figure, FigureOf, ObservationMark, Se
 import { featuredSlides, observationGroups } from './walkthrough';
 import { normaliseWithOffsets } from './source-passage';
 
-/**
- * Check the cross-reference graph of an already-shape-valid topic. Returns one
- * message per violation rather than throwing, so a single run reports every
- * problem in a topic instead of only the first — an author fixing content
- * wants the whole list.
- *
- * Rules are numbered to match the "Validation" section of the design spec.
- */
 /** A crux states a tension and stops: these keep it to that. */
 const MAX_TENSION_WORDS = 45;
 const MAX_HOLDS_WORDS = 25;
@@ -37,12 +29,20 @@ function tensionErrors(crux: Crux): string[] {
   return errors;
 }
 
+/**
+ * Check the cross-reference graph of an already-shape-valid topic. Returns one
+ * message per violation rather than throwing, so a single run reports every
+ * problem in a topic instead of only the first — an author fixing content
+ * wants the whole list.
+ */
 export function validateTopic(topic: Topic): string[] {
   const errors: string[] = [];
   const factById = new Map(topic.facts.map((f) => [f.id, f]));
   const viewpointIds = new Set(topic.viewpoints.map((v) => v.id));
 
-  if (topic.dataOrder) {
+  // dataOrder, once given, is the whole reading order of the headline data:
+  // each headline fact once, and nothing else.
+  if (topic.dataOrder?.length) {
     const seen = new Set<string>();
     for (const id of topic.dataOrder) {
       const fact = factById.get(id);
@@ -51,17 +51,20 @@ export function validateTopic(topic: Topic): string[] {
       if (seen.has(id)) errors.push(`topic: dataOrder contains "${id}" more than once`);
       seen.add(id);
     }
+    for (const f of topic.facts) {
+      if (f.supports === undefined && !seen.has(f.id)) errors.push(`topic: dataOrder is missing headline data "${f.id}"`);
+    }
   }
 
   for (const f of topic.facts) {
-    // rule 3 — every fact, whatever its status. Nothing is presented as a
+    // Every fact, whatever its status, has a source. Nothing is presented as a
     // fact on this page without a quoted source behind it; a `complicated` or
     // `unknown` fact makes a claim about the evidence too, and an unsourced
     // one is just an assertion in a badge.
     if (f.sources.length === 0) {
       errors.push(`fact ${f.id}: every fact needs at least one source, whatever its status`);
     }
-    // rule 4 — every fact needs a body. A bare claim plus a status badge is
+    // Every fact needs a body. A bare claim plus a status badge is
     // exactly the misleading-in-isolation number this project exists to
     // avoid; the body is where scope, denominator and comparison live.
     if (f.body.trim().length === 0) {
@@ -69,7 +72,7 @@ export function validateTopic(topic: Topic): string[] {
         `fact ${f.id}: every fact needs a body giving its context — what it measures and does not, how it compares, how confident to be, and what it is commonly mistaken for`
       );
     }
-    // rule 11 — the fact hierarchy is exactly two levels deep. A supporting
+    // The fact hierarchy is exactly two levels deep. A supporting
     // fact is evidence for one headline claim; a headline claim stands on its
     // own. Chains and cycles are rejected rather than flattened, because a
     // tree of arbitrary depth is not something a reader can hold in their
@@ -90,7 +93,6 @@ export function validateTopic(topic: Topic): string[] {
     for (const id of f.relatedFacts ?? []) {
       if (id === f.id || !topic.facts.some(fact => fact.id === id)) errors.push(`fact ${f.id}: related fact ${id} must name another fact`);
     }
-    // rule 14
     const datasets = [...(f.series ? [f.series] : []), ...(f.additionalSeries ?? [])];
     const sourceCount = factSources(f).length;
     for (const series of datasets) errors.push(...seriesErrors(f.id, series, topic.lastUpdated, sourceCount));
@@ -134,7 +136,7 @@ export function validateTopic(topic: Topic): string[] {
     errors.push(...figureErrors(f, topic));
     errors.push(...observationMarkErrors(f));
     errors.push(...bodyPlacementErrors(f));
-    // rule 5
+    // A contested fact has a source on each side.
     if (f.status === 'contested') {
       if (!f.sources.some((s) => s.stance === 'supports')) {
         errors.push(`fact ${f.id}: a contested fact needs at least one "supports" source`);
@@ -149,12 +151,10 @@ export function validateTopic(topic: Topic): string[] {
     errors.push(...tensionErrors(c));
     const positioned = new Set(c.positions.map((p) => p.viewpoint));
     for (const id of c.divides) {
-      // rule 1
       if (!viewpointIds.has(id)) {
         errors.push(`crux ${c.id}: divides references unknown viewpoint "${id}"`);
         continue;
       }
-      // rule 7
       if (!positioned.has(id)) {
         errors.push(`crux ${c.id}: no position given for viewpoint "${id}"`);
       }
@@ -168,7 +168,7 @@ export function validateTopic(topic: Topic): string[] {
     }
   }
 
-  // rule 9 — a page showing "all sides" needs at least a fact to found itself
+  // A page showing "all sides" needs at least a fact to found itself
   // on and two sides to show; catches a mistyped directory name (`crux/`
   // instead of `cruxes/`) that would otherwise ship a silently empty section.
   if (topic.facts.length < 1) {
@@ -176,14 +176,6 @@ export function validateTopic(topic: Topic): string[] {
   }
   if (topic.viewpoints.length < 2) {
     errors.push('topic: needs at least 2 viewpoints — add another viewpoint under viewpoints/');
-  }
-
-  const headlines = topic.facts.filter((f) => f.supports === undefined).map((f) => f.id);
-  for (const id of topic.dataOrder ?? []) {
-    if (!headlines.includes(id)) errors.push(`topic: dataOrder references unknown or supporting data "${id}"`);
-  }
-  for (const id of headlines) {
-    if ((topic.dataOrder?.length ?? 0) > 0 && !(topic.dataOrder ?? []).includes(id)) errors.push(`topic: dataOrder is missing headline data "${id}"`);
   }
 
   errors.push(...citationErrors(topic, factById));
@@ -231,7 +223,7 @@ function previewChartErrors(topic: Topic, factById: Map<string, Fact>): string[]
 }
 
 /**
- * Rule 14 — a fact's time series.
+ * A fact's time series.
  *
  * The shape is already guaranteed by the schema: a title, a description, a
  * period label, a declared coverage, at least one reading, each with a unit,

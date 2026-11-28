@@ -5,4 +5,4 @@ The second viewpoint, in a line.
 
 ### The argument
 
-The full argument for viewpoint two.
+The second group still holds two in five, and that share will grow.

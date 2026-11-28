@@ -20,5 +20,22 @@ comparisons:
         value: 60
       - label: Second group
         value: 40
+observationMarks:
+  first-group-higher:
+    rows: [First group]
+  second-group-share:
+    rows: [Second group]
 ---
+## Observations {#alpha--observations-shares}
+
+### The first group has more {#alpha--first-group-higher}
+
+Sixty per cent of alpha is in the first group. [1](#source-alpha-1)
+
+### The second group holds two in five {#alpha--second-group-share}
+
+Forty per cent is in the second. [1](#source-alpha-1)
+
+## More {#alpha--more-shares}
+
 Alpha is measured on the narrow definition, and has been stable for a decade.

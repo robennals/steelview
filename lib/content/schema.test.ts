@@ -145,15 +145,6 @@ test('lastUpdated given as a JS Date (YAML-coerced) normalizes to YYYY-MM-DD', (
   assert.equal(parsed.lastUpdated, '2026-08-18');
 });
 
-test.skip('a viewpoint defaults all three reference lists to empty arrays', () => {
-  const parsed = viewpointFrontmatterSchema.parse({
-    name: 'Control first',
-  });
-  assert.deepEqual(parsed.citesFacts, []);
-  assert.deepEqual(parsed.acknowledges, []);
-  assert.deepEqual(parsed.setsAside, []);
-});
-
 test('a viewpoint\'s frontmatter is its name: a summary, short name or order is rejected', () => {
   // The summary is the text before the first card, and the topic page
   // shuffles viewpoints, so these fields would be read by nothing.

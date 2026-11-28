@@ -1,9 +1,8 @@
 import type { z } from 'zod';
-import { currentUserId, isAuthConfigured } from '@/auth';
-import { db } from '@/lib/db/client';
 import { checkRateLimit } from '@/lib/auth/rate-limit';
 import { makeDbRateLimitStore } from '@/lib/auth/rate-limit-store-db';
-import { moderate, type Post } from './moderate';
+import type { FeedbackDeps } from './deps';
+import type { Post } from './moderate';
 import { readReader, type ModerationResult } from './store';
 import { feedbackTargets, type FeedbackTargets } from './targets';
 
@@ -20,8 +19,8 @@ const ONE_HOUR_MS = 60 * 60 * 1000;
 export const failure = (error: string, status: number) => Response.json({ error }, { status });
 
 /** The topic's feedback targets, or a 404 if there is no such topic, or a 503 if feedback is switched off. */
-export async function topicTargets(slug: string): Promise<FeedbackTargets | Response> {
-  if (!isAuthConfigured) return failure('not_configured', 503);
+export async function topicTargets(deps: FeedbackDeps, slug: string): Promise<FeedbackTargets | Response> {
+  if (!deps.isAuthConfigured) return failure('not_configured', 503);
   return (await feedbackTargets(slug)) ?? failure('unknown_topic', 404);
 }
 
@@ -30,7 +29,7 @@ export async function topicTargets(slug: string): Promise<FeedbackTargets | Resp
  * refusing them. Posting text shows the reader's name, so it needs one;
  * backing a suggestion or marking a comment useful does not.
  */
-export async function writer({ named }: { named: boolean }): Promise<string | Response> {
+export async function writer({ db, currentUserId }: FeedbackDeps, { named }: { named: boolean }): Promise<string | Response> {
   const userId = await currentUserId();
   if (!userId) return failure('unauthorized', 401);
   const reader = await readReader(db, userId);
@@ -51,8 +50,8 @@ export async function body<T>(req: Request, schema: z.ZodType<T>): Promise<T | R
  * The moderation check's result for a post that may go up, or a 422 carrying
  * the reason it may not, which the writer sees.
  */
-export async function checkPost(post: Post): Promise<ModerationResult | Response> {
-  const result = await moderate(post);
+export async function checkPost(deps: FeedbackDeps, post: Post): Promise<ModerationResult | Response> {
+  const result = await deps.moderate(post);
   if (result.verdict === 'blocked') return Response.json({ error: 'blocked', reason: result.reason }, { status: 422 });
   return result.verdict;
 }

@@ -1,15 +1,19 @@
 import { test, expect } from './hydrated-test';
 import { headCorner, openViewpoint } from './topic-rows';
+import { listTopicSlugs } from '../lib/content/load';
 
-const TOPIC = '/topics/uk-immigration';
-
-test('the topic page renders at phone width without horizontal overflow', async ({ page }) => {
+// Every page, not just one topic: a wide chart or table on any of them would
+// push the whole page sideways on a phone.
+test('every page renders at phone width without horizontal overflow', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto(TOPIC);
-  const overflows = await page.evaluate(
-    () => document.documentElement.scrollWidth > document.documentElement.clientWidth
-  );
-  expect(overflows).toBe(false);
+  const paths = ['/', '/about', ...(await listTopicSlugs()).map(slug => `/topics/${slug}`)];
+  for (const path of paths) {
+    await page.goto(path);
+    const overflows = await page.evaluate(
+      () => document.documentElement.scrollWidth > document.documentElement.clientWidth
+    );
+    expect(overflows, path).toBe(false);
+  }
 });
 
 // Depends on authored us-voter-id content: the viewpoint `states-decide`, whose

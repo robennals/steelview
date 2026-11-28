@@ -1148,11 +1148,9 @@ export const factFrontmatterSchema = z.object({
   assessedClaim: z.string().optional(),
   status: z.enum(FACT_STATUSES),
   /*
-   * There is deliberately no `order` field. A hand-assigned rank on a fact is
-   * one editor's opinion of what matters, and on a page whose whole claim is
-   * even-handedness that opinion is exactly what must not decide which three
-   * facts a reader sees first. The reading order is derived instead, by
-   * round-robin across the viewpoints' own rankings — see rank-facts.ts.
+   * There is deliberately no `order` field on a fact. The reading order of
+   * the headline facts is the topic's `dataOrder`, in one list in topic.md,
+   * and each supporting fact follows its headline — see rank-facts.ts.
    */
   /**
    * Legacy grouping: present this smaller fact within a broader fact rather

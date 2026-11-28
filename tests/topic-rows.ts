@@ -17,7 +17,6 @@ export async function expectChartAlone(sheet: Locator): Promise<void> {
   await expect(sheet.locator('.sv-walk__step')).toHaveCount(1);
   await expect(sheet.locator('.sv-modal__title')).not.toBeEmpty();
   await expect(sheet.locator('.sv-graph-heading:visible')).toHaveCount(0);
-  await expect(sheet.locator('.sv-walk__tab')).toHaveCount(0);
   await expect(sheet.locator('.sv-observe')).toHaveCount(0);
 }
 

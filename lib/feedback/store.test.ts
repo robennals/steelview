@@ -12,6 +12,8 @@ import {
   deleteSuggestion,
   editComment,
   editSuggestion,
+  ownLiveComment,
+  ownOpenSuggestion,
   readReader,
   readTopicFeedback,
   setBacking,
@@ -204,4 +206,65 @@ test('deleting a comment with no replies removes it', async () => {
   assert.ok(comment);
   assert.equal(await deleteComment(db, { userId: alice, topicSlug: TOPIC, id: comment.id }), true);
   assert.equal((await db.select().from(cruxComments)).length, 0);
+});
+
+test('a writer’s own suggestion is theirs to change only while it is open, visible and on this topic', async () => {
+  const { db, ids: [alice, bob] } = await withReaders(['Alice', 'Bob']);
+  const { id } = await addSuggestion(db, { userId: alice, topicSlug: TOPIC, viewpointId: 'keep-our-word', card: { index: 1, heading: 'A heading' }, body: 'x', moderation: 'allowed' });
+  assert.deepEqual(await ownOpenSuggestion(db, { userId: alice, topicSlug: TOPIC, id }), { viewpointId: 'keep-our-word', cardHeading: 'A heading' });
+  assert.equal(await ownOpenSuggestion(db, { userId: bob, topicSlug: TOPIC, id }), null);
+  assert.equal(await ownOpenSuggestion(db, { userId: alice, topicSlug: 'uk-asylum', id }), null);
+
+  await db.update(suggestions).set({ hiddenAt: new Date() }).where(eq(suggestions.id, id));
+  assert.equal(await ownOpenSuggestion(db, { userId: alice, topicSlug: TOPIC, id }), null);
+  await db.update(suggestions).set({ hiddenAt: null, status: 'answered' }).where(eq(suggestions.id, id));
+  assert.equal(await ownOpenSuggestion(db, { userId: alice, topicSlug: TOPIC, id }), null);
+});
+
+test('a hidden suggestion cannot be edited by its writer, but can be deleted', async () => {
+  const { db, ids: [alice] } = await withReaders(['Alice']);
+  const { id } = await addSuggestion(db, { userId: alice, topicSlug: TOPIC, viewpointId: 'keep-our-word', card: null, body: 'x', moderation: 'allowed' });
+  await db.update(suggestions).set({ hiddenAt: new Date() }).where(eq(suggestions.id, id));
+  assert.equal(await editSuggestion(db, { userId: alice, topicSlug: TOPIC, id, body: 'y', moderation: 'allowed' }), false);
+  assert.equal((await db.select().from(suggestions))[0].body, 'x');
+  assert.equal(await deleteSuggestion(db, { userId: alice, topicSlug: TOPIC, id }), true);
+  assert.equal((await db.select().from(suggestions)).length, 0);
+});
+
+test('a writer’s own comment or reply is theirs to change only while it is visible, not deleted, and on this topic', async () => {
+  const { db, ids: [alice, bob] } = await withReaders(['Alice', 'Bob']);
+  const comment = await addComment(db, { userId: alice, topicSlug: TOPIC, cruxId: 'growth-or-continuity', parentId: null, body: 'a', moderation: 'allowed' });
+  assert.ok(comment);
+  const reply = await addComment(db, { userId: bob, topicSlug: TOPIC, cruxId: 'growth-or-continuity', parentId: comment.id, body: 'b', moderation: 'allowed' });
+  assert.ok(reply);
+  assert.deepEqual(await ownLiveComment(db, { userId: alice, topicSlug: TOPIC, id: comment.id }), { cruxId: 'growth-or-continuity', parentId: null });
+  assert.deepEqual(await ownLiveComment(db, { userId: bob, topicSlug: TOPIC, id: reply.id }), { cruxId: 'growth-or-continuity', parentId: comment.id });
+  assert.equal(await ownLiveComment(db, { userId: bob, topicSlug: TOPIC, id: comment.id }), null);
+  assert.equal(await ownLiveComment(db, { userId: alice, topicSlug: 'uk-asylum', id: comment.id }), null);
+
+  await db.update(cruxComments).set({ hiddenAt: new Date() }).where(eq(cruxComments.id, reply.id));
+  assert.equal(await ownLiveComment(db, { userId: bob, topicSlug: TOPIC, id: reply.id }), null);
+  await deleteComment(db, { userId: alice, topicSlug: TOPIC, id: comment.id });
+  assert.equal(await ownLiveComment(db, { userId: alice, topicSlug: TOPIC, id: comment.id }), null);
+});
+
+test('a hidden comment cannot be edited by its writer, but can be deleted', async () => {
+  const { db, ids: [alice] } = await withReaders(['Alice']);
+  const comment = await addComment(db, { userId: alice, topicSlug: TOPIC, cruxId: 'growth-or-continuity', parentId: null, body: 'a', moderation: 'allowed' });
+  assert.ok(comment);
+  await db.update(cruxComments).set({ hiddenAt: new Date() }).where(eq(cruxComments.id, comment.id));
+  assert.equal(await editComment(db, { userId: alice, topicSlug: TOPIC, id: comment.id, body: 'b', moderation: 'allowed' }), false);
+  assert.equal((await db.select().from(cruxComments))[0].body, 'a');
+  assert.equal(await deleteComment(db, { userId: alice, topicSlug: TOPIC, id: comment.id }), true);
+  assert.equal((await db.select().from(cruxComments)).length, 0);
+});
+
+test('a comment cannot be edited or deleted through another topic', async () => {
+  const { db, ids: [alice] } = await withReaders(['Alice']);
+  const comment = await addComment(db, { userId: alice, topicSlug: TOPIC, cruxId: 'growth-or-continuity', parentId: null, body: 'a', moderation: 'allowed' });
+  assert.ok(comment);
+  assert.equal(await editComment(db, { userId: alice, topicSlug: 'uk-asylum', id: comment.id, body: 'b', moderation: 'allowed' }), false);
+  assert.equal(await deleteComment(db, { userId: alice, topicSlug: 'uk-asylum', id: comment.id }), false);
+  const [row] = await db.select().from(cruxComments);
+  assert.deepEqual([row.body, row.editedAt, row.deletedAt], ['a', null, null]);
 });

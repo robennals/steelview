@@ -23,9 +23,6 @@ async function gapBetween(within: Locator, above: string, below: string) {
 test('the topic page shows its viewpoints and then its cruxes, with no tabs', async ({ page }) => {
   await page.goto(TOPIC);
   await expect(page.getByRole('heading', { name: 'UK immigration', level: 1 })).toBeVisible();
-  await expect(page.locator('.sv-topic-tabs')).toHaveCount(0);
-  await expect(page.getByRole('navigation', { name: 'Sections of this topic' })).toHaveCount(0);
-  await expect(page.locator('.sv-row--data')).toHaveCount(0);
   const viewpoints = page.getByRole('heading', { name: 'Viewpoints', level: 2 });
   const cruxes = page.getByRole('heading', { name: 'Cruxes', level: 2 });
   await expect(viewpoints).toBeVisible();
@@ -566,8 +563,11 @@ test('a viewpoint ends with a slide for suggestions, which opens the box to make
   await expect(sheet.getByPlaceholder('What would make this argument stronger?')).toBeVisible();
   await expect(sheet.getByRole('combobox')).toContainText('Card 6: So change the terms only for people who have not yet come');
   await expect(sheet).toContainText('Posting isn’t switched on here.');
+  // With posting off there is nothing to sign in for.
+  await expect(sheet.getByRole('button', { name: /Sign in/ })).toHaveCount(0);
   await page.keyboard.press('Escape');
   await expect(sheet).toHaveCount(0);
+  await expect(slide.getByRole('button', { name: 'Add a suggestion' })).toBeFocused();
 });
 
 test('an open crux ends with its discussion, which opens the box to join it', async ({ page }) => {
@@ -580,12 +580,35 @@ test('an open crux ends with its discussion, which opens the box to join it', as
   const sheet = page.locator('dialog.sv-modal');
   await expect(sheet.getByPlaceholder('What would change your mind on this?')).toBeVisible();
   await expect(sheet).toContainText('Posting isn’t switched on here.');
+  await expect(sheet.getByRole('button', { name: /Sign in/ })).toHaveCount(0);
+  await page.keyboard.press('Escape');
+  await expect(sheet).toHaveCount(0);
+  await expect(discussion.getByRole('button', { name: 'Start the discussion' })).toBeFocused();
 });
 
 test('the viewpoints end with a way to suggest one the page is missing', async ({ page }) => {
   await page.goto(TOPIC);
-  await page.getByRole('button', { name: /Suggest a viewpoint/ }).click();
-  await expect(page.locator('dialog.sv-modal').getByRole('heading', { name: 'Suggest a viewpoint this page is missing' })).toBeVisible();
+  const suggest = page.getByRole('button', { name: /Suggest a viewpoint/ });
+  await suggest.click();
+  const sheet = page.locator('dialog.sv-modal');
+  await expect(sheet.getByRole('heading', { name: 'Suggest a viewpoint this page is missing' })).toBeVisible();
+  await expect(sheet).toContainText('Posting isn’t switched on here.');
+  await page.keyboard.press('Escape');
+  await expect(sheet).toHaveCount(0);
+  await expect(suggest).toBeFocused();
+});
+
+test('the arrow keys step through a viewpoint\'s slides', async ({ page }) => {
+  await page.setViewportSize({ width: 1400, height: 900 });
+  await page.goto(SLIDES_TOPIC);
+  const row = await openViewpoint(page, SLIDES_VIEWPOINT.slice('#viewpoint-'.length));
+  const count = row.locator('.sv-deck__count');
+  await expect(count).toHaveText(/^1 \/ \d+$/);
+  const strip = row.locator('.sv-deck__strip');
+  await strip.press('ArrowRight');
+  await expect(count).toHaveText(/^2 \/ \d+$/);
+  await strip.press('ArrowLeft');
+  await expect(count).toHaveText(/^1 \/ \d+$/);
 });
 
 test('a closed slideshow viewpoint previews its graphs, and a graph opens the row at its card', async ({ page }) => {

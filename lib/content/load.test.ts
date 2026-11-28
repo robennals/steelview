@@ -44,13 +44,17 @@ test('frontmatter and body are both loaded', async () => {
   const topic = await loadTopic('example', FIXTURES);
   const one = topic.viewpoints.find((v) => v.id === 'one');
   assert.equal(one?.name, 'One');
-  assert.equal(one?.citesFacts, undefined);
   assert.equal(one?.summary, 'The first viewpoint, in a line.');
-  assert.equal(one?.body, '### The argument\n\nThe full argument for viewpoint one.');
+  assert.equal(one?.body, '### The argument\n\n[Alpha is higher in the first group](#fact-alpha/first-group-higher), which is why it matters now.');
+  assert.deepEqual(one?.visuals?.get('The argument'), { cite: '#fact-alpha/first-group-higher', kind: 'comparison', title: 'Alpha by group' });
+});
+
+test('the example topic passes the publication check', async () => {
+  await assert.doesNotReject(() => loadTopic('example', FIXTURES, { validateIntegrity: true }));
 });
 
 test('an item with no body loads with an empty string body', async () => {
-  // Facts must now carry a body (validation rule 4), but the other kinds may
+  // Facts must carry a body, but the other kinds may
   // legitimately be frontmatter only — the loader must not invent a body.
   const topic = await loadTopic('example', FIXTURES);
   assert.equal(topic.cruxes.find((c) => c.id === 'timing')?.body, '');
@@ -95,16 +99,41 @@ test('a viewpoint joins its text with its links file, and reports a link left in
 
 test('cross-reference integrity is deferred until the publication check', async () => {
   const root = await fixtureCopy();
-  await writeFile(
-    path.join(root, 'example', 'viewpoints', 'one.md'),
-    '---\nname: One\n---\n[Claim](#fact-ghost).\n'
-  );
+  const links = path.join(root, 'example', 'viewpoints', 'one.links.yaml');
+  await writeFile(links, (await readFile(links, 'utf8')).replace('href: "#fact-alpha/', 'href: "#fact-ghost/'));
   await assert.doesNotReject(() => loadTopic('example', root));
   await assert.rejects(() => loadTopic('example', root, { validateIntegrity: true }), (e: Error) => {
     assert.ok(e instanceof ContentError);
-    assert.match(e.message, /ghost/);
+    assert.equal(e.message, [
+      'Topic "example" has 2 problem(s):',
+      '  - viewpoint one: body links to "#fact-ghost", which is not a fact in this topic',
+      "  - topic: viewpoint one cites none of the preview charts' facts — add a chart it relies on to previewCharts",
+    ].join('\n'));
     return true;
   });
+});
+
+test('a links file that does not parse fails the load, naming the file', async () => {
+  for (const text of ['cards: [unclosed\n', 'cards:\n  - heading: The argument\n    citations: not-a-list\n']) {
+    const root = await fixtureCopy();
+    await writeFile(path.join(root, 'example', 'viewpoints', 'one.links.yaml'), text);
+    await assert.rejects(() => loadTopic('example', root), (e: Error) => {
+      assert.ok(e instanceof ContentError, `${e.name}: ${e.message}`);
+      assert.match(e.message, /one\.links\.yaml: /);
+      return true;
+    });
+  }
+});
+
+test('a viewpoint with no links file loads unlinked, and only the publication check reports it', async () => {
+  const root = await fixtureCopy();
+  await rm(path.join(root, 'example', 'viewpoints', 'one.links.yaml'));
+  const one = (await loadTopic('example', root)).viewpoints.find((v) => v.id === 'one')!;
+  assert.equal(one.body, '### The argument\n\nAlpha is higher in the first group, which is why it matters now.');
+  assert.equal(one.visuals?.size, 0);
+  assert.deepEqual(one.linkErrors, ['card "The argument" has no entry in the links file']);
+  assert.deepEqual(one.unverified, ['the summary has not been checked against its evidence', 'card "The argument" has not been checked against its evidence']);
+  await assert.rejects(() => loadTopic('example', root, { validateIntegrity: true }), ContentError);
 });
 
 test('a topic with no cruxes directory loads with an empty cruxes array', async () => {
@@ -122,12 +151,12 @@ test('a topic with no cruxes directory loads with an empty cruxes array', async 
   );
   await writeFile(
     path.join(dir, 'viewpoints', 'v.md'),
-    '---\nname: V\nacknowledges: [a]\n---\nBody.\n'
+    '---\nname: V\n---\nBody.\n'
   );
-  // Rule 9 needs at least two viewpoints.
+  // A topic needs at least two viewpoints.
   await writeFile(
     path.join(dir, 'viewpoints', 'v2.md'),
-    '---\nname: V2\nacknowledges: [a]\n---\nBody.\n'
+    '---\nname: V2\n---\nBody.\n'
   );
   const topic = await loadTopic('bare', root);
   assert.deepEqual(topic.cruxes, []);
@@ -170,95 +199,17 @@ test('unquoted YAML dates in source frontmatter normalize to strings, not Date o
   );
   await writeFile(
     path.join(dir, 'viewpoints', 'v.md'),
-    '---\nname: V\nacknowledges: [a]\n---\nBody.\n'
+    '---\nname: V\n---\nBody.\n'
   );
-  // Rule 9 needs at least two viewpoints.
+  // A topic needs at least two viewpoints.
   await writeFile(
     path.join(dir, 'viewpoints', 'v2.md'),
-    '---\nname: V2\nacknowledges: [a]\n---\nBody.\n'
+    '---\nname: V2\n---\nBody.\n'
   );
   const topic = await loadTopic('dates', root);
   const fact = topic.facts[0];
   assert.equal(fact.sources[0].date, '2024-11-28');
   assert.equal(fact.sources[1].date, '2024');
-});
-
-/**
- * Build a topic on disk from `facts` (`{id: status}`) and `viewpoints`
- * (`{id: {cites, acknowledges, setsAside}}`) and return the loaded fact ids
- * in render order. The unit tests for the ranking itself live in
- * rank-facts.test.ts; this exercises the same thing through real files, so a
- * wiring mistake in the loader cannot pass unnoticed.
- */
-type VpSpec = { cites?: string[]; acknowledges?: string[]; setsAside?: string[] };
-
-async function loadOrdered(
-  facts: Record<string, string>,
-  viewpoints: Record<string, VpSpec>
-): Promise<string[]> {
-  const root = await tempTopicsRoot();
-  const dir = path.join(root, 'ordering');
-  await mkdir(path.join(dir, 'facts'), { recursive: true });
-  await mkdir(path.join(dir, 'viewpoints'), { recursive: true });
-  await writeFile(
-    path.join(dir, 'topic.md'),
-    '---\ntitle: Ordering\nsubtitle: s\nlastUpdated: 2026-08-18\n---\nIntro.\n'
-  );
-
-  await Promise.all(
-    Object.entries(facts).map(([id, status]) => {
-      // Sources are whatever each status needs to pass validation: every fact
-      // needs at least one, `contested` needs both stances, and every fact
-      // needs a body.
-      const supports = `  - stance: supports\n    quote: q\n    title: t\n    url: https://example.org/${id}\n    publisher: p\n    date: "2024"\n`;
-      const contests = `  - stance: contests\n    quote: q2\n    title: t2\n    url: https://example.org/${id}b\n    publisher: p\n    date: "2024"\n`;
-      const sources = status === 'contested' ? supports + contests : status === 'not-supported' ? contests : supports;
-      return writeFile(
-        path.join(dir, 'facts', `${id}.md`),
-        `---\nclaim: ${id}\nstatus: ${status}\nsources:\n${sources}---\nContext for ${id}.\n`
-      );
-    })
-  );
-
-  await Promise.all(
-    Object.entries(viewpoints).map(([id, spec]) =>
-      writeFile(
-        path.join(dir, 'viewpoints', `${id}.md`),
-        `---\nname: ${id}\ncitesFacts: [${spec.cites ?? []}]\nacknowledges: [${spec.acknowledges ?? []}]\nsetsAside: [${spec.setsAside ?? []}]\n---\nBody.\n`
-      )
-    )
-  );
-
-  const topic = await loadTopic('ordering', root);
-  return topic.facts.map((f) => f.id);
-}
-
-test.skip('fact order is derived from the viewpoints, round-robin by rank', async () => {
-  assert.deepEqual(
-    await loadOrdered(
-      { a1: 'well-supported', a2: 'well-supported', b1: 'well-supported', shared: 'well-supported' },
-      {
-        // Both viewpoints rank `shared` first, so it takes round 1 alone and
-        // costs both of them their turn; round 2 places one fact from each.
-        alpha: { cites: ['shared', 'a1'], acknowledges: ['a2'] },
-        beta: { cites: ['shared', 'b1'], acknowledges: ['a2'] },
-      }
-    ),
-    ['shared', 'a1', 'b1', 'a2']
-  );
-});
-
-test.skip('facts nothing ranks fall to a tail in status order', async () => {
-  assert.deepEqual(
-    await loadOrdered(
-      { keeper: 'well-supported', muddle: 'complicated', dunno: 'unknown', wrong: 'not-supported' },
-      {
-        one: { acknowledges: ['keeper'], setsAside: ['muddle', 'dunno', 'wrong'] },
-        two: { acknowledges: ['keeper'], setsAside: ['muddle'] },
-      }
-    ),
-    ['keeper', 'muddle', 'dunno', 'wrong']
-  );
 });
 
 test('viewpoints are built in order of name, not of id', async () => {
@@ -290,15 +241,6 @@ test('a viewpoint carrying a field the format has dropped is rejected', async ()
     assert.match(e.message, /order/);
     return true;
   });
-});
-
-test('a fact may no longer carry an order — the field is gone from the model', async () => {
-  const root = await fixtureCopy();
-  const p = path.join(root, 'example', 'facts', 'alpha.md');
-  const text = await readFile(p, 'utf8');
-  await writeFile(p, text.replace('claim: Alpha is established', 'claim: Alpha is established\norder: 1'));
-  const topic = await loadTopic('example', root);
-  assert.equal('order' in topic.facts[0], false);
 });
 
 test('listTopicSlugs returns directory names, sorted', async () => {

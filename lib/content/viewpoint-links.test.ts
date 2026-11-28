@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { cardText, joinViewpoint, linkify, passageHash, splitPassages, unlinkify, viewpointLinksSchema } from './viewpoint-links';
+import { cardText, joinViewpoint, linkify, passageHash, splitPassages, unlinkify, verificationProblem, viewpointLinksSchema } from './viewpoint-links';
 
 test('unlinkify and linkify round-trip a passage, counting which appearance of a phrase is cited', () => {
   const linked = 'ID is common. [ID](#fact-a/x) laws vary, and [laws vary](#fact-a/y) widely.';
@@ -73,4 +73,34 @@ test('cards and links-file entries that do not match by heading are reported', (
     'card "New heading" has no entry in the links file',
     'the links file has an entry for "Old heading", which is no card\'s heading',
   ]);
+});
+
+test('a passage with no recorded check is unverified, and so not ready to publish', () => {
+  const links = viewpointLinksSchema.parse({ cards: [{ heading: 'First' }] });
+  assert.deepEqual(links.summary.verification, { status: 'unverified' });
+  assert.deepEqual(links.cards[0].verification, { status: 'unverified' });
+  assert.equal(verificationProblem(links.cards[0].verification, 'First\nText.'), 'has not been checked against its evidence');
+});
+
+test('a passage checked with problems is not ready to publish, and says what the agent found', () => {
+  const text = 'First\nText.';
+  const problems = { status: 'problems' as const, textHash: passageHash(text), notes: ['The figure is for 2023', 'The source says "about"'] };
+  assert.equal(verificationProblem(problems, text), 'was checked, with problems: The figure is for 2023 / The source says "about"');
+  assert.equal(verificationProblem({ ...problems, notes: undefined }, text), 'was checked, with problems: (no notes)');
+  // An edit makes the check stale, whatever it found.
+  assert.equal(verificationProblem(problems, 'First\nNew text.'), 'has changed since it was checked against its evidence');
+  assert.equal(verificationProblem({ status: 'verified', textHash: passageHash(text) }, text), undefined);
+});
+
+test('two cards with one heading are reported, as their links-file entries are matched by heading', () => {
+  const links = viewpointLinksSchema.parse({ cards: [{ heading: 'Same' }] });
+  const { linkErrors } = joinViewpoint('Summary.\n\n### Same\n\nOne.\n\n### Same\n\nTwo.', links);
+  assert.ok(linkErrors.includes('has two cards headed "Same": give each card its own heading'), linkErrors.join('\n'));
+});
+
+test('two links-file entries for one heading are reported, rather than one silently winning', () => {
+  const visual = (title: string) => ({ cite: '#fact-a/x', kind: 'series', title });
+  const links = viewpointLinksSchema.parse({ cards: [{ heading: 'First', visual: visual('One') }, { heading: 'First', visual: visual('Two') }] });
+  const { linkErrors } = joinViewpoint('Summary.\n\n### First\n\nOne.', links);
+  assert.deepEqual(linkErrors, ['the links file has two entries for "First"']);
 });
